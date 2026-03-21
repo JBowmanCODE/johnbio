@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart-Healthy Nutrition Guide</title>
+    <style>
+        :root {
+            --green-main: #2e7d32;
+            --green-bg: #e8f5e9;
+            --red-main: #d32f2f;
+            --red-bg: #ffebee;
+            --blue-main: #1976d2;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --white: #ffffff;
+            --gray-bg: #f5f5f5;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--gray-bg);
+            color: var(--text-dark);
+            line-height: 1.5;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        header {
+            background-color: var(--blue-main);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-size: 1.25rem; margin-bottom: 5px; }
+        header p { font-size: 0.85rem; opacity: 0.9; }
+
+        .tab-nav {
+            position: sticky;
+            top: 0;
+            display: flex;
+            background: white;
+            overflow-x: auto;
+            border-bottom: 1px solid #ddd;
+            z-index: 100;
+        }
+
+        .tab-btn {
+            flex: 0 0 auto;
+            padding: 15px 20px;
+            border: none;
+            background: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            color: var(--blue-main);
+            border-bottom-color: var(--blue-main);
+        }
+
+        .content-section {
+            display: none;
+            padding: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content-section.active { display: block; }
+
+        .week-selector {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 12px 5px;
+            margin-bottom: 15px;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            border-bottom: 1px inset #eee;
+        }
+
+        .week-selector::-webkit-scrollbar { height: 6px; }
+        .week-selector::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .week-selector::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+
+        .week-btn {
+            flex: 0 0 auto;
+            padding: 8px 22px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            background: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        .week-btn.active {
+            background: var(--green-main);
+            color: white;
+            border-color: var(--green-main);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .week-content { display: none; }
+        .week-content.active { display: block; }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .recipe-day-header {
+            background: #e8f5e9;
+            color: var(--green-main);
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin: 20px 0 10px 0;
+            font-size: 0.95rem;
+            font-weight: bold;
+        }
+        .recipe-day-header:first-child { margin-top: 0; }
+
+        .meal-type {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: var(--blue-main);
+            margin-bottom: 1px;
+            display: block;
+        }
+
+        details.recipe-item { border-bottom: 1px solid #eee; padding: 10px 0; }
+        details.recipe-item:last-child { border-bottom: none; }
+
+        summary.recipe-summary {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            outline: none;
+        }
+
+        summary.recipe-summary::-webkit-details-marker { display: none; }
+
+        summary.recipe-summary::after {
+            content: '+';
+            font-size: 1.1rem;
+            color: var(--blue-main);
+        }
+
+        details[open] summary.recipe-summary::after {
+            content: '−';
+        }
+
+        .recipe-details {
+            padding: 12px 10px;
+            background: #fafafa;
+            border-radius: 8px;
+            margin-top: 8px;
+            font-size: 0.85rem;
+        }
+
+        .recipe-details h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--blue-main);
+            margin-bottom: 4px;
+            margin-top: 8px;
+        }
+
+        .recipe-details h3 { font-size: 1rem; margin: 15px 0 5px 0; color: var(--text-dark); }
+
+        .ingredients-box {
+            background: #fff;
+            border: 2px solid var(--blue-main);
+            border-radius: 12px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .ingredients-box summary {
+            list-style: none;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--blue-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ingredients-list {
+            padding: 0 15px 15px 15px;
+            font-size: 0.85rem;
+            column-count: 2;
+        }
+
+        @media (max-width: 480px) { .ingredients-list { column-count: 1; } }
+
+        .table-container { overflow-x: auto; border-radius: 8px; border: 1px solid #eee; margin-top: 10px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        th { background: #f8f9fa; text-align: left; padding: 10px; font-weight: 600; }
+        td { padding: 10px; border-bottom: 1px solid #eee; vertical-align: top; }
+        .tag-green { color: var(--green-main); font-weight: bold; }
+        .tag-amber { color: #f57c00; font-weight: bold; }
+        .tag-red { color: var(--red-main); font-weight: bold; }
+        .price { font-weight: bold; color: var(--green-main); }
+        .tip-box { background: #e3f2fd; border-left: 4px solid #1976d2; padding: 12px; margin: 10px 0; border-radius: 0 8px 8px 0; font-size: 0.9rem; }
+        .item-list { list-style: none; padding: 0; }
+        .item-list li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
+        .item-list li:last-child { border-bottom: none; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Heart Health Navigator</h1>
+    <p>Complete 70-Day Nutrition Guide</p>
+</header>
+
+<nav class="tab-nav" id="tabNav">
+    <button class="tab-btn active" onclick="showTab('labels')">Labels</button>
+    <button class="tab-btn" onclick="showTab('recipes')">Recipes</button>
+    <button class="tab-btn" onclick="showTab('focus')">Focus Foods</button>
+    <button class="tab-btn" onclick="showTab('alcohol')">Alcohol</button>
+    <button class="tab-btn" onclick="showTab('fastfood')">Fast Food</button>
+    <button class="tab-btn" onclick="showTab('shopping')">Supermarket</button>
+    <button class="tab-btn" onclick="showTab('swaps')">Top Swaps</button>
+    <button class="tab-btn" onclick="showTab('avoid')">Avoid</button>
+</nav>
+
+<main>
+    <!-- LABELS TAB -->
+    <section id="labels" class="content-section active">
+        <div class="card" style="border-left: 5px solid var(--blue-main);">
+            <h2>Label Strategy</h2>
+            <p>Target: <strong>5.24 Non-HDL</strong> and <strong>2.52 Triglycerides</strong>. Pick foods that are mostly Green, some Amber, and zero Red.</p>
+        </div>
+        <div class="card">
+            <h2>Traffic Light Quick Guide</h2>
+            <div class="table-container">
+                <table>
+                    <thead><tr><th>Nutrient</th><th>Target</th><th>Why?</th></tr></thead>
+                    <tbody>
+                        <tr><td>Saturated Fat</td><td><span class="tag-green">🟢 GREEN (Low)</span></td><td>Unblocks liver to clear 5.24 cholesterol.</td></tr>
+                        <tr><td>Sugars</td><td><span class="tag-green">🟢 GREEN (Low)</span></td><td>Stops liver creating more 2.52 triglycerides.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Back of Pack Targets (Per 100g)</h2>
+            <h3>Saturated Fat</h3>
+            <ul style="list-style:none; padding:10px 0;">
+                <li><span class="tag-green">🟢 LOW:</span> 1.5g or less</li>
+                <li><span class="tag-amber">🟡 AMBER:</span> 1.6g to 5g</li>
+                <li><span class="tag-red">🔴 HIGH:</span> Over 5g</li>
+            </ul>
+            <h3>Sugar</h3>
+            <ul style="list-style:none; padding:10px 0;">
+                <li><span class="tag-green">🟢 LOW:</span> 5g or less</li>
+                <li><span class="tag-amber">🟡 AMBER:</span> 5.1g to 22.5g</li>
+                <li><span class="tag-red">🔴 HIGH:</span> Over 22.5g</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- RECIPES TAB -->
+    <section id="recipes" class="content-section">
+        <div class="card">
+            <h2>10 Week Roadmap</h2>
+            <div class="week-selector" id="weekSelector">
+                <button class="week-btn active" onclick="showWeek(1)">Week 1</button>
+                <button class="week-btn" onclick="showWeek(2)">Week 2</button>
+                <button class="week-btn" onclick="showWeek(3)">Week 3</button>
+                <button class="week-btn" onclick="showWeek(4)">Week 4</button>
+                <button class="week-btn" onclick="showWeek(5)">Week 5</button>
+                <button class="week-btn" onclick="showWeek(6)">Week 6</button>
+                <button class="week-btn" onclick="showWeek(7)">Week 7</button>
+                <button class="week-btn" onclick="showWeek(8)">Week 8</button>
+                <button class="week-btn" onclick="showWeek(9)">Week 9</button>
+                <button class="week-btn" onclick="showWeek(10)">Week 10</button>
+            </div>
+        </div>
+
+        <!-- WEEK 1 CONTENT -->
+        <div id="week1-content" class="week-content active">
+            <div class="recipe-day-header">📅 Monday: The Foundation</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Berry & Flaxseed Porridge</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>40g rolled oats, 200ml water (or skimmed milk), 1 tbsp milled flaxseeds, 50g raspberries.</p><h4>Method</h4><p>Combine oats and liquid in a pan. Simmer on medium heat for 5-6 mins, stirring until creamy. Remove from heat, stir in flaxseeds. Top with raspberries.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Tuna & White Bean Salad</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 tin tuna (in spring water), 1/2 tin cannellini beans (rinsed), 1/4 cucumber (diced), squeeze of lemon, black pepper.</p><h4>Method</h4><p>Drain tuna and mix in a bowl with beans and cucumber. Drizzle with lemon and pepper. Fibre in beans helps "mop up" your 5.24 Non-HDL.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Lemon & Herb Grilled Chicken</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 skinless chicken breast, 1/2 head broccoli (florets), 1/2 small sweet potato.</p><h4>Method</h4><p>Microwave sweet potato for 6 mins until soft. Grill chicken in a non-stick pan with dried herbs for 6 mins per side. Steam broccoli for 4 mins. Serve together.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Tuesday: The Omega Boost</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Poached Eggs on Rye</span></summary><div class="recipe-details"><h4>Method</h4><p>Poach 2 eggs for 3-4 mins. Serve on toasted rye with 2 grilled tomatoes.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Turkey & Avocado Wrap</span></summary><div class="recipe-details"><h4>Method</h4><p>Mash avocado on a wholemeal wrap. Layer 100g turkey and spinach. Roll tightly.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Baked Salmon Fillet</span></summary><div class="recipe-details"><h4>Method</h4><p>Bake salmon at 180°C (12m). Serve with 40g brown rice and green beans.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Wednesday: Plant-Power</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>0% Greek Yoghurt Bowl</span></summary><div class="recipe-details"><h4>Method</h4><p>200g yoghurt topped with 1 sliced kiwi and 1 tbsp pumpkin seeds.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Lentil & Vegetable Soup</span></summary><div class="recipe-details"><h4>Method</h4><p>Simmer 50g red lentils and veg in stock 20m. Serve with 1 rough oatcake.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Chickpea & Spinach Curry</span></summary><div class="recipe-details"><h4>Method</h4><p>Simmer chickpeas and tomatoes with spices. Wilt spinach at end.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Thursday: The Fibre Flush</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Apple & Cinnamon Overnight Oats</span></summary><div class="recipe-details"><h4>Method</h4><p>Mix oats, almond milk, and grated apple. Leave in fridge overnight.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Mackerel on Wholemeal Toast</span></summary><div class="recipe-details"><h4>Method</h4><p>Flake 1 tin mackerel in brine over thick wholemeal toast with cucumber.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Lean Beef Stir-fry</span></summary><div class="recipe-details"><h4>Method</h4><p>Stir-fry 100g 5% beef and peppers with soy sauce in a non-stick pan.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Friday: Mediterranean Mix</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Mashed Banana on Oatcakes</span></summary><div class="recipe-details"><h4>Method</h4><p>Mash banana on 3 rough oatcakes. Sprinkle with chia seeds.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Quinoa & Roasted Veggie Bowl</span></summary><div class="recipe-details"><h4>Method</h4><p>Cooked quinoa mixed with roasted peppers/courgettes and 1 tbsp hummus.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>White Fish En Papillote</span></summary><div class="recipe-details"><h4>Method</h4><p>Bake Cod with lemon and asparagus in paper parcel (15m).</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Saturday: Weekend Reset</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Smoked Salmon Scramble</span></summary><div class="recipe-details"><h4>Method</h4><p>2 eggs scrambled dry with flaked smoked salmon and mushrooms.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Colombian Arepa with Black Beans</span></summary><div class="recipe-details"><h4>Method</h4><p>1 warm arepa topped with seasoned black beans and fresh salsa.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Turkey Burgers</span></summary><div class="recipe-details"><h4>Method</h4><p>Turkey patty seasoned with oregano, served in large lettuce leaves.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Sunday: The Slow Burn</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Shakshuka</span></summary><div class="recipe-details"><h4>Method</h4><p>Simmer onion and tomatoes. Crack 2 eggs in, cover, cook 5 mins.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Chicken & Bulgur Wheat Salad</span></summary><div class="recipe-details"><h4>Method</h4><p>40g bulgur mixed with 100g cold roast chicken, parsley, and lemon.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Baked Cod with Ratatouille</span></summary><div class="recipe-details"><h4>Method</h4><p>Simmer aubergine/tomatoes with garlic 15 mins. Place fish on top and bake for 10 mins.</p></div></details>
+            </div>
+
+            <details class="ingredients-box">
+                <summary>🛒 WEEKLY INGREDIENTS (W1)</summary>
+                <div class="ingredients-list">Oats, Flaxseeds, Chia, Berries, Apple, Banana, Kiwi, Tomatoes, Cucumber, Spinach, Kale, Broccoli, Sweet Potato, Asparagus, Mushrooms, Peppers, Onion, Garlic, Lemon, Tuna, Mackerel, Black Beans, Chickpeas, Cannellini Beans, Chicken, Turkey, Salmon, Cod, 5% Beef, Milk, Yoghurt, Eggs, Cottage Cheese, Rye, Wholemeal Bread, Bulgur, Quinoa, Rice, Arepas, Stock.</div>
+            </details>
+        </div>
+
+        <!-- WEEK 2 CONTENT -->
+        <div id="week2-content" class="week-content">
+            <div class="recipe-day-header">📅 Monday: Metabolism Reset</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Buckwheat Porridge with Blueberries</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>40g buckwheat flakes, 200ml unsweetened oat milk, handful of blueberries.</p><h4>Method</h4><p>Simmer buckwheat in the milk for 8-10 mins. Buckwheat is a "heart-power" grain that is higher in fibre than wheat. Top with fresh blueberries.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Sardine & Lemon Salad</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 tin sardines in brine (drained), mixed salad leaves, 1/2 cucumber, 1 tbsp lemon juice.</p><h4>Method</h4><p>Toss leaves and cucumber with lemon juice. Place the sardines on top. Sardines are excellent for lowering triglycerides.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Turkey & Lentil Bolognese</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g lean turkey mince, 1/2 tin red lentils (rinsed), 1/2 tin chopped tomatoes, courgette ribbons.</p><h4>Method</h4><p>Brown turkey mince in a dry pan. Add lentils and tomatoes; simmer for 15 mins. Serve over raw courgette ribbons.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Tuesday: The Green Machine</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Spinach & Banana Smoothie</span></summary><div class="recipe-details"><h4>Method</h4><p>Blend 1 small banana, 2 large handfuls of spinach, 200ml water, and 1 tbsp chia seeds until smooth.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Edamame & Brown Rice Bowl</span></summary><div class="recipe-details"><h4>Method</h4><p>Boil 40g brown rice. Mix in 100g thawed edamame and 1 grated carrot. Drizzle with soy sauce.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>White Fish with Mango Salsa</span></summary><div class="recipe-details"><h4>Method</h4><p>Grill white fish fillet. Top with fresh mango, onion, and lime salsa. Serve with steamed kale.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Wednesday: Plant-Based Heart</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Scrambled Tofu on Wholemeal</span></summary><div class="recipe-details"><h4>Method</h4><p>Sauté 100g crumbled firm tofu with turmeric. Serve on toasted wholemeal bread.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Mediterranean Bean Salad</span></summary><div class="recipe-details"><h4>Method</h4><p>Mix mixed beans, cherry tomatoes, parsley, and balsamic vinegar.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Grilled Chicken & Roasted Aubergine</span></summary><div class="recipe-details"><h4>Method</h4><p>Grill 1 chicken breast. Roast sliced aubergine with oregano at 200°C for 20 mins.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Thursday: Pectin Power</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Barley Flakes & Pear</span></summary><div class="recipe-details"><h4>Method</h4><p>Cook 40g barley flakes with water. Top with 1 sliced pear.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Prawn & Avocado Salad</span></summary><div class="recipe-details"><h4>Method</h4><p>Mix prawns, 1/4 diced avocado, leaves, and apple cider vinegar.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Veggie Three-Bean Chilli</span></summary><div class="recipe-details"><h4>Method</h4><p>Simmer black, kidney, and adzuki beans with tomatoes. Side of spinach.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Friday: Protein Punch</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Low-Fat Skyr with Berries</span></summary><div class="recipe-details"><h4>Method</h4><p>200g plain 0% Skyr with strawberries and raspberries.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Hummus & Roasted Veggie Wrap</span></summary><div class="recipe-details"><h4>Method</h4><p>Wholemeal wrap, 3 tbsp hummus, cold roasted peppers and courgette.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Baked Trout with Kale</span></summary><div class="recipe-details"><h4>Method</h4><p>Bake trout fillet in foil (12m). Steam kale for 3m with lemon.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Saturday: Weekend Cleanse</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Mushroom & Spinach Omelette</span></summary><div class="recipe-details"><h4>Method</h4><p>Sauté veg dry. Scramble in 2 eggs. No cheese.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Chickpea "Tuna" Salad</span></summary><div class="recipe-details"><h4>Method</h4><p>Mashed chickpeas with 1 tsp yoghurt and celery on oatcakes.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Lean Venison & Cabbage</span></summary><div class="recipe-details"><h4>Method</h4><p>Sear 100g venison steak. Serve with large side of steamed cabbage.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Sunday: Sunday Vitality</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Whole Fruit Salad with Flax</span></summary><div class="recipe-details"><h4>Method</h4><p>Dice 1 apple, 1 orange, 1 kiwi. Toss with 1 tbsp milled flaxseeds.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Chicken & Lentil Soup</span></summary><div class="recipe-details"><h4>Method</h4><p>Boil 50g lentils and carrot in stock 20m. Add 100g shredded chicken.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Baked Haddock with Tomato & Caper Sauce</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 haddock fillet, 4 cherry tomatoes (halved), 1 tsp capers, splash of white wine vinegar.</p><h4>Method</h4><p>Place fish on foil, top with tomatoes, capers, and vinegar. Seal and bake for 15 mins. Serve with green beans.</p></div></details>
+            </div>
+            <details class="ingredients-box">
+                <summary>🛒 WEEKLY INGREDIENTS (W2)</summary>
+                <div class="ingredients-list">Buckwheat, Barley, Brown Rice, Quinoa, Wholemeal Bread, Oatcakes, Oat Milk, Skyr, Eggs, Tofu, Sardines, Mackerel, Salmon, Trout, Basa, Haddock, Turkey Mince, Venison, Lentils, Chickpeas, Mixed Beans, Edamame, Fruits, Veggies.</div>
+            </details>
+        </div>
+
+        <!-- WEEK 3 CONTENT -->
+        <div id="week3-content" class="week-content">
+            <div class="recipe-day-header">📅 Monday: Soluble Fibre Boost</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Pear & Walnut Porridge</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>40g oats, 200ml water, 1 ripe pear (sliced), 3 walnut halves (crushed).</p><h4>Method</h4><p>Cook oats creamy. Top with pear and walnuts. Pectin + beta-glucan double hit.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Black Bean & Corn Arepa</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 corn arepa, 1/2 tin black beans (rinsed), 1 tbsp sweetcorn, lime.</p><h4>Method</h4><p>Mash black beans with lime and corn. Stuff into warm arepa. Very high fibre.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Turkey & Vegetable Kebabs</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g turkey breast (cubed), red onion, green pepper, oregano.</p><h4>Method</h4><p>Thread turkey/veg onto skewers. Grill until cooked. Serve with steamed spinach.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Tuesday: Omega-3 Focus</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Chia Seed Pudding</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>2 tbsp chia seeds, 150ml unsweetened almond milk, 50g raspberries.</p><h4>Method</h4><p>Mix seeds and milk the night before. Top with raspberries in the morning. High plant-based Omega-3.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Red Lentil "Dahl"</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>50g red lentils, turmeric, cumin, 400ml water, handful of kale.</p><h4>Method</h4><p>Simmer red lentils with turmeric and cumin for 20 mins. Stir in kale at end.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Steamed Sea Bass with Ginger</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 sea bass fillet, 1 tsp grated ginger, 1 spring onion, 100g sugar snap peas.</p><h4>Method</h4><p>Steam fish with ginger and spring onion for 8 mins. Serve with steamed snap peas.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Wednesday: Lean Protein & Grains</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Rye Toast & Cottage Cheese</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 slice toasted rye bread, 3 tbsp low-fat cottage cheese, sliced tomato.</p><h4>Method</h4><p>Toasted rye topped with cottage cheese and tomato slices. Good for stable blood sugar.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Roasted Chickpea Salad</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1/2 tin chickpeas, 1 tsp paprika, mixed salad leaves, cucumber.</p><h4>Method</h4><p>Pan-roast chickpeas with paprika in a dry pan until slightly crunchy. Toss with salad leaves.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Lean Beef & Barley Stew</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g lean beef steak (diced), 20g pearl barley, 1 carrot, 1 onion, 400ml stock.</p><h4>Method</h4><p>Simmer beef and pearl barley with veg in stock for 45 mins until tender.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Thursday: Antioxidant Day</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Skyr with Kiwi & Sunflower Seeds</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>200g plain 0% Skyr, 1 kiwi (sliced), 1 tbsp sunflower seeds.</p><h4>Method</h4><p>Layer the sliced kiwi and sunflower seeds over the Skyr for a high-protein start.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Mackerel & Apple Slaw</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 tin mackerel in brine, 1/2 Granny Smith apple (grated), shredded cabbage, cider vinegar.</p><h4>Method</h4><p>Mix cabbage, apple, and vinegar. Top with flaked mackerel.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Chicken & Mushroom Risotto</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g chicken breast, 50g dry brown rice, 6 mushrooms, 400ml stock.</p><h4>Method</h4><p>Brown rice cooked slowly with chicken and mushrooms, adding stock gradually.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Friday: Quick & Clean</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Banana Pancakes</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 banana (mashed), 1 egg (whisked), pinch of cinnamon.</p><h4>Method</h4><p>Mash 1 banana and mix with 1 egg. Fry small dollops in a non-stick pan until set.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Tuna & Bean Stuffed Pepper</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 bell pepper, 1 tin tuna in spring water, 1/4 tin kidney beans.</p><h4>Method</h4><p>Fill hollowed pepper with tuna and kidney beans. Bake at 190°C for 15 mins.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Baked Salmon & Asparagus</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 salmon fillet, 6 asparagus spears, 1/2 lemon.</p><h4>Method</h4><p>Bake salmon and asparagus with lemon juice for 12 mins at 180°C.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Saturday: Weekend Heart</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Poached Egg & Wilted Kale</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 poached egg, 2 handfuls kale, 1 slice wholemeal toast.</p><h4>Method</h4><p>Steam kale 2m. Serve on toast with 1 poached egg. Rich in bile-acid binders.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Quinoa & Edamame Poke Bowl</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>40g dry quinoa, 50g thawed edamame, carrot, soy sauce.</p><h4>Method</h4><p>Cook quinoa. Mix with cold veggies and soy.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Lean Turkey Chilli (White)</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g turkey mince, 1/2 tin cannellini beans, onion, green chillies, stock.</p><h4>Method</h4><p>Brown turkey mince. Add beans, green chillies, and stock. Simmer for 15 mins. Low saturates.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Sunday: Sunday Vitality</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Smoked Mackerel Scramble</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 egg, 50g flaked mackerel, handful of spinach.</p><h4>Method</h4><p>Scramble 1 egg dry. Fold in flaked mackerel and spinach at the end.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Carrot & Coriander Soup</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>2 carrots, 1/2 onion, coriander seeds, stock, 1 rough oatcake.</p><h4>Method</h4><p>Simmer veg in stock until soft. Blend until smooth. High fibre.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Roasted Cod with Garlic</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 cod fillet, 1 clove garlic, rosemary, 3 small new potatoes.</p><h4>Method</h4><p>Bake fish and new potatoes with garlic and rosemary 15m.</p></div></details>
+            </div>
+            <details class="ingredients-box">
+                <summary>🛒 WEEKLY INGREDIENTS (W3)</summary>
+                <div class="ingredients-list">Oats, Pearl Barley, Bulgur, Quinoa, Rye, Arepas, Almond Milk, Skyr, Cottage Cheese, Eggs, Mackerel, Tuna, Smoked Mackerel, Salmon, Cod, Sea Bass, Turkey, Lean Beef, Beans, Lentils, Walnuts, Chia, Sunflower Seeds, Fruit, Veggies.</div>
+            </details>
+        </div>
+
+        <!-- WEEK 4 CONTENT -->
+        <div id="week4-content" class="week-content">
+            <div class="recipe-day-header">📅 Monday: The Zesty Start</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Breakfast Shakshuka</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>2 eggs, 1/2 tin chopped tomatoes, 1/2 red pepper (sliced), pinch of cumin.</p><h4>Method</h4><p>Simmer tomatoes, peppers, and cumin in a pan until thick. Poach eggs in sauce (5m). No bread needed—the sauce is filling!</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Hummus & Crunchy Veggie Plate</span></summary><div class="recipe-details"><h4>Method</h4><p>3 tbsp hummus with carrots, celery, radishes, and 2 rough oatcakes.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Sea Bass with Ratatouille</span></summary><div class="recipe-details"><h4>Method</h4><p>Grilled sea bass over stewed aubergine, courgette, and tomatoes.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Tuesday: Fibre Power</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Overnight Berry Porridge</span></summary><div class="recipe-details"><h4>Method</h4><p>Mix oats, milk, chia. Layer frozen berries on top. Chill overnight.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Lentil & Spinach Salad</span></summary><div class="recipe-details"><h4>Method</h4><p>Toss green lentils, spinach, cherry tomatoes, and balsamic vinegar.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Quinoa Stuffed Peppers</span></summary><div class="recipe-details"><h4>Method</h4><p>Stuff pepper with cooked quinoa, turkey, and onion. Bake 25m.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Wednesday: Healthy Fats</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Smashed Avocado & Tomato</span></summary><div class="recipe-details"><h4>Method</h4><p>Mash 1/4 avocado on toast. Top with sliced tomato and black pepper.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Chicken Mango Salad</span></summary><div class="recipe-details"><h4>Method</h4><p>Roast chicken mixed with mango slices, leaves, and lime juice.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Turkey Meatballs in Tomato Sauce</span></summary><div class="recipe-details"><h4>Method</h4><p>Turkey meatballs in tomato sauce served over wholewheat pasta.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Thursday: Crunch Factor</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Apple Oat Bran Bowl</span></summary><div class="recipe-details"><h4>Method</h4><p>Cook oat bran 3m. Stir in 1 chopped apple.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Tuna Celery Boats</span></summary><div class="recipe-details"><h4>Method</h4><p>Mix tuna with 0% Greek yoghurt. Fill celery stalks.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Prawn Arrabbiata</span></summary><div class="recipe-details"><h4>Method</h4><p>Spicy tomato prawns served with spiralized courgette (courgetti).</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Friday: High Protein Finish</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Cottage Cheese & Berries</span></summary><div class="recipe-details"><h4>Method</h4><p>200g low-fat cottage cheese with handful of blueberries/raspberries.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Smoked Salmon Wrap</span></summary><div class="recipe-details"><h4>Method</h4><p>50g salmon with 1 tbsp yoghurt and cucumber in a wrap.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Baked Haddock & Mediterranean Veg</span></summary><div class="recipe-details"><h4>Method</h4><p>Bake haddock fillet on top of red peppers, onion, and tomatoes.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Saturday: Weekend Refuel</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Mushroom & Spinach Scramble</span></summary><div class="recipe-details"><h4>Method</h4><p>Sauté veg then add 2 eggs. Scramble in non-stick pan.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Quinoa Tabbouleh</span></summary><div class="recipe-details"><h4>Method</h4><p>Cooked quinoa, huge handful of parsley, tomato, lemon.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Lean Sirloin & Green Beans</span></summary><div class="recipe-details"><h4>Method</h4><p>Fat-trimmed steak seared. Side of steamed green beans.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Sunday: The Sunday Vitality</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Fresh Fruit & Skyr</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>150g plain Skyr, 1 kiwi (sliced), 1 small orange (segmented).</p><h4>Method</h4><p>Top the high-protein Skyr with the fresh fruit. Fibre protects your 2.52 triglycerides.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Warming Root Vegetable Soup</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 carrot, 1 parsnip, 1/2 onion, 500ml vegetable stock.</p><h4>Method</h4><p>Simmer chopped veg in stock for 20 mins. Blend until smooth. Serve with 1 rough oatcake.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Roast Turkey Crown & Greens</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g roast turkey breast (no skin), large portion of steamed kale and broccoli, 2 small boiled potatoes.</p><h4>Method</h4><p>A healthy take on a Sunday roast. Use the cooking juices as a light "jus" instead of thick gravy.</p></div></details>
+            </div>
+            <details class="ingredients-box"><summary>🛒 WEEKLY INGREDIENTS (W4)</summary><div class="ingredients-list">Oat Bran, Wholewheat Pasta, Pitta, Milk, Greek Yoghurt, Eggs, Tuna, Salmon, Haddock, Prawns, Turkey, Sirloin, Lentils, Avocado, Veggies.</div></details>
+        </div>
+
+        <!-- WEEK 5 CONTENT -->
+        <div id="week5-content" class="week-content">
+            <div class="recipe-day-header">📅 Monday: The Mechanical Cleanse</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>High-Fibre Bran & Berries</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>40g Bran flakes, 150ml skimmed milk, handful of strawberries.</p><h4>Method</h4><p>Combine in a bowl. Bran provides insoluble fibre which speeds up digestion, blocking cholesterol absorption.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Jacket Potato with "Wet" Beans</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 small baking potato, 1/2 tin reduced-salt/sugar baked beans.</p><h4>Method</h4><p>Microwave the potato for 8-10 mins. Pour the beans over immediately—the sauce replaces butter or margarine.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Turkey Meatballs & Courgetti</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g lean turkey mince, 1/2 tsp dried basil, 1/2 tin chopped tomatoes, 1 large courgette.</p><h4>Method</h4><p>Roll mince into balls. Brown in a dry pan. Add tomatoes and basil; simmer for 15 mins. Serve over courgette ribbons.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Tuesday: The Lean & Green</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Mushroom & Tomato Scramble</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>2 eggs, 6 mushrooms (sliced), 1 tomato (chopped).</p><h4>Method</h4><p>Sauté mushrooms and tomatoes dry until soft. Add whisked eggs and scramble until set. No butter used.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Turkey & Spinach Salad</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g cold roast turkey breast, 2 handfuls of spinach, cucumber, 1 tsp balsamic vinegar.</p><h4>Method</h4><p>Toss turkey and veggies. The vinegar helps stabilise triglycerides by slowing carbohydrate digestion.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Ginger Steamed Basa</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 Basa fillet (white fish), 1 tsp grated fresh ginger, large portion of green beans.</p><h4>Method</h4><p>Steam the fish with ginger on top for 8-10 mins. Serve with the steamed beans.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Wednesday-Sunday</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Wed</span>Omega Boost Salmon</span></summary><div class="recipe-details"><h4>Method</h4><p>Bake salmon fillet with asparagus and a small sweet potato.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Thu</span>Plant Protein Tofu</span></summary><div class="recipe-details"><h4>Method</h4><p>Stir-fry tofu, shredded cabbage, and garlic with soy sauce.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Fri</span>Hearty Shepherd's Mince</span></summary><div class="recipe-details"><h4>Method</h4><p>Brown 5% beef and onion. Add carrot and peas. Simmer until soft.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Sat</span>Baked Cod Courgette</span></summary><div class="recipe-details"><h4>Method</h4><p>Roast fish and courgette with new potatoes for 15 mins.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Sun</span>Turkey Roast Reset</span></summary><div class="recipe-details"><h4>Method</h4><p>Roasted turkey breast with mountain of steamed savoy cabbage.</p></div></details>
+            </div>
+            <details class="ingredients-box"><summary>🛒 WEEKLY INGREDIENTS (W5)</summary><div class="ingredients-list">Bran Flakes, Baking Potato, Turkey Mince, Courgette, Basa, Salmon, Asparagus, Sweet Potato, Tofu, Savoy Cabbage, 5% Beef, Cod, Parsnips, Skyr, Walnuts, Kiwi, Red Lentils.</div></details>
+        </div>
+
+        <!-- WEEK 6 CONTENT -->
+        <div id="week6-content" class="week-content">
+            <div class="recipe-day-header">📅 Monday: Monounsaturated Start</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Avocado & Chilli on Rye</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1/2 small avocado, 1 slice toasted rye bread, pinch of chilli flakes, squeeze of lime.</p><h4>Method</h4><p>Mash the avocado with lime and chilli. Spread it onto the high-fibre rye toast. Avocado is a powerhouse for raising HDL.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Walnut & Pear Garden Salad</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>2 large handfuls mixed leaves, 1 ripe pear (sliced), 5 walnut halves (broken up), 1 tsp balsamic vinegar.</p><h4>Method</h4><p>Toss the leaves and pear. Top with walnuts. Walnuts are the only nut with significant Omega-3 levels to help your 2.52 Triglycerides.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Pesto Wholewheat Pasta</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>50g (dry weight) wholewheat pasta, 1 tbsp green pesto, 6 cherry tomatoes (halved), 1 handful baby spinach.</p><h4>Method</h4><p>Boil the pasta. In the last 2 minutes, toss the tomatoes and spinach into the pasta water. Drain everything, return to the pan, and stir in the pesto.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Tuesday: The Seed Rotation</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Sunflower Seed & Berry Skyr</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>200g plain 0% Skyr, 1 tbsp sunflower seeds, handful of blueberries.</p><h4>Method</h4><p>Layer the berries and seeds over the Skyr. Seeds add "good" fats and Vitamin E to protect your artery walls.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Chickpea & Pepper Smash</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1/2 tin chickpeas (rinsed), 1/2 red pepper (finely diced), 1 tsp lemon juice, 2 rough oatcakes.</p><h4>Method</h4><p>Mash chickpeas with lemon; stir in the peppers. Pile onto the oatcakes. Very high in soluble fibre.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Baked Sea Bass with Ginger & Bok Choy</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 sea bass fillet, 1 tsp grated ginger, 2 heads of bok choy (halved).</p><h4>Method</h4><p>Place fish and bok choy in a foil parcel with ginger and a splash of water. Bake at 180°C for 12-15 mins.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Wednesday: Heart-Healthy Grill</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Grilled Mushrooms on Wholemeal</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>5-6 large mushrooms, 1 slice wholemeal toast, fresh parsley.</p><h4>Method</h4><p>Grill mushrooms with a spray of water/lemon until soft. Serve on the dry toast with chopped parsley. Mushrooms are great for heart health.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Salmon & Edamame Bowl</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 tinned or grilled salmon fillet, 50g frozen edamame (thawed), 1 grated carrot, lemon juice.</p><h4>Method</h4><p>Flake the salmon and mix with the edamame and carrot. Soy protein in edamame is clinically proven to help lower LDL.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Lean Turkey & Bean Stew</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g lean turkey mince, 1/2 tin cannellini beans, 1/2 tin chopped tomatoes, 1 tsp dried oregano.</p><h4>Method</h4><p>Brown the turkey in a dry pan. Add beans and tomatoes; simmer for 15 mins. The beans provide the "bulk" to keep you full.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Thursday-Sunday</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Thu</span>Antioxidant Day</span></summary><div class="recipe-details"><h4>Method</h4><p>Chicken and mushroom skewers with a large side salad.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Fri</span>Omega Final</span></summary><div class="recipe-details"><h4>Method</h4><p>Baked white fish with fresh mango and lime salsa.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Sat</span>Weekend Cleanse</span></summary><div class="recipe-details"><h4>Method</h4><p>Lean trimmed steak served with huge portion of broccoli and kale.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Sun</span>Sunday Vitality</span></summary><div class="recipe-details"><h4>Method</h4><p>Roasted turkey breast with huge portion of steamed cabbage.</p></div></details>
+            </div>
+            <details class="ingredients-box">
+                <summary>🛒 WEEKLY INGREDIENTS (W6)</summary>
+                <div class="ingredients-list">Avocado, Rye Bread, Pear, Walnuts, Wholewheat Pasta, Pesto, Cherry Tomatoes, Spinach, Skyr, Sunflower Seeds, Blueberries, Chickpeas, Red Pepper, Oatcakes, Sea Bass, Ginger, Bok Choy, Wholemeal Toast, Parsley, Salmon (grilled/tinned), Edamame, Carrots, Turkey Mince, Cannellini Beans, Chopped Tomatoes, Greek Yoghurt, Kiwi, Flaxseeds, Quinoa, Chicken Breast, Green Pepper, Smoked Mackerel, Cucumber, Green Lentils, Red Onion, Balsamic Vinegar, White Fish (Cod/Basa), Mango, Lime, Red Chilli, Eggs, Wholemeal Wrap, Hummus (low-fat), Courgette, Venison or 5% Beef, Broccoli, Kale, Apple, Orange, Pumpkin Seeds, Vegetable Stock, Roast Turkey Breast, Savoy Cabbage, Potatoes.</div>
+            </details>
+        </div>
+
+        <!-- WEEK 7 CONTENT -->
+        <div id="week7-content" class="week-content">
+            <div class="recipe-day-header">📅 Monday: The Avocado Arepa</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Tropical Overnight Oats</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>40g oats, 100ml unsweetened coconut milk (from a carton, low fat), handful of mango chunks.</p><h4>Method</h4><p>Mix oats and milk; refrigerate overnight. Top with mango in the morning.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Arepa with Smashed Avocado</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 corn arepa (dry-pan cooked), 1/4 ripe avocado, sliced tomato.</p><h4>Method</h4><p>Slice the warm arepa. Mash the avocado inside with black pepper and layer with tomatoes.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Cumin & Lime Chicken</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 chicken breast (skinless), 1 tsp cumin, squeeze of lime, large side of black beans and spinach.</p><h4>Method</h4><p>Season chicken with cumin and lime; grill until done. Serve with warmed black beans and steamed spinach.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Tuesday: The Clear Broth</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Melon & Lime Plate</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1/4 Honeydew or Cantaloupe melon, squeeze of lime juice, 1 tsp chia seeds.</p><h4>Method</h4><p>Slice the melon and drizzle with lime; sprinkle seeds over.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Sopa de Pollo (Chicken & Lime Soup)</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g shredded chicken breast, 1 carrot (diced), 500ml chicken broth, fresh cilantro.</p><h4>Method</h4><p>Simmer carrot in broth until soft. Add chicken and cilantro. Finish with a squeeze of lime to help lower triglycerides.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Baked Cod with Garlic & Cilantro</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 cod fillet, 1 clove garlic (crushed), fresh cilantro, 1/2 red pepper (sliced).</p><h4>Method</h4><p>Place fish and peppers on foil. Top with garlic and herbs. Bake at 180°C for 15 mins.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Wednesday: The Protein Arepa</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Perico (Latin Scrambled Eggs)</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>2 eggs, 1 small tomato (diced), 1 spring onion (sliced). </p><h4>Method</h4><p>Sauté onion and tomato in a dry pan until soft. Pour in whisked eggs and scramble. Serve without toast.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Arepa with Seasoned Black Beans</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 corn arepa, 1/2 tin black beans (seasoned with a pinch of cumin and garlic powder).</p><h4>Method</h4><p>Stuff the warm arepa with the beans. Black beans are "fiber bombs" for clearing your 5.24 Non-HDL.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>White Turkey Chilli</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g turkey mince, 1/2 tin cannellini beans, green chillies (to taste), 200ml veg stock.</p><h4>Method</h4><p>Brown turkey mince. Add beans, chillies, and stock. Simmer for 20 mins until thickened.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Thursday: The Fruit Power</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Pineapple & Cottage Cheese</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>200g low-fat cottage cheese, 2 rings of fresh pineapple (diced).</p><h4>Method</h4><p>Mix together. Bromelain aids digestion; protein supports weight loss goal.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Lean "Reina Pepiada" Arepa</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 arepa, 50g shredded chicken breast, 1 tbsp mashed avocado (replaces the traditional mayor).</p><h4>Method</h4><p>Mix chicken and avocado together into a paste. Stuff into the arepa. High protein and healthy fats.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Grilled Prawns & Corn Salad</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>150g prawns, 2 tbsp sweetcorn (natural), red onion, cucumber.</p><h4>Method</h4><p>Grill the prawns. Toss the corn, onion, and cucumber with lime juice. Serve prawns on top.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Friday: The Zesty Fish</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Mango & Flaxseed Skyr</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>200g plain 0% Skyr, 1/4 mango (diced), 1 tbsp milled flaxseeds.</p><h4>Method</h4><p>Stir the flax into the Skyr and top with mango. Flaxseeds help block cholesterol absorption.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Latin Black Bean Salad</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1/2 tin black beans, 1/2 red pepper (diced), red onion, 1 tsp apple cider vinegar.</p><h4>Method</h4><p>Toss everything together. Vinegar helps stabilize Triglycerides.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>White Fish with Mango Salsa</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 Basa or Tilapia fillet, 1/4 mango (diced), 1/4 red onion, lime juice, steamed kale.</p><h4>Method</h4><p>Bake the fish. Mix mango, onion, and lime for the salsa. Serve on top of the fish with steamed kale.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Saturday: Weekend Heart</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Arepa with Poached Egg</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 corn arepa, 1 poached egg, handful of wilted spinach.</p><h4>Method</h4><p>Place the spinach and poached egg on top of the dry-panned arepa.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Ceviche-style Prawn Salad</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>150g cooked prawns, 1/2 cucumber (diced), 1/4 red onion, lots of lime juice, fresh cilantro.</p><h4>Method</h4><p>Toss ingredients and let sit for 10 mins so the lime "cooks" the flavors together.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Latin Lean Beef Picadillo</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g 5% fat beef mince, 1/2 onion, 1/2 pepper, 3-4 green olives (sliced).</p><h4>Method</h4><p>Brown the beef and onion. Add peppers and olives. Olives provide healthy fats to boost HDL.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Sunday: The Slow Burn</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Whole Orange & Almonds</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 large orange, 10 raw almonds.</p><h4>Method</h4><p>Eat the whole orange segments (fibre protects triglycerides) followed by the almonds.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Clear Vegetable & Bean Broth</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1/2 tin kidney beans, 1 carrot, 1 celery stick, 500ml veg stock.</p><h4>Method</h4><p>Simmer veg in stock until soft; add beans at the end. Simple and effective.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Carne Guisada (Lean Beef Stew)</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g lean beef chunks (fat trimmed), 1 small potato (diced), 1 carrot, tomato purée, water.</p><h4>Method</h4><p>Slow cook the beef and veg in water and tomato purée until the meat is tender. Very filling.</p></div></details>
+            </div>
+            <details class="ingredients-box"><summary>🛒 WEEKLY INGREDIENTS (W7)</summary><div class="ingredients-list">Coconut Milk, Mango, Arepas, Avocado, Chicken, Black Beans, Cilantro, Lime, Turkey Mince, Cannellini, Prawns, Corn, Basa, Olives, Beef, Eggs, Pineapple, Cottage Cheese, Skyr, Cod, Green Olives, Kidney Beans.</div></details>
+        </div>
+
+        <!-- WEEK 8 CONTENT -->
+        <div id="week8-content" class="week-content">
+            <div class="recipe-day-header">📅 Monday: Ancient Grain Start</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Weetabix & Blueberry Power</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>2 Weetabix, 150ml skimmed milk, handful of blueberries.</p><h4>Method</h4><p>Combine in a bowl. Weetabix is 100% whole grain and very low in sugar, making it "Green" for your 2.52 Triglycerides.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Bulgur Wheat & Chickpea Salad</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>40g (dry) bulgur wheat, 1/2 tin chickpeas, cucumber, lemon juice.</p><h4>Method</h4><p>Boil bulgur 10–12 mins. Mix with chickpeas and cucumber. Dress with lemon and black pepper.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Turkey & Mushroom Barley "Risotto"</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g turkey mince, 40g pearl barley, 5 mushrooms (sliced), 400ml veg stock.</p><h4>Method</h4><p>Brown turkey/mushrooms. Add barley and stock. Simmer for 35 mins until tender.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Tuesday-Sunday</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Tue</span>Cod Sweet Potato Mash</span></summary><div class="recipe-details"><h4>Method</h4><p>Bake fish. Serve with mashed sweet potato (no butter) and peas.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Wed</span>Beef Buckwheat Noodles</span></summary><div class="recipe-details"><h4>Method</h4><p>Beef strips stir-fried with pepper and soba (buckwheat) noodles.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Thu</span>Lentil Sweet Potato Curry</span></summary><div class="recipe-details"><h4>Method</h4><p>Lentils, diced potato, tomatoes, curry powder simmered 20m.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Fri</span>Haddock Seed Crust</span></summary><div class="recipe-details"><h4>Method</h4><p>Press flax onto fish. Bake 12m. Mountain of green veg.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Sat</span>Chicken Med Quinoa</span></summary><div class="recipe-details"><h4>Method</h4><p>Grilled chicken with quinoa mixed with roasted veg.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Sun</span>Milk Poached Haddock</span></summary><div class="recipe-details"><h4>Method</h4><p>Poach fish in skimmed milk with leeks and peas 8m.</p></div></details>
+            </div>
+            <details class="ingredients-box"><summary>🛒 WEEKLY INGREDIENTS (W8)</summary><div class="ingredients-list">Weetabix, Skimmed Milk, Blueberries, Bulgur, Chickpeas, Turkey, Barley, Buckwheat, Quinoa, Sweet Potato, Cod, Soba Noodles, 5% Beef, Lentils, Haddock, Flax, Leeks, Skimmed Milk, Blueberries, Mushrooms, Veg Stock, Banana, Cinnamon, Edamame, Carrot, Soy Sauce, Peas, Skyr, Pumpkin Seeds, Kiwi, Pitta, Cottage Cheese, Pepper, Rye, Egg, Sunflower Seeds, Mackerel, Balsamic, Mixed Beans, Strawberries, Tuna, Celery, Haddock, Almond Milk, Chia, Roast Turkey.</div></details>
+        </div>
+
+        <!-- WEEK 9 CONTENT -->
+        <div id="week9-content" class="week-content">
+            <div class="recipe-day-header">📅 Monday: The Smoothie Start</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Berry & Spinach Smoothie Bowl</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g frozen berries, handful of spinach, 150g 0% Greek yoghurt, 1 tsp chia seeds.</p><h4>Method</h4><p>Blend berries, spinach, and yoghurt until thick. Pour into a bowl and top with chia seeds. The cold temperature and high protein make this very satisfying.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Turkey & Chickpea Salad</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g cold turkey breast, 1/2 tin chickpeas, cucumber, 1 tsp balsamic vinegar.</p><h4>Method</h4><p>Toss everything together. Chickpeas provide the slow-release carbs to prevent an afternoon energy crash.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Cod & Roasted Root Veg</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 cod fillet, 1 carrot, 1 parsnip, fresh thyme.</p><h4>Method</h4><p>Slice root veg into batons and roast at 200°C for 25 mins. Bake cod on the same tray for the final 12 mins.</p></div></details>
+            </div>
+            <div class="recipe-day-header">📅 Tuesday-Sunday</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Tue</span>Rice & Peas</span></summary><div class="recipe-details"><h4>Method</h4><p>Boil brown rice and kidney beans with spring onion and thyme.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Wed</span>Chicken & Pepper Bake</span></summary><div class="recipe-details"><h4>Method</h4><p>Chicken breast, peppers, onion sliced and baked 20m.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Thu</span>Beef & Kale Sauté</span></summary><div class="recipe-details"><h4>Method</h4><p>Flash-fry beef. Add kale and vinegar to wilt. Satiety boost.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Fri</span>Baked Basa Asparagus</span></summary><div class="recipe-details"><h4>Method</h4><p>White fish and asparagus baked in foil parcel with lemon for 15m.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Sat</span>Vegetable Tofu Kebabs</span></summary><div class="recipe-details"><h4>Method</h4><p>Thread tofu and veg onto skewers. Grill. Serve with steamed cauliflower.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Sun</span>Roast Turkey & Cabbage</span></summary><div class="recipe-details"><h4>Method</h4><p>Lean roast breast with steamed cabbage and 2 small potatoes.</p></div></details>
+            </div>
+            <details class="ingredients-box"><summary>🛒 WEEKLY INGREDIENTS (W9)</summary><div class="ingredients-list">Frozen Berries, Spinach, Yoghurt, Chickpeas, Turkey, Roots, Rice, Kidney Beans, Thyme, Chicken, Peppers, 5% Beef, Kale, Basa, Tofu, Cauliflower.</div></details>
+        </div>
+
+        <!-- WEEK 10 CONTENT -->
+        <div id="week10-content" class="week-content">
+            <div class="recipe-day-header">📅 Monday: The Simple Start</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Scrambled Egg & Grilled Tomato</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>2 eggs, 2 large tomatoes (halved).</p><h4>Method</h4><p>Grill the tomatoes until soft. Whisk the eggs and scramble in a non-stick pan (no butter). The moisture from the tomatoes replaces the need for toast.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Pink Salmon & Leafy Green Salad</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 tin pink salmon (in brine), 2 handfuls mixed leaves, lemon juice.</p><h4>Method</h4><p>Flake the salmon over the leaves. Drizzle with lemon. Salmon is a "triglyceride killer" due to its high Omega-3 content.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Chicken & Bell Pepper Bake</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 chicken breast (skinless), 1 red pepper, 1 yellow pepper.</p><h4>Method</h4><p>Slice everything into strips. Season with black pepper and bake at 200°C for 20 mins. Very lean and high in Vitamin C.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Tuesday: The Fibre Anchor</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Oats with Flax & Blueberries</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>40g oats, 1 tbsp milled flaxseeds, 50g blueberries, water.</p><h4>Method</h4><p>Cook oats with water. Stir in flaxseeds and berries. This is your "Gold Standard" breakfast for clearing cholesterol.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Hummus & Crunchy Veggie Wrap</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 wholemeal wrap, 3 tbsp reduced-fat hummus, shredded carrot, spinach.</p><h4>Method</h4><p>Spread hummus on the wrap, add veggies, and roll. High fibre and very portable.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Baked Basa on a Bed of Spinach</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 Basa fillet, 2 handfuls of spinach, 1/2 lemon.</p><h4>Method</h4><p>Bake fish for 12 mins. Steam spinach for 2 mins. Serve fish on top with plenty of lemon juice.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Wednesday: The Protein Peak</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Skyr with Kiwi & Sunflower Seeds</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>200g plain 0% Skyr, 1 kiwi (sliced), 1 tbsp sunflower seeds.</p><h4>Method</h4><p>Layer the fruit and seeds over the Skyr. High protein to keep you full for your 115kg weight loss goal.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Mixed Bean & Sweetcorn Salad</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1/2 tin mixed beans, 2 tbsp sweetcorn, spring onion, 1 tsp balsamic vinegar.</p><h4>Method</h4><p>Toss together. This is a "Resistant Starch" meal, which is great for gut health and heart health.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Turkey & Snap Pea Stir-fry</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g lean turkey strips, handful of snap peas, 1 tsp soy sauce, ginger.</p><h4>Method</h4><p>Stir-fry turkey and peas with ginger and soy sauce in a splash of water.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Thursday: The Light & Clean</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Apple & Raw Almonds</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 Granny Smith apple, 10 raw almonds.</p><h4>Method</h4><p>Eat whole. The combination of pectin (apple) and monounsaturated fat (almonds) helps raise your 0.88 HDL.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Cottage Cheese & Celery Crunch</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>200g low-fat cottage cheese, 3 stalks of celery, 2 rough oatcakes.</p><h4>Method</h4><p>Use celery and oatcakes to scoop the cottage cheese. Lean and effective.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Hearty Red Lentil Stew</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>50g red lentils, 1 carrot (diced), 1/2 onion, 400ml veg stock.</p><h4>Method</h4><p>Simmer all ingredients for 20 mins. This is a "Cholesterol Sponge" meal.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Friday: The Omega Final</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Rye Toast & Poached Egg</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 slice toasted rye bread, 1 poached egg.</p><h4>Method</h4><p>Poach the egg for 3 mins and serve on the high-fibre rye.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Tuna & Cucumber Oatcakes</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 tin tuna (spring water), 3 rough oatcakes, sliced cucumber.</p><h4>Method</h4><p>Pile tuna onto oatcakes and top with cucumber. No mayo needed—the tuna is moist enough.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Poached Haddock & Garden Peas</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 haddock fillet, 100g frozen peas, lemon.</p><h4>Method</h4><p>Simmer the haddock and peas in a little water for 8 mins. Drain and season with lemon and black pepper.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Saturday: The Latin Legacy</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Banana & Cinnamon Porridge</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>40g oats, 1 small banana (mashed in), pinch of cinnamon.</p><h4>Method</h4><p>Cook the banana into the oats to make them naturally sweet without adding sugar.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Arepa with Black Beans & Salsa</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>1 corn arepa (dry-pan), 1/2 tin black beans, fresh salsa (tomato/onion).</p><h4>Method</h4><p>Stuff the arepa with warm beans and salsa. A great, low-saturated fat lunch.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Lean Beef & Steamed Broccoli</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g 5% fat beef strips, 1/2 head of broccoli, garlic.</p><h4>Method</h4><p>Flash-fry beef with garlic; serve with a mountain of steamed broccoli to provide bulk.</p></div></details>
+            </div>
+
+            <div class="recipe-day-header">📅 Sunday: The Perfect Roast</div>
+            <div class="card">
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Breakfast</span>Smoked Salmon & Wilted Spinach</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>50g smoked salmon, 2 large handfuls of spinach.</p><h4>Method</h4><p>Wilt the spinach in a dry pan; serve the salmon on top. High in Omega-3 and iron.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Lunch</span>Roasted Tomato & Basil Soup</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>4 ripe tomatoes, 1/2 onion, fresh basil, 400ml veg stock.</p><h4>Method</h4><p>Roast the veg, then blend with stock and basil. Pure vitamin hit.</p></div></details>
+                <details class="recipe-item"><summary class="recipe-summary"><span><span class="meal-type">Dinner</span>Roast Turkey Crown & Savoy Cabbage</span></summary><div class="recipe-details"><h4>Ingredients</h4><p>100g roast turkey breast (no skin), huge portion of steamed cabbage, 2 small new potatoes.</p><h4>Method</h4><p>A lean, filling Sunday roast. Use the cabbage cooking water as a base for a light "jus."</p></div></details>
+            </div>
+
+            <details class="ingredients-box"><summary>🛒 WEEKLY INGREDIENTS (W10)</summary><div class="ingredients-list">Eggs, Tomatoes, Pink Salmon, Chicken, Peppers, Basa, Spinach, Turkey, Snap Peas, Lentils, Haddock, Beans, Arepas, Cabbage.</div></details>
+        </div>
+    </section>
+
+    <!-- FOCUS FOODS TAB -->
+    <section id="focus" class="content-section">
+        <div class="card">
+            <h2>🥗 Foods to Focus On</h2>
+            <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 15px;">These foods are selected for their clinical ability to lower LDL (Non-HDL) and Triglycerides while supporting HDL.</p>
+            
+            <div class="recipe-details">
+                <h3>Vegetables</h3>
+                <ul class="item-list">
+                    <li><strong>Spinach:</strong> High in lutein for heart health.</li>
+                    <li><strong>Broccoli:</strong> Fibre powerhouse.</li>
+                    <li><strong>Kale:</strong> Great for vitamins.</li>
+                    <li><strong>Brussels Sprouts:</strong> Massive fibre hit.</li>
+                    <li><strong>Carrots:</strong> Contain pectin (cholesterol-lowering fibre).</li>
+                    <li><strong>Sweet Potatoes:</strong> Better for triglycerides than white potatoes.</li>
+                    <li><strong>Red Peppers:</strong> High Vitamin C.</li>
+                    <li><strong>Aubergine:</strong> Spongy texture helps absorb fats in the gut.</li>
+                    <li><strong>Mushrooms:</strong> Place on windowsill for Vitamin D boost!</li>
+                    <li><strong>Cauliflower:</strong> Great "rice" alternative.</li>
+                    <li><strong>Asparagus:</strong> Acts as a prebiotic.</li>
+                    <li><strong>Courgette:</strong> Low calorie, high volume.</li>
+                    <li><strong>Red Onion:</strong> High in quercetin (heart protective).</li>
+                    <li><strong>Garlic:</strong> Proven to slightly lower blood pressure.</li>
+                    <li><strong>Butternut Squash:</strong> Slow-release energy.</li>
+                </ul>
+
+                <h3>Fruits</h3>
+                <ul class="item-list">
+                    <li><strong>Granny Smith Apples:</strong> Highest in pectin fibre.</li>
+                    <li><strong>Blueberries:</strong> Anthocyanins protect blood vessels.</li>
+                    <li><strong>Raspberries:</strong> Very high fibre, low sugar.</li>
+                    <li><strong>Strawberries:</strong> Low calorie.</li>
+                    <li><strong>Pears:</strong> High soluble fibre.</li>
+                    <li><strong>Avocado:</strong> Healthy monounsaturated fats (helps 0.88 HDL).</li>
+                    <li><strong>Kiwi:</strong> High in Vitamin C and fibre.</li>
+                    <li><strong>Oranges:</strong> Eat the whole fruit, never the juice.</li>
+                    <li><strong>Grapefruit:</strong> (Check with GP if starting statins).</li>
+                    <li><strong>Tomatoes:</strong> High in lycopene.</li>
+                </ul>
+
+                <h3>Proteins & Legumes</h3>
+                <ul class="item-list">
+                    <li><strong>Salmon:</strong> Omega-3 hero for 2.52 triglycerides.</li>
+                    <li><strong>Sardines:</strong> Very high Omega-3 and Vitamin D.</li>
+                    <li><strong>Mackerel:</strong> Another oily fish essential.</li>
+                    <li><strong>Chickpeas:</strong> Great for hummus or stews.</li>
+                    <li><strong>Lentils (Red/Green):</strong> The "kings" of cholesterol-lowering fibre.</li>
+                    <li><strong>Kidney Beans:</strong> Perfect for chilli.</li>
+                    <li><strong>Black Beans:</strong> Deep colour = high antioxidants.</li>
+                    <li><strong>Turkey Breast:</strong> Leanest meat option.</li>
+                    <li><strong>Chicken Breast:</strong> High protein, low saturated fat.</li>
+                    <li><strong>Tofu:</strong> Zero cholesterol plant protein.</li>
+                    <li><strong>White Fish (Cod/Haddock):</strong> Very low calorie.</li>
+                    <li><strong>Edamame (Soy) Beans:</strong> Proven to lower LDL.</li>
+                </ul>
+
+                <h3>Grains & Seeds</h3>
+                <ul class="item-list">
+                    <li><strong>Oats (Porridge):</strong> Beta-glucan is your #1 cholesterol fighter.</li>
+                    <li><strong>Quinoa:</strong> High protein grain.</li>
+                    <li><strong>Brown Rice:</strong> Much more fibre than white.</li>
+                    <li><strong>Buckwheat:</strong> Heart-healthy and gluten-free.</li>
+                    <li><strong>Chia Seeds:</strong> High Omega-3 (stir into yoghurt).</li>
+                    <li><strong>Flaxseeds (Milled):</strong> Excellent for heart health.</li>
+                    <li><strong>Pumpkin Seeds:</strong> Good for minerals.</li>
+                    <li><strong>Sunflower Seeds:</strong> High in Vitamin E.</li>
+                    <li><strong>Almonds:</strong> Your daily heart-healthy handful.</li>
+                    <li><strong>Walnuts:</strong> Unique Omega-3 profile for nuts.</li>
+                    <li><strong>Barley:</strong> High in beta-glucan (found in soup mixes).</li>
+                    <li><strong>Rye Bread:</strong> Denser and higher fibre than wheat.</li>
+                    <li><strong>Popcorn (Plain):</strong> Whole-grain snack that’s low calorie.</li>
+                </ul>
+
+                <h3>🥛 Milk & Milk Alternatives</h3>
+                <p style="font-size: 0.8rem; margin: 10px 0;">Goal: 🟢 Low Saturated Fat & 🟢 Low Sugar (under 5g/100ml).</p>
+                <ul class="item-list">
+                    <li><strong>Skimmed or 1% Milk:</strong> Best choice for cholesterol.</li>
+                    <li><strong>Unsweetened Oat Milk:</strong> Contains beta-glucan. Warning: Avoid sweetened.</li>
+                    <li><strong>Unsweetened Soy Milk:</strong> High in protein; helps lower cholesterol.</li>
+                    <li><strong>Unsweetened Almond Milk:</strong> Very low calorie (13-15 kcal/100ml).</li>
+                </ul>
+
+                <h3>🧀 Cheeses (The "Green" Exceptions)</h3>
+                <ul class="item-list">
+                    <li><strong>Cottage Cheese:</strong> The "King" of heart-healthy cheese.</li>
+                    <li><strong>Quark:</strong> Virtually fat-free soft cheese spread.</li>
+                    <li><strong>Reduced-Fat Ricotta:</strong> Lower in fat; great for toast topping.</li>
+                    <li><strong>Reduced-Fat Mature Cheddar:</strong> Use extra mature to use less volume.</li>
+                    <li><strong>Reduced-Fat Feta:</strong> Naturally lower fat and high flavour.</li>
+                </ul>
+
+                <h3>🍦 Yoghurts & Fermented Dairy</h3>
+                <ul class="item-list">
+                    <li><strong>0% Fat Greek Yoghurt:</strong> Thick, creamy, zero saturated fat.</li>
+                    <li><strong>Plain Low-Fat Skyr:</strong> Naturally high protein and low fat.</li>
+                    <li><strong>Plain Kefir (Low-Fat):</strong> Excellent for gut health.</li>
+                    <li><strong>Soya/Oat Alternatives:</strong> Plant-based and zero-cholesterol.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALCOHOL TAB -->
+    <section id="alcohol" class="content-section">
+        <div class="card">
+            <h2>Best vs. Worst Drinks</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Drink Category</th>
+                            <th><span class="tag-green">🟢 The Better Choices</span></th>
+                            <th><span class="tag-red">🔴 The "Avoid" List</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Spirits</strong></td>
+                            <td>Gin, Vodka, or Silver Tequila with slimline tonic or soda water and fresh lime.</td>
+                            <td>Cocktails (Margaritas, Mojitos), anything with Coke, Lemonade, or Fruit Juice.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Wine</strong></td>
+                            <td>Dry Red Wine (Malbec, Pinot Noir). Contains resveratrol for <span class="tag-green">0.88 HDL</span>.</td>
+                            <td>Sweet White Wines, Dessert Wines, Prosecco, or Champagne (very high in sugar).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Beer</strong></td>
+                            <td>Light Lagers (e.g., Michelob Ultra or Coors Light) or Alcohol-Free Beer.</td>
+                            <td>Heavy IPAs, Stout, Cider (Cider is a "Triglyceride Bomb" due to the sugar).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>The "Liver Strategy" Rules</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 12px; display: flex; gap: 10px; align-items: flex-start;">
+                    <span>🍽️</span>
+                    <span><strong>Never drink on an empty stomach:</strong> Alcohol hits the bloodstream faster and spikes triglycerides harder if you haven't eaten. Have a "Green" meal (like your Turkey & Beans) first.</span>
+                </li>
+                <li style="margin-bottom: 12px; display: flex; gap: 10px; align-items: flex-start;">
+                    <span>💧</span>
+                    <span><strong>The Water Sandwich:</strong> Drink a large glass of water for every alcoholic drink. This helps your kidneys process toxins and prevents dehydration making your blood "thicker."</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>💡 A Tip for the UK Supermarket</h2>
+            <p>When you are in the drinks aisle at <strong>Tesco or Sainsbury's</strong>, look for "Zero Sugar" mixers. A standard Gin & Tonic can have 15g of sugar (3 teaspoons), which will instantly raise your triglycerides. A <strong>Slimline Tonic</strong> has 0g. That simple switch saves you 15g of sugar per glass.</p>
+        </div>
+
+        <div class="card">
+            <h2>CBD Drinks</h2>
+            <div class="tip-box" style="background: var(--green-bg); border-left-color: var(--green-main);">
+                <strong>TRIP (Peach Ginger):</strong> <span class="tag-green">🟢 GREEN LIGHT</span> - A great alcohol alternative with zero sugar and botanical extracts.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Frequency & Limits</h2>
+            <div class="tip-box">
+                <strong>The Frequency:</strong> Limit drinking to no more than 1 or 2 days a week.
+            </div>
+            <div class="tip-box">
+                <strong>The Break:</strong> You must have at least 5 alcohol-free days a week to let your liver focus on clearing cholesterol.
+            </div>
+            <div class="tip-box" style="background: var(--red-bg); border-left-color: var(--red-main);">
+                <strong>Current Limit:</strong> Until your numbers improve through diet/exercise you can really only drink 2 pints or 2 glasses of wine per session.
+            </div>
+        </div>
+    </section>
+
+    <!-- FAST FOOD TAB -->
+    <section id="fastfood" class="content-section">
+        <div class="card">
+            <h2>🟢 Fast Food Heart-Healthy Choices (UK)</h2>
+            <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 10px;">Options selected for being <span class="tag-green">🟢 Low Saturated Fat</span> and <span class="tag-green">🟢 Low Sugar</span>.</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Sat Fat (🟢)</th>
+                            <th>Sugar (🟢)</th>
+                            <th>Why it works</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>McDonald’s Grilled Chicken Salad (no dressing)</td>
+                            <td>~0.6g</td>
+                            <td>~1.8g</td>
+                            <td>Very lean protein choice.</td>
+                        </tr>
+                        <tr>
+                            <td>McDonald’s Porridge (Plain)</td>
+                            <td>~1.0g</td>
+                            <td>~1.0g</td>
+                            <td>Standard heart-healthy breakfast.</td>
+                        </tr>
+                        <tr>
+                            <td>Subway Turkey Breast 6-inch Sub</td>
+                            <td>~0.7g</td>
+                            <td>~6.0g 🟡</td>
+                            <td>Choose Hearty Italian bread.</td>
+                        </tr>
+                        <tr>
+                            <td>Subway Turkey Breast Salad Bowl</td>
+                            <td>~0.3g</td>
+                            <td>~4.0g</td>
+                            <td>No dressing keeps sugar low.</td>
+                        </tr>
+                        <tr>
+                            <td>Greggs Sweet Potato & Bhaji Salad</td>
+                            <td>0.2g</td>
+                            <td>3.0g</td>
+                            <td>High fiber and low fat.</td>
+                        </tr>
+                        <tr>
+                            <td>KFC Garden Salad with Grilled Chicken</td>
+                            <td>~0.3g</td>
+                            <td>~2.5g</td>
+                            <td>Cleanest option at KFC.</td>
+                        </tr>
+                        <tr>
+                            <td>Leon Lentil Masala</td>
+                            <td>~1.5g</td>
+                            <td>~4.0g</td>
+                            <td>Plant protein and legumes.</td>
+                        </tr>
+                        <tr>
+                            <td>Nando's 1/4 Chicken Breast (no skin)</td>
+                            <td>~1.2g</td>
+                            <td>~1.5g</td>
+                            <td>Order with Spicy Rice for a low-fat side.</td>
+                        </tr>
+                        <tr>
+                            <td>Itsu Miso Soup (Classic)</td>
+                            <td>0.3g</td>
+                            <td>0.5g</td>
+                            <td>Light and hydrating.</td>
+                        </tr>
+                        <tr>
+                            <td>Wetherspoons Quinoa Salad (no dressing)</td>
+                            <td>0.8g</td>
+                            <td>3.5g</td>
+                            <td>Whole grain and fiber rich.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tip-box">
+                <strong>💡 Pro-Tip:</strong> Always ask for dressings/sauces on the side. Many "healthy" salads become "Red" due to high-sugar dressings.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Wetherspoons "All-Green" Choices (Per 100g)</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Saturated Fat (🟢)</th>
+                            <th>Sugars (🟢)</th>
+                            <th>Why it works</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Quinoa Salad (No Dressing)</td>
+                            <td>~0.8g</td>
+                            <td>~2.5g</td>
+                            <td>High fibre to soak up your 5.24 Non-HDL.</td>
+                        </tr>
+                        <tr>
+                            <td>Jacket Potato with Beans</td>
+                            <td>~0.1g</td>
+                            <td>~4.5g</td>
+                            <td>Very low fat. Crucial: Ask for "No Butter."</td>
+                        </tr>
+                        <tr>
+                            <td>Tomato & Basil Soup</td>
+                            <td>~0.6g</td>
+                            <td>~3.0g</td>
+                            <td>Heart-healthy choice (use the vegan spread or skip it).</td>
+                        </tr>
+                        <tr>
+                            <td>MOMA Porridge (Plain)</td>
+                            <td>~0.8g</td>
+                            <td>~1.0g</td>
+                            <td>Contains beta-glucan to lower cholesterol.</td>
+                        </tr>
+                        <tr>
+                            <td>Grilled Chicken Breast</td>
+                            <td>~0.9g</td>
+                            <td>~0.1g</td>
+                            <td>Pure protein for your 115kg goal.</td>
+                        </tr>
+                        <tr>
+                            <td>Side Salad (No Dressing)</td>
+                            <td><0.1g</td>
+                            <td>~1.5g</td>
+                            <td>Unlimited volume for very few calories.</td>
+                        </tr>
+                        <tr>
+                            <td>Roasted Vegetables</td>
+                            <td>~0.5g</td>
+                            <td>~4.0g</td>
+                            <td>A great side to replace chips.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOPPING TAB -->
+    <section id="shopping" class="content-section">
+        <div class="card">
+            <h2>🥗 Ready-to-Eat Supermarket Lunches</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Supermarket</th>
+                            <th>Product / Range</th>
+                            <th>Why it’s good for you</th>
+                            <th>Price (Approx)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>M&S</td><td>Nutrient Dense 35 Plants Salad</td><td>Massive fibre hit to soak up cholesterol.</td><td>£5.50</td></tr>
+                        <tr><td>M&S</td><td>Count On Us: Piri Piri Chicken</td><td>Very low saturated fat (Green).</td><td>£4.50</td></tr>
+                        <tr><td>Tesco</td><td>Tesco Finest: Salmon & Tabbouleh Salad</td><td>Omega-3 for your 2.52 triglycerides.</td><td>£4.25</td></tr>
+                        <tr><td>Sainsbury’s</td><td>Healthy Choice: Chicken Arrabbiata</td><td>High protein, Green for saturates.</td><td>£3.75</td></tr>
+                        <tr><td>Aldi</td><td>The Foodie Market: Quinoa & Edamame Pot</td><td>Cheap, plant-based protein and fibre.</td><td>£1.99</td></tr>
+                        <tr><td>Waitrose</td><td>Dukkah Chicken & Five Bean Hummus</td><td>Complex carbs that won't spike blood fat.</td><td>£4.00</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🥨 Heart-Healthy Supermarket Snacks</h2>
+            <div class="recipe-details">
+                <h3>Protein Pots (The "Quick Fix")</h3>
+                <ul class="item-list">
+                    <li><strong>Boiled Egg & Spinach Pots:</strong>Found in the meal deal section. High protein to help your weight loss. <span class="price">~£1.50</span></li>
+                    <li><strong>Edamame Bean Pots:</strong> Pure fibre and healthy plant protein. <span class="price">~£1.20</span></li>
+                </ul>
+                <h3>Yoghurt (The "Creamy Fix")</h3>
+                <ul class="item-list">
+                    <li><strong>Sainsbury’s 0% Fat Greek Style Yogurt:</strong> Must be 0% fat. Top with a few berries. <span class="price">~£1.95 (1kg)</span></li>
+                    <li><strong>Arla Protein Pouches:</strong> Check for the "No Added Sugar" version. <span class="price">~£1.25</span></li>
+                </ul>
+                <h3>Crunchy Snacks (The "Crisp Alternative")</h3>
+                <ul class="item-list">
+                    <li><strong>Nairn’s Rough Oatcakes:</strong> High in soluble fibre. Top with reduced-fat hummus. <span class="price">~£1.20 box</span></li>
+                    <li><strong>Graze "Veggie" Pots:</strong> Look for plain roasted chickpeas or broad beans. <span class="price">~£1.00</span></li>
+                </ul>
+                <h3>The "Fruit Hero"</h3>
+                <ul class="item-list">
+                    <li><strong>Granny Smith Apples:</strong> High in pectin to pull cholesterol out of your body. <span class="price">~£1.60 (6-pack)</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🥦 Supermarket Produce Guide</h2>
+            <div class="recipe-details">
+                <h3>Vegetables</h3>
+                <ul class="item-list">
+                    <li><strong>Spinach:</strong> High in lutein for heart health.</li>
+                    <li><strong>Broccoli:</strong> Fibre powerhouse.</li>
+                    <li><strong>Kale:</strong> Great for vitamins.</li>
+                    <li><strong>Brussels Sprouts:</strong> Massive fibre hit.</li>
+                    <li><strong>Carrots:</strong> Contain pectin fibre.</li>
+                    <li><strong>Sweet Potatoes:</strong> Better for triglycerides than white.</li>
+                    <li><strong>Red Peppers:</strong> High Vitamin C.</li>
+                    <li><strong>Aubergine:</strong> Helps absorb fats in the gut.</li>
+                    <li><strong>Mushrooms:</strong> Place on windowsill for Vitamin D boost!</li>
+                    <li><strong>Cauliflower:</strong> Great "rice" alternative.</li>
+                    <li><strong>Asparagus:</strong> Acts as a prebiotic.</li>
+                    <li><strong>Courgette:</strong> Low calorie, high volume.</li>
+                    <li><strong>Red Onion:</strong> High in quercetin (heart protective).</li>
+                    <li><strong>Garlic:</strong> Proven to slightly lower blood pressure.</li>
+                    <li><strong>Butternut Squash:</strong> Slow-release energy.</li>
+                </ul>
+                <h3>Fruits</h3>
+                <ul class="item-list">
+                    <li><strong>Granny Smith Apples:</strong> Highest in pectin.</li>
+                    <li><strong>Blueberries:</strong> Anthocyanins protect blood vessels.</li>
+                    <li><strong>Raspberries:</strong> Very high fibre, low sugar.</li>
+                    <li><strong>Strawberries:</strong> Low calorie.</li>
+                    <li><strong>Pears:</strong> High soluble fibre.</li>
+                    <li><strong>Avocado:</strong> Healthy monounsaturated fats.</li>
+                    <li><strong>Kiwi:</strong> High in Vitamin C and fibre.</li>
+                    <li><strong>Oranges:</strong> Eat the whole fruit, never the juice.</li>
+                    <li><strong>Grapefruit:</strong> (Check with GP if starting statins).</li>
+                    <li><strong>Tomatoes:</strong> High in lycopene.</li>
+                </ul>
+                <h3>Proteins & Legumes</h3>
+                <ul class="item-list">
+                    <li><strong>Salmon:</strong> Omega-3 hero for triglycerides.</li>
+                    <li><strong>Sardines:</strong> Very high Omega-3 and Vitamin D.</li>
+                    <li><strong>Mackerel:</strong> Oily fish essential.</li>
+                    <li><strong>Chickpeas:</strong> Great for hummus or stews.</li>
+                    <li><strong>Lentils (Red/Green):</strong> Kings of cholesterol-lowering fibre.</li>
+                    <li><strong>Kidney Beans:</strong> Perfect for chilli.</li>
+                    <li><strong>Black Beans:</strong> Deep colour = high antioxidants.</li>
+                    <li><strong>Turkey Breast:</strong> Leanest meat option.</li>
+                    <li><strong>Chicken Breast:</strong> High protein, low saturated fat.</li>
+                    <li><strong>Tofu:</strong> Zero cholesterol plant protein.</li>
+                    <li><strong>White Fish (Cod/Haddock):</strong> Very low calorie.</li>
+                    <li><strong>Edamame (Soy) Beans:</strong> Proven to lower LDL.</li>
+                </ul>
+                <h3>Grains & Seeds</h3>
+                <ul class="item-list">
+                    <li><strong>Oats (Porridge):</strong> Beta-glucan is your #1 fighter.</li>
+                    <li><strong>Quinoa:</strong> High protein grain.</li>
+                    <li><strong>Brown Rice:</strong> More fibre than white rice.</li>
+                    <li><strong>Buckwheat:</strong> Heart-healthy and gluten-free.</li>
+                    <li><strong>Chia Seeds:</strong> High Omega-3 (stir into yoghurt).</li>
+                    <li><strong>Flaxseeds (Milled):</strong> Excellent for heart health.</li>
+                    <li><strong>Pumpkin Seeds:</strong> Good for minerals.</li>
+                    <li><strong>Sunflower Seeds:</strong> High in Vitamin E.</li>
+                    <li><strong>Almonds:</strong> Daily heart-healthy handful.</li>
+                    <li><strong>Walnuts:</strong> Unique Omega-3 profile for nuts.</li>
+                    <li><strong>Barley:</strong> High in beta-glucan (found in soup mixes).</li>
+                    <li><strong>Rye Bread:</strong> Denser and higher fibre than wheat.</li>
+                    <li><strong>Popcorn (Plain):</strong> Whole-grain snack that's low calorie.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🛒 Supermarket Staples (Pantry & Freezer)</h2>
+            <div class="recipe-details">
+                <h3>Pantry Essentials</h3>
+                <ul class="item-list">
+                    <li><strong>Tinned Pulses (Tesco/Sainsbury's):</strong> Chickpeas, Lentils, Black Beans (40p - 70p). Essential for bulk and fibre.</li>
+                    <li><strong>Rolled Oats (Supermarket Brand):</strong> 100% whole grain porridge oats (~£1.00 for 1kg).</li>
+                    <li><strong>Extra Virgin Olive Oil:</strong> Monounsaturated fats to support HDL (~£6.00).</li>
+                    <li><strong>Milled Flaxseed (Supermarket Brand):</strong> Stir into yoghurt for Omega-3 boost (~£2.00).</li>
+                </ul>
+
+                <h3>The Frozen Aisle</h3>
+                <ul class="item-list">
+                    <li><strong>Frozen Salmon Fillets:</strong> High Omega-3 and often cheaper than fresh (~£4.50 for 4).</li>
+                    <li><strong>Frozen Spinach Blocks:</strong> Add to any meal for a massive lutein hit (~£1.20).</li>
+                    <li><strong>Frozen Mixed Berries:</strong> For smoothies and Skyr topping (~£2.50).</li>
+                    <li><strong>Steam-Bag Vegetables:</strong> 4 mins in microwave for high fibre (~£1.80 for 4 bags).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SWAPS TAB -->
+    <section id="swaps" class="content-section">
+        <div class="card">
+            <h2>The Top 50 Heart-Healthy Swaps</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>🔴 Swap From</th>
+                            <th>🟢 Swap To</th>
+                            <th>Why it works</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Breakfast -->
+                        <tr><td rowspan="10"><strong>Breakfast</strong></td><td>Butter on toast</td><td>Plant sterol spread</td><td>Blocks cholesterol absorption.</td></tr>
+                        <tr><td>White bread</td><td>Wholemeal or Seeded</td><td>Fibre "mops up" bad fats.</td></tr>
+                        <tr><td>Sugary cereal (e.g. Cornflakes)</td><td>Porridge or Weetabix</td><td>Oats lower your 5.24 Non-HDL.</td></tr>
+                        <tr><td>Full-fat milk</td><td>Skimmed or 1% milk</td><td>Cuts saturated fat by 90%.</td></tr>
+                        <tr><td>Fried eggs in butter</td><td>Poached or Boiled eggs</td><td>Zero added saturated fat.</td></tr>
+                        <tr><td>Bacon</td><td>Smoked salmon / Mushrooms</td><td>Salmon lowers 2.52 Triglycerides.</td></tr>
+                        <tr><td>Sausages</td><td>Turkey sausages or Quorn</td><td>Drastically lowers saturated fat.</td></tr>
+                        <tr><td>Jam or Marmalade</td><td>Mashed banana or Cinnamon</td><td>Protects against sugar spikes.</td></tr>
+                        <tr><td>Croissants / Pastries</td><td>Wholemeal crumpet / Malt loaf</td><td>Less fat, more slow-release energy.</td></tr>
+                        <tr><td>Sweetened Oat milk</td><td>Unsweetened Oat milk</td><td>Prevents triglyceride spikes.</td></tr>
+                        <!-- Lunch -->
+                        <tr><td rowspan="10"><strong>Lunch</strong></td><td>Ham & Cheese sandwich</td><td>Turkey & Avocado sandwich</td><td>Avocado raises your 0.88 HDL.</td></tr>
+                        <tr><td>Mayonnaise</td><td>Light mayo or 0% Greek yoghurt</td><td>Cuts "empty" fat calories.</td></tr>
+                        <tr><td>White pasta salad</td><td>Wholewheat pasta or Quinoa</td><td>Stable blood sugar = lower fat.</td></tr>
+                        <tr><td>Salami / Chorizo</td><td>Roast chicken or Turkey breast</td><td>Lean protein helps weight loss.</td></tr>
+                        <tr><td>Creamy soup (e.g. Mushroom)</td><td>Lentil or Vegetable soup</td><td>Fibre is key to lowering 5.24.</td></tr>
+                        <tr><td>Crisps</td><td>Plain popcorn / Roasted chickpeas</td><td>Fibre and protein over salt/fat.</td></tr>
+                        <tr><td>White baguettes</td><td>Wholemeal pitta or Wraps</td><td>Better for blood sugar control.</td></tr>
+                        <tr><td>Coleslaw (Creamy)</td><td>Vinegar-based slaw</td><td>Removes the "hidden" fat.</td></tr>
+                        <tr><td>Cheddar cheese slices</td><td>Cottage cheese / Reduced-fat feta</td><td>High protein, low saturated fat.</td></tr>
+                        <tr><td>Fruit juice</td><td>Whole piece of fruit</td><td>Fibre prevents the sugar "spike."</td></tr>
+                        <!-- Dinner -->
+                        <tr><td rowspan="15"><strong>Dinner</strong></td><td>20% Beef mince</td><td>5% Beef or Turkey mince</td><td>Protects liver from fat overload.</td></tr>
+                        <tr><td>Ribeye / Fatty steak</td><td>Sirloin (trimmed) or Venison</td><td>Lower in artery-clogging fats.</td></tr>
+                        <tr><td>Chicken with skin</td><td>Skinless chicken breast</td><td>Saturated fat is mostly in skin.</td></tr>
+                        <tr><td>Fried fish (Batter/Crumbs)</td><td>Grilled or Baked fish</td><td>Retains Omega-3 benefits.</td></tr>
+                        <tr><td>White rice</td><td>Brown rice or Cauliflower rice</td><td>Improves triglyceride levels.</td></tr>
+                        <tr><td>Mashed potato with butter</td><td>Mash with skimmed milk & garlic</td><td>Flavoursome without the fat.</td></tr>
+                        <tr><td>Roast potatoes</td><td>Sweet potato wedges (Oven)</td><td>Lower Glycaemic Index (GI).</td></tr>
+                        <tr><td>Creamy pasta sauce</td><td>Tomato or Vegetable sauce</td><td>Green for saturates and sugars.</td></tr>
+                        <tr><td>Korma or Masala curry</td><td>Tandoori or Madras</td><td>Avoids high-fat coconut/cream.</td></tr>
+                        <tr><td>Naan bread</td><td>Chapatti (Plain)</td><td>No butter or refined oils.</td></tr>
+                        <tr><td>Beef burger</td><td>Bean burger or Lean Turkey</td><td>Plant protein lowers cholesterol.</td></tr>
+                        <tr><td>Pepperoni pizza</td><td>Tuna or Veggie pizza</td><td>Cuts saturated fat by half.</td></tr>
+                        <tr><td>Scampi</td><td>Grilled prawns</td><td>Very low calorie and fat.</td></tr>
+                        <tr><td>Sour cream</td><td>0% Fat Greek yoghurt</td><td>Same texture, zero saturated fat.</td></tr>
+                        <tr><td>Garlic bread</td><td>Wholemeal bread with fresh garlic</td><td>Avoids buttery "garlic spread."</td></tr>
+                        <!-- Snacks -->
+                        <tr><td rowspan="10"><strong>Snacks</strong></td><td>Milk chocolate</td><td>85% Dark chocolate (1-2 squares)</td><td>Antioxidants for heart health.</td></tr>
+                        <tr><td>Biscuits / Cookies</td><td>Oatcakes with nut butter</td><td>Soluble fibre lowers 5.24 Non-HDL.</td></tr>
+                        <tr><td>Salted nuts</td><td>Plain Almonds or Walnuts</td><td>Healthy fats boost your 0.88 HDL.</td></tr>
+                        <tr><td>Cereal bars</td><td>Handful of berries</td><td>Lowers your 2.52 triglycerides.</td></tr>
+                        <tr><td>Ice cream</td><td>Frozen 0% yoghurt or Fruit</td><td>Cuts "double hit" of fat/sugar.</td></tr>
+                        <tr><td>Cake</td><td>Slice of Fruit Loaf</td><td>Much lower in saturated fats.</td></tr>
+                        <tr><td>Doughnuts</td><td>Scotch pancake (Plain)</td><td>A lower-fat sweet treat.</td></tr>
+                        <tr><td>Full-fat dips</td><td>Reduced-fat Hummus or Salsa</td><td>High fibre and low fat.</td></tr>
+                        <tr><td>Milky Way / Mars bar</td><td>Apple slices with a few almonds</td><td>The "Gold Standard" heart snack.</td></tr>
+                        <tr><td>Toffee / Fudge</td><td>Dried apricots (limit to 3-4)</td><td>High in fibre and potassium.</td></tr>
+                        <!-- Drinks -->
+                        <tr><td rowspan="5"><strong>Drinks</strong></td><td>Full-sugar Cola / Lemonade</td><td>Sparkling water with fresh lime</td><td>Zero effect on triglycerides.</td></tr>
+                        <tr><td>Milkshakes</td><td>Homemade berry & oat smoothie</td><td>Uses "Green" sugar and fat.</td></tr>
+                        <tr><td>Full-fat Latte</td><td>Skinny Latte (Unsweetened)</td><td>Saves 10g of saturated fat.</td></tr>
+                        <tr><td>Fruit Smoothies (Shop bought)</td><td>Water or Fruit teas</td><td>Avoids "hidden" free sugars.</td></tr>
+                        <tr><td>Sweetened Coffee Syrups</td><td>Vanilla extract or Stevia</td><td>No-calorie, no-sugar sweetness.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- AVOID TAB -->
+    <section id="avoid" class="content-section">
+        <div class="card" style="background: var(--red-bg);">
+            <h2 style="color: var(--red-main);">🔴 Red Light Foods (UK List)</h2>
+            <p style="font-size: 0.85rem; color: var(--text-dark); margin-bottom: 15px;">These foods are high in Saturated Fat or Sugars. Consuming these will keep your 5.24 Non-HDL and 2.52 Triglycerides elevated.</p>
+            
+            <div class="recipe-details">
+                <h3>Meats & Deli Items</h3>
+                <ul class="item-list">
+                    <li>Pork sausages</li>
+                    <li>Back and streaky bacon</li>
+                    <li>Salami, Chorizo, & Pepperoni</li>
+                    <li>Pancetta</li>
+                    <li>Beef burgers (high-fat supermarket or fast-food versions)</li>
+                    <li>Meat pies, pork pies, & sausage rolls</li>
+                    <li>Corned beef</li>
+                    <li>Pate and terrines</li>
+                    <li>Lamb chops with visible fat</li>
+                    <li>Ribeye steak</li>
+                    <li>Duck with skin</li>
+                    <li>Chicken nuggets and breaded "dippers"</li>
+                </ul>
+
+                <h3>Dairy & Cooking Fats</h3>
+                <ul class="item-list">
+                    <li>Butter, Lard, Ghee, & Suet</li>
+                    <li>Coconut oil</li>
+                    <li>Palm oil (often hidden in processed snacks)</li>
+                    <li>Double cream, clotted cream, & soured cream</li>
+                    <li>Full-fat crème fraîche</li>
+                    <li>Hard cheeses (Cheddar, Red Leicester, Stilton)</li>
+                    <li>Soft cheeses (Brie, Camembert)</li>
+                    <li>Full-fat cream cheese</li>
+                    <li>Whole milk</li>
+                    <li>Condensed and evaporated milk</li>
+                </ul>
+
+                <h3>Bakery & Snacks</h3>
+                <ul class="item-list">
+                    <li>Croissants & Pain au chocolat</li>
+                    <li>Doughnuts</li>
+                    <li>Shortbread & Chocolate-coated biscuits</li>
+                    <li>Flapjacks (high butter and syrup)</li>
+                    <li>Cheese crackers</li>
+                    <li>Potato crisps</li>
+                    <li>Salted roasted peanuts</li>
+                    <li>Milk and white chocolate bars</li>
+                    <li>Pastry-topped quiches</li>
+                    <li>Fruit pies with buttery crusts</li>
+                </ul>
+
+                <h3>Drinks & Sweets</h3>
+                <ul class="item-list">
+                    <li>Sugary fizzy drinks (Cola, Lemonade)</li>
+                    <li>Milkshakes & Energy drinks</li>
+                    <li>Fruit juice (high sugar spikes triglycerides)</li>
+                    <li>Sweetened coffee shop lattes and frappés</li>
+                    <li>Ice cream</li>
+                    <li>Cereal bars (held together with sugar syrups)</li>
+                    <li>Sugar-coated breakfast cereals</li>
+                    <li>Instant noodles</li>
+                    <li>White bread (mass-produced loaves)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    function showTab(tabId) {
+        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+        if (activeBtn) {
+            activeBtn.classList.add('active');
+            document.getElementById('tabNav').scrollTo({ left: activeBtn.offsetLeft - 20, behavior: 'smooth' });
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showWeek(weekNum) {
+        document.querySelectorAll('.week-content').forEach(w => w.classList.remove('active'));
+        const target = document.getElementById('week' + weekNum + '-content');
+        if(target) target.classList.add('active');
+
+        document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
+        const buttons = document.querySelectorAll('.week-btn');
+        const activeBtn = Array.from(buttons).find(b => b.textContent.includes('Week ' + weekNum));
+        
+        if(activeBtn) {
+            activeBtn.classList.add('active');
+            const selector = document.getElementById('weekSelector');
+            selector.scrollTo({ left: activeBtn.offsetLeft - (selector.offsetWidth / 2) + (activeBtn.offsetWidth / 2), behavior: 'smooth' });
+        }
+    }
+</script>
+
+</body>
+</html>

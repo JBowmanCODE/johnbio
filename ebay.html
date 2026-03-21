@@ -1,0 +1,2396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profit Calculator</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Segoe UI", -apple-system, sans-serif; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+    
+
+function ProfitCalculator() {
+  const [activeTab, setActiveTab] = useState('vinted');
+  const [vintedItems, setVintedItems] = useState([]);
+  const [saleroomItems, setSaleroomItems] = useState([]);
+  const [ebayItems, setEbayItems] = useState([]);
+  const [htmlInput, setHtmlInput] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [ebayFeePercent, setEbayFeePercent] = useState(13);
+  const [buyersPremium, setBuyersPremium] = useState(24);
+  const [onlineCommission, setOnlineCommission] = useState(5.94);
+  const [desiredProfitPercent, setDesiredProfitPercent] = useState(100);
+  const [quickAvgSale, setQuickAvgSale] = useState('');
+  const [scriptCopied, setScriptCopied] = useState(false);
+  const [priceScriptCopied, setPriceScriptCopied] = useState(false);
+  
+  // New feature states
+  const [defaultPostage, setDefaultPostage] = useState(3.50); // Feature 2: Bulk postage
+  const [sortColumn, setSortColumn] = useState(null); // Feature 3: Sorting
+  const [sortDirection, setSortDirection] = useState('desc');
+  const [profitFilter, setProfitFilter] = useState('all'); // Feature 4: Filter - 'all', 'profitable', 'high'
+  const [fetchProgress, setFetchProgress] = useState({ current: 0, total: 0 }); // Feature 5: Progress
+  const [isFetching, setIsFetching] = useState(false);
+  const [showStats, setShowStats] = useState(true); // Feature 11: Analytics
+  const [topScriptCopied, setTopScriptCopied] = useState(false); // For top copy script button
+  
+  // Load saved data from localStorage on mount (Feature 6)
+  useEffect(() => {
+    try {
+      const savedVinted = localStorage.getItem('profitCalc_vintedItems');
+      const savedSaleroom = localStorage.getItem('profitCalc_saleroomItems');
+      const savedEbay = localStorage.getItem('profitCalc_ebayItems');
+      const savedSettings = localStorage.getItem('profitCalc_settings');
+      
+      if (savedVinted) setVintedItems(JSON.parse(savedVinted));
+      if (savedSaleroom) setSaleroomItems(JSON.parse(savedSaleroom));
+      if (savedEbay) setEbayItems(JSON.parse(savedEbay));
+      if (savedSettings) {
+        const settings = JSON.parse(savedSettings);
+        setEbayFeePercent(settings.ebayFeePercent ?? 13);
+        setDefaultPostage(settings.defaultPostage ?? 3.50);
+        setBuyersPremium(settings.buyersPremium ?? 24);
+        setOnlineCommission(settings.onlineCommission ?? 5.94);
+        setDesiredProfitPercent(settings.desiredProfitPercent ?? 100);
+      }
+    } catch (e) {
+      console.log('Error loading saved data:', e);
+    }
+  }, []);
+  
+  // Save data to localStorage when items change (Feature 6)
+  useEffect(() => {
+    try {
+      localStorage.setItem('profitCalc_vintedItems', JSON.stringify(vintedItems));
+      localStorage.setItem('profitCalc_saleroomItems', JSON.stringify(saleroomItems));
+      localStorage.setItem('profitCalc_ebayItems', JSON.stringify(ebayItems));
+      localStorage.setItem('profitCalc_settings', JSON.stringify({
+        ebayFeePercent, defaultPostage, buyersPremium, onlineCommission, desiredProfitPercent
+      }));
+    } catch (e) {
+      console.log('Error saving data:', e);
+    }
+  }, [vintedItems, saleroomItems, ebayItems, ebayFeePercent, defaultPostage, buyersPremium, onlineCommission, desiredProfitPercent]);
+  
+  // Cloudflare Worker URL
+  const WORKER_URL = 'https://ebay-claude-price.ukjbowman.workers.dev/';
+  
+  // Feature 14: Smarter search terms - strip common words
+  const cleanSearchTerms = (text) => {
+    return text
+      .replace(/Opens in a new window or tab/gi, '')
+      .replace(/New listing/gi, '')
+      .replace(/\b(PAL|NTSC|UK|EU|US|Region|Free|Complete|CIB|Boxed|Box|Manual|Instructions|Tested|Working|Great|Good|Condition|Only|Cart|Cartridge|Game|Inc|Including|Includes|With)\b/gi, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  };
+
+  // Feature 15: Generate cache key for similar items batching
+  const generateCacheKey = (searchTerms) => {
+    const cleaned = cleanSearchTerms(searchTerms);
+    return 'ebayPrice_' + cleaned.split(/\s+/).slice(0, 5).join(' ').toLowerCase().replace(/[^a-z0-9 ]/g, '');
+  };
+
+  // Function to get eBay sold average price via RapidAPI with caching
+  // Features 1, 14, 15: Auto-fill avgSale, smart search terms, batch similar items
+  const getEbayAvg = async (id, itemTitle, brand = '') => {
+    const rawSearchTerms = (brand ? `${itemTitle} ${brand}` : itemTitle);
+    const searchTerms = cleanSearchTerms(rawSearchTerms);
+    const cacheKey = generateCacheKey(rawSearchTerms);
+    
+    // Check localStorage cache first
+    try {
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        const { price, count, timestamp } = JSON.parse(cached);
+        const ageInDays = (Date.now() - timestamp) / (1000 * 60 * 60 * 24);
+        
+        // Use cache if less than 90 days old
+        if (ageInDays < 90 && price > 0) {
+          console.log(`Cache hit for "${cacheKey}" (${Math.floor(ageInDays)} days old)`);
+          setItems(prev => prev.map(item => 
+            item.id === id ? { 
+              ...item, 
+              aiEstimate: price.toFixed(2),
+              avgSale: item.avgSale || price.toFixed(2), // Feature 1: Auto-fill
+              soldCount: count,
+              fromCache: true,
+              postage: item.postage || defaultPostage.toString() // Feature 2: Default postage
+            } : item
+          ));
+          return { fromCache: true };
+        }
+      }
+    } catch (e) {
+      console.log('Cache read error:', e);
+    }
+    
+    // Update item to show loading state
+    setItems(prev => prev.map(item => 
+      item.id === id ? { ...item, aiEstimate: 'loading' } : item
+    ));
+    
+    try {
+      const response = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ item: searchTerms })
+      });
+      
+      const data = await response.json();
+      const price = parseFloat(data.price) || 0;
+      const count = data.count || 0;
+      
+      // Save to localStorage cache if we got a valid price
+      if (price > 0) {
+        try {
+          localStorage.setItem(cacheKey, JSON.stringify({
+            price,
+            count,
+            timestamp: Date.now()
+          }));
+          console.log(`Cached price for "${cacheKey}": £${price}`);
+        } catch (e) {
+          console.log('Cache write error:', e);
+        }
+      }
+      
+      setItems(prev => prev.map(item => 
+        item.id === id ? { 
+          ...item, 
+          aiEstimate: price > 0 ? price.toFixed(2) : 'N/A',
+          avgSale: price > 0 ? (item.avgSale || price.toFixed(2)) : item.avgSale, // Feature 1: Auto-fill
+          soldCount: count,
+          fromCache: false,
+          postage: item.postage || defaultPostage.toString() // Feature 2: Default postage
+        } : item
+      ));
+      return { fromCache: false };
+    } catch (error) {
+      console.error('eBay fetch error:', error);
+      setItems(prev => prev.map(item => 
+        item.id === id ? { ...item, aiEstimate: 'Error' } : item
+      ));
+      return { fromCache: false, error: true };
+    }
+  };
+
+  // Function to get eBay averages for all items with progress tracking (Feature 5)
+  const getAllEbayAvg = async () => {
+    const currentItems = activeTab === 'vinted' ? vintedItems : (activeTab === 'saleroom' ? saleroomItems : ebayItems);
+    const itemsToFetch = currentItems.filter(item => 
+      !item.aiEstimate || item.aiEstimate === 'N/A' || item.aiEstimate === 'Error'
+    );
+    
+    if (itemsToFetch.length === 0) return;
+    
+    setIsFetching(true);
+    setFetchProgress({ current: 0, total: itemsToFetch.length });
+    
+    // Feature 15: Group items by cache key to batch similar items
+    const cacheKeyGroups = {};
+    itemsToFetch.forEach(item => {
+      const cacheKey = generateCacheKey(item.title + ' ' + (item.brand || ''));
+      if (!cacheKeyGroups[cacheKey]) {
+        cacheKeyGroups[cacheKey] = [];
+      }
+      cacheKeyGroups[cacheKey].push(item);
+    });
+    
+    let processed = 0;
+    const uniqueKeys = Object.keys(cacheKeyGroups);
+    
+    for (const cacheKey of uniqueKeys) {
+      const groupItems = cacheKeyGroups[cacheKey];
+      // Only fetch once for the first item in the group
+      const firstItem = groupItems[0];
+      const result = await getEbayAvg(firstItem.id, firstItem.title, firstItem.brand || '');
+      
+      // If we got a price, apply to all items in the group
+      if (!result?.error) {
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) {
+          const { price, count } = JSON.parse(cached);
+          if (price > 0) {
+            // Apply to remaining items in group
+            for (let i = 1; i < groupItems.length; i++) {
+              setItems(prev => prev.map(item => 
+                item.id === groupItems[i].id ? {
+                  ...item,
+                  aiEstimate: price.toFixed(2),
+                  avgSale: item.avgSale || price.toFixed(2),
+                  soldCount: count,
+                  fromCache: true,
+                  postage: item.postage || defaultPostage.toString()
+                } : item
+              ));
+            }
+          }
+        }
+      }
+      
+      processed += groupItems.length;
+      setFetchProgress({ current: processed, total: itemsToFetch.length });
+      
+      // Only delay for API calls, not cache hits
+      if (!result?.fromCache) {
+        await new Promise(resolve => setTimeout(resolve, 500));
+      }
+    }
+    
+    setIsFetching(false);
+    setFetchProgress({ current: 0, total: 0 });
+  };
+
+  const rawItems = activeTab === 'vinted' ? vintedItems : (activeTab === 'saleroom' ? saleroomItems : ebayItems);
+  const setItems = activeTab === 'vinted' ? setVintedItems : (activeTab === 'saleroom' ? setSaleroomItems : setEbayItems);
+  
+  // Feature 3: Sorting
+  const sortItems = (itemsList) => {
+    if (!sortColumn) return itemsList;
+    
+    return [...itemsList].sort((a, b) => {
+      let aVal, bVal;
+      
+      switch (sortColumn) {
+        case 'title':
+          aVal = a.title?.toLowerCase() || '';
+          bVal = b.title?.toLowerCase() || '';
+          break;
+        case 'cost':
+          aVal = parseFloat(a.price || a.estimateLow) || 0;
+          bVal = parseFloat(b.price || b.estimateLow) || 0;
+          break;
+        case 'ebayAvg':
+          aVal = parseFloat(a.aiEstimate) || 0;
+          bVal = parseFloat(b.aiEstimate) || 0;
+          break;
+        case 'avgSale':
+          aVal = parseFloat(a.avgSale) || 0;
+          bVal = parseFloat(b.avgSale) || 0;
+          break;
+        case 'profit':
+          aVal = parseFloat(a.profit) || 0;
+          bVal = parseFloat(b.profit) || 0;
+          break;
+        default:
+          return 0;
+      }
+      
+      if (typeof aVal === 'string') {
+        return sortDirection === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+      }
+      return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
+    });
+  };
+  
+  // Feature 4: Filtering
+  const filterItems = (itemsList) => {
+    if (profitFilter === 'all') return itemsList;
+    
+    return itemsList.filter(item => {
+      const profit = parseFloat(item.profit) || 0;
+      const cost = parseFloat(item.price || item.estimateLow) || 0;
+      
+      if (profitFilter === 'profitable') {
+        return profit > 0;
+      }
+      if (profitFilter === 'high') {
+        return cost > 0 && profit >= cost * 0.5; // 50%+ profit margin
+      }
+      if (profitFilter === 'withPrice') {
+        return item.aiEstimate && item.aiEstimate !== 'N/A' && item.aiEstimate !== 'Error';
+      }
+      return true;
+    });
+  };
+  
+  // Apply sorting and filtering
+  const items = filterItems(sortItems(rawItems));
+  
+  // Feature 3: Toggle sort
+  const toggleSort = (column) => {
+    if (sortColumn === column) {
+      setSortDirection(prev => prev === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortColumn(column);
+      setSortDirection('desc');
+    }
+  };
+  
+  // Feature 7: Duplicate detection
+  const checkDuplicates = (newItems) => {
+    const existingTitles = new Set(rawItems.map(item => item.title?.toLowerCase()));
+    const duplicates = newItems.filter(item => existingTitles.has(item.title?.toLowerCase()));
+    return duplicates;
+  };
+  
+  // Feature 11: Calculate statistics
+  const calculateStats = () => {
+    const analyzed = rawItems.filter(item => item.aiEstimate && item.aiEstimate !== 'N/A' && item.aiEstimate !== 'Error');
+    const profitable = rawItems.filter(item => parseFloat(item.profit) > 0);
+    const totalProfit = rawItems.reduce((sum, item) => sum + (parseFloat(item.profit) || 0), 0);
+    const totalCost = rawItems.reduce((sum, item) => sum + (parseFloat(item.price || item.estimateLow) || 0), 0);
+    const avgROI = totalCost > 0 ? ((totalProfit / totalCost) * 100) : 0;
+    
+    // Feature 13: Check for price changes since last check
+    const priceChanges = [];
+    rawItems.forEach(item => {
+      if (item.aiEstimate && item.previousEstimate && item.aiEstimate !== item.previousEstimate) {
+        priceChanges.push({
+          title: item.title,
+          old: item.previousEstimate,
+          new: item.aiEstimate
+        });
+      }
+    });
+    
+    return {
+      total: rawItems.length,
+      analyzed: analyzed.length,
+      profitable: profitable.length,
+      totalProfit: totalProfit.toFixed(2),
+      avgROI: avgROI.toFixed(1),
+      priceChanges
+    };
+  };
+  
+  const stats = calculateStats();
+  
+  // Feature 12: Export to Google Sheets format
+  const exportToGoogleSheets = () => {
+    const headers = ['Title', 'Cost', 'eBay Avg', 'Avg Sale', 'Postage', 'Profit', 'eBay Link'];
+    const rows = rawItems.map(item => [
+      item.title,
+      item.price || item.estimateLow || '',
+      item.aiEstimate || '',
+      item.avgSale || '',
+      item.postage || '',
+      item.profit || '',
+      item.ebayLink || ''
+    ]);
+    
+    // Create TSV for easy paste into Google Sheets
+    const tsv = [headers.join('\t'), ...rows.map(row => row.join('\t'))].join('\n');
+    navigator.clipboard.writeText(tsv);
+    alert(`Copied ${rawItems.length} items to clipboard!\n\nOpen Google Sheets and press Ctrl+V to paste.`);
+  };
+
+  const generateEbayLink = (itemTitle) => {
+    let searchTerm = itemTitle
+      .replace(/,?\s*brand:.*$/i, '')
+      .replace(/,?\s*condition:.*$/i, '')
+      .replace(/£[\d.,]+/g, '')
+      .replace(/includes Buyer Protection/gi, '')
+      .replace(/lot\s*\d+/gi, '')
+      .trim();
+    
+    const searchQuery = encodeURIComponent(searchTerm);
+    return `https://www.ebay.co.uk/sch/i.html?_nkw=${searchQuery}&_sacat=0&_from=R40&rt=nc&LH_Sold=1&LH_Complete=1`;
+  };
+
+  const generateGoogleLensLink = (imageUrl) => {
+    return `https://lens.google.com/uploadbyurl?url=${encodeURIComponent(imageUrl)}`;
+  };
+
+  // Calculate max bid based on avg sale price
+  // Formula: MaxBid = (AvgSale * (1 - eBayFee%)) / ((1 + AuctionPremium%) * (1 + DesiredProfit%))
+  // This ensures profit is calculated as % of total cost (hammer + premium)
+  const calculateMaxBid = (avgSale) => {
+    const sale = parseFloat(avgSale) || 0;
+    if (sale === 0) return null;
+    
+    const netSale = sale * (1 - ebayFeePercent / 100);
+    const auctionPremiumMultiplier = 1 + ((buyersPremium + onlineCommission) / 100);
+    const profitMultiplier = 1 + (desiredProfitPercent / 100);
+    
+    const maxBid = netSale / (auctionPremiumMultiplier * profitMultiplier);
+    return maxBid.toFixed(2);
+  };
+
+  // Calculate profit for saleroom based on max bid
+  // Profit = Net Sale (after eBay fee) - Total Cost (max bid + auction fees)
+  const calculateSaleroomProfit = (avgSale) => {
+    const sale = parseFloat(avgSale) || 0;
+    if (sale === 0) return null;
+    
+    const maxBid = parseFloat(calculateMaxBid(avgSale)) || 0;
+    const netSale = sale * (1 - ebayFeePercent / 100);
+    const totalCost = maxBid * (1 + (buyersPremium + onlineCommission) / 100);
+    const profit = netSale - totalCost;
+    
+    return profit.toFixed(2);
+  };
+
+  // VINTED PARSER
+  const parseVintedHTML = () => {
+    setIsProcessing(true);
+    const parsedItems = [];
+    const seenTitles = new Set();
+    
+    try {
+      const trimmedInput = htmlInput.trim();
+      if (trimmedInput.startsWith('[') && trimmedInput.endsWith(']')) {
+        try {
+          const jsonData = JSON.parse(trimmedInput);
+          if (Array.isArray(jsonData)) {
+            jsonData.forEach((item, idx) => {
+              if (item.title && !seenTitles.has(item.title.toLowerCase())) {
+                seenTitles.add(item.title.toLowerCase());
+                const searchTitle = item.brand ? `${item.title} ${item.brand}` : item.title;
+                parsedItems.push({
+                  id: Date.now() + idx,
+                  title: item.title,
+                  brand: item.brand || '',
+                  condition: item.condition || '',
+                  price: parseFloat(item.price) || 0,
+                  link: item.link || '',
+                  imageUrl: item.imageUrl || item.image || '',
+                  ebayLink: generateEbayLink(searchTitle),
+                  avgSale: '',
+                  postage: '',
+                  profit: null,
+                  aiEstimate: null
+                });
+              }
+            });
+            
+            if (parsedItems.length > 0) {
+              // Feature 7: Check for duplicates
+              const duplicates = checkDuplicates(parsedItems);
+              if (duplicates.length > 0) {
+                const proceed = window.confirm(
+                  `Found ${duplicates.length} duplicate item(s) that you've already added:\n\n` +
+                  duplicates.slice(0, 3).map(d => `• ${d.title.substring(0, 40)}...`).join('\n') +
+                  (duplicates.length > 3 ? `\n...and ${duplicates.length - 3} more` : '') +
+                  `\n\nAdd them anyway?`
+                );
+                if (!proceed) {
+                  const uniqueItems = parsedItems.filter(item => 
+                    !duplicates.some(d => d.title?.toLowerCase() === item.title?.toLowerCase())
+                  );
+                  if (uniqueItems.length > 0) {
+                    setVintedItems(prev => [...prev, ...uniqueItems]);
+                  }
+                  setHtmlInput('');
+                  setIsProcessing(false);
+                  return;
+                }
+              }
+              setVintedItems(prev => [...prev, ...parsedItems]);
+              setHtmlInput('');
+              setIsProcessing(false);
+              return;
+            }
+          }
+        } catch (e) {}
+      }
+      
+      const titleRegex = /title="([^"]+,\s*condition:[^"]+)"/gi;
+      let match;
+      
+      while ((match = titleRegex.exec(htmlInput)) !== null) {
+        const fullTitle = match[1];
+        const parts = fullTitle.split(',');
+        
+        let productName = '';
+        let brand = '';
+        let condition = '';
+        let price = 0;
+        
+        for (const part of parts) {
+          const trimmedPart = part.trim();
+          if (trimmedPart.toLowerCase().startsWith('brand:')) {
+            brand = trimmedPart.replace(/brand:\s*/i, '').trim();
+          } else if (trimmedPart.toLowerCase().startsWith('condition:')) {
+            condition = trimmedPart.replace(/condition:\s*/i, '').trim();
+          } else if (trimmedPart.match(/^£[\d.,]+$/)) {
+            if (price === 0) {
+              price = parseFloat(trimmedPart.replace('£', '').replace(',', '.'));
+            }
+          } else if (!trimmedPart.includes('Buyer Protection') && !trimmedPart.match(/^£/)) {
+            productName += (productName ? ', ' : '') + trimmedPart;
+          }
+        }
+        
+        productName = productName.trim();
+        
+        if (!productName || seenTitles.has(productName.toLowerCase())) continue;
+        seenTitles.add(productName.toLowerCase());
+        
+        const searchTitle = brand ? `${productName} ${brand}` : productName;
+        
+        parsedItems.push({
+          id: Date.now() + parsedItems.length,
+          title: productName,
+          brand,
+          condition,
+          price,
+          link: '',
+          imageUrl: '',
+          ebayLink: generateEbayLink(searchTitle),
+          avgSale: '',
+          postage: '',
+          profit: null,
+          aiEstimate: null
+        });
+      }
+    } catch (e) {
+      console.error('Parse error:', e);
+    }
+    
+    if (parsedItems.length > 0) {
+      setVintedItems(prev => [...prev, ...parsedItems]);
+    }
+    
+    setHtmlInput('');
+    setIsProcessing(false);
+  };
+
+  // SALEROOM PARSER
+  const parseSaleroomHTML = () => {
+    setIsProcessing(true);
+    const parsedItems = [];
+    const seenIds = new Set();
+    
+    try {
+      const trimmedInput = htmlInput.trim();
+      
+      // Check if JSON from console script
+      if (trimmedInput.startsWith('[') && trimmedInput.endsWith(']')) {
+        try {
+          const jsonData = JSON.parse(trimmedInput);
+          if (Array.isArray(jsonData)) {
+            jsonData.forEach((item, idx) => {
+              const itemId = item.lotId || item.link || item.title;
+              if (itemId && !seenIds.has(itemId)) {
+                seenIds.add(itemId);
+                parsedItems.push({
+                  id: Date.now() + idx,
+                  lotNumber: item.lotNumber || '',
+                  title: item.title || 'Untitled Lot',
+                  description: item.description || '',
+                  estimateLow: parseFloat(item.estimateLow) || 0,
+                  estimateHigh: parseFloat(item.estimateHigh) || 0,
+                  currentBid: parseFloat(item.currentBid) || 0,
+                  imageUrl: item.imageUrl || '',
+                  link: item.link || '',
+                  ebayLink: generateEbayLink(item.title || ''),
+                  avgSale: '',
+                  postage: '',
+                  profit: null,
+                  identifiedAs: '',
+                  aiEstimate: null
+                });
+              }
+            });
+            
+            if (parsedItems.length > 0) {
+              setSaleroomItems(prev => [...prev, ...parsedItems]);
+              setHtmlInput('');
+              setIsProcessing(false);
+              return;
+            }
+          }
+        } catch (e) {}
+      }
+    } catch (e) {
+      console.error('Parse error:', e);
+    }
+    
+    if (parsedItems.length > 0) {
+      setSaleroomItems(prev => [...prev, ...parsedItems]);
+    }
+    
+    setHtmlInput('');
+    setIsProcessing(false);
+  };
+
+  // EBAY PARSER
+  const parseEbayHTML = () => {
+    setIsProcessing(true);
+    const parsedItems = [];
+    const seenIds = new Set();
+    
+    try {
+      const trimmedInput = htmlInput.trim();
+      
+      // Check if JSON from console script
+      if (trimmedInput.startsWith('[') && trimmedInput.endsWith(']')) {
+        try {
+          const jsonData = JSON.parse(trimmedInput);
+          if (Array.isArray(jsonData)) {
+            jsonData.forEach((item, idx) => {
+              const itemId = item.link || item.id || `ebay-${Date.now()}-${idx}`;
+              if (seenIds.has(itemId)) return;
+              seenIds.add(itemId);
+              
+              parsedItems.push({
+                id: Date.now() + idx,
+                title: item.title || 'Untitled Item',
+                price: parseFloat(item.price) || 0,
+                imageUrl: item.imageUrl || item.image || '',
+                link: item.link || '',
+                ebayLink: generateEbayLink(item.title || ''),
+                avgSale: '',
+                postage: '',
+                profit: null,
+                aiEstimate: null
+              });
+            });
+            
+            if (parsedItems.length > 0) {
+              setEbayItems(prev => [...prev, ...parsedItems]);
+              setHtmlInput('');
+              setIsProcessing(false);
+              return;
+            }
+          }
+        } catch (e) {}
+      }
+    } catch (e) {
+      console.error('Parse error:', e);
+    }
+    
+    if (parsedItems.length > 0) {
+      setEbayItems(prev => [...prev, ...parsedItems]);
+    }
+    
+    setHtmlInput('');
+    setIsProcessing(false);
+  };
+
+  const calculateProfit = (avgSale, cost, postage, isAuction = false) => {
+    const sale = parseFloat(avgSale) || 0;
+    const itemCost = parseFloat(cost) || 0;
+    const postageCost = parseFloat(postage) || 0;
+    
+    if (sale === 0) return null;
+    
+    if (isAuction) {
+      // For auction items: hammer price + buyer's premium + online commission
+      const totalAuctionFees = itemCost * ((buyersPremium + onlineCommission) / 100);
+      const totalCost = itemCost + totalAuctionFees;
+      const profit = sale - totalCost - postageCost;
+      return profit.toFixed(2);
+    } else {
+      // For Vinted: just eBay fees on sale price
+      const ebayFees = sale * (ebayFeePercent / 100);
+      const profit = sale - itemCost - postageCost - ebayFees;
+      return profit.toFixed(2);
+    }
+  };
+
+  const updateField = (id, field, value) => {
+    setItems(prev => prev.map(item => {
+      if (item.id === id) {
+        const updated = { ...item, [field]: value };
+        
+        // Recalculate profit when relevant fields change
+        if (['avgSale', 'postage', 'price', 'currentBid', 'estimateLow'].includes(field)) {
+          const cost = (activeTab === 'vinted' || activeTab === 'ebay') ? updated.price : (updated.currentBid || updated.estimateLow);
+          updated.profit = calculateProfit(updated.avgSale, cost, updated.postage, activeTab === 'saleroom');
+        }
+        
+        // If title changes, regenerate eBay link
+        if (field === 'title' || field === 'identifiedAs') {
+          const searchTerm = field === 'identifiedAs' && value ? value : updated.title;
+          updated.ebayLink = generateEbayLink(searchTerm);
+        }
+        
+        return updated;
+      }
+      return item;
+    }));
+  };
+
+  const deleteItem = (id) => {
+    setItems(prev => prev.filter(item => item.id !== id));
+  };
+
+  const clearAll = () => {
+    setItems([]);
+  };
+
+  const exportCSV = () => {
+    const headers = activeTab === 'vinted' 
+      ? ['Product', 'Brand', 'Condition', 'Cost', 'Avg Sale', 'Postage', 'Profit', 'Vinted Link', 'eBay Link']
+      : ['Lot', 'Title', 'Identified As', 'Estimate', 'Current Bid', 'Avg Sale', 'Postage', 'Profit', 'Link', 'eBay Link'];
+    
+    const rows = items.map(item => {
+      if (activeTab === 'vinted') {
+        return [
+          item.title, item.brand, item.condition, item.price,
+          item.avgSale, item.postage, item.profit || '', item.link, item.ebayLink
+        ];
+      } else {
+        return [
+          item.lotNumber, item.title, item.identifiedAs || '',
+          `${item.estimateLow}-${item.estimateHigh}`, item.currentBid,
+          item.avgSale, item.postage, item.profit || '', item.link, item.ebayLink
+        ];
+      }
+    });
+    
+    const csvContent = [headers, ...rows]
+      .map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(','))
+      .join('\n');
+    
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${activeTab}-profit-analysis.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  // Stats
+  const totalCost = items.reduce((sum, item) => {
+    const cost = activeTab === 'vinted' ? item.price : (item.currentBid || item.estimateLow);
+    return sum + (parseFloat(cost) || 0);
+  }, 0);
+  
+  const itemsWithProfit = items.filter(item => item.profit !== null);
+  const totalProfit = itemsWithProfit.reduce((sum, item) => sum + parseFloat(item.profit), 0);
+
+  // Console scripts
+  const vintedScript = `(function(){
+  const items = [];
+  document.querySelectorAll('[data-testid="grid-item"], .feed-grid__item, [class*="ItemBox"]').forEach(card => {
+    const link = card.querySelector('a[href*="/items/"]');
+    const img = card.querySelector('img');
+    const t = link?.getAttribute('title') || '';
+    
+    let item = null;
+    let m = t.match(/^(.+?),\\s*brand:\\s*([^,]+),\\s*condition:\\s*([^,]+),\\s*£([\\d.]+)/i);
+    if (m) {
+      item = { title: m[1].trim(), brand: m[2].trim(), condition: m[3].trim(), price: m[4], link: link?.href || '' };
+    } else {
+      m = t.match(/^(.+?),\\s*condition:\\s*([^,]+),\\s*£([\\d.]+)/i);
+      if (m) item = { title: m[1].trim(), brand: '', condition: m[2].trim(), price: m[3], link: link?.href || '' };
+    }
+    
+    if (item) {
+      item.imageUrl = img?.src || '';
+      items.push(item);
+    }
+  });
+  const unique = items.filter((v,i,a) => a.findIndex(x => x.link === v.link) === i);
+  copy(JSON.stringify(unique));
+  console.log('✅ Found ' + unique.length + ' items. Copied! Paste in app.');
+})();`;
+
+  const saleroomScript = `(function(){
+  const items = [];
+  const seen = new Set();
+  
+  // Find all lot links with the lot-link class
+  document.querySelectorAll('a.lot-link').forEach(link => {
+    const href = link.href;
+    if (seen.has(href)) return;
+    seen.add(href);
+    
+    // Get lot number and title - they might be inside the link or nearby
+    let lotNumEl = link.querySelector('.lot-number');
+    let titleEl = link.querySelector('.lot-title');
+    
+    // If not found inside link, check parent container
+    if (!lotNumEl || !titleEl) {
+      const container = link.closest('[class*="lot-header"], [class*="grid"], .lot-item') || link.parentElement;
+      if (!lotNumEl) lotNumEl = container?.querySelector('.lot-number');
+      if (!titleEl) titleEl = container?.querySelector('.lot-title');
+    }
+    
+    const lotNum = lotNumEl?.textContent?.trim() || '';
+    const title = titleEl?.textContent?.trim() || '';
+    
+    // Find the parent card/container to get the image
+    let card = link.closest('[class*="lot-grid"], [class*="catalogue-lot"], [class*="grid-item"], article');
+    if (!card) {
+      // Walk up to find a larger container
+      let parent = link.parentElement;
+      for (let i = 0; i < 5 && parent; i++) {
+        if (parent.querySelector('img')) {
+          card = parent;
+          break;
+        }
+        parent = parent.parentElement;
+      }
+    }
+    
+    // Get image from the card
+    const img = card?.querySelector('img');
+    
+    // Get estimate
+    const estimateEl = card?.querySelector('[class*="estimate"], .estimate, .lot-estimate');
+    let estLow = 0, estHigh = 0;
+    const estText = estimateEl?.textContent || '';
+    const estMatch = estText.match(/£?([\\d,]+)\\s*[-–]\\s*£?([\\d,]+)/);
+    if (estMatch) {
+      estLow = parseFloat(estMatch[1].replace(/,/g, ''));
+      estHigh = parseFloat(estMatch[2].replace(/,/g, ''));
+    }
+    
+    // Only add if we have at least a lot number or title
+    if (lotNum || title) {
+      items.push({
+        lotId: lotNum || href,
+        lotNumber: lotNum,
+        title: title || 'Untitled',
+        estimateLow: estLow,
+        estimateHigh: estHigh,
+        imageUrl: img?.src || '',
+        link: href
+      });
+    }
+  });
+  
+  // Debug: show first item
+  if (items.length > 0) {
+    console.log('First item:', items[0]);
+  }
+  
+  copy(JSON.stringify(items));
+  console.log('✅ Found ' + items.length + ' lots. Copied! Paste in app.');
+})();`;
+
+  const ebayScript = `(function(){
+  const items = [], seen = new Set();
+  document.querySelectorAll('.su-card-container, .s-card').forEach(card => {
+    const titleEl = card.querySelector('.s-card__title');
+    if (!titleEl) return;
+    let titleText = titleEl.textContent.trim();
+    if (!titleText || titleText === 'Shop on eBay') return;
+    // Clean up title
+    titleText = titleText.replace('Opens in a new window or tab', '').replace('New listing', '').trim();
+    const linkEl = card.querySelector('a[href*="/itm/"]');
+    const href = linkEl?.href || '';
+    if (!href || seen.has(href)) return;
+    seen.add(href);
+    const priceEl = card.querySelector('.s-card__price');
+    let priceNum = 0;
+    if (priceEl) {
+      const priceText = priceEl.textContent.trim();
+      const match = priceText.match(/([0-9][0-9,.]*)/);
+      if (match) priceNum = parseFloat(match[1].replace(',', ''));
+    }
+    const imgEl = card.querySelector('img[src*="ebayimg"]');
+    let imgSrc = imgEl?.src || '';
+    if (imgSrc.includes('fxxj3ttftm5ltcqnto1o4baovyl')) imgSrc = '';
+    if (titleText && priceNum > 0) {
+      items.push({ title: titleText, price: priceNum, imageUrl: imgSrc, link: href });
+    }
+  });
+  copy(JSON.stringify(items));
+  console.log('Found ' + items.length + ' eBay items. Copied!');
+})();`;
+
+  return (
+    <div style={{
+      minHeight: '100vh',
+      background: '#0a0a0a',
+      fontFamily: '"Segoe UI", -apple-system, sans-serif',
+      color: '#e0e0e0',
+      padding: '0'
+    }}>
+      {/* Header with Tabs */}
+      <header style={{
+        background: '#111',
+        borderBottom: '1px solid #222',
+        position: 'sticky',
+        top: 0,
+        zIndex: 100
+      }}>
+        {/* Tab Bar */}
+        <div style={{
+          display: 'flex',
+          borderBottom: '1px solid #222'
+        }}>
+          <button
+            onClick={() => setActiveTab('vinted')}
+            style={{
+              padding: '14px 24px',
+              background: activeTab === 'vinted' ? '#0a0a0a' : 'transparent',
+              border: 'none',
+              borderBottom: activeTab === 'vinted' ? '2px solid #09b1ba' : '2px solid transparent',
+              color: activeTab === 'vinted' ? '#09b1ba' : '#666',
+              fontSize: '14px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              transition: 'all 0.2s'
+            }}
+          >
+            <span style={{ color: '#09b1ba' }}>Vinted</span>
+            <span style={{ color: '#444' }}>→</span>
+            <span style={{ color: '#f5af02' }}>eBay</span>
+            {vintedItems.length > 0 && (
+              <span style={{
+                background: '#09b1ba22',
+                color: '#09b1ba',
+                padding: '2px 8px',
+                borderRadius: '10px',
+                fontSize: '11px'
+              }}>{vintedItems.length}</span>
+            )}
+          </button>
+          
+          <button
+            onClick={() => setActiveTab('saleroom')}
+            style={{
+              padding: '14px 24px',
+              background: activeTab === 'saleroom' ? '#0a0a0a' : 'transparent',
+              border: 'none',
+              borderBottom: activeTab === 'saleroom' ? '2px solid #e63946' : '2px solid transparent',
+              color: activeTab === 'saleroom' ? '#e63946' : '#666',
+              fontSize: '14px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              transition: 'all 0.2s'
+            }}
+          >
+            <span style={{ color: '#e63946' }}>Sale Room</span>
+            <span style={{ color: '#444' }}>→</span>
+            <span style={{ color: '#f5af02' }}>eBay</span>
+            {saleroomItems.length > 0 && (
+              <span style={{
+                background: '#e6394622',
+                color: '#e63946',
+                padding: '2px 8px',
+                borderRadius: '10px',
+                fontSize: '11px'
+              }}>{saleroomItems.length}</span>
+            )}
+          </button>
+          
+          <button
+            onClick={() => setActiveTab('ebay')}
+            style={{
+              padding: '14px 24px',
+              background: activeTab === 'ebay' ? '#0a0a0a' : 'transparent',
+              border: 'none',
+              borderBottom: activeTab === 'ebay' ? '2px solid #f5af02' : '2px solid transparent',
+              color: activeTab === 'ebay' ? '#f5af02' : '#666',
+              fontSize: '14px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              transition: 'all 0.2s'
+            }}
+          >
+            <span style={{ color: '#f5af02' }}>eBay</span>
+            <span style={{ color: '#444' }}>→</span>
+            <span style={{ color: '#f5af02' }}>eBay</span>
+            {ebayItems.length > 0 && (
+              <span style={{
+                background: '#f5af0222',
+                color: '#f5af02',
+                padding: '2px 8px',
+                borderRadius: '10px',
+                fontSize: '11px'
+              }}>{ebayItems.length}</span>
+            )}
+          </button>
+        </div>
+
+        {/* Controls Bar */}
+        <div style={{
+          padding: '10px 24px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '20px',
+          flexWrap: 'wrap',
+          maxWidth: '1600px',
+          margin: '0 auto'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+            {activeTab === 'vinted' && (
+              <>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <label style={{ fontSize: '12px', color: '#666' }}>eBay Fee:</label>
+                  <input
+                    type="number"
+                    value={ebayFeePercent}
+                    onChange={e => {
+                      const newFee = parseFloat(e.target.value) || 0;
+                      setEbayFeePercent(newFee);
+                      // Recalculate all profits
+                      setItems(prev => prev.map(item => {
+                        const cost = activeTab === 'vinted' ? item.price : (item.currentBid || item.estimateLow);
+                        const sale = parseFloat(item.avgSale) || 0;
+                        const postage = parseFloat(item.postage) || 0;
+                        const profit = sale > 0 ? (sale - cost - postage - (sale * newFee / 100)).toFixed(2) : null;
+                        return { ...item, profit };
+                      }));
+                    }}
+                    style={{
+                      width: '50px',
+                      background: '#1a1a1a',
+                      border: '1px solid #333',
+                      borderRadius: '4px',
+                      padding: '5px 8px',
+                      color: '#fff',
+                      fontSize: '12px',
+                      textAlign: 'center'
+                    }}
+                  />
+                  <span style={{ fontSize: '12px', color: '#666' }}>%</span>
+                </div>
+                
+                {/* Feature 2: Default postage */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <label style={{ fontSize: '12px', color: '#666' }}>Default Postage:</label>
+                  <span style={{ fontSize: '12px', color: '#666' }}>£</span>
+                  <input
+                    type="number"
+                    step="0.50"
+                    value={defaultPostage}
+                    onChange={e => setDefaultPostage(parseFloat(e.target.value) || 0)}
+                    style={{
+                      width: '55px',
+                      background: '#1a1a1a',
+                      border: '1px solid #333',
+                      borderRadius: '4px',
+                      padding: '5px 8px',
+                      color: '#fff',
+                      fontSize: '12px',
+                      textAlign: 'center'
+                    }}
+                  />
+                  <button
+                    onClick={() => {
+                      setItems(prev => prev.map(item => ({
+                        ...item,
+                        postage: defaultPostage.toString()
+                      })));
+                    }}
+                    style={{
+                      background: '#1a1a1a',
+                      border: '1px solid #333',
+                      borderRadius: '4px',
+                      padding: '4px 8px',
+                      color: '#888',
+                      fontSize: '10px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Apply All
+                  </button>
+                </div>
+              </>
+            )}
+
+            {activeTab === 'ebay' && (
+              <>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <label style={{ fontSize: '12px', color: '#666' }}>eBay Fee:</label>
+                  <input
+                    type="number"
+                    value={ebayFeePercent}
+                    onChange={e => {
+                      const newFee = parseFloat(e.target.value) || 0;
+                      setEbayFeePercent(newFee);
+                      setItems(prev => prev.map(item => {
+                        const cost = item.price;
+                        const sale = parseFloat(item.avgSale) || 0;
+                        const postage = parseFloat(item.postage) || 0;
+                        const profit = sale > 0 ? (sale - cost - postage - (sale * newFee / 100)).toFixed(2) : null;
+                        return { ...item, profit };
+                      }));
+                    }}
+                    style={{
+                      width: '50px',
+                      background: '#1a1a1a',
+                      border: '1px solid #333',
+                      borderRadius: '4px',
+                      padding: '5px 8px',
+                      color: '#fff',
+                      fontSize: '12px',
+                      textAlign: 'center'
+                    }}
+                  />
+                  <span style={{ fontSize: '12px', color: '#666' }}>%</span>
+                </div>
+              
+                {/* Feature 2: Default postage for eBay tab */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <label style={{ fontSize: '12px', color: '#666' }}>Default Postage:</label>
+                  <span style={{ fontSize: '12px', color: '#666' }}>£</span>
+                <input
+                  type="number"
+                  step="0.50"
+                  value={defaultPostage}
+                  onChange={e => setDefaultPostage(parseFloat(e.target.value) || 0)}
+                  style={{
+                    width: '55px',
+                    background: '#1a1a1a',
+                    border: '1px solid #333',
+                    borderRadius: '4px',
+                    padding: '5px 8px',
+                    color: '#fff',
+                    fontSize: '12px',
+                    textAlign: 'center'
+                  }}
+                />
+                <button
+                  onClick={() => {
+                    setItems(prev => prev.map(item => ({
+                      ...item,
+                      postage: defaultPostage.toString()
+                    })));
+                  }}
+                  style={{
+                    background: '#1a1a1a',
+                    border: '1px solid #333',
+                    borderRadius: '4px',
+                    padding: '4px 8px',
+                    color: '#888',
+                    fontSize: '10px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Apply All
+                </button>
+              </div>
+              </>
+            )}
+            
+            {activeTab === 'saleroom' && (
+              <>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <label style={{ fontSize: '12px', color: '#666' }}>Buyer's Premium:</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={buyersPremium}
+                    onChange={e => setBuyersPremium(parseFloat(e.target.value) || 0)}
+                    style={{
+                      width: '55px',
+                      background: '#1a1a1a',
+                      border: '1px solid #333',
+                      borderRadius: '4px',
+                      padding: '5px 8px',
+                      color: '#fff',
+                      fontSize: '12px',
+                      textAlign: 'center'
+                    }}
+                  />
+                  <span style={{ fontSize: '12px', color: '#666' }}>%</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <label style={{ fontSize: '12px', color: '#666' }}>Online Commission:</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={onlineCommission}
+                    onChange={e => setOnlineCommission(parseFloat(e.target.value) || 0)}
+                    style={{
+                      width: '55px',
+                      background: '#1a1a1a',
+                      border: '1px solid #333',
+                      borderRadius: '4px',
+                      padding: '5px 8px',
+                      color: '#fff',
+                      fontSize: '12px',
+                      textAlign: 'center'
+                    }}
+                  />
+                  <span style={{ fontSize: '12px', color: '#666' }}>%</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <label style={{ fontSize: '12px', color: '#666' }}>eBay Fee:</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={ebayFeePercent}
+                    onChange={e => setEbayFeePercent(parseFloat(e.target.value) || 0)}
+                    style={{
+                      width: '50px',
+                      background: '#1a1a1a',
+                      border: '1px solid #333',
+                      borderRadius: '4px',
+                      padding: '5px 8px',
+                      color: '#fff',
+                      fontSize: '12px',
+                      textAlign: 'center'
+                    }}
+                  />
+                  <span style={{ fontSize: '12px', color: '#666' }}>%</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <label style={{ fontSize: '12px', color: '#666' }}>Desired Profit:</label>
+                  <input
+                    type="number"
+                    step="1"
+                    value={desiredProfitPercent}
+                    onChange={e => setDesiredProfitPercent(parseFloat(e.target.value) || 0)}
+                    style={{
+                      width: '50px',
+                      background: '#1a1a1a',
+                      border: '1px solid #333',
+                      borderRadius: '4px',
+                      padding: '5px 8px',
+                      color: '#fff',
+                      fontSize: '12px',
+                      textAlign: 'center'
+                    }}
+                  />
+                  <span style={{ fontSize: '12px', color: '#666' }}>%</span>
+                </div>
+                
+                {/* Quick Calculator */}
+                <div style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '8px',
+                  marginLeft: '16px',
+                  paddingLeft: '16px',
+                  borderLeft: '1px solid #333'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <label style={{ fontSize: '12px', color: '#e63946' }}>Quick Calc:</label>
+                    <span style={{ fontSize: '12px', color: '#666' }}>£</span>
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={quickAvgSale}
+                      onChange={e => setQuickAvgSale(e.target.value)}
+                      placeholder="Avg Sale"
+                      style={{
+                        width: '70px',
+                        background: '#1a1a1a',
+                        border: '1px solid #333',
+                        borderRadius: '4px',
+                        padding: '5px 8px',
+                        color: '#fff',
+                        fontSize: '12px',
+                        textAlign: 'right'
+                      }}
+                    />
+                  </div>
+                  <span style={{ fontSize: '12px', color: '#444' }}>→</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <span style={{ fontSize: '12px', color: '#666' }}>Max Bid:</span>
+                    <span style={{ 
+                      fontSize: '12px', 
+                      fontWeight: '600', 
+                      color: quickAvgSale ? '#4ade80' : '#444'
+                    }}>
+                      {quickAvgSale ? `£${calculateMaxBid(quickAvgSale)}` : '—'}
+                    </span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <span style={{ fontSize: '12px', color: '#666' }}>Total Cost:</span>
+                    <span style={{ 
+                      fontSize: '12px', 
+                      fontWeight: '600', 
+                      color: quickAvgSale ? '#f5af02' : '#444'
+                    }}>
+                      {quickAvgSale ? `£${(parseFloat(calculateMaxBid(quickAvgSale)) * (1 + (buyersPremium + onlineCommission) / 100)).toFixed(2)}` : '—'}
+                    </span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <span style={{ fontSize: '12px', color: '#666' }}>Profit:</span>
+                    <span style={{ 
+                      fontSize: '12px', 
+                      fontWeight: '600', 
+                      color: quickAvgSale ? '#4ade80' : '#444'
+                    }}>
+                      {quickAvgSale ? `£${calculateSaleroomProfit(quickAvgSale)}` : '—'}
+                    </span>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+          
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+            {/* Feature 5: Progress indicator */}
+            {isFetching && (
+              <span style={{ 
+                color: '#a78bfa', 
+                fontSize: '12px',
+                padding: '6px 12px',
+                background: '#7c3aed20',
+                borderRadius: '4px'
+              }}>
+                ⏳ Fetching {fetchProgress.current}/{fetchProgress.total}...
+              </span>
+            )}
+            
+            {items.length > 0 && !isFetching && (
+              <>
+                <button
+                  onClick={getAllEbayAvg}
+                  disabled={isFetching}
+                  style={{
+                    background: '#7c3aed',
+                    border: 'none',
+                    borderRadius: '4px',
+                    padding: '6px 12px',
+                    color: '#fff',
+                    fontSize: '12px',
+                    cursor: isFetching ? 'not-allowed' : 'pointer',
+                    opacity: isFetching ? 0.5 : 1
+                  }}
+                >
+                  🔍 Get All Prices
+                </button>
+                
+                {/* Feature 4: Filter dropdown */}
+                <select
+                  value={profitFilter}
+                  onChange={e => setProfitFilter(e.target.value)}
+                  style={{
+                    background: '#1a1a1a',
+                    border: '1px solid #333',
+                    borderRadius: '4px',
+                    padding: '6px 8px',
+                    color: '#888',
+                    fontSize: '12px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <option value="all">All Items ({rawItems.length})</option>
+                  <option value="withPrice">With Price ({rawItems.filter(i => i.aiEstimate && i.aiEstimate !== 'N/A').length})</option>
+                  <option value="profitable">Profitable ({rawItems.filter(i => parseFloat(i.profit) > 0).length})</option>
+                  <option value="high">High Profit 50%+ ({rawItems.filter(i => {
+                    const profit = parseFloat(i.profit) || 0;
+                    const cost = parseFloat(i.price || i.estimateLow) || 0;
+                    return cost > 0 && profit >= cost * 0.5;
+                  }).length})</option>
+                </select>
+                
+                <button
+                  onClick={exportCSV}
+                  style={{
+                    background: '#1a1a1a',
+                    border: '1px solid #333',
+                    borderRadius: '4px',
+                    padding: '6px 12px',
+                    color: '#888',
+                    fontSize: '12px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  📥 CSV
+                </button>
+                
+                {/* Feature 12: Google Sheets export */}
+                <button
+                  onClick={exportToGoogleSheets}
+                  style={{
+                    background: '#1a1a1a',
+                    border: '1px solid #333',
+                    borderRadius: '4px',
+                    padding: '6px 12px',
+                    color: '#888',
+                    fontSize: '12px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  📊 Sheets
+                </button>
+                
+                <button
+                  onClick={clearAll}
+                  style={{
+                    background: '#1a1a1a',
+                    border: '1px solid #333',
+                    borderRadius: '4px',
+                    padding: '6px 12px',
+                    color: '#888',
+                    fontSize: '12px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  🗑️ Clear
+                </button>
+                <button
+                  onClick={() => {
+                    const keys = Object.keys(localStorage).filter(k => k.startsWith('ebayPrice_'));
+                    keys.forEach(k => localStorage.removeItem(k));
+                    alert(`Cleared ${keys.length} cached prices`);
+                  }}
+                  style={{
+                    background: '#1a1a1a',
+                    border: '1px solid #333',
+                    borderRadius: '4px',
+                    padding: '6px 12px',
+                    color: '#888',
+                    fontSize: '12px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  💾 Cache
+                </button>
+                
+                {/* Copy Script button */}
+                <button
+                  onClick={() => {
+                    const script = activeTab === 'vinted' ? vintedScript : (activeTab === 'saleroom' ? saleroomScript : ebayScript);
+                    navigator.clipboard.writeText(script);
+                    setTopScriptCopied(true);
+                    setTimeout(() => setTopScriptCopied(false), 2000);
+                  }}
+                  style={{
+                    background: topScriptCopied ? '#1a3a1a' : '#1a1a1a',
+                    border: `1px solid ${topScriptCopied ? '#2a4a2a' : '#333'}`,
+                    borderRadius: '4px',
+                    padding: '6px 12px',
+                    color: topScriptCopied ? '#4ade80' : '#888',
+                    fontSize: '12px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  {topScriptCopied ? '✓ Copied!' : '📋 Copy Script'}
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Auction House Links - Saleroom only */}
+        {activeTab === 'saleroom' && (
+          <div style={{
+            padding: '8px 24px',
+            background: '#0d0d0d',
+            borderTop: '1px solid #1a1a1a',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '16px',
+            flexWrap: 'wrap',
+            maxWidth: '1600px',
+            margin: '0 auto'
+          }}>
+            <span style={{ fontSize: '11px', color: '#555' }}>Quick Links:</span>
+            <a
+              href="https://www.the-saleroom.com/en-gb/auction-catalogues/gary-don"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '11px',
+                color: '#e63946',
+                textDecoration: 'none',
+                padding: '4px 10px',
+                background: '#e6394615',
+                borderRadius: '3px'
+              }}
+            >
+              Gary Don
+            </a>
+            <a
+              href="https://www.the-saleroom.com/en-gb/auction-catalogues/morleyauctioneers"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '11px',
+                color: '#e63946',
+                textDecoration: 'none',
+                padding: '4px 10px',
+                background: '#e6394615',
+                borderRadius: '3px'
+              }}
+            >
+              Morley
+            </a>
+            <a
+              href="https://www.the-saleroom.com/en-gb/auction-catalogues/oberon"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '11px',
+                color: '#e63946',
+                textDecoration: 'none',
+                padding: '4px 10px',
+                background: '#e6394615',
+                borderRadius: '3px'
+              }}
+            >
+              Oberon
+            </a>
+            <a
+              href="https://www.the-saleroom.com/en-gb/auction-catalogues/c-w-harrison-and-son"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '11px',
+                color: '#e63946',
+                textDecoration: 'none',
+                padding: '4px 10px',
+                background: '#e6394615',
+                borderRadius: '3px'
+              }}
+            >
+              Harrison
+            </a>
+            <span style={{ color: '#333', margin: '0 4px' }}>|</span>
+            <a
+              href="https://www.ebay.co.uk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '11px',
+                color: '#f5af02',
+                textDecoration: 'none',
+                padding: '4px 10px',
+                background: '#f5af0215',
+                borderRadius: '3px'
+              }}
+            >
+              eBay
+            </a>
+          </div>
+        )}
+
+        {/* Quick Links - Vinted only */}
+        {activeTab === 'vinted' && (
+          <div style={{
+            padding: '8px 24px',
+            background: '#0d0d0d',
+            borderTop: '1px solid #1a1a1a',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '16px',
+            flexWrap: 'wrap',
+            maxWidth: '1600px',
+            margin: '0 auto'
+          }}>
+            <span style={{ fontSize: '11px', color: '#555' }}>Quick Links:</span>
+            <a
+              href="https://www.vinted.co.uk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '11px',
+                color: '#09b1ba',
+                textDecoration: 'none',
+                padding: '4px 10px',
+                background: '#09b1ba15',
+                borderRadius: '3px'
+              }}
+            >
+              Vinted
+            </a>
+            <span style={{ color: '#333', margin: '0 4px' }}>|</span>
+            <a
+              href="https://www.ebay.co.uk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '11px',
+                color: '#f5af02',
+                textDecoration: 'none',
+                padding: '4px 10px',
+                background: '#f5af0215',
+                borderRadius: '3px'
+              }}
+            >
+              eBay
+            </a>
+          </div>
+        )}
+
+        {/* Quick Links - eBay only */}
+        {activeTab === 'ebay' && (
+          <div style={{
+            padding: '8px 24px',
+            background: '#0d0d0d',
+            borderTop: '1px solid #1a1a1a',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '16px',
+            flexWrap: 'wrap',
+            maxWidth: '1600px',
+            margin: '0 auto'
+          }}>
+            <span style={{ fontSize: '11px', color: '#555' }}>Quick Links:</span>
+            <a
+              href="https://www.ebay.co.uk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '11px',
+                color: '#f5af02',
+                textDecoration: 'none',
+                padding: '4px 10px',
+                background: '#f5af0215',
+                borderRadius: '3px'
+              }}
+            >
+              eBay Home
+            </a>
+            <a
+              href="https://www.ebay.co.uk/sch/i.html?_nkw=&_sacat=0&_from=R40&rt=nc&LH_Sold=1&LH_Complete=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '11px',
+                color: '#4ade80',
+                textDecoration: 'none',
+                padding: '4px 10px',
+                background: '#4ade8015',
+                borderRadius: '3px'
+              }}
+            >
+              eBay Sold
+            </a>
+            <button
+              onClick={() => {
+                const script = `(function(){
+  const prices = [];
+  document.querySelectorAll('.s-card__price, .s-item__price').forEach(el => {
+    const match = el.textContent.match(/£([\\d,]+\\.?\\d*)/);
+    if (match) {
+      const p = parseFloat(match[1].replace(',', ''));
+      if (p > 0.5 && p < 50000) prices.push(p);
+    }
+  });
+  if (prices.length === 0) { alert('No sold prices found on this page'); return; }
+  const unique = [...new Set(prices)];
+  unique.sort((a,b) => a-b);
+  let filtered = unique;
+  if (unique.length >= 6) {
+    const cut = Math.floor(unique.length * 0.15);
+    filtered = unique.slice(cut, unique.length - cut);
+  }
+  const avg = (filtered.reduce((a,b) => a+b, 0) / filtered.length).toFixed(2);
+  const min = Math.min(...unique).toFixed(2);
+  const max = Math.max(...unique).toFixed(2);
+  prompt('Average: £' + avg + ' (from ' + unique.length + ' sales, range £' + min + ' - £' + max + ')\\n\\nCopy this price:', avg);
+})();`;
+                navigator.clipboard.writeText(script);
+                setPriceScriptCopied(true);
+                setTimeout(() => setPriceScriptCopied(false), 2000);
+              }}
+              style={{
+                fontSize: '11px',
+                color: priceScriptCopied ? '#4ade80' : '#a78bfa',
+                background: priceScriptCopied ? '#1a3a1a' : '#a78bfa15',
+                border: 'none',
+                padding: '4px 10px',
+                borderRadius: '3px',
+                cursor: 'pointer'
+              }}
+            >
+              {priceScriptCopied ? '✓ Copied!' : '📋 Copy Price Script'}
+            </button>
+          </div>
+        )}
+      </header>
+
+      <main style={{ maxWidth: '1600px', margin: '0 auto', padding: '20px' }}>
+        {/* Input Section */}
+        <div style={{
+          background: '#111',
+          borderRadius: '8px',
+          border: '1px solid #222',
+          padding: '16px',
+          marginBottom: '20px'
+        }}>
+          <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-end' }}>
+            <div style={{ flex: 1 }}>
+              <label style={{ fontSize: '12px', color: '#666', display: 'block', marginBottom: '6px' }}>
+                Paste {activeTab === 'vinted' ? 'Vinted' : (activeTab === 'saleroom' ? 'Saleroom' : 'eBay')} data (JSON from console script) - Press Enter to extract
+              </label>
+              <textarea
+                value={htmlInput}
+                onChange={e => setHtmlInput(e.target.value)}
+                onKeyDown={e => {
+                  // Feature 8: Keyboard shortcut - Ctrl+Enter or Cmd+Enter to extract
+                  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter' && htmlInput.trim()) {
+                    e.preventDefault();
+                    if (activeTab === 'vinted') parseVintedHTML();
+                    else if (activeTab === 'saleroom') parseSaleroomHTML();
+                    else parseEbayHTML();
+                  }
+                }}
+                placeholder={`Paste the JSON output from the browser console script here... (Ctrl+Enter to extract)`}
+                style={{
+                  width: '100%',
+                  height: '80px',
+                  background: '#0a0a0a',
+                  border: '1px solid #333',
+                  borderRadius: '4px',
+                  padding: '10px',
+                  color: '#ddd',
+                  fontSize: '12px',
+                  fontFamily: 'Consolas, monospace',
+                  resize: 'vertical'
+                }}
+              />
+            </div>
+            <button
+              onClick={activeTab === 'vinted' ? parseVintedHTML : (activeTab === 'saleroom' ? parseSaleroomHTML : parseEbayHTML)}
+              disabled={!htmlInput.trim() || isProcessing}
+              style={{
+                background: activeTab === 'vinted' ? '#09b1ba' : (activeTab === 'saleroom' ? '#e63946' : '#f5af02'),
+                border: 'none',
+                borderRadius: '4px',
+                padding: '12px 24px',
+                color: '#fff',
+                fontSize: '13px',
+                fontWeight: '600',
+                cursor: htmlInput.trim() ? 'pointer' : 'not-allowed',
+                opacity: htmlInput.trim() ? 1 : 0.5,
+                whiteSpace: 'nowrap'
+              }}
+            >
+              {isProcessing ? 'Processing...' : 'Extract Items'}
+            </button>
+          </div>
+        </div>
+
+        {/* Stats Bar */}
+        {items.length > 0 && (
+          <div style={{
+            display: 'flex',
+            gap: '12px',
+            marginBottom: '20px',
+            flexWrap: 'wrap',
+            alignItems: 'center'
+          }}>
+            <div style={{
+              background: '#111',
+              borderRadius: '6px',
+              padding: '10px 16px',
+              border: '1px solid #222'
+            }}>
+              <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Items</div>
+              <div style={{ fontSize: '18px', fontWeight: '600', color: '#fff' }}>{rawItems.length}</div>
+            </div>
+            
+            <div style={{
+              background: '#111',
+              borderRadius: '6px',
+              padding: '10px 16px',
+              border: '1px solid #222'
+            }}>
+              <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Total Cost</div>
+              <div style={{ fontSize: '18px', fontWeight: '600', color: '#f5af02' }}>£{totalCost.toFixed(2)}</div>
+            </div>
+            
+            <div style={{
+              background: '#111',
+              borderRadius: '6px',
+              padding: '10px 16px',
+              border: '1px solid #222'
+            }}>
+              <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Analyzed</div>
+              <div style={{ fontSize: '18px', fontWeight: '600', color: activeTab === 'vinted' ? '#09b1ba' : '#e63946' }}>{stats.analyzed}</div>
+            </div>
+            
+            {/* Feature 11: Additional analytics */}
+            <div style={{
+              background: '#111',
+              borderRadius: '6px',
+              padding: '10px 16px',
+              border: '1px solid #222'
+            }}>
+              <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Profitable</div>
+              <div style={{ fontSize: '18px', fontWeight: '600', color: '#a78bfa' }}>{stats.profitable}</div>
+            </div>
+            
+            <div style={{
+              background: totalProfit >= 0 ? '#0a1a0a' : '#1a0a0a',
+              borderRadius: '6px',
+              padding: '10px 16px',
+              border: `1px solid ${totalProfit >= 0 ? '#1a2a1a' : '#2a1a1a'}`
+            }}>
+              <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Total Profit</div>
+              <div style={{ 
+                fontSize: '18px', 
+                fontWeight: '600', 
+                color: totalProfit >= 0 ? '#4ade80' : '#f87171' 
+              }}>
+                £{totalProfit.toFixed(2)}
+              </div>
+            </div>
+            
+            {/* Feature 11: ROI */}
+            <div style={{
+              background: '#111',
+              borderRadius: '6px',
+              padding: '10px 16px',
+              border: '1px solid #222'
+            }}>
+              <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Avg ROI</div>
+              <div style={{ 
+                fontSize: '18px', 
+                fontWeight: '600', 
+                color: parseFloat(stats.avgROI) >= 50 ? '#4ade80' : (parseFloat(stats.avgROI) >= 0 ? '#f5af02' : '#f87171')
+              }}>
+                {stats.avgROI}%
+              </div>
+            </div>
+            
+            {/* Show filter indicator */}
+            {profitFilter !== 'all' && (
+              <div style={{
+                background: '#7c3aed20',
+                borderRadius: '6px',
+                padding: '10px 16px',
+                border: '1px solid #7c3aed40'
+              }}>
+                <div style={{ fontSize: '10px', color: '#a78bfa', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Showing</div>
+                <div style={{ fontSize: '14px', fontWeight: '600', color: '#a78bfa' }}>{items.length} of {rawItems.length}</div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Data Table */}
+        {items.length > 0 && (
+          <div style={{
+            background: '#111',
+            borderRadius: '6px',
+            border: '1px solid #222',
+            overflow: 'hidden'
+          }}>
+            <div style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '70vh' }}>
+              <table style={{
+                width: '100%',
+                borderCollapse: 'collapse',
+                fontSize: '12px',
+                minWidth: activeTab === 'saleroom' ? '1100px' : '900px'
+              }}>
+                <thead style={{ position: 'sticky', top: 0, zIndex: 10 }}>
+                  <tr style={{ background: '#1a1a1a' }}>
+                    <th style={{ padding: '10px 12px', textAlign: 'center', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '100px' }}>Image</th>
+                    {activeTab === 'saleroom' && (
+                      <th style={{ padding: '10px 12px', textAlign: 'center', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '50px' }}>Lot #</th>
+                    )}
+                    <th 
+                      onClick={() => toggleSort('title')}
+                      style={{ padding: '10px 12px', textAlign: 'left', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', cursor: 'pointer', userSelect: 'none' }}
+                    >
+                      {activeTab === 'vinted' ? 'Product Name' : (activeTab === 'ebay' ? 'Item Title' : 'Title')}
+                      {sortColumn === 'title' && <span style={{ marginLeft: '4px' }}>{sortDirection === 'asc' ? '↑' : '↓'}</span>}
+                    </th>
+                    {activeTab === 'saleroom' && (
+                      <th style={{ padding: '10px 12px', textAlign: 'left', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '150px' }}>Identified As</th>
+                    )}
+                    <th 
+                      onClick={() => toggleSort('cost')}
+                      style={{ padding: '10px 12px', textAlign: 'right', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px', cursor: 'pointer', userSelect: 'none' }}
+                    >
+                      {activeTab === 'saleroom' ? 'Estimate' : 'Cost'}
+                      {sortColumn === 'cost' && <span style={{ marginLeft: '4px' }}>{sortDirection === 'asc' ? '↑' : '↓'}</span>}
+                    </th>
+                    <th style={{ padding: '10px 12px', textAlign: 'center', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '90px' }}>
+                      {activeTab === 'vinted' ? 'Vinted' : (activeTab === 'ebay' ? 'Listing' : 'Lot Page')}
+                    </th>
+                    {activeTab === 'saleroom' && (
+                      <th style={{ padding: '10px 12px', textAlign: 'center', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px' }}>🔍 Lens</th>
+                    )}
+                    <th style={{ padding: '10px 12px', textAlign: 'center', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '110px' }}>eBay Sold</th>
+                    <th 
+                      onClick={() => toggleSort('ebayAvg')}
+                      style={{ padding: '10px 12px', textAlign: 'center', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px', cursor: 'pointer', userSelect: 'none' }}
+                    >
+                      eBay Avg
+                      {sortColumn === 'ebayAvg' && <span style={{ marginLeft: '4px' }}>{sortDirection === 'asc' ? '↑' : '↓'}</span>}
+                    </th>
+                    <th 
+                      onClick={() => toggleSort('avgSale')}
+                      style={{ padding: '10px 12px', textAlign: 'right', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '90px', cursor: 'pointer', userSelect: 'none' }}
+                    >
+                      Avg Sale
+                      {sortColumn === 'avgSale' && <span style={{ marginLeft: '4px' }}>{sortDirection === 'asc' ? '↑' : '↓'}</span>}
+                    </th>
+                    {(activeTab === 'vinted' || activeTab === 'ebay') && (
+                      <th style={{ padding: '10px 12px', textAlign: 'right', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px' }}>Postage</th>
+                    )}
+                    {(activeTab === 'vinted' || activeTab === 'ebay') && (
+                      <th 
+                        onClick={() => toggleSort('profit')}
+                        style={{ padding: '10px 12px', textAlign: 'right', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px', cursor: 'pointer', userSelect: 'none' }}
+                      >
+                        Profit
+                        {sortColumn === 'profit' && <span style={{ marginLeft: '4px' }}>{sortDirection === 'asc' ? '↑' : '↓'}</span>}
+                      </th>
+                    )}
+                    {activeTab === 'saleroom' && (
+                      <th style={{ padding: '10px 12px', textAlign: 'right', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px' }}>Max Bid</th>
+                    )}
+                    {activeTab === 'saleroom' && (
+                      <th style={{ padding: '10px 12px', textAlign: 'right', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px' }}>Profit</th>
+                    )}
+                    <th style={{ padding: '10px 12px', textAlign: 'center', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '40px' }}></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {items.map((item, index) => (
+                    <tr 
+                      key={item.id}
+                      style={{ 
+                        background: index % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.015)',
+                        borderBottom: '1px solid #1a1a1a'
+                      }}
+                    >
+                      <td style={{ padding: '8px 12px', textAlign: 'center' }}>
+                        {item.imageUrl ? (
+                          <div style={{ position: 'relative', width: '60px', height: '60px', margin: '0 auto' }}>
+                            <img 
+                              src={item.imageUrl} 
+                              alt="" 
+                              onError={(e) => {
+                                e.target.style.display = 'none';
+                                e.target.nextSibling.style.display = 'flex';
+                              }}
+                              style={{ 
+                                width: '60px', 
+                                height: '60px', 
+                                objectFit: 'cover', 
+                                borderRadius: '4px',
+                                border: '1px solid #333'
+                              }} 
+                            />
+                            <a
+                              href={item.imageUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{ 
+                                width: '60px', 
+                                height: '60px', 
+                                background: '#1a1a1a', 
+                                borderRadius: '4px',
+                                display: 'none',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                color: '#666',
+                                textDecoration: 'none',
+                                fontSize: '10px',
+                                flexDirection: 'column',
+                                gap: '2px',
+                                border: '1px solid #333'
+                              }}
+                            >
+                              <span style={{ fontSize: '16px' }}>🖼️</span>
+                              <span>View</span>
+                            </a>
+                          </div>
+                        ) : (
+                          <div style={{ 
+                            width: '60px', 
+                            height: '60px', 
+                            background: '#1a1a1a', 
+                            borderRadius: '4px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: '#444',
+                            margin: '0 auto'
+                          }}>
+                            📷
+                          </div>
+                        )}
+                      </td>
+                      {activeTab === 'saleroom' && (
+                        <td style={{ padding: '8px 12px', textAlign: 'center' }}>
+                          <span style={{
+                            background: '#e6394622',
+                            color: '#e63946',
+                            padding: '4px 8px',
+                            borderRadius: '4px',
+                            fontSize: '12px',
+                            fontWeight: '600'
+                          }}>
+                            {item.lotNumber || '—'}
+                          </span>
+                        </td>
+                      )}
+                      <td style={{ padding: '8px 12px' }}>
+                        <input
+                          type="text"
+                          value={item.title}
+                          onChange={e => updateField(item.id, 'title', e.target.value)}
+                          style={{
+                            width: '100%',
+                            background: 'transparent',
+                            border: 'none',
+                            color: '#ddd',
+                            fontSize: '12px',
+                            padding: '4px 0'
+                          }}
+                        />
+                        {activeTab === 'vinted' && item.brand && (
+                          <div style={{ fontSize: '10px', color: '#555', marginTop: '2px' }}>
+                            {item.brand} • {item.condition}
+                          </div>
+                        )}
+                      </td>
+                      {activeTab === 'saleroom' && (
+                        <td style={{ padding: '8px 12px' }}>
+                          <input
+                            type="text"
+                            value={item.identifiedAs || ''}
+                            onChange={e => updateField(item.id, 'identifiedAs', e.target.value)}
+                            placeholder="Use Lens to identify..."
+                            style={{
+                              width: '100%',
+                              background: '#0a0a0a',
+                              border: '1px solid #282828',
+                              borderRadius: '3px',
+                              color: '#4ade80',
+                              fontSize: '11px',
+                              padding: '6px 8px'
+                            }}
+                          />
+                        </td>
+                      )}
+                      <td style={{ padding: '8px 12px', textAlign: 'right' }}>
+                        {(activeTab === 'vinted' || activeTab === 'ebay') ? (
+                          <input
+                            type="number"
+                            step="0.01"
+                            value={item.price}
+                            onChange={e => updateField(item.id, 'price', e.target.value)}
+                            style={{
+                              width: '70px',
+                              background: '#0a0a0a',
+                              border: '1px solid #282828',
+                              borderRadius: '3px',
+                              padding: '6px 8px',
+                              color: '#f5af02',
+                              fontSize: '12px',
+                              textAlign: 'right'
+                            }}
+                          />
+                        ) : (
+                          <div style={{ color: '#888', fontSize: '11px' }}>
+                            £{item.estimateLow} - £{item.estimateHigh}
+                          </div>
+                        )}
+                      </td>
+                      <td style={{ padding: '8px 12px', textAlign: 'center' }}>
+                        {item.link ? (
+                          <a
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              color: activeTab === 'vinted' ? '#09b1ba' : (activeTab === 'ebay' ? '#f5af02' : '#e63946'),
+                              fontSize: '11px',
+                              textDecoration: 'none',
+                              padding: '4px 10px',
+                              background: activeTab === 'vinted' ? '#09b1ba15' : (activeTab === 'ebay' ? '#f5af0215' : '#e6394615'),
+                              borderRadius: '3px'
+                            }}
+                          >
+                            View
+                          </a>
+                        ) : (
+                          <span style={{ color: '#333' }}>—</span>
+                        )}
+                      </td>
+                      {activeTab === 'saleroom' && (
+                        <td style={{ padding: '8px 12px', textAlign: 'center' }}>
+                          {item.imageUrl ? (
+                            <a
+                              href={generateGoogleLensLink(item.imageUrl)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                color: '#fff',
+                                fontSize: '11px',
+                                textDecoration: 'none',
+                                padding: '4px 10px',
+                                background: 'linear-gradient(135deg, #4285f4, #ea4335, #fbbc05, #34a853)',
+                                borderRadius: '3px',
+                                fontWeight: '500'
+                              }}
+                            >
+                              Lens
+                            </a>
+                          ) : (
+                            <span style={{ color: '#333' }}>—</span>
+                          )}
+                        </td>
+                      )}
+                      <td style={{ padding: '8px 12px', textAlign: 'center' }}>
+                        <a
+                          href={item.ebayLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            color: '#f5af02',
+                            fontSize: '11px',
+                            textDecoration: 'none',
+                            padding: '4px 10px',
+                            background: '#f5af0215',
+                            borderRadius: '3px'
+                          }}
+                        >
+                          eBay Search
+                        </a>
+                      </td>
+                      <td style={{ padding: '8px 12px', textAlign: 'center' }}>
+                        {item.aiEstimate === 'loading' ? (
+                          <span style={{ color: '#666', fontSize: '11px' }}>...</span>
+                        ) : item.aiEstimate && item.aiEstimate !== 'N/A' && item.aiEstimate !== 'Error' ? (
+                          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
+                            <span style={{ 
+                              color: parseFloat(item.aiEstimate) >= (item.price || item.estimateLow || 0) * 2 
+                                ? '#4ade80' 
+                                : '#a78bfa', 
+                              fontSize: '12px',
+                              fontWeight: '600'
+                            }}>
+                              £{item.aiEstimate}
+                            </span>
+                            <span style={{ color: '#555', fontSize: '9px' }}>
+                              ({item.soldCount || 0} sold){item.fromCache ? ' 💾' : ''}
+                            </span>
+                          </div>
+                        ) : item.aiEstimate === 'Error' || item.aiEstimate === 'N/A' ? (
+                          <span style={{ color: '#f87171', fontSize: '11px' }}>{item.aiEstimate}</span>
+                        ) : (
+                          <button
+                            onClick={() => getEbayAvg(item.id, item.title, item.brand || '')}
+                            style={{
+                              background: '#7c3aed',
+                              border: 'none',
+                              borderRadius: '3px',
+                              padding: '4px 8px',
+                              color: '#fff',
+                              fontSize: '10px',
+                              cursor: 'pointer'
+                            }}
+                          >
+                            Get
+                          </button>
+                        )}
+                      </td>
+                      <td style={{ padding: '8px 12px', textAlign: 'right' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '2px' }}>
+                          <span style={{ color: '#555', fontSize: '11px' }}>£</span>
+                          <input
+                            type="number"
+                            step="0.01"
+                            value={item.avgSale}
+                            onChange={e => updateField(item.id, 'avgSale', e.target.value)}
+                            placeholder="0.00"
+                            style={{
+                              width: '60px',
+                              background: '#0a0a0a',
+                              border: '1px solid #282828',
+                              borderRadius: '3px',
+                              padding: '6px 8px',
+                              color: '#fff',
+                              fontSize: '12px',
+                              textAlign: 'right'
+                            }}
+                          />
+                        </div>
+                      </td>
+                      {(activeTab === 'vinted' || activeTab === 'ebay') && (
+                        <td style={{ padding: '8px 12px', textAlign: 'right' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '2px' }}>
+                            <span style={{ color: '#555', fontSize: '11px' }}>£</span>
+                            <input
+                              type="number"
+                              step="0.01"
+                              value={item.postage}
+                              onChange={e => updateField(item.id, 'postage', e.target.value)}
+                              placeholder="0.00"
+                              style={{
+                                width: '55px',
+                                background: '#0a0a0a',
+                                border: '1px solid #282828',
+                                borderRadius: '3px',
+                                padding: '6px 8px',
+                                color: '#fff',
+                                fontSize: '12px',
+                                textAlign: 'right'
+                              }}
+                            />
+                          </div>
+                        </td>
+                      )}
+                      {(activeTab === 'vinted' || activeTab === 'ebay') && (
+                        <td style={{ 
+                          padding: '8px 12px', 
+                          textAlign: 'right',
+                          fontWeight: '600',
+                          color: item.profit === null ? '#333' : parseFloat(item.profit) >= 0 ? '#4ade80' : '#f87171'
+                        }}>
+                          {item.profit !== null ? `£${item.profit}` : '—'}
+                        </td>
+                      )}
+                      {activeTab === 'saleroom' && (
+                        <td style={{ 
+                          padding: '8px 12px', 
+                          textAlign: 'right',
+                          fontWeight: '600',
+                          color: item.avgSale ? '#4ade80' : '#333'
+                        }}>
+                          {item.avgSale ? `£${calculateMaxBid(item.avgSale)}` : '—'}
+                        </td>
+                      )}
+                      {activeTab === 'saleroom' && (
+                        <td style={{ 
+                          padding: '8px 12px', 
+                          textAlign: 'right',
+                          fontWeight: '600',
+                          color: item.avgSale ? '#4ade80' : '#333'
+                        }}>
+                          {item.avgSale ? `£${calculateSaleroomProfit(item.avgSale)}` : '—'}
+                        </td>
+                      )}
+                      <td style={{ padding: '8px 12px', textAlign: 'center' }}>
+                        <button
+                          onClick={() => deleteItem(item.id)}
+                          style={{
+                            background: 'none',
+                            border: 'none',
+                            color: '#444',
+                            cursor: 'pointer',
+                            padding: '4px',
+                            fontSize: '14px'
+                          }}
+                        >
+                          ×
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* Empty State with Console Script */}
+        {items.length === 0 && (
+          <div style={{
+            textAlign: 'center',
+            padding: '40px',
+            color: '#444'
+          }}>
+            <div style={{ fontSize: '40px', marginBottom: '12px', opacity: 0.5 }}>
+              {activeTab === 'vinted' ? '👗' : (activeTab === 'ebay' ? '🛒' : '🔨')}
+            </div>
+            <h3 style={{ fontSize: '14px', fontWeight: '500', margin: '0 0 6px 0', color: '#666' }}>
+              No items yet
+            </h3>
+            <p style={{ fontSize: '12px', margin: '0 0 24px 0' }}>
+              Use the browser console script to extract {activeTab === 'vinted' ? 'Vinted' : (activeTab === 'ebay' ? 'eBay' : 'Saleroom')} items
+            </p>
+            
+            {/* Console Script */}
+            <div style={{
+              background: activeTab === 'vinted' ? '#0d1a0d' : (activeTab === 'ebay' ? '#1a1a0d' : '#1a0d0d'),
+              border: `1px solid ${activeTab === 'vinted' ? '#1a2a1a' : (activeTab === 'ebay' ? '#2a2a1a' : '#2a1a1a')}`,
+              borderRadius: '8px',
+              padding: '16px',
+              textAlign: 'left',
+              maxWidth: '800px',
+              margin: '0 auto'
+            }}>
+              <h4 style={{ fontSize: '13px', fontWeight: '600', color: activeTab === 'vinted' ? '#4ade80' : (activeTab === 'ebay' ? '#f5af02' : '#f87171'), margin: '0 0 8px 0' }}>
+                ✨ Browser Console Script
+              </h4>
+              <ol style={{ 
+                margin: '0 0 12px 0', 
+                paddingLeft: '20px', 
+                fontSize: '12px', 
+                color: '#888',
+                lineHeight: 1.8
+              }}>
+                <li>Go to {activeTab === 'vinted' ? 'any Vinted catalog page' : (activeTab === 'ebay' ? 'any eBay UK search results page' : 'a Saleroom auction catalogue page')}</li>
+                <li>Press <kbd style={{ background: '#222', padding: '2px 6px', borderRadius: '3px', color: '#fff' }}>F12</kbd> to open DevTools</li>
+                <li>Click the <strong style={{ color: '#fff' }}>Console</strong> tab</li>
+                <li>Click "Copy Script" below, paste in console, press Enter</li>
+                <li>Paste the result in the box above</li>
+              </ol>
+              <div style={{ position: 'relative' }}>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(activeTab === 'vinted' ? vintedScript : (activeTab === 'saleroom' ? saleroomScript : ebayScript));
+                    setScriptCopied(true);
+                    setTimeout(() => setScriptCopied(false), 2000);
+                  }}
+                  style={{
+                    position: 'absolute',
+                    top: '8px',
+                    right: '8px',
+                    background: scriptCopied ? '#1a3a1a' : (activeTab === 'vinted' ? '#1a2a1a' : (activeTab === 'ebay' ? '#2a2a1a' : '#2a1a1a')),
+                    border: `1px solid ${scriptCopied ? '#2a4a2a' : (activeTab === 'vinted' ? '#2a3a2a' : (activeTab === 'ebay' ? '#3a3a2a' : '#3a2a2a'))}`,
+                    borderRadius: '4px',
+                    padding: '5px 12px',
+                    fontSize: '11px',
+                    color: scriptCopied ? '#4ade80' : (activeTab === 'vinted' ? '#4ade80' : (activeTab === 'ebay' ? '#f5af02' : '#f87171')),
+                    cursor: 'pointer',
+                    zIndex: 10
+                  }}
+                >
+                  {scriptCopied ? '✓ Copied!' : '📋 Copy Script'}
+                </button>
+                <div style={{
+                  background: '#0a0a0a',
+                  borderRadius: '4px',
+                  padding: '12px',
+                  paddingTop: '36px',
+                  fontFamily: 'Consolas, monospace',
+                  fontSize: '10px',
+                  color: activeTab === 'vinted' ? '#4ade80' : (activeTab === 'ebay' ? '#f5af02' : '#f87171'),
+                  overflowX: 'auto',
+                  whiteSpace: 'pre-wrap',
+                  wordBreak: 'break-all',
+                  border: '1px solid #1a1a1a',
+                  maxHeight: '200px',
+                  overflow: 'auto'
+                }}>
+                  {activeTab === 'vinted' ? vintedScript : (activeTab === 'saleroom' ? saleroomScript : ebayScript)}
+                </div>
+              </div>
+              
+              {activeTab === 'saleroom' && (
+                <div style={{ marginTop: '16px', padding: '12px', background: '#0a0a0a', borderRadius: '4px', border: '1px solid #222' }}>
+                  <h5 style={{ fontSize: '12px', color: '#f5af02', margin: '0 0 8px 0' }}>💡 Tips for Saleroom</h5>
+                  <p style={{ fontSize: '11px', color: '#666', margin: 0, lineHeight: 1.6 }}>
+                    <strong style={{ color: '#fff' }}>Images not loading?</strong> Most auction sites block external image loading. Click "View" on the lot page to see images there.
+                  </p>
+                  <p style={{ fontSize: '11px', color: '#666', margin: '8px 0 0 0', lineHeight: 1.6 }}>
+                    <strong style={{ color: '#fff' }}>Google Lens:</strong> Click "Lens" to identify unknown items and find similar products across the web.
+                  </p>
+                  <p style={{ fontSize: '11px', color: '#666', margin: '8px 0 0 0', lineHeight: 1.6 }}>
+                    <strong style={{ color: '#fff' }}>Identified As:</strong> After identifying an item, type it in "Identified As" - this updates the eBay text search automatically.
+                  </p>
+                  <p style={{ fontSize: '11px', color: '#666', margin: '8px 0 0 0', lineHeight: 1.6 }}>
+                    <strong style={{ color: '#4ade80' }}>Max Bid Calculation:</strong> Avg Sale - {ebayFeePercent}% eBay fee - {desiredProfitPercent}% profit margin, then divided by auction fees ({buyersPremium}% + {onlineCommission}%).
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+      </main>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<ProfitCalculator />);
+  </script>
+</body>
+</html>

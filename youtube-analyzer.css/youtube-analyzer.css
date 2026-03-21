@@ -1,0 +1,124 @@
+/* File: youtube-analyzer.css (Dark Theme) */
+
+/* Basic styles from your styles.css might be needed here, like body background */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: sans-serif;
+}
+
+.content-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #ffffff;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+#analyzer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #bbbbbb;
+}
+
+input[type="url"],
+input[type="text"] {
+    padding: 12px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: #e0e0e0;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="url"]:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #333;
+    color: #777;
+    cursor: not-allowed;
+}
+
+#results {
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#results.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#results h2 {
+    margin-top: 0;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.stat-box {
+    background-color: #252525;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #444;
+}
+
+.stat-box h3 {
+    margin-top: 0;
+    color: #aaaaaa;
+    font-size: 1.1em;
+    font-weight: normal;
+}
+
+.stat-box p {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+    color: #ffffff;
+}
