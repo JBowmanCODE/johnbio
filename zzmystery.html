@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zig-Zag Drop Mystery</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap');
+
+  :root {
+    --bg: #0a0e1a;
+    --panel: #111827;
+    --panel2: #0f1623;
+    --border: #1e2d45;
+    --cyan: #00e5ff;
+    --purple: #8b5cf6;
+    --green: #22c55e;
+    --red: #ef4444;
+    --text: #e2e8f0;
+    --muted: #64748b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    overflow-x: hidden;
+  }
+
+  .header {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+  }
+  .logo span:first-child { color: var(--text); }
+  .logo span:last-child { color: var(--cyan); text-shadow: 0 0 20px var(--cyan); }
+
+  .sound-btn {
+    position: absolute;
+    right: 0;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    padding: 8px 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+  }
+  .sound-btn:hover { color: var(--text); }
+
+  .main {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  /* Left Panel */
+  .left-panel {
+    width: 200px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+  }
+
+  .label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .bet-control {
+    display: flex;
+    align-items: center;
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .bet-btn {
+    background: #1e2d45;
+    border: none;
+    color: var(--text);
+    width: 34px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+  .bet-btn:hover { background: #2a3d5a; }
+  .bet-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    outline: none;
+    width: 0;
+  }
+
+  .toggle-group {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .toggle-btn {
+    flex: 1;
+    min-width: 40px;
+    padding: 6px 4px;
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.15s;
+  }
+  .toggle-btn:hover { color: var(--text); border-color: var(--purple); }
+  .toggle-btn.active {
+    background: var(--purple);
+    border-color: var(--purple);
+    color: #fff;
+  }
+  .toggle-btn.active-cyan {
+    background: transparent;
+    border-color: var(--cyan);
+    color: var(--cyan);
+    box-shadow: 0 0 8px rgba(0,229,255,0.3);
+  }
+
+  .auto-toggle {
+    width: 36px;
+    height: 20px;
+    background: var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s;
+    margin-top: 4px;
+  }
+  .auto-toggle.on { background: var(--cyan); }
+  .auto-toggle::after {
+    content: '';
+    position: absolute;
+    width: 16px; height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    top: 2px; left: 2px;
+    transition: left 0.2s;
+  }
+  .auto-toggle.on::after { left: 18px; }
+
+  .bet-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--cyan);
+    border: none;
+    border-radius: 10px;
+    color: #000;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.15s;
+    box-shadow: 0 4px 20px rgba(0,229,255,0.3);
+  }
+  .bet-submit:hover { background: #33eeff; box-shadow: 0 4px 30px rgba(0,229,255,0.5); transform: translateY(-1px); }
+  .bet-submit:active { transform: translateY(0); }
+  .bet-submit:disabled { background: #1e2d45; color: var(--muted); cursor: not-allowed; box-shadow: none; transform: none; }
+
+  /* Center - Canvas */
+  .game-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  canvas {
+    display: block;
+    border-radius: 12px;
+  }
+
+  /* Right Panel */
+  .right-panel {
+    width: 180px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .balance-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+  }
+  .balance-label {
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .balance-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .results-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    flex: 1;
+    max-height: 320px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .results-list {
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 6px;
+  }
+  .results-list::-webkit-scrollbar { width: 3px; }
+  .results-list::-webkit-scrollbar-track { background: transparent; }
+  .results-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+  }
+  .result-mult { color: var(--muted); font-weight: 600; }
+  .result-win { font-weight: 700; }
+  .result-win.pos { color: var(--green); }
+  .result-win.neg { color: var(--red); }
+
+  /* Multiplier buckets */
+  .buckets {
+    display: flex;
+    width: 100%;
+    gap: 2px;
+    margin-top: 2px;
+  }
+  .bucket {
+    flex: 1;
+    padding: 4px 1px;
+    border-radius: 4px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.5rem;
+    font-weight: 700;
+    transition: all 0.3s;
+    line-height: 1.2;
+    min-width: 0;
+  }
+  .bucket.flash {
+    animation: bucketFlash 0.4s ease-out;
+  }
+
+  @keyframes goldPulse {
+    0%,100% { box-shadow: 0 0 8px 3px #ffd700; opacity: 1; }
+    50%      { box-shadow: 0 0 18px 7px #ffaa00; opacity: 0.85; }
+  }
+  @keyframes bucketFlash {
+    0% { transform: scaleY(1.4); filter: brightness(2); }
+    100% { transform: scaleY(1); filter: brightness(1); }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo"><span>Zig-Zag Drop </span><span>Mystery</span></div>
+  <button class="sound-btn" id="soundBtn" title="Toggle sound">🔊</button>
+</div>
+
+<div class="main">
+  <!-- Left Panel -->
+  <div class="left-panel">
+    <div class="card">
+      <div class="label">Bet Amount</div>
+      <div class="bet-control">
+        <button class="bet-btn" id="betMinus">−</button>
+        <input class="bet-input" id="betInput" value="2.00" type="text" readonly>
+        <button class="bet-btn" id="betPlus">+</button>
+      </div>
+      <input type="range" id="betSlider" min="0.25" max="100" step="0.25" value="2"
+        style="width:100%;margin:8px 0 4px;accent-color:#00e5ff;cursor:pointer;">
+      <button id="maxBetBtn" style="
+        width:100%;padding:5px;background:rgba(0,229,255,0.1);
+        border:1px solid #00e5ff;border-radius:6px;color:#00e5ff;
+        font-family:'Rajdhani',sans-serif;font-size:0.8rem;font-weight:700;
+        cursor:pointer;letter-spacing:1px;transition:background 0.15s;
+      " onmouseover="this.style.background='rgba(0,229,255,0.2)'"
+         onmouseout="this.style.background='rgba(0,229,255,0.1)'">MAX BET (100)</button>
+      <div class="auto-toggle" id="autoToggle" title="Auto-bet" style="margin-top:8px;"></div>
+    </div>
+
+    <div class="card">
+      <div class="label">Risk Level <span style="color:#444;font-size:0.8em">?</span></div>
+      <div class="toggle-group" id="riskGroup">
+        <button class="toggle-btn" data-risk="low">low</button>
+        <button class="toggle-btn active" data-risk="medium">medium</button>
+        <button class="toggle-btn" data-risk="high">high</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">Rows <span style="color:#444;font-size:0.8em">?</span></div>
+      <div class="toggle-group" id="rowsGroup">
+        <button class="toggle-btn" data-rows="8">8</button>
+        <button class="toggle-btn active-cyan" data-rows="10">10</button>
+        <button class="toggle-btn" data-rows="12">12</button>
+        <button class="toggle-btn" data-rows="14">14</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">Speed</div>
+      <div class="toggle-group" id="speedGroup">
+        <button class="toggle-btn" data-speed="slow">Slow</button>
+        <button class="toggle-btn active-cyan" data-speed="regular">Regular</button>
+        <button class="toggle-btn" data-speed="turbo">Turbo</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">Number of Balls</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+        <span style="font-family:'Orbitron',sans-serif;font-size:1.1rem;font-weight:700;color:var(--cyan);" id="ballCountDisplay">1</span>
+        <span style="font-size:0.7rem;color:var(--muted);">× BET</span>
+      </div>
+      <input type="range" id="ballSlider" min="1" max="100" step="1" value="1"
+        style="width:100%;accent-color:#00e5ff;cursor:pointer;margin-bottom:6px;">
+      <div class="toggle-group" id="ballPresets">
+        <button class="toggle-btn active-cyan" data-balls="1">1</button>
+        <button class="toggle-btn" data-balls="5">5</button>
+        <button class="toggle-btn" data-balls="10">10</button>
+        <button class="toggle-btn" data-balls="100">100</button>
+      </div>
+    </div>
+
+    <button class="bet-submit" id="betBtn">BET 2.00</button>
+  </div>
+
+  <!-- Game Canvas -->
+  <div class="game-area">
+    <canvas id="gameCanvas"></canvas>
+    <div class="buckets" id="buckets"></div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="right-panel">
+    <div class="balance-card">
+      <div class="balance-label">Balance (FUN)</div>
+      <div class="balance-value" id="balanceDisplay">1000.00</div>
+    </div>
+    <div class="results-card">
+      <div class="label">Results</div>
+      <div class="results-list" id="resultsList"></div>
+    </div>
+
+    <div style="
+      background: #0d1420;
+      border: 1px solid #1e2d45;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.72rem;
+      line-height: 1.55;
+      color: #94a3b8;
+    ">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px;">
+        <span style="font-size:1rem;">🟡</span>
+        <span style="color:#ffd700;font-weight:700;font-size:0.75rem;letter-spacing:0.5px;">Golden Pin</span>
+      </div>
+      <p style="margin:0 0 8px 0;">A glowing gold pin appears on the board each drop. If your ball hits it there's a <strong style="color:#e2e8f0;">1% chance</strong> it triggers a mystery bonus of <strong style="color:#ffd700;">1.5×–3×</strong> your bet — a small surprise win.</p>
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px;margin-top:4px;">
+        <span style="font-size:1rem;">⚡</span>
+        <span style="color:#fbbf24;font-weight:700;font-size:0.75rem;letter-spacing:0.5px;">Lucky Drop</span>
+      </div>
+      <p style="margin:0;">Roughly <strong style="color:#e2e8f0;">1 in 15 spins</strong> triggers a Lucky Drop. Every payout that drop is boosted <strong style="color:#fbbf24;">3×–8×</strong>. The board glows gold and the banner appears — enjoy it while it lasts!</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── CONFIG ─────────────────────────────────────────────────────────────────
+const MULTIPLIERS = {
+  // Theoretical RTP ~40%. Hard caps: low=1.64x, medium=4.14x, high=11.25x.
+  // Even with 100 balls the maximum single-drop return is bounded.
+  // House keeps ~50-60% after physics centre-bias. Balance should drain steadily.
+  low: {
+    8:  [1.64, 0.86, 0.45, 0.41, 0.20, 0.41, 0.45, 0.86, 1.64],
+    10: [1.63, 1.22, 0.57, 0.45, 0.41, 0.20, 0.41, 0.45, 0.57, 1.22, 1.63],
+    12: [1.62, 1.22, 0.65, 0.57, 0.45, 0.41, 0.20, 0.41, 0.45, 0.57, 0.65, 1.22, 1.62],
+    14: [1.62, 1.62, 0.77, 0.57, 0.53, 0.44, 0.40, 0.20, 0.40, 0.44, 0.53, 0.57, 0.77, 1.62, 1.62],
+  },
+  medium: {
+    8:  [4.14, 1.24, 0.54, 0.29, 0.17, 0.29, 0.54, 1.24, 4.14],
+    10: [4.14, 2.07, 0.83, 0.58, 0.25, 0.17, 0.25, 0.58, 0.83, 2.07, 4.14],
+    12: [4.11, 4.11, 1.64, 0.82, 0.45, 0.25, 0.12, 0.25, 0.45, 0.82, 1.64, 4.11, 4.11],
+    14: [4.10, 4.10, 2.87, 1.64, 0.78, 0.41, 0.21, 0.08, 0.21, 0.41, 0.78, 1.64, 2.87, 4.10, 4.10],
+  },
+  high: {
+    8:  [10.42, 1.67, 0.63, 0.13, 0.08, 0.13, 0.63, 1.67, 10.42],
+    10: [11.22, 4.49, 1.35, 0.40, 0.13, 0.09, 0.13, 0.40, 1.35, 4.49, 11.22],
+    12: [10.87, 10.43, 3.52, 0.87, 0.30, 0.09, 0.09, 0.09, 0.30, 0.87, 3.52, 10.43, 10.87],
+    14: [11.25, 11.25, 8.10, 2.25, 0.86, 0.14, 0.09, 0.09, 0.09, 0.14, 0.86, 2.25, 8.10, 11.25, 11.25],
+  }
+};
+
+function bucketColor(mult) {
+  if (mult >= 100) return { bg: '#7c1d1d', text: '#fca5a5' };   // red — jackpot
+  if (mult >= 10)  return { bg: '#92400e', text: '#fde68a' };   // amber — big win
+  if (mult >= 2)   return { bg: '#1e3a5f', text: '#93c5fd' };   // blue — good win
+  if (mult >= 0.9) return { bg: '#14532d', text: '#86efac' };   // green — break-even
+  if (mult >= 0.5) return { bg: '#1a2e44', text: '#94a3b8' };   // grey — small loss
+  return { bg: '#3b0764', text: '#d8b4fe' };                    // purple — big loss
+}
+
+// ─── STATE ────────────────────────────────────────────────────────────────────
+let balance = 1000;
+let betAmount = 2;
+let risk = 'medium';
+let rows = 10;
+let speed = 'regular';
+let soundOn = true;
+let autoOn = false;
+let autoInterval = null;
+let balls = [];
+let animId = null;
+let ballCount = 1;
+let goldPegIndex = -1;
+let luckyDrop = false;       // this drop has boosted multipliers
+let luckyBoost = 1;          // multiplier applied to all payouts this drop
+let luckyDropAnnounced = false;
+let dropping = false;
+
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+// ─── CANVAS SIZING ────────────────────────────────────────────────────────────
+function resize() {
+  const panelW = 200 + 180 + 14 * 2 + 32;
+  const availW = Math.min(window.innerWidth, 900) - panelW;
+  const W = Math.max(260, availW);
+  const H = W * 0.92;
+  canvas.width = W;
+  canvas.height = H;
+  renderPegs();
+}
+
+// ─── PEG GRID ─────────────────────────────────────────────────────────────────
+// Standard Plinko: row 0 has 3 pegs, row r has (r+3) pegs.
+// Bottom row (row = rows-1) has (rows+2) pegs.
+// Buckets sit between/outside the bottom-row pegs → (rows+3) buckets,
+// each bucket centre at half-spacing offsets from the bottom-row pegs.
+// We fix pegSpacing so the bottom row fills ~80% of canvas width.
+
+function getLayout() {
+  const W = canvas.width, H = canvas.height;
+  const topPad = H * 0.06;
+  const bottomPad = H * 0.08;
+  const usableH = H - topPad - bottomPad;
+
+  // Row 0 = 1 peg (tip), row r = r+1 pegs, bottom row (rows-1) = rows pegs.
+  // Buckets = rows+1 slots, one between/outside each adjacent bottom peg pair.
+  const bottomCols = rows;           // pegs in last row
+  const pegSpacing = (W * 0.78) / (bottomCols - 1);
+  const rowSpacing = usableH / (rows - 1);
+
+  // Centre the bottom row
+  const bottomRowW = pegSpacing * (bottomCols - 1);
+  const originX = (W - bottomRowW) / 2;
+
+  return { topPad, pegSpacing, rowSpacing, originX };
+}
+
+function getPegPositions() {
+  const { topPad, pegSpacing, rowSpacing, originX } = getLayout();
+  const pegs = [];
+  // Start from row 1 (2 pegs) — top single pin removed per design.
+  for (let r = 1; r < rows; r++) {
+    const cols = r + 1;
+    const rowY = topPad + rowSpacing * (r - 1); // shift up so row 1 is at topPad
+    const offsetX = originX + ((rows - cols) / 2) * pegSpacing;
+    for (let c = 0; c < cols; c++) {
+      pegs.push({ x: offsetX + c * pegSpacing, y: rowY, r: 3.5 });
+    }
+  }
+  return pegs;
+}
+
+function getBucketXPositions() {
+  // rows+1 buckets, centred between the bottom-row pegs (plus outer edges)
+  const { pegSpacing, originX } = getLayout();
+  const mults = MULTIPLIERS[risk][rows];
+  const n = mults.length; // rows+1
+  const positions = [];
+  for (let i = 0; i < n; i++) {
+    positions.push(originX - pegSpacing / 2 + i * pegSpacing);
+  }
+  return positions;
+}
+
+
+function pickGoldPeg() {
+  // Gold peg is ALWAYS shown, but the ball only "activates" it via a separate
+  // per-ball 1% RNG check at hit time (not based on position).
+  // Place it visibly in the middle section so players can see it every drop.
+  const pegs = getPegPositions();
+  // Pick a peg from rows 40–70% down, anywhere across the width
+  const rowStarts = [];
+  let cumulative = 0;
+  for (let r = 1; r < rows; r++) { // r starts at 1 since we skip row 0
+    rowStarts.push({ start: cumulative, len: r + 1 });
+    cumulative += r + 1;
+  }
+  const minRow = Math.floor((rows - 1) * 0.40);
+  const maxRow = Math.floor((rows - 1) * 0.70);
+  const candidates = [];
+  for (let r = minRow; r <= maxRow; r++) {
+    if (rowStarts[r]) {
+      const { start, len } = rowStarts[r];
+      for (let c = 0; c < len; c++) {
+        candidates.push(start + c);
+      }
+    }
+  }
+  goldPegIndex = candidates.length > 0
+    ? candidates[Math.floor(Math.random() * candidates.length)]
+    : Math.floor(pegs.length / 2);
+}// ─── RENDER ────────────────────────────────────────────────────────────────────
+function renderPegs() {
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  // Background
+  ctx.fillStyle = '#0a0e1a';
+  ctx.fillRect(0, 0, W, H);
+
+  const pegs = getPegPositions();
+
+  // Draw pegs
+  pegs.forEach((p, i) => {
+    const isGold = (i === goldPegIndex);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, isGold ? p.r + 2 : p.r, 0, Math.PI * 2);
+    if (isGold) {
+      // Pulsing gold glow
+      const pulse = 0.5 + 0.5 * Math.sin(Date.now() / 250);
+      ctx.shadowColor = `rgba(255,${180 + Math.floor(pulse*75)},0,1)`;
+      ctx.shadowBlur = 14 + pulse * 10;
+      const grd = ctx.createRadialGradient(p.x - 1, p.y - 1, 0.5, p.x, p.y, p.r + 2);
+      grd.addColorStop(0, '#fff8c0');
+      grd.addColorStop(0.4, '#ffd700');
+      grd.addColorStop(1, '#b8860b');
+      ctx.fillStyle = grd;
+    } else {
+      ctx.shadowColor = '#c8d8f0';
+      ctx.shadowBlur = 6;
+      ctx.fillStyle = '#c8d8f0';
+    }
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    // Gold question mark label
+    if (isGold) {
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 7px Orbitron, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('?', p.x, p.y);
+    }
+  });
+
+  // Draw balls
+  balls.forEach(b => {
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+    const grad = ctx.createRadialGradient(b.x - b.radius * 0.3, b.y - b.radius * 0.3, b.radius * 0.1, b.x, b.y, b.radius);
+    grad.addColorStop(0, '#fff');
+    grad.addColorStop(0.4, b.color || '#00e5ff');
+    grad.addColorStop(1, '#003344');
+    ctx.fillStyle = grad;
+    ctx.shadowColor = b.color || '#00e5ff';
+    ctx.shadowBlur = 12;
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  });
+  drawGoldFlashes();
+  drawLuckyOverlay();
+}// ─── PHYSICS ──────────────────────────────────────────────────────────────────
+const SPEEDS = { slow: 2.5, regular: 4.5, turbo: 9 };
+
+class Ball {
+  constructor(idx = 0, total = 1) {
+    const { topPad, rowSpacing, pegSpacing } = getLayout();
+    // Spread balls evenly across a small spawn window above the tip peg
+    // so they don't all land in exactly the same bucket
+    const spread = Math.min(total - 1, 6) * pegSpacing * 0.08;
+    const offset = total > 1 ? (idx / (total - 1) - 0.5) * 2 * spread : 0;
+    this.x = canvas.width / 2 + offset + (Math.random() - 0.5) * pegSpacing * 0.15;
+    this.y = topPad - rowSpacing - (Math.random() * rowSpacing * 0.3); // slight stagger so they don't collide immediately
+    this.vx = (Math.random() < 0.5 ? -1 : 1) * (0.5 + Math.random() * 0.5);
+    this.vy = 1.5 + Math.random() * 0.8;
+    this.radius = 5;
+    this.gravity = 0.25;
+    this.done = false;
+    this.stuckTimer = 0;
+    this.prevY = this.y;
+    this.color = `hsl(${Math.random() * 360}, 85%, 60%)`;
+    this.bucketIndex = -1;
+  }
+
+  update(pegs) {
+    const spd = SPEEDS[speed] / 4.5;
+
+    // ── Integrate ──────────────────────────────────────────────────────────
+    this.vy += this.gravity * spd;
+    // Hard cap on horizontal speed so ball can't fly sideways past pegs
+    this.vx = Math.max(-4, Math.min(4, this.vx));
+    this.x += this.vx * spd;
+    this.y += this.vy * spd;
+
+    // ── Peg collisions ─────────────────────────────────────────────────────
+    // Strategy: pure positional separation + redirect velocity along surface.
+    // Never allow vy to go negative (no bouncing upward).
+    // One pass is enough because we separate fully each hit.
+    let hitAny = false;
+    for (let pi = 0; pi < pegs.length; pi++) {
+      const p = pegs[pi];
+      const dx = this.x - p.x;
+      const dy = this.y - p.y;
+      const dist2 = dx * dx + dy * dy;
+      const minDist = this.radius + p.r + 0.5;
+      if (dist2 < minDist * minDist) {
+        hitAny = true;
+
+        // Gold peg detection — 1% chance per ball regardless of ball count
+        if (pi === goldPegIndex && !this.goldHit && Math.random() < 0.01) {
+          this.goldHit = true;
+          // Mystery mult: 1.5x–3x only — a small surprise, not a jackpot
+          const r = Math.random();
+          const mysteryMult = Math.round((1.5 + Math.pow(r, 1.5) * 1.5) * 10) / 10;
+          this.mysteryMult = mysteryMult;
+          showGoldFlash(p.x, p.y, mysteryMult);
+        }
+
+        const dist = Math.sqrt(dist2) || 0.001;
+        const nx = dx / dist;   // normal pointing away from peg centre
+        const ny = dy / dist;
+
+        // 1. Separate: push ball outside peg
+        const sep = minDist - dist + 0.5;
+        this.x += nx * sep;
+        this.y += ny * sep;
+
+        // 2. Remove velocity component going INTO peg
+        const vDotN = this.vx * nx + this.vy * ny;
+        if (vDotN < 0) {
+          this.vx -= vDotN * nx;
+          this.vy -= vDotN * ny;
+        }
+
+        // 3. True binary peg deflection — one coin flip per peg, left or right.
+        // Magnitude proportional to pegSpacing so ball reliably reaches next column.
+        this.vy *= 0.75;
+        this.vx *= 0.40;
+        const { pegSpacing } = getLayout();
+        const dir = Math.random() < 0.5 ? -1 : 1;
+        this.vx += dir * (pegSpacing * 0.20 + Math.random() * pegSpacing * 0.06);
+
+        // 4. Always keep ball moving downward after a hit
+        if (this.vy < 1.2) this.vy = 1.2;
+      }
+    }
+
+    // ── Pyramid wall clamp ─────────────────────────────────────────────────
+    // Pyramid now starts at row 1 (2 pegs), so add 1 to fracRow for width calc.
+    {
+      const { topPad, pegSpacing, rowSpacing } = getLayout();
+      const cx = canvas.width / 2;
+      const fracRow = Math.max(0, (this.y - topPad) / rowSpacing) + 1; // +1 because we start from row 1
+      const halfW = (fracRow * pegSpacing) / 2 + pegSpacing * 0.6;
+      const lw = cx - halfW + this.radius;
+      const rw = cx + halfW - this.radius;
+      if (this.x < lw) { this.x = lw; this.vx = Math.abs(this.vx) * 0.6; }
+      if (this.x > rw) { this.x = rw; this.vx = -Math.abs(this.vx) * 0.6; }
+    }
+
+    // ── Anti-stuck watchdog ────────────────────────────────────────────────
+    // If ball hasn't descended at least 0.3px since last frame, count stuck frames.
+    if (this.y - this.prevY < 0.3) {
+      this.stuckTimer++;
+      if (this.stuckTimer > 30) {
+        // Teleport down half a peg-spacing and kick downward
+        const { rowSpacing } = getLayout();
+        this.y += rowSpacing * 0.4;
+        this.vy = 3;
+        this.vx = (Math.random() - 0.5) * 3;
+        this.stuckTimer = 0;
+      }
+    } else {
+      this.stuckTimer = 0;
+    }
+    this.prevY = this.y;
+
+    // ── Landing detection ──────────────────────────────────────────────────
+    // Pegs shifted: row r drawn at rowSpacing*(r-1), so bottom row (r=rows-1) is at rowSpacing*(rows-2)
+    const { topPad, rowSpacing } = getLayout();
+    const bottomY = topPad + rowSpacing * (rows - 2) + rowSpacing * 0.6;
+    if (this.y > bottomY) {
+      this.done = true;
+      const bucketXs = getBucketXPositions();
+      let closest = 0, minD = Infinity;
+      bucketXs.forEach((bx, i) => {
+        const d = Math.abs(this.x - bx);
+        if (d < minD) { minD = d; closest = i; }
+      });
+      this.bucketIndex = closest;
+    }
+  }
+}
+
+
+// Gold peg hit — show mystery multiplier reveal on canvas
+const goldFlashes = [];
+function showGoldFlash(x, y, mult) {
+  goldFlashes.push({ x, y, mult, age: 0, maxAge: 90 });
+}
+
+function drawGoldFlashes() {
+  goldFlashes.forEach((f, i) => {
+    const t = f.age / f.maxAge;
+    const alpha = t < 0.2 ? t / 0.2 : t > 0.7 ? 1 - (t - 0.7) / 0.3 : 1;
+    const scale = t < 0.15 ? t / 0.15 : 1;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.translate(f.x, f.y - 30 * t);
+    ctx.scale(scale, scale);
+    // Background pill
+    ctx.beginPath();
+    ctx.roundRect(-38, -16, 76, 32, 8);
+    ctx.fillStyle = 'rgba(20,10,0,0.85)';
+    ctx.fill();
+    ctx.strokeStyle = '#ffd700';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    // Text
+    ctx.fillStyle = '#ffd700';
+    ctx.font = 'bold 13px Orbitron, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.shadowColor = '#ffd700';
+    ctx.shadowBlur = 10;
+    ctx.fillText('✦ ' + f.mult + 'x ✦', 0, 0);
+    ctx.shadowBlur = 0;
+    ctx.restore();
+    f.age++;
+  });
+  // Remove expired
+  for (let i = goldFlashes.length - 1; i >= 0; i--) {
+    if (goldFlashes[i].age >= goldFlashes[i].maxAge) goldFlashes.splice(i, 1);
+  }
+}
+
+// ── Lucky Drop visual ────────────────────────────────────────────────────────
+let luckyBannerAge = 0;
+const LUCKY_BANNER_DURATION = 120; // frames
+
+function showLuckyBanner(boost) {
+  luckyBannerAge = 0;
+  luckyDropAnnounced = true;
+}
+
+function drawLuckyOverlay() {
+  if (!luckyDrop || luckyBannerAge > LUCKY_BANNER_DURATION) return;
+  luckyBannerAge++;
+
+  const t = luckyBannerAge / LUCKY_BANNER_DURATION;
+  // Fade in fast, hold, fade out
+  let alpha = t < 0.1 ? t / 0.1 : t > 0.75 ? 1 - (t - 0.75) / 0.25 : 1;
+  alpha = Math.max(0, Math.min(1, alpha));
+
+  const W = canvas.width, H = canvas.height;
+  const pulse = 0.5 + 0.5 * Math.sin(luckyBannerAge / 6);
+
+  ctx.save();
+  ctx.globalAlpha = alpha * 0.92;
+
+  // Glowing edge border
+  ctx.strokeStyle = `rgba(255, ${180 + Math.floor(pulse * 75)}, 0, 1)`;
+  ctx.lineWidth = 3 + pulse * 2;
+  ctx.shadowColor = '#ffd700';
+  ctx.shadowBlur = 18 + pulse * 12;
+  ctx.strokeRect(4, 4, W - 8, H - 8);
+  ctx.shadowBlur = 0;
+
+  // Centre banner pill
+  const bw = W * 0.72, bh = 52;
+  const bx = (W - bw) / 2, by = H * 0.38;
+
+  ctx.globalAlpha = alpha;
+  ctx.beginPath();
+  ctx.roundRect(bx, by, bw, bh, 12);
+  ctx.fillStyle = 'rgba(10,6,0,0.92)';
+  ctx.fill();
+  ctx.strokeStyle = '#ffd700';
+  ctx.lineWidth = 2;
+  ctx.shadowColor = '#ffd700';
+  ctx.shadowBlur = 14;
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+
+  // Title line
+  ctx.fillStyle = '#ffd700';
+  ctx.font = 'bold 11px Rajdhani, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.letterSpacing = '3px';
+  ctx.fillText('✦  LUCKY DROP  ✦', W / 2, by + 16);
+
+  // Boost value
+  ctx.font = 'bold 20px Orbitron, sans-serif';
+  ctx.shadowColor = '#fff8c0';
+  ctx.shadowBlur = 10;
+  ctx.fillStyle = '#fff';
+  ctx.fillText('ALL PAYOUTS ' + luckyBoost + 'x', W / 2, by + 36);
+  ctx.shadowBlur = 0;
+
+  ctx.restore();
+}
+function gameLoop() {
+  const pegs = getPegPositions();
+  balls.forEach(b => { if (!b.done) b.update(pegs); });
+
+  // Handle done balls
+  balls = balls.filter(b => {
+    if (b.done) {
+      handleBallLand(b.bucketIndex, b);
+      return false;
+    }
+    return true;
+  });
+
+  renderPegs();
+
+  if (balls.length > 0) {
+    animId = requestAnimationFrame(gameLoop);
+  } else {
+    dropping = false;
+    luckyDrop = false;
+    luckyBoost = 1;
+    if (!autoOn) {
+      const btn = document.getElementById('betBtn');
+      btn.disabled = false;
+      btn.style.background = '';  // reset any lucky gold colour
+      updateBetBtn();
+    }
+    animId = null;
+  }
+}
+
+// ─── GAME LOGIC ───────────────────────────────────────────────────────────────
+function handleBallLand(idx, ball) {
+  const mults = MULTIPLIERS[risk][rows];
+  let mult = mults[idx] || 1;
+  let label = mult + 'x';
+  let isMystery = false;
+
+  if (ball && ball.goldHit && ball.mysteryMult) {
+    mult = ball.mysteryMult;
+    label = '🏆 ' + mult + 'x';
+    isMystery = true;
+  }
+
+  // Apply lucky drop boost
+  if (luckyDrop && luckyBoost > 1) {
+    mult = Math.round(mult * luckyBoost * 100) / 100;
+    if (!isMystery) label = '⚡ ' + mult + 'x';
+  }
+
+  const win = betAmount * mult;
+  const profit = win - betAmount;
+  balance += win;
+
+  // Flash bucket
+  const bucketEl = document.getElementById('bucket_' + idx);
+  if (bucketEl) {
+    bucketEl.classList.remove('flash');
+    void bucketEl.offsetWidth;
+    bucketEl.classList.add('flash');
+  }
+
+  updateBalance();
+  addResult(label, profit, isMystery);
+  playSound(mult);
+}
+
+function dropBall() {
+  const totalCost = betAmount * ballCount;
+  if (balance < totalCost) {
+    alert('Insufficient balance!'); return;
+  }
+  balance -= totalCost;
+  updateBalance();
+
+  pickGoldPeg(); // new random gold peg every drop
+
+  // Lucky Drop mechanic — ~1 in 15 spins gets a multiplier boost
+  luckyDropAnnounced = false;
+  if (Math.random() < 1/15) {
+    luckyDrop = true;
+    // Boost is 3x–8x, weighted toward lower end so 3-4x is most common
+    const r = Math.random();
+    luckyBoost = Math.round((3 + Math.pow(r, 1.8) * 5) * 10) / 10;
+    showLuckyBanner(luckyBoost);
+    // Flash the bet button gold
+    const btn = document.getElementById('betBtn');
+    btn.style.background = 'linear-gradient(135deg, #f59e0b, #fcd34d)';
+    btn.style.color = '#000';
+  } else {
+    luckyDrop = false;
+    luckyBoost = 1;
+  }
+
+  // Drop all balls simultaneously with tiny staggered x offsets so they don't stack
+  for (let i = 0; i < ballCount; i++) {
+    const ball = new Ball(i, ballCount);
+    balls.push(ball);
+  }
+  document.getElementById('betBtn').disabled = true;
+
+  if (!animId) {
+    dropping = true;
+    animId = requestAnimationFrame(gameLoop);
+  }
+}
+
+// ─── UI UPDATES ───────────────────────────────────────────────────────────────
+function updateBalance() {
+  document.getElementById('balanceDisplay').textContent = balance.toFixed(2);
+}
+
+function addResult(label, profit, isMystery) {
+  const list = document.getElementById('resultsList');
+  const row = document.createElement('div');
+  row.className = 'result-row';
+  if (isMystery) row.style.cssText = 'background:rgba(255,215,0,0.08);border-radius:5px;padding:1px 3px;';
+  row.innerHTML = `
+    <span class="result-mult" style="${isMystery ? 'color:#ffd700;font-weight:800;' : ''}">${label}</span>
+    <span class="result-win ${profit >= 0 ? 'pos' : 'neg'}">${profit >= 0 ? '+' : ''}${profit.toFixed(2)}</span>
+  `;
+  list.prepend(row);
+  while (list.children.length > 20) list.removeChild(list.lastChild);
+}
+
+function buildBuckets() {
+  const mults = MULTIPLIERS[risk][rows];
+  const container = document.getElementById('buckets');
+  container.innerHTML = '';
+  container.style.width = canvas.width + 'px';
+  container.style.position = 'relative';
+  container.style.height = '32px';
+
+  const { pegSpacing, originX } = getLayout();
+  const bw = Math.max(10, pegSpacing - 3);
+
+  mults.forEach((m, i) => {
+    const { bg, text } = bucketColor(m);
+    const cx = originX - pegSpacing / 2 + i * pegSpacing;
+    const el = document.createElement('div');
+    el.className = 'bucket';
+    el.style.position = 'absolute';
+    el.style.left = (cx - bw/2) + 'px';
+    el.style.width = bw + 'px';
+    el.style.height = '28px';
+    el.style.background = bg;
+    el.style.color = text;
+    el.style.display = 'flex';
+    el.style.alignItems = 'center';
+    el.style.justifyContent = 'center';
+    el.style.borderRadius = '4px';
+    el.style.fontFamily = "'Orbitron', sans-serif";
+    el.style.fontSize = '0.48rem';
+    el.style.fontWeight = '700';
+    el.id = 'bucket_' + i;
+    el.textContent = m + 'x';
+    container.appendChild(el);
+  });
+}
+
+// ─── SOUND ────────────────────────────────────────────────────────────────────
+const AudioCtx = window.AudioContext || window.webkitAudioContext;
+let audioCtx;
+function getAudioCtx() {
+  if (!audioCtx) audioCtx = new AudioCtx();
+  return audioCtx;
+}
+
+function playSound(mult) {
+  if (!soundOn) return;
+  try {
+    const ac = getAudioCtx();
+    const osc = ac.createOscillator();
+    const gain = ac.createGain();
+    osc.connect(gain); gain.connect(ac.destination);
+    const freq = mult >= 5 ? 880 : mult >= 2 ? 660 : mult >= 1 ? 440 : 220;
+    osc.frequency.setValueAtTime(freq, ac.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(freq * 1.5, ac.currentTime + 0.1);
+    gain.gain.setValueAtTime(0.15, ac.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.25);
+    osc.start(); osc.stop(ac.currentTime + 0.25);
+  } catch(e) {}
+}
+
+// ─── EVENT LISTENERS ──────────────────────────────────────────────────────────
+document.getElementById('betBtn').addEventListener('click', () => {
+  dropBall();
+});
+
+document.getElementById('betMinus').addEventListener('click', () => {
+  betAmount = Math.max(0.25, Math.round((betAmount - 0.25) * 100) / 100);
+  updateBetDisplay();
+});
+document.getElementById('betPlus').addEventListener('click', () => {
+  betAmount = Math.min(100, Math.round((betAmount + 0.25) * 100) / 100);
+  updateBetDisplay();
+});
+document.getElementById('betSlider').addEventListener('input', (e) => {
+  betAmount = parseFloat(e.target.value);
+  updateBetDisplay(false); // don't update slider (avoid loop)
+});
+document.getElementById('maxBetBtn').addEventListener('click', () => {
+  betAmount = 100;
+  updateBetDisplay();
+});
+
+function updateBetDisplay(updateSlider = true) {
+  document.getElementById('betInput').value = betAmount.toFixed(2);
+  if (updateSlider) {
+    document.getElementById('betSlider').value = betAmount;
+  }
+  updateBetBtn();
+}
+
+function updateBallDisplay(updateSlider = true) {
+  document.getElementById('ballCountDisplay').textContent = ballCount;
+  if (updateSlider) document.getElementById('ballSlider').value = ballCount;
+  // Update preset active state
+  document.querySelectorAll('#ballPresets .toggle-btn').forEach(b => {
+    b.classList.remove('active-cyan');
+    if (parseInt(b.dataset.balls) === ballCount) b.classList.add('active-cyan');
+  });
+  updateBetBtn();
+}
+
+function updateBetBtn() {
+  const total = betAmount * ballCount;
+  const label = ballCount > 1
+    ? `BET ${betAmount.toFixed(2)} × ${ballCount} = ${total.toFixed(2)}`
+    : `BET ${betAmount.toFixed(2)}`;
+  document.getElementById('betBtn').textContent = label;
+}
+
+// Ball count controls
+document.getElementById('ballSlider').addEventListener('input', (e) => {
+  ballCount = parseInt(e.target.value);
+  updateBallDisplay(false);
+});
+
+document.querySelectorAll('#ballPresets .toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    ballCount = parseInt(btn.dataset.balls);
+    updateBallDisplay();
+  });
+});
+
+document.querySelectorAll('#riskGroup .toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#riskGroup .toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    risk = btn.dataset.risk;
+    buildBuckets();
+  });
+});
+
+document.querySelectorAll('#rowsGroup .toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#rowsGroup .toggle-btn').forEach(b => b.classList.remove('active-cyan'));
+    btn.classList.add('active-cyan');
+    rows = parseInt(btn.dataset.rows);
+    buildBuckets();
+    renderPegs();
+    pickGoldPeg();
+  });
+});
+
+document.querySelectorAll('#speedGroup .toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#speedGroup .toggle-btn').forEach(b => b.classList.remove('active-cyan'));
+    btn.classList.add('active-cyan');
+    speed = btn.dataset.speed;
+  });
+});
+
+document.getElementById('soundBtn').addEventListener('click', () => {
+  soundOn = !soundOn;
+  document.getElementById('soundBtn').textContent = soundOn ? '🔊' : '🔇';
+});
+
+document.getElementById('autoToggle').addEventListener('click', () => {
+  autoOn = !autoOn;
+  document.getElementById('autoToggle').classList.toggle('on', autoOn);
+  if (autoOn) {
+    autoInterval = setInterval(() => {
+      if (!dropping && balance >= betAmount) dropBall();
+      else if (balance < betAmount) {
+        autoOn = false;
+        document.getElementById('autoToggle').classList.remove('on');
+        clearInterval(autoInterval);
+      }
+    }, speed === 'turbo' ? 300 : speed === 'slow' ? 1200 : 700);
+  } else {
+    clearInterval(autoInterval);
+  }
+});
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+window.addEventListener('resize', () => { resize(); buildBuckets(); });
+resize();
+buildBuckets();
+pickGoldPeg();
+updateBallDisplay();
+updateBetBtn();
+</script>
+</body>
+</html>

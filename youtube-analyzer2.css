@@ -1,0 +1,218 @@
+/* File: youtube-analyzer.css (Scoped Styles with reduced space) */
+#yt-analyzer-tool {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 30px 40px;
+    margin: 40px 0;
+}
+
+#yt-analyzer-tool .title-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #444;
+    flex-wrap: nowrap !important; /* Force the container to not wrap its items */
+}
+
+#yt-analyzer-tool h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #ffffff;
+    padding-bottom: 0;
+    border-bottom: none;
+    line-height: 1; /* Aligns title better with the small button */
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+#yt-analyzer-tool button#info-button { /* Increased specificity by adding element type */
+    background-color: #444;
+    color: #FF69B4; /* PINK */
+    border: none;
+    border-radius: 50%;
+    width: 16px !important;      /* Forcing size to be smaller */
+    height: 16px !important;     /* Forcing size to be smaller */
+    padding: 3px !important;      /* Forcing padding */
+    min-width: 16px;             /* Prevents other styles from adding a minimum width */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+#yt-analyzer-tool button#info-button svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#yt-analyzer-tool #info-button:hover {
+    background-color: #555;
+}
+
+#yt-analyzer-tool p {
+    color: #aaaaaa;
+    font-size: 1.1em;
+}
+
+/* Form Styles */
+#yt-analyzer-tool form {
+    margin: 20px 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#yt-analyzer-tool label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #bbbbbb;
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+#yt-analyzer-tool input[type="url"],
+#yt-analyzer-tool input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #555;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease-in-out;
+}
+
+#yt-analyzer-tool input[type="url"]:focus,
+#yt-analyzer-tool input[type="text"]:focus {
+    outline: none;
+    border-color: #0d6efd;
+}
+
+/* This is the generic button rule that was likely causing issues. */
+/* Our new rule for button#info-button is more specific and will override it. */
+#yt-analyzer-tool button {
+    padding: 14px 20px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#yt-analyzer-tool button:hover {
+    background-color: #0b5ed7;
+}
+
+/* Results Section */
+#yt-analyzer-tool #results {
+    border-top: 1px solid #444;
+    padding-top: 20px;
+}
+
+#yt-analyzer-tool #results-intro {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+#yt-analyzer-tool .stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+#yt-analyzer-tool .stat-box {
+    background-color: #252525;
+    padding: 25px 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #444;
+}
+
+#yt-analyzer-tool .stat-box h3 {
+    margin: 0;
+    color: #aaaaaa;
+    font-size: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+#yt-analyzer-tool .stat-box p {
+    font-size: 2.75em;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+/* --- Modal Styles --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.visible {
+    display: flex;
+}
+
+.modal-content {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    margin: auto;
+    padding: 20px 30px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    animation: fadeIn 0.3s;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.modal-content ol {
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fff;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}

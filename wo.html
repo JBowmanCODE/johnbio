@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>12-Week Cholesterol Protocol</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease-out; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gradient-card { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        #exerciseModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        #exerciseModal.active { display: flex; }
+
+        /* Ensuring the modal doesn't overflow mobile screens */
+        .modal-content {
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased pb-32">
+
+    <!-- Exercise Modal -->
+    <div id="exerciseModal" onclick="closeModal()">
+        <div class="bg-white w-full max-w-md rounded-[2.5rem] p-6 md:p-8 shadow-2xl transition-all scale-95 modal-content" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-start mb-4">
+                <div class="bg-blue-100 text-blue-600 w-10 h-10 rounded-xl flex items-center justify-center text-lg">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <button onclick="closeModal()" class="text-slate-300 hover:text-slate-600 text-2xl">
+                    <i class="fas fa-times-circle"></i>
+                </button>
+            </div>
+            
+            <h3 id="modalTitle" class="text-xl font-black text-slate-900 mb-4">Exercise Name</h3>
+            
+            <div class="space-y-4">
+                <!-- Video Embed Container -->
+                <div id="videoContainer" class="hidden mb-4 rounded-2xl overflow-hidden shadow-inner bg-slate-900 aspect-[9/16] max-h-[400px] mx-auto border-4 border-slate-900">
+                    <iframe id="exerciseVideoFrame" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+                <div>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">How to perform</p>
+                    <p id="modalDesc" class="text-slate-600 text-sm leading-relaxed"></p>
+                </div>
+                
+                <div class="bg-amber-50 p-4 rounded-2xl border border-amber-100">
+                    <p class="text-[10px] font-black text-amber-700 uppercase tracking-widest mb-1">Pro Tip</p>
+                    <p id="modalTip" class="text-amber-800 text-xs italic"></p>
+                </div>
+            </div>
+            <button onclick="closeModal()" class="w-full mt-6 bg-slate-900 text-white font-black py-4 rounded-2xl uppercase text-xs tracking-widest active:scale-95 transition-transform">Close Guide</button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="gradient-card text-white pt-10 pb-8 px-6 shadow-lg mb-6">
+        <div class="max-w-4xl mx-auto flex justify-between items-end">
+            <div>
+                <h1 class="text-2xl font-black mb-1">12-Week Protocol</h1>
+                <p id="phaseName" class="text-blue-400 text-xs font-black uppercase tracking-[0.2em]">Phase 1: Foundation</p>
+            </div>
+            <div class="text-right">
+                <p class="text-[10px] text-slate-400 font-bold uppercase mb-1">Current Week</p>
+                <select id="weekSelect" onchange="updatePlan()" class="bg-slate-800 border border-slate-700 text-white font-black px-4 py-2 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none">
+                    <!-- JS Populated -->
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4">
+        
+        <!-- Weekly Phase Goal -->
+        <div id="phaseGoalCard" class="bg-blue-600 text-white p-5 rounded-3xl shadow-md mb-6 flex items-center space-x-4">
+            <div class="bg-white/20 p-3 rounded-2xl">
+                <i class="fas fa-bullseye text-xl"></i>
+            </div>
+            <div>
+                <p class="text-[10px] font-black text-blue-200 uppercase tracking-widest">Phase Objective</p>
+                <p id="phaseDescription" class="font-bold leading-tight"></p>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="sticky top-0 bg-[#f8fafc]/80 backdrop-blur-md z-40 py-3 -mx-4 px-4">
+            <div class="flex overflow-x-auto space-x-2 no-scrollbar">
+                <button onclick="showTab('day1')" class="tab-btn active bg-blue-600 text-white px-5 py-3 rounded-2xl font-black text-xs whitespace-nowrap shadow-sm transition-all" data-target="day1">MON: STRENGTH</button>
+                <button onclick="showTab('day2')" class="tab-btn bg-white border border-slate-200 px-5 py-3 rounded-2xl font-black text-xs whitespace-nowrap shadow-sm transition-all" data-target="day2">TUE: ZONE 2</button>
+                <button onclick="showTab('day3')" class="tab-btn bg-white border border-slate-200 px-5 py-3 rounded-2xl font-black text-xs whitespace-nowrap shadow-sm transition-all" data-target="day3">THU: STRENGTH</button>
+                <button onclick="showTab('day4')" class="tab-btn bg-white border border-slate-200 px-5 py-3 rounded-2xl font-black text-xs whitespace-nowrap shadow-sm transition-all" data-target="day4">FRI: OPTIONAL</button>
+            </div>
+        </div>
+
+        <!-- Day 1 Content -->
+        <div id="day1" class="tab-content active space-y-6 mt-4">
+            <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-100">
+                <h2 class="text-xl font-black text-slate-900 mb-6 flex items-center">
+                    <span class="w-2 h-6 bg-blue-600 rounded-full mr-3"></span>Full Body Strength
+                </h2>
+                <div id="mondayExercises" class="space-y-3">
+                    <!-- JS Populated -->
+                </div>
+            </div>
+
+            <div class="bg-slate-900 text-white rounded-[2.5rem] p-6 shadow-md">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-black">Rowing Intervals</h2>
+                    <span class="bg-blue-600 text-[10px] px-3 py-1 rounded-full font-black uppercase">Peak RPE 7</span>
+                </div>
+                <div class="grid grid-cols-2 gap-3 text-center mb-6">
+                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
+                        <p class="text-2xl font-black">20s</p>
+                        <p class="text-[10px] text-slate-400 uppercase font-black">Moderate</p>
+                    </div>
+                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
+                        <p class="text-2xl font-black">100s</p>
+                        <p class="text-[10px] text-slate-400 uppercase font-black">Easy recovery</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center bg-slate-800/50 p-4 rounded-2xl">
+                    <div class="text-center flex-1">
+                        <p class="text-[10px] text-slate-400 uppercase font-black">Total Rounds</p>
+                        <p id="mondayIntervals" class="text-xl font-black text-blue-400">6 Rounds</p>
+                    </div>
+                    <div class="w-px h-8 bg-slate-700"></div>
+                    <div class="text-center flex-1">
+                        <p class="text-[10px] text-slate-400 uppercase font-black">Duration</p>
+                        <p id="mondayDuration" class="text-xl font-black italic text-slate-200">~12 Mins</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 2: Zone 2 -->
+        <div id="day2" class="tab-content space-y-4 mt-4">
+            <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-100">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-black text-slate-900 flex items-center">
+                        <span class="w-2 h-6 bg-emerald-500 rounded-full mr-3"></span>Fat-Loss Engine
+                    </h2>
+                    <span id="tuesdayZone2Time" class="bg-emerald-600 text-white text-[10px] px-3 py-1 rounded-full font-black uppercase">30 MINS</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-slate-50 p-4 rounded-2xl">
+                            <p class="text-[10px] text-slate-400 font-black mb-1 uppercase tracking-tighter">Stroke Rate</p>
+                            <p class="text-lg font-bold">18–22 SPM</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-2xl">
+                            <p class="text-[10px] text-slate-400 font-black mb-1 uppercase tracking-tighter">Damper / Drag</p>
+                            <p class="text-lg font-bold text-blue-600">4-5 / 115+</p>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-emerald-50 rounded-2xl flex items-center border border-emerald-100">
+                        <i class="fas fa-podcast text-emerald-600 mr-4 text-xl"></i>
+                        <p class="text-xs font-bold text-emerald-800 italic leading-snug uppercase tracking-tight">Focus on consistent breathing</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-100">
+                <h2 class="text-lg font-black mb-4">Core Finisher</h2>
+                <div id="tuesdayCore" class="space-y-2">
+                    <!-- JS Populated -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 3: Strength + Steady -->
+        <div id="day3" class="tab-content space-y-6 mt-4">
+            <div class="bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-100">
+                <h2 class="text-xl font-black text-slate-900 mb-6 flex items-center">
+                    <span class="w-2 h-6 bg-indigo-600 rounded-full mr-3"></span>Stability & Posterior
+                </h2>
+                <div id="thursdayExercises" class="space-y-3">
+                    <!-- JS Populated -->
+                </div>
+            </div>
+            <div class="bg-indigo-900 text-white p-6 rounded-[2.5rem] shadow-lg">
+                <h3 class="font-black text-lg mb-2">Steady Row</h3>
+                <p class="text-indigo-300 text-xs mb-4 uppercase font-bold tracking-widest">Post-Strength Flush</p>
+                <div class="bg-white/10 p-4 rounded-2xl flex justify-between items-center border border-white/10">
+                    <span class="text-xs font-black">DURATION</span>
+                    <span id="thursdaySteadyTime" class="text-2xl font-black">10 MINS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 4: Optional -->
+        <div id="day4" class="tab-content mt-4">
+            <div class="bg-indigo-950 text-white p-8 rounded-[2.5rem] shadow-2xl text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-indigo-500"></div>
+                <i class="fas fa-crown text-amber-400 text-4xl mb-4"></i>
+                <h2 class="text-2xl font-black mb-2 uppercase tracking-tighter">Optional Long Engine</h2>
+                <p class="text-indigo-300 text-sm mb-6 px-4">Elite level cardiovascular conditioning and triglyceride reduction.</p>
+                <div class="bg-white/10 p-5 rounded-2xl inline-block border border-white/20">
+                    <p class="text-[10px] font-black text-indigo-400 uppercase mb-1">Rowing Duration</p>
+                    <p id="fridayRowTime" class="text-3xl font-black">40 MINS</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bottom Action Bar -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-lg border-t border-slate-200 px-4 py-4 z-50 pb-safe">
+        <div class="max-w-4xl mx-auto flex space-x-2">
+            <button onclick="window.print()" class="flex-1 bg-slate-900 text-white text-[10px] font-black uppercase py-4 rounded-2xl shadow-lg flex items-center justify-center">
+                <i class="fas fa-print mr-2"></i> Print Plan
+            </button>
+            <button class="flex-1 bg-blue-600 text-white text-[10px] font-black uppercase py-4 rounded-2xl shadow-lg">
+                <i class="fas fa-utensils mr-2"></i> Diet Template
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Full Program Data with YouTube links
+        const programData = {
+            weeks: Array.from({length: 12}, (_, i) => i + 1),
+            exercises: {
+                "Goblet squat": { 
+                    desc: "Hold weight at chest height. Feet slightly wider than hips. Squat slow, elbows inside knees.", 
+                    tip: "Keep your chest vertical; don't lean too far forward.",
+                    video: "https://www.youtube.com/shorts/7-80HiXX1K8"
+                },
+                "Goblet squat (3 sec down)": { 
+                    desc: "3 full seconds on the descent. Stop briefly at the bottom. Power up.", 
+                    tip: "Control the weight; don't just fall into the squat.",
+                    video: "https://www.youtube.com/shorts/7-80HiXX1K8"
+                },
+                "Floor dumbbell press": { 
+                    desc: "Lie on your back on a mat with knees bent. Hold dumbbells with elbows at a 45-degree angle. Press them up until arms are straight, then lower slowly until elbows touch the floor.", 
+                    tip: "Keep your shoulder blades pressed into the floor for stability.",
+                    video: "https://www.youtube.com/shorts/Ye5-fuRryec"
+                },
+                "Single-arm floor press": { 
+                    desc: "Lie on your back on a mat. Press one dumbbell at a time while keeping your other arm relaxed or on your stomach.", 
+                    tip: "Great for identifying strength imbalances between arms.",
+                    video: "https://www.youtube.com/shorts/Ye5-fuRryec"
+                },
+                "Bent-over one-arm dumbbell row": { 
+                    desc: "Hinge at hips, back flat. Row DB to hip. Free hand on thigh or chair.", 
+                    tip: "Pull your shoulder blade back first before moving your arm.",
+                    video: "https://www.youtube.com/shorts/TVT_R3BIkOY"
+                },
+                "Romanian deadlift": { 
+                    desc: "Soft knees, hinge at hips. Feel stretch in hamstrings. Weights stay close to legs.", 
+                    tip: "Keep your back like a tabletop. Do not round your spine.",
+                    video: "https://www.youtube.com/shorts/mRQnltEJ_74"
+                },
+                "Single-leg RDL": { 
+                    desc: "Balance on one leg, hinge back at the hip. Hold DB in opposite hand of standing leg.", 
+                    tip: "Keep your hips square to the floor. Use a wall for balance if needed.",
+                    video: "https://www.youtube.com/shorts/mRQnltEJ_74"
+                },
+                "Seated dumbbell shoulder press": { 
+                    desc: "Sit cross-legged on mat. Press dumbbells from shoulder height toward the ceiling.", 
+                    tip: "Don't arch your back. Sit tall and reach for the ceiling.",
+                    video: "https://www.youtube.com/shorts/aedn4SSc3Ww"
+                },
+                "Static split squat": { 
+                    desc: "Long step forward. Drop back knee to floor. Keep front shin vertical.", 
+                    tip: "Don't let your front knee drift past your toes.",
+                    video: "https://www.youtube.com/shorts/U185qTIj69c"
+                },
+                "Push-ups": { 
+                    desc: "Standard or hands-elevated. Full range of motion. Chest to floor/surface.", 
+                    tip: "Stop 2 reps before failure. Focus on perfect tension.",
+                    video: "https://www.youtube.com/shorts/HHRDXEG1YCU"
+                },
+                "Chest-supported dumbbell row": { 
+                    desc: "Lie face-down on mat. Row DBs wide to sides, elbows flaring 45 deg.", 
+                    tip: "Focus on squeezing your upper back muscles together.",
+                    video: "https://www.youtube.com/shorts/K0lda9eQfNo"
+                },
+                "Glute bridge": { 
+                    desc: "Lie on back, knees bent. Squeeze glutes to lift hips. Weight stays on hips.", 
+                    tip: "Pause at the top for 1 second and squeeze hard.",
+                    video: "https://www.youtube.com/shorts/KwHhk-RLiyQ"
+                },
+                "Lateral raises": { 
+                    desc: "Stand tall. Raise DBs out to sides with slight elbow bend. Stop at shoulder height.", 
+                    tip: "Imagine pouring water out of a pitcher at the top.",
+                    video: "https://www.youtube.com/shorts/Z01SHPrwgvs"
+                },
+                "Dead bug": { 
+                    desc: "On back, arms up. Lower opposite arm/leg while keeping back pinned to mat.", 
+                    tip: "Exhale as you lower limbs to maintain core pressure.",
+                    video: "https://www.youtube.com/shorts/-8xqJ2xXs2A"
+                },
+                "Bird dog": { 
+                    desc: "On hands/knees. Extend opposite arm/leg. Maintain a flat tabletop back.", 
+                    tip: "Keep your neck neutral, looking at the floor.",
+                    video: "https://www.youtube.com/shorts/QYj5gYnPfI8"
+                },
+                "Side plank": { 
+                    desc: "On forearm and feet/knees. Hold a straight line from head to toe.", 
+                    tip: "Don't let your hips sag toward the mat.",
+                    video: "https://www.youtube.com/shorts/BFOyHDlY2UE"
+                }
+            }
+        };
+
+        function getWeekData(week) {
+            let phase = 1, phaseName = "Phase 1: Foundation", objective = "Focus on technique, control, and building the aerobic base.";
+            let monEx = [], monInt = 6, tueZ2 = 30, thuEx = [], thuSteady = 10, friZ2 = 40;
+
+            if (week <= 4) {
+                monEx = [
+                    { name: "Goblet squat", w: "11kg", s: week >= 2 ? "3x12" : "3x10", note: week == 3 ? "Pause at bottom" : "Slow & controlled" },
+                    { name: "Floor dumbbell press", w: "8.8kg each", s: "3x8" },
+                    { name: "Bent-over one-arm dumbbell row", w: "11kg", s: week >= 2 ? "3x12" : "3x10", note: week == 3 ? "Pause at top" : "Hand on thigh" },
+                    { name: "Romanian deadlift", w: "11kg each", s: week >= 2 ? "3x12" : "3x10" },
+                    { name: "Seated dumbbell shoulder press", w: "6.6kg each", s: "3x8" }
+                ];
+                thuEx = [
+                    { name: "Static split squat", w: "11kg goblet", s: "3x8 /leg" },
+                    { name: "Push-ups", w: "Bodyweight", s: "3 sets", note: "Stop 2 reps shy of fail" },
+                    { name: "Chest-supported dumbbell row", w: "8.8kg each", s: "3x10" },
+                    { name: "Glute bridge", w: "11kg", s: "3x12", note: week == 3 ? "1s pause at top" : "" },
+                    { name: "Lateral raises", w: "4.4kg", s: "3x12" }
+                ];
+                monInt = week >= 3 ? 7 : 6;
+                tueZ2 = week == 1 ? 30 : (week <= 3 ? 35 : 40);
+                thuSteady = week == 1 ? 10 : 12;
+                friZ2 = week == 4 ? 45 : 40;
+            } else if (week <= 8) {
+                phase = 2; phaseName = "Phase 2: Volume & Tempo"; objective = "Increasing sets and adding tempo control (3s descent) to build muscle density.";
+                monEx = [
+                    { name: "Goblet squat (3 sec down)", w: "11kg", s: "4x10", note: "3s eccentric" },
+                    { name: "Floor dumbbell press", w: "8.8kg each", s: "4x10" },
+                    { name: "Bent-over one-arm dumbbell row", w: "11kg", s: "4x10 /arm" },
+                    { name: "Romanian deadlift", w: "11kg each", s: "4x10" },
+                    { name: "Seated dumbbell shoulder press", w: "8.8kg each", s: "3x8" }
+                ];
+                thuEx = [
+                    { name: "Static split squat", w: "11kg", s: week >= 7 ? "3x12 /leg" : "3x10 /leg" },
+                    { name: "Push-ups", w: "Bodyweight", s: "3 sets" },
+                    { name: "Chest-supported dumbbell row", w: "8.8kg each", s: "3x12" },
+                    { name: "Glute bridge", w: "11kg", s: "3x15" },
+                    { name: "Lateral raises", w: "4.4-6.6kg", s: "3x15" }
+                ];
+                monInt = (week == 5) ? 7 : 8;
+                tueZ2 = (week == 5) ? 40 : 45;
+                thuSteady = (week <= 6) ? 12 : 15;
+                friZ2 = (week <= 6) ? 45 : 50;
+            } else {
+                phase = 3; phaseName = "Phase 3: Peak Performance"; objective = "Peak intensity. Introducing single-leg stability and maximum rowing volume.";
+                monEx = [
+                    { name: "Goblet squat", w: "11kg", s: "4x12", note: "Slow & controlled" },
+                    { name: "Single-arm floor press", w: "8.8kg", s: "3x10 /arm" },
+                    { name: "Bent-over one-arm dumbbell row", w: "11kg", s: "4x12 /arm" },
+                    { name: "Single-leg RDL", w: "11kg", s: "3x10 /leg" },
+                    { name: "Seated dumbbell shoulder press", w: "8.8kg each", s: "3x10" }
+                ];
+                thuEx = [
+                    { name: "Static split squat", w: "11kg", s: "4x10 /leg" },
+                    { name: "Push-ups", w: "Bodyweight", s: "3 sets" },
+                    { name: "Chest-supported dumbbell row", w: "8.8kg each", s: "4x12" },
+                    { name: "Glute bridge", w: "11kg", s: "4x15" },
+                    { name: "Lateral raises", w: "6.6kg", s: "3x12" }
+                ];
+                monInt = (week == 9) ? 8 : (week == 11 ? 9 : 10);
+                tueZ2 = 50;
+                thuSteady = 15;
+                friZ2 = (week >= 10) ? 55 : 50;
+                if (week == 12) { tueZ2 = 60; friZ2 = 60; }
+            }
+            return { phase, phaseName, objective, monEx, monInt, tueZ2, thuEx, thuSteady, friZ2 };
+        }
+
+        function updatePlan() {
+            const week = parseInt(document.getElementById('weekSelect').value);
+            const data = getWeekData(week);
+            document.getElementById('phaseName').innerText = data.phaseName;
+            document.getElementById('phaseDescription').innerText = data.objective;
+            const goalCard = document.getElementById('phaseGoalCard');
+            goalCard.className = `p-5 rounded-3xl shadow-md mb-6 flex items-center space-x-4 text-white ` + 
+                (data.phase == 1 ? 'bg-blue-600' : (data.phase == 2 ? 'bg-indigo-600' : 'bg-slate-900'));
+            renderExercises('mondayExercises', data.monEx);
+            document.getElementById('mondayIntervals').innerText = `${data.monInt} Rounds`;
+            document.getElementById('mondayDuration').innerText = `~${data.monInt * 2} Mins`;
+            document.getElementById('tuesdayZone2Time').innerText = `${data.tueZ2} MINS`;
+            renderCore('tuesdayCore');
+            renderExercises('thursdayExercises', data.thuEx);
+            document.getElementById('thursdaySteadyTime').innerText = `${data.thuSteady} MINS`;
+            document.getElementById('fridayRowTime').innerText = `${data.friZ2} MINS`;
+        }
+
+        function renderExercises(containerId, list) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = list.map(ex => `
+                <div onclick="openExercise('${ex.name}')" class="exercise-item p-4 bg-slate-50 rounded-2xl border-l-4 border-blue-500 transition-transform cursor-pointer group">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="font-bold text-slate-900 group-hover:text-blue-600 transition-colors">${ex.name}</p>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">${ex.w}</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs font-black text-blue-600">${ex.s}</span>
+                            ${ex.note ? `<p class="text-[9px] text-amber-600 font-bold uppercase mt-1 italic">${ex.note}</p>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderCore(containerId) {
+            const container = document.getElementById(containerId);
+            const core = [{ name: "Dead bug", s: "2 x 10" }, { name: "Bird dog", s: "2 x 8 /side" }, { name: "Side plank", s: "2 x 20-30s" }];
+            container.innerHTML = core.map(ex => `
+                <div onclick="openExercise('${ex.name}')" class="p-4 bg-slate-50 rounded-xl flex justify-between items-center cursor-pointer">
+                    <span class="font-bold text-sm">${ex.name}</span>
+                    <span class="text-blue-600 font-black uppercase text-[10px]">${ex.s}</span>
+                </div>
+            `).join('');
+        }
+
+        function openExercise(name) {
+            // Normalize names for data lookup
+            const lookupName = name.split(' (')[0];
+            const exercise = programData.exercises[name] || programData.exercises[lookupName] || { desc: "Maintain strict form.", tip: "Form over weight." };
+            
+            document.getElementById('modalTitle').innerText = name;
+            document.getElementById('modalDesc').innerText = exercise.desc;
+            document.getElementById('modalTip').innerText = exercise.tip;
+            
+            const videoContainer = document.getElementById('videoContainer');
+            const iframe = document.getElementById('exerciseVideoFrame');
+            
+            if (exercise.video) {
+                // Extract YouTube ID and use embed URL
+                const videoId = exercise.video.split('/').pop();
+                iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0&autoplay=0&modestbranding=1`;
+                videoContainer.classList.remove('hidden');
+            } else {
+                iframe.src = "";
+                videoContainer.classList.add('hidden');
+            }
+            
+            document.getElementById('exerciseModal').classList.add('active');
+        }
+
+        function closeModal() { 
+            // Reset iframe source to stop video playback
+            document.getElementById('exerciseVideoFrame').src = "";
+            document.getElementById('exerciseModal').classList.remove('active'); 
+        }
+
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-600', 'text-white', 'bg-emerald-600', 'bg-indigo-600', 'bg-slate-900');
+                btn.classList.add('bg-white', 'text-slate-800');
+            });
+            document.getElementById(tabId).classList.add('active');
+            const activeBtn = document.querySelector(`[data-target="${tabId}"]`);
+            const week = parseInt(document.getElementById('weekSelect').value);
+            const phase = week <= 4 ? 1 : (week <= 8 ? 2 : 3);
+            const activeColor = phase == 1 ? 'bg-blue-600' : (phase == 2 ? 'bg-indigo-600' : 'bg-slate-900');
+            activeBtn.classList.add('active', activeColor, 'text-white');
+            activeBtn.classList.remove('bg-white', 'text-slate-800');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const select = document.getElementById('weekSelect');
+            programData.weeks.forEach(w => {
+                const opt = document.createElement('option');
+                opt.value = w;
+                opt.innerText = `Week ${w}`;
+                select.appendChild(opt);
+            });
+            updatePlan();
+        });
+    </script>
+</body>
+</html>

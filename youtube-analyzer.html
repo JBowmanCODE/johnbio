@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JohnB.io - YouTube Channel Analyzer</title>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-0J6PBWMRNY');
+    </script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <meta name="description" content="A tool to analyze YouTube channel data based on a keyword.">
+    
+    <link rel="preload" href="/styles.css" as="style">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/footer.css">
+    <link rel="stylesheet" href="/youtube-analyzer2.css?v=2.2"> 
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <meta name="description" content="JohnB.IO - An AI and development platform for testing and exploring cutting-edge artificial intelligence technologies.">
+        <meta name="keywords" content="AI, artificial intelligence, machine learning, development, programming, API integration, prompt engineering, data visualization">
+        <meta name="subject" content="Artificial Intelligence and Software Development">
+        <meta name="classification" content="Technology">
+        <meta name="robots" content="index, follow">
+        <meta name="revisit-after" content="7 days">
+        <meta name="language" content="EN">
+        <meta name="author" content="John Bowman">
+        <meta name="designer" content="John Bowman">
+        <meta name="copyright" content="JohnB">
+        <meta name="reply-to" content="contact@johnb.io">
+        <meta name="owner" content="John Bowman">
+        <meta name="url" content="https://johnb.io">
+        <meta name="identifier-URL" content="https://johnb.io">
+        <meta name="category" content="Artificial Intelligence">
+        <meta name="coverage" content="Worldwide">
+        <meta name="distribution" content="Global">
+        <meta name="rating" content="General">
+        
+                <meta property="og:title" content="JohnB.IO - AI and Development Platform">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://johnb.io">
+            <meta property="og:description" content="Explore cutting-edge AI technologies and development tools at JohnB.IO.">
+        
+                <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@JohnBIO">
+        <meta name="twitter:title" content="JohnB.IO - AI and Development Platform">
+        <meta name="twitter:description" content="Explore cutting-edge AI technologies and development tools at JohnB.IO.">
+        
+</head>
+<body>
+    <div class="container">
+        <div id="header-placeholder"></div>
+        
+        <main>
+            <div class="content-section" id="yt-analyzer-tool">
+                <div class="title-container">
+                    <h1>YouTube Channel Analyzer</h1>
+                    <button id="info-button" title="How this tool works">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <p>Enter a YouTube channel URL and a keyword to analyze video data.</p>
+                
+                <form id="analyzer-form">
+                    <div class="form-group">
+                        <label for="channel-url">YouTube Channel URL:</label>
+                        <input type="url" id="channel-url" name="channel-url" placeholder="https://www.youtube.com/@MrBeast" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="keyword">Keyword:</label>
+                        <input type="text" id="keyword" name="keyword" placeholder="Leave Circle" required>
+                    </div>
+                    <button type="submit">Analyze</button>
+                </form>
+
+                <div id="results" class="hidden">
+                    <h2>Analysis Results</h2>
+                    <p id="results-intro"></p>
+                    <div class="stats-container">
+                        <div class="stat-box">
+                            <h3>Total Videos Found</h3>
+                            <p id="video-count">0</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>Total Views</h3>
+                            <p id="view-count">0</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>Total Comments</h3>
+                            <p id="comment-count">0</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>Total Likes</h3>
+                            <p id="like-count">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="info-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>How It Works</h2>
+                    <p>This tool analyzes a YouTube channel's videos by communicating with a secure back-end service, which uses the official YouTube Data API.</p>
+                    <ol>
+                        <li><strong>You enter a channel URL and keyword</strong> and click "Analyze".</li>
+                        <li><strong>The request is sent</strong> to a server-side worker, not your browser.</li>
+                        <li><strong>The worker fetches all public videos and Shorts</strong> from the channel's main "Uploads" playlist.</li>
+                        <li><strong>It filters this list</strong> by searching for your keyword within each video's <strong>title</strong>.</li>
+                        <li><strong>Finally, it calculates the total stats</strong> for all matching videos and sends the result back to this page.</li>
+                    </ol>
+                </div>
+            </div>
+        </main>
+        
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="/scripts.js" defer></script>
+    <script src="/youtube-analyzer.js" defer></script>
+
+</body>
+</html>

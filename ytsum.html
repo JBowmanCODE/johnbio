@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Summarizer and Q&A</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Site-wide Styles -->
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/footer.css">
+    
+    <!-- Page-specific Styles -->
+    <link rel="stylesheet" href="ytsum.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Placeholder -->
+        <div id="header-placeholder"></div>
+
+        <main>
+            <header class="page-header">
+                <h1 class="page-title">YouTube Video Summarizer & Q&A</h1>
+                <p class="page-subtitle">Paste a YouTube URL to get an AI-powered summary and ask questions about the video.</p>
+            </header>
+
+            <!-- Input Section -->
+            <div class="card input-card">
+                <div class="input-group">
+                    <input type="text" id="video-url" placeholder="Enter YouTube video URL">
+                    <button id="summarize-button">
+                        <svg id="button-icon" xmlns="http://www.w3.org/2000/svg" class="button-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        <span id="button-text">Summarize</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Message/Notification Area -->
+            <div id="message-container"></div>
+
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" style="display: none;">
+                <div class="spinner"></div>
+                <p>Processing video... This might take a moment.</p>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results-container" style="display: none;">
+                <!-- Summary -->
+                <div id="summary-container" class="card">
+                    <h2 class="card-title-summary">Video Summary</h2>
+                    <div id="summary-content"></div>
+                </div>
+
+                <!-- Q&A -->
+                <div id="qa-container" class="card">
+                    <h2 class="card-title-qa">Ask a Question</h2>
+                    <div class="input-group">
+                        <textarea id="question-input" placeholder="Ask a follow-up question..."></textarea>
+                        <button id="ask-button">Ask</button>
+                    </div>
+                    <div id="answer-container"></div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer Placeholder -->
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <!-- Site-wide Scripts -->
+    <script src="/scripts.js" defer></script>
+    <!-- Page-specific Scripts -->
+    <script src="ytsum.js" defer></script>
+     
+</body>
+</html>

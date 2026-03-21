@@ -1,0 +1,137 @@
+/* About Page Styles */
+.page-title {
+    color: #ffffff;
+    text-align: center;
+    margin: 40px 0;
+}
+
+.about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Profile Image Styles */
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-image: url('/images/JohnB.webp');
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 20px;
+}
+
+.profile-image:hover {
+    background-image: url('/images/jbcode.webp');
+    cursor: url('/images/pills.webp') 16 16, auto;
+}
+
+/* Text content */
+.text-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: black;
+}
+
+/* Skills section */
+.skills-section {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.skill-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.skill-button {
+    padding: 10px 20px;
+    background-color: #4c3bcf;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+.skill-button:hover,
+.skill-button.active {
+    background-color: #402e7a;
+}
+
+#skill-details {
+    text-align: center;
+    color: #000000;
+    min-height: 280px; /* Reserve space to prevent footer jump */
+}
+
+.skill-list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: minmax(65px, auto); /* Ensures all rows have a consistent minimum height */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.skill-list li {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    /* --- Styles for centering text and ensuring uniform box size --- */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .skill-buttons-container {
+        flex-direction: column;
+    }
+
+    .skill-button {
+        width: 100%;
+    }
+
+    .skill-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Added styles for Dark Mode readability --- */
+
+/* Fix for the main "Who I Am?" text content box in dark mode */
+body.dark-mode .text-content {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .text-content h2 {
+    color: #ffffff;
+}
+
+/* Fix for the dynamically generated skills list in dark mode */
+body.dark-mode #skill-details h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .skill-list li {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #4a4a4a;
+}

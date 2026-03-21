@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI CV Enhancer | JohnB.io</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0J6PBWMRNY');
+    </script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <meta name="description" content="Upload your CV and a job description. Get a tailored CV, cover letter, suitability score and interview prep powered by Claude AI.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/footer.css">
+    <link rel="stylesheet" href="aitocv.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="tool-container">
+
+        <!-- Hero -->
+        <div class="tool-header">
+            <div class="hero-badge">
+                <span></span>
+                Powered by Claude AI
+            </div>
+            <h1>Land your next job<br>with a <span class="gradient-text">smarter CV</span></h1>
+            <p>Upload your CV and paste any job description. Get a tailored CV, cover letter, match score and interview prep in under 60 seconds.</p>
+            <div class="header-actions">
+                <button class="info-btn" id="info-btn-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    How it works &amp; privacy
+                </button>
+            </div>
+            <svg id="info-icon" style="display:none"></svg>
+        </div>
+
+        <!-- Inputs -->
+        <div class="tool-content">
+            <div class="input-column">
+                <div class="step-label">
+                    <span class="step-number">1</span>
+                    <h2>Your CV</h2>
+                </div>
+                <div class="file-upload-area" id="file-upload-area">
+                    <div id="upload-prompt">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        <p><strong>Drop your CV here</strong></p>
+                        <p class="file-types">or click to browse &nbsp;·&nbsp; PDF, DOCX, TXT</p>
+                    </div>
+                    <div id="file-name-display" class="hidden"></div>
+                    <input type="file" id="cv-file-input" accept=".doc,.docx,.pdf,.txt" hidden>
+                </div>
+                <textarea id="cv-text-area" placeholder="Or paste your CV text here..." rows="10"></textarea>
+            </div>
+
+            <div class="input-column">
+                <div class="step-label">
+                    <span class="step-number">2</span>
+                    <h2>Job Description</h2>
+                </div>
+                <textarea id="job-description-area" placeholder="Paste the full job description here. The more detail, the more precisely your CV will be tailored..." rows="18"></textarea>
+            </div>
+        </div>
+
+        <div id="error-message" class="hidden"></div>
+
+        <div class="tool-footer">
+            <button id="enhance-cv-button">Enhance My CV &amp; Write Cover Letter</button>
+        </div>
+
+        <!-- Loading -->
+        <div id="loading-indicator" class="hidden">
+            <div class="loader-ring"></div>
+            <p id="loading-text">Crafting your tailored documents...</p>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <p id="job-tip"></p>
+        </div>
+
+        <!-- Results -->
+        <div id="results-section" class="hidden">
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-card-icon green">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3>Your Tailored CV</h3>
+                    <p>Rewritten and optimised for this role. ATS-ready and human-readable.</p>
+                    <button class="btn-download" id="download-docx-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Word
+                    </button>
+                    <button class="btn-download secondary" id="download-pdf-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        PDF
+                    </button>
+                </div>
+
+                <div id="cover-letter-section" class="result-card hidden">
+                    <div class="result-card-icon blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <h3>Cover Letter</h3>
+                    <p>Written with your real details, tailored to this exact role.</p>
+                    <button class="btn-download" id="download-cover-letter-docx-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Word
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis -->
+        <div id="analysis-section" class="hidden">
+            <div class="analysis-container">
+                <h2>Role Analysis &amp; Interview Prep</h2>
+                <div id="suitability-score-container"></div>
+                <div id="missing-skills-container"></div>
+                <div id="interview-prep-container"></div>
+            </div>
+        </div>
+
+        <!-- Reset -->
+        <div id="reset-section" class="tool-footer hidden">
+            <button id="try-another-role-button">Try Another Role</button>
+        </div>
+
+    </main>
+
+    <!-- ── BOTTOM SECTIONS (outside main, full-width) ── -->
+    <div class="bottom-sections">
+
+        <!-- What Roles Suit Me -->
+        <div class="roles-section">
+            <div class="roles-wrapper">
+                <div class="roles-header">
+                    <div class="roles-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
+                    </div>
+                    <div>
+                        <h2>What Roles Suit Me?</h2>
+                        <p>Upload your CV above first, then click below — Claude will identify your top 10 best-fit job roles.</p>
+                    </div>
+                </div>
+                <div id="roles-error" class="roles-error hidden">Please upload or paste your CV in the section above first.</div>
+                <button id="find-roles-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    Find My Best Roles
+                </button>
+                <div id="roles-loading" class="roles-loading hidden">
+                    <div class="roles-spinner"></div>
+                    <span>Analysing your CV...</span>
+                </div>
+                <div id="roles-results" class="roles-results hidden"></div>
+            </div>
+        </div>
+
+        <!-- Job Boards Accordion -->
+        <div class="accordion-section">
+            <div class="accordion-wrapper">
+                <button class="accordion-toggle">
+                    <span>Recommended Job Boards</span>
+                    <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="accordion-panel">
+                    <div class="search-bar-row">
+                        <div class="search-bar-wrap">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                            <input type="text" id="job-search-input" placeholder="Search for roles e.g. Head of AI" />
+                        </div>
+                        <button id="job-search-btn">Search All Boards</button>
+                    </div>
+                    <div class="link-grid" id="job-boards-grid">
+                        <a href="https://www.linkedin.com/jobs/" data-search="https://www.linkedin.com/jobs/search-results/?keywords={q}&origin=JOBS_HOME_SEARCH_BUTTON" target="_blank" rel="noopener noreferrer">LinkedIn Jobs</a>
+                        <a href="https://uk.indeed.com/" data-search="https://uk.indeed.com/jobs?q={q}" target="_blank" rel="noopener noreferrer">Indeed UK</a>
+                        <a href="https://www.reed.co.uk" data-search="https://www.reed.co.uk/jobs/{slug}-jobs" target="_blank" rel="noopener noreferrer">Reed.co.uk</a>
+                        <a href="https://weworkremotely.com" data-search="https://weworkremotely.com/remote-jobs/search?term={q+}" target="_blank" rel="noopener noreferrer">We Work Remotely</a>
+                        <a href="https://www.workingnomads.com/jobs" data-search="https://www.workingnomads.com/jobs?tag={slug}" target="_blank" rel="noopener noreferrer">Working Nomads</a>
+                        <a href="https://remote.co/remote-jobs/" data-search="https://remote.co/remote-jobs/search?searchkeyword={q%20}&useclocation=true" target="_blank" rel="noopener noreferrer">Remote.co</a>
+                        <a href="https://www.gamesjobsdirect.com" data-search="https://www.gamesjobsdirect.com/results?k={q%20}&ic=False" target="_blank" rel="noopener noreferrer">GamesJobsDirect</a>
+                        <a href="https://www.peopleperhour.com" data-search="https://www.peopleperhour.com/services/{q+}?ref=search" target="_blank" rel="noopener noreferrer">PeoplePerHour</a>
+                        <a href="https://www.pentasia.com/" data-search="https://www.pentasia.com/cm/candidates/jobs?keywords={q%20}" target="_blank" rel="noopener noreferrer">Pentasia</a>
+                        <a href="https://www.bettingjobs.com/current-vacancies/" data-search="https://www.bettingjobs.com/jobs/{slug}-jobs/" target="_blank" rel="noopener noreferrer">BettingJobs</a>
+                        <a href="https://www.searchandselect.com/job-search" data-search="https://www.searchandselect.com/job-search?keyword={q%20}" target="_blank" rel="noopener noreferrer">Search and Select</a>
+                        <a href="https://www.itjobswatch.co.uk/" data-search="https://www.itjobswatch.co.uk/find/{slug}-jobs-in-UK" target="_blank" rel="noopener noreferrer">IT Jobs Watch</a>
+                        <a href="https://hitmarker.net" target="_blank" rel="noopener noreferrer">Hitmarker</a>
+                        <a href="https://www.remotegamejobs.com" target="_blank" rel="noopener noreferrer">Remote Game Jobs</a>
+                        <a href="https://www.upwork.com" target="_blank" rel="noopener noreferrer">Upwork</a>
+                        <a href="https://vankaizen.com/vacancies" target="_blank" rel="noopener noreferrer">Van Kaizen</a>
+                        <a href="https://bullfinch.breezy.hr/" target="_blank" rel="noopener noreferrer">Bullfinch</a>
+                        <a href="https://www.flexjobs.com" target="_blank" rel="noopener noreferrer">FlexJobs</a>
+                        <a href="https://www.civilservicejobs.service.gov.uk/" data-search="https://www.civilservicejobs.service.gov.uk/csr/jobs.cgi?keywords={q}" target="_blank" rel="noopener noreferrer">Civil Service Jobs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.bottom-sections -->
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Info Popup -->
+    <div id="info-popup" class="info-popup-overlay hidden">
+        <div class="info-popup">
+            <div class="info-popup-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>How it works &amp; your privacy</h3>
+            <p>This tool is powered by <strong>Claude AI</strong> (Anthropic). Your CV and job description are sent to Claude to generate your documents.</p>
+            <ul>
+                <li>Your CV and job description are sent to Claude AI (Anthropic). Anthropic's standard privacy policy applies.</li>
+                <li>No data is stored on this site. Nothing is saved to a database or shared with third parties by JohnB.io.</li>
+                <li>This tool is free with a limit of 20 enhancements per day per user.</li>
+                <li>Do not include highly sensitive personal information such as passport numbers or financial details.</li>
+                <li>The CV and cover letter are AI-generated suggestions. Always review before sending to employers.</li>
+            </ul>
+            <button class="info-popup-close" id="info-popup-close">Got it</button>
+        </div>
+    </div>
+
+    <!-- Video Modal (kept for JS compatibility) -->
+    <div id="video-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <span id="modal-close-button" class="modal-close-button">&times;</span>
+            <div class="video-container"><iframe src="" frameborder="0" title="AI CV Enhancer"></iframe></div>
+        </div>
+    </div>
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/docx@7.8.2/build/index.js"></script>
+    <script>
+      window.saveAs = function(blob, filename) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = filename;
+        document.body.appendChild(a); a.click();
+        setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+      };
+      document.addEventListener('DOMContentLoaded', function(){
+        var trigger = document.getElementById('info-btn-trigger');
+        var popup   = document.getElementById('info-popup');
+        var closeBtn = document.getElementById('info-popup-close');
+        if (trigger && popup) trigger.addEventListener('click', function(){ popup.classList.remove('hidden'); });
+        if (closeBtn && popup) closeBtn.addEventListener('click', function(){ popup.classList.add('hidden'); });
+        if (popup) popup.addEventListener('click', function(e){ if(e.target === popup) popup.classList.add('hidden'); });
+      });
+    </script>
+    <script src="/scripts.js" defer></script>
+    <script src="aitocv.js" defer></script>
+</body>
+</html>

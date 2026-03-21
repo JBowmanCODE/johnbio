@@ -1,0 +1,477 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1738864738704,
+    "data": [
+        {
+            "type": "folder",
+            "name": "public_html"
+        },
+        {
+            "type": "file",
+            "name": "public_html/CV-Cover-Letter.css",
+            "size": 10090,
+            "hash": "e11caabf01cb9ab850ce89c0f15d4b4973264e36ca0b078107f6eae0243bb51e"
+        },
+        {
+            "type": "file",
+            "name": "public_html/CV-Cover-Letter.html",
+            "size": 9494,
+            "hash": "93c4157927dc954fbbd145164c871da04f1fbe9ef7076400b6ad413150dd6762"
+        },
+        {
+            "type": "file",
+            "name": "public_html/CV-Cover-Letter.js",
+            "size": 27178,
+            "hash": "56df65d7557c7217ae3c04a1e71eb17054192384612f5523b15a08e013bf29c0"
+        },
+        {
+            "type": "file",
+            "name": "public_html/about.css",
+            "size": 1943,
+            "hash": "7e2266b1744e4da8c54844d45b47df14a1943ad3716418596b80cf28217f0d6f"
+        },
+        {
+            "type": "file",
+            "name": "public_html/about.html",
+            "size": 2822,
+            "hash": "76dacbd55a5fd5a63e2fca8f74fb6e2b7f2bfb7da36a4188adb47fcf35f53996"
+        },
+        {
+            "type": "file",
+            "name": "public_html/about.js",
+            "size": 3161,
+            "hash": "3f752a917713aab248914e0bf67386c70e36979a272e13ad3fa8f84cbebc80d0"
+        },
+        {
+            "type": "file",
+            "name": "public_html/app.py",
+            "size": 976,
+            "hash": "9d3bd22d854e80f4b01342dd2d48fdb7bb0fd6a4050828b2a05ec4e1321adf20"
+        },
+        {
+            "type": "file",
+            "name": "public_html/bankroll.css",
+            "size": 4410,
+            "hash": "e7f5d7cbc674ef2cfa0abc8ffc14d09aaaddcdfbe3a66957e7212a53c37efc74"
+        },
+        {
+            "type": "file",
+            "name": "public_html/bankroll.html",
+            "size": 5565,
+            "hash": "ced13d6c9a4edcbfc6a6473498c4658e484f55acf41f2da4cbb99846cc4b8ec4"
+        },
+        {
+            "type": "file",
+            "name": "public_html/bankroll.js",
+            "size": 4245,
+            "hash": "82978a4a13fd989dc6f2e144db9ecee472b408601170daf65d9b1ed7d6e7c74b"
+        },
+        {
+            "type": "file",
+            "name": "public_html/calculator.css",
+            "size": 2444,
+            "hash": "bd593d2ca295eeb23dca86906df774066d81d3e6427ee587fd37b51349d2a0de"
+        },
+        {
+            "type": "file",
+            "name": "public_html/calculator.js",
+            "size": 2868,
+            "hash": "563803e1af04f93bf0afc50bc9d26cac7b3a920931dbe83e1b8fb39f0a3c745f"
+        },
+        {
+            "type": "file",
+            "name": "public_html/calculator.html",
+            "size": 4268,
+            "hash": "0c90b64fdb646d7716bff10038f218f77b4549c1391ffe9e05b564f0de615c4e"
+        },
+        {
+            "type": "folder",
+            "name": "public_html/cgi-bin"
+        },
+        {
+            "type": "file",
+            "name": "public_html/data.css",
+            "size": 2196,
+            "hash": "7421ffef27fec1645e96209126b8627401fd75dcaea83b4e67dd1b0f3ad11868"
+        },
+        {
+            "type": "file",
+            "name": "public_html/data.html",
+            "size": 3524,
+            "hash": "ba6c96f7ec32c1dc92d7f622bff5fd7d5d932b6977706a2bc5403c2ea2776ce9"
+        },
+        {
+            "type": "file",
+            "name": "public_html/data.js",
+            "size": 26859,
+            "hash": "028de473feaadf213f3e62569e66a2033a4e7e3934310dcd1738ecec76c49b52"
+        },
+        {
+            "type": "file",
+            "name": "public_html/editor.css",
+            "size": 12965,
+            "hash": "3dd0792d0f1752913d47e7c263fc7cf83711ffb16db69b60c330a412f1ee7e17"
+        },
+        {
+            "type": "file",
+            "name": "public_html/editor.html",
+            "size": 9690,
+            "hash": "297ef0b4cbf1b4be5e4a29f13b3f531f2d051ace4ef391c424a7f67347d449d4"
+        },
+        {
+            "type": "file",
+            "name": "public_html/editor.js",
+            "size": 23424,
+            "hash": "fdbfdc72f1fcab5e5e4644f1f32a8b2744d276fa7997d44fd2774f0ac2805197"
+        },
+        {
+            "type": "file",
+            "name": "public_html/error_log",
+            "size": 2,
+            "hash": "8d74beec1be996322ad76813bafb92d40839895d6dd7ee808b17ca201eac98be"
+        },
+        {
+            "type": "file",
+            "name": "public_html/favicon.ico",
+            "size": 3438,
+            "hash": "45982191522479ec5b67cd773e90d8e1f6ac7d6d6bcc1f83c889dc71047a8b55"
+        },
+        {
+            "type": "file",
+            "name": "public_html/favicon.png",
+            "size": 4944,
+            "hash": "66611b2a99eabcc1662ae677e8092fee6d42ba2fa2ccc542afde3f240123907c"
+        },
+        {
+            "type": "folder",
+            "name": "public_html/fonts"
+        },
+        {
+            "type": "file",
+            "name": "public_html/footer.css",
+            "size": 2065,
+            "hash": "2a3e97c83441ccfe637a0257958dc29f83d9f4abf60483ea7afb6025c1cee890"
+        },
+        {
+            "type": "file",
+            "name": "public_html/footer.html",
+            "size": 841,
+            "hash": "f966c7fc8bcb52bb35deb4ea3f74a9ffc1b75f27087796092c7f443a786ac5e1"
+        },
+        {
+            "type": "file",
+            "name": "public_html/footer.js",
+            "size": 1867,
+            "hash": "85fd9797376ed09bc99f710036f1d86e052540d4600db2d59224bcaab6e17157"
+        },
+        {
+            "type": "file",
+            "name": "public_html/genz.css",
+            "size": 1197,
+            "hash": "016655ffdf1c7cda846302f3bf0a3683f3a975fbdcf48d19d6ecfdd75a6c1f1c"
+        },
+        {
+            "type": "file",
+            "name": "public_html/genz.js",
+            "size": 1317,
+            "hash": "b9102f0513929a2b4cf0e785fdff3c8f35697b756f442cbcb5c92b6b2d6716c8"
+        },
+        {
+            "type": "file",
+            "name": "public_html/genz.html",
+            "size": 1841,
+            "hash": "98378b6ecd4008e1418fa8708bf7113b69553062c078db5632d44ea2d2eeb747"
+        },
+        {
+            "type": "file",
+            "name": "public_html/get_captions.php",
+            "size": 1053,
+            "hash": "461700a94c1387c1328e6b556c84203930f9cf499b74f0b25d6ac41ac11a66a6"
+        },
+        {
+            "type": "file",
+            "name": "public_html/header.css",
+            "size": 8476,
+            "hash": "860d8a73a563cb8a0f6db30bfbef2d39ac478fe75cceeeb6a6147016231fc7aa"
+        },
+        {
+            "type": "file",
+            "name": "public_html/header.html",
+            "size": 1790,
+            "hash": "48c10ad8255e5eb49f3b28c66f2e39489bd68f8258e77ca9ee5b5d240248d5ae"
+        },
+        {
+            "type": "file",
+            "name": "public_html/htaccess",
+            "size": 3055,
+            "hash": "6fb8f69b886e54572cfa1040447273a5ecadf6f0cd477d0dd00925337d3a701c"
+        },
+        {
+            "type": "folder",
+            "name": "public_html/images"
+        },
+        {
+            "type": "file",
+            "name": "public_html/project-",
+            "size": 0,
+            "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+            "type": "file",
+            "name": "public_html/index.html",
+            "size": 4121,
+            "hash": "5597d34b38c824ffc66c7569617a75b39b9d0529280ed0cc396cd6952d710787"
+        },
+        {
+            "type": "file",
+            "name": "public_html/project-insights.html",
+            "size": 3947,
+            "hash": "52ee107510eb6078987d99693ec5cd5e77fdc56eace3bc59e9067154a02fdfe7"
+        },
+        {
+            "type": "file",
+            "name": "public_html/result.html",
+            "size": 807,
+            "hash": "74252b3369d1808605e8f46f8a1c846246da7b4485440c403d15f73eae751a28"
+        },
+        {
+            "type": "file",
+            "name": "public_html/robots.txt",
+            "size": 60,
+            "hash": "4c1e8c049ba569d2ac354a94a8a651ed7aa7641022757b7acdac15dd1ecf654d"
+        },
+        {
+            "type": "file",
+            "name": "public_html/scripts.js",
+            "size": 6983,
+            "hash": "fc70b591a220b09b5dde01b5303a83ad7a8beb569182bfb062d0630ffa2416b0"
+        },
+        {
+            "type": "file",
+            "name": "public_html/sitemap.xml",
+            "size": 3006,
+            "hash": "9aa0fc9c95ccf1df189dc8ad1abe7688c2ed8501fe4af9953e5d9f17d62215b8"
+        },
+        {
+            "type": "file",
+            "name": "public_html/styles.css",
+            "size": 5870,
+            "hash": "9e9859e26360d3015805449ddb7ca2a7978255b60cb06cc0bd83ef12fe604ec1"
+        },
+        {
+            "type": "file",
+            "name": "public_html/template.html",
+            "size": 3313,
+            "hash": "257c312e1fa52ed850c4c1b4ed08bf938a16419eb3555d3286886703653dd50a"
+        },
+        {
+            "type": "file",
+            "name": "public_html/test.html",
+            "size": 33870,
+            "hash": "e600da2e0ab555ed5af5b6e0ab4661e5945891ed94c15f46a386b2b6c64333f1"
+        },
+        {
+            "type": "file",
+            "name": "public_html/text-to-voice.css",
+            "size": 2536,
+            "hash": "8d50e6c66e222dee70e9f937c083fdc26d6fd96cd411130d70100d7a606b6390"
+        },
+        {
+            "type": "file",
+            "name": "public_html/text-to-voice.html",
+            "size": 2721,
+            "hash": "9b60c606d3d079c15e7cf51da2f55a4fa6971ae871d13ababfa6d2abc2902f9b"
+        },
+        {
+            "type": "file",
+            "name": "public_html/text-to-voice.js",
+            "size": 8935,
+            "hash": "e5ba8ba3818b0aded50430aca149af37791884044952b9d451b0f7c87ea98858"
+        },
+        {
+            "type": "file",
+            "name": "public_html/transcripts.css",
+            "size": 7480,
+            "hash": "22ca82952d77c4a00fd0076a494df341f0d632da4c9ee89841cb41a556bbdef9"
+        },
+        {
+            "type": "file",
+            "name": "public_html/transcripts.html",
+            "size": 6839,
+            "hash": "359d2c7d89d0d22e040c1e478d4f7d6aa09c6f7c19d6b2172aebc7e62fc864e5"
+        },
+        {
+            "type": "file",
+            "name": "public_html/transcripts.js",
+            "size": 11951,
+            "hash": "3faf8231cbc62553bb401d9ffa2942ef74d23130da005799cf8be4f46dbf855a"
+        },
+        {
+            "type": "file",
+            "name": "public_html/ytsum.css",
+            "size": 2188,
+            "hash": "0c4d99eb3b3820da55daa002ef10ee0ba4b4ea92445569ee177aca768b5271b2"
+        },
+        {
+            "type": "file",
+            "name": "public_html/ytsum.html",
+            "size": 2344,
+            "hash": "fbd4bfa84afc842f2f41917ba6485def3f8ed02a8ca3d67287110f29f7151d31"
+        },
+        {
+            "type": "file",
+            "name": "public_html/ytsum.js",
+            "size": 4353,
+            "hash": "35802b23ef33493c27fd7cc8b6fd6c0cc59a120b99e8ada875e0602b8d652024"
+        },
+        {
+            "type": "folder",
+            "name": "public_html/.github/workflows"
+        },
+        {
+            "type": "file",
+            "name": "public_html/cgi-bin/index.html",
+            "size": 565,
+            "hash": "7e2dccf56ee3100a356cf1b9b84cf5f9e0e94118c039087841daee86811f39dd"
+        },
+        {
+            "type": "file",
+            "name": "public_html/fonts/CORBEL.TTF",
+            "size": 151836,
+            "hash": "302e3fb02e514c44814f339bc2e764496b0f2c2a78ebde916a8b6efa6019aa44"
+        },
+        {
+            "type": "file",
+            "name": "public_html/fonts/CORBELB.TTF",
+            "size": 274388,
+            "hash": "2d3fb4d471e9669a5ab2bc8aa9b359639e17af321510f3b878bae03bc259b056"
+        },
+        {
+            "type": "file",
+            "name": "public_html/fonts/Corbel Bold Italic.ttf",
+            "size": 161652,
+            "hash": "fb603ff866691b6e31a5c38d8656fc000a47695e3fcea7f138db096687208508"
+        },
+        {
+            "type": "file",
+            "name": "public_html/fonts/Corbel Bold.ttf",
+            "size": 157592,
+            "hash": "101853d047666ec7e3bf0c020ab5f223e68497d8b91bb5b4f77c821275916387"
+        },
+        {
+            "type": "file",
+            "name": "public_html/fonts/Corbel Italic.ttf",
+            "size": 156608,
+            "hash": "23343466b2a8a03ac8702180f5b98d5ce33874834e64afbd558c510665d80b24"
+        },
+        {
+            "type": "file",
+            "name": "public_html/fonts/corbeli.ttf",
+            "size": 209852,
+            "hash": "deeaff659011f0357b2714fe184bafb934708c3f11c70c4a7c607f8809611845"
+        },
+        {
+            "type": "file",
+            "name": "public_html/fonts/corbelz.ttf",
+            "size": 279400,
+            "hash": "9c68522951940ad49354f4fce56b528414a7e83c44474ceea0582a5434693066"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/JohnB.png",
+            "size": 100533,
+            "hash": "5cadbc1fb226e365eb89c5c6430fe59394245645121e0c953ce935daf7f7ee54"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/JohnB.webp",
+            "size": 26644,
+            "hash": "eba20417f366932b2ca418c07151a9448d1f6c57bf9111e992056c599f524ca5"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/Money.png",
+            "size": 3687,
+            "hash": "8eb09d754d00c4d5bbf707d992c1f5f89da08feee48d656b5a090e1a3e9d70a4"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/about.png",
+            "size": 4571,
+            "hash": "3104cc323d38236715f4391562f0671811eaa07cd45b9a61bc658d0221c0eae6"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/ai.png",
+            "size": 4112,
+            "hash": "d8fdec549b8b715f0eba44922ea54fd920665dbd294d87456b297cf29d828e49"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/ai.webp",
+            "size": 1176,
+            "hash": "845123b0d9e14a11bec257d871bb5cd278e08f751c80e5baa9db1d9019a33d82"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/bowman.png",
+            "size": 3787,
+            "hash": "64b8649db455674bdd7669a5c86dbed8464aaca86eefb8d8b3f5d7c1baffc314"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/contact.png",
+            "size": 4773,
+            "hash": "4ceb09a108e9a51985dc338892dd8487d8902e7681b6241c58ed13835201a5f8"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/house.png",
+            "size": 3620,
+            "hash": "51479ca731c35ede450bfc9d01bdce8212fd0c2332bcfa19495cbef7c80d16bb"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/insights.webp",
+            "size": 14528,
+            "hash": "e3e08e7cf703c7370258c587e000a090b4b50ccca5454e4d0738e2f10f0fd5bb"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/jbcode.webp",
+            "size": 33680,
+            "hash": "1fdf3e3704f77d81e740843a7067aa659f7a0154e1df6f71133ed6e0500fab60"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/pills.webp",
+            "size": 1288,
+            "hash": "53f39003373775fd83b92fed9ed34a94fa6bf001a50327a48ca787154373e69e"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/portfolio.png",
+            "size": 4275,
+            "hash": "008e82a4f04850f9f052efa7ee6ae49a2ce6bf686b16f9db5c79cda76788344e"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/python.webp",
+            "size": 914,
+            "hash": "eb513fddf7368221bb90a663e8e258c03627e156942327807d7d5dcb941aeaef"
+        },
+        {
+            "type": "file",
+            "name": "public_html/images/sunglasses.png",
+            "size": 4310,
+            "hash": "bed2df6a9f41e6bf3c3a11a4673117bbba2601b1d18e5aa987c0e84196790852"
+        },
+        {
+            "type": "file",
+            "name": "public_html/.github/workflows/deploy.yml",
+            "size": 424,
+            "hash": "9a8e184c3006d7725132cc16fbcb6b1f64115d12a7809e01d15fd3621ade2fa2"
+        }
+    ]
+}
