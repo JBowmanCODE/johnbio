@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Repurposer — JohnB.io</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0J6PBWMRNY');
+    </script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <meta name="description" content="Repurpose any content into LinkedIn, X, Facebook, newsletter and video scripts instantly.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="John Bowman">
+    <meta property="og:title" content="Content Repurposer — JohnB.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://johnb.io/content-repurposer">
+    <meta property="og:description" content="Repurpose any content into LinkedIn, X, Facebook, newsletter and video scripts instantly.">
+    <meta property="og:image" content="https://johnb.io/images/content-repurposer.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Content Repurposer — JohnB.io">
+    <meta name="twitter:description" content="Repurpose any content into LinkedIn, X, Facebook, newsletter and video scripts instantly.">
+    <meta name="twitter:image" content="https://johnb.io/images/content-repurposer.webp">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/footer.css">
+    <link rel="stylesheet" href="/content-repurposer.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <div class="repurposer-ambient"></div>
+
+    <main class="repurposer-wrap">
+        <h1 class="page-title">Content <span class="gradient-text">Repurposer</span></h1>
+        <p class="repurposer-desc">Paste any content and get it rewritten for every channel instantly</p>
+
+        <!-- Input section -->
+        <div class="repurposer-input-section">
+            <textarea id="content-input" placeholder="Paste your blog post, article, press release or any content here..."></textarea>
+            <div class="input-footer">
+                <span id="char-count">0 / 10,000</span>
+                <button id="repurpose-btn">
+                    <span class="material-symbols-outlined">auto_awesome</span>
+                    Repurpose Content
+                </button>
+            </div>
+        </div>
+
+        <!-- Results grid (hidden until results arrive) -->
+        <div class="repurposer-grid" id="repurposer-grid" style="display:none;">
+
+            <div class="output-card" data-key="linkedin">
+                <div class="output-card-header">
+                    <div class="output-card-label">
+                        <span class="material-symbols-outlined">work</span>
+                        LinkedIn Post
+                    </div>
+                    <span class="output-badge" id="badge-linkedin"></span>
+                </div>
+                <div class="output-content" id="output-linkedin"></div>
+                <div class="output-card-footer">
+                    <button class="copy-btn" data-target="linkedin">
+                        <span class="material-symbols-outlined">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+            </div>
+
+            <div class="output-card" data-key="twitter">
+                <div class="output-card-header">
+                    <div class="output-card-label">
+                        <span class="material-symbols-outlined">tag</span>
+                        X Post
+                    </div>
+                    <span class="output-badge" id="badge-twitter"></span>
+                </div>
+                <div class="output-content" id="output-twitter"></div>
+                <div class="output-card-footer">
+                    <button class="copy-btn" data-target="twitter">
+                        <span class="material-symbols-outlined">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+            </div>
+
+            <div class="output-card" data-key="facebook">
+                <div class="output-card-header">
+                    <div class="output-card-label">
+                        <span class="material-symbols-outlined">groups</span>
+                        Facebook Post
+                    </div>
+                    <span class="output-badge" id="badge-facebook"></span>
+                </div>
+                <div class="output-content" id="output-facebook"></div>
+                <div class="output-card-footer">
+                    <button class="copy-btn" data-target="facebook">
+                        <span class="material-symbols-outlined">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+            </div>
+
+            <div class="output-card" data-key="newsletter">
+                <div class="output-card-header">
+                    <div class="output-card-label">
+                        <span class="material-symbols-outlined">email</span>
+                        Newsletter
+                    </div>
+                    <span class="output-badge" id="badge-newsletter"></span>
+                </div>
+                <div class="output-content" id="output-newsletter"></div>
+                <div class="output-card-footer">
+                    <button class="copy-btn" data-target="newsletter">
+                        <span class="material-symbols-outlined">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+            </div>
+
+            <div class="output-card" data-key="video_10s">
+                <div class="output-card-header">
+                    <div class="output-card-label">
+                        <span class="material-symbols-outlined">videocam</span>
+                        10-Second Script
+                    </div>
+                    <span class="output-badge" id="badge-video_10s"></span>
+                </div>
+                <div class="output-content" id="output-video_10s"></div>
+                <div class="output-card-footer">
+                    <button class="copy-btn" data-target="video_10s">
+                        <span class="material-symbols-outlined">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+            </div>
+
+            <div class="output-card" data-key="video_30s">
+                <div class="output-card-header">
+                    <div class="output-card-label">
+                        <span class="material-symbols-outlined">smart_display</span>
+                        30-Second Script
+                    </div>
+                    <span class="output-badge" id="badge-video_30s"></span>
+                </div>
+                <div class="output-content" id="output-video_30s"></div>
+                <div class="output-card-footer">
+                    <button class="copy-btn" data-target="video_30s">
+                        <span class="material-symbols-outlined">content_copy</span>
+                        Copy
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/scripts.js" defer></script>
+    <script src="/content-repurposer.js" defer></script>
+</body>
+</html>
