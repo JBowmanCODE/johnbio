@@ -2,6 +2,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const inputText = document.getElementById('input-text');
     const translateBtn = document.getElementById('translate-btn');
     const outputText = document.getElementById('output-text');
+    const swapBtn = document.getElementById('swap-btn');
+    const inputLabel = document.getElementById('input-label');
+    const outputLabel = document.getElementById('output-label');
+
+    let direction = 'to-genz';
+
+    swapBtn.addEventListener('click', function() {
+        direction = direction === 'to-genz' ? 'to-english' : 'to-genz';
+        if (direction === 'to-english') {
+            inputLabel.textContent = 'Gen Z Text';
+            outputLabel.textContent = 'Plain English';
+            inputText.placeholder = 'Paste Gen Z slang here...';
+            swapBtn.title = 'Switch to English → Gen Z';
+        } else {
+            inputLabel.textContent = 'Your Text';
+            outputLabel.textContent = 'Gen Z Translation';
+            inputText.placeholder = 'Paste your text here...';
+            swapBtn.title = 'Switch to Gen Z → English';
+        }
+        swapBtn.classList.toggle('swapped', direction === 'to-english');
+        outputText.textContent = '';
+    });
 
     translateBtn.addEventListener('click', translateText);
 
@@ -15,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ text })
+                    body: JSON.stringify({ text, direction })
                 });
 
                 if (!response.ok) {

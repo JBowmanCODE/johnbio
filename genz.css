@@ -187,16 +187,30 @@ body {
 #translate-btn:hover { transform: scale(1.02); box-shadow: 0 0 28px rgba(255,0,127,0.45); }
 #translate-btn:active { transform: scale(0.98); }
 
-/* ── ARROW DIVIDER ── */
+/* ── SWAP BUTTON ── */
 .genz-arrow {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 3.5rem;
-  color: rgba(248,245,253,0.15);
   flex-shrink: 0;
 }
-.genz-arrow .material-symbols-outlined { font-size: 1.5rem; }
+#swap-btn {
+  background: none;
+  border: 1px solid rgba(248,245,253,0.15);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(248,245,253,0.4);
+  transition: color 0.2s, border-color 0.2s, transform 0.3s;
+}
+#swap-btn:hover { color: rgba(248,245,253,0.9); border-color: rgba(248,245,253,0.4); }
+#swap-btn.swapped { transform: rotate(180deg); color: #ff007f; border-color: #ff007f; }
+#swap-btn .material-symbols-outlined { font-size: 1.4rem; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 680px) {
