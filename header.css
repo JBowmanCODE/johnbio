@@ -83,8 +83,25 @@ nav {
   user-select: none;
 }
 .nav-dropdown-toggle .material-symbols-outlined { font-size: 1rem; transition: transform 0.25s; }
-.nav-dropdown:hover .nav-dropdown-toggle { color: var(--on-surface); background: rgba(255,0,127,0.08); }
 .nav-dropdown:hover .nav-dropdown-toggle .material-symbols-outlined { transform: rotate(180deg); }
+
+/* Cyan — AI Tools */
+.nav-dropdown--cyan:hover .nav-dropdown-toggle { color: var(--secondary); background: rgba(0,238,252,0.08); }
+.nav-dropdown--cyan .nav-dropdown-menu { border-top-color: var(--secondary); border-color: rgba(0,238,252,0.25); box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 0 18px rgba(0,238,252,0.12); }
+.nav-dropdown--cyan .nav-dropdown-menu li a:hover { background: rgba(0,238,252,0.07); color: var(--secondary); border-left-color: var(--secondary); }
+.nav-dropdown--cyan .nav-dropdown-menu li a:hover .material-symbols-outlined { color: var(--secondary); }
+
+/* Pink — Python / JS */
+.nav-dropdown--pink:hover .nav-dropdown-toggle { color: var(--primary); background: rgba(255,0,127,0.08); }
+.nav-dropdown--pink .nav-dropdown-menu { border-top-color: var(--primary); border-color: rgba(255,0,127,0.25); box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 0 18px rgba(255,0,127,0.12); }
+.nav-dropdown--pink .nav-dropdown-menu li a:hover { background: rgba(255,0,127,0.07); color: var(--primary); border-left-color: var(--primary); }
+.nav-dropdown--pink .nav-dropdown-menu li a:hover .material-symbols-outlined { color: var(--primary); }
+
+/* Green — Digital AI Tools */
+.nav-dropdown--green:hover .nav-dropdown-toggle { color: #22c55e; background: rgba(34,197,94,0.08); }
+.nav-dropdown--green .nav-dropdown-menu { border-top-color: #22c55e; border-color: rgba(34,197,94,0.25); box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 0 18px rgba(34,197,94,0.12); }
+.nav-dropdown--green .nav-dropdown-menu li a:hover { background: rgba(34,197,94,0.07); color: #22c55e; border-left-color: #22c55e; }
+.nav-dropdown--green .nav-dropdown-menu li a:hover .material-symbols-outlined { color: #22c55e; }
 
 .nav-dropdown-menu {
   display: block;
