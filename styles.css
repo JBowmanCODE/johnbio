@@ -186,6 +186,9 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--on-surface);
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
 }
 
 .tool-accordion[open] .tool-accordion-title {
