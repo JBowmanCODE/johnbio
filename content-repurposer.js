@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const CARD_KEYS  = ['linkedin', 'twitter', 'facebook', 'newsletter', 'video_10s', 'video_30s'];
 
   // ── Platform selector ──────────────────────────────────────────────────────
-  let activePlatforms = new Set(CARD_KEYS);
+  let activePlatforms = new Set(['linkedin']);
 
   const platformBtns = document.querySelectorAll('.platform-btn');
   platformBtns.forEach(function (btn) {
