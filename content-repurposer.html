@@ -57,6 +57,20 @@
             </div>
         </div>
 
+        <!-- Platform selector -->
+        <div class="platform-selector" id="platform-selector" style="display:none;">
+            <span class="platform-selector-label">Show outputs for:</span>
+            <div class="platform-btns">
+                <button class="platform-btn active" data-platform="all">All</button>
+                <button class="platform-btn active" data-platform="linkedin"><span class="material-symbols-outlined">work</span>LinkedIn</button>
+                <button class="platform-btn active" data-platform="twitter"><span class="material-symbols-outlined">tag</span>X</button>
+                <button class="platform-btn active" data-platform="facebook"><span class="material-symbols-outlined">groups</span>Facebook</button>
+                <button class="platform-btn active" data-platform="newsletter"><span class="material-symbols-outlined">email</span>Newsletter</button>
+                <button class="platform-btn active" data-platform="video_10s"><span class="material-symbols-outlined">videocam</span>10s Script</button>
+                <button class="platform-btn active" data-platform="video_30s"><span class="material-symbols-outlined">smart_display</span>30s Script</button>
+            </div>
+        </div>
+
         <!-- Results grid (hidden until results arrive) -->
         <div class="repurposer-grid" id="repurposer-grid" style="display:none;">
 
@@ -70,6 +84,10 @@
                 </div>
                 <div class="output-content" id="output-linkedin"></div>
                 <div class="output-card-footer">
+                    <button class="share-btn" data-target="linkedin" data-platform="linkedin">
+                        <span class="material-symbols-outlined">open_in_new</span>
+                        Post to LinkedIn
+                    </button>
                     <button class="copy-btn" data-target="linkedin">
                         <span class="material-symbols-outlined">content_copy</span>
                         Copy
@@ -87,6 +105,10 @@
                 </div>
                 <div class="output-content" id="output-twitter"></div>
                 <div class="output-card-footer">
+                    <button class="share-btn" data-target="twitter" data-platform="twitter">
+                        <span class="material-symbols-outlined">open_in_new</span>
+                        Post to X
+                    </button>
                     <button class="copy-btn" data-target="twitter">
                         <span class="material-symbols-outlined">content_copy</span>
                         Copy
@@ -104,6 +126,10 @@
                 </div>
                 <div class="output-content" id="output-facebook"></div>
                 <div class="output-card-footer">
+                    <button class="share-btn" data-target="facebook" data-platform="facebook">
+                        <span class="material-symbols-outlined">open_in_new</span>
+                        Post to Facebook
+                    </button>
                     <button class="copy-btn" data-target="facebook">
                         <span class="material-symbols-outlined">content_copy</span>
                         Copy
