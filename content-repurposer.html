@@ -48,6 +48,17 @@
           "description": "AI-powered tool that transforms any article, blog post or press release into six channel-specific formats: LinkedIn post, X post, Facebook post, email newsletter, 10-second video script and 30-second video script.",
           "applicationCategory": "UtilitiesApplication",
           "operatingSystem": "Web",
+          "featureList": [
+            "LinkedIn post generation with professional hook and tone",
+            "X (Twitter) post generation with character limit optimisation",
+            "Facebook post creation",
+            "Email newsletter generation with subject line",
+            "10-second video script (~25–30 words) for TikTok and Instagram Reels",
+            "30-second video script (~70–80 words) for YouTube Shorts and pre-roll",
+            "Multi-channel output in a single request",
+            "Direct post buttons for LinkedIn and X",
+            "5 free uses per day, no login required"
+          ],
           "offers": {
             "@type": "Offer",
             "price": "0",
@@ -105,6 +116,22 @@
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Up to 10,000 characters, which is roughly 1,500–2,000 words. This covers most blog posts and articles. For longer pieces, paste the most relevant section or a summary."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between content repurposing and content distribution?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Content distribution pushes the same content to multiple channels without changing it. Content repurposing adapts the source material into a different format and tone for each channel — the LinkedIn post leads with a professional hook, the X post is condensed, the newsletter has its own subject line. Distribution maximises reach; repurposing maximises relevance per platform."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What are the limitations of AI-generated content repurposing?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "AI outputs are a starting point, not a finished product. The model may not fully replicate your brand voice, and works best with clear, well-structured source material. Always review before publishing and verify any specific claims against the original."
               }
             }
           ]
@@ -288,9 +315,9 @@
     </div>
 
     <div class="tool-info-body" itemprop="description">
-      <p><strong>Content repurposing</strong> is the practice of taking one piece of content — an article, blog post, press release or report — and adapting it into different formats for different channels, rather than writing each post from scratch. A single 1,000-word article can become a LinkedIn thought-leadership post, an X thread hook, a Facebook update, an email newsletter section and two video scripts, all derived from the same source material.</p>
-      <p>The Content Repurposer automates this process. Paste any article, blog post or press release, select up to six channels, and the tool rewrites the content for each one simultaneously: <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>, <a href="https://x.com" target="_blank" rel="noopener">X (Twitter)</a>, Facebook, email newsletter, 10-second video script and 30-second video script. Each output is written to fit the format, tone and character constraints of the target channel — not just a shortened copy of the original.</p>
-      <p>The tool runs on <a href="https://www.anthropic.com/claude/haiku" target="_blank" rel="noopener">Claude Haiku by Anthropic</a>. Only the platforms you select are generated, keeping the process efficient. Your content is sent securely to Anthropic's API and is not stored or used to train AI models. The tool complies with <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/" target="_blank" rel="noopener">UK GDPR</a> and the <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a> as of March 2026.</p>
+      <p><strong>Content repurposing</strong> is the practice of taking one piece of content — an article, blog post, press release or report — and adapting it into different formats for different channels, rather than writing each post from scratch. A single 1,000-word article can become a LinkedIn thought-leadership post, an X thread hook, a Facebook update, an email newsletter section and two video scripts, all derived from the same source material. It is distinct from content distribution, which pushes the same unmodified content to multiple channels — repurposing adapts the format, tone and structure to fit each platform's specific audience and conventions.</p>
+      <p>The Content Repurposer automates this process. Paste any article, blog post or press release, select up to six channels, and the tool rewrites the content for each one simultaneously: <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>, <a href="https://x.com" target="_blank" rel="noopener">X (Twitter)</a>, Facebook, email newsletter, 10-second video script and 30-second video script. Each output is written to fit the format, tone and character constraints of the target channel — not just a shortened copy of the original. For LinkedIn, the model opens with a hook and uses professional register. For X, it prioritises punchy phrasing within character limits. Newsletter outputs include a suggested subject line. Video scripts are structured for spoken delivery — short sentences, active voice, no markdown that doesn't translate to speech.</p>
+      <p>The tool runs on <a href="https://www.anthropic.com/claude/haiku" target="_blank" rel="noopener">Claude Haiku by Anthropic</a>. Only the platforms you select are generated, keeping the process efficient. Your content is sent securely to Anthropic's API and is not stored or used to train AI models. The tool complies with <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/" target="_blank" rel="noopener">UK GDPR</a> and the current <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a>. As with all AI-generated content, outputs should be reviewed before publishing — the model works best when given clear, well-structured source material and may not capture your specific brand voice without editing. For further refinement, the <a href="/editor">JohnB.io Writing Editor</a> supports UK and US English, 10 writing styles and direct file export.</p>
     </div>
 
     <div class="tool-accordions">
@@ -304,8 +331,8 @@
           <ol class="info-steps">
             <li><strong>Paste your content.</strong> The input accepts up to 10,000 characters — enough for a full blog post or article. The character counter updates as you type.</li>
             <li><strong>Select your platforms.</strong> Toggle which channels you want output for: LinkedIn, X, Facebook, Newsletter, 10-second video script or 30-second video script. Only selected platforms are generated, saving time and API usage. LinkedIn is selected by default.</li>
-            <li><strong>Click Repurpose Content.</strong> Your selected content and platforms are sent to Claude Haiku, which rewrites the material in the appropriate format and tone for each channel.</li>
-            <li><strong>Review the outputs.</strong> Each channel appears in its own card with a word or character count badge. Review and edit before using — AI outputs benefit from a human review to add personality and context.</li>
+            <li><strong>Click Repurpose Content.</strong> Your selected content and platforms are sent to Claude Haiku. Each channel uses its own set of instructions — LinkedIn outputs are structured around a hook and professional tone; X outputs are condensed to fit character limits; newsletter outputs include a subject line; video scripts are written for spoken delivery with short, punchy sentences. The model does not simply summarise — it rewrites for each channel's conventions.</li>
+            <li><strong>Review the outputs.</strong> Each channel appears in its own card with a word or character count badge. Always review before publishing — AI outputs may not fully match your brand voice, and factual details from the original should be checked for accuracy. The <a href="/editor">Writing Editor</a> on JohnB.io can help refine tone and style before you publish.</li>
             <li><strong>Copy or share directly.</strong> Each card has a Copy button. LinkedIn and X cards also have direct Post buttons that open the platform with the text pre-filled (where supported by the platform).</li>
           </ol>
         </div>
@@ -348,7 +375,7 @@
             </div>
             <div class="faq-item">
               <dt>Why does the Facebook card not have a direct Post button?</dt>
-              <dd>Facebook removed support for pre-filling post text via share URLs in 2017 — this is a platform restriction, not a limitation of this tool. Use the Copy button to copy the text to your clipboard, then open Facebook and paste it into a new post.</dd>
+              <dd>Facebook removed support for pre-filling post text via share URLs since 2017 — this is a platform restriction, not a limitation of this tool. Use the Copy button to copy the text to your clipboard, then open Facebook and paste it into a new post.</dd>
             </div>
             <div class="faq-item">
               <dt>How long can my input content be?</dt>
@@ -356,7 +383,15 @@
             </div>
             <div class="faq-item">
               <dt>What types of content work best with this tool?</dt>
-              <dd>Blog posts, articles, press releases and reports work best — structured long-form content with a clear point gives the AI more material to adapt. Very short inputs (under 100 words) may produce thin outputs. The tool is designed for content marketing use cases: turning existing written content into social and video-ready formats without rewriting from scratch.</dd>
+              <dd>Blog posts, articles, press releases and reports work best — structured long-form content with a clear point gives the AI more material to adapt. Very short inputs (under 100 words) may produce thin outputs. The tool is designed for content marketing use cases: turning existing written content into social and video-ready formats without rewriting from scratch. If you have a YouTube video, the <a href="/transcripts">JohnB.io Transcripts tool</a> can extract the transcript first, which you can then paste here.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>What is the difference between content repurposing and content distribution?</dt>
+              <dd>Content distribution pushes the same piece of content to multiple channels without changing it — for example, sharing a blog post link on LinkedIn, X and Facebook simultaneously. Content repurposing adapts the source material into a different format and tone for each channel — the LinkedIn post leads with a professional hook, the X post is condensed to a punchy line, the newsletter has its own subject line. Distribution maximises reach; repurposing maximises relevance per platform.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>What are the limitations of AI-generated outputs?</dt>
+              <dd>AI outputs are a starting point, not a finished product. The model may not fully replicate your brand voice, may occasionally misrepresent a nuance in the original, and works best when the source material is clear and factual. Very technical or jargon-heavy content may produce generic outputs. Always review before publishing, verify any specific claims against the original, and add the personal context and voice that makes content distinctive. The tool is most effective for generating first drafts that you then edit, not copy-paste final outputs.</dd>
             </div>
           </dl>
         </div>
@@ -374,6 +409,8 @@
             <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/" target="_blank" rel="noopener">ICO — UK GDPR guidance and resources</a>. Information Commissioner's Office. Accessed March 2026.</li>
             <li><a href="https://business.linkedin.com/marketing-solutions/blog/linkedin-best-practices/2017/6-tips-to-rock-linkedin-posts" target="_blank" rel="noopener">LinkedIn Marketing Solutions — Best practices for posts</a>. LinkedIn.com. Accessed March 2026.</li>
             <li><a href="https://developers.facebook.com/blog/post/2017/11/08/changes-developer-offerings/" target="_blank" rel="noopener">Meta for Developers — 2017 changes to developer offerings</a>. developers.facebook.com. Accessed March 2026.</li>
+            <li><a href="https://contentmarketinginstitute.com/articles/content-repurposing/" target="_blank" rel="noopener">Content Marketing Institute — Content repurposing strategy guide</a>. contentmarketinginstitute.com. Accessed March 2026.</li>
+            <li><a href="https://buffer.com/resources/social-media-character-counts/" target="_blank" rel="noopener">Buffer — Social media character counts and platform specifications</a>. buffer.com. Accessed March 2026.</li>
           </ol>
         </div>
       </details>
