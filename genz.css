@@ -212,6 +212,23 @@ body {
 #swap-btn.swapped { transform: rotate(180deg); color: #ff007f; border-color: #ff007f; }
 #swap-btn .material-symbols-outlined { font-size: 1.4rem; }
 
+/* ── DISCLAIMER ── */
+.genz-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  background: rgba(248,245,253,0.04);
+  border: 1px solid rgba(248,245,253,0.1);
+  border-radius: 10px;
+  color: rgba(248,245,253,0.45);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.genz-disclaimer .material-symbols-outlined { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+.genz-disclaimer p { margin: 0; }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 680px) {
   .genz-section { flex-direction: column; }
