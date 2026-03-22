@@ -1,0 +1,405 @@
+/* ── AMBIENT GLOW ─────────────────────────────────────────────────────────── */
+.repurposer-ambient {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+.repurposer-ambient::before {
+  content: '';
+  position: absolute;
+  top: -15%; left: -8%;
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, rgba(255,0,127,0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: repurposerDrift1 20s ease-in-out infinite alternate;
+}
+.repurposer-ambient::after {
+  content: '';
+  position: absolute;
+  bottom: -20%; right: -6%;
+  width: 640px; height: 640px;
+  background: radial-gradient(circle, rgba(0,238,252,0.03) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: repurposerDrift2 26s ease-in-out infinite alternate;
+}
+@keyframes repurposerDrift1 {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(55px, 45px); }
+}
+@keyframes repurposerDrift2 {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-45px, -55px); }
+}
+
+/* ── BODY ─────────────────────────────────────────────────────────────────── */
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  padding-top: 72px;
+  min-height: 100vh;
+}
+
+/* ── WRAPPER ──────────────────────────────────────────────────────────────── */
+.repurposer-wrap {
+  width: 90%;
+  max-width: 900px;
+  margin: 2rem auto 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── PAGE TITLE ───────────────────────────────────────────────────────────── */
+.page-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: var(--on-surface, #f8f5fd);
+  margin: 0 0 0.4rem;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #FF007F, #00eefc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(255,0,127,0.3));
+}
+
+/* ── DESCRIPTION ──────────────────────────────────────────────────────────── */
+.repurposer-desc {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(248,245,253,0.4);
+  margin: 0 0 1.75rem;
+}
+
+/* ── INPUT SECTION ────────────────────────────────────────────────────────── */
+.repurposer-input-section {
+  background: rgba(25,25,31,0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+#content-input {
+  width: 100%;
+  min-height: 200px;
+  padding: 0.85rem 1rem;
+  background: rgba(14,14,19,0.6);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 0.65rem;
+  color: #f8f5fd;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  resize: vertical;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+#content-input:focus {
+  border-color: rgba(255,0,127,0.35);
+}
+#content-input::placeholder {
+  color: rgba(248,245,253,0.2);
+}
+
+/* ── INPUT FOOTER ─────────────────────────────────────────────────────────── */
+.input-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+#char-count {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(248,245,253,0.35);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+#char-count.char-count-warn {
+  color: #FF007F;
+}
+
+/* ── REPURPOSE BUTTON ─────────────────────────────────────────────────────── */
+#repurpose-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.5rem;
+  background: linear-gradient(135deg, #FF007F, #cc0066);
+  border: none;
+  border-radius: 9999px;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+  box-shadow: 0 0 22px rgba(255,0,127,0.3);
+  white-space: nowrap;
+}
+#repurpose-btn .material-symbols-outlined {
+  font-size: 1rem;
+}
+#repurpose-btn:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 0 32px rgba(255,0,127,0.45);
+}
+#repurpose-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+#repurpose-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ── BUTTON SPINNER ───────────────────────────────────────────────────────── */
+.btn-spinner {
+  display: inline-block;
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: btnSpin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes btnSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── INPUT ERROR ──────────────────────────────────────────────────────────── */
+.input-error {
+  margin-top: 0.75rem;
+  padding: 0.65rem 1rem;
+  background: rgba(255,0,127,0.08);
+  border: 1px solid rgba(255,0,127,0.25);
+  border-radius: 0.5rem;
+  color: rgba(248,245,253,0.75);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+/* ── OUTPUT GRID ──────────────────────────────────────────────────────────── */
+.repurposer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+/* ── OUTPUT CARD ──────────────────────────────────────────────────────────── */
+.output-card {
+  background: rgba(25,25,31,0.8);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-top: 2px solid var(--secondary, #00eefc);
+  border-radius: 0.85rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s;
+}
+.output-card:hover {
+  border-color: rgba(255,255,255,0.12);
+  border-top-color: var(--secondary, #00eefc);
+}
+
+/* ── CARD HEADER ──────────────────────────────────────────────────────────── */
+.output-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.output-card-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(248,245,253,0.7);
+}
+.output-card-label .material-symbols-outlined {
+  font-size: 1rem;
+  color: var(--secondary, #00eefc);
+}
+
+/* ── BADGE ────────────────────────────────────────────────────────────────── */
+.output-badge {
+  display: inline-block;
+  background: rgba(0,238,252,0.1);
+  color: var(--secondary, #00eefc);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+  white-space: nowrap;
+  min-width: 1px;
+}
+
+/* ── OUTPUT CONTENT ───────────────────────────────────────────────────────── */
+.output-content {
+  flex: 1;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(248,245,253,0.8);
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 80px;
+}
+
+/* ── NEWSLETTER SUBJECT LINE ──────────────────────────────────────────────── */
+.newsletter-subject {
+  display: block;
+  font-weight: 700;
+  color: var(--secondary, #00eefc);
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  white-space: normal;
+}
+
+/* ── CARD FOOTER ──────────────────────────────────────────────────────────── */
+.output-card-footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ── COPY BUTTON ──────────────────────────────────────────────────────────── */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 0.5rem;
+  color: rgba(248,245,253,0.6);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.copy-btn .material-symbols-outlined {
+  font-size: 0.9rem;
+}
+.copy-btn:hover:not(:disabled) {
+  background: rgba(0,238,252,0.08);
+  border-color: var(--secondary, #00eefc);
+  color: var(--secondary, #00eefc);
+}
+.copy-btn.copied {
+  color: var(--secondary, #00eefc);
+  border-color: var(--secondary, #00eefc);
+  background: rgba(0,238,252,0.06);
+}
+.copy-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── LOADING SKELETON ─────────────────────────────────────────────────────── */
+.output-card.loading .output-content {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  min-height: 120px;
+  color: transparent;
+  background: rgba(255,255,255,0.04);
+  animation: skeletonPulse 1.4s ease-in-out infinite;
+}
+.output-card.loading .output-content::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.04) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: skeletonShimmer 1.4s ease-in-out infinite;
+}
+@keyframes skeletonPulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+@keyframes skeletonShimmer {
+  to { transform: translateX(100%); }
+}
+
+.output-card.loading .output-badge {
+  opacity: 0;
+}
+
+/* ── ERROR STATE ──────────────────────────────────────────────────────────── */
+.output-card.error .output-content {
+  color: rgba(248,245,253,0.45);
+  font-size: 0.82rem;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────────────── */
+@media (max-width: 680px) {
+  .repurposer-wrap {
+    width: 94%;
+    margin: 1.5rem auto 4rem;
+  }
+
+  .repurposer-input-section {
+    padding: 1.1rem;
+  }
+
+  #content-input {
+    min-height: 160px;
+    font-size: 0.85rem;
+  }
+
+  .input-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  #char-count {
+    align-self: flex-end;
+  }
+
+  #repurpose-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.7rem 1.25rem;
+  }
+
+  .repurposer-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .output-card {
+    padding: 1rem;
+  }
+}

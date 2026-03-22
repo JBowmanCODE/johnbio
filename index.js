@@ -1,5 +1,17 @@
 const projects = [
   {
+    id: 'content-repurposer',
+    title: 'Content Repurposer',
+    desc: 'Paste any content and get it instantly rewritten for LinkedIn, X, Facebook, email newsletters, and 10 and 30-second video scripts.',
+    category: 'digital',
+    badge: 'DIGITAL AI',
+    color: 'green',
+    icons: ['recycling', 'campaign'],
+    href: 'https://johnb.io/content-repurposer',
+    img: '/images/content-repurposer.webp',
+    thumbIcon: 'recycling',
+  },
+  {
     id: 'ai-cv-enhancer',
     title: 'AI CV Enhancer',
     desc: 'Ethical AI suite that optimises resumes for ATS without introducing bias. Part of AI CV Suite.',
@@ -141,11 +153,11 @@ const resultsMeta = document.getElementById('resultsMeta');
 console.log('index.js running. grid:', grid, 'emptyState:', emptyState);
 
 function buildCard(project, delay) {
-  const isCyan = project.color === 'cyan';
-  const colorClass = isCyan ? 'cyan' : 'pink';
-  const badgeClass = isCyan ? 'badge-cyan' : 'badge-pink';
-  const borderClass = isCyan ? 'cyan-card' : 'pink-card';
-  const iconColorClass = isCyan ? 'icon-cyan' : 'icon-pink';
+  const colorMap = { cyan: 'cyan', pink: 'pink', green: 'green' };
+  const colorClass = colorMap[project.color] || 'cyan';
+  const badgeClass = `badge-${colorClass}`;
+  const borderClass = `${colorClass}-card`;
+  const iconColorClass = `icon-${colorClass}`;
 
   const card = document.createElement('div');
   card.className = `card ${borderClass}`;
