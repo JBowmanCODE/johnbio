@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const textInput = document.getElementById('textInput');
     const wordCountElement = document.getElementById('wordCount');
-    const estimatedTimeElement = document.getElementById('estimatedTime');
+    const readTimeElement = document.getElementById('readTime');
+    const listenTimeElement = document.getElementById('listenTime');
     const timeRemainingElement = document.getElementById('timeRemaining');
     const subtitleDisplay = document.getElementById('subtitleDisplay');
     const voiceSelection = document.getElementById('voiceSelection');
@@ -9,52 +10,104 @@ document.addEventListener('DOMContentLoaded', function() {
     const startSpeechButton = document.getElementById('startSpeech');
     const pauseSpeechButton = document.getElementById('pauseSpeech');
     const stopSpeechButton = document.getElementById('stopSpeech');
+
     let speed = parseFloat(speedControl.value);
     let voices = [];
     let isPaused = false;
+    let isSpeaking = false;
+    let currentUtterance = null;
+    let pauseStartTime = 0;
+
+    // Time tracking
     let totalEstimatedTime = 0;
     let startTime = 0;
     let remainingTimeInterval;
+
+    // Sentence tracking
     let sentences = [];
     let currentSentenceIndex = 0;
-    let currentUtterance = null;
-    let pauseStartTime = 0;
-    let isSpeaking = false;
-    let highlightSpeedFactor = 0.80; // Adjusted highlight speed factor
+    let currentWords = [];
+    let currentWordIdx = 0;
 
-    function loadVoices() {
-        voices = speechSynthesis.getVoices();
-        if (voices.length !== 0) {
-            voiceSelection.innerHTML = voices
-                .map((voice, index) => `<option value="${index}" ${voice.name === 'Google UK English Female' ? 'selected' : ''}>${voice.name}</option>`)
-                .join('');
-            startSpeechButton.disabled = false;
-        } else {
-            setTimeout(loadVoices, 100);
-        }
+    // Self-calibrating WPM — starts at 175, adjusts after each sentence
+    let estimatedWPM = 175;
+    let sentenceStartTime = 0;
+    let trackInterval = null;
+
+    function sentenceDurationMs(wordCount) {
+        return (wordCount / (estimatedWPM * speed)) * 60 * 1000;
     }
 
-    // Initialize voices
+    // ── VOICES ──────────────────────────────────────────────────────────────
+    function loadVoices() {
+        const raw = speechSynthesis.getVoices();
+        if (raw.length === 0) { setTimeout(loadVoices, 100); return; }
+
+        const google = raw.filter(v => v.name.startsWith('Google'));
+        voices = google.length > 0 ? google : raw;
+
+        let def = voices.findIndex(v => v.name === 'Google US English');
+        if (def === -1) def = voices.findIndex(v => v.lang === 'en-US');
+        if (def === -1) def = voices.findIndex(v => v.lang.startsWith('en'));
+        if (def === -1) def = 0;
+
+        voiceSelection.innerHTML = voices
+            .map((v, i) => `<option value="${i}" ${i === def ? 'selected' : ''}>${v.name} (${v.lang})</option>`)
+            .join('');
+        startSpeechButton.disabled = false;
+    }
     speechSynthesis.onvoiceschanged = loadVoices;
     loadVoices();
 
+    // ── WORD COUNT / ESTIMATE ────────────────────────────────────────────────
     textInput.addEventListener('input', function() {
-        const text = textInput.value.trim();
-        const words = text.split(/\s+/).filter(word => word.length > 0);
+        const words = textInput.value.trim().split(/\s+/).filter(w => w.length > 0);
         wordCountElement.textContent = `Words: ${words.length}`;
-        calculateEstimatedTime(words.length);
+        updateEstimate(words.length);
     });
 
-    function calculateEstimatedTime(wordCount) {
-        const averageWordsPerMinute = 195; // Adjusted average WPM
-        const timeInMinutes = wordCount / (averageWordsPerMinute * speed);
-        const timeInSeconds = timeInMinutes * 60;
-        totalEstimatedTime = timeInSeconds;
-        const minutes = Math.floor(timeInSeconds / 60);
-        const seconds = Math.round(timeInSeconds % 60);
-        estimatedTimeElement.textContent = `Estimated time: ${minutes > 0 ? minutes + ' minute(s) ' : ''}${seconds} second(s)`;
+    function formatTime(secs) {
+        const m = Math.floor(secs / 60), s = Math.round(secs % 60);
+        return `${m > 0 ? m + 'm ' : ''}${s}s`;
     }
 
+    function updateEstimate(wordCount) {
+        const listenSecs = (wordCount / (estimatedWPM * speed)) * 60;
+        totalEstimatedTime = listenSecs;
+        const readSecs = (wordCount / 238) * 60; // avg adult reading speed
+        readTimeElement.textContent = `Read: ${formatTime(readSecs)}`;
+        listenTimeElement.textContent = `Listen: ${formatTime(listenSecs)}`;
+    }
+
+    speedControl.addEventListener('change', function() {
+        speed = parseFloat(speedControl.value);
+        const words = textInput.value.trim().split(/\s+/).filter(w => w.length > 0);
+        updateEstimate(words.length);
+    });
+
+    // ── TRACKING LOOP ────────────────────────────────────────────────────────
+    // Polls every 50ms and advances highlight based on elapsed time vs
+    // estimated sentence duration. onboundary recalibrates the clock.
+    function startTracking(durationMs) {
+        stopTracking();
+        trackInterval = setInterval(function() {
+            if (!isSpeaking || isPaused) return;
+            const elapsed = Date.now() - sentenceStartTime;
+            const fraction = Math.min(elapsed / durationMs, 1);
+            const idx = Math.min(Math.floor(fraction * currentWords.length), currentWords.length - 1);
+            if (idx !== currentWordIdx) {
+                currentWordIdx = idx;
+                renderSubtitle(currentWords, idx);
+            }
+        }, 50);
+    }
+
+    function stopTracking() {
+        clearInterval(trackInterval);
+        trackInterval = null;
+    }
+
+    // ── START ────────────────────────────────────────────────────────────────
     startSpeechButton.addEventListener('click', function() {
         const text = textInput.value.trim();
         if (!text) return;
@@ -66,17 +119,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [];
-        sentences = sentences.map(sentence => sentence.trim()).filter(sentence => sentence.length > 0);
-
+        sentences = sentences.map(s => s.trim()).filter(s => s.length > 0);
         if (sentences.length === 0) return;
 
-        subtitleDisplay.style.display = 'block';
-        isPaused = false;
         isSpeaking = true;
-        pauseSpeechButton.textContent = 'Pause';
-
-        startTime = Date.now();
+        isPaused = false;
         currentSentenceIndex = 0;
+        pauseSpeechButton.textContent = 'Pause';
+        startTime = Date.now();
 
         speakNextSentence();
         remainingTimeInterval = setInterval(updateTimeRemaining, 500);
@@ -90,143 +140,118 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const sentence = sentences[currentSentenceIndex];
+        currentWords = sentence.split(/\s+/).filter(w => w.length > 0);
+        currentWordIdx = 0;
+
         currentUtterance = new SpeechSynthesisUtterance(sentence);
         currentUtterance.rate = speed;
-        currentUtterance.voice = voices.find(voice => voice.name === 'Google UK English Female') || voices[parseInt(voiceSelection.value)];
+        currentUtterance.voice = voices[parseInt(voiceSelection.value)];
+
+        const durationMs = sentenceDurationMs(currentWords.length);
 
         currentUtterance.onstart = function() {
-            displaySentence(sentence); // Display only the current sentence
-            startWordHighlighting(sentence);
+            sentenceStartTime = Date.now();
+            renderSubtitle(currentWords, 0);
+            startTracking(durationMs);
+        };
+
+        // onboundary recalibrates sentenceStartTime so elapsed-time tracking corrects drift
+        currentUtterance.onboundary = function(event) {
+            if (event.name !== 'word') return;
+            let pos = 0;
+            for (let i = 0; i < currentWords.length; i++) {
+                if (pos + currentWords[i].length > event.charIndex) {
+                    if (i > 0) {
+                        // Recalculate sentenceStartTime based on actual position
+                        const expectedElapsed = (i / currentWords.length) * durationMs;
+                        sentenceStartTime = Date.now() - expectedElapsed;
+                    }
+                    currentWordIdx = i;
+                    renderSubtitle(currentWords, i);
+                    return;
+                }
+                pos += currentWords[i].length + 1;
+            }
         };
 
         currentUtterance.onend = function() {
+            stopTracking();
             if (!isPaused) {
+                // Self-calibrate: measure actual sentence duration and update WPM estimate
+                const actualMs = Date.now() - sentenceStartTime;
+                if (actualMs > 200 && currentWords.length > 1) {
+                    const actualWPM = (currentWords.length / actualMs) * 60 * 1000;
+                    // Blend 40% old estimate, 60% new measurement
+                    estimatedWPM = estimatedWPM * 0.4 + actualWPM * 0.6;
+                }
                 currentSentenceIndex++;
                 speakNextSentence();
             }
         };
 
-        currentUtterance.onerror = function() {
-            console.error('SpeechSynthesisUtterance.onerror');
+        currentUtterance.onerror = function(e) {
+            if (e.error !== 'interrupted') console.error('Speech error:', e.error);
         };
 
         speechSynthesis.speak(currentUtterance);
     }
 
-    function displaySentence(sentence) {
-        subtitleDisplay.innerHTML = sentence;
-    }
-
-    let wordHighlightInterval;
-    let wordIndex = 0;
-    function startWordHighlighting(sentence) {
-        clearInterval(wordHighlightInterval);
-        const words = sentence.split(/\s+/);
-        wordIndex = 0;
-
-        // Estimate total duration of the sentence
-        const averageWordsPerMinute = 170; // Adjusted WPM
-        const estimatedSentenceTime = (words.length / (averageWordsPerMinute * speed)) * 60 * 1000; // in milliseconds
-
-        // Calculate duration per word with highlight speed factor
-        const wordDuration = (estimatedSentenceTime / words.length) * highlightSpeedFactor;
-
-        function highlightNextWord() {
-            if (wordIndex >= words.length) {
-                clearInterval(wordHighlightInterval);
-                return;
-            }
-            updateSubtitle(words, wordIndex);
-            wordIndex++;
-        }
-
-        highlightNextWord(); // Highlight the first word immediately
-        wordHighlightInterval = setInterval(highlightNextWord, wordDuration);
-    }
-
+    // ── PAUSE / RESUME ───────────────────────────────────────────────────────
     pauseSpeechButton.addEventListener('click', function() {
-        if (isSpeaking && !isPaused) {
+        if (!isSpeaking) return;
+        if (!isPaused) {
             speechSynthesis.pause();
             isPaused = true;
             pauseSpeechButton.textContent = 'Resume';
             clearInterval(remainingTimeInterval);
-            clearInterval(wordHighlightInterval);
+            stopTracking();
             pauseStartTime = Date.now();
-        } else if (isSpeaking && isPaused) {
+        } else {
             speechSynthesis.resume();
             isPaused = false;
             pauseSpeechButton.textContent = 'Pause';
-            startTime += Date.now() - pauseStartTime;
+            // Shift sentenceStartTime forward by pause duration
+            const pauseDuration = Date.now() - pauseStartTime;
+            sentenceStartTime += pauseDuration;
+            startTime += pauseDuration;
+            const durationMs = sentenceDurationMs(currentWords.length);
             remainingTimeInterval = setInterval(updateTimeRemaining, 500);
-            // Resume word highlighting
-            const currentSentence = sentences[currentSentenceIndex];
-            startWordHighlightingFrom(wordIndex);
+            startTracking(durationMs);
         }
     });
 
-    function startWordHighlightingFrom(index) {
-        const sentence = sentences[currentSentenceIndex];
-        const words = sentence.split(/\s+/);
-        const remainingWords = words.slice(index);
-        wordIndex = index;
-
-        // Estimate remaining duration of the sentence
-        const averageWordsPerMinute = 170; // Adjusted WPM
-        const estimatedSentenceTime = (remainingWords.length / (averageWordsPerMinute * speed)) * 60 * 1000; // in milliseconds
-
-        // Calculate duration per word with highlight speed factor
-        const wordDuration = (estimatedSentenceTime / remainingWords.length) * highlightSpeedFactor;
-
-        function highlightNextWord() {
-            if (wordIndex >= words.length) {
-                clearInterval(wordHighlightInterval);
-                return;
-            }
-            updateSubtitle(words, wordIndex);
-            wordIndex++;
-        }
-
-        highlightNextWord(); // Highlight the first word immediately
-        wordHighlightInterval = setInterval(highlightNextWord, wordDuration);
-    }
-
-    function updateSubtitle(words, currentIndex) {
-        const before = words.slice(0, currentIndex).join(' ');
-        const currentWord = words[currentIndex];
-        const after = words.slice(currentIndex + 1).join(' ');
-        subtitleDisplay.innerHTML = `${before} <span class="highlight">${currentWord}</span> ${after}`;
-    }
-
+    // ── STOP ─────────────────────────────────────────────────────────────────
     stopSpeechButton.addEventListener('click', function() {
-        if (isSpeaking) {
-            speechSynthesis.cancel();
-            resetDisplay();
-        }
+        if (isSpeaking) { speechSynthesis.cancel(); resetDisplay(); }
     });
 
-    speedControl.addEventListener('change', function(event) {
-        speed = parseFloat(event.target.value);
-        const text = textInput.value.trim();
-        const words = text.split(/\s+/).filter(word => word.length > 0);
-        calculateEstimatedTime(words.length);
-    });
+    // ── SUBTITLE RENDER ──────────────────────────────────────────────────────
+    function renderSubtitle(words, idx) {
+        const before = words.slice(0, idx).join(' ');
+        const current = words[idx];
+        const after = words.slice(idx + 1).join(' ');
+        subtitleDisplay.innerHTML =
+            (before ? before + ' ' : '') +
+            `<span class="highlight">${current}</span>` +
+            (after ? ' ' + after : '');
+    }
 
+    // ── RESET ────────────────────────────────────────────────────────────────
     function resetDisplay() {
-        subtitleDisplay.style.display = 'none';
         subtitleDisplay.innerHTML = '';
-        isPaused = false;
         isSpeaking = false;
+        isPaused = false;
         pauseSpeechButton.textContent = 'Pause';
         clearInterval(remainingTimeInterval);
-        clearInterval(wordHighlightInterval);
+        stopTracking();
         timeRemainingElement.textContent = '';
     }
 
+    // ── TIME REMAINING ───────────────────────────────────────────────────────
     function updateTimeRemaining() {
-        const elapsedTime = (Date.now() - startTime) / 1000;
-        const remainingTime = Math.max(0, totalEstimatedTime - elapsedTime);
-        const minutes = Math.floor(remainingTime / 60);
-        const seconds = Math.round(remainingTime % 60);
-        timeRemainingElement.textContent = `Time remaining: ${minutes > 0 ? minutes + ' minute(s) ' : ''}${seconds} second(s)`;
+        const elapsed = (Date.now() - startTime) / 1000;
+        const remaining = Math.max(0, totalEstimatedTime - elapsed);
+        const m = Math.floor(remaining / 60), s = Math.round(remaining % 60);
+        timeRemainingElement.textContent = `Time remaining: ${m > 0 ? m + 'm ' : ''}${s}s`;
     }
 });

@@ -1,234 +1,226 @@
-/* Refined CSS for Poker Evaluation and Game Planner with Improved Dark Mode */
-
-:root {
-    --bg-color: #f0f0f0;
-    --text-color: #333;
-    --container-bg: #ffffff;
-    --input-bg: #ffffff;
-    --input-border: #cccccc;
-    --button-bg: #02BD9C;
-    --button-text: #ffffff;
-    --radio-bg: #eeeeee;
-    --radio-checked: #02BD9C;
-    --disclaimer-color: #666666;
-    --results-bg: #f9f9f9;
+/* ── AMBIENT GLOW ── */
+.br-ambient {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0; overflow: hidden;
 }
-
-.dark-mode {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --container-bg: #1e1e1e;
-    --input-bg: #2c2c2c;
-    --input-border: #444444;
-    --button-bg: #02BD9C;
-    --button-text: #ffffff;
-    --radio-bg: #333333;
-    --radio-checked: #02BD9C;
-    --disclaimer-color: #b0b0b0;
-    --results-bg: #2c2c2c;
+.br-ambient::before {
+  content: '';
+  position: absolute; top: -20%; left: -5%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,0,127,0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: brDrift1 18s ease-in-out infinite alternate;
 }
+.br-ambient::after {
+  content: '';
+  position: absolute; bottom: -20%; right: -5%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,238,252,0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: brDrift2 22s ease-in-out infinite alternate;
+}
+@keyframes brDrift1 { from { transform: translate(0,0); } to { transform: translate(60px,40px); } }
+@keyframes brDrift2 { from { transform: translate(0,0); } to { transform: translate(-50px,-60px); } }
 
+/* ── BODY ── */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    background-color: var(--bg-color);
+  font-family: 'Space Grotesk', sans-serif;
+  padding-top: 72px;
+  min-height: 100vh;
 }
 
+/* ── CONTAINER ── */
 .container {
-    width: 90%;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: var(--container-bg);
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 620px;
+  margin: 2rem auto 4rem;
+  padding: 2rem;
+  background: rgba(37,37,44,0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
-h1 {
-    font-size: 24px;
-    margin-top: 0;
-    margin-bottom: 20px;
-    color: var(--text-color);
+/* ── HEADINGS ── */
+.container h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: var(--on-surface, #f8f5fd);
+  margin: 0 0 1.5rem;
+  background: linear-gradient(90deg, #FF007F, #00eefc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(255,0,127,0.3));
 }
 
-h2 {
-    font-size: 18px;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    color: var(--text-color);
+.container h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(248,245,253,0.4);
+  margin: 1.75rem 0 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-/* Custom Radio Buttons */
+/* ── RADIO BUTTONS ── */
 .radio-container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    user-select: none;
-    color: var(--text-color);
+  display: block;
+  position: relative;
+  padding-left: 36px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 500;
+  user-select: none;
+  color: rgba(248,245,253,0.75);
+  transition: color 0.15s;
 }
+.radio-container:hover { color: var(--on-surface, #f8f5fd); }
 
 .radio-container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: var(--radio-bg);
-    border-radius: 50%;
-    border: 2px solid var(--radio-checked);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background: rgba(14,14,19,0.6);
+  border-radius: 50%;
+  border: 2px solid rgba(255,0,127,0.3);
+  transition: border-color 0.2s, background 0.2s;
 }
 
-.radio-container:hover input ~ .checkmark {
-    background-color: var(--radio-bg);
-    opacity: 0.8;
+.radio-container:hover .checkmark {
+  border-color: rgba(255,0,127,0.6);
 }
 
 .radio-container input:checked ~ .checkmark {
-    background-color: var(--radio-checked);
+  background: #FF007F;
+  border-color: #FF007F;
+  box-shadow: 0 0 10px rgba(255,0,127,0.4);
 }
 
 .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
+  content: "";
+  position: absolute;
+  display: none;
 }
 
 .radio-container input:checked ~ .checkmark:after {
-    display: block;
+  display: block;
 }
 
 .radio-container .checkmark:after {
-    top: 7px;
-    left: 7px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--container-bg);
+  top: 6px;
+  left: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
 }
 
-/* Input Styling */
+/* ── TEXT INPUT ── */
 input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid var(--input-border);
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 5px;
-    background-color: var(--input-bg);
-    color: var(--text-color);
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.88rem;
+  font-family: 'Space Grotesk', sans-serif;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  margin-top: 6px;
+  background: rgba(14,14,19,0.6);
+  color: var(--on-surface, #f8f5fd);
+  outline: none;
+  transition: border-color 0.2s;
 }
+input[type="text"]:focus { border-color: rgba(255,0,127,0.4); }
+input[type="text"]::placeholder { color: rgba(248,245,253,0.25); }
 
-/* Button styles */
+/* ── SUBMIT BUTTON ── */
 .button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 25px;
-    margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .submit-btn {
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    border: none;
-    padding: 12px 24px;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background: linear-gradient(135deg, #FF007F, #cc0066);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 2.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 0 20px rgba(255,0,127,0.3);
 }
+.submit-btn:hover { transform: scale(1.03); box-shadow: 0 0 30px rgba(255,0,127,0.5); }
+.submit-btn:active { transform: scale(0.98); }
 
-.submit-btn:hover {
-    opacity: 0.9;
-}
-
-/* Results Styling */
+/* ── RESULTS ── */
 #results {
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: bold;
-    background-color: var(--results-bg);
-    padding: 15px;
-    border-radius: 5px;
-    color: var(--text-color);
+  margin-top: 1.5rem;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  background: rgba(14,14,19,0.5);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  color: rgba(248,245,253,0.8);
 }
 
-/* Disclaimer Styling */
+#results:empty { display: none; }
+
+#results a {
+  color: #00eefc;
+  text-decoration: none;
+  font-weight: 600;
+}
+#results a:hover { text-decoration: underline; }
+
+/* ── DISCLAIMERS ── */
 .disclaimer {
-    margin-top: 20px;
-    font-size: 14px;
-    color: var(--disclaimer-color);
-    line-height: 1.4;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: rgba(248,245,253,0.3);
+  line-height: 1.5;
 }
 
 .disclaimer2 {
-    margin-top: 20px;
-    font-size: 16px;
-    color: var(--text-color);
-    font-weight: bold;
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  color: rgba(248,245,253,0.4);
+  font-weight: 600;
 }
 
-/* Responsive Design */
-@media (max-width: 767px) {
-    .container {
-        width: 95%;
-        margin: 60px auto 20px;
-        padding: 15px;
-    }
-
-    h1 {
-        font-size: 20px;
-        margin-top: 10px;
-    }
-
-    h2 {
-        font-size: 16px;
-    }
-
-    .radio-container {
-        font-size: 14px;
-    }
-
-    .submit-btn {
-        padding: 10px 20px;
-        font-size: 16px;
-    }
+.disclaimer2 a {
+  color: rgba(248,245,253,0.5);
 }
 
-/* Desktop styles */
-@media (min-width: 768px) {
-    .container {
-        margin-top: 80px;
-    }
-}
-
-/* Accessibility improvements */
+/* ── FOCUS ACCESSIBILITY ── */
 .submit-btn:focus,
-input[type="text"]:focus,
-.radio-container input:focus ~ .checkmark {
-    outline: 2px solid var(--button-bg);
-    outline-offset: 2px;
-}
-
-/* Dark mode link color */
-.dark-mode a {
-    color: #4db6ac;
-}
-
-/* Improve contrast for placeholder text in dark mode */
-.dark-mode input::placeholder {
-    color: #a0a0a0;
+input[type="text"]:focus {
+  outline: 2px solid rgba(255,0,127,0.5);
+  outline-offset: 2px;
 }

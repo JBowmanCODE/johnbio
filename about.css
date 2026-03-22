@@ -1,137 +1,247 @@
-/* About Page Styles */
-.page-title {
-    color: #ffffff;
-    text-align: center;
-    margin: 40px 0;
+/* ── AMBIENT ── */
+.ambient {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.ambient::before {
+  content: '';
+  position: absolute; top: -30%; left: -10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,0,127,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: drift1 18s ease-in-out infinite alternate;
+}
+.ambient::after {
+  content: '';
+  position: absolute; bottom: -20%; right: -10%;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(0,238,252,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: drift2 22s ease-in-out infinite alternate;
+}
+@keyframes drift1 { from { transform: translate(0,0); } to { transform: translate(80px,60px); } }
+@keyframes drift2 { from { transform: translate(0,0); } to { transform: translate(-60px,-80px); } }
+
+/* ── MAIN ── */
+main {
+  position: relative; z-index: 1;
+  max-width: 1280px; margin: 0 auto;
+  padding: 120px 2rem 5rem;
 }
 
-.about-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
+/* ── HERO ── */
+.hero { margin-bottom: 3rem; }
+
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 900; font-size: clamp(3.5rem, 10vw, 7rem);
+  text-transform: uppercase; letter-spacing: -0.03em;
+  line-height: 0.95; margin-bottom: 0;
+}
+.hero h1 .word-1 {
+  color: var(--on-surface); display: block;
+  animation: slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.1s both;
+}
+.hero h1 .word-2 {
+  display: block;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(255,0,127,0.3));
+  animation: slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Profile Image Styles */
+/* ── STATS BAR ── */
+.stats-bar {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 0; margin-bottom: 2.5rem;
+  background: rgba(37,37,44,0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0,238,252,0.1);
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.25s both;
+}
+
+.stat-item {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0 2rem; text-align: center;
+}
+
+.stat-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem; font-weight: 900;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.62rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--on-surface-variant);
+  margin-top: 0.3rem;
+}
+
+.stat-divider {
+  width: 1px; height: 2.5rem;
+  background: rgba(255,255,255,0.08);
+}
+
+@media (max-width: 768px) {
+  .stats-bar { gap: 1rem; }
+  .stat-divider { display: none; }
+  .stat-item { padding: 0 1rem; }
+}
+
+/* ── ABOUT GRID ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  align-items: start;
+  animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.3s both;
+}
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; }
+}
+
+/* ── PROFILE CARD ── */
+.profile-card {
+  background: rgba(37,37,44,0.4);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,0,127,0.15);
+  box-shadow: inset 0 0 20px rgba(255,0,127,0.03);
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 0.75rem;
+}
+
 .profile-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-image: url('/images/JohnB.webp');
-    background-size: cover;
-    background-position: center;
-    margin-bottom: 20px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background-image: url('/images/JohnB.webp');
+  background-size: cover; background-position: center;
+  border: 2px solid rgba(255,0,127,0.4);
+  box-shadow: 0 0 30px rgba(255,0,127,0.25);
+  transition: border-color 0.3s, box-shadow 0.3s, background-image 0.1s;
+  cursor: pointer;
 }
-
 .profile-image:hover {
-    background-image: url('/images/jbcode.webp');
-    cursor: url('/images/pills.webp') 16 16, auto;
+  background-image: url('/images/jbcode.webp');
+  border-color: rgba(0,238,252,0.6);
+  box-shadow: 0 0 40px rgba(0,238,252,0.3);
 }
 
-/* Text content */
-.text-content {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    color: black;
+.profile-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--on-surface); margin: 0;
 }
 
-/* Skills section */
-.skills-section {
-    margin-top: 40px;
-    width: 100%;
-    max-width: 800px;
-    margin: 40px auto;
+.profile-tagline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--secondary); margin: 0;
 }
 
+.linkedin-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-container));
+  color: var(--on-primary); border: none; cursor: pointer;
+  padding: 0.5rem 1.25rem; border-radius: 9999px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(255,137,171,0.25);
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+.linkedin-btn .material-symbols-outlined { font-size: 0.9rem; }
+.linkedin-btn:hover { transform: scale(1.03); box-shadow: 0 0 30px rgba(255,0,127,0.4); }
+
+/* ── BIO CARD ── */
+.bio-card {
+  background: rgba(37,37,44,0.4);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0,238,252,0.15);
+  box-shadow: inset 0 0 20px rgba(0,238,252,0.03);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.bio-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--secondary); margin: 0 0 0.75rem;
+}
+
+.bio-text {
+  font-size: 0.95rem; line-height: 1.7;
+  color: var(--on-surface-variant);
+  margin: 0 0 2rem;
+}
+
+/* ── SKILL BUTTONS ── */
 .skill-buttons-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .skill-button {
-    padding: 10px 20px;
-    background-color: #4c3bcf;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: 16px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  padding: 0.5rem 1.25rem; border-radius: 0.5rem;
+  border: 1px solid transparent;
+  background: var(--surface-container-high);
+  color: var(--on-surface-variant);
+  cursor: pointer;
+  transition: all 0.2s;
 }
+.skill-button:hover { background: var(--surface-container-highest); color: var(--secondary); border-color: rgba(0,238,252,0.3); }
+.skill-button.active { background: var(--primary); color: var(--on-primary); border-color: transparent; box-shadow: 0 0 16px rgba(255,0,127,0.3); }
 
-.skill-button:hover,
-.skill-button.active {
-    background-color: #402e7a;
-}
+/* ── SKILL DETAILS ── */
+#skill-details { min-height: 200px; }
 
-#skill-details {
-    text-align: center;
-    color: #000000;
-    min-height: 280px; /* Reserve space to prevent footer jump */
+#skill-details h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--on-surface-variant);
+  margin: 0 0 1rem;
 }
 
 .skill-list {
-    list-style-type: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-rows: minmax(65px, auto); /* Ensures all rows have a consistent minimum height */
-    gap: 20px;
-    margin-top: 20px;
+  list-style: none; padding: 0; margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.6rem;
 }
 
 .skill-list li {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 10px;
-    border-radius: 5px;
-    /* --- Styles for centering text and ensuring uniform box size --- */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  background: rgba(0,238,252,0.05);
+  border: 1px solid rgba(0,238,252,0.15);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--on-surface-variant);
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  transition: border-color 0.2s, color 0.2s;
 }
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .skill-buttons-container {
-        flex-direction: column;
-    }
-
-    .skill-button {
-        width: 100%;
-    }
-
-    .skill-list {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* --- Added styles for Dark Mode readability --- */
-
-/* Fix for the main "Who I Am?" text content box in dark mode */
-body.dark-mode .text-content {
-    background-color: #2a2a2a;
-    color: #e0e0e0;
-}
-
-body.dark-mode .text-content h2 {
-    color: #ffffff;
-}
-
-/* Fix for the dynamically generated skills list in dark mode */
-body.dark-mode #skill-details h3 {
-    color: #ffffff;
-}
-
-body.dark-mode .skill-list li {
-    background-color: #2a2a2a;
-    color: #e0e0e0;
-    border: 1px solid #4a4a4a;
-}
+.skill-list li:hover { border-color: rgba(0,238,252,0.4); color: var(--on-surface); }

@@ -3,84 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Copyeditor - JohnB.io</title>
-    <!-- 
-        Google Analytics Tracking Script 
-        This script loads the gtag.js library and configures it with your unique Google Analytics ID.
-        It should be placed in the <head> of every page you want to track.
-    -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <title>AI Copyeditor — JohnB.io</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-0J6PBWMRNY');
     </script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     <meta name="description" content="Enhance your writing with AI-powered suggestions and edits.">
-    
-    <!-- Preload critical assets -->
-    <link rel="preload" href="/styles.css" as="style">
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="/editor.css">
-    <link rel="stylesheet" href="/header.css">
-    <link rel="stylesheet" href="/footer.css">
-    
-    <!-- Preconnect to required origins -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="John Bowman">
+    <meta property="og:title" content="AI Copyeditor — JohnB.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://johnb.io/editor">
+    <meta property="og:description" content="Enhance your writing with AI-powered suggestions and edits. Upload a doc or paste text.">
+    <meta property="og:image" content="https://johnb.io/og_images/editor_og.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Copyeditor — JohnB.io">
+    <meta name="twitter:description" content="Enhance your writing with AI-powered suggestions and edits. Upload a doc or paste text.">
+    <meta name="twitter:image" content="https://johnb.io/og_images/editor_og.webp">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <script src="https://unpkg.com/mammoth@latest/mammoth.browser.min.js"></script>
     <script src="https://unpkg.com/docx@7.8.2/build/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <meta name="description" content="JohnB.IO - An AI and development platform for testing and exploring cutting-edge artificial intelligence technologies.">
-        <meta name="keywords" content="AI, artificial intelligence, machine learning, development, programming, API integration, prompt engineering, data visualization">
-        <meta name="subject" content="Artificial Intelligence and Software Development">
-        <meta name="classification" content="Technology">
-        <meta name="robots" content="index, follow">
-        <meta name="revisit-after" content="7 days">
-        <meta name="language" content="EN">
-        <meta name="author" content="John Bowman">
-        <meta name="designer" content="John Bowman">
-        <meta name="copyright" content="JohnB">
-        <meta name="reply-to" content="contact@johnb.io">
-        <meta name="owner" content="John Bowman">
-        <meta name="url" content="https://johnb.io">
-        <meta name="identifier-URL" content="https://johnb.io">
-        <meta name="category" content="Artificial Intelligence">
-        <meta name="coverage" content="Worldwide">
-        <meta name="distribution" content="Global">
-        <meta name="rating" content="General">
-        
-        <!-- Open Graph meta tags for better social media sharing -->
-        <meta property="og:title" content="JohnB.IO - AI and Development Platform">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://johnb.io">
-            <meta property="og:description" content="Explore cutting-edge AI technologies and development tools at JohnB.IO.">
-        
-        <!-- Twitter Card meta tags for Twitter sharing -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@JohnBIO">
-        <meta name="twitter:title" content="JohnB.IO - AI and Development Platform">
-        <meta name="twitter:description" content="Explore cutting-edge AI technologies and development tools at JohnB.IO.">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/footer.css">
+    <link rel="stylesheet" href="/editor.css">
 </head>
 <body>
-    <div class="container">
-        <div id="header-placeholder"></div>
-        
+    <div id="header-placeholder"></div>
+    <div class="editor-ambient"></div>
+
+    <div class="editor-wrap">
         <main>
-            <h1 class="page-title">AI Copyeditor</h1>
+            <h1 class="page-title">AI <span class="gradient-text">Copyeditor</span></h1>
             <p class="description">Enhance your writing with AI-powered suggestions and edits.</p>
-            
+
             <section class="advanced-options">
-                <section class="advanced-options">
-                    <h3>Advanced Options<button id="toggle-advanced" class="toggle-btn">(Show)</button><span class="tooltip" title="Choose UK or USA, Change writing style, upload your brand style guide.">ⓘ</span></h3>
+                <h3>Advanced Options <button id="toggle-advanced" class="toggle-btn">(Show)</button> <span class="tooltip" title="Choose UK or USA, Change writing style, upload your brand style guide.">ⓘ</span></h3>
                 <div id="advanced-content" style="display: none;">
                     <div class="option-group">
                         <label for="language-select">Language:</label>
@@ -128,7 +100,7 @@
                     <button id="reset-settings" class="reset-btn">Reset to Default</button>
                 </div>
             </section>
-            
+
             <section class="input-section">
                 <textarea id="article-input" placeholder="Paste your article here or upload a file..."></textarea>
                 <div id="word-count" class="count-display"></div>
@@ -146,7 +118,7 @@
                     <div id="progress-bar"><div id="progress"></div></div>
                 </div>
             </section>
-            
+
             <section class="results-section" style="display: none;">
                 <h2>Results</h2>
                 <div id="analysis-results"></div>
@@ -155,29 +127,28 @@
                     <button id="download-docx" class="download-btn" disabled><i class="fas fa-file-word"></i> Download as DOCX</button>
                 </div>
             </section>
-            
+
             <aside class="editor-tips">
                 <h3>Tips for best results:</h3>
                 <ul>
                     <li>Provide clear, well-structured text for better analysis.</li>
                     <li>Check the AI suggestions and use your judgment for final edits.</li>
                     <li>Use the tool for general improvements, not for highly specialized content.</li>
-                    <li>AI Copyeditor uses OpenAI to analyse your document with custom prompts. Always review your work after using AI Copyeditor for accuracy.</li>
+                    <li>AI Copyeditor uses OpenAI to analyse your document. Always review output for accuracy.</li>
                 </ul>
             </aside>
-            
+
             <div class="social-share">
-                 <button class="share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></button>
+                <button class="share-btn" data-platform="twitter"><i class="fab fa-twitter"></i></button>
                 <button class="share-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i></button>
                 <button class="share-btn" data-platform="linkedin"><i class="fab fa-linkedin-in"></i></button>
             </div>
         </main>
-        
-        <div id="footer-placeholder"></div>
     </div>
+
+    <div id="footer-placeholder"></div>
 
     <script src="/scripts.js" defer></script>
     <script src="editor.js" defer></script>
-
 </body>
 </html>
