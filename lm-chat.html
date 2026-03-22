@@ -117,6 +117,111 @@
 </div>
 
 <div id="share-bar-placeholder"></div>
+
+<section class="tool-info" aria-label="About this tool" itemscope itemtype="https://schema.org/SoftwareApplication">
+  <meta itemprop="name" content="LLM Chat — Model Comparison Tool">
+  <meta itemprop="applicationCategory" content="UtilitiesApplication">
+  <meta itemprop="operatingSystem" content="Web">
+  <meta itemprop="url" content="https://johnb.io/lm-chat">
+
+  <div class="tool-info-inner">
+
+    <div class="tool-info-meta">
+      <span>Last updated: March 2026</span>
+      <span class="tool-info-sep">·</span>
+      <span>By <a href="https://www.linkedin.com/in/john-bowman-content/" target="_blank" rel="noopener" itemprop="author">John Bowman</a> — questions? Connect on LinkedIn.</span>
+    </div>
+
+    <div class="tool-info-body" itemprop="description">
+      <p>LLM Chat runs three AI models side by side — <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude Sonnet by Anthropic</a>, <a href="https://openai.com/gpt-4o-mini" target="_blank" rel="noopener">GPT-4o-mini by OpenAI</a>, and <a href="https://deepmind.google/technologies/gemini/flash/" target="_blank" rel="noopener">Gemini 2.5 Flash Lite by Google</a>. You can chat with each model individually or use the broadcast bar to send the same prompt to all three simultaneously and compare the responses in real time. It is useful for evaluating which model handles a specific task best, stress-testing prompts across providers, or simply exploring how different models approach the same question.</p>
+      <p>Each model maintains its own conversation history within the session, so you can have multi-turn conversations with each one independently. Prompts are routed securely through a <a href="https://workers.cloudflare.com" target="_blank" rel="noopener">Cloudflare Worker</a> proxy to the respective provider APIs. Your messages are subject to the privacy policies of each provider: <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic</a>, <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">OpenAI</a>, and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a>. Do not include sensitive personal information in your prompts.</p>
+    </div>
+
+    <div class="tool-accordions">
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">How It Works</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ol class="info-steps">
+            <li><strong>Chat with one model.</strong> Type a message in the input box under any of the three panels (Claude, OpenAI, Gemini) and press Enter or the send button. The model responds in that panel. Each panel maintains its own conversation thread, so you can continue a multi-turn dialogue with any one model independently.</li>
+            <li><strong>Broadcast to all three.</strong> Type a prompt in the broadcast bar at the top and click Send to All. The same message is sent to all three models simultaneously and responses appear side by side, making it easy to compare how each model handles the same prompt.</li>
+            <li><strong>Compare responses.</strong> Look across the three panels to see differences in tone, accuracy, length and reasoning. This is particularly useful for tasks like summarisation, creative writing, code generation or answering complex questions where model behaviour varies noticeably.</li>
+            <li><strong>Continue the conversation.</strong> After a broadcast, you can follow up with each model individually. Each panel remembers its own prior turns, so you can dig deeper into a specific model's response without affecting the others.</li>
+            <li><strong>Clear and reset.</strong> Use the delete button in the broadcast bar to clear all three conversations and start fresh.</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Key Points</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ul class="info-points">
+            <li><strong>Three leading models, one interface.</strong> Claude Sonnet 4 (Anthropic), GPT-4o-mini (OpenAI) and Gemini 2.5 Flash Lite (Google) — all in a single view. No switching between tabs or platforms.</li>
+            <li><strong>Broadcast mode saves time.</strong> Send the same prompt to all three models at once and see responses arrive in parallel. Useful for prompt engineering, benchmarking or demos.</li>
+            <li><strong>Multi-turn conversations supported.</strong> Each panel maintains full conversation history for the session, so you can have extended back-and-forth exchanges rather than one-shot queries.</li>
+            <li><strong>Routed via a secure proxy.</strong> API keys are never exposed in the browser. All requests go through a Cloudflare Worker, keeping credentials server-side.</li>
+            <li><strong>Good for prompt engineering and model evaluation.</strong> If you are developing prompts for a production system and need to decide which model to use, this tool gives you a quick side-by-side view without writing any code.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Frequently Asked Questions</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <dl class="info-faq">
+            <div class="faq-item">
+              <dt>Which AI models are used?</dt>
+              <dd>The tool connects to three models: <code>claude-sonnet-4</code> by <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a>, <code>gpt-4o-mini</code> by <a href="https://openai.com" target="_blank" rel="noopener">OpenAI</a>, and <code>gemini-2.5-flash-lite</code> by <a href="https://deepmind.google" target="_blank" rel="noopener">Google DeepMind</a>. These are current production models as of March 2026.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Are my messages stored?</dt>
+              <dd>Conversation history exists only in your browser for the current session and is cleared when you close the tab. Prompts are forwarded to each provider's API — they are subject to the respective privacy policies of <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic</a>, <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">OpenAI</a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a>. JohnB.io does not log or retain your messages.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Why use GPT-4o-mini rather than GPT-4o?</dt>
+              <dd>GPT-4o-mini is a cost-efficient model that performs well for most conversational and reasoning tasks, making it a practical choice for a free comparison tool. For tasks requiring maximum capability from OpenAI, GPT-4o or GPT-o1 would be more appropriate — but those are better evaluated via <a href="https://chat.openai.com" target="_blank" rel="noopener">ChatGPT</a> directly.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Can I use this to decide which model to use for my project?</dt>
+              <dd>Yes — this is one of the best use cases. Run your specific prompts through all three models and compare quality, speed and tone. Keep in mind that model performance varies by task type: coding, creative writing, factual Q&amp;A and structured reasoning can produce noticeably different results across providers.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Is there a usage limit?</dt>
+              <dd>There is no hard limit on the tool itself, but the underlying APIs have rate limits managed at the Cloudflare Worker level. If you hit a limit, wait a moment and try again. For high-volume testing, the best approach is to access the provider APIs directly with your own keys.</dd>
+            </div>
+          </dl>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Sources</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ol class="info-sources">
+            <li><a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Anthropic — Claude model overview</a>. Anthropic.com. Accessed March 2026.</li>
+            <li><a href="https://openai.com/gpt-4o-mini" target="_blank" rel="noopener">OpenAI — GPT-4o-mini overview</a>. OpenAI.com. Accessed March 2026.</li>
+            <li><a href="https://deepmind.google/technologies/gemini/flash/" target="_blank" rel="noopener">Google DeepMind — Gemini Flash overview</a>. DeepMind.google. Accessed March 2026.</li>
+            <li><a href="https://workers.cloudflare.com" target="_blank" rel="noopener">Cloudflare Workers — Serverless execution environment</a>. Cloudflare.com. Accessed March 2026.</li>
+            <li><a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">OpenAI Privacy Policy</a>. OpenAI.com. Accessed March 2026.</li>
+          </ol>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
     <div id="footer-placeholder"></div>
 
 <script src="/scripts.js" defer></script>

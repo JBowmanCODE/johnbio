@@ -1815,6 +1815,111 @@ renderSystems();
 </script>
 
 <div id="share-bar-placeholder"></div>
+
+<section class="tool-info" aria-label="About this tool" itemscope itemtype="https://schema.org/SoftwareApplication">
+  <meta itemprop="name" content="RAI Governance Framework">
+  <meta itemprop="applicationCategory" content="UtilitiesApplication">
+  <meta itemprop="operatingSystem" content="Web">
+  <meta itemprop="url" content="https://johnb.io/rai">
+
+  <div class="tool-info-inner">
+
+    <div class="tool-info-meta">
+      <span>Last updated: March 2026</span>
+      <span class="tool-info-sep">·</span>
+      <span>By <a href="https://www.linkedin.com/in/john-bowman-content/" target="_blank" rel="noopener" itemprop="author">John Bowman</a> — questions? Connect on LinkedIn.</span>
+    </div>
+
+    <div class="tool-info-body" itemprop="description">
+      <p>The RAI Governance Framework is a practical, browser-based toolkit for teams evaluating and managing AI risk. It covers the full governance lifecycle: classifying AI systems by risk tier, assigning accountability through a responsibility matrix, working through a structured pre-deployment checklist, generating system cards for documentation, maintaining a searchable system registry, and mapping your systems against current regulatory requirements. It is built for AI governance leads, risk managers, product teams and compliance functions who need structured documentation without standing up a dedicated platform.</p>
+      <p>This tool runs entirely in your browser. No data is sent to any external server and nothing is stored outside your current session. It does not use an AI model to generate content — all outputs are driven by the information you enter. This makes it suitable for handling sensitive internal documentation about AI systems without privacy or data residency concerns. The framework references guidance from the <a href="https://www.gov.uk/guidance/the-ai-safety-institute" target="_blank" rel="noopener">AI Safety Institute</a>, the <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/key-dp-themes/explaining-decisions-made-with-ai/" target="_blank" rel="noopener">ICO's guidance on AI and data protection</a>, and the EU AI Act risk classification approach.</p>
+    </div>
+
+    <div class="tool-accordions">
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">How It Works</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ol class="info-steps">
+            <li><strong>Classify your AI system.</strong> Use the Risk panel to run through the classification questionnaire. Answer questions about your system's domain, autonomy level, data use and potential impact. The tool assigns a risk tier — High, Medium or Low — with an explanation of what that means for your governance obligations.</li>
+            <li><strong>Assign responsibility.</strong> In the Governance panel, populate the responsibility matrix with your team's roles. Define who is accountable for oversight, development, deployment and monitoring of each AI system.</li>
+            <li><strong>Work through the checklist.</strong> The Checklist panel provides a structured set of pre-deployment checks covering fairness, explainability, data quality, human oversight and incident response. Mark items complete as you go.</li>
+            <li><strong>Create a system card.</strong> The System Card panel generates a structured document recording your system's purpose, data sources, model type, identified risks, mitigations and oversight arrangements. Export it as a PDF or plain text file for your records.</li>
+            <li><strong>Register and track systems.</strong> Add your AI systems to the Registry to maintain a searchable inventory. Use the Regulatory panel to map each system against relevant frameworks including the EU AI Act and UK AI principles.</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Key Points</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ul class="info-points">
+            <li><strong>No data leaves your browser.</strong> Everything runs client-side. Your system descriptions, risk assessments and registry entries are not transmitted to any server — making this suitable for handling sensitive commercial or regulated information.</li>
+            <li><strong>Aligned with the EU AI Act risk tiers.</strong> The classification questionnaire maps to the <a href="https://artificialintelligenceact.eu" target="_blank" rel="noopener">EU AI Act</a> categories (Unacceptable Risk, High Risk, Limited Risk, Minimal Risk), giving your assessments regulatory grounding.</li>
+            <li><strong>Generates exportable documentation.</strong> System cards and registry exports can be saved as PDF or plain text — suitable for audits, board reporting or sharing with regulators.</li>
+            <li><strong>Built for teams, not just individuals.</strong> The responsibility matrix and checklist are designed to be completed collaboratively. Print or export sections to share with legal, compliance, engineering or leadership.</li>
+            <li><strong>Free to use with no account required.</strong> There is no login, no subscription and no usage limit — the tool is fully open to use for any organisation or individual.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Frequently Asked Questions</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <dl class="info-faq">
+            <div class="faq-item">
+              <dt>Does this tool use AI to generate the governance outputs?</dt>
+              <dd>No. All outputs — risk tier classifications, system cards, checklists and registry entries — are generated directly from the information you enter. There is no AI model involved. This is a structured documentation tool, not a generative AI tool.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Is my data stored anywhere?</dt>
+              <dd>No. The tool runs entirely in your browser. Nothing is stored on any server, and nothing persists after you close the tab. If you want to keep your work, export it using the download options in each panel before closing.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Which regulatory frameworks does the tool reference?</dt>
+              <dd>The risk classification aligns with the <a href="https://artificialintelligenceact.eu" target="_blank" rel="noopener">EU AI Act</a>. The framework also references the UK government's <a href="https://www.gov.uk/guidance/the-ai-safety-institute" target="_blank" rel="noopener">AI Safety Institute</a> principles, the <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/key-dp-themes/explaining-decisions-made-with-ai/" target="_blank" rel="noopener">ICO's AI and data protection guidance</a>, and the NIST AI Risk Management Framework. It is intended as a practical starting point — always verify compliance requirements with qualified legal or regulatory counsel.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>What is a system card?</dt>
+              <dd>A system card (sometimes called a model card) is a structured document that records key facts about an AI system — its purpose, data sources, known risks, mitigations and human oversight arrangements. System cards are increasingly expected by regulators and enterprise procurement teams as part of responsible AI deployment. The <a href="https://arxiv.org/abs/1810.03993" target="_blank" rel="noopener">original model card paper</a> was published by Mitchell et al. at Google in 2018.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Is this suitable for regulated industries?</dt>
+              <dd>The framework provides a solid foundation for AI governance in regulated industries including financial services, healthcare and the public sector. However, sector-specific requirements — such as those under the FCA's model risk guidance, NHS AI governance frameworks, or GDPR Article 22 on automated decision-making — may go beyond what this tool covers. Use it as a starting point and engage your compliance or legal team for sector-specific obligations.</dd>
+            </div>
+          </dl>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Sources</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ol class="info-sources">
+            <li><a href="https://artificialintelligenceact.eu" target="_blank" rel="noopener">EU AI Act — Full text and risk classification framework</a>. artificialintelligenceact.eu. Accessed March 2026.</li>
+            <li><a href="https://www.gov.uk/guidance/the-ai-safety-institute" target="_blank" rel="noopener">UK AI Safety Institute — Guidance and principles</a>. GOV.UK. Accessed March 2026.</li>
+            <li><a href="https://ico.org.uk/for-organisations/guide-to-data-protection/key-dp-themes/explaining-decisions-made-with-ai/" target="_blank" rel="noopener">ICO — Explaining decisions made with AI</a>. Information Commissioner's Office. Accessed March 2026.</li>
+            <li><a href="https://www.nist.gov/system/files/documents/2023/01/26/AI%20RMF%201.0.pdf" target="_blank" rel="noopener">NIST AI Risk Management Framework 1.0</a>. National Institute of Standards and Technology. January 2023.</li>
+            <li><a href="https://arxiv.org/abs/1810.03993" target="_blank" rel="noopener">Mitchell et al. — Model Cards for Model Reporting</a>. arXiv:1810.03993. Google, 2018.</li>
+          </ol>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
     <div id="footer-placeholder"></div>
 <script src="/scripts.js" defer></script>
 </body>
