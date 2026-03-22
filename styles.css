@@ -32,6 +32,39 @@ body {
 ::-webkit-scrollbar-thumb { background: rgba(255,0,127,0.3); border-radius: 2px; }
 
 /* ── SHARE BAR ── */
+.share-bar-message {
+  text-align: center;
+  perspective: 600px;
+  cursor: default;
+  margin-bottom: 0.75rem;
+}
+.share-bar-message-inner {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.share-bar-message:hover .share-bar-message-inner {
+  transform: rotateX(180deg);
+}
+.share-bar-message-front,
+.share-bar-message-back {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(248,245,253,0.45);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.share-bar-message-back {
+  position: absolute; inset: 0;
+  transform: rotateX(180deg);
+  color: var(--secondary);
+  white-space: nowrap;
+  display: flex; align-items: center; justify-content: center;
+}
+
 .share-bar {
   display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem;
   justify-content: center;
