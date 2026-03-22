@@ -71,6 +71,11 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
+    if (activePlatforms.size === 0) {
+      showInputError('Please select at least one platform before repurposing.');
+      return;
+    }
+
     setLoading(true);
     showGrid();
     setCardsLoading(true);
@@ -79,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const response = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content }),
+        body: JSON.stringify({ content, platforms: [...activePlatforms] }),
       });
 
       const data = await response.json();
@@ -184,8 +189,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function setCardsLoading(state) {
-    CARD_KEYS.forEach(function (key) {
+    activePlatforms.forEach(function (key) {
       const card    = document.querySelector(`.output-card[data-key="${key}"]`);
+      if (!card) return;
       const content = document.getElementById(`output-${key}`);
       const badge   = document.getElementById(`badge-${key}`);
       const copyBtn = card.querySelector('.copy-btn');
@@ -206,14 +212,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function setCardsError(message) {
     setCardsLoading(false);
-    CARD_KEYS.forEach(function (key, i) {
+    let first = true;
+    activePlatforms.forEach(function (key) {
       const content = document.getElementById(`output-${key}`);
       const card    = document.querySelector(`.output-card[data-key="${key}"]`);
+      if (!card) return;
       card.classList.add('error');
       const p = document.createElement('p');
-      p.textContent = i === 0 ? message : 'See above for error details.';
+      p.textContent = first ? message : 'See above for error details.';
       content.innerHTML = '';
       content.appendChild(p);
+      first = false;
     });
   }
 
@@ -262,21 +271,15 @@ document.addEventListener('DOMContentLoaded', function () {
         const tweetText = text.length > 270 ? text.slice(0, 267) + '...' : text;
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`, '_blank');
       } else if (platform === 'facebook') {
-        // Open FB first (must be synchronous with user gesture to avoid popup block)
+        // Copy text synchronously first (must be in same gesture tick)
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none;';
+        document.body.appendChild(ta); ta.focus(); ta.select();
+        try { document.execCommand('copy'); } catch {}
+        document.body.removeChild(ta);
+        // Then open Facebook (synchronous, same tick — won't be popup-blocked)
         window.open('https://www.facebook.com/', '_blank');
-        // Copy text synchronously via execCommand
-        let copied = false;
-        try {
-          const ta = document.createElement('textarea');
-          ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-          document.body.appendChild(ta); ta.select();
-          copied = document.execCommand('copy');
-          document.body.removeChild(ta);
-        } catch {}
-        if (!copied) {
-          navigator.clipboard.writeText(text).catch(() => {});
-        }
-        showToast('Facebook opened. Paste your content into a new post.');
+        showToast('Text copied. Open a new post on Facebook and paste it in.');
       }
     }
   });
