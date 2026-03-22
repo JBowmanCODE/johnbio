@@ -1,0 +1,11 @@
+# Cloudflare Workers (kept local only, deployed via Wrangler)
+workers/
+
+# Environment / secrets
+.env
+.env.local
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db
