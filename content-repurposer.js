@@ -124,7 +124,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function renderParagraphs(container, text) {
     container.innerHTML = '';
-    const paragraphs = text.split(/\n\n+/).filter(p => p.trim());
+    const paragraphs = text.split('[BREAK]').filter(p => p.trim());
+    if (paragraphs.length <= 1) {
+      // Fallback: also try \n\n in case of older response format
+      const fallback = text.split(/\n\n+/).filter(p => p.trim());
+      fallback.forEach(function (para) {
+        const p = document.createElement('p');
+        p.textContent = para.trim();
+        container.appendChild(p);
+      });
+      return;
+    }
     paragraphs.forEach(function (para) {
       const p = document.createElement('p');
       p.textContent = para.trim();
@@ -134,27 +144,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function renderNewsletter(container, text) {
     container.innerHTML = '';
-    const lines = text.split('\n');
-    const firstLine = lines[0] || '';
+    const parts = text.split('[BREAK]');
+    const firstPart = (parts[0] || '').trim();
 
-    if (firstLine.startsWith('Subject:')) {
+    if (firstPart.startsWith('Subject:')) {
       const subjectSpan = document.createElement('span');
       subjectSpan.className = 'newsletter-subject';
-      subjectSpan.textContent = firstLine;
+      subjectSpan.textContent = firstPart;
       container.appendChild(subjectSpan);
 
-      let bodyStart = 1;
-      while (bodyStart < lines.length && lines[bodyStart].trim() === '') bodyStart++;
-      const bodyText = lines.slice(bodyStart).join('\n').trim();
-
-      if (bodyText) {
-        const bodyParagraphs = bodyText.split(/\n\n+/).filter(p => p.trim());
-        bodyParagraphs.forEach(function (para) {
-          const p = document.createElement('p');
-          p.textContent = para.trim();
-          container.appendChild(p);
-        });
-      }
+      parts.slice(1).filter(p => p.trim()).forEach(function (para) {
+        const p = document.createElement('p');
+        p.textContent = para.trim();
+        container.appendChild(p);
+      });
     } else {
       renderParagraphs(container, text);
     }
@@ -176,9 +179,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function showGrid() {
     grid.style.display = 'grid';
-    platformSelector.style.display = 'flex';
     updateCardVisibility();
-    setTimeout(() => platformSelector.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+    setTimeout(() => grid.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
   }
 
   function setCardsLoading(state) {
@@ -260,10 +262,21 @@ document.addEventListener('DOMContentLoaded', function () {
         const tweetText = text.length > 270 ? text.slice(0, 267) + '...' : text;
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`, '_blank');
       } else if (platform === 'facebook') {
-        navigator.clipboard.writeText(text).then(function () {
-          window.open('https://www.facebook.com/', '_blank');
-          showToast('Text copied. Paste it into your new Facebook post.');
-        });
+        // Open FB first (must be synchronous with user gesture to avoid popup block)
+        window.open('https://www.facebook.com/', '_blank');
+        // Copy text synchronously via execCommand
+        let copied = false;
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select();
+          copied = document.execCommand('copy');
+          document.body.removeChild(ta);
+        } catch {}
+        if (!copied) {
+          navigator.clipboard.writeText(text).catch(() => {});
+        }
+        showToast('Facebook opened. Paste your content into a new post.');
       }
     }
   });
