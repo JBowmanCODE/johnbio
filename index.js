@@ -176,7 +176,7 @@ function buildCard(project, delay) {
       <img src="${project.img}" alt="${project.title}" loading="lazy"
         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
       />
-      <div class="card-thumb-fallback" style="display:none; color: var(--${isCyan ? 'secondary' : 'primary'})">
+      <div class="card-thumb-fallback" style="display:none; color: var(--${colorClass === 'cyan' ? 'secondary' : colorClass === 'green' ? 'secondary' : 'primary'})">
         <span class="material-symbols-outlined">${project.thumbIcon}</span>
         <span class="label">${project.title}</span>
       </div>
