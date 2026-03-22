@@ -47,7 +47,7 @@
 
         <div class="genz-section">
             <div class="genz-panel">
-                <div class="genz-panel-label">Your Text</div>
+                <div class="genz-panel-label" id="input-label">Your Text</div>
                 <textarea id="input-text" placeholder="Paste your text here..."></textarea>
                 <div class="genz-controls">
                     <input type="file" id="file-upload" accept=".txt,.doc,.docx">
@@ -62,11 +62,13 @@
             </div>
 
             <div class="genz-arrow">
-                <span class="material-symbols-outlined">arrow_forward</span>
+                <button id="swap-btn" title="Switch to Gen Z → English">
+                    <span class="material-symbols-outlined">swap_horiz</span>
+                </button>
             </div>
 
             <div class="genz-panel genz-panel-output">
-                <div class="genz-panel-label">Gen Z Translation</div>
+                <div class="genz-panel-label" id="output-label">Gen Z Translation</div>
                 <div id="output-text"></div>
             </div>
         </div>
