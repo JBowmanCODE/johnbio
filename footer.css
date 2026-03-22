@@ -1,125 +1,68 @@
 footer {
-    position: relative;
-    padding: 1.25rem;
-    background: inherit;
-    color: white;
-    text-align: center;
-    min-height: 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  position: relative; z-index: 1;
+  border-top: 1px solid rgba(248,245,253,0.07);
+  background: var(--background);
+  padding: 3rem 2rem;
 }
 
-#footer-content {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.footer-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1.5rem;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
-footer p {
-    margin: 0 0 1rem 0;
+.footer-brand .brand-name {
+  font-size: 1.1rem; font-weight: 900;
+  color: var(--primary); text-transform: uppercase; margin-bottom: 0.3rem;
 }
 
-footer ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+.footer-brand .brand-sub {
+  font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(248,245,253,0.3);
 }
 
-footer ul li {
-    margin: 0 0.625rem 0.5rem 0.625rem;
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+
+.footer-links a {
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(248,245,253,0.4);
+  text-decoration: none;
+  transition: color 0.3s, text-shadow 0.3s;
 }
 
-footer a {
-    color: white;
-    text-decoration: none;
-    transition: opacity 0.3s ease;
+.footer-links a:hover {
+  color: var(--secondary);
+  text-shadow: 0 0 12px rgba(0,238,252,0.6);
 }
 
-footer a:hover {
-    opacity: 0.8;
-}
-
+/* Cookie banner */
 .cookie-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
-    padding: 1.25rem;
-    z-index: 10000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  background: var(--surface-container-high);
+  border: 1px solid var(--outline-variant);
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem; color: var(--on-surface-variant);
+  z-index: 999; max-width: 600px; width: 90%;
 }
 
-.cookie-content {
-    max-width: 800px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.cookie-banner-hidden { display: none !important; }
+
+#cookie-buttons { display: flex; gap: 0.5rem; flex-shrink: 0; }
+
+#accept-cookies, #reject-cookies {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 0.4rem 1rem; border-radius: 9999px; border: none; cursor: pointer;
+  transition: opacity 0.2s;
 }
 
-.cookie-banner-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 0.625rem;
-}
-
-.cookie-banner button {
-    padding: 0.5rem 1rem;
-    background: #4c3bcf;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 0.25rem;
-    transition: background-color 0.3s ease;
-}
-
-.cookie-banner button:hover {
-    background: #402e7a;
-}
-
-.cookie-banner-hidden {
-    display: none;
-}
-
-@media (max-width: 48rem) {
-    footer {
-        padding: 1rem;
-    }
-
-    footer ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    footer ul li {
-        margin: 0.5rem 0;
-    }
-
-    .cookie-banner {
-        padding: 1rem;
-    }
-
-    .cookie-banner p {
-        font-size: 0.875rem;
-    }
-
-    .cookie-banner button {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.875rem;
-    }
-}
+#accept-cookies { background: var(--primary); color: var(--on-primary); }
+#reject-cookies { background: var(--surface-container-highest); color: var(--on-surface-variant); }
+#accept-cookies:hover, #reject-cookies:hover { opacity: 0.85; }

@@ -886,7 +886,6 @@ ${cvText}`;
         const q = encodeURIComponent(query);
         const qPlus = query.trim().replace(/\s+/g, '+');
         const qSlug = query.trim().toLowerCase().replace(/\s+/g, '-');
-        const qEncSlug = encodeURIComponent(query.trim().replace(/\s+/g, '-'));
         return template
             .replace('{q}', q)
             .replace('{q+}', qPlus)
@@ -909,13 +908,25 @@ ${cvText}`;
     if (jobSearchBtn) {
         jobSearchBtn.addEventListener('click', () => {
             doJobSearch();
-            // Open all searchable boards in new tabs
             const query = jobSearchInput ? jobSearchInput.value.trim() : '';
             if (!query) return;
             if (jobBoardsGrid) {
-                jobBoardsGrid.querySelectorAll('a[data-search]').forEach(a => {
-                    window.open(a.href, '_blank', 'noopener,noreferrer');
-                });
+                const boards = jobBoardsGrid.querySelectorAll('a[data-search]');
+                const overlay = document.getElementById('job-boards-confirm');
+                const bodyEl  = document.getElementById('confirm-body');
+                const okBtn   = document.getElementById('confirm-ok');
+                const cancelBtn = document.getElementById('confirm-cancel');
+                if (overlay && bodyEl && okBtn && cancelBtn) {
+                    bodyEl.textContent = `This will open ${boards.length} job board tabs in your browser.`;
+                    overlay.classList.remove('hidden');
+                    const close = () => overlay.classList.add('hidden');
+                    okBtn.onclick = () => {
+                        close();
+                        boards.forEach(a => window.open(a.href, '_blank', 'noopener,noreferrer'));
+                    };
+                    cancelBtn.onclick = close;
+                    overlay.onclick = (e) => { if (e.target === overlay) close(); };
+                }
             }
         });
     }

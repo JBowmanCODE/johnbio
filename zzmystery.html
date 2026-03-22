@@ -3,188 +3,227 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zig-Zag Drop Mystery</title>
+<title>Zig-Zag Drop Mystery — JohnB.io</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-0J6PBWMRNY');
+</script>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/header.css">
+<link rel="stylesheet" href="/footer.css">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap');
-
-  :root {
-    --bg: #0a0e1a;
-    --panel: #111827;
-    --panel2: #0f1623;
-    --border: #1e2d45;
-    --cyan: #00e5ff;
-    --purple: #8b5cf6;
-    --green: #22c55e;
-    --red: #ef4444;
-    --text: #e2e8f0;
-    --muted: #64748b;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
+  /* ── PAGE BASE ── */
   body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Rajdhani', sans-serif;
+    padding-top: 72px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 16px;
     overflow-x: hidden;
   }
 
-  .header {
+  /* ── AMBIENT GLOW ── */
+  .zzm-ambient {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0; overflow: hidden;
+  }
+  .zzm-ambient::before {
+    content: '';
+    position: absolute; top: -20%; left: -5%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,0,127,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: zzmDrift1 18s ease-in-out infinite alternate;
+  }
+  .zzm-ambient::after {
+    content: '';
+    position: absolute; bottom: -20%; right: -5%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,238,252,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: zzmDrift2 22s ease-in-out infinite alternate;
+  }
+  @keyframes zzmDrift1 { from { transform: translate(0,0); } to { transform: translate(60px,40px); } }
+  @keyframes zzmDrift2 { from { transform: translate(0,0); } to { transform: translate(-50px,-60px); } }
+
+  /* ── WRAPPER ── */
+  .zzm-wrapper {
     width: 100%;
-    max-width: 900px;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 1rem 3rem;
+    position: relative;
+    z-index: 1;
+    gap: 1rem;
+  }
+
+  /* ── GAME HEADER ── */
+  .zzm-header {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 16px;
     position: relative;
   }
 
-  .logo {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.5rem;
+  .zzm-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
     font-weight: 900;
-    letter-spacing: 2px;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    color: var(--on-surface, #f8f5fd);
   }
-  .logo span:first-child { color: var(--text); }
-  .logo span:last-child { color: var(--cyan); text-shadow: 0 0 20px var(--cyan); }
+  .zzm-logo span:last-child {
+    background: linear-gradient(90deg, #FF007F, #00eefc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(255,0,127,0.3));
+  }
 
-  .sound-btn {
+  .zzm-sound-btn {
     position: absolute;
     right: 0;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--muted);
-    padding: 8px 10px;
+    background: rgba(37,37,44,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 0.5rem;
+    color: rgba(248,245,253,0.5);
+    padding: 7px 10px;
     cursor: pointer;
-    font-size: 1.1rem;
-    transition: color 0.2s;
+    font-size: 1rem;
+    transition: color 0.2s, border-color 0.2s;
+    backdrop-filter: blur(10px);
   }
-  .sound-btn:hover { color: var(--text); }
+  .zzm-sound-btn:hover { color: var(--on-surface, #f8f5fd); border-color: rgba(255,0,127,0.3); }
 
-  .main {
+  /* ── MAIN LAYOUT ── */
+  .zzm-main {
     width: 100%;
-    max-width: 900px;
     display: flex;
     gap: 14px;
     align-items: flex-start;
   }
 
-  /* Left Panel */
-  .left-panel {
-    width: 200px;
+  /* ── LEFT PANEL — 2-column grid ── */
+  .zzm-left {
+    width: 240px;
     flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
 
-  .card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px;
+  .zzm-card {
+    background: rgba(37,37,44,0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 0.75rem;
+    padding: 11px;
+    transition: border-color 0.2s;
   }
+  .zzm-card:hover { border-color: rgba(255,0,127,0.2); }
 
-  .label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    color: var(--muted);
+  .zzm-card-full { grid-column: 1 / -1; }
+
+  .zzm-card-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: rgba(248,245,253,0.35);
     text-transform: uppercase;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    margin-bottom: 7px;
   }
 
+  /* ── BET CONTROL ── */
   .bet-control {
     display: flex;
     align-items: center;
-    background: var(--panel2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    background: rgba(14,14,19,0.6);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 0.5rem;
     overflow: hidden;
   }
   .bet-btn {
-    background: #1e2d45;
+    background: rgba(255,255,255,0.05);
     border: none;
-    color: var(--text);
-    width: 34px;
-    height: 36px;
+    color: rgba(248,245,253,0.8);
+    width: 30px;
+    height: 32px;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     transition: background 0.15s;
     flex-shrink: 0;
   }
-  .bet-btn:hover { background: #2a3d5a; }
+  .bet-btn:hover { background: rgba(255,0,127,0.15); }
   .bet-input {
     flex: 1;
     background: transparent;
     border: none;
-    color: var(--text);
+    color: var(--on-surface, #f8f5fd);
     text-align: center;
     font-family: 'Orbitron', sans-serif;
-    font-size: 0.95rem;
+    font-size: 0.82rem;
     font-weight: 700;
     outline: none;
     width: 0;
   }
 
-  .toggle-group {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-  .toggle-btn {
-    flex: 1;
-    min-width: 40px;
-    padding: 6px 4px;
-    background: var(--panel2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--muted);
+  .zzm-slider {
+    width: 100%;
+    margin: 7px 0 4px;
+    accent-color: #FF007F;
     cursor: pointer;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-align: center;
-    transition: all 0.15s;
-  }
-  .toggle-btn:hover { color: var(--text); border-color: var(--purple); }
-  .toggle-btn.active {
-    background: var(--purple);
-    border-color: var(--purple);
-    color: #fff;
-  }
-  .toggle-btn.active-cyan {
-    background: transparent;
-    border-color: var(--cyan);
-    color: var(--cyan);
-    box-shadow: 0 0 8px rgba(0,229,255,0.3);
   }
 
+  .zzm-max-btn {
+    width: 100%;
+    padding: 5px;
+    background: rgba(255,0,127,0.08);
+    border: 1px solid rgba(255,0,127,0.25);
+    border-radius: 6px;
+    color: #FF007F;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background 0.15s;
+  }
+  .zzm-max-btn:hover { background: rgba(255,0,127,0.16); }
+
   .auto-toggle {
-    width: 36px;
-    height: 20px;
-    background: var(--border);
-    border-radius: 10px;
+    width: 34px;
+    height: 18px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 9px;
     cursor: pointer;
     position: relative;
     transition: background 0.2s;
-    margin-top: 4px;
+    margin-top: 8px;
+    border: none;
+    flex-shrink: 0;
+    display: block;
   }
-  .auto-toggle.on { background: var(--cyan); }
+  .auto-toggle.on { background: #FF007F; }
   .auto-toggle::after {
     content: '';
     position: absolute;
-    width: 16px; height: 16px;
+    width: 14px; height: 14px;
     background: #fff;
     border-radius: 50%;
     top: 2px; left: 2px;
@@ -192,73 +231,144 @@
   }
   .auto-toggle.on::after { left: 18px; }
 
-  .bet-submit {
-    width: 100%;
-    padding: 14px;
-    background: var(--cyan);
-    border: none;
-    border-radius: 10px;
-    color: #000;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1rem;
-    font-weight: 900;
-    cursor: pointer;
-    letter-spacing: 1px;
-    transition: all 0.15s;
-    box-shadow: 0 4px 20px rgba(0,229,255,0.3);
+  /* ── TOGGLE BUTTONS ── */
+  .toggle-group {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
   }
-  .bet-submit:hover { background: #33eeff; box-shadow: 0 4px 30px rgba(0,229,255,0.5); transform: translateY(-1px); }
-  .bet-submit:active { transform: translateY(0); }
-  .bet-submit:disabled { background: #1e2d45; color: var(--muted); cursor: not-allowed; box-shadow: none; transform: none; }
+  .toggle-btn {
+    flex: 1;
+    min-width: 24px;
+    padding: 5px 3px;
+    background: rgba(14,14,19,0.6);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 5px;
+    color: rgba(248,245,253,0.4);
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.15s;
+  }
+  .toggle-btn:hover { color: var(--on-surface, #f8f5fd); border-color: rgba(167,139,250,0.4); }
+  .toggle-btn.active {
+    background: rgba(167,139,250,0.15);
+    border-color: rgba(167,139,250,0.5);
+    color: #a78bfa;
+    box-shadow: 0 0 8px rgba(167,139,250,0.15);
+  }
+  .toggle-btn.active-cyan {
+    background: rgba(0,238,252,0.07);
+    border-color: rgba(0,238,252,0.4);
+    color: #00eefc;
+    box-shadow: 0 0 8px rgba(0,238,252,0.12);
+  }
 
-  /* Center - Canvas */
+  /* ── BALLS DISPLAY ── */
+  .zzm-ball-count {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  .zzm-ball-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #00eefc;
+  }
+  .zzm-ball-x {
+    font-size: 0.6rem;
+    color: rgba(248,245,253,0.3);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* ── BET BUTTON ── */
+  .bet-submit {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #FF007F, #cc0066);
+    border: none;
+    border-radius: 9999px;
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 800;
+    cursor: pointer;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    transition: all 0.15s;
+    box-shadow: 0 0 20px rgba(255,0,127,0.3);
+  }
+  .bet-submit:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(255,0,127,0.5); }
+  .bet-submit:active { transform: scale(0.98); }
+  .bet-submit:disabled {
+    background: rgba(255,255,255,0.06);
+    color: rgba(248,245,253,0.25);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+
+  /* ── CANVAS AREA ── */
   .game-area {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0;
+    min-width: 0;
   }
 
   canvas {
     display: block;
     border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
   }
 
-  /* Right Panel */
-  .right-panel {
+  /* ── RIGHT PANEL ── */
+  .zzm-right {
     width: 180px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 8px;
   }
 
-  .balance-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+  .zzm-balance-card {
+    background: rgba(37,37,44,0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,0,127,0.2);
+    border-radius: 0.75rem;
     padding: 14px;
+    box-shadow: inset 0 0 20px rgba(255,0,127,0.03);
   }
-  .balance-label {
-    font-size: 0.65rem;
-    color: var(--muted);
-    letter-spacing: 1.5px;
-    font-weight: 600;
+  .zzm-balance-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.58rem;
+    color: rgba(248,245,253,0.35);
+    letter-spacing: 0.12em;
+    font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 4px;
   }
-  .balance-value {
+  .zzm-balance-value {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: var(--text);
+    color: var(--on-surface, #f8f5fd);
   }
 
-  .results-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+  .zzm-results-card {
+    background: rgba(37,37,44,0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 0.75rem;
     padding: 14px;
     flex: 1;
     max-height: 320px;
@@ -271,25 +381,48 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
     margin-top: 6px;
   }
   .results-list::-webkit-scrollbar { width: 3px; }
   .results-list::-webkit-scrollbar-track { background: transparent; }
-  .results-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .results-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
 
   .result-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.85rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.76rem;
   }
-  .result-mult { color: var(--muted); font-weight: 600; }
+  .result-mult { color: rgba(248,245,253,0.35); font-weight: 600; }
   .result-win { font-weight: 700; }
-  .result-win.pos { color: var(--green); }
-  .result-win.neg { color: var(--red); }
+  .result-win.pos { color: #22c55e; }
+  .result-win.neg { color: #ef4444; }
 
-  /* Multiplier buckets */
+  .zzm-info-card {
+    background: rgba(37,37,44,0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 0.75rem;
+    padding: 12px 13px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.68rem;
+    line-height: 1.55;
+    color: rgba(248,245,253,0.45);
+  }
+  .zzm-info-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── BUCKETS ── */
   .buckets {
     display: flex;
     width: 100%;
@@ -308,136 +441,144 @@
     line-height: 1.2;
     min-width: 0;
   }
-  .bucket.flash {
-    animation: bucketFlash 0.4s ease-out;
-  }
+  .bucket.flash { animation: bucketFlash 0.4s ease-out; }
 
-  @keyframes goldPulse {
-    0%,100% { box-shadow: 0 0 8px 3px #ffd700; opacity: 1; }
-    50%      { box-shadow: 0 0 18px 7px #ffaa00; opacity: 0.85; }
-  }
   @keyframes bucketFlash {
     0% { transform: scaleY(1.4); filter: brightness(2); }
     100% { transform: scaleY(1); filter: brightness(1); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .zzm-main { flex-direction: column; align-items: center; }
+    .zzm-left { width: 100%; }
+    .zzm-right { width: 100%; flex-direction: row; flex-wrap: wrap; }
+    .zzm-balance-card { width: 100%; }
+    .zzm-results-card { width: 100%; max-height: 200px; }
+    .zzm-info-card { width: 100%; }
+    .game-area { width: 100%; }
   }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="logo"><span>Zig-Zag Drop </span><span>Mystery</span></div>
-  <button class="sound-btn" id="soundBtn" title="Toggle sound">🔊</button>
+<div id="header-placeholder"></div>
+<div class="zzm-ambient"></div>
+
+<div class="zzm-wrapper">
+
+  <!-- Game Header -->
+  <div class="zzm-header">
+    <div class="zzm-logo"><span>Zig-Zag Drop </span><span>Mystery</span></div>
+    <button class="zzm-sound-btn" id="soundBtn" title="Toggle sound">🔊</button>
+  </div>
+
+  <div class="zzm-main">
+
+    <!-- Left Panel — 2-column grid -->
+    <div class="zzm-left">
+
+      <!-- Bet Amount (full width) -->
+      <div class="zzm-card zzm-card-full">
+        <div class="zzm-card-label">Bet Amount</div>
+        <div class="bet-control">
+          <button class="bet-btn" id="betMinus">−</button>
+          <input class="bet-input" id="betInput" value="2.00" type="text" readonly>
+          <button class="bet-btn" id="betPlus">+</button>
+        </div>
+        <input type="range" id="betSlider" class="zzm-slider" min="0.25" max="100" step="0.25" value="2">
+        <button id="maxBetBtn" class="zzm-max-btn">Max Bet (100)</button>
+        <div class="auto-toggle" id="autoToggle" title="Auto-bet"></div>
+      </div>
+
+      <!-- Risk Level -->
+      <div class="zzm-card">
+        <div class="zzm-card-label">Risk</div>
+        <div class="toggle-group" id="riskGroup">
+          <button class="toggle-btn" data-risk="low">Low</button>
+          <button class="toggle-btn active" data-risk="medium">Med</button>
+          <button class="toggle-btn" data-risk="high">High</button>
+        </div>
+      </div>
+
+      <!-- Rows -->
+      <div class="zzm-card">
+        <div class="zzm-card-label">Rows</div>
+        <div class="toggle-group" id="rowsGroup">
+          <button class="toggle-btn" data-rows="8">8</button>
+          <button class="toggle-btn active-cyan" data-rows="10">10</button>
+          <button class="toggle-btn" data-rows="12">12</button>
+          <button class="toggle-btn" data-rows="14">14</button>
+        </div>
+      </div>
+
+      <!-- Speed -->
+      <div class="zzm-card">
+        <div class="zzm-card-label">Speed</div>
+        <div class="toggle-group" id="speedGroup">
+          <button class="toggle-btn" data-speed="slow">Slow</button>
+          <button class="toggle-btn active-cyan" data-speed="regular">Reg</button>
+          <button class="toggle-btn" data-speed="turbo">Fast</button>
+        </div>
+      </div>
+
+      <!-- Number of Balls -->
+      <div class="zzm-card">
+        <div class="zzm-card-label">Balls</div>
+        <div class="zzm-ball-count">
+          <span class="zzm-ball-num" id="ballCountDisplay">1</span>
+          <span class="zzm-ball-x">× BET</span>
+        </div>
+        <input type="range" id="ballSlider" class="zzm-slider" min="1" max="100" step="1" value="1" style="margin:4px 0 6px;">
+        <div class="toggle-group" id="ballPresets">
+          <button class="toggle-btn active-cyan" data-balls="1">1</button>
+          <button class="toggle-btn" data-balls="5">5</button>
+          <button class="toggle-btn" data-balls="10">10</button>
+          <button class="toggle-btn" data-balls="100">100</button>
+        </div>
+      </div>
+
+      <!-- BET Button -->
+      <button class="bet-submit" id="betBtn">BET 2.00</button>
+
+    </div>
+
+    <!-- Game Canvas -->
+    <div class="game-area">
+      <canvas id="gameCanvas"></canvas>
+      <div class="buckets" id="buckets"></div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="zzm-right">
+      <div class="zzm-balance-card">
+        <div class="zzm-balance-label">Balance (FUN)</div>
+        <div class="zzm-balance-value" id="balanceDisplay">1000.00</div>
+      </div>
+      <div class="zzm-results-card">
+        <div class="zzm-card-label">Results</div>
+        <div class="results-list" id="resultsList"></div>
+      </div>
+      <div class="zzm-info-card">
+        <div class="zzm-info-title">
+          <span>🟡</span>
+          <span style="color:#ffd700;">Golden Pin</span>
+        </div>
+        <p style="margin:0 0 8px 0;">A glowing gold pin appears each drop. If your ball hits it there's a <strong style="color:rgba(248,245,253,0.8);">1% chance</strong> it triggers a mystery bonus of <strong style="color:#ffd700;">1.5×–3×</strong> your bet.</p>
+        <div class="zzm-info-title" style="margin-top:2px;">
+          <span>⚡</span>
+          <span style="color:#fbbf24;">Lucky Drop</span>
+        </div>
+        <p style="margin:0;">Roughly <strong style="color:rgba(248,245,253,0.8);">1 in 15 spins</strong> triggers a Lucky Drop. Every payout is boosted <strong style="color:#fbbf24;">3×–8×</strong>.</p>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<div class="main">
-  <!-- Left Panel -->
-  <div class="left-panel">
-    <div class="card">
-      <div class="label">Bet Amount</div>
-      <div class="bet-control">
-        <button class="bet-btn" id="betMinus">−</button>
-        <input class="bet-input" id="betInput" value="2.00" type="text" readonly>
-        <button class="bet-btn" id="betPlus">+</button>
-      </div>
-      <input type="range" id="betSlider" min="0.25" max="100" step="0.25" value="2"
-        style="width:100%;margin:8px 0 4px;accent-color:#00e5ff;cursor:pointer;">
-      <button id="maxBetBtn" style="
-        width:100%;padding:5px;background:rgba(0,229,255,0.1);
-        border:1px solid #00e5ff;border-radius:6px;color:#00e5ff;
-        font-family:'Rajdhani',sans-serif;font-size:0.8rem;font-weight:700;
-        cursor:pointer;letter-spacing:1px;transition:background 0.15s;
-      " onmouseover="this.style.background='rgba(0,229,255,0.2)'"
-         onmouseout="this.style.background='rgba(0,229,255,0.1)'">MAX BET (100)</button>
-      <div class="auto-toggle" id="autoToggle" title="Auto-bet" style="margin-top:8px;"></div>
-    </div>
+<div id="footer-placeholder"></div>
 
-    <div class="card">
-      <div class="label">Risk Level <span style="color:#444;font-size:0.8em">?</span></div>
-      <div class="toggle-group" id="riskGroup">
-        <button class="toggle-btn" data-risk="low">low</button>
-        <button class="toggle-btn active" data-risk="medium">medium</button>
-        <button class="toggle-btn" data-risk="high">high</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="label">Rows <span style="color:#444;font-size:0.8em">?</span></div>
-      <div class="toggle-group" id="rowsGroup">
-        <button class="toggle-btn" data-rows="8">8</button>
-        <button class="toggle-btn active-cyan" data-rows="10">10</button>
-        <button class="toggle-btn" data-rows="12">12</button>
-        <button class="toggle-btn" data-rows="14">14</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="label">Speed</div>
-      <div class="toggle-group" id="speedGroup">
-        <button class="toggle-btn" data-speed="slow">Slow</button>
-        <button class="toggle-btn active-cyan" data-speed="regular">Regular</button>
-        <button class="toggle-btn" data-speed="turbo">Turbo</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="label">Number of Balls</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-        <span style="font-family:'Orbitron',sans-serif;font-size:1.1rem;font-weight:700;color:var(--cyan);" id="ballCountDisplay">1</span>
-        <span style="font-size:0.7rem;color:var(--muted);">× BET</span>
-      </div>
-      <input type="range" id="ballSlider" min="1" max="100" step="1" value="1"
-        style="width:100%;accent-color:#00e5ff;cursor:pointer;margin-bottom:6px;">
-      <div class="toggle-group" id="ballPresets">
-        <button class="toggle-btn active-cyan" data-balls="1">1</button>
-        <button class="toggle-btn" data-balls="5">5</button>
-        <button class="toggle-btn" data-balls="10">10</button>
-        <button class="toggle-btn" data-balls="100">100</button>
-      </div>
-    </div>
-
-    <button class="bet-submit" id="betBtn">BET 2.00</button>
-  </div>
-
-  <!-- Game Canvas -->
-  <div class="game-area">
-    <canvas id="gameCanvas"></canvas>
-    <div class="buckets" id="buckets"></div>
-  </div>
-
-  <!-- Right Panel -->
-  <div class="right-panel">
-    <div class="balance-card">
-      <div class="balance-label">Balance (FUN)</div>
-      <div class="balance-value" id="balanceDisplay">1000.00</div>
-    </div>
-    <div class="results-card">
-      <div class="label">Results</div>
-      <div class="results-list" id="resultsList"></div>
-    </div>
-
-    <div style="
-      background: #0d1420;
-      border: 1px solid #1e2d45;
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-size: 0.72rem;
-      line-height: 1.55;
-      color: #94a3b8;
-    ">
-      <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px;">
-        <span style="font-size:1rem;">🟡</span>
-        <span style="color:#ffd700;font-weight:700;font-size:0.75rem;letter-spacing:0.5px;">Golden Pin</span>
-      </div>
-      <p style="margin:0 0 8px 0;">A glowing gold pin appears on the board each drop. If your ball hits it there's a <strong style="color:#e2e8f0;">1% chance</strong> it triggers a mystery bonus of <strong style="color:#ffd700;">1.5×–3×</strong> your bet — a small surprise win.</p>
-      <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px;margin-top:4px;">
-        <span style="font-size:1rem;">⚡</span>
-        <span style="color:#fbbf24;font-weight:700;font-size:0.75rem;letter-spacing:0.5px;">Lucky Drop</span>
-      </div>
-      <p style="margin:0;">Roughly <strong style="color:#e2e8f0;">1 in 15 spins</strong> triggers a Lucky Drop. Every payout that drop is boosted <strong style="color:#fbbf24;">3×–8×</strong>. The board glows gold and the banner appears — enjoy it while it lasts!</p>
-    </div>
-  </div>
-</div>
-
+<script src="/scripts.js" defer></script>
 <script>
 // ─── CONFIG ─────────────────────────────────────────────────────────────────
 const MULTIPLIERS = {
@@ -496,8 +637,8 @@ const ctx = canvas.getContext('2d');
 
 // ─── CANVAS SIZING ────────────────────────────────────────────────────────────
 function resize() {
-  const panelW = 200 + 180 + 14 * 2 + 32;
-  const availW = Math.min(window.innerWidth, 900) - panelW;
+  const panelW = 240 + 180 + 14 * 2 + 32;
+  const availW = Math.min(window.innerWidth, 960) - panelW;
   const W = Math.max(260, availW);
   const H = W * 0.92;
   canvas.width = W;

@@ -1,55 +1,59 @@
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
 <header>
-    <a href="/" class="logo-link">
-        <h1 class="logo" id="logo">{JohnB<span id="extra-text"></span></h1>
-    </a>
-<nav id="main-nav">
-        <ul class="nav-links">
-            <li class="dropdown">
-                <a href="#" class="cursor-ai">AI Projects</a>
-                <ul class="dropdown-content">
-                    <li><a href="/transcripts">YouTube Transcripts</a></li>
-                    <li><a href="/editor">Content Editor</a></li>
-                    <li><a href="/genz">Gen Z Translator</a></li>
-                    <li><a href="/ytsum">YouTube Summary</a></li>
-                    <li><a href="/aitocv">AI CV Enhancer</a></li>
-                    <li><a href="/rai">RAI</a></li>
-                    <li><a href="/lm-chat">LLM Chat</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="cursor-python">Python & JS Projects</a>
-                <ul class="dropdown-content">
-                    <li><a href="/text-to-voice">Text to Voice</a></li>
-                    <li><a href="/calculator">Bill Calculator</a></li>
-                    <li><a href="/bankroll">Bankroll</a></li>
-                    <li><a href="/project-insights">Project Insights</a></li>
-                    <li><a href="/ebay">eBay</a></li>
-                    <li><a href="/zzmystery">Zig Zag Drop Game</a></li>
-                </ul>
-            </li>
-                  </ul>
-    </nav>
-    <div class="header-controls" class="cursor-sunglasses">
-        <button id="toggle-dark-mode" class="dark-mode-toggle" aria-label="Toggle Dark Mode">
-            <div class="toggle-track">
-                <div class="toggle-indicator"></div>
-            </div>
-        </button>
-        <button class="menu-icon" id="mobile-menu-toggle" aria-label="Toggle Menu">
-            <div></div>
-            <div></div>
-            <div></div>
-        </button>
+  <nav>
+    <a href="/" class="logo"><span id="logo-text">JohnB.io</span></a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <a class="nav-dropdown-toggle">
+          AI Projects <span class="material-symbols-outlined">expand_more</span>
+        </a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="/transcripts">YouTube Transcripts</a></li>
+          <li><a href="/editor">AI Copyeditor</a></li>
+          <li><a href="/genz">Gen Z Translator</a></li>
+          <li><a href="/aitocv">AI CV Enhancer</a></li>
+          <li><a href="/rai">Governance Framework</a></li>
+          <li><a href="/lm-chat">LLM Chat</a></li>
+        </ul>
+      </div>
+      <div class="nav-dropdown">
+        <a class="nav-dropdown-toggle">
+          Python / JS <span class="material-symbols-outlined">expand_more</span>
+        </a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="/text-to-voice">Text to Voice</a></li>
+          <li><a href="/calculator">Bill Calculator</a></li>
+          <li><a href="/bankroll">Poker Bankroll</a></li>
+          <li><a href="/ebay">eBay Tracker</a></li>
+          <li><a href="/zzmystery">Zig Zag Drop</a></li>
+        </ul>
+      </div>
     </div>
+    <div class="nav-right">
+      <button class="icon-btn" id="terminal-btn" title="Terminal">
+        <span class="material-symbols-outlined">terminal</span>
+      </button>
+      <button class="btn-primary" onclick="window.location.href='/about'">About Me</button>
+    </div>
+  </nav>
 </header>
 
-<div id="mobile-nav-overlay">
-    <button id="close-mobile-menu" aria-label="Close Menu">Close</button>
-    <nav id="mobile-nav"></nav>
+<!-- ── TERMINAL MODAL (outside header to avoid backdrop-filter stacking context) ── -->
+<div id="terminal-modal" class="terminal-modal" aria-hidden="true">
+  <div class="terminal-window">
+    <div class="terminal-titlebar">
+      <div class="terminal-dots">
+        <span class="terminal-dot terminal-dot-red"></span>
+        <span class="terminal-dot terminal-dot-yellow"></span>
+        <span class="terminal-dot terminal-dot-green"></span>
+      </div>
+      <span class="terminal-title">john@johnb.io — bash</span>
+      <button class="terminal-close" id="terminal-close" aria-label="Close terminal">✕</button>
+    </div>
+    <div class="terminal-output" id="terminal-output"></div>
+    <div class="terminal-input-row">
+      <span class="terminal-prompt-label">john@johnb.io:~$&nbsp;</span>
+      <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal input">
+    </div>
+  </div>
 </div>
-
-
-
-
-<!-- end of code -->

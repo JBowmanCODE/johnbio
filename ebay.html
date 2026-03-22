@@ -3,17 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profit Calculator</title>
+  <title>Profit Calculator — JohnB.io</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <meta name="description" content="eBay and Vinted profit calculator for resellers.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="John Bowman">
+  <meta property="og:title" content="eBay &amp; Vinted Profit Calculator — JohnB.io">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/ebay">
+  <meta property="og:description" content="Calculate your profit from eBay and Vinted sales including fees, postage and purchase costs.">
+  <meta property="og:image" content="https://johnb.io/og_images/ebay_og.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="eBay &amp; Vinted Profit Calculator — JohnB.io">
+  <meta name="twitter:description" content="Calculate your profit from eBay and Vinted sales including fees, postage and purchase costs.">
+  <meta name="twitter:image" content="https://johnb.io/og_images/ebay_og.webp">
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/header.css">
+  <link rel="stylesheet" href="/footer.css">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: "Segoe UI", -apple-system, sans-serif; }
+    body { font-family: "Segoe UI", -apple-system, sans-serif; padding-top: 72px; }
   </style>
 </head>
 <body>
+  <div id="header-placeholder"></div>
   <div id="root"></div>
+  <div id="footer-placeholder"></div>
+  <script src="/scripts.js"></script>
   <script type="text/babel">
     const { useState, useEffect } = React;
     
@@ -908,8 +936,8 @@ function ProfitCalculator() {
         background: '#111',
         borderBottom: '1px solid #222',
         position: 'sticky',
-        top: 0,
-        zIndex: 100
+        top: 72,
+        zIndex: 10
       }}>
         {/* Tab Bar */}
         <div style={{

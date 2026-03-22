@@ -1,183 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JohnB.io</title>
-    <!-- 
-        Google Analytics Tracking Script 
-        This script loads the gtag.js library and configures it with your unique Google Analytics ID.
-        It should be placed in the <head> of every page you want to track.
-    -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JohnB.io | Projects Gallery</title>
 
-      gtag('config', 'G-0J6PBWMRNY');
-    </script>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
-        
-    <!-- Preload critical assets -->
-    <link rel="preload" href="/styles.css" as="style">
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="/header.css">
-    <link rel="stylesheet" href="/footer.css">
-    
-    <!-- Preconnect to required origins -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
 
-    <style>
-      /* Home page only — does not affect header or footer */
-      .home-hero {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 60vh;
-        text-align: center;
-        padding: 2rem 1.25rem;
-        width: 100%;
-      }
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
-      .home-hero .hero-card {
-        background: rgba(255, 255, 255, 0.07);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-radius: 1rem;
-        padding: 3rem 3.5rem;
-        max-width: 36rem;
-        width: 100%;
-        box-shadow:
-          0 8px 32px rgba(0, 0, 0, 0.3),
-          0 1px 0 rgba(255, 255, 255, 0.1) inset;
-        animation: fadeUp 0.6s ease both;
-      }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
 
-      .home-hero .hero-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        display: block;
-        animation: pulse 3s ease-in-out infinite;
-      }
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/header.css">
+  <link rel="stylesheet" href="/footer.css">
+  <link rel="stylesheet" href="/index.css">
 
-      .home-hero .hero-title {
-        font-family: 'Inter', 'Roboto', sans-serif;
-        font-size: clamp(1.1rem, 3vw, 1.4rem);
-        font-weight: 400;
-        color: rgba(255, 255, 255, 0.92);
-        letter-spacing: 0.02em;
-        line-height: 1.6;
-        margin: 0;
-      }
-
-      .home-hero .hero-divider {
-        width: 3rem;
-        height: 2px;
-        background: linear-gradient(90deg, #62d9ff, #4c3bcf);
-        border: none;
-        border-radius: 1px;
-        margin: 1.5rem auto;
-        opacity: 0.7;
-      }
-
-      .home-hero .hero-tags {
-        display: flex;
-        gap: 0.5rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 0.25rem;
-      }
-
-      .home-hero .hero-tag {
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #62d9ff;
-        background: rgba(98, 217, 255, 0.1);
-        border: 1px solid rgba(98, 217, 255, 0.25);
-        border-radius: 2rem;
-        padding: 0.25rem 0.75rem;
-      }
-
-      @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(1.5rem); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-
-      @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50%       { transform: scale(1.08); }
-      }
-
-      @media (max-width: 48rem) {
-        .home-hero .hero-card {
-          padding: 2rem 1.5rem;
-        }
-      }
-    </style>
-
-        <meta name="description" content="JohnB.IO - An AI and development platform for testing and exploring cutting-edge artificial intelligence technologies.">
-        <meta name="keywords" content="AI, artificial intelligence, machine learning, development, programming, API integration, prompt engineering, data visualization">
-        <meta name="subject" content="Artificial Intelligence and Software Development">
-        <meta name="classification" content="Technology">
-        <meta name="robots" content="index, follow">
-        <meta name="revisit-after" content="7 days">
-        <meta name="language" content="EN">
-        <meta name="author" content="John Bowman">
-        <meta name="designer" content="John Bowman">
-        <meta name="copyright" content="JohnB">
-        <meta name="reply-to" content="contact@johnb.io">
-        <meta name="owner" content="John Bowman">
-        <meta name="url" content="https://johnb.io">
-        <meta name="identifier-URL" content="https://johnb.io">
-        <meta name="category" content="Artificial Intelligence">
-        <meta name="coverage" content="Worldwide">
-        <meta name="distribution" content="Global">
-        <meta name="rating" content="General">
-        
-        <!-- Open Graph meta tags for better social media sharing -->
-        <meta property="og:title" content="JohnB.IO - AI and Development Platform">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://johnb.io">
-        <meta property="og:description" content="Explore cutting-edge AI technologies and development tools at JohnB.IO.">
-        
-        <!-- Twitter Card meta tags for Twitter sharing -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@JohnBIO">
-        <meta name="twitter:title" content="JohnB.IO - AI and Development Platform">
-        <meta name="twitter:description" content="Explore cutting-edge AI technologies and development tools at JohnB.IO.">
-        
+  <!-- SEO -->
+  <meta name="description" content="JohnB.IO - An AI and development platform for testing and exploring cutting-edge artificial intelligence technologies.">
+  <meta name="keywords" content="AI, artificial intelligence, machine learning, development, programming, API integration, prompt engineering, data visualization">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="John Bowman">
+  <meta property="og:title" content="JohnB.IO - John Bowman AI Projects">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io">
+  <meta property="og:description" content="See my latest AI Python and JS Projects.">
+  <meta property="og:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JohnB.IO - AI and Development Platform">
+  <meta name="twitter:description" content="Explore cutting-edge AI technologies and development tools at JohnB.IO.">
+  <meta name="twitter:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
 </head>
 <body>
-    <div class="container">
-        <div id="header-placeholder"></div>
-        
-        <main>
-            <div class="home-hero">
-                <div class="hero-card">
-                    <span class="hero-icon">⚡</span>
-                    <p class="hero-title">Test site for AI, Python and JS Tools.</p>
-                    <hr class="hero-divider">
-                    <div class="hero-tags">
-                        <span class="hero-tag">AI</span>
-                        <span class="hero-tag">Python</span>
-                        <span class="hero-tag">JavaScript</span>
-                    </div>
-                </div>
-            </div>
-        </main>
-        
-        <div id="footer-placeholder"></div>
+
+  <div class="ambient"></div>
+
+  <div id="header-placeholder"></div>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <h1>
+        <span class="word-1">Latest</span>
+        <span class="word-2">Projects</span>
+      </h1>
+      <p class="hero-sub"><span class="code-var">site_reason</span> <span class="code-op">=</span> <span class="code-bracket">[</span><span class="code-str">"AI"</span><span class="code-punct">,</span> <span class="code-str">"Test Site"</span><span class="code-punct">,</span> <span class="code-str">"Playground"</span><span class="code-bracket">]</span> <span class="data-pulse"></span></p>
+    </section>
+
+    <!-- Filters -->
+    <div class="filters-row">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="ai">AI Projects</button>
+      <button class="filter-btn" data-filter="dev">Dev Tools</button>
+      <button class="filter-btn" data-filter="rai">Responsible AI</button>
+      <div class="search-wrap">
+        <span class="material-symbols-outlined">search</span>
+        <input class="search-input" id="searchInput" placeholder="Search projects..." type="text">
+      </div>
     </div>
 
-    <script src="/scripts.js" defer></script>
+    <div class="results-meta" id="resultsMeta"></div>
+
+    <!-- Grid -->
+    <div class="projects-grid" id="projectsGrid">
+      <div class="empty-state" id="emptyState">
+        <span class="material-symbols-outlined">search_off</span>
+        <h3>No projects found</h3>
+        <p>Try a different search or filter.</p>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js" defer></script>
+  <script src="/index.js" defer></script>
 
 </body>
 </html>
