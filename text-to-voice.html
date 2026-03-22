@@ -93,6 +93,111 @@
     </main>
 
     <div id="share-bar-placeholder"></div>
+
+<section class="tool-info" aria-label="About this tool" itemscope itemtype="https://schema.org/SoftwareApplication">
+  <meta itemprop="name" content="Text to Voice">
+  <meta itemprop="applicationCategory" content="UtilitiesApplication">
+  <meta itemprop="operatingSystem" content="Web">
+  <meta itemprop="url" content="https://johnb.io/text-to-voice">
+
+  <div class="tool-info-inner">
+
+    <div class="tool-info-meta">
+      <span>Last updated: March 2026</span>
+      <span class="tool-info-sep">·</span>
+      <span>By <a href="https://www.linkedin.com/in/john-bowman-content/" target="_blank" rel="noopener" itemprop="author">John Bowman</a> — questions? Connect on LinkedIn.</span>
+    </div>
+
+    <div class="tool-info-body" itemprop="description">
+      <p>Text to Voice converts any pasted text into speech using your browser's built-in <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API" target="_blank" rel="noopener">Web Speech API</a>. Paste your text, choose a voice from the voices installed on your device, set a playback speed between 0.8× and 1.75×, and hit Start. Word-by-word subtitles highlight each spoken word in real time as the audio plays. The tool also shows an estimated word count, reading time and listen time based on your chosen speed — useful for pacing articles, scripts or presentations.</p>
+      <p>This tool runs entirely in your browser. No text is sent to any external server and no data leaves your device. It does not use an AI model or any third-party API. All processing is handled locally by your browser's speech synthesis engine, which means voice availability and quality depend on what your operating system has installed. Most modern browsers on Windows, macOS, iOS and Android include a range of voices in multiple languages.</p>
+    </div>
+
+    <div class="tool-accordions">
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">How It Works</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ol class="info-steps">
+            <li><strong>Paste your text</strong> into the input area. The tool will display the word count and estimated reading and listening times as soon as you type or paste something.</li>
+            <li><strong>Choose a voice.</strong> The Voice dropdown lists all speech synthesis voices installed on your device. The available voices vary by operating system and browser — Windows typically offers Microsoft voices, macOS offers Siri-based voices, and mobile devices have their own sets.</li>
+            <li><strong>Set a playback speed.</strong> The Speed selector lets you choose from 0.8× (slower than natural pace) up to 1.75× (fast but still intelligible). 1.25× is the default — a good balance between pace and clarity for most content.</li>
+            <li><strong>Click Start.</strong> The text begins playing. Each word is highlighted in the subtitle display below the control panel as it is spoken, making it easier to follow along or spot errors.</li>
+            <li><strong>Use Pause and Stop as needed.</strong> Pause freezes playback at the current position. Stop ends playback entirely. Click Start again to restart from the beginning.</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Key Points</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ul class="info-points">
+            <li><strong>No data leaves your device.</strong> Everything runs locally using the Web Speech API. Your text is never transmitted to any server — making this safe for confidential drafts, internal documents or sensitive content.</li>
+            <li><strong>Word-by-word subtitle highlighting.</strong> As the text plays, each word is highlighted in real time. This helps with proofreading — listening while reading often catches errors that reading alone misses.</li>
+            <li><strong>Useful for content creators and accessibility.</strong> Listen back to blog posts, scripts, emails or presentations to check flow and pacing before publishing. The tool also helps users with visual impairments or reading difficulties consume written content.</li>
+            <li><strong>Speed controls help with productivity.</strong> At 1.5× or 1.75×, a 1,000-word article takes around 3 minutes to get through — faster than reading for many people, without losing comprehension.</li>
+            <li><strong>Voice quality depends on your device.</strong> The browser uses your operating system's speech synthesis engine. Premium voices on macOS and iOS tend to sound more natural. If the available voices sound robotic, try a different browser (Chrome on Windows often has a wider selection) or check your OS voice settings.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Frequently Asked Questions</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <dl class="info-faq">
+            <div class="faq-item">
+              <dt>Does this tool use AI?</dt>
+              <dd>No. The tool uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API" target="_blank" rel="noopener">Web Speech API</a>, which is a standard browser feature — not a generative AI model. Speech synthesis is handled entirely by your browser and operating system. No AI model is called and no data is sent to any external service.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Why does the Start button appear disabled when I first load the page?</dt>
+              <dd>The Start button is disabled until you enter some text. Once you paste or type in the input area, it activates automatically.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Why are there no voices, or only one voice, in the dropdown?</dt>
+              <dd>Voice availability depends on your browser and operating system. Some browsers load voices asynchronously and the dropdown may appear empty on first load — try refreshing the page. On Windows, you can add more voices through Settings &gt; Time &amp; Language &gt; Speech. On macOS, go to System Settings &gt; Accessibility &gt; Spoken Content.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Does this work on mobile?</dt>
+              <dd>Yes. The Web Speech API is supported on iOS Safari and Android Chrome. Voice selection and quality vary by device and OS version. On iOS, the speech synthesis voices are the same ones used by VoiceOver and tend to sound natural.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Is there a limit on how much text I can convert?</dt>
+              <dd>There is no limit set by this tool. In practice, some browsers impose internal limits on speech synthesis queue length. For very long documents, the tool may pause or stop mid-way in certain browsers. If this happens, split the text into smaller sections and play them separately.</dd>
+            </div>
+          </dl>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Sources</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ol class="info-sources">
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API" target="_blank" rel="noopener">MDN Web Docs — Web Speech API</a>. Mozilla Developer Network. Accessed March 2026.</li>
+            <li><a href="https://caniuse.com/speech-synthesis" target="_blank" rel="noopener">Can I Use — SpeechSynthesis API browser support</a>. caniuse.com. Accessed March 2026.</li>
+            <li><a href="https://www.w3.org/TR/speech-synthesis11/" target="_blank" rel="noopener">W3C — Speech Synthesis Markup Language 1.1 specification</a>. World Wide Web Consortium. Accessed March 2026.</li>
+            <li><a href="https://www.rnib.org.uk/living-with-sight-loss/assistive-aids-and-technology/computer-access/text-to-speech-software/" target="_blank" rel="noopener">RNIB — Text-to-speech software guidance</a>. Royal National Institute of Blind People. Accessed March 2026.</li>
+            <li><a href="https://support.microsoft.com/en-gb/windows/add-a-language-or-set-language-preferences-in-windows-12345678" target="_blank" rel="noopener">Microsoft Support — Add voices in Windows</a>. Microsoft.com. Accessed March 2026.</li>
+          </ol>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
     <div id="footer-placeholder"></div>
 
     <script src="/scripts.js" defer></script>
