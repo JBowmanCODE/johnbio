@@ -539,6 +539,11 @@ function initShareBar() {
         },
     ];
 
+    const message = document.createElement('div');
+    message.className = 'share-bar-message';
+    message.innerHTML = `<span class="share-bar-message-inner"><span class="share-bar-message-front">If this saved you time, share it. Takes one click, &amp; genuinely helps.</span><span class="share-bar-message-back">Thank you, you're a legend</span></span>`;
+    placeholder.before(message);
+
     const bar = document.createElement('div');
     bar.className = 'share-bar';
 
