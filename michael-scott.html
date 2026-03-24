@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Scott Moment Machine — JohnB.io</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0J6PBWMRNY');
+    </script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <meta name="description" content="Type any word and instantly find the perfect Michael Scott moment from The Office.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="John Bowman">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/footer.css">
+    <link rel="stylesheet" href="/michael-scott.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <div class="ms-ambient"></div>
+
+    <main class="ms-wrap">
+        <h1 class="page-title">Michael <span class="gradient-text">Scott</span></h1>
+        <p class="ms-description">Type a word. Get the perfect Michael Scott moment.</p>
+
+        <div class="ms-search-card">
+            <div class="ms-quick-label">Quick picks</div>
+            <div class="ms-chips">
+                <button class="ms-chip" data-word="That's What She Said">That's What She Said</button>
+                <button class="ms-chip" data-word="Prison Mike">Prison Mike</button>
+                <button class="ms-chip" data-word="Pretzel Day">Pretzel Day</button>
+                <button class="ms-chip" data-word="Threat Level Midnight">Threat Level Midnight</button>
+                <button class="ms-chip" data-word="Dinner Party">Dinner Party</button>
+                <button class="ms-chip" data-word="Scott's Tots">Scott's Tots</button>
+                <button class="ms-chip" data-word="Michael Scarn">Michael Scarn</button>
+                <button class="ms-chip" data-word="Dundie">Dundie</button>
+                <button class="ms-chip" data-word="I Declare Bankruptcy">I Declare Bankruptcy</button>
+                <button class="ms-chip" data-word="Goodbye Toby">Goodbye Toby</button>
+            </div>
+
+            <div class="ms-input-row">
+                <input
+                    type="text"
+                    id="ms-input"
+                    class="ms-input"
+                    placeholder="Type anything… e.g. Parkour, Chili, Bears…"
+                    autocomplete="off"
+                    maxlength="80"
+                />
+                <button id="ms-search-btn" class="ms-search-btn">
+                    <span class="material-symbols-outlined">search</span>
+                    Search
+                </button>
+            </div>
+        </div>
+
+        <div id="ms-result" class="ms-result" hidden>
+            <div class="ms-video-label" id="ms-video-label"></div>
+            <div class="ms-embed-wrap">
+                <iframe
+                    id="ms-iframe"
+                    class="ms-iframe"
+                    frameborder="0"
+                    allowfullscreen
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    src=""
+                ></iframe>
+            </div>
+            <button id="ms-try-another" class="ms-try-another">
+                <span class="material-symbols-outlined">refresh</span>
+                Try another result
+            </button>
+        </div>
+
+        <div id="ms-empty" class="ms-empty">
+            <span class="ms-empty-icon">🏆</span>
+            <p>The World's Best Boss is waiting.</p>
+        </div>
+
+        <div id="ms-loading" class="ms-loading" hidden>
+            <div class="ms-spinner"></div>
+            <p>Finding your moment…</p>
+        </div>
+
+        <div id="ms-error" class="ms-error" hidden>
+            <span class="material-symbols-outlined">error_outline</span>
+            <p id="ms-error-text">Something went wrong. Please try again.</p>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/scripts.js" defer></script>
+    <script src="/michael-scott.js" defer></script>
+</body>
+</html>
