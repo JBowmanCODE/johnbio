@@ -1,6 +1,6 @@
 // michael-scott.js
 
-const WORKER_URL = 'https://michael-scott-api.ukjbowman.workers.dev/';
+const WORKER_URL = 'https://michael-scott-worker.ukjbowman.workers.dev/';
 
 document.addEventListener('DOMContentLoaded', () => {
     const input       = document.getElementById('ms-input');
