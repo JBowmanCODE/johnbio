@@ -682,7 +682,11 @@
   </div>
 </section>
 
-    <div id="footer-placeholder"></div>
+    <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder"></div>
 
 <script src="/scripts.js" defer></script>
 <script>
@@ -1436,5 +1440,12 @@ pickGoldPeg();
 updateBallDisplay();
 updateBetBtn();
 </script>
+  <script>
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
 </body>
 </html>
