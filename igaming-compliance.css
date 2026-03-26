@@ -667,6 +667,10 @@ body {
 }
 #back-to-top::before {
   content: 'Top';
+  transition: opacity 0.15s ease;
+}
+#back-to-top:hover::before {
+  content: 'GOING UP?';
 }
 #back-to-top .material-symbols-outlined {
   font-size: 1.1rem;
