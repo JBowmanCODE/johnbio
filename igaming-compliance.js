@@ -1103,7 +1103,169 @@ const REGULATIONS = [
     category: 'advertising',
     region: 'asia-pacific',
     notes: 'Ministry of Information and Broadcasting advisories restricting online betting advertising across TV, digital and print.'
-  }
+  },
+
+  // ════════════════════════════════════════════════════════════
+  // ADDITIONAL EUROPE — MISSING ENTRIES
+  // ════════════════════════════════════════════════════════════
+
+  { id: 'uk-national-lottery-act-1993', name: 'National Lottery Act 1993 (as amended)', url: 'https://www.legislation.gov.uk/ukpga/1993/39/contents', countries: ['GB'], category: 'gambling', region: 'europe', notes: 'Regulates the UK National Lottery including online ticket sales via Camelot/Allwyn.' },
+
+  { id: 'gibraltar-generic-code', name: 'Gibraltar Generic Code of Practice for Gambling', url: 'https://www.gibraltar.gov.gi/finance-gaming-and-regulations/remote-gambling', countries: ['GI'], category: 'gambling', region: 'europe', notes: 'Operational requirements for all Gibraltar-licensed gambling operators.' },
+  { id: 'gibraltar-aml-code', name: 'Gibraltar AML Code of Practice for Gambling', url: 'https://www.gibraltar.gov.gi/finance-gaming-and-regulations/remote-gambling', countries: ['GI'], category: 'aml', region: 'europe', notes: 'AML/CFT obligations specifically for Gibraltar gambling licence holders.' },
+
+  { id: 'iom-casino-act-1986', name: 'Casino Act 1986 (Isle of Man)', url: 'https://legislation.gov.im/', countries: ['IM'], category: 'gambling', region: 'europe', notes: 'Isle of Man casino licensing foundation.' },
+  { id: 'iom-gaming-betting-lotteries-1988', name: 'Gaming, Betting and Lotteries Act 1988 (Isle of Man)', url: 'https://legislation.gov.im/', countries: ['IM'], category: 'gambling', region: 'europe', notes: 'Isle of Man betting and lottery regulation.' },
+  { id: 'iom-online-gambling-advertising-2007', name: 'Online Gambling (Advertising) Regulations 2007 (Isle of Man)', url: 'https://legislation.gov.im/', countries: ['IM'], category: 'advertising', region: 'europe', notes: 'Isle of Man advertising rules for online gambling operators.' },
+
+  { id: 'alderney-law-1999', name: 'Gambling (Alderney) Law 1999', url: 'https://www.gamblingcontrol.org/regulation-framework/', countries: ['GG'], category: 'gambling', region: 'europe', notes: 'Foundational Alderney gambling enabling law.' },
+  { id: 'alderney-egambling-regs-2009', name: 'Alderney eGambling Regulations 2009', url: 'https://www.gamblingcontrol.org/regulation-framework/', countries: ['GG'], category: 'gambling', region: 'europe', notes: 'Detailed operational and technical requirements for AGCC licensees.' },
+
+  { id: 'sweden-gambling-tax-act-2018', name: 'Gambling Tax Act (2018:1139)', url: 'https://www.riksdagen.se/', countries: ['SE'], category: 'gambling', region: 'europe', notes: 'Swedish gambling tax — 18% of GGR for online casino, 8% for sports betting.' },
+  { id: 'sweden-gambling-ordinance-2018', name: 'Gambling Ordinance (2018:1475)', url: 'https://www.riksdagen.se/', countries: ['SE'], category: 'gambling', region: 'europe', notes: 'Implementing ordinance for the Swedish Gambling Act.' },
+
+  { id: 'denmark-executive-orders-spilleloven', name: 'Executive Orders under Spilleloven', url: 'https://www.spillemyndigheden.dk/en/legal-framework', countries: ['DK'], category: 'gambling', region: 'europe', notes: 'Subordinate Danish legislation implementing the Gambling Act.' },
+
+  { id: 'germany-spielverordnung', name: 'Spielverordnung (Federal Gaming Ordinance)', url: 'https://www.gesetze-im-internet.de/spvo_2006/', countries: ['DE'], category: 'gambling', region: 'europe', notes: 'German machine gaming technical standards regulation.' },
+
+  { id: 'netherlands-wet-op-de-kansspelen-1964', name: 'Wet op de kansspelen (Betting and Gaming Act 1964, as amended)', url: 'https://wetten.overheid.nl/BWBR0002469/', countries: ['NL'], category: 'gambling', region: 'europe', notes: 'Original Dutch gambling act; KOA 2021 added online gaming layer.' },
+
+  { id: 'switzerland-geldspielverordnung', name: 'Geldspielverordnung (Gaming Ordinance)', url: 'https://www.fedlex.admin.ch/', countries: ['CH'], category: 'gambling', region: 'europe', notes: 'Swiss implementing ordinance for the Geldspielgesetz.' },
+  { id: 'switzerland-esbk-aml', name: 'ESBK Money Laundering Ordinance (Gaming)', url: 'https://www.esbk.admin.ch/', countries: ['CH'], category: 'aml', region: 'europe', notes: 'Swiss gaming-specific AML obligations from ESBK.' },
+
+  { id: 'spain-rd-1614-2011', name: 'Real Decreto 1614/2011 (Licensing and Registration)', url: 'https://www.boe.es/', countries: ['ES'], category: 'gambling', region: 'europe', notes: 'Spanish licensing procedures and operator registration requirements under DGOJ.' },
+
+  { id: 'italy-legge-bersani-2006', name: 'Legge Bersani (Law No. 248/2006)', url: 'https://www.gazzettaufficiale.it/', countries: ['IT'], category: 'gambling', region: 'europe', notes: 'Italian iGaming licensing liberalisation; opened online betting to private operators.' },
+  { id: 'italy-legislative-decree-496-1948', name: 'Legislative Decree No. 496/1948', url: 'https://www.gazzettaufficiale.it/', countries: ['IT'], category: 'gambling', region: 'europe', notes: 'Foundational Italian gambling legislation establishing state monopoly.' },
+
+  { id: 'france-code-securite-interieure', name: 'Code de la Sécurité Intérieure (Articles L.320-1 et seq.)', url: 'https://www.legifrance.gouv.fr/', countries: ['FR'], category: 'gambling', region: 'europe', notes: 'French criminal code provisions on unlicensed gambling.' },
+  { id: 'france-loi-2024-449', name: 'Loi n° 2024-449 (Fantasy Betting / JONUMs)', url: 'https://www.legifrance.gouv.fr/', countries: ['FR'], category: 'gambling', region: 'europe', notes: 'French fantasy sports betting (Jeux de Pronostics à Univers Multiple) regulatory framework.' },
+
+  { id: 'romania-gov-decision-111-2016', name: 'Government Decision No. 111/2016 (Methodological Norms)', url: 'https://www.onjn.gov.ro/', countries: ['RO'], category: 'gambling', region: 'europe', notes: 'Romanian methodological norms implementing GEO 77/2009.' },
+  { id: 'romania-geo-114-2018', name: 'Government Emergency Ordinance No. 114/2018', url: 'https://www.onjn.gov.ro/', countries: ['RO'], category: 'gambling', region: 'europe', notes: 'Romanian gaming tax amendments.' },
+  { id: 'romania-onjn-order-79-2025', name: 'ONJN Order 79/2025 (Unified Self-Exclusion)', url: 'https://www.onjn.gov.ro/', countries: ['RO'], category: 'gambling', region: 'europe', notes: 'Romanian national self-exclusion register launched 2025.' },
+
+  { id: 'greece-law-4002-2011', name: 'Law 4002/2011 (Gambling Regulation)', url: 'https://www.gamingcommission.gov.gr/', countries: ['GR'], category: 'gambling', region: 'europe', notes: 'Greek gambling regulation framework. HGC/EEEP regulator.' },
+
+  { id: 'estonia-gambling-tax-act', name: 'Estonian Gambling Tax Act', url: 'https://www.riigiteataja.ee/', countries: ['EE'], category: 'gambling', region: 'europe', notes: 'Estonian gambling tax framework.' },
+  { id: 'latvia-gambling-tax-law', name: 'Latvian Gambling Tax Law', url: 'https://likumi.lv/', countries: ['LV'], category: 'gambling', region: 'europe', notes: 'Latvian gambling taxation.' },
+  { id: 'lithuania-lotteries-act-2003', name: 'Loterijų įstatymas (Law on Lotteries, 2003)', url: 'https://www.e-tar.lt/', countries: ['LT'], category: 'gambling', region: 'europe', notes: 'Lithuanian lotteries regulation.' },
+  { id: 'lithuania-advertising-restrictions-2025', name: 'Lithuania gambling advertising restrictions (2025 tightening)', url: 'https://lpt.lrv.lt/en/', countries: ['LT'], category: 'advertising', region: 'europe', notes: 'Lithuania tightened gambling advertising rules significantly in 2025.' },
+
+  // ════════════════════════════════════════════════════════════
+  // ADDITIONAL US — FEDERAL + STATES
+  // ════════════════════════════════════════════════════════════
+
+  { id: 'us-paspa-1992', name: 'Professional and Amateur Sports Protection Act 1992 (PASPA) — repealed 2018', url: 'https://www.congress.gov/bill/102nd-congress/senate-bill/474', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Federal sports betting prohibition struck down by Supreme Court (Murphy v. NCAA) May 2018, enabling state legalisation.' },
+  { id: 'us-illegal-gambling-business-act', name: 'Illegal Gambling Business Act (18 U.S.C. § 1955)', url: 'https://www.law.cornell.edu/uscode/text/18/1955', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Federal criminal prohibition on illegal gambling businesses with 5+ participants.' },
+  { id: 'us-interstate-horseracing-act-1978', name: 'Interstate Horseracing Act 1978', url: 'https://www.law.cornell.edu/uscode/text/15/chapter-57', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Authorises interstate off-track horse race wagering; carve-out from Wire Act.' },
+  { id: 'us-regulation-gg', name: 'Regulation GG (12 C.F.R. Part 233) — UIGEA implementing regulation', url: 'https://www.fdic.gov/news/financial-institution-letters/2010/fil10035a.pdf', countries: ['US'], category: 'financial', region: 'americas', notes: 'UIGEA implementing regulation requiring financial institutions to block restricted transactions.' },
+
+  // US States — full iGaming
+  { id: 'us-wv-igaming', name: 'WV Lottery Interactive Wagering Act (HB 2934, 2019)', url: 'https://wvlottery.com', countries: ['US'], category: 'gambling', region: 'americas', notes: 'West Virginia online casino and sports betting.' },
+  { id: 'us-ct-igaming', name: 'Connecticut Public Act 21-23 (2021, tribal compact-based)', url: 'https://portal.ct.gov/DCP', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Connecticut online casino via Mohegan Sun and Foxwoods tribal compacts.' },
+  { id: 'us-de-igaming', name: 'Delaware Gaming Competitiveness Act 2012 (HB 333)', url: 'https://www.delottery.com', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Delaware first US state to legalise full online gambling (November 2013).' },
+  { id: 'us-ri-igaming', name: 'Rhode Island iGaming Act (2023)', url: 'https://www.rilot.com', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Rhode Island online casino legislation.' },
+  { id: 'us-nv-igaming', name: 'Nevada AB 114 (2013, online poker) / NRS 463', url: 'https://gaming.nv.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Nevada online poker only (no full casino games); first US online poker market.' },
+  { id: 'us-me-igaming', name: 'Maine LD 1164 (Jan 2026, tribal-exclusive iGaming)', url: 'https://www.maine.gov/dps/gamb-control', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Maine tribal-exclusive online casino framework, effective January 2026.' },
+
+  // US States — sports betting only
+  { id: 'us-az-sports', name: 'Arizona HB 2772 (2021)', url: 'https://gaming.az.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Arizona sports betting.' },
+  { id: 'us-co-sports', name: 'Colorado HB 19-1327 / Proposition DD (2019)', url: 'https://sbg.colorado.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Colorado sports betting — 10% of tax revenue goes to water conservation.' },
+  { id: 'us-in-sports', name: 'Indiana HB 1015 (2019)', url: 'https://www.in.gov/igc', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Indiana sports betting.' },
+  { id: 'us-ia-sports', name: 'Iowa SF 617 (2019)', url: 'https://irgc.iowa.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Iowa sports betting.' },
+  { id: 'us-ks-sports', name: 'Kansas SB 84 (2022)', url: 'https://krgc.ks.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Kansas sports betting.' },
+  { id: 'us-ky-sports', name: 'Kentucky HB 551 (2023)', url: 'https://khrc.ky.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Kentucky sports betting launched September 2023.' },
+  { id: 'us-la-sports', name: 'Louisiana SB 247 (2021)', url: 'https://lgcb.dps.louisiana.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Louisiana sports betting; 55 of 64 parishes approved by local referendum.' },
+  { id: 'us-md-sports', name: 'Maryland HB 940 (2021) / Question 2 ballot (2020)', url: 'https://www.mdgaming.com', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Maryland sports betting.' },
+  { id: 'us-ma-sports', name: 'Massachusetts Sports Wagering Act (Ch. 164, Acts of 2022)', url: 'https://massgaming.com', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Massachusetts sports betting.' },
+  { id: 'us-mo-sports', name: 'Missouri Amendment 2 (2024 ballot)', url: 'https://www.mgc.dps.mo.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Missouri sports betting approved by voters November 2024.' },
+  { id: 'us-nc-sports', name: 'North Carolina HB 347 (2023)', url: 'https://www.nclottery.com', countries: ['US'], category: 'gambling', region: 'americas', notes: 'North Carolina online sports betting launched March 2024.' },
+  { id: 'us-oh-sports', name: 'Ohio HB 29 (2021)', url: 'https://casinocontrol.ohio.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Ohio sports betting launched January 2023.' },
+  { id: 'us-tn-sports', name: 'Tennessee Sports Gaming Act (2019)', url: 'https://www.tn.gov/swac.html', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Tennessee online-only sports betting; no retail sportsbooks.' },
+  { id: 'us-vt-sports', name: 'Vermont Act 75 of 2023', url: 'https://liquorandlottery.vermont.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Vermont sports betting.' },
+  { id: 'us-va-sports', name: 'Virginia HB 896/SB 384 (2020)', url: 'https://www.valottery.com', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Virginia sports betting.' },
+  { id: 'us-wy-sports', name: 'Wyoming HB 133 (2021)', url: 'https://gaming.wyo.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Wyoming online-only sports betting.' },
+
+  // ════════════════════════════════════════════════════════════
+  // ADDITIONAL CANADA
+  // ════════════════════════════════════════════════════════════
+
+  { id: 'bc-gaming-control-act', name: 'Gaming Control Act (SBC 2002, c.14)', url: 'https://www2.gov.bc.ca/gov/content/sports-culture/gambling', countries: ['CA'], category: 'gambling', region: 'americas', notes: 'British Columbia gambling framework administered by BCLC.' },
+  { id: 'quebec-racj', name: 'Société des loteries du Québec Act / RACJ', url: 'https://www.racj.gouv.qc.ca', countries: ['CA'], category: 'gambling', region: 'americas', notes: 'Quebec gambling regulation — Loto-Québec state monopoly for most products.' },
+  { id: 'kahnawake-gaming-law-1996', name: 'Kahnawake Gaming Law (K.R.L. c. G-1, 1996)', url: 'https://gamingcommission.ca', countries: ['CA'], category: 'gambling', region: 'americas', notes: 'Kahnawake Mohawk Territory gaming law; basis for KGC online gambling licensing.' },
+  { id: 'kahnawake-interactive-gaming-regs', name: 'Regulations Concerning Interactive Gaming (1999, amended 2020)', url: 'https://gamingcommission.ca/interactive-gaming/regulations/', countries: ['CA'], category: 'gambling', region: 'americas', notes: 'KGC online gambling operator licensing regulations.' },
+
+  // ════════════════════════════════════════════════════════════
+  // ADDITIONAL LATIN AMERICA & CARIBBEAN
+  // ════════════════════════════════════════════════════════════
+
+  { id: 'brazil-lei-13756-2018', name: 'Law No. 13,756/2018 (Initial sports betting authorization)', url: 'https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13756.htm', countries: ['BR'], category: 'gambling', region: 'americas', notes: 'Initial Brazilian sports betting authorization, superseded by Law 14,790/2023.' },
+  { id: 'brazil-spa-1207-2024', name: 'SPA/MF Ordinance No. 1,207/2024 (Technical requirements)', url: 'https://www.gov.br/fazenda/pt-br/assuntos/apostas-esportivas-e-jogos-on-line', countries: ['BR'], category: 'gambling', region: 'americas', notes: 'Brazil technical and operational requirements for licensed betting operators.' },
+  { id: 'antigua-free-trade-act-1994', name: 'Free Trade and Processing Zone Act (1994)', url: 'https://www.fsrc.gov.ag/index.php/services/gaming', countries: ['AG'], category: 'gambling', region: 'americas', notes: 'Antigua and Barbuda foundational legislation enabling offshore gaming businesses.' },
+  { id: 'antigua-gambling-act-2016', name: 'Gambling Act of 2016 (Antigua and Barbuda)', url: 'https://www.fsrc.gov.ag', countries: ['AG'], category: 'gambling', region: 'americas', notes: 'Updated Antiguan gambling legislation.' },
+
+  // ════════════════════════════════════════════════════════════
+  // ADDITIONAL ASIA-PACIFIC
+  // ════════════════════════════════════════════════════════════
+
+  { id: 'nz-racing-industry-act-2020', name: 'Racing Industry Act 2020 (New Zealand)', url: 'https://www.legislation.govt.nz/', countries: ['NZ'], category: 'gambling', region: 'asia-pacific', notes: 'New Zealand racing and wagering structural reform.' },
+  { id: 'nz-gambling-harm-prevention-regs-2004', name: 'Gambling (Harm Prevention and Minimisation) Regulations 2004 (as amended 2023)', url: 'https://www.dia.govt.nz/Gambling-legislation-regulations', countries: ['NZ'], category: 'gambling', region: 'asia-pacific', notes: 'NZ responsible gambling operational requirements.' },
+  { id: 'india-public-gambling-act-1867', name: 'Public Gambling Act, 1867', url: 'https://www.indiacode.nic.in/', countries: ['IN'], category: 'gambling', region: 'asia-pacific', notes: 'Colonial-era Indian gambling prohibition; basis for most state laws.' },
+  { id: 'india-sikkim-online-gaming-act', name: 'Sikkim Online Gaming (Regulation) Act, 2008 (amended 2024)', url: 'https://sikkim.gov.in/', countries: ['IN'], category: 'gambling', region: 'asia-pacific', notes: 'Sikkim state online gaming licensing.' },
+  { id: 'india-meghalaya-gaming-act-2021', name: 'Meghalaya Regulation of Gaming Act, 2021', url: 'https://meghalaya.gov.in/', countries: ['IN'], category: 'gambling', region: 'asia-pacific', notes: 'Meghalaya state gambling regulation.' },
+  { id: 'india-goa-gambling-act-1976', name: 'Goa, Daman and Diu Public Gambling Act, 1976', url: 'https://goaonline.gov.in/', countries: ['IN'], category: 'gambling', region: 'asia-pacific', notes: 'Goa state gambling act permitting licensed offshore and onshore casinos.' },
+  { id: 'japan-penal-code-gambling', name: 'Japan Penal Code Articles 185–187 (Gambling offences)', url: 'https://www.japaneselawtranslation.go.jp/', countries: ['JP'], category: 'gambling', region: 'asia-pacific', notes: 'Japanese criminal prohibition on gambling (IR casino exemptions apply).' },
+  { id: 'japan-ir-implementation-act-2018', name: 'IR Implementation Act (2018)', url: 'https://www.japaneselawtranslation.go.jp/', countries: ['JP'], category: 'gambling', region: 'asia-pacific', notes: 'Japan Integrated Resort (casino) implementation framework.' },
+  { id: 'japan-basic-law-gambling-addiction-2018', name: 'Basic Law on Measures Against Gambling Addiction (2018)', url: 'https://www.japaneselawtranslation.go.jp/', countries: ['JP'], category: 'gambling', region: 'asia-pacific', notes: 'Japanese addiction prevention framework for IR casinos.' },
+  { id: 'korea-criminal-act-gambling', name: 'Criminal Act Articles 246–247; National Sports Promotion Act', url: 'https://law.go.kr/', countries: ['KR'], category: 'gambling', region: 'asia-pacific', notes: 'South Korean gambling prohibition with sports toto and Kangwon Land exception.' },
+  { id: 'korea-tourism-promotion-act-2024', name: 'Tourism Promotion Act (amended Feb 2024)', url: 'https://law.go.kr/', countries: ['KR'], category: 'gambling', region: 'asia-pacific', notes: 'Korean casino licensing for foreign visitors; amendment February 2024.' },
+  { id: 'singapore-casino-control-act-2006', name: 'Casino Control Act 2006 (as amended)', url: 'https://sso.agc.gov.sg/', countries: ['SG'], category: 'gambling', region: 'asia-pacific', notes: 'Singapore land-based casino regulation (Marina Bay Sands, Resorts World Sentosa).' },
+  { id: 'philippines-ra-9160-aml', name: 'Republic Act No. 9160 (Anti-Money Laundering Act)', url: 'https://www.amlc.gov.ph/', countries: ['PH'], category: 'aml', region: 'asia-pacific', notes: 'Philippine AML law; casinos are covered institutions under AMLC.' },
+
+  // ════════════════════════════════════════════════════════════
+  // ADDITIONAL AFRICA
+  // ════════════════════════════════════════════════════════════
+
+  { id: 'sa-remote-gambling-bill-2024', name: 'Remote Gambling Bill, 2024 (South Africa)', url: 'https://www.gov.za/', countries: ['ZA'], category: 'gambling', region: 'africa', notes: 'Pending legislation to create a national online gambling framework. Currently in consultation.' },
+  { id: 'nigeria-national-lottery-regs-2007', name: 'National Lottery Regulations, 2007 (as amended)', url: 'https://www.nlrc.gov.ng/', countries: ['NG'], category: 'gambling', region: 'africa', notes: 'Nigerian implementing regulations for the National Lottery Act.' },
+  { id: 'nigeria-lagos-state-lotteries-law', name: 'Lagos State Lotteries Law, 2004 (amended 2021)', url: 'https://lslga.org/', countries: ['NG'], category: 'gambling', region: 'africa', notes: 'Lagos State — largest Nigerian gambling market by revenue. Administered by LSLGA.' },
+  { id: 'nigeria-ml-act-2011', name: 'Money Laundering (Prohibition) Act, 2011 (amended 2022)', url: 'https://www.nlrc.gov.ng/', countries: ['NG'], category: 'aml', region: 'africa', notes: 'Nigerian AML framework applicable to gambling operators.' },
+
+  // ════════════════════════════════════════════════════════════
+  // ADDITIONAL AML
+  // ════════════════════════════════════════════════════════════
+
+  { id: 'eu-amld6-criminal-2018', name: 'AMLD6 — Directive (EU) 2018/1673 (criminal provisions)', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32018L1673', countries: EEA, category: 'aml', region: 'eu-wide', notes: 'Harmonised EU criminal offences for money laundering; extends predicate offences.' },
+  { id: 'eu-amld6-supervisory-2024', name: 'AMLD6 — Directive (EU) 2024/1640 (new supervisory framework)', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32024L1640', countries: EU, category: 'aml', region: 'eu-wide', notes: 'New EU AML supervisory framework alongside 2024 AML Regulation. Transpose by 10 July 2027.' },
+  { id: 'germany-gwg', name: 'Geldwäschegesetz (German AML Act)', url: 'https://www.gesetze-im-internet.de/gwg_2017/', countries: ['DE'], category: 'aml', region: 'europe', notes: 'German AML law imposing KYC and SAR obligations on gambling operators.' },
+
+  // ════════════════════════════════════════════════════════════
+  // ADDITIONAL FINANCIAL
+  // ════════════════════════════════════════════════════════════
+
+  { id: 'eu-psd3-proposal', name: 'PSD3 proposal — COM(2023) 366', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:52023PC0366', countries: EU, category: 'financial', region: 'eu-wide', notes: 'Proposed Payment Services Directive 3. Provisional political agreement November 2025; formal adoption expected H1 2026.' },
+  { id: 'eu-psr-proposal', name: 'Payment Services Regulation (PSR) proposal — COM(2023) 367', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:52023PC0367', countries: EU, category: 'financial', region: 'eu-wide', notes: 'Companion PSR regulation to PSD3; directly applicable payment services rules.' },
+  { id: 'eu-emd2', name: 'Electronic Money Directive 2 (EMD2) — Directive 2009/110/EC', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32009L0110', countries: EEA, category: 'financial', region: 'eu-wide', notes: 'Governs e-money institutions used as gambling payment intermediaries. To be merged into PSD3.' },
+
+  // ════════════════════════════════════════════════════════════
+  // ADDITIONAL DIGITAL & AI
+  // ════════════════════════════════════════════════════════════
+
+  { id: 'eu-dma', name: 'EU Digital Markets Act (DMA) — Regulation (EU) 2022/1925', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32022R1925', countries: EEA, category: 'digital', region: 'eu-wide', notes: 'Obligations on gatekeeper platforms; affects app stores and distribution channels for gambling apps.' },
+  { id: 'eu-consumer-rights-directive', name: 'EU Consumer Rights Directive — Directive 2011/83/EU', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32011L0083', countries: EEA, category: 'digital', region: 'eu-wide', notes: 'Pre-contractual information, cancellation rights, and fair terms requirements for online services.' },
+  { id: 'eu-unfair-commercial-practices', name: 'Unfair Commercial Practices Directive — Directive 2005/29/EC', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32005L0029', countries: EEA, category: 'digital', region: 'eu-wide', notes: 'Prohibits misleading and aggressive commercial practices; applies to gambling bonus promotions.' },
+  { id: 'eu-bik-plus', name: 'EU Better Internet for Kids Strategy (BIK+)', url: 'https://digital-strategy.ec.europa.eu/en/policies/strategy-better-internet-kids', countries: EEA, category: 'digital', region: 'eu-wide', notes: 'Child online protection strategy; relevant to age verification obligations on gambling platforms.' },
+
+  // ════════════════════════════════════════════════════════════
+  // TESTING STANDARDS & INDUSTRY BODIES (Section 8)
+  // ════════════════════════════════════════════════════════════
+
+  { id: 'iso-iec-27001-2022', name: 'ISO/IEC 27001:2022 (Information Security Management)', url: 'https://www.iso.org/standard/27001', countries: ['GB','MT','DE','ES','IT','SE','US','AU'], category: 'standards', region: 'global', notes: 'International information security standard. Required or strongly recommended by MGA, UKGC, and multiple other regulators.' },
+  { id: 'gli-standards', name: 'GLI Standards (GLI-19 for iGaming, GLI-11 for devices, GLI-33 for wagering)', url: 'https://gaminglabs.com/gli-standards/', countries: ['GB','MT','US','AU','CA','DE','ES','IT'], category: 'standards', region: 'global', notes: 'Gaming Laboratories International standards mandated or accepted across 480+ jurisdictions worldwide.' },
+  { id: 'bmm-testlabs', name: 'BMM Testlabs certification', url: 'https://bmm.com/', countries: ['GB','MT','US','AU','CA'], category: 'standards', region: 'global', notes: 'BMM Testlabs gaming testing and certification accepted across 470+ jurisdictions.' },
+  { id: 'ecogra-standards', name: 'eCOGRA standards and certification', url: 'https://ecogra.org/', countries: ['GB','MT','ES','IT','SE','US'], category: 'standards', region: 'global', notes: 'eCOGRA fair gaming and player protection certification. Accepted by UK, Malta, Spain, Italy, Sweden, US states.' },
+  { id: 'ibia-standards', name: 'IBIA — International Betting Integrity Association', url: 'https://ibia.bet/', countries: ['GB','MT','AU','US','FR','DE'], category: 'standards', region: 'global', notes: 'Betting integrity monitoring body with 90+ operator members; increasingly referenced in licensing conditions.' }
 
 ];
 
@@ -1237,11 +1399,26 @@ function initFilters() {
     refreshTable();
   });
 
-  // Search
+  // Global search (above map)
   document.getElementById('igc-search').addEventListener('input', e => {
     searchQuery = e.target.value.trim().toLowerCase();
+    const dbSearch = document.getElementById('igc-db-search');
+    if (dbSearch) dbSearch.value = e.target.value;
     refreshTable();
+    refreshMap();
   });
+
+  // Database section search (next to region tabs)
+  const dbSearch = document.getElementById('igc-db-search');
+  if (dbSearch) {
+    dbSearch.addEventListener('input', e => {
+      searchQuery = e.target.value.trim().toLowerCase();
+      const globalSearch = document.getElementById('igc-search');
+      if (globalSearch) globalSearch.value = e.target.value;
+      refreshTable();
+      refreshMap();
+    });
+  }
 }
 
 // ── FILTER LOGIC ──────────────────────────────────────────────────────────────
@@ -1483,6 +1660,7 @@ function catLabel(cat) {
     financial: 'Financial',
     digital: 'Digital & AI',
     advertising: 'Advertising',
+    standards: 'Standards',
   };
   return labels[cat] || cat;
 }
