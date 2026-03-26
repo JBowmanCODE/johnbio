@@ -73,6 +73,9 @@
         <button class="igc-chip" data-cat="advertising">
           <span class="igc-chip-dot" style="background:#FB923C"></span>Advertising
         </button>
+        <button class="igc-chip" data-cat="standards">
+          <span class="igc-chip-dot" style="background:#06B6D4"></span>Standards
+        </button>
       </div>
       <div class="igc-search-wrap">
         <span class="material-symbols-outlined igc-search-icon">search</span>
@@ -116,15 +119,21 @@
         <span class="igc-db-subtitle">All tracked regulations — filter by region or search above</span>
       </div>
 
-      <!-- Region tabs -->
-      <div class="igc-region-tabs" id="igc-region-tabs">
-        <button class="igc-tab active" data-region="all">All</button>
-        <button class="igc-tab" data-region="europe">Europe</button>
-        <button class="igc-tab" data-region="americas">Americas</button>
-        <button class="igc-tab" data-region="asia-pacific">Asia-Pacific</button>
-        <button class="igc-tab" data-region="africa">Africa</button>
-        <button class="igc-tab" data-region="eu-wide">EU-Wide</button>
-        <button class="igc-tab" data-region="global">Global</button>
+      <!-- Region tabs + search -->
+      <div class="igc-db-filter-row">
+        <div class="igc-region-tabs" id="igc-region-tabs">
+          <button class="igc-tab active" data-region="all">All</button>
+          <button class="igc-tab" data-region="europe">Europe</button>
+          <button class="igc-tab" data-region="americas">Americas</button>
+          <button class="igc-tab" data-region="asia-pacific">Asia-Pacific</button>
+          <button class="igc-tab" data-region="africa">Africa</button>
+          <button class="igc-tab" data-region="eu-wide">EU-Wide</button>
+          <button class="igc-tab" data-region="global">Global</button>
+        </div>
+        <div class="igc-db-search-wrap">
+          <span class="material-symbols-outlined igc-search-icon">search</span>
+          <input type="text" id="igc-db-search" class="igc-search" placeholder="Search country or regulation…">
+        </div>
       </div>
 
       <!-- Table -->
