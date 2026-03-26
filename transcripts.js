@@ -85,7 +85,6 @@ async function generateBlogPostFromWorker(data) {
             displayBlogPost(body.blogPost);
             copyButton.style.display = 'block';
             
-            console.log('Claude Debug Info:', body.debugInfo);
             displayDebugInfo(body.debugInfo);
         } else {
             handleErrorResponse(body);
@@ -289,7 +288,11 @@ function exportAsWord() {
 
 function displayErrorMessage(message) {
     resultContent.style.display = 'block';
-    blogContainer.innerHTML = `<div class="error-message">${message}</div>`;
+    const errDiv = document.createElement('div');
+    errDiv.className = 'error-message';
+    errDiv.textContent = message;
+    blogContainer.innerHTML = '';
+    blogContainer.appendChild(errDiv);
 }
 
 function displayVideoTooLongError() {
@@ -309,7 +312,6 @@ function displayVideoTooLongError() {
 }
 
 function displayDebugInfo(debugInfo) {
-    console.log('Debug Info:', debugInfo);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

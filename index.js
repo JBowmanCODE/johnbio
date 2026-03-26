@@ -162,7 +162,6 @@ const grid = document.getElementById('projectsGrid');
 const emptyState = document.getElementById('emptyState');
 const resultsMeta = document.getElementById('resultsMeta');
 
-console.log('index.js running. grid:', grid, 'emptyState:', emptyState);
 
 function buildCard(project, delay) {
   const colorMap = { cyan: 'cyan', pink: 'pink', green: 'green' };
@@ -185,7 +184,7 @@ function buildCard(project, delay) {
 
   card.innerHTML = `
     <a href="${project.href}" target="_self" class="card-thumb">
-      <img src="${project.img}" alt="${project.title}" loading="lazy"
+      <img src="${project.img}" alt="${project.title}" loading="lazy" width="400" height="240"
         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
       />
       <div class="card-thumb-fallback" style="display:none; color: var(--${colorClass === 'cyan' ? 'secondary' : colorClass === 'green' ? 'secondary' : 'primary'})">
@@ -214,7 +213,6 @@ projects.forEach((project, i) => {
   grid.appendChild(buildCard(project, 600 + i * 80));
 });
 grid.appendChild(emptyState);
-console.log('Cards appended:', grid.querySelectorAll('.card').length);
 
 // ── FILTER & SEARCH ───────────────────────────────────────────────────────
 let activeFilter = 'all';

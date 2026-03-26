@@ -35,7 +35,6 @@ function loadHeaderAndFooter() {
             const footerPlaceholder = document.getElementById('footer-placeholder');
             if (footerPlaceholder) {
                 footerPlaceholder.innerHTML = data;
-                console.log('Footer successfully loaded');
                 initializeFooter();
             } else {
                 console.error('Footer placeholder not found in the DOM.');
@@ -408,8 +407,6 @@ function disableDarkMode() {
 // Initialize footer functionality (cookie banner logic moved here from footer.js)
 function initializeFooter() {
     const cookieBanner = document.getElementById('cookie-banner');
-    console.log('Cookie banner:', cookieBanner); // Debug log
-
     const acceptButton = document.getElementById('accept-cookies');
     const rejectButton = document.getElementById('reject-cookies');
 

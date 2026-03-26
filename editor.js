@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function toggleAdvancedOptions() {
-        console.log('Toggle advanced options called'); // Debug log
         if (advancedContent.style.display === 'none' || advancedContent.style.display === '') {
             advancedContent.style.display = 'block';
             toggleAdvancedBtn.textContent = '(Hide)';
@@ -185,7 +184,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
                 errorMessage = 'Failed to connect to the server. This might be due to a CORS issue or the server being unavailable.';
             }
-            analysisResults.innerHTML = `<p>Error: ${errorMessage}</p>`;
+            const errEl = document.createElement('p');
+            errEl.textContent = `Error: ${errorMessage}`;
+            analysisResults.innerHTML = '';
+            analysisResults.appendChild(errEl);
             document.querySelector('.results-section').style.display = 'block';
             analysisResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } finally {
