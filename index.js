@@ -60,6 +60,18 @@ const projects = [
     thumbIcon: 'account_balance',
   },
   {
+    id: 'igaming-compliance',
+    title: 'iGaming Compliance Map',
+    desc: 'Interactive world map of 203 iGaming regulations across 60+ jurisdictions. Browse gambling laws, AML directives, data protection rules and advertising codes by country.',
+    category: 'dev',
+    badge: 'DEV TOOL',
+    color: 'pink',
+    icons: ['public', 'gavel'],
+    href: 'https://johnb.io/igaming-compliance',
+    img: '/images/iGaming_regulatory_compliance_map.webp',
+    thumbIcon: 'public',
+  },
+  {
     id: 'zig-zag-slot',
     title: 'Zig Zag Drop Slot',
     desc: 'Physics-based automation script for randomised UI interaction testing and mystery drop mechanics.',
