@@ -66,16 +66,13 @@ body {
 }
 
 .share-bar {
-  display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+  display: flex; align-items: center; flex-wrap: nowrap; gap: 0.5rem;
   justify-content: center;
   padding: 1.5rem 1rem 0.5rem;
-  max-width: 700px; margin: 0 auto;
+  max-width: 900px; margin: 0 auto;
 }
-.share-bar-label {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.08em; color: rgba(248,245,253,0.4);
-  margin-right: 0.25rem;
+@media (max-width: 600px) {
+  .share-bar { flex-wrap: wrap; }
 }
 .share-bar-btn {
   display: inline-flex; align-items: center; gap: 0.35rem;

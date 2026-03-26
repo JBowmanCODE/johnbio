@@ -544,11 +544,6 @@ function initShareBar() {
     const bar = document.createElement('div');
     bar.className = 'share-bar';
 
-    const label = document.createElement('span');
-    label.className = 'share-bar-label';
-    label.textContent = 'Share:';
-    bar.appendChild(label);
-
     buttons.forEach(function (btn) {
         const a = document.createElement('a');
         a.className = 'share-bar-btn ' + btn.cls;
