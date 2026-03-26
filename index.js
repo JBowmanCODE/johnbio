@@ -1,5 +1,17 @@
 const projects = [
   {
+    id: 'igaming-compliance',
+    title: 'iGaming Compliance Map',
+    desc: 'Interactive world map of 203 iGaming regulations across 60+ jurisdictions. Browse gambling laws, AML directives, data protection rules and advertising codes by country.',
+    category: 'dev',
+    badge: 'DEV TOOL',
+    color: 'pink',
+    icons: ['public', 'gavel'],
+    href: 'https://johnb.io/igaming-compliance',
+    img: '/images/iGaming_regulatory_compliance_map.webp',
+    thumbIcon: 'public',
+  },
+  {
     id: 'content-repurposer',
     title: 'Content Repurposer',
     desc: 'Paste any content and get it instantly rewritten for LinkedIn, X, Facebook, email newsletters, and 10 and 30-second video scripts.',
@@ -58,18 +70,6 @@ const projects = [
     href: 'https://johnb.io/rai',
     img: '/images/governance-framework.webp',
     thumbIcon: 'account_balance',
-  },
-  {
-    id: 'igaming-compliance',
-    title: 'iGaming Compliance Map',
-    desc: 'Interactive world map of 203 iGaming regulations across 60+ jurisdictions. Browse gambling laws, AML directives, data protection rules and advertising codes by country.',
-    category: 'dev',
-    badge: 'DEV TOOL',
-    color: 'pink',
-    icons: ['public', 'gavel'],
-    href: 'https://johnb.io/igaming-compliance',
-    img: '/images/iGaming_regulatory_compliance_map.webp',
-    thumbIcon: 'public',
   },
   {
     id: 'zig-zag-slot',
