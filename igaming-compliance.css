@@ -670,14 +670,13 @@ body {
   white-space: nowrap;
 }
 #back-to-top::before {
-  content: 'Top';
+  content: 'TOP';
 }
 #back-to-top:hover::before {
   content: 'GOING UP?';
 }
 #back-to-top .material-symbols-outlined {
   font-size: 1.1rem;
-  transition: transform 0.2s ease;
   flex-shrink: 0;
 }
 #back-to-top.visible {
@@ -688,9 +687,6 @@ body {
 #back-to-top:hover {
   box-shadow: 0 6px 32px rgba(255,0,127,0.55), 0 2px 8px rgba(0,0,0,0.3);
   transform: translateY(-2px) scale(1.02);
-}
-#back-to-top:hover .material-symbols-outlined {
-  transform: translateY(-2px);
 }
 #back-to-top:active {
   transform: translateY(0) scale(0.97);
