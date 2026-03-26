@@ -59,6 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
     speechSynthesis.onvoiceschanged = loadVoices;
     loadVoices();
 
+    // Trigger word count / estimate for preloaded text
+    textInput.dispatchEvent(new Event('input'));
+
     // ── WORD COUNT / ESTIMATE ────────────────────────────────────────────────
     textInput.addEventListener('input', function() {
         const words = textInput.value.trim().split(/\s+/).filter(w => w.length > 0);
