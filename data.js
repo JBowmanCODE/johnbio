@@ -477,7 +477,10 @@ function createCharts(labels, datasets) {
 
         } catch (error) {
             console.error(`Error creating ${chartInfo.type} chart:`, error);
-            wrapper.innerHTML += `<p style="color: red;">Error creating chart: ${error.message}</p>`;
+            const errP = document.createElement('p');
+            errP.style.color = 'red';
+            errP.textContent = `Error creating chart: ${error.message}`;
+            wrapper.appendChild(errP);
         }
     });
 }

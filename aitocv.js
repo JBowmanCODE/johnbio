@@ -31,14 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoIframe = videoModal ? videoModal.querySelector('iframe') : null;
     const originalVideoSrc = videoIframe ? videoIframe.src : '';
 
-    console.log('aitocv.js: DOM loaded, elements found:', {
-        fileUploadArea: !!fileUploadArea,
-        fileInput: !!fileInput,
-        enhanceCvBtn: !!enhanceCvBtn,
-        videoModal: !!videoModal,
-        videoIframe: !!videoIframe
-    });
-
     // --- State ---
     let enhancedCvText = '';
     let coverLetterText = '';
@@ -88,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- File Upload ---
     if (fileUploadArea) {
         fileUploadArea.addEventListener('click', () => {
-            console.log('Upload area clicked');
             if (fileInput) fileInput.click();
         });
 
@@ -942,6 +933,4 @@ ${cvText}`;
         jobSearchInput.addEventListener('input', () => doJobSearch());
     }
 
-
-    console.log('aitocv.js: all listeners attached successfully');
 });

@@ -40,6 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: JSON.stringify({ text, direction })
                 });
 
+                if (response.status === 429) {
+                    outputText.textContent = "You've hit the daily limit for translations. It resets at midnight UTC — come back tomorrow!";
+                    return;
+                }
+
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -47,8 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const data = await response.json();
                 outputText.textContent = data.translatedText;
             } catch (error) {
-                console.error('Error:', error);
-                outputText.textContent = 'An error occurred during translation. Please try again.';
+                outputText.textContent = 'Could not connect to the translation service. Please check your connection and try again.';
             }
         } else {
             alert('Please enter some text to translate.');

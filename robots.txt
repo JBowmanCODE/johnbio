@@ -9,4 +9,3 @@ Disallow: /result.html
 Disallow: /data.html
 
 Sitemap: https://johnb.io/sitemap.xml
-Sitemap: https://johnb.io/llms.txt

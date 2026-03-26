@@ -230,6 +230,7 @@
 
 <script src="/scripts.js" defer></script>
 <script>
+(function() {
   const WORKER = 'https://twilight-recipe-a80f.ukjbowman.workers.dev';
 
   const histories = { claude: [], openai: [], gemini: [] };
@@ -397,6 +398,7 @@
       if (e.key === 'Enter') { e.preventDefault(); sendToAll(); }
     });
   });
+})();
 </script>
   <script>
     const btt = document.getElementById('back-to-top');
