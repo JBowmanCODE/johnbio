@@ -162,6 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!response.ok) {
                 const errorData = await response.json();
+                if (response.status === 429) {
+                    analysisResults.innerHTML = `<p style="color:#e05555;">Thanks for testing out my tool, you've used your 3 free edits for today. If you want me to build this tool for you <a href="https://www.linkedin.com/in/john-bowman-content/" target="_blank" rel="noopener" style="color:#e05555;">contact me</a>.</p>`;
+                    document.querySelector('.results-section').style.display = 'block';
+                    analysisResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    return;
+                }
                 throw new Error(`HTTP error! status: ${response.status}, message: ${JSON.stringify(errorData)}`);
             }
 
