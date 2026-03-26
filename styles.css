@@ -343,3 +343,8 @@ body {
   #back-to-top::before, #back-to-top:hover::before { content: none; }
   #back-to-top .material-symbols-outlined { font-size: 1.3rem; }
 }
+
+::selection {
+  background: rgba(255, 0, 127, 0.35);
+  color: #fff;
+}
