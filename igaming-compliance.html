@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iGaming Compliance Map — JohnB.io</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="author" content="John Bowman">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+  <!-- amCharts 5 -->
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/header.css">
+  <link rel="stylesheet" href="/footer.css">
+  <link rel="stylesheet" href="/igaming-compliance.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="igc-ambient"></div>
+
+  <main class="igc-wrap">
+
+    <div class="igc-header">
+      <div>
+        <h1 class="page-title">iGaming <span class="gradient-text">Compliance Map</span></h1>
+        <p class="igc-description">200+ regulations across 60+ jurisdictions — click any country to explore</p>
+      </div>
+      <div class="igc-stats" id="igc-stats">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Category filter chips -->
+    <div class="igc-filters">
+      <div class="igc-filter-chips" id="igc-category-chips">
+        <button class="igc-chip active" data-cat="all">All</button>
+        <button class="igc-chip" data-cat="gambling">
+          <span class="igc-chip-dot" style="background:#FF007F"></span>Gambling
+        </button>
+        <button class="igc-chip" data-cat="aml">
+          <span class="igc-chip-dot" style="background:#FFB400"></span>AML / CFT
+        </button>
+        <button class="igc-chip" data-cat="data">
+          <span class="igc-chip-dot" style="background:#00EEFC"></span>Data Protection
+        </button>
+        <button class="igc-chip" data-cat="financial">
+          <span class="igc-chip-dot" style="background:#A78BFA"></span>Financial
+        </button>
+        <button class="igc-chip" data-cat="digital">
+          <span class="igc-chip-dot" style="background:#34D399"></span>Digital &amp; AI
+        </button>
+        <button class="igc-chip" data-cat="advertising">
+          <span class="igc-chip-dot" style="background:#FB923C"></span>Advertising
+        </button>
+      </div>
+      <div class="igc-search-wrap">
+        <span class="material-symbols-outlined igc-search-icon">search</span>
+        <input type="text" id="igc-search" class="igc-search" placeholder="Search regulations…">
+      </div>
+    </div>
+
+    <!-- Map + panel layout -->
+    <div class="igc-map-layout">
+      <div class="igc-map-container">
+        <div id="igc-map"></div>
+        <div class="igc-map-legend">
+          <span class="igc-legend-item"><span class="igc-legend-swatch" style="background:rgba(255,0,127,0.25)"></span>1–5 regs</span>
+          <span class="igc-legend-item"><span class="igc-legend-swatch" style="background:rgba(255,0,127,0.55)"></span>6–15 regs</span>
+          <span class="igc-legend-item"><span class="igc-legend-swatch" style="background:rgba(255,0,127,0.9)"></span>15+ regs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Country detail panel -->
+    <div id="igc-panel" class="igc-panel" hidden>
+      <div class="igc-panel-header">
+        <div class="igc-panel-title">
+          <span id="igc-panel-flag" class="igc-panel-flag"></span>
+          <span id="igc-panel-name"></span>
+        </div>
+        <div class="igc-panel-meta">
+          <span id="igc-panel-count" class="igc-panel-count"></span>
+          <button class="igc-panel-close" id="igc-panel-close" aria-label="Close panel">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+      </div>
+      <div id="igc-panel-body" class="igc-panel-body"></div>
+    </div>
+
+    <!-- Full database section -->
+    <div class="igc-database">
+      <div class="igc-db-header">
+        <h2 class="igc-db-title">Full Regulatory Database</h2>
+        <span class="igc-db-subtitle">All tracked regulations — filter by region or search above</span>
+      </div>
+
+      <!-- Region tabs -->
+      <div class="igc-region-tabs" id="igc-region-tabs">
+        <button class="igc-tab active" data-region="all">All</button>
+        <button class="igc-tab" data-region="europe">Europe</button>
+        <button class="igc-tab" data-region="americas">Americas</button>
+        <button class="igc-tab" data-region="asia-pacific">Asia-Pacific</button>
+        <button class="igc-tab" data-region="africa">Africa</button>
+        <button class="igc-tab" data-region="eu-wide">EU-Wide</button>
+        <button class="igc-tab" data-region="global">Global</button>
+      </div>
+
+      <!-- Table -->
+      <div class="igc-table-wrap">
+        <table class="igc-table" id="igc-table">
+          <thead>
+            <tr>
+              <th>Regulation</th>
+              <th>Jurisdiction</th>
+              <th>Category</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody id="igc-table-body">
+            <!-- populated by JS -->
+          </tbody>
+        </table>
+        <div class="igc-table-empty" id="igc-table-empty" hidden>
+          <span class="material-symbols-outlined">search_off</span>
+          <p>No regulations match your filters.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emerging regulations callout -->
+    <div class="igc-emerging">
+      <h2 class="igc-emerging-title">Key Developments 2024–2026</h2>
+      <div class="igc-emerging-grid" id="igc-emerging-grid">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js" defer></script>
+  <script src="/footer.js" defer></script>
+  <script src="/igaming-compliance.js" defer></script>
+</body>
+</html>
