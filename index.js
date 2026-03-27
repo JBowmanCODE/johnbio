@@ -1,6 +1,7 @@
 const projects = [
   {
     id: 'igaming-compliance',
+    featured: true,
     title: 'iGaming Compliance Map',
     desc: 'Interactive world map of 203 iGaming regulations across 60+ jurisdictions. Browse gambling laws, AML directives, data protection rules and advertising codes by country.',
     category: 'dev',
@@ -13,6 +14,7 @@ const projects = [
   },
   {
     id: 'content-repurposer',
+    featured: true,
     title: 'Content Repurposer',
     desc: 'Paste any content and get it instantly rewritten for LinkedIn, X, Facebook, email newsletters, and 10 and 30-second video scripts.',
     category: 'digital',
@@ -37,6 +39,7 @@ const projects = [
   },
   {
     id: 'llm-chat',
+    featured: true,
     title: 'LLM Chat',
     desc: 'Unified interface for interacting with multiple open-source large language models with persistent history.',
     category: 'ai',
@@ -97,6 +100,7 @@ const projects = [
   },
   {
     id: 'ai-copyeditor',
+    featured: true,
     title: 'AI Copyeditor',
     desc: 'A real-time rich text environment with built-in AI writing assistance and stylistic refinement.',
     category: 'ai',
@@ -161,6 +165,7 @@ const projects = [
 const grid = document.getElementById('projectsGrid');
 const emptyState = document.getElementById('emptyState');
 const resultsMeta = document.getElementById('resultsMeta');
+const moreToolsList = document.getElementById('moreToolsList');
 
 
 function buildCard(project, delay) {
@@ -208,9 +213,32 @@ function buildCard(project, delay) {
   return card;
 }
 
-// Initial render
-projects.forEach((project, i) => {
-  grid.appendChild(buildCard(project, 600 + i * 80));
+function buildListRow(project) {
+  const colorClass = project.color === 'cyan' ? 'cyan' : project.color === 'green' ? 'green' : 'pink';
+  const row = document.createElement('a');
+  row.href = project.href;
+  row.className = 'tool-list-row';
+  row.dataset.category = Array.isArray(project.category) ? project.category.join(' ') : project.category;
+  row.dataset.title = project.title.toLowerCase();
+  row.dataset.desc = project.desc.toLowerCase();
+  row.innerHTML = `
+    <span class="tool-row-badge badge-${colorClass}">${project.badge}</span>
+    <span class="tool-row-name">${project.title}</span>
+    <span class="tool-row-desc">${project.desc}</span>
+    <span class="material-symbols-outlined tool-row-arrow">arrow_forward</span>
+  `;
+  return row;
+}
+
+// Initial render — featured as cards, rest as list rows
+let cardDelay = 600;
+projects.forEach((project) => {
+  if (project.featured) {
+    grid.appendChild(buildCard(project, cardDelay));
+    cardDelay += 80;
+  } else {
+    moreToolsList.appendChild(buildListRow(project));
+  }
 });
 grid.appendChild(emptyState);
 
@@ -219,28 +247,52 @@ let activeFilter = 'all';
 let searchTerm = '';
 
 function applyFilters() {
+  // Featured cards
   const cards = grid.querySelectorAll('.card:not(#emptyState)');
-  let visible = 0;
-
+  let visibleFeatured = 0;
   cards.forEach(card => {
     const cats = card.dataset.category.split(' ');
     const matchesFilter = activeFilter === 'all' || cats.includes(activeFilter);
-    const matchesSearch =
-      !searchTerm ||
-      card.dataset.title.includes(searchTerm) ||
-      card.dataset.desc.includes(searchTerm);
-
+    const matchesSearch = !searchTerm || card.dataset.title.includes(searchTerm) || card.dataset.desc.includes(searchTerm);
     if (matchesFilter && matchesSearch) {
       card.classList.remove('card-hidden');
-      visible++;
+      visibleFeatured++;
     } else {
       card.classList.add('card-hidden');
     }
   });
 
-  emptyState.style.display = visible === 0 ? 'block' : 'none';
+  // List rows
+  const rows = moreToolsList.querySelectorAll('.tool-list-row');
+  let visibleMore = 0;
+  rows.forEach(row => {
+    const cats = row.dataset.category.split(' ');
+    const matchesFilter = activeFilter === 'all' || cats.includes(activeFilter);
+    const matchesSearch = !searchTerm || row.dataset.title.includes(searchTerm) || row.dataset.desc.includes(searchTerm);
+    if (matchesFilter && matchesSearch) {
+      row.classList.remove('row-hidden');
+      visibleMore++;
+    } else {
+      row.classList.add('row-hidden');
+    }
+  });
+
+  // More Tools section visibility + count
+  const moreSection = document.getElementById('moreToolsSection');
+  const moreCount = document.getElementById('moreToolsCount');
+  moreSection.style.display = visibleMore > 0 ? '' : 'none';
+  moreCount.textContent = `(${visibleMore})`;
+
+  // Auto-expand when filter/search is active
+  if (activeFilter !== 'all' || searchTerm) {
+    moreToolsList.classList.add('open');
+    document.getElementById('moreToolsToggle').classList.add('open');
+  }
+
+  emptyState.style.display = (visibleFeatured === 0 && visibleMore === 0) ? 'block' : 'none';
 
   const total = projects.length;
+  const visible = visibleFeatured + visibleMore;
   resultsMeta.textContent = (activeFilter === 'all' && !searchTerm)
     ? `Showing all ${total} projects`
     : `${visible} of ${total} projects`;
@@ -253,6 +305,13 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     activeFilter = btn.dataset.filter;
     applyFilters();
   });
+});
+
+document.getElementById('moreToolsToggle').addEventListener('click', () => {
+  const toggle = document.getElementById('moreToolsToggle');
+  const isOpen = moreToolsList.classList.toggle('open');
+  toggle.classList.toggle('open', isOpen);
+  toggle.setAttribute('aria-expanded', isOpen);
 });
 
 document.getElementById('searchInput').addEventListener('input', e => {
