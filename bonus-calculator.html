@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iGaming Bonus Cost Calculator — JohnB.io</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <meta name="description" content="Calculate the true cost of iGaming casino bonuses. Enter bonus amount, wagering requirement, house edge and completion rate to see net operator cost, breakeven point and scenario analysis.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="John Bowman">
+  <meta property="og:title" content="iGaming Bonus Cost Calculator — JohnB.io">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/bonus-calculator">
+  <meta property="og:description" content="Calculate the true cost of casino bonus offers. Wagering requirement, house edge and completion rate modelling for iGaming operators and affiliates.">
+  <meta property="og:image" content="https://johnb.io/og_images/bonus_calculator_og.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="iGaming Bonus Cost Calculator — JohnB.io">
+  <meta name="twitter:description" content="Calculate the true cost of casino bonus offers. Model wagering requirements, house edge and completion rates.">
+  <meta name="twitter:image" content="https://johnb.io/og_images/bonus_calculator_og.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/header.css">
+  <link rel="stylesheet" href="/footer.css">
+  <link rel="stylesheet" href="/bonus-calculator.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="bc-ambient"></div>
+
+  <main class="bc-wrap">
+    <h1 class="bc-title">Bonus Cost <span class="gradient-text">Calculator</span></h1>
+    <p class="bc-desc">Model the true cost of casino bonus offers — wagering requirements, house edge and player completion rates.</p>
+
+    <div class="bc-card">
+      <form id="bc-form" novalidate>
+        <div class="bc-fields">
+          <div class="bc-field">
+            <label for="bc-bonus">Bonus Amount (£)</label>
+            <input type="number" id="bc-bonus" min="1" step="1" value="100" required>
+            <span class="bc-hint">The bonus credited to the player</span>
+          </div>
+          <div class="bc-field">
+            <label for="bc-wagering">Wagering Requirement (×)</label>
+            <input type="number" id="bc-wagering" min="1" step="1" value="35" required>
+            <span class="bc-hint">Multiplier applied to the bonus amount</span>
+          </div>
+          <div class="bc-field">
+            <label for="bc-house-edge">House Edge (%)</label>
+            <input type="number" id="bc-house-edge" min="0.1" max="100" step="0.1" value="4" required>
+            <span class="bc-hint">Typical slots: 3–6%. Live table games: 0.5–2%</span>
+          </div>
+          <div class="bc-field">
+            <label for="bc-completion">Player Completion Rate (%)</label>
+            <input type="number" id="bc-completion" min="1" max="100" step="1" value="60" required>
+            <span class="bc-hint">% of players who complete the full wagering requirement</span>
+          </div>
+        </div>
+        <button type="submit" class="bc-btn">Calculate Cost</button>
+      </form>
+    </div>
+
+    <div id="bc-results" class="bc-results" style="display:none">
+      <div class="bc-result-grid">
+        <div class="bc-result-card">
+          <div class="bc-result-label">Total wagering required</div>
+          <div class="bc-result-value" id="res-total-wagering">—</div>
+        </div>
+        <div class="bc-result-card">
+          <div class="bc-result-label">Expected player loss (if completed)</div>
+          <div class="bc-result-value" id="res-expected-loss">—</div>
+        </div>
+        <div class="bc-result-card">
+          <div class="bc-result-label" id="res-net-cost-label">Net cost per bonus issued</div>
+          <div class="bc-result-value" id="res-net-cost">—</div>
+        </div>
+        <div class="bc-result-card">
+          <div class="bc-result-label">Breakeven house edge</div>
+          <div class="bc-result-value" id="res-breakeven">—</div>
+        </div>
+      </div>
+
+      <p class="bc-interpretation" id="bc-interpretation"></p>
+
+      <h3 class="bc-table-title">Completion Rate Scenarios</h3>
+      <table class="bc-table" aria-label="Bonus cost scenarios by completion rate">
+        <thead>
+          <tr>
+            <th>Completion Rate</th>
+            <th>Bonuses paid out</th>
+            <th>Expected revenue</th>
+            <th>Net cost</th>
+          </tr>
+        </thead>
+        <tbody id="bc-scenarios-tbody"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <section class="tool-info" aria-label="About this tool" itemscope itemtype="https://schema.org/SoftwareApplication">
+    <meta itemprop="name" content="iGaming Bonus Cost Calculator">
+    <meta itemprop="applicationCategory" content="UtilitiesApplication">
+    <meta itemprop="operatingSystem" content="Web">
+    <meta itemprop="url" content="https://johnb.io/bonus-calculator">
+
+    <div class="tool-info-inner">
+      <div class="tool-info-meta">
+        <span>Last updated: March 2026</span>
+        <span class="tool-info-sep">·</span>
+        <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a> — questions? Connect on LinkedIn.</span>
+      </div>
+
+      <div class="tool-info-body" itemprop="description">
+        <p>The iGaming Bonus Cost Calculator models the true financial cost of a casino welcome bonus or promotional offer. Enter the bonus amount, wagering requirement multiplier, the house edge of the qualifying games, and your expected player completion rate — the tool returns the total wagering obligation, expected player loss, net cost to the operator per bonus issued, and the breakeven house edge. A scenario table shows how cost changes across five different completion rate assumptions.</p>
+        <p>This tool is built for iGaming operators, CRM managers, affiliates and compliance teams who need to quickly assess whether a promotion is commercially viable. All calculations run in the browser — no data is sent to any server. The model assumes a simplified linear completion rate; real-world outcomes will vary based on game mix, bonus mechanics, player segment and session length distribution.</p>
+      </div>
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Enter the bonus amount.</strong> This is the monetary value credited to the player — for example, a 100% match bonus on a £100 deposit gives a £100 bonus.</li>
+              <li><strong>Set the wagering requirement.</strong> The multiplier applied to the bonus before it can be withdrawn. A 35× requirement on a £100 bonus means the player must wager £3,500 in total.</li>
+              <li><strong>Enter the house edge.</strong> The percentage of each bet the operator retains on average over the long run. Slots typically range from 3% to 6%. Live blackjack can be under 1%. The game mix that qualifies for wagering significantly affects cost.</li>
+              <li><strong>Set the player completion rate.</strong> The percentage of bonus recipients who complete the full wagering requirement and claim the bonus. Industry averages vary widely — typical ranges are 40% to 70% depending on the offer structure and player segment.</li>
+              <li><strong>Click Calculate.</strong> The tool returns your four key metrics and a scenario table showing how cost shifts at different completion rates.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>The breakeven house edge is the most important single figure.</strong> If your qualifying games' house edge exceeds 1 ÷ wagering multiplier × 100%, the bonus is mathematically profitable for the operator from completers alone. At 35× wagering, the breakeven is 2.86%.</li>
+              <li><strong>Completion rate drives actual cost more than wagering multiplier.</strong> A low completion rate means most bonus funds are forfeited before payout. Raising wagering requirements beyond breakeven makes diminishing returns once completion rates fall below 50%.</li>
+              <li><strong>Game contribution rules matter.</strong> This calculator assumes 100% contribution from all qualifying bets. If your terms restrict wagering to high-margin slots only, your effective house edge is higher and cost lower. If table games count at 10%, the blended house edge may be much lower than you assume.</li>
+              <li><strong>This is a simplified model.</strong> It does not account for deposit amounts, play-through on real money, multi-bonus stacking, player lifetime value, or the revenue generated from re-depositing bonus players. It is a cost-per-offer tool, not a full CRM attribution model.</li>
+              <li><strong>All calculations are client-side.</strong> No data is sent to any server. The tool works entirely in the browser.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>What is a wagering requirement in iGaming?</dt>
+                <dd>A wagering requirement (also called a playthrough requirement) is the number of times a player must bet the bonus amount before it converts to withdrawable cash. A 35× requirement on a £100 bonus means the player must place £3,500 of bets. The higher the multiplier, the more the operator expects to recoup from the player's losses before the bonus is released.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What is a typical house edge for slot games?</dt>
+                <dd>Most online slots operate between 94% and 97% RTP (Return to Player), which translates to a 3% to 6% house edge. Premium branded slots or progressive jackpot titles sometimes carry a higher house edge of 7–10%. Live dealer games like blackjack (with basic strategy) have edges below 1%, which is why many operators either restrict table game contributions or require higher wagering multipliers.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What is a realistic player completion rate?</dt>
+                <dd>Completion rates depend heavily on the offer structure, player segment and wagering requirement level. Welcome bonuses with 30–40× requirements typically see completion rates between 40% and 65%. High wagering requirements (50×+) or restricted game selections can push completion below 30%. Free spin bonuses often have lower absolute completion rates since the bonus value is lower. The default of 60% in this tool is a reasonable mid-market estimate.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>How is the breakeven house edge calculated?</dt>
+                <dd>The breakeven occurs when expected player losses equal the bonus amount. If a player wagers B × W total, they lose B × W × HE on average. Setting this equal to the bonus B: B × W × HE = B, so HE = 1 ÷ W. At 35× wagering, the breakeven house edge is 1 ÷ 35 = 2.86%. Any game with a house edge above this is profitable for the operator from completing players.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Does this tool comply with UK Gambling Commission bonus advertising rules?</dt>
+                <dd>This is a cost-modelling tool for operators and is not a consumer-facing bonus advertisement. It does not claim any specific bonus offer exists or is available. For guidance on compliant bonus advertising under UKGC rules, refer to the <a href="https://www.gamblingcommission.gov.uk/licensees-and-businesses/guide/page/licence-conditions-and-codes-of-practice" target="_blank" rel="noopener">UKGC Licence Conditions and Codes of Practice</a> and the <a href="https://www.asa.org.uk/codes-and-rulings/advertising-codes/non-broadcast-code.html" target="_blank" rel="noopener">ASA Non-Broadcast Advertising Code</a>.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://www.gamblingcommission.gov.uk/licensees-and-businesses/guide/page/licence-conditions-and-codes-of-practice" target="_blank" rel="noopener">UK Gambling Commission — Licence Conditions and Codes of Practice (LCCP)</a>. gamblingcommission.gov.uk. Accessed March 2026.</li>
+              <li><a href="https://www.mga.org.mt/player-hub/responsible-gambling/" target="_blank" rel="noopener">Malta Gaming Authority — Player Hub and Responsible Gambling</a>. mga.org.mt. Accessed March 2026.</li>
+              <li><a href="https://www.asa.org.uk/codes-and-rulings/advertising-codes/non-broadcast-code.html" target="_blank" rel="noopener">Advertising Standards Authority — Non-Broadcast Advertising Code</a>. asa.org.uk. Accessed March 2026.</li>
+              <li><a href="https://www.begambleaware.org" target="_blank" rel="noopener">GambleAware — Safer gambling information and support</a>. begambleaware.org. Accessed March 2026.</li>
+              <li><a href="https://en.wikipedia.org/wiki/Expected_value" target="_blank" rel="noopener">Expected Value — Mathematical foundation for casino probability calculations</a>. Wikipedia. Accessed March 2026.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js" defer></script>
+  <script src="/bonus-calculator.js" defer></script>
+  <script>
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>

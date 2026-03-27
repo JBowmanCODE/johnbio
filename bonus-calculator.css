@@ -1,0 +1,354 @@
+/* ── CSS VARIABLES ── */
+:root {
+  --primary: #FF007F;
+  --secondary: #00EEFC;
+  --background: #0e0e13;
+  --surface-container: #19191f;
+  --on-surface: #f8f5fd;
+  --on-surface-variant: #acaab1;
+}
+
+/* ── AMBIENT GLOW ── */
+.bc-ambient {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.bc-ambient::before {
+  content: '';
+  position: absolute; top: -20%; left: -5%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,0,127,0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: bcDrift1 18s ease-in-out infinite alternate;
+}
+.bc-ambient::after {
+  content: '';
+  position: absolute; bottom: -20%; right: -5%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,238,252,0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: bcDrift2 22s ease-in-out infinite alternate;
+}
+@keyframes bcDrift1 { from { transform: translate(0,0); } to { transform: translate(60px,40px); } }
+@keyframes bcDrift2 { from { transform: translate(0,0); } to { transform: translate(-50px,-60px); } }
+
+/* ── BODY ── */
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  padding-top: 72px;
+  min-height: 100vh;
+}
+
+/* ── MAIN WRAPPER ── */
+.bc-wrap {
+  width: 90%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 120px 2rem 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 600px) {
+  .bc-wrap {
+    padding: 80px 1rem 4rem;
+  }
+}
+
+/* ── PAGE TITLE ── */
+.bc-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--on-surface);
+  margin: 0 0 0.5rem;
+  line-height: 1.1;
+}
+
+.bc-title .gradient-text {
+  background: linear-gradient(90deg, #FF007F, #00EEFC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(255,0,127,0.3));
+}
+
+/* ── SUBTITLE ── */
+.bc-desc {
+  font-size: 0.9rem;
+  color: var(--on-surface-variant);
+  margin: 0 0 2rem;
+  line-height: 1.6;
+}
+
+/* ── GLASSMORPHISM CARD ── */
+.bc-card {
+  background: rgba(37,37,44,0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,0,127,0.15);
+  border-radius: 1.25rem;
+  padding: 2rem;
+}
+
+/* ── FIELDS GRID ── */
+.bc-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 520px) {
+  .bc-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── FIELD WRAPPER ── */
+.bc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.bc-field label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+}
+
+.bc-field input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: rgba(14,14,19,0.7);
+  border: 1px solid rgba(255,0,127,0.3);
+  border-radius: 0.5rem;
+  color: var(--on-surface);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.bc-field input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255,0,127,0.12);
+}
+
+.bc-field input::placeholder {
+  color: rgba(248,245,253,0.2);
+  font-weight: 400;
+}
+
+/* Remove number input spinners */
+.bc-field input[type=number]::-webkit-inner-spin-button,
+.bc-field input[type=number]::-webkit-outer-spin-button {
+  opacity: 0.3;
+}
+
+/* ── HINT TEXT ── */
+.bc-hint {
+  font-size: 0.7rem;
+  color: var(--on-surface-variant);
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+/* ── CALCULATE BUTTON ── */
+.bc-btn {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: linear-gradient(135deg, #FF007F, #cc0066);
+  border: none;
+  border-radius: 9999px;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 0 24px rgba(255,0,127,0.3);
+  box-sizing: border-box;
+}
+
+.bc-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 36px rgba(255,0,127,0.5);
+}
+
+.bc-btn:active {
+  transform: scale(0.98);
+}
+
+.bc-btn:focus {
+  outline: 2px solid rgba(255,0,127,0.5);
+  outline-offset: 2px;
+}
+
+/* ── RESULTS SECTION ── */
+.bc-results {
+  margin-top: 2rem;
+}
+
+/* ── RESULT GRID ── */
+.bc-result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 520px) {
+  .bc-result-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── INDIVIDUAL RESULT CARD ── */
+.bc-result-card {
+  background: rgba(25,25,31,0.8);
+  border: 1px solid rgba(255,0,127,0.2);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: border-color 0.2s;
+}
+
+.bc-result-card:hover {
+  border-color: rgba(255,0,127,0.4);
+}
+
+/* ── RESULT LABEL ── */
+.bc-result-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--on-surface-variant);
+}
+
+/* ── RESULT VALUE ── */
+.bc-result-value {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.bc-result-value.profit {
+  color: #22c55e;
+}
+
+/* ── BREAKEVEN ROW ── */
+.bc-breakeven {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(25,25,31,0.6);
+  border: 1px solid rgba(0,238,252,0.1);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--on-surface-variant);
+}
+
+.bc-breakeven strong {
+  color: var(--secondary);
+}
+
+/* ── INTERPRETATION BOX ── */
+.bc-interpretation {
+  border-left: 3px solid var(--secondary);
+  padding-left: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--on-surface-variant);
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+/* ── SCENARIO TABLE TITLE ── */
+.bc-table-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(248,245,253,0.4);
+  margin: 0 0 0.75rem;
+}
+
+/* ── SCENARIOS TABLE ── */
+.bc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.bc-table th {
+  background: rgba(25,25,31,0.8);
+  text-align: left;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--on-surface-variant);
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(255,0,127,0.3);
+}
+
+.bc-table td {
+  padding: 0.6rem 1rem;
+  color: rgba(248,245,253,0.75);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-variant-numeric: tabular-nums;
+}
+
+.bc-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.bc-table tbody tr:hover td {
+  background: rgba(255,0,127,0.04);
+}
+
+.bc-table tr.highlight td {
+  background: rgba(255,0,127,0.08);
+  border-left: 3px solid var(--primary);
+  color: var(--on-surface);
+}
+
+.bc-table tr.highlight td:first-child {
+  padding-left: calc(1rem - 3px);
+}
+
+/* ── FOCUS ACCESSIBILITY ── */
+.bc-field input:focus {
+  outline: none;
+}
+
+/* ── PRINT ── */
+@media print {
+  .bc-ambient { display: none; }
+  .bc-card, .bc-result-card, .bc-table th, .bc-table td {
+    color: black !important;
+    background: white !important;
+    border-color: black !important;
+  }
+  .bc-btn { display: none; }
+}
