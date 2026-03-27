@@ -148,6 +148,18 @@ const projects = [
     thumbIcon: 'translate',
   },
   {
+    id: 'bonus-calculator',
+    title: 'Bonus Cost Calculator',
+    desc: 'Model the true cost of casino bonus offers. Enter wagering requirement, house edge and completion rate to get net operator cost and breakeven analysis.',
+    category: 'dev',
+    badge: 'DEV TOOL',
+    color: 'pink',
+    icons: ['calculate', 'casino'],
+    href: 'https://johnb.io/bonus-calculator',
+    img: '/images/bonus-calculator.webp',
+    thumbIcon: 'calculate',
+  },
+  {
     id: 'text-to-voice',
     title: 'Text to Voice',
     desc: 'Naturalistic speech synthesis utility leveraging generative adversarial networks for lifelike audio.',

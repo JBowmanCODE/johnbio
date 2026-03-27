@@ -17,6 +17,7 @@
 
 ## Developer Tools
 
+- [iGaming Bonus Cost Calculator](https://johnb.io/bonus-calculator): Model the true cost of casino bonus offers. Enter bonus amount, wagering requirement, house edge and player completion rate to calculate net operator cost per bonus issued, breakeven house edge, and a scenario table across five completion rates.
 - [iGaming Regulatory Compliance Map](https://johnb.io/igaming-compliance): Interactive world map of 203 iGaming regulations across 60+ jurisdictions. Browse gambling laws, AML directives, data protection rules and advertising codes by country — filterable by region and category.
 - [eBay & Vinted Profit Calculator](https://johnb.io/ebay): Calculate profit from eBay and Vinted sales, accounting for platform fees, postage and purchase costs.
 - [Bill Calculator](https://johnb.io/calculator): Split bills and calculate tips. Built with Python via Pyodide.
