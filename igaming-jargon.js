@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             outputEl.textContent = 'Translating...';
 
-            const response = await fetch('https://igaming-jargon-worker.johnb-workers.workers.dev', {
+            const response = await fetch('https://igaming-jargon-worker.ukjbowman.workers.dev', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

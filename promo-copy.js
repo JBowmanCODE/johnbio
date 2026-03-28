@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     statusEl.style.display = 'block';
 
     try {
-      const response = await fetch('https://promo-copy-worker.johnb-workers.workers.dev', {
+      const response = await fetch('https://promo-copy-worker.ukjbowman.workers.dev', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ promoDesc, market, channel, tone }),
