@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 const errorData = await response.json();
                 if (response.status === 429) {
-                    analysisResults.innerHTML = `<p style="color:#e05555;">Thanks for testing out my tool, you've used your 3 free edits for today. If you want me to build this tool for you <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" style="color:#e05555;">contact me</a>.</p>`;
+                    analysisResults.innerHTML = `<p style="color:#e05555;">That's your 3 free edits used up for today. Want unlimited access? <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" style="color:#e05555;">Get in touch on LinkedIn</a></p>`;
                     document.querySelector('.results-section').style.display = 'block';
                     analysisResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     return;

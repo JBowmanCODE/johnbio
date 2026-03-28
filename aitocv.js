@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (response.status === 429) {
                     const data = await response.json().catch(() => ({}));
                     const msg = data?.error?.friendly ||
-                        "You\u2019ve used all 20 free CV enhancements for today. The limit resets at midnight UTC \u2014 come back tomorrow!";
+                        "That's your 20 free CV enhancements used up for today. Want unlimited access? Get in touch on LinkedIn: https://www.linkedin.com/in/john-bowman/";
                     throw { isRateLimit: true, message: msg };
                 }
 

@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       if (response.status === 429) {
-        statusEl.textContent = "You've hit the daily limit for generations. It resets at midnight UTC — come back tomorrow!";
+        statusEl.innerHTML = "That's your 3 free generations used up for today. Want unlimited access? <a href='https://www.linkedin.com/in/john-bowman/' target='_blank' rel='noopener'>Get in touch on LinkedIn</a>";
         return;
       }
 
