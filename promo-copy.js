@@ -90,13 +90,18 @@ document.addEventListener('DOMContentLoaded', function () {
       const regex = new RegExp(section.key + '\\s*:\\s*([\\s\\S]*?)(?=(?:COMPLIANCE CHECK|HEADLINE|BODY COPY|CTA|T&C SUMMARY|DISCLAIMER)\\s*:|$)', 'i');
       const match = rawText.match(regex);
       if (match && match[1].trim()) {
-        outputWrap.appendChild(buildCopyBlock(section.label, match[1].trim(), true));
+        const block = buildCopyBlock(section.label, match[1].trim(), true);
+        outputWrap.appendChild(block);
+        if (section.key === 'T&C SUMMARY') {
+          outputWrap.appendChild(buildTCLinkReminder());
+        }
       }
     });
 
     // Disclaimer
     if (disclaimer) {
       outputWrap.appendChild(buildDisclaimerBlock(disclaimer));
+      outputWrap.appendChild(buildTCLinkReminder());
     }
 
     // Always append the tool limitation notice
@@ -115,6 +120,13 @@ document.addEventListener('DOMContentLoaded', function () {
     block.className = 'pc-compliance-warning';
     block.innerHTML = '<span class="pc-compliance-warning-label">Compliance Notes</span><p class="pc-compliance-warning-text">' + escHtml(text) + '</p>';
     return block;
+  }
+
+  function buildTCLinkReminder() {
+    const el = document.createElement('p');
+    el.className = 'pc-tc-link-reminder';
+    el.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">link</span> Remember to hyperlink "T&Cs apply" to your full Terms and Conditions page wherever this text appears.';
+    return el;
   }
 
   function buildToolLimitationNotice() {
