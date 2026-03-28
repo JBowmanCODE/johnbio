@@ -57,54 +57,71 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  // Parse AI output into a keyed object, handling numbered prefixes and markdown bold
+  function parseSections(rawText) {
+    const result = {};
+    const knownHeaders = ['COMPLIANCE FLAG', 'COMPLIANCE CHECK', 'HEADLINE', 'BODY COPY', 'CTA', 'T&C SUMMARY', 'DISCLAIMER'];
+    // Matches: optional "1. ", optional "**", then a known header, optional "**", then ":"
+    const headerPattern = new RegExp(
+      '(?:^\\s*\\d+\\.\\s+)?(?:\\*+)?(' + knownHeaders.map(function(h) { return h.replace(/[&]/g, '\\&'); }).join('|') + ')(?:\\*+)?\\s*:',
+      'gim'
+    );
+    const matches = [];
+    let m;
+    while ((m = headerPattern.exec(rawText)) !== null) {
+      matches.push({ index: m.index, fullMatch: m[0], key: m[1].trim().toUpperCase() });
+    }
+    for (let i = 0; i < matches.length; i++) {
+      const start = matches[i].index + matches[i].fullMatch.length;
+      const end   = i + 1 < matches.length ? matches[i + 1].index : rawText.length;
+      result[matches[i].key] = rawText.slice(start, end).trim();
+    }
+    return result;
+  }
+
   function renderOutput(rawText, disclaimer) {
     outputWrap.innerHTML = '';
 
-    // Check for a blocking compliance flag first
-    const complianceFlagMatch = rawText.match(/COMPLIANCE FLAG\s*:\s*([\s\S]+)/i);
-    if (complianceFlagMatch) {
-      outputWrap.appendChild(buildComplianceFlagBlock(complianceFlagMatch[1].trim()));
+    const sections = parseSections(rawText);
+
+    // Blocking compliance flag — no copy generated
+    if (sections['COMPLIANCE FLAG']) {
+      outputWrap.appendChild(buildComplianceFlagBlock(sections['COMPLIANCE FLAG']));
       outputWrap.appendChild(buildToolLimitationNotice());
       return;
     }
 
-    // Check for a compliance check / warning section (non-blocking)
-    const complianceCheckMatch = rawText.match(/COMPLIANCE CHECK\s*:\s*([\s\S]*?)(?=HEADLINE\s*:|$)/i);
-    if (complianceCheckMatch && complianceCheckMatch[1].trim()) {
-      const checkText = complianceCheckMatch[1].trim();
-      // Only show as a warning if it contains actual concerns (not just "no issues")
+    // Non-blocking compliance check warning
+    if (sections['COMPLIANCE CHECK']) {
+      const checkText = sections['COMPLIANCE CHECK'];
       if (!/no (red flags|issues|concerns|problems)/i.test(checkText) && checkText.length > 20) {
         outputWrap.appendChild(buildComplianceWarningBlock(checkText));
       }
     }
 
-    // Parse copy sections
-    const sections = [
+    // Copy sections
+    const copyFields = [
       { key: 'HEADLINE',    label: 'Headline' },
       { key: 'BODY COPY',   label: 'Body Copy' },
       { key: 'CTA',         label: 'Call to Action' },
       { key: 'T&C SUMMARY', label: 'T&C Summary' },
     ];
 
-    sections.forEach(function (section) {
-      const regex = new RegExp(section.key + '\\s*:\\s*([\\s\\S]*?)(?=(?:COMPLIANCE CHECK|HEADLINE|BODY COPY|CTA|T&C SUMMARY|DISCLAIMER)\\s*:|$)', 'i');
-      const match = rawText.match(regex);
-      if (match && match[1].trim()) {
-        const block = buildCopyBlock(section.label, match[1].trim(), true);
-        outputWrap.appendChild(block);
-        if (section.key === 'T&C SUMMARY') {
+    copyFields.forEach(function (field) {
+      if (sections[field.key]) {
+        outputWrap.appendChild(buildCopyBlock(field.label, sections[field.key], true));
+        if (field.key === 'T&C SUMMARY') {
           outputWrap.appendChild(buildTCLinkReminder());
         }
       }
     });
 
-    // Disclaimer
+    // Disclaimer (always from the hardcoded market data, not AI-generated)
     if (disclaimer) {
       outputWrap.appendChild(buildDisclaimerBlock(disclaimer));
       outputWrap.appendChild(buildTCLinkReminder());
     }
 
-    // Always append the tool limitation notice
     outputWrap.appendChild(buildToolLimitationNotice());
   }
 
