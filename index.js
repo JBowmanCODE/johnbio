@@ -210,10 +210,11 @@ const projects = [
 ];
 
 // ── RENDER ────────────────────────────────────────────────────────────────
+const INITIAL_SHOW = 6;
 const grid = document.getElementById('projectsGrid');
 const emptyState = document.getElementById('emptyState');
 const resultsMeta = document.getElementById('resultsMeta');
-const moreToolsList = document.getElementById('moreToolsList');
+let showAll = false;
 
 
 function buildCard(project, delay) {
@@ -261,32 +262,13 @@ function buildCard(project, delay) {
   return card;
 }
 
-function buildListRow(project) {
-  const colorClass = project.color === 'cyan' ? 'cyan' : project.color === 'green' ? 'green' : 'pink';
-  const row = document.createElement('a');
-  row.href = project.href;
-  row.className = 'tool-list-row';
-  row.dataset.category = Array.isArray(project.category) ? project.category.join(' ') : project.category;
-  row.dataset.title = project.title.toLowerCase();
-  row.dataset.desc = project.desc.toLowerCase();
-  row.innerHTML = `
-    <span class="tool-row-badge badge-${colorClass}">${project.badge}</span>
-    <span class="tool-row-name">${project.title}</span>
-    <span class="tool-row-desc">${project.desc}</span>
-    <span class="material-symbols-outlined tool-row-arrow">arrow_forward</span>
-  `;
-  return row;
-}
-
-// Initial render — featured as cards, rest as list rows
+// Initial render — all as cards, cards beyond INITIAL_SHOW start collapsed
 let cardDelay = 600;
-projects.forEach((project) => {
-  if (project.featured) {
-    grid.appendChild(buildCard(project, cardDelay));
-    cardDelay += 80;
-  } else {
-    moreToolsList.appendChild(buildListRow(project));
-  }
+projects.forEach((project, i) => {
+  const card = buildCard(project, cardDelay);
+  if (i >= INITIAL_SHOW) card.classList.add('card-collapsed');
+  grid.appendChild(card);
+  cardDelay += 80;
 });
 grid.appendChild(emptyState);
 
@@ -295,55 +277,48 @@ let activeFilter = 'all';
 let searchTerm = '';
 
 function applyFilters() {
-  // Featured cards
-  const cards = grid.querySelectorAll('.card:not(#emptyState)');
-  let visibleFeatured = 0;
-  cards.forEach(card => {
+  const cards = Array.from(grid.querySelectorAll('.card:not(#emptyState)'));
+  const filterActive = activeFilter !== 'all' || searchTerm;
+  let visibleCount = 0;
+  let collapsedCount = 0;
+
+  cards.forEach((card, i) => {
     const cats = card.dataset.category.split(' ');
     const matchesFilter = activeFilter === 'all' || cats.includes(activeFilter);
     const matchesSearch = !searchTerm || card.dataset.title.includes(searchTerm) || card.dataset.desc.includes(searchTerm);
-    if (matchesFilter && matchesSearch) {
-      card.classList.remove('card-hidden');
-      visibleFeatured++;
-    } else {
+    const matches = matchesFilter && matchesSearch;
+    const beyondInitial = i >= INITIAL_SHOW;
+
+    if (!matches) {
       card.classList.add('card-hidden');
-    }
-  });
-
-  // List rows
-  const rows = moreToolsList.querySelectorAll('.tool-list-row');
-  let visibleMore = 0;
-  rows.forEach(row => {
-    const cats = row.dataset.category.split(' ');
-    const matchesFilter = activeFilter === 'all' || cats.includes(activeFilter);
-    const matchesSearch = !searchTerm || row.dataset.title.includes(searchTerm) || row.dataset.desc.includes(searchTerm);
-    if (matchesFilter && matchesSearch) {
-      row.classList.remove('row-hidden');
-      visibleMore++;
+      card.classList.remove('card-collapsed');
+    } else if (beyondInitial && !showAll && !filterActive) {
+      card.classList.remove('card-hidden');
+      card.classList.add('card-collapsed');
+      collapsedCount++;
     } else {
-      row.classList.add('row-hidden');
+      card.classList.remove('card-hidden');
+      card.classList.remove('card-collapsed');
+      visibleCount++;
     }
   });
 
-  // More Tools section visibility + count
-  const moreSection = document.getElementById('moreToolsSection');
-  const moreCount = document.getElementById('moreToolsCount');
-  moreSection.style.display = visibleMore > 0 ? '' : 'none';
-  moreCount.textContent = `(${visibleMore})`;
-
-  // Auto-expand when filter/search is active
-  if (activeFilter !== 'all' || searchTerm) {
-    moreToolsList.classList.add('open');
-    document.getElementById('moreToolsToggle').classList.add('open');
+  // Show-more button
+  const showMoreWrap = document.getElementById('showMoreWrap');
+  const showMoreLabel = document.getElementById('showMoreLabel');
+  if (!showAll && !filterActive && collapsedCount > 0) {
+    showMoreWrap.style.display = '';
+    showMoreLabel.textContent = `Show ${collapsedCount} more`;
+  } else {
+    showMoreWrap.style.display = 'none';
   }
 
-  emptyState.style.display = (visibleFeatured === 0 && visibleMore === 0) ? 'block' : 'none';
+  emptyState.style.display = (visibleCount === 0 && collapsedCount === 0) ? 'block' : 'none';
 
   const total = projects.length;
-  const visible = visibleFeatured + visibleMore;
-  resultsMeta.textContent = (activeFilter === 'all' && !searchTerm)
-    ? `Showing all ${total} projects`
-    : `${visible} of ${total} projects`;
+  resultsMeta.textContent = filterActive
+    ? `${visibleCount} of ${total} projects`
+    : `Showing all ${total} projects`;
 }
 
 document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -355,11 +330,9 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-document.getElementById('moreToolsToggle').addEventListener('click', () => {
-  const toggle = document.getElementById('moreToolsToggle');
-  const isOpen = moreToolsList.classList.toggle('open');
-  toggle.classList.toggle('open', isOpen);
-  toggle.setAttribute('aria-expanded', isOpen);
+document.getElementById('showMoreBtn').addEventListener('click', () => {
+  showAll = true;
+  applyFilters();
 });
 
 document.getElementById('searchInput').addEventListener('input', e => {
