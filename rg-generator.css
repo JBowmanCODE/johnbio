@@ -1,0 +1,453 @@
+/* ── CSS VARIABLES ── */
+:root {
+  --primary: #FF007F;
+  --secondary: #00EEFC;
+  --background: #0e0e13;
+  --surface-container: #19191f;
+  --on-surface: #f8f5fd;
+  --on-surface-variant: #acaab1;
+}
+
+/* ── AMBIENT GLOW ── */
+.rg-ambient {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.rg-ambient::before {
+  content: '';
+  position: absolute; top: -20%; left: -5%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,0,127,0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: rgDrift1 18s ease-in-out infinite alternate;
+}
+.rg-ambient::after {
+  content: '';
+  position: absolute; bottom: -20%; right: -5%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,238,252,0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: rgDrift2 22s ease-in-out infinite alternate;
+}
+@keyframes rgDrift1 { from { transform: translate(0,0); } to { transform: translate(60px,40px); } }
+@keyframes rgDrift2 { from { transform: translate(0,0); } to { transform: translate(-50px,-60px); } }
+
+/* ── BODY ── */
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  padding-top: 72px;
+  min-height: 100vh;
+}
+
+/* ── MAIN WRAPPER ── */
+.rg-wrap {
+  width: 90%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 120px 2rem 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 600px) {
+  .rg-wrap {
+    padding: 80px 1rem 4rem;
+  }
+}
+
+/* ── PAGE TITLE ── */
+.rg-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--on-surface);
+  margin: 0 0 0.5rem;
+  line-height: 1.1;
+}
+
+.rg-title .gradient-text {
+  background: linear-gradient(90deg, #FF007F, #00EEFC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(255,0,127,0.3));
+}
+
+/* ── SUBTITLE ── */
+.rg-desc {
+  font-size: 0.9rem;
+  color: var(--on-surface-variant);
+  margin: 0 0 2rem;
+  line-height: 1.6;
+}
+
+/* ── GLASSMORPHISM CARD ── */
+.rg-card {
+  background: rgba(37,37,44,0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,0,127,0.15);
+  border-radius: 1.25rem;
+  padding: 2rem;
+}
+
+/* ── CONTROLS ROW ── */
+.rg-controls {
+  display: flex;
+  flex-direction: row;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* ── SELECT GROUP ── */
+.rg-select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  min-width: 180px;
+}
+
+.rg-select-group label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+}
+
+/* ── SELECT INPUT ── */
+.rg-select {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: rgba(14,14,19,0.7);
+  border: 1px solid rgba(255,0,127,0.3);
+  border-radius: 0.5rem;
+  color: var(--on-surface);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23FF007F' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 1rem;
+}
+
+.rg-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255,0,127,0.12);
+}
+
+.rg-select option {
+  background: #19191f;
+  color: var(--on-surface);
+}
+
+/* ── RESULTS SECTION ── */
+.rg-results {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── STRICTNESS BADGE ROW ── */
+.rg-strictness-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+
+.rg-jurisdiction-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--on-surface);
+}
+
+.rg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.rg-badge.strictness-very-high {
+  background: rgba(239,68,68,0.15);
+  color: #f87171;
+  border: 1px solid rgba(239,68,68,0.35);
+}
+
+.rg-badge.strictness-high {
+  background: rgba(249,115,22,0.12);
+  color: #fb923c;
+  border: 1px solid rgba(249,115,22,0.3);
+}
+
+.rg-badge.strictness-medium {
+  background: rgba(234,179,8,0.1);
+  color: #fbbf24;
+  border: 1px solid rgba(234,179,8,0.25);
+}
+
+.rg-badge.strictness-low {
+  background: rgba(34,197,94,0.1);
+  color: #4ade80;
+  border: 1px solid rgba(34,197,94,0.25);
+}
+
+/* ── REGULATOR ROW ── */
+.rg-regulator-row {
+  font-size: 0.78rem;
+  color: var(--on-surface-variant);
+}
+
+.rg-regulator-row a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.rg-regulator-row a:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}
+
+/* ── OUTPUT CARD ── */
+.rg-output-card {
+  background: rgba(25,25,31,0.8);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-left: 3px solid var(--secondary);
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  position: relative;
+}
+
+/* ── OUTPUT LABEL ── */
+.rg-output-label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--secondary);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+/* ── OUTPUT TEXT ── */
+.rg-output-text {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--on-surface);
+  background: rgba(0,238,252,0.03);
+  border: 1px solid rgba(0,238,252,0.1);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  margin: 0;
+  user-select: text;
+  -webkit-user-select: text;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+/* ── COPY BUTTON ── */
+.rg-copy-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.3rem 0.7rem;
+  background: rgba(255,0,127,0.1);
+  border: 1px solid rgba(255,0,127,0.25);
+  border-radius: 0.375rem;
+  color: var(--primary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.rg-copy-btn:hover {
+  background: rgba(255,0,127,0.2);
+  border-color: rgba(255,0,127,0.5);
+}
+
+.rg-copy-btn:active {
+  transform: scale(0.96);
+}
+
+.rg-copy-btn.copied {
+  background: rgba(34,197,94,0.12);
+  border-color: rgba(34,197,94,0.3);
+  color: #4ade80;
+}
+
+/* ── LOGOS LIST ── */
+.rg-logos {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.rg-logo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--on-surface);
+  line-height: 1.5;
+}
+
+.rg-logo-item::before {
+  content: '';
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--secondary);
+  border-radius: 50%;
+  margin-top: 0.55rem;
+}
+
+/* ── SELF-EXCLUSION ROW ── */
+.rg-selfex {
+  font-size: 0.85rem;
+  color: var(--on-surface-variant);
+  line-height: 1.55;
+  margin-top: 0.5rem;
+}
+
+.rg-selfex strong {
+  color: var(--on-surface);
+}
+
+/* ── HELPLINE ROW ── */
+.rg-helpline-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.rg-helpline-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--secondary);
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.rg-helpline-link:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}
+
+.rg-age-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15rem 0.55rem;
+  background: rgba(255,0,127,0.12);
+  border: 1px solid rgba(255,0,127,0.3);
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+}
+
+/* ── CHANNEL NOTES ── */
+.rg-notes {
+  background: rgba(0,238,252,0.04);
+  border: 1px solid rgba(0,238,252,0.15);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--on-surface-variant);
+  line-height: 1.7;
+  margin-top: 0.5rem;
+}
+
+.rg-notes strong {
+  color: var(--secondary);
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── WARNING BOX ── */
+.rg-warning {
+  background: rgba(239,68,68,0.07);
+  border: 1px solid rgba(239,68,68,0.25);
+  border-left: 3px solid #ef4444;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  font-size: 0.82rem;
+  color: #fca5a5;
+  line-height: 1.7;
+  margin-top: 0.25rem;
+}
+
+.rg-warning strong {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.35rem;
+  color: #f87171;
+}
+
+/* ── REGULATORY NOTES ── */
+.rg-reg-notes {
+  font-size: 0.82rem;
+  color: var(--on-surface-variant);
+  line-height: 1.7;
+  padding: 0.25rem 0;
+}
+
+/* ── SECTION DIVIDERS ── */
+.rg-output-card + .rg-output-card {
+  margin-top: 0;
+}
+
+/* ── FOCUS ACCESSIBILITY ── */
+.rg-select:focus-visible,
+.rg-copy-btn:focus-visible {
+  outline: 2px solid rgba(255,0,127,0.5);
+  outline-offset: 2px;
+}
+
+/* ── PRINT ── */
+@media print {
+  .rg-ambient { display: none; }
+  .rg-card, .rg-output-card {
+    color: black !important;
+    background: white !important;
+    border-color: black !important;
+  }
+  .rg-copy-btn { display: none; }
+}

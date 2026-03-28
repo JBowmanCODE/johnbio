@@ -18,12 +18,19 @@
 ## Developer Tools
 
 - [iGaming Bonus Cost Calculator](https://johnb.io/bonus-calculator): Model the true cost of casino bonus offers. Enter bonus amount, wagering requirement, house edge and player completion rate to calculate net operator cost per bonus issued, breakeven house edge, and a scenario table across five completion rates.
+- [iGaming RG Message Generator](https://johnb.io/rg-generator): Generate compliant responsible gambling disclaimers for 10 jurisdictions including UK (UKGC), Malta (MGA), Ontario, Netherlands, Sweden, Denmark, Germany, Ireland, Spain and Gibraltar. Provides copy-paste disclaimer text, required logos and seals, helpline details, self-exclusion scheme information and channel-specific guidance for email, display, social media and SMS.
+- [iGaming Jargon Translator](https://johnb.io/igaming-jargon): AI-powered tool that translates iGaming industry terminology to plain English, or plain English descriptions to correct industry terminology. Covers GGR, NGR, RTP, wagering requirements, KYC/AML, CPA, RevShare, CLV, responsible gambling frameworks and more. Built for operators, affiliates, agencies and new starters.
 - [iGaming Regulatory Compliance Map](https://johnb.io/igaming-compliance): Interactive world map of 203 iGaming regulations across 60+ jurisdictions. Browse gambling laws, AML directives, data protection rules and advertising codes by country — filterable by region and category.
 - [eBay & Vinted Profit Calculator](https://johnb.io/ebay): Calculate profit from eBay and Vinted sales, accounting for platform fees, postage and purchase costs.
 - [Bill Calculator](https://johnb.io/calculator): Split bills and calculate tips. Built with Python via Pyodide.
 - [Poker Bankroll Planner](https://johnb.io/bankroll): Evaluate poker experience level and plan bankroll strategy.
 - [YouTube Channel Analyzer](https://johnb.io/youtube-analyzer): Analyse YouTube channels by keyword — surface top creators, view counts and growth data.
 - [Text to Voice](https://johnb.io/text-to-voice): Browser-based text-to-speech with voice selection, speed control and word-by-word subtitle highlighting.
+
+## Digital AI Tools
+
+- [Content Repurposer](https://johnb.io/content-repurposer): AI-powered tool that repurposes existing content into new formats — blog posts to LinkedIn articles, newsletters to social threads, and more.
+- [iGaming Promo Copy Generator](https://johnb.io/promo-copy): Generate compliant iGaming promotional copy for 10 regulated markets including UK (UKGC), Malta (MGA), Ontario, Netherlands, Germany and more. Describe a promotion, select jurisdiction, channel and tone, and receive AI-generated headlines, body copy, call-to-action text, T&C summaries and market-specific required disclaimers.
 
 ## Responsible AI
 
