@@ -330,6 +330,23 @@ body {
   margin: 0;
 }
 
+/* ── T&C LINK REMINDER ── */
+.pc-tc-link-reminder {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.74rem;
+  color: var(--secondary);
+  opacity: 0.7;
+  margin: -0.25rem 0 0.25rem;
+  padding: 0 0.25rem;
+}
+
+.pc-tc-link-reminder .material-symbols-outlined {
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
 /* ── TOOL LIMITATION NOTICE ── */
 .pc-limitation-notice {
   font-size: 0.74rem;
