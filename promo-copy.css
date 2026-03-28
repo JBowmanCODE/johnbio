@@ -278,6 +278,67 @@ body {
 .pc-copy-btn:active { transform: scale(0.96); }
 .pc-copy-btn.copied { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.28); color: #4ade80; }
 
+/* ── COMPLIANCE FLAG (blocking) ── */
+.pc-compliance-flag {
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-left: 3px solid #ef4444;
+  border-radius: 0.75rem;
+  padding: 1.1rem 1.25rem;
+}
+
+.pc-compliance-flag-label {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: #f87171;
+  margin-bottom: 0.5rem;
+}
+
+.pc-compliance-flag-text {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #fca5a5;
+  margin: 0;
+}
+
+/* ── COMPLIANCE WARNING (non-blocking) ── */
+.pc-compliance-warning {
+  background: rgba(251,191,36,0.06);
+  border: 1px solid rgba(251,191,36,0.2);
+  border-left: 3px solid #fbbf24;
+  border-radius: 0.75rem;
+  padding: 1.1rem 1.25rem;
+}
+
+.pc-compliance-warning-label {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: #fbbf24;
+  margin-bottom: 0.5rem;
+}
+
+.pc-compliance-warning-text {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: rgba(251,191,36,0.85);
+  margin: 0;
+}
+
+/* ── TOOL LIMITATION NOTICE ── */
+.pc-limitation-notice {
+  font-size: 0.74rem;
+  color: rgba(248,245,253,0.3);
+  line-height: 1.6;
+  margin: 0.25rem 0 0;
+  text-align: center;
+}
+
 /* ── STATUS TEXT ── */
 .pc-status {
   font-size: 0.82rem;
