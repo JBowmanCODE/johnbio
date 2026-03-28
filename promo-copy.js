@@ -60,7 +60,25 @@ document.addEventListener('DOMContentLoaded', function () {
   function renderOutput(rawText, disclaimer) {
     outputWrap.innerHTML = '';
 
-    // Parse sections from the AI output
+    // Check for a blocking compliance flag first
+    const complianceFlagMatch = rawText.match(/COMPLIANCE FLAG\s*:\s*([\s\S]+)/i);
+    if (complianceFlagMatch) {
+      outputWrap.appendChild(buildComplianceFlagBlock(complianceFlagMatch[1].trim()));
+      outputWrap.appendChild(buildToolLimitationNotice());
+      return;
+    }
+
+    // Check for a compliance check / warning section (non-blocking)
+    const complianceCheckMatch = rawText.match(/COMPLIANCE CHECK\s*:\s*([\s\S]*?)(?=HEADLINE\s*:|$)/i);
+    if (complianceCheckMatch && complianceCheckMatch[1].trim()) {
+      const checkText = complianceCheckMatch[1].trim();
+      // Only show as a warning if it contains actual concerns (not just "no issues")
+      if (!/no (red flags|issues|concerns|problems)/i.test(checkText) && checkText.length > 20) {
+        outputWrap.appendChild(buildComplianceWarningBlock(checkText));
+      }
+    }
+
+    // Parse copy sections
     const sections = [
       { key: 'HEADLINE',    label: 'Headline' },
       { key: 'BODY COPY',   label: 'Body Copy' },
@@ -69,17 +87,45 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
 
     sections.forEach(function (section) {
-      const regex = new RegExp(section.key + '\\s*:\\s*([\\s\\S]*?)(?=(?:HEADLINE|BODY COPY|CTA|T&C SUMMARY|DISCLAIMER)\\s*:|$)', 'i');
+      const regex = new RegExp(section.key + '\\s*:\\s*([\\s\\S]*?)(?=(?:COMPLIANCE CHECK|HEADLINE|BODY COPY|CTA|T&C SUMMARY|DISCLAIMER)\\s*:|$)', 'i');
       const match = rawText.match(regex);
       if (match && match[1].trim()) {
         outputWrap.appendChild(buildCopyBlock(section.label, match[1].trim(), true));
       }
     });
 
-    // Always append disclaimer at the end
+    // Disclaimer
     if (disclaimer) {
       outputWrap.appendChild(buildDisclaimerBlock(disclaimer));
     }
+
+    // Always append the tool limitation notice
+    outputWrap.appendChild(buildToolLimitationNotice());
+  }
+
+  function buildComplianceFlagBlock(text) {
+    const block = document.createElement('div');
+    block.className = 'pc-compliance-flag';
+    block.innerHTML = '<span class="pc-compliance-flag-label">Compliance Flag — Copy Not Generated</span><p class="pc-compliance-flag-text">' + escHtml(text) + '</p>';
+    return block;
+  }
+
+  function buildComplianceWarningBlock(text) {
+    const block = document.createElement('div');
+    block.className = 'pc-compliance-warning';
+    block.innerHTML = '<span class="pc-compliance-warning-label">Compliance Notes</span><p class="pc-compliance-warning-text">' + escHtml(text) + '</p>';
+    return block;
+  }
+
+  function buildToolLimitationNotice() {
+    const block = document.createElement('p');
+    block.className = 'pc-limitation-notice';
+    block.textContent = 'This tool flags common structural issues but cannot verify current regulatory requirements — regulations change frequently. Always have promotions reviewed by a compliance officer before launch.';
+    return block;
+  }
+
+  function escHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
   function buildCopyBlock(label, text, copyable) {
