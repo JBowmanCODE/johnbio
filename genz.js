@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 if (response.status === 429) {
-                    outputText.textContent = "You've hit the daily limit for translations. It resets at midnight UTC — come back tomorrow!";
+                    outputText.innerHTML = "That's your 3 free translations used up for today. Want unlimited access? <a href='https://www.linkedin.com/in/john-bowman/' target='_blank' rel='noopener'>Get in touch on LinkedIn</a>";
                     return;
                 }
 
