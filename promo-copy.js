@@ -74,7 +74,8 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let i = 0; i < matches.length; i++) {
       const start = matches[i].index + matches[i].fullMatch.length;
       const end   = i + 1 < matches.length ? matches[i + 1].index : rawText.length;
-      result[matches[i].key] = rawText.slice(start, end).trim();
+      // Strip any leading/trailing markdown bold markers (**) from content
+      result[matches[i].key] = rawText.slice(start, end).trim().replace(/^\*+|\*+$/g, '').trim();
     }
     return result;
   }
