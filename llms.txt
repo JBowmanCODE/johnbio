@@ -32,6 +32,7 @@
 - [Content Repurposer](https://johnb.io/content-repurposer): AI-powered tool that repurposes existing content into new formats — blog posts to LinkedIn articles, newsletters to social threads, and more.
 - [iGaming Promo Copy Generator](https://johnb.io/promo-copy): Generate compliant iGaming promotional copy for 10 regulated markets including UK (UKGC), Malta (MGA), Ontario, Netherlands, Germany and more. Describe a promotion, select jurisdiction, channel and tone, and receive AI-generated headlines, body copy, call-to-action text, T&C summaries and market-specific required disclaimers.
 - [LLMs.txt Generator](https://johnb.io/llms-generator): AI-powered tool that generates a structured llms.txt file from a URL or pasted content. Helps websites become more discoverable and accurately cited by AI assistants including ChatGPT, Claude, Gemini and Perplexity. Follows the llmstxt.org specification.
+- [Text to Speech Converter](https://johnb.io/text-to-speech): Convert text to natural-sounding speech and download as MP3. Powered by OpenAI TTS (tts-1 model) with six voice options (Alloy, Echo, Fable, Onyx, Nova, Shimmer) and adjustable playback speed. Up to 4,000 characters per conversion.
 
 ## News and Insights
 

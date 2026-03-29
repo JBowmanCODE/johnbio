@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text to Speech Converter - OpenAI TTS MP3 Download - JohnB.io</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <meta name="description" content="Convert text to natural-sounding speech and download as MP3. Powered by OpenAI TTS with 6 voice options and adjustable speed. Free to use - no account required.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/text-to-speech">
+  <meta name="author" content="John Bowman">
+  <meta property="og:title" content="Text to Speech Converter - OpenAI TTS MP3 Download - JohnB.io">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/text-to-speech">
+  <meta property="og:description" content="Convert text to natural-sounding speech and download as MP3. Powered by OpenAI TTS with 6 voice options and adjustable speed.">
+  <meta property="og:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Text to Speech Converter - OpenAI TTS MP3 Download - JohnB.io">
+  <meta name="twitter:description" content="Convert text to natural-sounding speech and download as MP3. Powered by OpenAI TTS with 6 voice options and adjustable speed.">
+  <meta name="twitter:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/header.css">
+  <link rel="stylesheet" href="/footer.css">
+  <link rel="stylesheet" href="/text-to-speech.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Text to Speech Converter",
+    "url": "https://johnb.io/text-to-speech",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "description": "Convert text to natural-sounding speech and download as MP3. Powered by OpenAI TTS with 6 voice options and adjustable speed. Free to use with no account required.",
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://www.linkedin.com/in/john-bowman/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="tts-ambient"></div>
+
+  <main class="tts-wrap">
+    <h1 class="page-title">Text to <span class="gradient-text">Speech</span></h1>
+    <p class="tts-description">Convert text to natural-sounding audio and download as MP3. Powered by OpenAI TTS.</p>
+
+    <div class="tts-card">
+
+      <div class="tts-options-row">
+        <div class="tts-option-group">
+          <label class="tts-label" for="tts-voice">Voice</label>
+          <select id="tts-voice" class="tts-select" aria-label="Select voice">
+            <option value="alloy">Alloy - Neutral</option>
+            <option value="echo">Echo - Male</option>
+            <option value="fable">Fable - Male (British)</option>
+            <option value="onyx">Onyx - Male (Deep)</option>
+            <option value="nova" selected>Nova - Female</option>
+            <option value="shimmer">Shimmer - Female (Soft)</option>
+          </select>
+        </div>
+        <div class="tts-option-group">
+          <label class="tts-label" for="tts-speed">Speed</label>
+          <select id="tts-speed" class="tts-select" aria-label="Select speed">
+            <option value="0.75">0.75x - Slow</option>
+            <option value="1.0" selected>1.0x - Normal</option>
+            <option value="1.25">1.25x - Fast</option>
+            <option value="1.5">1.5x - Very Fast</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="tts-textarea-wrap">
+        <textarea
+          id="tts-input"
+          placeholder="Paste or type your text here. Up to 4,000 characters per conversion."
+          aria-label="Text to convert to speech"
+          maxlength="4000"
+        ></textarea>
+        <div class="tts-char-count"><span id="tts-char-num">0</span> / 4,000</div>
+      </div>
+
+      <button id="tts-btn" aria-label="Convert text to speech">
+        <span class="material-symbols-outlined" aria-hidden="true">graphic_eq</span>
+        <span id="tts-btn-label">Convert to Speech</span>
+      </button>
+
+    </div>
+
+    <div class="tts-output-wrap" id="tts-output-wrap" aria-live="polite" hidden>
+      <div class="tts-output-label">Audio Output</div>
+      <audio id="tts-player" controls class="tts-player" aria-label="Generated audio"></audio>
+      <a id="tts-download" class="tts-download-btn" download="speech.mp3" aria-label="Download MP3">
+        <span class="material-symbols-outlined" aria-hidden="true">download</span>
+        Download MP3
+      </a>
+    </div>
+
+    <div class="tts-error" id="tts-error" role="alert" hidden></div>
+
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <section class="tool-info" aria-label="About this tool" itemscope itemtype="https://schema.org/SoftwareApplication">
+    <meta itemprop="name" content="Text to Speech Converter">
+    <meta itemprop="applicationCategory" content="UtilitiesApplication">
+    <meta itemprop="operatingSystem" content="Web">
+    <meta itemprop="url" content="https://johnb.io/text-to-speech">
+
+    <div class="tool-info-inner">
+
+      <div class="tool-info-meta">
+        <span>Last updated: March 2026</span>
+        <span class="tool-info-sep">·</span>
+        <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      </div>
+
+      <div class="tool-info-body" itemprop="description">
+        <p>This tool converts text to natural-sounding speech using the OpenAI TTS API and lets you download the result as an MP3 file. It is built for content creators, publishers, bloggers and anyone who wants to add audio to written content without recording it manually. Choose from six AI voices, adjust the playback speed, and download the finished file in seconds.</p>
+        <p>The tool uses OpenAI's tts-1 model. Your text is sent securely to OpenAI's API for processing and is not stored or used for training. There is a daily usage limit per IP address to keep the tool free and available for all users.</p>
+      </div>
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Choose your voice and speed.</strong> Six voices are available: Alloy (neutral), Echo (male), Fable (British male), Onyx (deep male), Nova (female) and Shimmer (soft female). Speed ranges from 0.75x to 1.5x normal pace.</li>
+              <li><strong>Paste or type your text.</strong> Up to 4,000 characters per conversion. For longer content, split it into sections and convert each one separately.</li>
+              <li><strong>Click Convert to Speech.</strong> The tool sends your text to OpenAI's TTS API, which generates an MP3 audio file. This typically takes 2 to 5 seconds depending on text length.</li>
+              <li><strong>Preview and download.</strong> The audio player appears once generation is complete. Use the player to preview, then click Download MP3 to save the file to your device.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>Powered by OpenAI TTS.</strong> This tool uses the tts-1 model from OpenAI, which produces natural-sounding speech without robotic artefacts. It is the same model used in ChatGPT voice mode.</li>
+              <li><strong>Six voice options.</strong> Each voice has a distinct character. Nova and Shimmer suit narration and editorial content. Onyx works well for podcasts and deep-read formats. Fable has a British English cadence suited to formal content.</li>
+              <li><strong>MP3 output, ready to use.</strong> The downloaded file is a standard MP3 that works in any audio player, podcast host, website embed or video editor.</li>
+              <li><strong>4,000 character limit per conversion.</strong> This is the maximum input length for the OpenAI TTS API per request. A typical 500-word article section fits comfortably within this limit.</li>
+              <li><strong>Free with a daily usage limit.</strong> There is no account required. A per-IP daily limit applies to keep the service available for all users. The limit resets at midnight UTC.</li>
+              <li><strong>Use case - article audio.</strong> Pre-generating MP3 files for news articles or blog posts and hosting them as static files is significantly cheaper than per-read API calls, at roughly $0.015 per 1,000 characters generated.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>What voices are available?</dt>
+                <dd>Six voices are available through the OpenAI TTS API: Alloy (neutral, versatile), Echo (male, steady), Fable (British male, expressive), Onyx (male, deep and authoritative), Nova (female, warm) and Shimmer (female, gentle). All six are natural-sounding and suitable for professional use.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What is the maximum text length?</dt>
+                <dd>The tool accepts up to 4,000 characters per conversion. For longer articles, split the content into sections - introduction, body, conclusion - and convert each separately, then join the MP3 files in any audio editor.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What format is the output file?</dt>
+                <dd>The output is an MP3 file (audio/mpeg). MP3 is compatible with all audio players, podcast platforms, video editors and web browsers. It can be uploaded directly to platforms like Spotify, Apple Podcasts or embedded in a website using an HTML audio element.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Is my text stored or used to train the AI?</dt>
+                <dd>No. Your text is sent to OpenAI's API to generate the audio and is not retained by this tool. JohnB.io does not log or store the content you submit. See the <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">OpenAI Privacy Policy</a> for full details.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What does the daily usage limit mean?</dt>
+                <dd>There is a per-IP daily limit to keep the tool available for everyone without requiring a login. If you hit the limit, it resets at midnight UTC. For higher-volume use, connect via <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">LinkedIn</a>.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>How much does OpenAI TTS cost?</dt>
+                <dd>The tts-1 model costs $0.015 per 1,000 characters of input text. A typical 500-word article (around 3,000 characters) costs approximately $0.045 to generate. The tts-1-hd model at $0.030 per 1,000 characters offers marginally better quality for studio-grade production use.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://platform.openai.com/docs/guides/text-to-speech" target="_blank" rel="noopener">OpenAI - Text to Speech API documentation</a>. Platform.OpenAI.com. Accessed March 2026.</li>
+              <li><a href="https://openai.com/api/pricing/" target="_blank" rel="noopener">OpenAI API Pricing</a>. OpenAI.com. Accessed March 2026.</li>
+              <li><a href="https://platform.openai.com/docs/models#tts" target="_blank" rel="noopener">OpenAI TTS Model Overview</a>. Platform.OpenAI.com. Accessed March 2026.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js" defer></script>
+  <script src="/text-to-speech.js" defer></script>
+  <script>
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
