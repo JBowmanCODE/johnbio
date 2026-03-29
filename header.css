@@ -287,3 +287,79 @@ nav {
 .t-val  { color: rgba(248,245,253,0.65); }
 .t-dim  { color: rgba(248,245,253,0.3); }
 .t-err  { color: #ff6b6b; }
+
+/* ── IDEAS MODAL ── */
+.ideas-modal {
+  position: fixed; inset: 0; z-index: 999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(4px);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s;
+}
+.ideas-modal.open {
+  opacity: 1; pointer-events: all;
+}
+.ideas-card {
+  position: relative;
+  background: rgba(28,28,35,0.98);
+  border: 1px solid rgba(255,200,0,0.2);
+  border-radius: 1.25rem;
+  padding: 2.5rem 2rem 2rem;
+  max-width: 420px; width: 90%;
+  box-shadow: 0 0 40px rgba(255,200,0,0.08), 0 20px 60px rgba(0,0,0,0.5);
+  text-align: center;
+  transform: scale(0.94) translateY(12px);
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+.ideas-modal.open .ideas-card {
+  transform: scale(1) translateY(0);
+}
+.ideas-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: none; border: none; cursor: pointer;
+  color: rgba(248,245,253,0.3); font-size: 0.85rem;
+  padding: 0.2rem 0.4rem; border-radius: 0.25rem;
+  transition: color 0.15s;
+}
+.ideas-close:hover { color: rgba(248,245,253,0.8); }
+.ideas-icon {
+  width: 52px; height: 52px;
+  background: rgba(255,200,0,0.1);
+  border: 1px solid rgba(255,200,0,0.25);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+.ideas-icon .material-symbols-outlined {
+  font-size: 1.6rem;
+  color: #fbbf24;
+}
+#ideas-btn:hover { color: #fbbf24; }
+.ideas-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.25rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  color: rgba(248,245,253,0.95);
+  margin-bottom: 1rem;
+}
+.ideas-body {
+  font-size: 0.85rem; line-height: 1.65;
+  color: rgba(248,245,253,0.55);
+  margin-bottom: 0.75rem;
+}
+.ideas-body:last-of-type { margin-bottom: 1.5rem; }
+.ideas-cta {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  background: linear-gradient(135deg, #0a66c2, #0077b5);
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.65rem 1.5rem;
+  border-radius: 9999px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.ideas-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+.ideas-cta .material-symbols-outlined { font-size: 1rem; }
