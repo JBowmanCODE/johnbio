@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RAI Governance Framework — JohnB.io</title>
+<title>RAI Governance Framework - JohnB.io</title>
 <meta name="description" content="A responsible AI governance framework for evaluating and managing AI risk.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="John Bowman">
-<meta property="og:title" content="RAI Governance Framework — JohnB.io">
+<meta property="og:title" content="RAI Governance Framework - JohnB.io">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://johnb.io/rai">
 <meta property="og:description" content="A responsible AI governance framework for evaluating and managing AI risk.">
 <meta property="og:image" content="https://johnb.io/og_images/rai_og.webp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="RAI Governance Framework — JohnB.io">
+<meta name="twitter:title" content="RAI Governance Framework - JohnB.io">
 <meta name="twitter:description" content="A responsible AI governance framework for evaluating and managing AI risk.">
 <meta name="twitter:image" content="https://johnb.io/og_images/rai_og.webp">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Condensed:wght@600;700&display=swap" rel="stylesheet">
@@ -962,17 +962,17 @@
         <div class="tier-btn high" id="tier-high" onclick="selectTier('high')">
           <div class="tier-dot"></div>
           <div class="tier-label">HIGH</div>
-          <div class="tier-desc">Consequential decisions on people — credit scoring, hiring, health triage</div>
+          <div class="tier-desc">Consequential decisions on people - credit scoring, hiring, health triage</div>
         </div>
         <div class="tier-btn med" id="tier-med" onclick="selectTier('med')">
           <div class="tier-dot"></div>
           <div class="tier-label">MEDIUM</div>
-          <div class="tier-desc">Operational impact, no direct harm — forecasting, content moderation</div>
+          <div class="tier-desc">Operational impact, no direct harm - forecasting, content moderation</div>
         </div>
         <div class="tier-btn low" id="tier-low" onclick="selectTier('low')">
           <div class="tier-dot"></div>
           <div class="tier-label">LOW</div>
-          <div class="tier-desc">Productivity/assistive, low stakes — summarisation, internal chatbots</div>
+          <div class="tier-desc">Productivity/assistive, low stakes - summarisation, internal chatbots</div>
         </div>
       </div>
 
@@ -1005,7 +1005,7 @@
           <label class="form-label">Does failure could cause significant harm?</label>
           <select class="form-select" id="q3" onchange="scoreRisk()">
             <option value="">— Select —</option>
-            <option value="2">Yes — safety, financial, reputational</option>
+            <option value="2">Yes - safety, financial, reputational</option>
             <option value="1">Moderate impact</option>
             <option value="0">Low/negligible impact</option>
           </select>
@@ -1014,8 +1014,8 @@
           <label class="form-label">Does the system process sensitive personal data?</label>
           <select class="form-select" id="q4" onchange="scoreRisk()">
             <option value="">— Select —</option>
-            <option value="2">Yes — special category data</option>
-            <option value="1">Yes — standard personal data</option>
+            <option value="2">Yes - special category data</option>
+            <option value="1">Yes - standard personal data</option>
             <option value="0">No personal data</option>
           </select>
         </div>
@@ -1253,7 +1253,7 @@ const PRINCIPLES = [
 const DEFAULT_ROLES = [
   { role: 'AI Ethics Board', resp: 'Policy, escalation, sign-off on high-risk systems' },
   { role: 'AI Owners (Product/Tech Leads)', resp: 'Day-to-day compliance, risk register ownership' },
-  { role: 'Legal & Compliance', resp: 'Regulatory alignment — EU AI Act, GDPR, sector rules' },
+  { role: 'Legal & Compliance', resp: 'Regulatory alignment - EU AI Act, GDPR, sector rules' },
   { role: 'Risk / Audit', resp: 'Independent review, periodic audits' },
   { role: 'End Users / Impacted Teams', resp: 'Feedback loops, red-teaming input' },
 ];
@@ -1452,7 +1452,7 @@ function selectTier(tier) {
   const colors = { high: '#dc2626', med: '#d97706', low: '#16a34a' };
   const labels = { high: 'HIGH RISK', med: 'MEDIUM RISK', low: 'LOW RISK' };
   
-  document.getElementById('tier-detail-title').innerHTML = `<span style="color:${colors[tier]}">${labels[tier]}</span> — Required Controls`;
+  document.getElementById('tier-detail-title').innerHTML = `<span style="color:${colors[tier]}">${labels[tier]}</span> - Required Controls`;
   document.getElementById('tier-detail-content').innerHTML = `
     <div style="margin-bottom:1rem">
       ${detail.controls.map(c => `<div style="display:flex;gap:0.6rem;margin-bottom:0.45rem;font-size:0.82rem;color:#4a5568"><span style="color:${colors[tier]};font-weight:700">›</span>${c}</div>`).join('')}
@@ -1677,7 +1677,7 @@ function viewSystem(id) {
       <button class="btn btn-ghost" onclick="editSystem(${id});closeModal()">Edit</button>
     </div>
   `;
-  openModal('System Card — ' + s.name, html);
+  openModal('System Card - ' + s.name, html);
 }
 
 function copySystemCardText(id) {
@@ -1827,12 +1827,12 @@ renderSystems();
     <div class="tool-info-meta">
       <span>Last updated: March 2026</span>
       <span class="tool-info-sep">·</span>
-      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a> — questions? Connect on LinkedIn.</span>
+      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a> - questions? Connect on LinkedIn.</span>
     </div>
 
     <div class="tool-info-body" itemprop="description">
       <p>The RAI Governance Framework is a practical, browser-based toolkit for teams evaluating and managing AI risk. It covers the full governance lifecycle: classifying AI systems by risk tier, assigning accountability through a responsibility matrix, working through a structured pre-deployment checklist, generating system cards for documentation, maintaining a searchable system registry, and mapping your systems against current regulatory requirements. It is built for AI governance leads, risk managers, product teams and compliance functions who need structured documentation without standing up a dedicated platform.</p>
-      <p>This tool runs entirely in your browser. No data is sent to any external server and nothing is stored outside your current session. It does not use an AI model to generate content — all outputs are driven by the information you enter. This makes it suitable for handling sensitive internal documentation about AI systems without privacy or data residency concerns. The framework references guidance from the <a href="https://www.gov.uk/guidance/the-ai-safety-institute" target="_blank" rel="noopener">AI Safety Institute</a>, the <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/key-dp-themes/explaining-decisions-made-with-ai/" target="_blank" rel="noopener">ICO's guidance on AI and data protection</a>, and the EU AI Act risk classification approach.</p>
+      <p>This tool runs entirely in your browser. No data is sent to any external server and nothing is stored outside your current session. It does not use an AI model to generate content - all outputs are driven by the information you enter. This makes it suitable for handling sensitive internal documentation about AI systems without privacy or data residency concerns. The framework references guidance from the <a href="https://www.gov.uk/guidance/the-ai-safety-institute" target="_blank" rel="noopener">AI Safety Institute</a>, the <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/key-dp-themes/explaining-decisions-made-with-ai/" target="_blank" rel="noopener">ICO's guidance on AI and data protection</a>, and the EU AI Act risk classification approach.</p>
     </div>
 
     <div class="tool-accordions">
@@ -1844,7 +1844,7 @@ renderSystems();
         </summary>
         <div class="tool-accordion-body">
           <ol class="info-steps">
-            <li><strong>Classify your AI system.</strong> Use the Risk panel to run through the classification questionnaire. Answer questions about your system's domain, autonomy level, data use and potential impact. The tool assigns a risk tier — High, Medium or Low — with an explanation of what that means for your governance obligations.</li>
+            <li><strong>Classify your AI system.</strong> Use the Risk panel to run through the classification questionnaire. Answer questions about your system's domain, autonomy level, data use and potential impact. The tool assigns a risk tier - High, Medium or Low - with an explanation of what that means for your governance obligations.</li>
             <li><strong>Assign responsibility.</strong> In the Governance panel, populate the responsibility matrix with your team's roles. Define who is accountable for oversight, development, deployment and monitoring of each AI system.</li>
             <li><strong>Work through the checklist.</strong> The Checklist panel provides a structured set of pre-deployment checks covering fairness, explainability, data quality, human oversight and incident response. Mark items complete as you go.</li>
             <li><strong>Create a system card.</strong> The System Card panel generates a structured document recording your system's purpose, data sources, model type, identified risks, mitigations and oversight arrangements. Export it as a PDF or plain text file for your records.</li>
@@ -1860,11 +1860,11 @@ renderSystems();
         </summary>
         <div class="tool-accordion-body">
           <ul class="info-points">
-            <li><strong>No data leaves your browser.</strong> Everything runs client-side. Your system descriptions, risk assessments and registry entries are not transmitted to any server — making this suitable for handling sensitive commercial or regulated information.</li>
+            <li><strong>No data leaves your browser.</strong> Everything runs client-side. Your system descriptions, risk assessments and registry entries are not transmitted to any server - making this suitable for handling sensitive commercial or regulated information.</li>
             <li><strong>Aligned with the EU AI Act risk tiers.</strong> The classification questionnaire maps to the <a href="https://artificialintelligenceact.eu" target="_blank" rel="noopener">EU AI Act</a> categories (Unacceptable Risk, High Risk, Limited Risk, Minimal Risk), giving your assessments regulatory grounding.</li>
-            <li><strong>Generates exportable documentation.</strong> System cards and registry exports can be saved as PDF or plain text — suitable for audits, board reporting or sharing with regulators.</li>
+            <li><strong>Generates exportable documentation.</strong> System cards and registry exports can be saved as PDF or plain text - suitable for audits, board reporting or sharing with regulators.</li>
             <li><strong>Built for teams, not just individuals.</strong> The responsibility matrix and checklist are designed to be completed collaboratively. Print or export sections to share with legal, compliance, engineering or leadership.</li>
-            <li><strong>Free to use with no account required.</strong> There is no login, no subscription and no usage limit — the tool is fully open to use for any organisation or individual.</li>
+            <li><strong>Free to use with no account required.</strong> There is no login, no subscription and no usage limit - the tool is fully open to use for any organisation or individual.</li>
           </ul>
         </div>
       </details>
@@ -1878,7 +1878,7 @@ renderSystems();
           <dl class="info-faq">
             <div class="faq-item">
               <dt>Does this tool use AI to generate the governance outputs?</dt>
-              <dd>No. All outputs — risk tier classifications, system cards, checklists and registry entries — are generated directly from the information you enter. There is no AI model involved. This is a structured documentation tool, not a generative AI tool.</dd>
+              <dd>No. All outputs - risk tier classifications, system cards, checklists and registry entries - are generated directly from the information you enter. There is no AI model involved. This is a structured documentation tool, not a generative AI tool.</dd>
             </div>
             <div class="faq-item">
               <dt>Is my data stored anywhere?</dt>
@@ -1886,15 +1886,15 @@ renderSystems();
             </div>
             <div class="faq-item">
               <dt>Which regulatory frameworks does the tool reference?</dt>
-              <dd>The risk classification aligns with the <a href="https://artificialintelligenceact.eu" target="_blank" rel="noopener">EU AI Act</a>. The framework also references the UK government's <a href="https://www.gov.uk/guidance/the-ai-safety-institute" target="_blank" rel="noopener">AI Safety Institute</a> principles, the <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/key-dp-themes/explaining-decisions-made-with-ai/" target="_blank" rel="noopener">ICO's AI and data protection guidance</a>, and the NIST AI Risk Management Framework. It is intended as a practical starting point — always verify compliance requirements with qualified legal or regulatory counsel.</dd>
+              <dd>The risk classification aligns with the <a href="https://artificialintelligenceact.eu" target="_blank" rel="noopener">EU AI Act</a>. The framework also references the UK government's <a href="https://www.gov.uk/guidance/the-ai-safety-institute" target="_blank" rel="noopener">AI Safety Institute</a> principles, the <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/key-dp-themes/explaining-decisions-made-with-ai/" target="_blank" rel="noopener">ICO's AI and data protection guidance</a>, and the NIST AI Risk Management Framework. It is intended as a practical starting point - always verify compliance requirements with qualified legal or regulatory counsel.</dd>
             </div>
             <div class="faq-item">
               <dt>What is a system card?</dt>
-              <dd>A system card (sometimes called a model card) is a structured document that records key facts about an AI system — its purpose, data sources, known risks, mitigations and human oversight arrangements. System cards are increasingly expected by regulators and enterprise procurement teams as part of responsible AI deployment. The <a href="https://arxiv.org/abs/1810.03993" target="_blank" rel="noopener">original model card paper</a> was published by Mitchell et al. at Google in 2018.</dd>
+              <dd>A system card (sometimes called a model card) is a structured document that records key facts about an AI system - its purpose, data sources, known risks, mitigations and human oversight arrangements. System cards are increasingly expected by regulators and enterprise procurement teams as part of responsible AI deployment. The <a href="https://arxiv.org/abs/1810.03993" target="_blank" rel="noopener">original model card paper</a> was published by Mitchell et al. at Google in 2018.</dd>
             </div>
             <div class="faq-item">
               <dt>Is this suitable for regulated industries?</dt>
-              <dd>The framework provides a solid foundation for AI governance in regulated industries including financial services, healthcare and the public sector. However, sector-specific requirements — such as those under the FCA's model risk guidance, NHS AI governance frameworks, or GDPR Article 22 on automated decision-making — may go beyond what this tool covers. Use it as a starting point and engage your compliance or legal team for sector-specific obligations.</dd>
+              <dd>The framework provides a solid foundation for AI governance in regulated industries including financial services, healthcare and the public sector. However, sector-specific requirements - such as those under the FCA's model risk guidance, NHS AI governance frameworks, or GDPR Article 22 on automated decision-making - may go beyond what this tool covers. Use it as a starting point and engage your compliance or legal team for sector-specific obligations.</dd>
             </div>
           </dl>
         </div>
@@ -1907,11 +1907,11 @@ renderSystems();
         </summary>
         <div class="tool-accordion-body">
           <ol class="info-sources">
-            <li><a href="https://artificialintelligenceact.eu" target="_blank" rel="noopener">EU AI Act — Full text and risk classification framework</a>. artificialintelligenceact.eu. Accessed March 2026.</li>
-            <li><a href="https://www.gov.uk/guidance/the-ai-safety-institute" target="_blank" rel="noopener">UK AI Safety Institute — Guidance and principles</a>. GOV.UK. Accessed March 2026.</li>
-            <li><a href="https://ico.org.uk/for-organisations/guide-to-data-protection/key-dp-themes/explaining-decisions-made-with-ai/" target="_blank" rel="noopener">ICO — Explaining decisions made with AI</a>. Information Commissioner's Office. Accessed March 2026.</li>
+            <li><a href="https://artificialintelligenceact.eu" target="_blank" rel="noopener">EU AI Act - Full text and risk classification framework</a>. artificialintelligenceact.eu. Accessed March 2026.</li>
+            <li><a href="https://www.gov.uk/guidance/the-ai-safety-institute" target="_blank" rel="noopener">UK AI Safety Institute - Guidance and principles</a>. GOV.UK. Accessed March 2026.</li>
+            <li><a href="https://ico.org.uk/for-organisations/guide-to-data-protection/key-dp-themes/explaining-decisions-made-with-ai/" target="_blank" rel="noopener">ICO - Explaining decisions made with AI</a>. Information Commissioner's Office. Accessed March 2026.</li>
             <li><a href="https://www.nist.gov/system/files/documents/2023/01/26/AI%20RMF%201.0.pdf" target="_blank" rel="noopener">NIST AI Risk Management Framework 1.0</a>. National Institute of Standards and Technology. January 2023.</li>
-            <li><a href="https://arxiv.org/abs/1810.03993" target="_blank" rel="noopener">Mitchell et al. — Model Cards for Model Reporting</a>. arXiv:1810.03993. Google, 2018.</li>
+            <li><a href="https://arxiv.org/abs/1810.03993" target="_blank" rel="noopener">Mitchell et al. - Model Cards for Model Reporting</a>. arXiv:1810.03993. Google, 2018.</li>
           </ol>
         </div>
       </details>
