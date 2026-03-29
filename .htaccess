@@ -16,8 +16,11 @@ RewriteRule ^ /%1 [R=301,L]
 # Force the home page to use index.html
 RewriteRule ^$ index.html [L]
 
-# Disable Passenger for the root directory
+# Disable Passenger for static directories
 <LocationMatch "^/$">
+    PassengerEnabled off
+</LocationMatch>
+<LocationMatch "^/news">
     PassengerEnabled off
 </LocationMatch>
 
