@@ -77,7 +77,24 @@ function setLoading(on) {
 }
 
 function showError(msg) {
-  errorEl.textContent = msg;
+  // Linkify LinkedIn URLs in error messages
+  const linkedIn = 'https://www.linkedin.com/in/john-bowman/';
+  if (msg.includes(linkedIn)) {
+    const parts = msg.split(linkedIn);
+    errorEl.innerHTML = '';
+    errorEl.appendChild(document.createTextNode(parts[0]));
+    const a = document.createElement('a');
+    a.href = linkedIn;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = 'LinkedIn';
+    a.style.color = 'inherit';
+    a.style.textDecoration = 'underline';
+    errorEl.appendChild(a);
+    if (parts[1]) errorEl.appendChild(document.createTextNode(parts[1]));
+  } else {
+    errorEl.textContent = msg;
+  }
   errorEl.hidden = false;
 }
 
