@@ -96,6 +96,24 @@
 
       <hr class="na-divider">
 
+      <div class="na-audio" aria-label="Listen to this article">
+        <span class="na-audio-icon material-symbols-outlined" aria-hidden="true">headphones</span>
+        <div class="na-audio-info">
+          <span class="na-audio-label">Listen to this article</span>
+          <div class="na-audio-controls">
+            <audio id="na-player" src="/news/test-ai.mp3" preload="none"></audio>
+            <button class="na-audio-btn" id="na-play-btn" aria-label="Play article audio">
+              <span class="material-symbols-outlined">play_arrow</span>
+            </button>
+            <div class="na-speed-btns" role="group" aria-label="Playback speed">
+              <button class="na-speed-btn active" data-speed="1">1x</button>
+              <button class="na-speed-btn" data-speed="1.5">1.5x</button>
+              <button class="na-speed-btn" data-speed="2">2x</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="na-body" itemprop="articleBody">
 
         <p>Two years ago, asking an AI to write a compliance disclaimer, summarise a YouTube video or generate structured data for a website felt like a novelty - something you might show colleagues as a curiosity. Today those same tasks are part of normal workflows for marketers, developers and operators across most industries. The shift has happened faster than most predicted and it is not slowing down.</p>
@@ -194,5 +212,38 @@
   <div id="footer-placeholder"></div>
 
   <script src="/scripts.js" defer></script>
+  <script>
+    (function () {
+      const player  = document.getElementById('na-player');
+      const playBtn = document.getElementById('na-play-btn');
+      const playIcon = playBtn.querySelector('.material-symbols-outlined');
+      const speedBtns = document.querySelectorAll('.na-speed-btn');
+
+      playBtn.addEventListener('click', () => {
+        if (player.paused) {
+          player.play();
+          playIcon.textContent = 'pause';
+          playBtn.setAttribute('aria-label', 'Pause article audio');
+        } else {
+          player.pause();
+          playIcon.textContent = 'play_arrow';
+          playBtn.setAttribute('aria-label', 'Play article audio');
+        }
+      });
+
+      player.addEventListener('ended', () => {
+        playIcon.textContent = 'play_arrow';
+        playBtn.setAttribute('aria-label', 'Play article audio');
+      });
+
+      speedBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          player.playbackRate = parseFloat(btn.dataset.speed);
+          speedBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
