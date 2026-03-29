@@ -335,7 +335,16 @@ nav {
   font-size: 1.6rem;
   color: #fbbf24;
 }
-#ideas-btn:hover { color: #fbbf24; }
+#ideas-btn {
+  transition: color 0.25s, filter 0.25s;
+}
+#ideas-btn:hover {
+  color: #fbbf24;
+  filter:
+    drop-shadow(0 0 6px rgba(251,191,36,0.95))
+    drop-shadow(0 0 14px rgba(251,191,36,0.6))
+    drop-shadow(0 0 28px rgba(251,191,36,0.3));
+}
 .ideas-title {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1.25rem; font-weight: 800;
