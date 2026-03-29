@@ -78,6 +78,35 @@ function initializeHeader() {
     }
 
     initializeTerminal();
+    initializeIdeasModal();
+}
+
+function initializeIdeasModal() {
+    const btn   = document.getElementById('ideas-btn');
+    const modal = document.getElementById('ideas-modal');
+    const close = document.getElementById('ideas-close');
+    if (!btn || !modal) return;
+
+    btn.addEventListener('click', () => {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+    });
+    close.addEventListener('click', () => {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+    });
+    modal.addEventListener('click', e => {
+        if (e.target === modal) {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+        }
+    });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+        }
+    });
 }
 
 function initializeTerminal() {

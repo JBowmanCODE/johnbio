@@ -43,6 +43,9 @@
       </div>
     </div>
     <div class="nav-right">
+      <button class="icon-btn" id="ideas-btn" title="Submit an idea">
+        <span class="material-symbols-outlined">lightbulb</span>
+      </button>
       <button class="icon-btn" id="terminal-btn" title="Terminal">
         <span class="material-symbols-outlined">terminal</span>
       </button>
@@ -50,6 +53,23 @@
     </div>
   </nav>
 </header>
+
+<!-- ── IDEAS MODAL ── -->
+<div id="ideas-modal" class="ideas-modal" aria-hidden="true" role="dialog" aria-label="Submit an idea">
+  <div class="ideas-card">
+    <button class="ideas-close" id="ideas-close" aria-label="Close">✕</button>
+    <div class="ideas-icon">
+      <span class="material-symbols-outlined">lightbulb</span>
+    </div>
+    <h2 class="ideas-title">Got an idea?</h2>
+    <p class="ideas-body">I'm always looking for new tools to build and test — whether that's a fresh AI project, a dev utility, or an improvement to something already on the site.</p>
+    <p class="ideas-body">If you've got an idea or a suggestion, I'd love to hear it.</p>
+    <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" class="ideas-cta">
+      <span class="material-symbols-outlined">send</span>
+      Message me on LinkedIn
+    </a>
+  </div>
+</div>
 
 <!-- ── TERMINAL MODAL (outside header to avoid backdrop-filter stacking context) ── -->
 <div id="terminal-modal" class="terminal-modal" aria-hidden="true">
