@@ -1,5 +1,11 @@
 /* ── NEWS SECTION — shared styles for /news and /news/* ── */
 
+/* ── Local CSS variables ── */
+:root {
+  --border: rgba(248,245,253,0.07);
+  --surface-card: #19191f;
+}
+
 /* ── Ambient glow ── */
 .ns-ambient {
   position: fixed;
@@ -223,6 +229,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 280px;
+}
+
+/* Force block layout on article elements */
+.na-wrap article {
+  display: block;
+  width: 100%;
 }
 
 /* Article header */
