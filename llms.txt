@@ -37,7 +37,7 @@
 ## News and Insights
 
 - [News](https://johnb.io/news): News and insights on AI, iGaming, SEO and digital from John Bowman.
-- [AI in 2026: How Large Language Models Are Reshaping Search, Content and Work](https://johnb.io/news/test-ai): Overview of how LLMs have shifted from novelty to infrastructure, covering AI search, GEO, workplace AI, iGaming applications and the EU AI Act.
+- [AI in 2026: How Large Language Models Are Reshaping Search, Content and Work](https://johnb.io/news/test-ai): Covers how LLMs have shifted from novelty to infrastructure in 2026. Topics include Google AI Overviews and the impact on SEO, generative engine optimisation (GEO) and the llms.txt standard, AI use cases in writing, code and data analysis, AI applications and risks in iGaming across 50-plus jurisdictions, and what to watch in H2 2026 including AI agents, multimodal models and EU AI Act implementation. Includes FAQ schema, structured sources and internal links to related tools.
 
 ## Responsible AI
 
