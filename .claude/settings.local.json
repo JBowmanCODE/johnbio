@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(node -e \":*)",
+      "Bash(ls -la /c/Users/John/Desktop/johnb2026/*.html)",
+      "Read(//c/Users/John/Desktop/johnb2026/**)",
+      "Bash(grep -r \"webp\" /c/Users/John/Desktop/johnb2026/*.html)",
+      "Bash(curl -s \"https://api.cdnjs.com/libraries/font-awesome/6.4.0?fields=files,sri\")"
+    ]
+  }
+}
