@@ -4,6 +4,8 @@ Disallow: /header.html
 Disallow: /footer.html
 Disallow: /template.html
 Disallow: /zzmystery.html
+Disallow: /ytsum.html
+Disallow: /ytsum
 Disallow: /cgi-bin/
 Disallow: /result.html
 Disallow: /data.html
