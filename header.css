@@ -6,7 +6,7 @@ header {
   border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 
-nav {
+header nav {
   display: flex; justify-content: space-between; align-items: center;
   padding: 0 2rem; height: 72px;
   max-width: 1280px; margin: 0 auto;
