@@ -5,10 +5,6 @@ DirectoryIndex index.html index.htm
 RewriteEngine On
 RewriteBase /
 
-# Redirect HTTP to HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
 # Redirect www to non-www (canonical domain)
 RewriteCond %{HTTP_HOST} ^www\.johnb\.io [NC]
 RewriteRule ^ https://johnb.io%{REQUEST_URI} [R=301,L]
