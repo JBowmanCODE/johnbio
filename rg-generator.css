@@ -451,3 +451,21 @@ body {
   }
   .rg-copy-btn { display: none; }
 }
+
+/* ── LEGAL NOTICE ── */
+.rg-legal-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.74rem;
+  color: #fca5a5;
+  line-height: 1.55;
+  margin: 1.25rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(248,245,253,0.06);
+}
+.rg-legal-notice .material-symbols-outlined {
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
