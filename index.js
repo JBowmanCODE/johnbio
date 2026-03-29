@@ -74,6 +74,18 @@ const projects = [
   },
   // ── COLLAPSED (shown after "Show more") ─────────────────────────────────
   {
+    id: 'text-to-speech',
+    title: 'Text to Speech Converter',
+    desc: 'Convert text to natural-sounding audio and download as MP3. Six OpenAI TTS voices with adjustable speed. Free to use.',
+    category: 'digital',
+    badge: 'DIGITAL AI',
+    color: 'green',
+    icons: ['graphic_eq', 'download'],
+    href: 'https://johnb.io/text-to-speech',
+    img: '/images/llms-generator.webp',
+    thumbIcon: 'graphic_eq',
+  },
+  {
     id: 'llms-generator',
     title: 'LLMs.txt Generator',
     desc: 'Enter a URL or paste your content to generate a structured llms.txt file. Help AI assistants like ChatGPT, Claude and Perplexity understand and cite your site correctly.',
