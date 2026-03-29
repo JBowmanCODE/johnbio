@@ -293,23 +293,6 @@ main.na-wrap {
   padding-left: 1rem;
 }
 
-.na-author {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.82rem;
-  color: var(--on-surface-variant);
-}
-
-.na-author a {
-  color: #fbbf24;
-  text-decoration: none;
-}
-
-.na-author a:hover {
-  text-decoration: underline;
-}
-
 .na-divider {
   border: none;
   border-top: 1px solid var(--border);
@@ -568,7 +551,143 @@ main.na-wrap {
   font-size: 1rem;
 }
 
+/* ── Article layout: content + sidebar ── */
+.na-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.5rem;
+}
+
+.na-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Table of Contents sidebar ── */
+.na-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px;
+}
+
+.na-toc {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.na-toc-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ff007f;
+  margin: 0 0 1rem 0;
+}
+
+.na-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  counter-reset: toc-counter;
+}
+
+.na-toc-list li {
+  counter-increment: toc-counter;
+}
+
+.na-toc-list a {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  padding: 0.45rem 0.5rem;
+  border-radius: 6px;
+  transition: color 0.18s, background 0.18s;
+}
+
+.na-toc-list a::before {
+  content: counter(toc-counter);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255,0,127,0.5);
+  min-width: 1rem;
+  padding-top: 0.05rem;
+  flex-shrink: 0;
+}
+
+.na-toc-list a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.06);
+}
+
+.na-toc-list a.active {
+  color: #ff007f;
+}
+
+.na-toc-list a.active::before {
+  color: #ff007f;
+}
+
+/* ── Author row with profile image ── */
+.na-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.na-author-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 1.5px solid rgba(255,0,127,0.4);
+  flex-shrink: 0;
+}
+
+.na-author-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.na-author-details a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ff007f;
+  text-decoration: none;
+}
+
+.na-author-details a:hover {
+  text-decoration: underline;
+}
+
+.na-author-role {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  font-weight: 400;
+}
+
 /* ── Responsive ── */
+@media (max-width: 900px) {
+  .na-sidebar {
+    display: none;
+  }
+  .na-layout {
+    display: block;
+  }
+}
+
 @media (max-width: 640px) {
   .ns-grid {
     grid-template-columns: 1fr;

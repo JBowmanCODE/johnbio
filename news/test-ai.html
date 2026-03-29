@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="/footer.css">
   <link rel="stylesheet" href="/news.css?v=3">
   <style>
-    main.na-wrap { max-width: 760px; margin: 0 auto; padding-top: 120px; box-sizing: border-box; width: 100%; }
+    main.na-wrap { max-width: 1120px; margin: 0 auto; padding-top: 120px; padding-left: 1.5rem; padding-right: 1.5rem; box-sizing: border-box; width: 100%; }
   </style>
 
   <script type="application/ld+json">
@@ -119,6 +119,8 @@
   <div class="ns-ambient"></div>
 
   <main class="na-wrap">
+  <div class="na-layout">
+  <div class="na-content">
 
     <div class="na-breadcrumb" role="navigation" aria-label="Breadcrumb">
       <a href="/">Home</a>
@@ -138,8 +140,11 @@
         <h1 class="na-title" itemprop="headline">AI in 2026: How Large Language Models Are Reshaping Search, Content and the Way We Work</h1>
         <p class="na-lede">Large language models have shifted from novelty to infrastructure. From AI Overviews in Google Search to tools that write, code and analyse - here is what that shift looks like in practice, and what it means for anyone building, marketing or operating online.</p>
         <div class="na-author">
-          <span class="material-symbols-outlined" aria-hidden="true" style="font-size:1rem;">person</span>
-          By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a>
+          <img src="/images/JohnB.webp" alt="John Bowman" class="na-author-img">
+          <div class="na-author-details">
+            <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a>
+            <span class="na-author-role">Owner / AI Developer</span>
+          </div>
         </div>
       </div>
 
@@ -183,7 +188,7 @@
 
         <p>This article looks at where AI - specifically large language models - actually sits in 2026, what has changed in search and content, and what people working in digital, iGaming and technology need to be paying attention to.</p>
 
-        <h2>Search has already changed</h2>
+        <h2 id="search-changed">Search has already changed</h2>
 
         <p><a href="https://blog.google/products/search/generative-ai-search/" target="_blank" rel="noopener">Google's AI Overviews</a>, rolled out broadly through 2024 and now a standard part of search results, represent the most visible shift. For many queries - especially informational ones - users now get a synthesised AI-written answer at the top of the page before they see any organic results. <a href="https://www.perplexity.ai" target="_blank" rel="noopener">Perplexity</a> has built an entire product around this model. <a href="https://openai.com/chatgpt/search" target="_blank" rel="noopener">ChatGPT's search integration</a> means OpenAI is now a direct competitor to Google for information retrieval.</p>
 
@@ -191,7 +196,7 @@
 
         <p>This does not mean SEO is dead. It means the goal has shifted. The question is no longer just "can Google find and rank my content?" but "will AI assistants reference, cite and link to my content when answering related questions?" That is a different optimisation problem - and it has a name.</p>
 
-        <h2>GEO: generative engine optimisation</h2>
+        <h2 id="geo">GEO: generative engine optimisation</h2>
 
         <p>Generative Engine Optimisation (GEO) is the emerging discipline of making your content and website structure legible to AI systems - not just search crawlers. The aim is to be the source that an AI assistant cites or links to when answering a question in your domain.</p>
 
@@ -206,7 +211,7 @@
 
         <p>GEO is still early. There is no equivalent of <a href="https://search.google.com/search-console" target="_blank" rel="noopener">Google Search Console</a> for AI citation tracking yet. But the groundwork you lay now - structured content, clear authorship, llms.txt, schema - will matter as AI search matures.</p>
 
-        <h2>AI at work: what has actually changed day to day</h2>
+        <h2 id="ai-at-work">AI at work: what has actually changed day to day</h2>
 
         <p>Beyond search, the more significant shift for most knowledge workers is in how AI has embedded itself into daily tasks. Three areas stand out.</p>
 
@@ -226,7 +231,7 @@
 
         <p>AI's ability to read, summarise and extract structure from large volumes of text is one of its most underused capabilities in many organisations. Regulatory documents, competitor content, customer feedback, support logs - these are all things that a model can process and surface patterns from at a speed that was not previously practical. The output still needs human judgement, but the time cost of the initial analysis has dropped dramatically.</p>
 
-        <h2>AI in iGaming specifically</h2>
+        <h2 id="ai-igaming">AI in iGaming specifically</h2>
 
         <p>The iGaming industry has specific characteristics that make AI both more useful and more risky than in some other sectors.</p>
 
@@ -234,7 +239,7 @@
 
         <p>On the risk side: the same compliance environment means that errors carry real consequences. A marketing claim that fails <a href="https://www.asa.org.uk" target="_blank" rel="noopener">ASA</a> guidelines, a bonus structure that breaches UKGC rules, a data handling process that violates <a href="https://gdpr.eu" target="_blank" rel="noopener">GDPR</a> - these are not abstract risks. Any AI-assisted workflow in iGaming needs a robust human review layer, and the AI tooling needs to be built with those constraints in mind rather than around them.</p>
 
-        <h2>What to watch in the second half of 2026</h2>
+        <h2 id="h2-2026">What to watch in the second half of 2026</h2>
 
         <p>A few developments worth tracking:</p>
 
@@ -245,7 +250,7 @@
           <li><strong>Search citation transparency</strong> - There is growing pressure on AI search providers to be clearer about which sources they are drawing from. How this plays out will have significant implications for content strategy and GEO.</li>
         </ul>
 
-        <h2>The practical takeaway</h2>
+        <h2 id="takeaway">The practical takeaway</h2>
 
         <p>AI is not going to transform everything overnight, and it is not a solution to problems that require domain expertise, regulatory knowledge or genuine judgement. What it does do is reduce the cost and time of certain categories of work substantially - and those savings compound when applied consistently over time.</p>
 
@@ -270,6 +275,23 @@
       Back to News
     </a>
 
+  </div><!-- /.na-content -->
+
+  <aside class="na-sidebar" aria-label="Table of contents">
+    <nav class="na-toc">
+      <p class="na-toc-title">In this article</p>
+      <ol class="na-toc-list">
+        <li><a href="#search-changed">Search has already changed</a></li>
+        <li><a href="#geo">GEO: generative engine optimisation</a></li>
+        <li><a href="#ai-at-work">AI at work: day-to-day</a></li>
+        <li><a href="#ai-igaming">AI in iGaming specifically</a></li>
+        <li><a href="#h2-2026">What to watch in H2 2026</a></li>
+        <li><a href="#takeaway">The practical takeaway</a></li>
+      </ol>
+    </nav>
+  </aside>
+
+  </div><!-- /.na-layout -->
   </main>
 
   <div id="share-bar-placeholder"></div>
@@ -391,6 +413,26 @@
   <div id="footer-placeholder"></div>
 
   <script src="/scripts.js" defer></script>
+  <script>
+    // TOC scroll spy
+    (function () {
+      const headings = document.querySelectorAll('.na-body h2[id]');
+      const links = document.querySelectorAll('.na-toc-list a');
+      if (!headings.length || !links.length) return;
+      const map = {};
+      links.forEach(a => { map[a.getAttribute('href').slice(1)] = a; });
+      function onScroll() {
+        let active = null;
+        headings.forEach(h => {
+          if (h.getBoundingClientRect().top <= 140) active = h.id;
+        });
+        links.forEach(a => a.classList.remove('active'));
+        if (active && map[active]) map[active].classList.add('active');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
