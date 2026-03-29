@@ -33,6 +33,11 @@
 - [iGaming Promo Copy Generator](https://johnb.io/promo-copy): Generate compliant iGaming promotional copy for 10 regulated markets including UK (UKGC), Malta (MGA), Ontario, Netherlands, Germany and more. Describe a promotion, select jurisdiction, channel and tone, and receive AI-generated headlines, body copy, call-to-action text, T&C summaries and market-specific required disclaimers.
 - [LLMs.txt Generator](https://johnb.io/llms-generator): AI-powered tool that generates a structured llms.txt file from a URL or pasted content. Helps websites become more discoverable and accurately cited by AI assistants including ChatGPT, Claude, Gemini and Perplexity. Follows the llmstxt.org specification.
 
+## News and Insights
+
+- [News](https://johnb.io/news): News and insights on AI, iGaming, SEO and digital from John Bowman.
+- [AI in 2026: How Large Language Models Are Reshaping Search, Content and Work](https://johnb.io/news/test-ai): Overview of how LLMs have shifted from novelty to infrastructure, covering AI search, GEO, workplace AI, iGaming applications and the EU AI Act.
+
 ## Responsible AI
 
 - [RAI Governance Framework](https://johnb.io/rai): Interactive responsible AI governance tool covering principles, risk tiering (EU AI Act aligned), RAI checklists, system cards and an AI registry.
