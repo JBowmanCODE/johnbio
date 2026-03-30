@@ -977,6 +977,12 @@ main.na-wrap {
   letter-spacing: 0.01em;
 }
 
+/* ── Mobile Newsy button + TOC accordion (hidden on desktop) ── */
+.na-mobile-newsy-btn,
+.na-mobile-toc {
+  display: none;
+}
+
 /* ── Responsive ── */
 @media (max-width: 960px) {
   .na-sidebar {
@@ -984,6 +990,97 @@ main.na-wrap {
   }
   .na-layout {
     display: block;
+  }
+
+  .na-mobile-newsy-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.65rem 1rem;
+    background: rgba(255,0,127,0.08);
+    border: 1px solid rgba(255,0,127,0.25);
+    border-radius: 0.6rem;
+    color: rgba(248,245,253,0.85);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .na-mobile-newsy-btn:hover {
+    background: rgba(255,0,127,0.15);
+    border-color: rgba(255,0,127,0.5);
+  }
+
+  .na-mobile-newsy-btn .material-symbols-outlined {
+    font-size: 1.1rem;
+    color: #ff007f;
+  }
+
+  .na-mobile-toc {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(248,245,253,0.08);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: rgba(25,25,31,0.6);
+  }
+
+  .na-mobile-toc-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgba(248,245,253,0.85);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .na-mobile-toc-trigger::-webkit-details-marker { display: none; }
+
+  .na-mobile-toc-trigger .material-symbols-outlined:first-child {
+    font-size: 1rem;
+    color: #fbbf24;
+  }
+
+  .na-mobile-toc-chevron {
+    margin-left: auto;
+    font-size: 1.1rem;
+    color: rgba(248,245,253,0.4);
+    transition: transform 0.2s;
+  }
+
+  .na-mobile-toc[open] .na-mobile-toc-chevron {
+    transform: rotate(180deg);
+  }
+
+  .na-mobile-toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0.5rem;
+    border-top: 1px solid rgba(248,245,253,0.07);
+  }
+
+  .na-mobile-toc-list li a {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    color: rgba(248,245,253,0.7);
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .na-mobile-toc-list li a:hover {
+    color: #fbbf24;
+    background: rgba(251,191,36,0.06);
   }
 }
 

@@ -152,7 +152,27 @@
             <span class="na-read">6 min read</span>
           </div>
         </div>
+        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
+          <span class="material-symbols-outlined">auto_awesome</span>
+          Ask Newsy AI about this article
+        </button>
       </div>
+
+      <details class="na-mobile-toc">
+        <summary class="na-mobile-toc-trigger">
+          <span class="material-symbols-outlined">menu_book</span>
+          In this article
+          <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span>
+        </summary>
+        <ol class="na-mobile-toc-list">
+          <li><a href="#search-changed">Search has already changed</a></li>
+          <li><a href="#geo">GEO: generative engine optimisation</a></li>
+          <li><a href="#ai-at-work">AI at work: day-to-day</a></li>
+          <li><a href="#ai-igaming">AI in iGaming specifically</a></li>
+          <li><a href="#h2-2026">What to watch in H2 2026</a></li>
+          <li><a href="#takeaway">The practical takeaway</a></li>
+        </ol>
+      </details>
 
       <hr class="na-divider">
 
@@ -420,6 +440,18 @@
   <script src="/scripts.js" defer></script>
   <script src="/news-chat.js" defer></script>
   <script src="/news-recent.js" defer></script>
+  <script>
+    document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
+      const trigger = document.querySelector('.nc-trigger');
+      if (trigger) trigger.click();
+    });
+    // Close mobile TOC links after click
+    document.querySelectorAll('.na-mobile-toc-list a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.querySelector('.na-mobile-toc').removeAttribute('open');
+      });
+    });
+  </script>
   <script>
     // TOC scroll spy
     (function () {
