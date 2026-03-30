@@ -49,15 +49,18 @@
       : '';
 
     a.innerHTML = `
-      <div class="nr-card-meta">
-        <span class="nr-category">${post.category}</span>
-        <span class="nr-date">${post.dateDisplay}</span>
-        <span class="nr-read">${post.readTime}</span>
+      ${post.image ? `<div class="nr-card-img"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>` : ''}
+      <div class="nr-card-body">
+        <div class="nr-card-meta">
+          <span class="nr-category">${post.category}</span>
+          <span class="nr-date">${post.dateDisplay}</span>
+          <span class="nr-read">${post.readTime}</span>
+        </div>
+        <p class="nr-title">${post.title}</p>
+        <p class="nr-excerpt">${post.excerpt}</p>
+        ${tagsHtml}
+        <span class="nr-arrow" aria-hidden="true">Read article →</span>
       </div>
-      <p class="nr-title">${post.title}</p>
-      <p class="nr-excerpt">${post.excerpt}</p>
-      ${tagsHtml}
-      <span class="nr-arrow" aria-hidden="true">Read article →</span>
     `;
     grid.appendChild(a);
   });
