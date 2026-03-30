@@ -5,7 +5,7 @@
 .nr-section {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 0;
+  padding: 3rem 1.5rem 3rem;
   border-top: 1px solid rgba(248,245,253,0.07);
 }
 
@@ -144,7 +144,7 @@
 /* ── Responsive ────────────────────────────────────────── */
 @media (max-width: 640px) {
   .nr-section {
-    padding: 2rem 1rem 0;
+    padding: 2rem 1rem 2rem;
   }
 
   .nr-grid {
