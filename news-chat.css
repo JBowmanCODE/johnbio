@@ -84,6 +84,13 @@
   transform: rotate(180deg);
 }
 
+.nc-trigger-close {
+  display: none;
+  font-size: 1.1rem;
+  color: rgba(248,245,253,0.5);
+  flex-shrink: 0;
+}
+
 /* ── Expanded panel ────────────────────────────────────── */
 .nc-panel {
   display: grid;
@@ -322,11 +329,16 @@
     flex-direction: column;
     transform: translateY(100%);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #0d0d14;
   }
 
   .nc-card.open {
     transform: translateY(0);
   }
+
+  .nc-trigger-chevron { display: none; }
+  .nc-card.open .nc-trigger-close { display: block; }
+  .nc-trigger-close:hover { color: #fff; }
 
   .nc-panel {
     flex: 1;
