@@ -29,7 +29,6 @@
         <span class="nc-trigger-sub">Ask questions about this article</span>
       </span>
       <span class="material-symbols-outlined nc-trigger-chevron" aria-hidden="true">expand_more</span>
-      <span class="material-symbols-outlined nc-trigger-close" aria-hidden="true">close</span>
     </button>
 
     <div class="nc-panel" id="nc-panel" aria-hidden="true">
@@ -92,6 +91,7 @@
 
   // ── Element refs ─────────────────────────────────────────────────────────
   const triggerBtn  = card.querySelector('.nc-trigger');
+  const chevronEl   = card.querySelector('.nc-trigger-chevron');
   const panel       = card.querySelector('#nc-panel');
   const messagesEl  = card.querySelector('#nc-messages');
   const welcomeEl   = card.querySelector('#nc-welcome');
@@ -113,13 +113,14 @@
     if (isMobile()) overlay.classList.add('visible');
     if (!isMobile()) {
       setTimeout(() => {
-        const rect = card.getBoundingClientRect();
         const inputRect = inputEl.getBoundingClientRect();
-        if (inputRect.bottom > window.innerHeight) {
-          window.scrollBy({ top: inputRect.bottom - window.innerHeight + 24, behavior: 'smooth' });
+        if (inputRect.bottom > window.innerHeight || inputRect.top < 80) {
+          const target = window.scrollY + inputRect.bottom - window.innerHeight + 32;
+          window.scrollTo({ top: target, behavior: 'smooth' });
         }
       }, 320);
     }
+    chevronEl.textContent = 'close';
     inputEl.focus();
   }
 
@@ -129,11 +130,21 @@
     triggerBtn.setAttribute('aria-expanded', 'false');
     panel.setAttribute('aria-hidden', 'true');
     overlay.classList.remove('visible');
+    chevronEl.textContent = 'expand_more';
   }
 
   overlay.addEventListener('click', close);
 
   triggerBtn.addEventListener('click', () => isOpen ? close() : open());
+
+  // TOC "Ask Newsy AI" link opens the panel
+  const tocNewsyLink = document.getElementById('toc-newsy-link');
+  if (tocNewsyLink) {
+    tocNewsyLink.addEventListener('click', e => {
+      e.preventDefault();
+      if (!isOpen) open();
+    });
+  }
 
   // ── Starter chips ─────────────────────────────────────────────────────────
   starters.forEach(chip => {

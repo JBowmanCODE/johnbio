@@ -920,6 +920,18 @@ main.na-wrap {
   color: #ff007f;
 }
 
+/* Newsy AI TOC entry */
+.nc-toc-link {
+  color: rgba(255,0,127,0.7) !important;
+  margin-top: 0.5rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 0.75rem !important;
+}
+.nc-toc-link:hover {
+  color: #ff007f !important;
+  background: rgba(255,0,127,0.08) !important;
+}
+
 /* ── Author row with profile image ── */
 .na-author {
   display: flex;
