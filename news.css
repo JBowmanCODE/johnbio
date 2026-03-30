@@ -869,6 +869,14 @@ main.na-wrap {
   align-items: center;
   gap: 0.75rem;
   margin-top: 1.5rem;
+  justify-content: space-between;
+}
+
+.na-author .na-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
 }
 
 .na-author-img {
