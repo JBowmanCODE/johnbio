@@ -385,9 +385,12 @@ main.na-wrap {
 
 .na-lede-img img {
   width: 100%;
+  max-width: 100%;
   display: block;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  pointer-events: none;
+  user-select: none;
 }
 
 @media (max-width: 640px) {
