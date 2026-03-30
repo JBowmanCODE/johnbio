@@ -79,6 +79,27 @@ function initializeHeader() {
 
     initializeTerminal();
     initializeIdeasModal();
+    initializeMobileDrawer();
+}
+
+function initializeMobileDrawer() {
+    const btn     = document.getElementById('hamburger-btn');
+    const drawer  = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('mobile-drawer-overlay');
+    const closeBtn = document.getElementById('mobile-drawer-close');
+    if (!btn || !drawer) return;
+
+    function openDrawer()  { drawer.classList.add('open'); overlay.classList.add('open'); drawer.setAttribute('aria-hidden', 'false'); }
+    function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true'); }
+
+    btn.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    const mobileIdeasBtn    = document.getElementById('mobile-ideas-btn');
+    const mobileTerminalBtn = document.getElementById('mobile-terminal-btn');
+    if (mobileIdeasBtn)    mobileIdeasBtn.addEventListener('click', () => { closeDrawer(); document.getElementById('ideas-btn').click(); });
+    if (mobileTerminalBtn) mobileTerminalBtn.addEventListener('click', () => { closeDrawer(); document.getElementById('terminal-btn').click(); });
 }
 
 function initializeIdeasModal() {
