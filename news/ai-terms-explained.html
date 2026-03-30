@@ -155,7 +155,36 @@
             <span class="na-read">9 min read</span>
           </div>
         </div>
+        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
+          <span class="material-symbols-outlined">auto_awesome</span>
+          Ask Newsy AI about this article
+        </button>
       </div>
+
+      <details class="na-mobile-toc">
+        <summary class="na-mobile-toc-trigger">
+          <span class="material-symbols-outlined">menu_book</span>
+          In this article
+          <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span>
+        </summary>
+        <ol class="na-mobile-toc-list">
+          <li><a href="#what-is-ai">What is AI?</a></li>
+          <li><a href="#machine-learning">Machine Learning (ML)</a></li>
+          <li><a href="#deep-learning">Deep Learning</a></li>
+          <li><a href="#neural-networks">Neural Networks</a></li>
+          <li><a href="#llms">Large Language Models</a></li>
+          <li><a href="#generative-ai">Generative AI</a></li>
+          <li><a href="#nlp">Natural Language Processing</a></li>
+          <li><a href="#foundation-models">Foundation Models</a></li>
+          <li><a href="#fine-tuning">Fine-Tuning</a></li>
+          <li><a href="#rag">RAG</a></li>
+          <li><a href="#hallucination">Hallucination</a></li>
+          <li><a href="#tokens">Tokens</a></li>
+          <li><a href="#prompts">Prompt Engineering</a></li>
+          <li><a href="#agi">AGI</a></li>
+          <li><a href="#quick-reference">Quick Reference</a></li>
+        </ol>
+      </details>
 
       <hr class="na-divider">
 
@@ -557,6 +586,17 @@
   <script src="/scripts.js" defer></script>
   <script src="/news-chat.js" defer></script>
   <script src="/news-recent.js" defer></script>
+  <script>
+    document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
+      const trigger = document.querySelector('.nc-trigger');
+      if (trigger) trigger.click();
+    });
+    document.querySelectorAll('.na-mobile-toc-list a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.querySelector('.na-mobile-toc').removeAttribute('open');
+      });
+    });
+  </script>
   <script>
     // TOC scroll spy
     (function () {
