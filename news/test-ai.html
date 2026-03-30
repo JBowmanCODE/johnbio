@@ -460,7 +460,7 @@
         if (audioCtx) return;
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         analyser = audioCtx.createAnalyser();
-        analyser.fftSize = 64;
+        analyser.fftSize = 256;
         source = audioCtx.createMediaElementSource(player);
         source.connect(analyser);
         analyser.connect(audioCtx.destination);
@@ -471,39 +471,24 @@
         const w = waveCanvas.offsetWidth;
         if (waveCanvas.width !== w) waveCanvas.width = w;
         const h = waveCanvas.height;
-
-        // Get audio energy to drive amplitude
-        const freqBuf = new Uint8Array(analyser.frequencyBinCount);
-        analyser.getByteFrequencyData(freqBuf);
-        let energy = 0;
-        for (let i = 0; i < freqBuf.length; i++) energy += freqBuf[i];
-        energy = Math.max(0.5, (energy / freqBuf.length) / 255 * 2);
-
+        const buf = new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(buf);
         waveCtx.clearRect(0, 0, w, h);
-
-        const t = Date.now() / 1000;
-        const lines = [
-          { freq: 1.8, speed: 0.9,  phase: 0,    amp: 1.0,  alpha: 0.95, width: 2   },
-          { freq: 2.4, speed: 1.3,  phase: 1.2,  amp: 0.85, alpha: 0.6,  width: 1.5 },
-          { freq: 1.2, speed: 0.6,  phase: 2.5,  amp: 0.75, alpha: 0.4,  width: 1.5 },
-          { freq: 3.1, speed: 1.7,  phase: 0.7,  amp: 0.65, alpha: 0.25, width: 1   },
-          { freq: 0.9, speed: 0.4,  phase: 3.8,  amp: 0.8,  alpha: 0.2,  width: 1   },
-        ];
-
-        lines.forEach(({ freq, speed, phase, amp, alpha, width }) => {
+        const barW = 3, gap = 2, total = barW + gap;
+        const bars = Math.floor(w / total);
+        // Use the lower half of frequency bins where voice energy lives
+        const usableBins = Math.floor(buf.length * 0.6);
+        for (let i = 0; i < bars; i++) {
+          const binIdx = Math.floor((i / bars) * usableBins);
+          const val = buf[binIdx] / 255;
+          const barH = Math.max(3, val * h);
+          const x = i * total;
+          const y = (h - barH) / 2;
+          waveCtx.fillStyle = `rgba(251,191,36,${0.5 + val * 0.5})`;
           waveCtx.beginPath();
-          waveCtx.strokeStyle = `rgba(251,191,36,${alpha})`;
-          waveCtx.lineWidth = width;
-          waveCtx.lineJoin = 'round';
-          const pts = 120;
-          for (let i = 0; i <= pts; i++) {
-            const x = (i / pts) * w;
-            const normX = (i / pts) * Math.PI * 2 * freq;
-            const y = (h / 2) + Math.sin(normX + t * speed + phase) * (h / 2 - 3) * amp * energy;
-            i === 0 ? waveCtx.moveTo(x, y) : waveCtx.lineTo(x, y);
-          }
-          waveCtx.stroke();
-        });
+          waveCtx.roundRect(x, y, barW, barH, 1.5);
+          waveCtx.fill();
+        }
       }
 
       function stopWave() {
