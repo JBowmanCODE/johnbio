@@ -307,6 +307,52 @@
 
 .nc-send .material-symbols-outlined { font-size: 0.95rem; }
 
+/* ── Mobile bottom sheet ───────────────────────────────── */
+@media (max-width: 960px) {
+  .nc-card {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    margin: 0;
+    border-radius: 16px 16px 0 0;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nc-card.open {
+    transform: translateY(0);
+  }
+
+  .nc-panel {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nc-messages {
+    height: auto;
+    flex: 1;
+  }
+
+  .nc-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9998;
+  }
+
+  .nc-overlay.visible {
+    display: block;
+  }
+}
+
 /* ── Footer ────────────────────────────────────────────── */
 .nc-footer {
   text-align: center;

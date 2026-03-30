@@ -67,10 +67,27 @@
     </div>
   `;
 
-  // ── Mount into sidebar ───────────────────────────────────────────────────
+  // ── Mount into sidebar (desktop) or body (mobile) ───────────────────────
   const sidebar = document.querySelector('.na-sidebar');
   if (!sidebar) return; // only run on article pages with sidebar
   sidebar.appendChild(card);
+
+  // On mobile, move card to body so it's not hidden inside display:none sidebar
+  const overlay = document.createElement('div');
+  overlay.className = 'nc-overlay';
+  document.body.appendChild(overlay);
+
+  function isMobile() { return window.innerWidth <= 960; }
+
+  function ensureMobileMount() {
+    if (isMobile() && card.parentNode !== document.body) {
+      document.body.appendChild(card);
+    } else if (!isMobile() && card.parentNode !== sidebar) {
+      sidebar.appendChild(card);
+    }
+  }
+  ensureMobileMount();
+  window.addEventListener('resize', ensureMobileMount);
 
   // ── Element refs ─────────────────────────────────────────────────────────
   const triggerBtn  = card.querySelector('.nc-trigger');
@@ -84,14 +101,15 @@
   // ── Toggle open / close ──────────────────────────────────────────────────
   function open() {
     isOpen = true;
+    ensureMobileMount();
     card.classList.add('open');
     triggerBtn.setAttribute('aria-expanded', 'true');
     panel.setAttribute('aria-hidden', 'false');
-    // Grab article text once
     if (!articleText) {
       const body = document.querySelector('.na-body');
       articleText = body ? body.innerText.trim() : '';
     }
+    if (isMobile()) overlay.classList.add('visible');
     inputEl.focus();
   }
 
@@ -100,7 +118,10 @@
     card.classList.remove('open');
     triggerBtn.setAttribute('aria-expanded', 'false');
     panel.setAttribute('aria-hidden', 'true');
+    overlay.classList.remove('visible');
   }
+
+  overlay.addEventListener('click', close);
 
   triggerBtn.addEventListener('click', () => isOpen ? close() : open());
 
