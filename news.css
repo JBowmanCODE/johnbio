@@ -391,6 +391,11 @@ main.na-wrap {
   object-fit: cover;
   pointer-events: none;
   user-select: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.na-lede-img:hover img {
+  box-shadow: 0 0 30px 8px rgba(251,191,36,0.7), 0 0 60px 16px rgba(251,191,36,0.3);
 }
 
 @media (max-width: 640px) {
@@ -511,6 +516,14 @@ main.na-wrap {
 .na-speed-btns {
   display: flex;
   gap: 0.3rem;
+}
+
+.na-waveform {
+  display: block;
+  height: 36px;
+  width: 200px;
+  flex-shrink: 1;
+  min-width: 60px;
 }
 
 .na-speed-btn {
@@ -867,6 +880,11 @@ main.na-wrap {
   border: 2px solid rgba(255,0,127,0.5);
   box-shadow: 0 0 0 3px rgba(255,0,127,0.1);
   flex-shrink: 0;
+  transition: transform 0.6s ease;
+}
+
+.na-author a:hover .na-author-img {
+  transform: rotate(360deg);
 }
 
 .na-author-details {
