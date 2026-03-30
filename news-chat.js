@@ -112,7 +112,13 @@
     }
     if (isMobile()) overlay.classList.add('visible');
     if (!isMobile()) {
-      setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+      setTimeout(() => {
+        const rect = card.getBoundingClientRect();
+        const inputRect = inputEl.getBoundingClientRect();
+        if (inputRect.bottom > window.innerHeight) {
+          window.scrollBy({ top: inputRect.bottom - window.innerHeight + 24, behavior: 'smooth' });
+        }
+      }, 320);
     }
     inputEl.focus();
   }
