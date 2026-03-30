@@ -8,7 +8,7 @@ const NEWS_POSTS = [
     dateDisplay: '30 March 2026',
     readTime: '9 min read',
     tags: ['AI', 'LLMs', 'Machine Learning', 'Beginners Guide'],
-    image: null
+    image: '/news/images/ai-terms-explained.webp'
   },
   {
     slug: '/news/test-ai',
@@ -19,6 +19,6 @@ const NEWS_POSTS = [
     dateDisplay: '29 March 2026',
     readTime: '6 min read',
     tags: ['AI', 'LLMs', 'GEO', 'Search'],
-    image: null
+    image: '/news/images/ai-in-2026.webp'
   }
 ];

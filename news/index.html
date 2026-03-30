@@ -154,14 +154,17 @@
           a.href = post.slug;
           a.setAttribute('aria-label', post.title);
           a.innerHTML = `
-            <div class="ns-card-meta">
-              <span class="ns-category-tag">${post.category}</span>
-              <span class="ns-card-date">${post.dateDisplay}</span>
-              <span class="ns-card-read">${post.readTime}</span>
+            ${post.image ? `<div class="ns-card-img"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>` : ''}
+            <div class="ns-card-body">
+              <div class="ns-card-meta">
+                <span class="ns-category-tag">${post.category}</span>
+                <span class="ns-card-date">${post.dateDisplay}</span>
+                <span class="ns-card-read">${post.readTime}</span>
+              </div>
+              <h2 class="ns-card-title">${post.title}</h2>
+              <p class="ns-card-excerpt">${post.excerpt}</p>
+              ${post.tags && post.tags.length ? `<div class="ns-card-tags">${post.tags.map(t => `<span class="ns-tag">${t}</span>`).join('')}</div>` : ''}
             </div>
-            <h2 class="ns-card-title">${post.title}</h2>
-            <p class="ns-card-excerpt">${post.excerpt}</p>
-            ${post.tags && post.tags.length ? `<div class="ns-card-tags">${post.tags.map(t => `<span class="ns-tag">${t}</span>`).join('')}</div>` : ''}
           `;
           grid.appendChild(a);
         });
