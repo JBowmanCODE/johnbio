@@ -15,7 +15,7 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/favicon.png">
-  <meta name="description" content="Confused by AI jargon? This plain-English guide explains the difference between AI, ML, LLMs, deep learning, and every other term you keep hearing, so you can finally follow the conversation.">
+  <meta name="description" content="Confused by AI jargon? This plain-English guide explains AI, ML, LLMs, deep learning, RAG, hallucination and more - in the right order, so each definition builds on the last.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://johnb.io/news/ai-terms-explained">
   <meta name="author" content="John Bowman">
@@ -24,6 +24,9 @@
   <meta property="og:url" content="https://johnb.io/news/ai-terms-explained">
   <meta property="og:description" content="Confused by AI jargon? This plain-English guide explains the difference between AI, ML, LLMs, deep learning, and every other term you keep hearing.">
   <meta property="og:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+  <meta property="article:published_time" content="2026-03-30">
+  <meta property="article:author" content="https://www.linkedin.com/in/john-bowman/">
+  <meta property="article:section" content="AI">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AI Terms Explained: A Beginner's Guide to LLMs, ML and Every Buzzword in Between">
   <meta name="twitter:description" content="Confused by AI jargon? This plain-English guide explains AI, ML, LLMs, deep learning, RAG, hallucination and more in plain English.">
@@ -195,7 +198,7 @@
 
         <p>AI is the umbrella. Everything else in this article sits underneath it.</p>
 
-        <p>The term has been around since the 1950s, but it became a household word after tools like ChatGPT, Google Gemini, and Midjourney brought it into everyday life. When most people say "AI" today, they usually mean a specific type called <strong>generative AI</strong>, but we'll get to that.</p>
+        <p>The term has been around since the 1950s, but it became a household word after tools like <a href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a>, <a href="https://gemini.google.com" target="_blank" rel="noopener">Google Gemini</a>, and <a href="https://www.midjourney.com" target="_blank" rel="noopener">Midjourney</a> brought it into everyday life. When most people say "AI" today, they usually mean a specific type called <strong>generative AI</strong>, but we'll get to that.</p>
 
         <h2 id="machine-learning">Machine Learning (ML): How AI Actually Gets Smart</h2>
 
@@ -234,10 +237,10 @@
 
         <p>Examples of LLMs include:</p>
         <ul>
-          <li><strong>GPT-4 / GPT-4o</strong> (OpenAI, powers ChatGPT)</li>
-          <li><strong>Claude</strong> (Anthropic)</li>
-          <li><strong>Gemini</strong> (Google)</li>
-          <li><strong>Llama</strong> (Meta)</li>
+          <li><a href="https://openai.com/gpt-4" target="_blank" rel="noopener"><strong>GPT-4 / GPT-4o</strong></a> (OpenAI, powers ChatGPT)</li>
+          <li><a href="https://www.anthropic.com/claude" target="_blank" rel="noopener"><strong>Claude</strong></a> (Anthropic)</li>
+          <li><a href="https://gemini.google.com" target="_blank" rel="noopener"><strong>Gemini</strong></a> (Google)</li>
+          <li><a href="https://ai.meta.com/llama/" target="_blank" rel="noopener"><strong>Llama</strong></a> (Meta)</li>
         </ul>
 
         <p>LLMs can write, summarise, translate, answer questions, write code, and hold conversations. They're the backbone of most AI tools you encounter day-to-day. You can compare Claude, OpenAI and Gemini side by side using the <a href="/lm-chat">LLM Chat</a> tool.</p>
@@ -248,13 +251,13 @@
 
         <p>LLMs are a type of generative AI focused on text. But generative AI also includes:</p>
         <ul>
-          <li><strong>Image generators</strong> like Midjourney, DALL-E, and Stable Diffusion</li>
-          <li><strong>Video generators</strong> like Sora and Veo</li>
-          <li><strong>Music generators</strong> like Suno and Udio</li>
-          <li><strong>Code generators</strong> like GitHub Copilot</li>
+          <li><strong>Image generators</strong> like <a href="https://www.midjourney.com" target="_blank" rel="noopener">Midjourney</a>, <a href="https://openai.com/dall-e-3" target="_blank" rel="noopener">DALL-E</a>, and <a href="https://stability.ai" target="_blank" rel="noopener">Stable Diffusion</a></li>
+          <li><strong>Video generators</strong> like <a href="https://openai.com/sora" target="_blank" rel="noopener">Sora</a> and <a href="https://deepmind.google/technologies/veo/" target="_blank" rel="noopener">Veo</a></li>
+          <li><strong>Music generators</strong> like <a href="https://suno.com" target="_blank" rel="noopener">Suno</a> and <a href="https://www.udio.com" target="_blank" rel="noopener">Udio</a></li>
+          <li><strong>Code generators</strong> like <a href="https://github.com/features/copilot" target="_blank" rel="noopener">GitHub Copilot</a></li>
         </ul>
 
-        <p>The defining feature is that these systems don't just classify or retrieve - they create something new based on a prompt.</p>
+        <p>The defining feature is that these systems don't just classify or retrieve - they create something new based on a prompt. If you want to try generating text content yourself, the <a href="/editor">AI Copyeditor</a> and <a href="/content-repurposer">Content Repurposer</a> are good starting points.</p>
 
         <h2 id="nlp">Natural Language Processing (NLP): Teaching Machines to Understand Language</h2>
 
@@ -274,7 +277,7 @@
 
         <p><strong>Fine-tuning</strong> is the process of taking a foundation model and training it further on a specific, smaller dataset to make it better at a particular task.</p>
 
-        <p>A general LLM might be fine-tuned on legal documents to make it better at legal drafting, or on customer service conversations to make it a better support agent. The original model's broad knowledge stays intact, but it gains specialist ability in a particular domain.</p>
+        <p>A general LLM might be fine-tuned on legal documents to make it better at legal drafting, or on customer service conversations to make it a better support agent. The original model's broad knowledge stays intact, but it gains specialist ability in a particular domain. For a broader look at how these models are being applied in practice right now, see <a href="/news/test-ai">AI in 2026: How LLMs Are Reshaping Search, Content and Work</a>.</p>
 
         <h2 id="rag">RAG (Retrieval-Augmented Generation): Giving AI Access to Current Information</h2>
 
@@ -282,7 +285,7 @@
 
         <p><strong>Retrieval-augmented generation (RAG)</strong> solves this by connecting an LLM to an external knowledge source. When you ask a question, the system retrieves relevant documents from that source first, then passes them to the LLM along with your question. The model uses those documents to generate a grounded, accurate answer.</p>
 
-        <p>RAG is widely used in enterprise AI tools because it lets businesses plug their own data into an AI system without retraining the whole model.</p>
+        <p>RAG is widely used in enterprise AI tools because it lets businesses plug their own data into an AI system without retraining the whole model. Search tools like <a href="https://www.perplexity.ai" target="_blank" rel="noopener">Perplexity</a> use RAG to provide cited, up-to-date answers - which is why they can reference recent news where a standard LLM cannot.</p>
 
         <h2 id="hallucination">Hallucination: When AI Makes Things Up</h2>
 
@@ -304,7 +307,7 @@
 
         <p><strong>Prompt engineering</strong> is the practice of crafting prompts deliberately to get better outputs. This might involve giving the model a role to play, providing examples of the format you want, specifying constraints, or breaking a complex task into steps.</p>
 
-        <p>It sounds simple, but skilled prompt engineering can dramatically improve the quality of what you get back from an AI system.</p>
+        <p>It sounds simple, but skilled prompt engineering can dramatically improve the quality of what you get back from an AI system. The <a href="/editor">AI Copyeditor</a> on this site is a good example of structured prompting in action - it uses a carefully engineered system prompt to produce consistent editing outputs rather than generic rewrites.</p>
 
         <h2 id="agi">AGI: The Goal That Doesn't Exist Yet</h2>
 
@@ -312,7 +315,7 @@
 
         <p>Current AI systems - including the most capable LLMs - are <strong>narrow AI</strong>. They're very good at specific things (language, image generation, coding) but they don't have general reasoning, consciousness, or the ability to learn an entirely new skill from scratch the way humans do.</p>
 
-        <p>AGI remains an open research goal. Depending on who you ask, it's anywhere from five years to fifty years away, or possibly never. You'll see it discussed a lot, but no one has built it yet.</p>
+        <p>AGI remains an open research goal. Organisations like <a href="https://openai.com" target="_blank" rel="noopener">OpenAI</a> and <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a> are explicitly working towards it, with safety research running alongside capability work. Depending on who you ask, it's anywhere from five years to fifty years away, or possibly never. You'll see it discussed a lot, but no one has built it yet.</p>
 
         <h2 id="quick-reference">Quick Reference: All the Terms at a Glance</h2>
 
