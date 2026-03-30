@@ -468,22 +468,30 @@
 
       function drawWave() {
         waveRaf = requestAnimationFrame(drawWave);
+        // Sync canvas pixel width to its display width
+        const w = waveCanvas.offsetWidth;
+        if (waveCanvas.width !== w) waveCanvas.width = w;
+        const h = waveCanvas.height;
         const buf = new Uint8Array(analyser.frequencyBinCount);
-        analyser.getByteFrequencyData(buf);
-        const w = waveCanvas.width, h = waveCanvas.height;
+        analyser.getByteTimeDomainData(buf);
         waveCtx.clearRect(0, 0, w, h);
-        const barW = 3, gap = 2, total = barW + gap;
-        const bars = Math.floor(w / total);
-        const step = Math.floor(buf.length / bars);
-        for (let i = 0; i < bars; i++) {
-          const val = buf[i * step] / 255;
-          const barH = Math.max(3, val * h);
-          const x = i * total;
-          const y = (h - barH) / 2;
-          waveCtx.fillStyle = `rgba(251,191,36,${0.4 + val * 0.6})`;
+        const numLines = 3;
+        const offsets = [0, 0.3, 0.6];
+        const alphas  = [0.9, 0.55, 0.3];
+        const amps    = [1, 0.7, 0.5];
+        for (let l = 0; l < numLines; l++) {
           waveCtx.beginPath();
-          waveCtx.roundRect(x, y, barW, barH, 1.5);
-          waveCtx.fill();
+          waveCtx.strokeStyle = `rgba(251,191,36,${alphas[l]})`;
+          waveCtx.lineWidth = l === 0 ? 2 : 1.5;
+          waveCtx.lineJoin = 'round';
+          const sliceW = w / buf.length;
+          for (let i = 0; i < buf.length; i++) {
+            const v = (buf[i] / 128 - 1) * amps[l];
+            const x = i * sliceW;
+            const y = (h / 2) + v * (h / 2 - 2) + Math.sin(i * 0.3 + offsets[l] * 10) * 2;
+            i === 0 ? waveCtx.moveTo(x, y) : waveCtx.lineTo(x, y);
+          }
+          waveCtx.stroke();
         }
       }
 

@@ -381,6 +381,11 @@ main.na-wrap {
   flex-shrink: 0;
   border-radius: 0.6rem;
   overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.na-lede-img:hover {
+  box-shadow: 0 0 30px 8px rgba(251,191,36,0.7), 0 0 60px 16px rgba(251,191,36,0.3);
 }
 
 .na-lede-img img {
@@ -391,11 +396,6 @@ main.na-wrap {
   object-fit: cover;
   pointer-events: none;
   user-select: none;
-  transition: box-shadow 0.3s ease;
-}
-
-.na-lede-img:hover img {
-  box-shadow: 0 0 30px 8px rgba(251,191,36,0.7), 0 0 60px 16px rgba(251,191,36,0.3);
 }
 
 @media (max-width: 640px) {
@@ -521,9 +521,8 @@ main.na-wrap {
 .na-waveform {
   display: block;
   height: 36px;
-  width: 200px;
-  flex-shrink: 1;
-  min-width: 60px;
+  flex: 1;
+  min-width: 0;
 }
 
 .na-speed-btn {
