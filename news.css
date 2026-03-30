@@ -459,6 +459,64 @@ main.na-wrap {
   min-width: 0;
 }
 
+.na-audio-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.na-volume {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.na-mute-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(251,191,36,0.7);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.na-mute-btn:hover { color: #fbbf24; }
+.na-mute-btn .material-symbols-outlined { font-size: 1.1rem; }
+
+.na-volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(248,245,253,0.15);
+  outline: none;
+  cursor: pointer;
+}
+
+.na-volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fbbf24;
+  cursor: pointer;
+}
+
+.na-volume-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fbbf24;
+  border: none;
+  cursor: pointer;
+}
+
 .na-audio-label {
   font-size: 0.72rem;
   font-weight: 700;
