@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Terms Explained: A Beginner's Guide to LLMs, ML and Every Buzzword - JohnB.io</title>
+  <meta name="keywords" content="AI terms explained, LLM meaning, machine learning explained, deep learning, generative AI, NLP, RAG, hallucination AI, prompt engineering, AGI, AI glossary, AI jargon">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <meta name="description" content="Confused by AI jargon? This plain-English guide explains the difference between AI, ML, LLMs, deep learning, and every other term you keep hearing, so you can finally follow the conversation.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/news/ai-terms-explained">
+  <meta name="author" content="John Bowman">
+  <meta property="og:title" content="AI Terms Explained: A Beginner's Guide to LLMs, ML and Every Buzzword in Between">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://johnb.io/news/ai-terms-explained">
+  <meta property="og:description" content="Confused by AI jargon? This plain-English guide explains the difference between AI, ML, LLMs, deep learning, and every other term you keep hearing.">
+  <meta property="og:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Terms Explained: A Beginner's Guide to LLMs, ML and Every Buzzword in Between">
+  <meta name="twitter:description" content="Confused by AI jargon? This plain-English guide explains AI, ML, LLMs, deep learning, RAG, hallucination and more in plain English.">
+  <meta name="twitter:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/header.css">
+  <link rel="stylesheet" href="/footer.css">
+  <link rel="stylesheet" href="/news.css?v=3">
+  <link rel="stylesheet" href="/news-chat.css">
+  <style>
+    main.na-wrap { max-width: 1120px; margin: 0 auto; padding-top: 120px; padding-left: 1.5rem; padding-right: 1.5rem; box-sizing: border-box; width: 100%; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Terms Explained: A Beginner's Guide to LLMs, ML, and Every Buzzword in Between",
+    "description": "Confused by AI jargon? This plain-English guide explains the difference between AI, ML, LLMs, deep learning, and every other term you keep hearing, so you can finally follow the conversation.",
+    "url": "https://johnb.io/news/ai-terms-explained",
+    "datePublished": "2026-03-30",
+    "dateModified": "2026-03-30",
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://www.linkedin.com/in/john-bowman/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://johnb.io"
+    },
+    "keywords": "AI terms, LLM explained, machine learning, deep learning, generative AI, NLP, RAG, hallucination, prompt engineering, AGI",
+    "articleSection": "AI"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What's the difference between AI and machine learning?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI is the broad field covering any computer system that mimics human intelligence. Machine learning is one approach within it - a way of building AI systems that learn from data rather than following pre-written rules. All machine learning is AI, but AI also includes older rule-based systems that predate ML."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is ChatGPT an LLM?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ChatGPT is a product built on top of an LLM (GPT-4 or GPT-4o, depending on which version you use). The LLM is the underlying model that understands and generates language. ChatGPT is the interface and product layer built on top of it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is generative AI vs traditional AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Traditional AI often classified, predicted, or retrieved information. Generative AI creates new content - text, images, video, audio or code. The distinction is in the output: traditional AI might tell you whether an email is spam; generative AI writes you a new email."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do AI tools sometimes give wrong answers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because LLMs generate text based on statistical patterns, not genuine understanding. This can produce hallucinations - confident-sounding responses that are factually wrong. The model doesn't 'know' things the way humans do; it generates text that is statistically likely given what came before. Always verify important information from an authoritative source."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does training an AI mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Training is the process of exposing a model to large amounts of data and adjusting its internal parameters until it gets good at the task it's being trained for. It's computationally expensive and typically done by AI labs, not end users. Once trained, the model can be used via an API or product interface."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="ns-ambient"></div>
+
+  <main class="na-wrap">
+  <div class="na-layout">
+  <div class="na-content">
+
+    <div class="na-breadcrumb" role="navigation" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+      <a href="/news">News</a>
+      <span class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+      <span class="na-bc-current">AI Terms Explained</span>
+    </div>
+
+    <article itemscope itemtype="https://schema.org/Article">
+      <div class="na-header">
+        <div class="na-header-meta">
+          <span class="na-category-tag">AI</span>
+          <span class="na-date" itemprop="datePublished" content="2026-03-30">30 March 2026</span>
+          <span class="na-read">9 min read</span>
+        </div>
+        <h1 class="na-title" itemprop="headline">AI Terms Explained: A Beginner's Guide to LLMs, ML, and Every Buzzword in Between</h1>
+        <p class="na-lede">Confused by AI jargon? This plain-English guide explains the difference between AI, ML, LLMs, deep learning, and every other term you keep hearing - in the right order, so each definition builds on the last.</p>
+        <div class="na-author">
+          <a href="/about" aria-label="About John Bowman"><img src="/images/JohnB.webp" alt="John Bowman" class="na-author-img"></a>
+          <div class="na-author-details">
+            <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a>
+            <span class="na-author-role">Owner / AI Developer</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="na-divider">
+
+      <div class="na-audio" aria-label="Listen to this article">
+        <span class="na-audio-icon material-symbols-outlined" aria-hidden="true">headphones</span>
+        <div class="na-audio-info">
+          <span class="na-audio-label">Listen to this article</span>
+          <audio id="na-player" src="/news/ai-terms-explained.mp3" preload="none"></audio>
+          <div class="na-audio-controls">
+            <button class="na-skip-btn" id="na-skip-back" aria-label="Skip back 10 seconds">
+              <span class="material-symbols-outlined">replay_10</span>
+            </button>
+            <button class="na-audio-btn" id="na-play-btn" aria-label="Play article audio">
+              <span class="material-symbols-outlined">play_arrow</span>
+            </button>
+            <button class="na-skip-btn" id="na-skip-fwd" aria-label="Skip forward 10 seconds">
+              <span class="material-symbols-outlined">forward_10</span>
+            </button>
+            <div class="na-speed-btns" role="group" aria-label="Playback speed">
+              <button class="na-speed-btn active" data-speed="1">1x</button>
+              <button class="na-speed-btn" data-speed="1.5">1.5x</button>
+              <button class="na-speed-btn" data-speed="2">2x</button>
+            </div>
+          </div>
+          <div class="na-audio-progress-wrap">
+            <span class="na-audio-time" id="na-current-time">0:00</span>
+            <div class="na-progress" id="na-progress" role="slider" aria-label="Audio progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="na-progress-fill" id="na-progress-fill"></div>
+              <div class="na-progress-thumb" id="na-progress-thumb"></div>
+            </div>
+            <span class="na-audio-time na-audio-duration" id="na-duration">0:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="na-body" itemprop="articleBody">
+
+        <p>If you've tried to read about artificial intelligence recently, you've probably hit a wall of acronyms within the first paragraph. AI. ML. LLM. NLP. RAG. It sounds like alphabet soup, and most articles assume you already know what these things mean.</p>
+
+        <p>This guide doesn't. We'll start from scratch and explain every major term in plain English, in the right order, so each definition builds on the last.</p>
+
+        <h2 id="what-is-ai">The Big Picture: What Is Artificial Intelligence (AI)?</h2>
+
+        <p>Artificial intelligence is the broadest term on this list. It refers to any computer system designed to perform tasks that would normally require human intelligence. That includes recognising speech, making decisions, translating languages, writing text, or identifying objects in an image.</p>
+
+        <p>AI is the umbrella. Everything else in this article sits underneath it.</p>
+
+        <p>The term has been around since the 1950s, but it became a household word after tools like ChatGPT, Google Gemini, and Midjourney brought it into everyday life. When most people say "AI" today, they usually mean a specific type called <strong>generative AI</strong>, but we'll get to that.</p>
+
+        <h2 id="machine-learning">Machine Learning (ML): How AI Actually Gets Smart</h2>
+
+        <p>Most AI systems don't work by following a list of rules written by a programmer. Instead, they learn from data. That process is called <strong>machine learning</strong>.</p>
+
+        <p>Here's the key idea: instead of telling a system exactly what to do in every situation, you show it thousands (or millions) of examples and let it figure out the patterns itself.</p>
+
+        <p>A classic example is spam filtering. You don't manually write rules for every possible spam email. You feed the system millions of real emails, labelled "spam" or "not spam," and it learns to spot the difference on its own.</p>
+
+        <p>Machine learning is a subset of AI. All machine learning is AI, but not all AI is machine learning. Some older AI systems did use hard-coded rules. ML replaced most of those because it scales far better.</p>
+
+        <h2 id="deep-learning">Deep Learning: ML With More Layers</h2>
+
+        <p><strong>Deep learning</strong> is a type of machine learning that uses structures loosely inspired by the human brain, called <strong>neural networks</strong>. The "deep" part refers to the many layers these networks have, each one processing the data in a slightly different way before passing it on.</p>
+
+        <p>Deep learning is what made modern AI genuinely powerful. It's the technology behind image recognition, voice assistants, real-time translation, and almost every impressive AI demo you've seen in the last decade.</p>
+
+        <p>To summarise the hierarchy so far:</p>
+        <ul>
+          <li><strong>AI</strong> is the broad field</li>
+          <li><strong>Machine learning</strong> is one approach within AI</li>
+          <li><strong>Deep learning</strong> is one technique within machine learning</li>
+        </ul>
+
+        <h2 id="neural-networks">Neural Networks: The Engine Under the Hood</h2>
+
+        <p>A <strong>neural network</strong> is the mathematical structure that deep learning is built on. It's made up of layers of interconnected nodes (loosely analogous to neurons in a brain) that process and transform data as it passes through.</p>
+
+        <p>You don't need to understand how they work mathematically to understand AI, but it helps to know they exist. When you hear terms like "layers," "weights," or "parameters," they're all referring to parts of a neural network.</p>
+
+        <h2 id="llms">Large Language Models (LLMs): The Tech Behind ChatGPT</h2>
+
+        <p>This is probably the term you hear most right now. A <strong>large language model</strong> is a type of deep learning model trained on enormous amounts of text. Its job is to predict what words should come next in a sequence, and through doing that at massive scale, it develops a surprisingly broad ability to understand and generate human language.</p>
+
+        <p>The "large" part refers to the number of <strong>parameters</strong> - the internal settings the model adjusts during training. Modern LLMs have hundreds of billions of parameters.</p>
+
+        <p>Examples of LLMs include:</p>
+        <ul>
+          <li><strong>GPT-4 / GPT-4o</strong> (OpenAI, powers ChatGPT)</li>
+          <li><strong>Claude</strong> (Anthropic)</li>
+          <li><strong>Gemini</strong> (Google)</li>
+          <li><strong>Llama</strong> (Meta)</li>
+        </ul>
+
+        <p>LLMs can write, summarise, translate, answer questions, write code, and hold conversations. They're the backbone of most AI tools you encounter day-to-day. You can compare Claude, OpenAI and Gemini side by side using the <a href="/lm-chat">LLM Chat</a> tool.</p>
+
+        <h2 id="generative-ai">Generative AI: AI That Creates Things</h2>
+
+        <p><strong>Generative AI</strong> refers to AI systems that produce new content - whether that's text, images, audio, video, or code.</p>
+
+        <p>LLMs are a type of generative AI focused on text. But generative AI also includes:</p>
+        <ul>
+          <li><strong>Image generators</strong> like Midjourney, DALL-E, and Stable Diffusion</li>
+          <li><strong>Video generators</strong> like Sora and Veo</li>
+          <li><strong>Music generators</strong> like Suno and Udio</li>
+          <li><strong>Code generators</strong> like GitHub Copilot</li>
+        </ul>
+
+        <p>The defining feature is that these systems don't just classify or retrieve - they create something new based on a prompt.</p>
+
+        <h2 id="nlp">Natural Language Processing (NLP): Teaching Machines to Understand Language</h2>
+
+        <p><strong>Natural language processing</strong> is the field of AI concerned with helping computers understand, interpret, and generate human language.</p>
+
+        <p>It's an older term that predates the LLM era. Before large language models existed, NLP covered everything from basic spell-checkers and sentiment analysis tools to early chatbots and search algorithms.</p>
+
+        <p>Today, LLMs have absorbed most of what NLP used to handle and taken it much further. But NLP remains the correct umbrella term for the broader discipline. If a researcher is working on language-related AI problems, they're working in NLP.</p>
+
+        <h2 id="foundation-models">Foundation Models: The Base Layer</h2>
+
+        <p>A <strong>foundation model</strong> is a large model trained on broad data that can be adapted for many different tasks. LLMs are a type of foundation model, but the term also covers models trained on images, audio, and other data types.</p>
+
+        <p>The idea is that you train one large, general-purpose model at great expense, and then use it as a starting point for many specific applications. This is more efficient than building a new model from scratch for every use case.</p>
+
+        <h2 id="fine-tuning">Fine-Tuning: Specialising a General Model</h2>
+
+        <p><strong>Fine-tuning</strong> is the process of taking a foundation model and training it further on a specific, smaller dataset to make it better at a particular task.</p>
+
+        <p>A general LLM might be fine-tuned on legal documents to make it better at legal drafting, or on customer service conversations to make it a better support agent. The original model's broad knowledge stays intact, but it gains specialist ability in a particular domain.</p>
+
+        <h2 id="rag">RAG (Retrieval-Augmented Generation): Giving AI Access to Current Information</h2>
+
+        <p>LLMs are trained on data up to a certain date. After that, they don't automatically know about new events, internal documents, or proprietary data.</p>
+
+        <p><strong>Retrieval-augmented generation (RAG)</strong> solves this by connecting an LLM to an external knowledge source. When you ask a question, the system retrieves relevant documents from that source first, then passes them to the LLM along with your question. The model uses those documents to generate a grounded, accurate answer.</p>
+
+        <p>RAG is widely used in enterprise AI tools because it lets businesses plug their own data into an AI system without retraining the whole model.</p>
+
+        <h2 id="hallucination">Hallucination: When AI Makes Things Up</h2>
+
+        <p><strong>Hallucination</strong> is what happens when an AI generates confident-sounding information that is simply wrong. It might cite a paper that doesn't exist, give you a fake statistic, or describe events that never happened.</p>
+
+        <p>It's one of the most important limitations of current LLMs to understand. They don't "know" things the way humans do. They generate text that is statistically likely to follow from what came before. Sometimes that produces brilliant results. Sometimes it produces plausible-sounding nonsense.</p>
+
+        <p>This is why human oversight still matters - and why RAG has become popular: grounding the model in real documents reduces the chance it invents an answer.</p>
+
+        <h2 id="tokens">Tokens: How AI Models Read Text</h2>
+
+        <p>LLMs don't process text word by word. They break it into chunks called <strong>tokens</strong>, which can be a word, part of a word, punctuation, or even a space.</p>
+
+        <p>The word "unbelievable" might become two or three tokens. A short sentence might be 10 tokens. This matters because LLMs have a <strong>context window</strong> - a limit on how many tokens they can process at once. Think of it as the model's working memory. Longer context windows mean the model can handle longer documents or conversations without losing track.</p>
+
+        <h2 id="prompts">Prompt and Prompt Engineering: How You Talk to AI</h2>
+
+        <p>A <strong>prompt</strong> is the input you give to an AI model - the question, instruction, or text you provide to get a response.</p>
+
+        <p><strong>Prompt engineering</strong> is the practice of crafting prompts deliberately to get better outputs. This might involve giving the model a role to play, providing examples of the format you want, specifying constraints, or breaking a complex task into steps.</p>
+
+        <p>It sounds simple, but skilled prompt engineering can dramatically improve the quality of what you get back from an AI system.</p>
+
+        <h2 id="agi">AGI: The Goal That Doesn't Exist Yet</h2>
+
+        <p><strong>Artificial general intelligence (AGI)</strong> refers to a hypothetical AI system capable of performing any intellectual task a human can, at human level or above, across all domains.</p>
+
+        <p>Current AI systems - including the most capable LLMs - are <strong>narrow AI</strong>. They're very good at specific things (language, image generation, coding) but they don't have general reasoning, consciousness, or the ability to learn an entirely new skill from scratch the way humans do.</p>
+
+        <p>AGI remains an open research goal. Depending on who you ask, it's anywhere from five years to fifty years away, or possibly never. You'll see it discussed a lot, but no one has built it yet.</p>
+
+        <h2 id="quick-reference">Quick Reference: All the Terms at a Glance</h2>
+
+        <table class="na-table">
+          <thead>
+            <tr>
+              <th>Term</th>
+              <th>What It Means</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>AI</strong></td>
+              <td>Artificial intelligence. The broad field covering any computer system that mimics human intelligence.</td>
+            </tr>
+            <tr>
+              <td><strong>Machine Learning (ML)</strong></td>
+              <td>A type of AI that learns from data rather than following pre-written rules.</td>
+            </tr>
+            <tr>
+              <td><strong>Deep Learning</strong></td>
+              <td>A type of ML using multi-layered neural networks. Powers most modern AI.</td>
+            </tr>
+            <tr>
+              <td><strong>Neural Network</strong></td>
+              <td>The mathematical structure deep learning is built on.</td>
+            </tr>
+            <tr>
+              <td><strong>LLM</strong></td>
+              <td>Large language model. A deep learning model trained on huge amounts of text to understand and generate language.</td>
+            </tr>
+            <tr>
+              <td><strong>Generative AI</strong></td>
+              <td>AI that creates new content: text, images, video, audio, or code.</td>
+            </tr>
+            <tr>
+              <td><strong>NLP</strong></td>
+              <td>Natural language processing. The field focused on making computers understand human language.</td>
+            </tr>
+            <tr>
+              <td><strong>Foundation Model</strong></td>
+              <td>A large, general-purpose model used as a base for many applications.</td>
+            </tr>
+            <tr>
+              <td><strong>Fine-Tuning</strong></td>
+              <td>Training a foundation model further on specific data to specialise it.</td>
+            </tr>
+            <tr>
+              <td><strong>RAG</strong></td>
+              <td>Retrieval-augmented generation. Connecting an LLM to external documents for grounded, up-to-date answers.</td>
+            </tr>
+            <tr>
+              <td><strong>Hallucination</strong></td>
+              <td>When an AI generates confident but factually wrong information.</td>
+            </tr>
+            <tr>
+              <td><strong>Token</strong></td>
+              <td>A chunk of text that LLMs process. Words, parts of words, or punctuation.</td>
+            </tr>
+            <tr>
+              <td><strong>Prompt</strong></td>
+              <td>The input you give to an AI model.</td>
+            </tr>
+            <tr>
+              <td><strong>Prompt Engineering</strong></td>
+              <td>The practice of crafting prompts to get better AI outputs.</td>
+            </tr>
+            <tr>
+              <td><strong>AGI</strong></td>
+              <td>Artificial general intelligence. A hypothetical future AI with human-level ability across all tasks.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 id="faq">Frequently Asked Questions</h2>
+
+        <dl class="info-faq">
+          <div class="faq-item">
+            <dt>What's the difference between AI and machine learning?</dt>
+            <dd>AI is the broad field. Machine learning is one approach within it. All machine learning is AI, but AI also includes older rule-based systems that predate ML.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Is ChatGPT an LLM?</dt>
+            <dd>ChatGPT is a product built on top of an LLM (GPT-4 or GPT-4o, depending on which version you use). The LLM is the underlying model. ChatGPT is the interface and product layer on top of it.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>What is generative AI vs traditional AI?</dt>
+            <dd>Traditional AI often classified, predicted, or retrieved information. Generative AI creates new content. The distinction is in the output: traditional AI might tell you whether an email is spam; generative AI writes you a new email.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Why do AI tools sometimes give wrong answers?</dt>
+            <dd>Because LLMs generate text based on statistical patterns, not genuine understanding. This can produce hallucinations - confident-sounding responses that are factually wrong. Always verify important information from an authoritative source.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>What does "training" an AI mean?</dt>
+            <dd>Training is the process of exposing a model to large amounts of data and adjusting its internal parameters until it gets good at the task it's being trained for. It's computationally expensive and typically done by AI labs, not end users.</dd>
+          </div>
+        </dl>
+
+        <p><em>Understanding these terms won't make you an AI engineer, but it will help you cut through the hype, ask better questions, and make smarter decisions about where AI can actually help you.</em></p>
+
+      </div>
+
+      <div class="na-tags" aria-label="Tags">
+        <span class="na-tag">AI</span>
+        <span class="na-tag">LLMs</span>
+        <span class="na-tag">Machine Learning</span>
+        <span class="na-tag">Beginners Guide</span>
+        <span class="na-tag">Generative AI</span>
+        <span class="na-tag">RAG</span>
+      </div>
+    </article>
+
+    <a href="/news" class="na-back">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Back to News
+    </a>
+
+  </div><!-- /.na-content -->
+
+  <aside class="na-sidebar" aria-label="Table of contents">
+    <nav class="na-toc">
+      <p class="na-toc-title">In this article</p>
+      <ol class="na-toc-list">
+        <li><a href="#what-is-ai" data-num="1">What is AI?</a></li>
+        <li><a href="#machine-learning" data-num="2">Machine Learning (ML)</a></li>
+        <li><a href="#deep-learning" data-num="3">Deep Learning</a></li>
+        <li><a href="#neural-networks" data-num="4">Neural Networks</a></li>
+        <li><a href="#llms" data-num="5">Large Language Models</a></li>
+        <li><a href="#generative-ai" data-num="6">Generative AI</a></li>
+        <li><a href="#nlp" data-num="7">Natural Language Processing</a></li>
+        <li><a href="#foundation-models" data-num="8">Foundation Models</a></li>
+        <li><a href="#fine-tuning" data-num="9">Fine-Tuning</a></li>
+        <li><a href="#rag" data-num="10">RAG</a></li>
+        <li><a href="#hallucination" data-num="11">Hallucination</a></li>
+        <li><a href="#tokens" data-num="12">Tokens</a></li>
+        <li><a href="#prompts" data-num="13">Prompt Engineering</a></li>
+        <li><a href="#agi" data-num="14">AGI</a></li>
+        <li><a href="#quick-reference" data-num="15">Quick Reference</a></li>
+        <li><a href="#faq" data-num="16">FAQ</a></li>
+      </ol>
+    </nav>
+  </aside>
+
+  </div><!-- /.na-layout -->
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <section class="tool-info" aria-label="Article reference" itemscope itemtype="https://schema.org/Article">
+    <meta itemprop="headline" content="AI Terms Explained: A Beginner's Guide to LLMs, ML, and Every Buzzword in Between">
+    <meta itemprop="url" content="https://johnb.io/news/ai-terms-explained">
+
+    <div class="tool-info-inner">
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">What This Article Covers</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>The AI hierarchy from top to bottom.</strong> The article establishes the relationship between AI, machine learning, deep learning and neural networks - explaining how each term sits within the broader field and what distinguishes them from each other.</li>
+              <li><strong>What LLMs are and why they matter.</strong> Large language models are the technology behind ChatGPT, Claude and Gemini. The article explains how they work, what "parameters" means, and how they differ from earlier AI approaches.</li>
+              <li><strong>Generative AI vs traditional AI.</strong> Covers what makes generative AI different - the ability to create new content rather than classify or retrieve it - and the major categories: text, image, video, audio and code generation.</li>
+              <li><strong>Practical concepts every AI user should know.</strong> RAG, hallucination, tokens, context windows, fine-tuning and foundation models are all explained in plain English with real-world context for why each one matters.</li>
+              <li><strong>Prompt engineering and AGI.</strong> How to communicate effectively with AI models through better prompting, and what AGI actually means - including why it doesn't exist yet and why the timeline is genuinely uncertain.</li>
+              <li><strong>A complete quick-reference table.</strong> All 15 key terms defined in a single scannable table, plus an FAQ covering the most common points of confusion.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Takeaways</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>AI is the umbrella, ML and deep learning sit beneath it.</strong> Not all AI is machine learning, and not all ML is deep learning. Understanding the hierarchy prevents a lot of confusion when reading about AI.</li>
+              <li><strong>LLMs work by predicting the next token, not by "knowing" things.</strong> This is the root cause of both their impressive capabilities and their tendency to hallucinate. They generate statistically likely text, not verified facts.</li>
+              <li><strong>Hallucination is a structural limitation, not a bug to be patched.</strong> RAG (retrieval-augmented generation) reduces it by grounding the model in real documents, but human review remains essential for high-stakes outputs.</li>
+              <li><strong>Most AI tools you use day-to-day are narrow AI, not AGI.</strong> Current LLMs are very capable within their domains but lack general reasoning. AGI - a system that can do anything a human can - has not been built yet.</li>
+              <li><strong>Prompt engineering has real, measurable impact on output quality.</strong> How you structure a question, what context you provide, and what constraints you set all affect what you get back from an AI system.</li>
+              <li><strong>Foundation models and fine-tuning explain the current AI product landscape.</strong> Most AI products are fine-tuned versions of a small number of large foundation models, not independently trained systems.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>What's the difference between AI and machine learning?</dt>
+                <dd>AI is the broad field covering any computer system that mimics human intelligence. Machine learning is one specific approach within it - building systems that learn from data rather than following pre-written rules. All ML is AI, but not all AI is ML.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Is ChatGPT an LLM?</dt>
+                <dd>ChatGPT is a product built on top of an LLM (GPT-4 or GPT-4o, depending on which version you use). The LLM is the underlying model that understands and generates language. ChatGPT is the interface and product layer built on top of it. The same distinction applies to Claude (the model) and any Claude-powered product.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What is generative AI vs traditional AI?</dt>
+                <dd>Traditional AI classified, predicted, or retrieved existing information. Generative AI creates new content - text, images, video or code. A spam filter is traditional AI. ChatGPT writing you an email is generative AI.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Why do AI tools sometimes give wrong answers?</dt>
+                <dd>Because LLMs generate text based on statistical patterns, not genuine understanding or memory. This produces hallucinations - confident-sounding responses that are factually wrong. The model doesn't look facts up; it generates the text most likely to follow given what came before. Always verify important claims from an authoritative source.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What does "training" an AI mean?</dt>
+                <dd>Training is the process of exposing a model to large amounts of data and repeatedly adjusting its internal parameters until it performs well on the target task. It's computationally expensive - requiring thousands of specialised chips running for weeks or months - and is typically done by AI labs, not end users.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://openai.com/research/gpt-4" target="_blank" rel="noopener">OpenAI - GPT-4 Technical Report</a>. OpenAI.com. Accessed March 2026.</li>
+              <li><a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Anthropic - Claude model family overview</a>. Anthropic.com. Accessed March 2026.</li>
+              <li><a href="https://deepmind.google/technologies/gemini/" target="_blank" rel="noopener">Google DeepMind - Gemini</a>. DeepMind.Google. Accessed March 2026.</li>
+              <li><a href="https://ai.meta.com/llama/" target="_blank" rel="noopener">Meta AI - Llama open-source models</a>. AI.Meta.com. Accessed March 2026.</li>
+              <li><a href="https://github.com/features/copilot" target="_blank" rel="noopener">GitHub Copilot - AI coding assistant</a>. GitHub.com. Accessed March 2026.</li>
+              <li><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Vaswani et al. - Attention Is All You Need (Transformer architecture paper)</a>. arXiv.org. 2017.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/news-data.js"></script>
+  <script src="/scripts.js" defer></script>
+  <script src="/news-chat.js" defer></script>
+  <script src="/news-recent.js" defer></script>
+  <script>
+    // TOC scroll spy
+    (function () {
+      const headings = document.querySelectorAll('.na-body h2[id]');
+      const links = document.querySelectorAll('.na-toc-list a');
+      if (!headings.length || !links.length) return;
+      const map = {};
+      links.forEach(a => { map[a.getAttribute('href').slice(1)] = a; });
+      function onScroll() {
+        let active = headings[0].id; // default to first
+        headings.forEach(h => {
+          if (h.getBoundingClientRect().top <= 120) active = h.id;
+        });
+        links.forEach(a => a.classList.remove('active'));
+        if (map[active]) map[active].classList.add('active');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+  <script>
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+  <script>
+    (function () {
+      const player       = document.getElementById('na-player');
+      const playBtn      = document.getElementById('na-play-btn');
+      const playIcon     = playBtn.querySelector('.material-symbols-outlined');
+      const skipBack     = document.getElementById('na-skip-back');
+      const skipFwd      = document.getElementById('na-skip-fwd');
+      const speedBtns    = document.querySelectorAll('.na-speed-btn');
+      const progressBar  = document.getElementById('na-progress');
+      const progressFill = document.getElementById('na-progress-fill');
+      const progressThumb= document.getElementById('na-progress-thumb');
+      const currentTime  = document.getElementById('na-current-time');
+      const durationEl   = document.getElementById('na-duration');
+
+      function fmt(s) {
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        return `${m}:${sec.toString().padStart(2, '0')}`;
+      }
+
+      player.addEventListener('loadedmetadata', () => {
+        durationEl.textContent = fmt(player.duration);
+      });
+
+      player.addEventListener('timeupdate', () => {
+        if (!player.duration) return;
+        const pct = (player.currentTime / player.duration) * 100;
+        progressFill.style.width = pct + '%';
+        progressThumb.style.left = pct + '%';
+        progressBar.setAttribute('aria-valuenow', Math.round(pct));
+        currentTime.textContent = fmt(player.currentTime);
+      });
+
+      player.addEventListener('ended', () => {
+        playIcon.textContent = 'play_arrow';
+        playBtn.setAttribute('aria-label', 'Play article audio');
+      });
+
+      playBtn.addEventListener('click', () => {
+        if (player.paused) {
+          player.play();
+          playIcon.textContent = 'pause';
+          playBtn.setAttribute('aria-label', 'Pause article audio');
+        } else {
+          player.pause();
+          playIcon.textContent = 'play_arrow';
+          playBtn.setAttribute('aria-label', 'Play article audio');
+        }
+      });
+
+      skipBack.addEventListener('click', () => { player.currentTime = Math.max(0, player.currentTime - 10); });
+      skipFwd.addEventListener('click',  () => { player.currentTime = Math.min(player.duration || 0, player.currentTime + 10); });
+
+      speedBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          player.playbackRate = parseFloat(btn.dataset.speed);
+          speedBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+
+      let isDragging = false;
+      function seek(e) {
+        const rect = progressBar.getBoundingClientRect();
+        const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+        const pct = Math.max(0, Math.min(1, x / rect.width));
+        player.currentTime = pct * (player.duration || 0);
+      }
+      progressBar.addEventListener('mousedown',  e => { isDragging = true; seek(e); });
+      progressBar.addEventListener('touchstart', e => { isDragging = true; seek(e); }, { passive: true });
+      window.addEventListener('mousemove',  e => { if (isDragging) seek(e); });
+      window.addEventListener('touchmove',  e => { if (isDragging) seek(e); }, { passive: true });
+      window.addEventListener('mouseup',  () => { isDragging = false; });
+      window.addEventListener('touchend', () => { isDragging = false; });
+    })();
+  </script>
+</body>
+</html>

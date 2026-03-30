@@ -546,6 +546,43 @@ main.na-wrap {
   margin-bottom: 0.5rem;
 }
 
+/* Reference table */
+.na-body .na-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.88rem;
+}
+
+.na-body .na-table th {
+  text-align: left;
+  padding: 0.6rem 0.85rem;
+  background: rgba(255,0,127,0.08);
+  color: rgba(248,245,253,0.55);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(248,245,253,0.1);
+}
+
+.na-body .na-table td {
+  padding: 0.65rem 0.85rem;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(248,245,253,0.06);
+  color: rgba(248,245,253,0.8);
+  line-height: 1.5;
+}
+
+.na-body .na-table tr:last-child td {
+  border-bottom: none;
+}
+
+.na-body .na-table td:first-child {
+  white-space: nowrap;
+  color: #f8f5fd;
+}
+
 .na-body blockquote {
   border-left: 3px solid rgba(251,191,36,0.5);
   margin: 1.5rem 0;
