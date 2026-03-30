@@ -385,7 +385,7 @@ main.na-wrap {
 }
 
 .na-lede-img:hover {
-  box-shadow: 0 0 30px 8px rgba(251,191,36,0.7), 0 0 60px 16px rgba(251,191,36,0.3);
+  box-shadow: 0 0 15px 4px rgba(251,191,36,0.35), 0 0 30px 8px rgba(251,191,36,0.15);
 }
 
 .na-lede-img img {
