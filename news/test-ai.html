@@ -422,12 +422,12 @@
       const map = {};
       links.forEach(a => { map[a.getAttribute('href').slice(1)] = a; });
       function onScroll() {
-        let active = null;
+        let active = headings[0].id; // default to first
         headings.forEach(h => {
-          if (h.getBoundingClientRect().top <= 140) active = h.id;
+          if (h.getBoundingClientRect().top <= 120) active = h.id;
         });
         links.forEach(a => a.classList.remove('active'));
-        if (active && map[active]) map[active].classList.add('active');
+        if (map[active]) map[active].classList.add('active');
       }
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
