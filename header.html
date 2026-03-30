@@ -55,9 +55,91 @@
         <span class="material-symbols-outlined">terminal</span>
       </button>
       <button class="btn-primary" onclick="window.location.href='/about'">About Me</button>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 </header>
+
+<!-- ── MOBILE DRAWER ── -->
+<div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+  <div class="mobile-drawer-inner">
+    <div class="mobile-drawer-top">
+      <span class="mobile-drawer-logo">JohnB.io</span>
+      <button class="mobile-drawer-close" id="mobile-drawer-close" aria-label="Close menu">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <nav class="mobile-drawer-nav">
+      <a href="/news" class="mobile-drawer-link">
+        <span class="material-symbols-outlined">article</span> News
+      </a>
+      <button class="mobile-drawer-link" id="mobile-ideas-btn">
+        <span class="material-symbols-outlined">lightbulb</span> Submit Idea
+      </button>
+      <button class="mobile-drawer-link" id="mobile-terminal-btn">
+        <span class="material-symbols-outlined">terminal</span> Terminal
+      </button>
+      <a href="/about" class="mobile-drawer-link">
+        <span class="material-symbols-outlined">person</span> About Me
+      </a>
+
+      <div class="mobile-drawer-section">
+        <span class="mobile-drawer-section-label mobile-drawer-section-label--cyan">AI Tools</span>
+        <a href="/transcripts" class="mobile-drawer-item"><span class="material-symbols-outlined">subtitles</span>YouTube Transcripts</a>
+        <a href="/editor" class="mobile-drawer-item"><span class="material-symbols-outlined">edit_note</span>AI Copyeditor</a>
+        <a href="/genz" class="mobile-drawer-item"><span class="material-symbols-outlined">translate</span>Gen Z Translator</a>
+        <a href="/aitocv" class="mobile-drawer-item"><span class="material-symbols-outlined">badge</span>AI CV Enhancer</a>
+        <a href="/rai" class="mobile-drawer-item"><span class="material-symbols-outlined">policy</span>Governance Framework</a>
+        <a href="/lm-chat" class="mobile-drawer-item"><span class="material-symbols-outlined">forum</span>LLM Chat</a>
+        <a href="/text-to-speech" class="mobile-drawer-item"><span class="material-symbols-outlined">graphic_eq</span>Text to Speech</a>
+      </div>
+
+      <div class="mobile-drawer-section">
+        <span class="mobile-drawer-section-label mobile-drawer-section-label--pink">Python / JS</span>
+        <a href="/text-to-voice" class="mobile-drawer-item"><span class="material-symbols-outlined">record_voice_over</span>Text to Voice</a>
+        <a href="/calculator" class="mobile-drawer-item"><span class="material-symbols-outlined">calculate</span>Bill Calculator</a>
+        <a href="/bankroll" class="mobile-drawer-item"><span class="material-symbols-outlined">casino</span>Poker Bankroll</a>
+        <a href="/ebay" class="mobile-drawer-item"><span class="material-symbols-outlined">sell</span>eBay Tracker</a>
+        <a href="/zzmystery" class="mobile-drawer-item"><span class="material-symbols-outlined">sports_esports</span>Zig Zag Drop</a>
+        <a href="/igaming-compliance" class="mobile-drawer-item"><span class="material-symbols-outlined">public</span>iGaming Compliance Map</a>
+        <a href="/bonus-calculator" class="mobile-drawer-item"><span class="material-symbols-outlined">percent</span>Bonus Cost Calculator</a>
+        <a href="/rg-generator" class="mobile-drawer-item"><span class="material-symbols-outlined">shield</span>RG Message Generator</a>
+      </div>
+
+      <div class="mobile-drawer-section">
+        <span class="mobile-drawer-section-label mobile-drawer-section-label--green">Digital AI Tools</span>
+        <a href="/content-repurposer" class="mobile-drawer-item"><span class="material-symbols-outlined">recycling</span>Content Repurposer</a>
+        <a href="/promo-copy" class="mobile-drawer-item"><span class="material-symbols-outlined">auto_awesome</span>iGaming Promo Copy</a>
+        <a href="/igaming-jargon" class="mobile-drawer-item"><span class="material-symbols-outlined">translate</span>iGaming Jargon Translator</a>
+        <a href="/llms-generator" class="mobile-drawer-item"><span class="material-symbols-outlined">robot_2</span>LLMs.txt Generator</a>
+      </div>
+    </nav>
+  </div>
+</div>
+<div class="mobile-drawer-overlay" id="mobile-drawer-overlay"></div>
+
+<script>
+  (function () {
+    const btn     = document.getElementById('hamburger-btn');
+    const drawer  = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('mobile-drawer-overlay');
+    const close   = document.getElementById('mobile-drawer-close');
+
+    function openDrawer()  { drawer.classList.add('open'); overlay.classList.add('open'); drawer.setAttribute('aria-hidden','false'); }
+    function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); }
+
+    btn.addEventListener('click', openDrawer);
+    close.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    // Wire mobile ideas + terminal buttons to existing modals
+    document.getElementById('mobile-ideas-btn').addEventListener('click', () => { closeDrawer(); document.getElementById('ideas-btn').click(); });
+    document.getElementById('mobile-terminal-btn').addEventListener('click', () => { closeDrawer(); document.getElementById('terminal-btn').click(); });
+  })();
+</script>
 
 <!-- ── IDEAS MODAL ── -->
 <div id="ideas-modal" class="ideas-modal" aria-hidden="true" role="dialog" aria-label="Submit an idea">
