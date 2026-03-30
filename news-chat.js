@@ -15,12 +15,6 @@
   let isOpen      = false;
   let isLoading   = false;
 
-  // ── Inject stylesheet ────────────────────────────────────────────────────
-  const link  = document.createElement('link');
-  link.rel    = 'stylesheet';
-  link.href   = '/news-chat.css';
-  document.head.appendChild(link);
-
   // ── Build card HTML ──────────────────────────────────────────────────────
   const card = document.createElement('div');
   card.className = 'nc-card';
