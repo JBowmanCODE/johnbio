@@ -113,11 +113,8 @@
     if (isMobile()) overlay.classList.add('visible');
     if (!isMobile()) {
       setTimeout(() => {
-        const inputRect = inputEl.getBoundingClientRect();
-        if (inputRect.bottom > window.innerHeight || inputRect.top < 80) {
-          const target = window.scrollY + inputRect.bottom - window.innerHeight + 32;
-          window.scrollTo({ top: target, behavior: 'smooth' });
-        }
+        const sidebar = card.closest('.na-sidebar') || card.parentNode;
+        sidebar.scrollTo({ top: sidebar.scrollHeight, behavior: 'smooth' });
       }, 320);
     }
     chevronEl.textContent = 'close';

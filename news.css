@@ -805,7 +805,11 @@ main.na-wrap {
   flex-shrink: 0;
   position: sticky;
   top: 96px;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+  scrollbar-width: none;
 }
+.na-sidebar::-webkit-scrollbar { display: none; }
 
 .na-toc {
   background: linear-gradient(145deg, rgba(255,0,127,0.06) 0%, rgba(19,19,24,0.9) 50%);
