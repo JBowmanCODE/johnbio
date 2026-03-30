@@ -68,6 +68,8 @@
     </div>
 
     <div class="ns-grid" id="ns-grid" aria-label="News posts"></div>
+
+    <nav class="ns-pagination" id="ns-pagination" aria-label="Page navigation"></nav>
   </main>
 
   <div id="footer-placeholder"></div>
@@ -76,41 +78,77 @@
   <script src="/news-data.js"></script>
   <script>
     (function () {
-      const grid = document.getElementById('ns-grid');
+      const PAGE_SIZE = 12;
+      const grid      = document.getElementById('ns-grid');
       const filtersEl = document.getElementById('ns-filters');
-      let activeFilter = 'all';
+      const pagNav    = document.getElementById('ns-pagination');
 
+      // ── Read URL params ───────────────────────────────────
+      function getParams() {
+        const p = new URLSearchParams(location.search);
+        return {
+          cat:  p.get('cat')  || 'all',
+          page: Math.max(1, parseInt(p.get('page') || '1', 10)),
+        };
+      }
+
+      // ── Build category filter buttons ─────────────────────
       const categories = [...new Set(NEWS_POSTS.map(p => p.category))];
       categories.forEach(cat => {
         const btn = document.createElement('button');
-        btn.className = 'ns-filter-btn';
+        btn.className    = 'ns-filter-btn';
         btn.dataset.filter = cat;
-        btn.textContent = cat;
+        btn.textContent  = cat;
         filtersEl.appendChild(btn);
       });
 
+      // ── Sync active filter button to URL ──────────────────
+      function syncFilterButtons(cat) {
+        filtersEl.querySelectorAll('.ns-filter-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.filter === cat);
+        });
+      }
+
+      // ── Filter click → update URL (reset to page 1) ───────
       filtersEl.addEventListener('click', e => {
         const btn = e.target.closest('.ns-filter-btn');
         if (!btn) return;
-        activeFilter = btn.dataset.filter;
-        filtersEl.querySelectorAll('.ns-filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderGrid();
+        const cat = btn.dataset.filter;
+        const url = new URL(location.href);
+        if (cat === 'all') { url.searchParams.delete('cat'); }
+        else               { url.searchParams.set('cat', cat); }
+        url.searchParams.delete('page');
+        history.pushState({}, '', url);
+        render();
       });
 
-      function renderGrid() {
-        const posts = activeFilter === 'all'
+      // ── Render grid + pagination ──────────────────────────
+      function render() {
+        const { cat, page } = getParams();
+        syncFilterButtons(cat);
+
+        const filtered = cat === 'all'
           ? NEWS_POSTS
-          : NEWS_POSTS.filter(p => p.category === activeFilter);
+          : NEWS_POSTS.filter(p => p.category === cat);
 
+        const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+        const safePage   = Math.min(page, totalPages);
+        const slice      = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
+
+        // Update page title for SEO
+        document.title = safePage > 1
+          ? `News and Insights - Page ${safePage} - JohnB.io`
+          : 'News and Insights - AI, iGaming and Digital - JohnB.io';
+
+        // ── Grid ──────────────────────────────────────────
         grid.innerHTML = '';
-
-        if (!posts.length) {
+        if (!slice.length) {
           grid.innerHTML = '<p class="ns-empty">No posts found.</p>';
+          pagNav.innerHTML = '';
           return;
         }
 
-        posts.forEach(post => {
+        slice.forEach(post => {
           const a = document.createElement('a');
           a.className = 'ns-card';
           a.href = post.slug;
@@ -123,13 +161,52 @@
             </div>
             <h2 class="ns-card-title">${post.title}</h2>
             <p class="ns-card-excerpt">${post.excerpt}</p>
-            ${post.tags.length ? `<div class="ns-card-tags">${post.tags.map(t => `<span class="ns-tag">${t}</span>`).join('')}</div>` : ''}
+            ${post.tags && post.tags.length ? `<div class="ns-card-tags">${post.tags.map(t => `<span class="ns-tag">${t}</span>`).join('')}</div>` : ''}
           `;
           grid.appendChild(a);
         });
+
+        // ── Pagination ────────────────────────────────────
+        pagNav.innerHTML = '';
+        if (totalPages <= 1) return;
+
+        function pageUrl(n) {
+          const u = new URL(location.href);
+          if (n <= 1) { u.searchParams.delete('page'); }
+          else        { u.searchParams.set('page', n); }
+          if (cat === 'all') { u.searchParams.delete('cat'); }
+          else               { u.searchParams.set('cat', cat); }
+          return u.toString();
+        }
+
+        if (safePage > 1) {
+          const prev = document.createElement('a');
+          prev.className = 'ns-page-btn';
+          prev.href = pageUrl(safePage - 1);
+          prev.innerHTML = '<span class="material-symbols-outlined">arrow_back</span> Previous';
+          prev.addEventListener('click', e => { e.preventDefault(); history.pushState({}, '', prev.href); render(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+          pagNav.appendChild(prev);
+        }
+
+        const info = document.createElement('span');
+        info.className = 'ns-page-info';
+        info.textContent = `Page ${safePage} of ${totalPages}`;
+        pagNav.appendChild(info);
+
+        if (safePage < totalPages) {
+          const next = document.createElement('a');
+          next.className = 'ns-page-btn';
+          next.href = pageUrl(safePage + 1);
+          next.innerHTML = 'Next <span class="material-symbols-outlined">arrow_forward</span>';
+          next.addEventListener('click', e => { e.preventDefault(); history.pushState({}, '', next.href); render(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+          pagNav.appendChild(next);
+        }
       }
 
-      renderGrid();
+      // Handle browser back/forward
+      window.addEventListener('popstate', render);
+
+      render();
     })();
   </script>
 </body>
