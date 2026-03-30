@@ -587,21 +587,23 @@
       function fmt(s) {
         const m = Math.floor(s / 60);
         const sec = Math.floor(s % 60);
-        return `${m}:${sec.toString().padStart(2, '0')}`;
+        return m + ':' + String(sec).padStart(2, '0');
       }
 
-      player.addEventListener('loadedmetadata', () => {
-        durationEl.textContent = fmt(player.duration);
-      });
-
-      player.addEventListener('timeupdate', () => {
+      function updateProgress() {
         if (!player.duration) return;
         const pct = (player.currentTime / player.duration) * 100;
         progressFill.style.width = pct + '%';
         progressThumb.style.left = pct + '%';
         progressBar.setAttribute('aria-valuenow', Math.round(pct));
         currentTime.textContent = fmt(player.currentTime);
+      }
+
+      player.addEventListener('loadedmetadata', () => {
+        durationEl.textContent = fmt(player.duration);
       });
+
+      player.addEventListener('timeupdate', updateProgress);
 
       player.addEventListener('ended', () => {
         playIcon.textContent = 'play_arrow';
@@ -623,6 +625,33 @@
       skipBack.addEventListener('click', () => { player.currentTime = Math.max(0, player.currentTime - 10); });
       skipFwd.addEventListener('click',  () => { player.currentTime = Math.min(player.duration || 0, player.currentTime + 10); });
 
+      // Scrub on click
+      progressBar.addEventListener('click', e => {
+        if (!player.duration) return;
+        const rect = progressBar.getBoundingClientRect();
+        const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        player.currentTime = pct * player.duration;
+      });
+
+      // Drag to scrub
+      let dragging = false;
+      progressBar.addEventListener('mousedown', () => { dragging = true; });
+      document.addEventListener('mousemove', e => {
+        if (!dragging || !player.duration) return;
+        const rect = progressBar.getBoundingClientRect();
+        const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        player.currentTime = pct * player.duration;
+      });
+      document.addEventListener('mouseup', () => { dragging = false; });
+
+      // Touch scrub
+      progressBar.addEventListener('touchmove', e => {
+        if (!player.duration) return;
+        const rect = progressBar.getBoundingClientRect();
+        const pct  = Math.max(0, Math.min(1, (e.touches[0].clientX - rect.left) / rect.width));
+        player.currentTime = pct * player.duration;
+      }, { passive: true });
+
       speedBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           player.playbackRate = parseFloat(btn.dataset.speed);
@@ -630,20 +659,6 @@
           btn.classList.add('active');
         });
       });
-
-      let isDragging = false;
-      function seek(e) {
-        const rect = progressBar.getBoundingClientRect();
-        const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
-        const pct = Math.max(0, Math.min(1, x / rect.width));
-        player.currentTime = pct * (player.duration || 0);
-      }
-      progressBar.addEventListener('mousedown',  e => { isDragging = true; seek(e); });
-      progressBar.addEventListener('touchstart', e => { isDragging = true; seek(e); }, { passive: true });
-      window.addEventListener('mousemove',  e => { if (isDragging) seek(e); });
-      window.addEventListener('touchmove',  e => { if (isDragging) seek(e); }, { passive: true });
-      window.addEventListener('mouseup',  () => { isDragging = false; });
-      window.addEventListener('touchend', () => { isDragging = false; });
     })();
   </script>
 </body>
