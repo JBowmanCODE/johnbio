@@ -363,6 +363,42 @@ main.na-wrap {
   padding-left: 1rem;
 }
 
+/* Article lede + image side by side */
+.na-lede-row {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.na-lede-row .na-lede {
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.na-lede-img {
+  width: 280px;
+  flex-shrink: 0;
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
+
+.na-lede-img img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+@media (max-width: 640px) {
+  .na-lede-row {
+    flex-direction: column;
+  }
+  .na-lede-img {
+    width: 100%;
+  }
+}
+
 /* Article hero image */
 .na-hero-img {
   width: 100%;
