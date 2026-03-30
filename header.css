@@ -54,6 +54,7 @@ header nav {
   display: flex; align-items: center;
 }
 .icon-btn:hover { color: var(--primary); }
+a.icon-btn { text-decoration: none; }
 
 .btn-primary {
   background: linear-gradient(135deg, var(--primary), var(--primary-container));
