@@ -29,6 +29,7 @@
         <span class="nc-trigger-sub">Ask questions about this article</span>
       </span>
       <span class="material-symbols-outlined nc-trigger-chevron" aria-hidden="true">expand_more</span>
+      <span class="material-symbols-outlined nc-trigger-close" aria-hidden="true">close</span>
     </button>
 
     <div class="nc-panel" id="nc-panel" aria-hidden="true">
