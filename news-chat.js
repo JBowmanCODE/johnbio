@@ -111,6 +111,9 @@
       articleText = body ? body.innerText.trim() : '';
     }
     if (isMobile()) overlay.classList.add('visible');
+    if (!isMobile()) {
+      setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+    }
     inputEl.focus();
   }
 
