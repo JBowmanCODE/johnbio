@@ -176,6 +176,7 @@
               <button class="na-speed-btn" data-speed="1.5">1.5x</button>
               <button class="na-speed-btn" data-speed="2">2x</button>
             </div>
+            <canvas id="na-waveform" class="na-waveform" width="200" height="36" aria-hidden="true"></canvas>
           </div>
           <div class="na-audio-progress-wrap">
             <span class="na-audio-time" id="na-current-time">0:00</span>
@@ -451,6 +452,45 @@
       const progressThumb= document.getElementById('na-progress-thumb');
       const currentTime  = document.getElementById('na-current-time');
       const durationEl   = document.getElementById('na-duration');
+      const waveCanvas   = document.getElementById('na-waveform');
+      const waveCtx      = waveCanvas.getContext('2d');
+      let audioCtx, analyser, source, waveRaf;
+
+      function initAudio() {
+        if (audioCtx) return;
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 64;
+        source = audioCtx.createMediaElementSource(player);
+        source.connect(analyser);
+        analyser.connect(audioCtx.destination);
+      }
+
+      function drawWave() {
+        waveRaf = requestAnimationFrame(drawWave);
+        const buf = new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(buf);
+        const w = waveCanvas.width, h = waveCanvas.height;
+        waveCtx.clearRect(0, 0, w, h);
+        const barW = 3, gap = 2, total = barW + gap;
+        const bars = Math.floor(w / total);
+        const step = Math.floor(buf.length / bars);
+        for (let i = 0; i < bars; i++) {
+          const val = buf[i * step] / 255;
+          const barH = Math.max(3, val * h);
+          const x = i * total;
+          const y = (h - barH) / 2;
+          waveCtx.fillStyle = `rgba(251,191,36,${0.4 + val * 0.6})`;
+          waveCtx.beginPath();
+          waveCtx.roundRect(x, y, barW, barH, 1.5);
+          waveCtx.fill();
+        }
+      }
+
+      function stopWave() {
+        if (waveRaf) cancelAnimationFrame(waveRaf);
+        waveCtx.clearRect(0, 0, waveCanvas.width, waveCanvas.height);
+      }
 
       function fmt(s) {
         const m = Math.floor(s / 60);
@@ -476,17 +516,22 @@
       player.addEventListener('ended', () => {
         playIcon.textContent = 'play_arrow';
         playBtn.setAttribute('aria-label', 'Play article audio');
+        stopWave();
       });
 
       playBtn.addEventListener('click', () => {
         if (player.paused) {
+          initAudio();
+          if (audioCtx.state === 'suspended') audioCtx.resume();
           player.play();
           playIcon.textContent = 'pause';
           playBtn.setAttribute('aria-label', 'Pause article audio');
+          drawWave();
         } else {
           player.pause();
           playIcon.textContent = 'play_arrow';
           playBtn.setAttribute('aria-label', 'Play article audio');
+          stopWave();
         }
       });
 
