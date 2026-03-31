@@ -76,9 +76,8 @@
 .nc-trigger-chevron {
   font-size: 1.1rem;
   color: rgba(248,245,253,0.25);
-  transition: background 0.2s, color 0.2s;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), background 0.2s, color 0.2s;
   flex-shrink: 0;
-  align-self: center;
   background: rgba(255,255,255,0.05);
   border-radius: 50%;
   width: 24px;
@@ -89,6 +88,7 @@
 }
 
 .nc-card.open .nc-trigger-chevron {
+  transform: rotate(180deg);
   background: rgba(255,0,127,0.12);
   color: rgba(248,245,253,0.6);
 }
