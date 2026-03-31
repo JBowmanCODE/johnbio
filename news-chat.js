@@ -117,7 +117,6 @@
         sidebar.scrollTo({ top: sidebar.scrollHeight, behavior: 'smooth' });
       }, 320);
     }
-    chevronEl.textContent = 'close';
     inputEl.focus();
   }
 
@@ -127,7 +126,6 @@
     triggerBtn.setAttribute('aria-expanded', 'false');
     panel.setAttribute('aria-hidden', 'true');
     overlay.classList.remove('visible');
-    chevronEl.textContent = 'expand_more';
   }
 
   overlay.addEventListener('click', close);
