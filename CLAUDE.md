@@ -32,16 +32,43 @@ Static HTML/CSS/JS site. No framework, no bundler, no package manager.
 
 ## Adding a new tool
 
-1. Create `toolname.html`, `toolname.css`, `toolname.js`
+1. Create `toolname.html`, `toolname.css`, `toolname.js` — styled consistently with existing tools
 2. Add entry to `TOOLS` array in `index.js`
 3. Add `<li>` to correct dropdown in `header.html` (desktop + mobile drawer)
 4. Create `workers/toolname-worker.js` if API needed
-5. Add canonical, OG tags, Schema.org markup, and GA tag to the HTML
-6. Add URL to `sitemap.xml` and `llms.txt`
+5. Add URL to `sitemap.xml` and `llms.txt`
 
-## Accordion pattern
+### New page checklist
 
-All tool pages use `<details class="tool-accordion" open>` for the FAQ section (open by default for SEO), with How It Works, Key Points, and Sources collapsed. FAQ must always be first in the list.
+**Head — every new page must have:**
+- `<title>` — concise, under 60 chars, ends with `- JohnB.io`
+- `<meta name="description">` — unique, 150 chars max
+- `<meta name="keywords">`
+- `<meta name="robots" content="index, follow">`
+- `<link rel="canonical" href="https://johnb.io/page-name">` — no www, no trailing slash
+- Full Open Graph tags: `og:title`, `og:type`, `og:url`, `og:description`, `og:image`
+- Twitter card tags: `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`, `twitter:image:alt`
+- `article:published_time` and `article:author` for article pages
+- Google Analytics gtag snippet
+- Schema.org JSON-LD: `SoftwareApplication` for tools, `Article` + `FAQPage` + `BreadcrumbList` for articles
+- Publisher schema must use `@type: Organization`, not `Person`
+
+**Accordion order — always this sequence:**
+1. `<details class="tool-accordion" open>` — Frequently Asked Questions (open by default)
+2. `<details class="tool-accordion">` — How It Works (closed)
+3. `<details class="tool-accordion">` — Key Points (closed)
+4. `<details class="tool-accordion">` — Sources (closed)
+
+FAQ schema in JSON-LD must exactly match the visible on-page FAQ answers.
+
+**Design:**
+- Must match the look and feel of existing tool pages
+- Must be fully responsive — tested on mobile and desktop
+- Must meet accessibility standards: semantic HTML, ARIA labels, sufficient colour contrast, keyboard navigable
+
+**After creating the page:**
+- Add to `sitemap.xml` with `lastmod`, `changefreq`, `priority`
+- Add to `llms.txt` under the correct category section
 
 ## CSS cache busting
 
