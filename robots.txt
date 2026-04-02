@@ -12,5 +12,6 @@ Disallow: /heart.html
 Disallow: /michael-scott.html
 Disallow: /recipes.html
 Disallow: /wo.html
+Disallow: /CV-Cover-Letter.html
 
 Sitemap: https://johnb.io/sitemap.xml
