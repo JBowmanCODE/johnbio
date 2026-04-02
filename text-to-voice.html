@@ -122,6 +122,37 @@ If this is too fast, use a lower speed setting. Have fun!</textarea>
 
     <div class="tool-accordions">
 
+      <details class="tool-accordion" open>
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Frequently Asked Questions</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <dl class="info-faq">
+            <div class="faq-item">
+              <dt>Does this tool use AI?</dt>
+              <dd>No. The tool uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API" target="_blank" rel="noopener">Web Speech API</a>, which is a standard browser feature - not a generative AI model. Speech synthesis is handled entirely by your browser and operating system. No AI model is called and no data is sent to any external service.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Why does the Start button appear disabled when I first load the page?</dt>
+              <dd>The Start button is disabled until you enter some text. Once you paste or type in the input area, it activates automatically.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Why are there no voices, or only one voice, in the dropdown?</dt>
+              <dd>Voice availability depends on your browser and operating system. Some browsers load voices asynchronously and the dropdown may appear empty on first load - try refreshing the page. On Windows, you can add more voices through Settings &gt; Time &amp; Language &gt; Speech. On macOS, go to System Settings &gt; Accessibility &gt; Spoken Content.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Does this work on mobile?</dt>
+              <dd>Yes. The Web Speech API is supported on iOS Safari and Android Chrome. Voice selection and quality vary by device and OS version. On iOS, the speech synthesis voices are the same ones used by VoiceOver and tend to sound natural.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Is there a limit on how much text I can convert?</dt>
+              <dd>There is no limit set by this tool. In practice, some browsers impose internal limits on speech synthesis queue length. For very long documents, the tool may pause or stop mid-way in certain browsers. If this happens, split the text into smaller sections and play them separately.</dd>
+            </div>
+          </dl>
+        </div>
+      </details>
+
       <details class="tool-accordion">
         <summary class="tool-accordion-summary">
           <span class="tool-accordion-title">How It Works</span>
@@ -151,37 +182,6 @@ If this is too fast, use a lower speed setting. Have fun!</textarea>
             <li><strong>Speed controls help with productivity.</strong> At 1.5× or 1.75×, a 1,000-word article takes around 3 minutes to get through - faster than reading for many people, without losing comprehension.</li>
             <li><strong>Voice quality depends on your device.</strong> The browser uses your operating system's speech synthesis engine. Premium voices on macOS and iOS tend to sound more natural. If the available voices sound robotic, try a different browser (Chrome on Windows often has a wider selection) or check your OS voice settings.</li>
           </ul>
-        </div>
-      </details>
-
-      <details class="tool-accordion">
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">Frequently Asked Questions</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <dl class="info-faq">
-            <div class="faq-item">
-              <dt>Does this tool use AI?</dt>
-              <dd>No. The tool uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API" target="_blank" rel="noopener">Web Speech API</a>, which is a standard browser feature - not a generative AI model. Speech synthesis is handled entirely by your browser and operating system. No AI model is called and no data is sent to any external service.</dd>
-            </div>
-            <div class="faq-item">
-              <dt>Why does the Start button appear disabled when I first load the page?</dt>
-              <dd>The Start button is disabled until you enter some text. Once you paste or type in the input area, it activates automatically.</dd>
-            </div>
-            <div class="faq-item">
-              <dt>Why are there no voices, or only one voice, in the dropdown?</dt>
-              <dd>Voice availability depends on your browser and operating system. Some browsers load voices asynchronously and the dropdown may appear empty on first load - try refreshing the page. On Windows, you can add more voices through Settings &gt; Time &amp; Language &gt; Speech. On macOS, go to System Settings &gt; Accessibility &gt; Spoken Content.</dd>
-            </div>
-            <div class="faq-item">
-              <dt>Does this work on mobile?</dt>
-              <dd>Yes. The Web Speech API is supported on iOS Safari and Android Chrome. Voice selection and quality vary by device and OS version. On iOS, the speech synthesis voices are the same ones used by VoiceOver and tend to sound natural.</dd>
-            </div>
-            <div class="faq-item">
-              <dt>Is there a limit on how much text I can convert?</dt>
-              <dd>There is no limit set by this tool. In practice, some browsers impose internal limits on speech synthesis queue length. For very long documents, the tool may pause or stop mid-way in certain browsers. If this happens, split the text into smaller sections and play them separately.</dd>
-            </div>
-          </dl>
         </div>
       </details>
 

@@ -170,39 +170,7 @@
 
       <div class="tool-accordions">
 
-        <details class="tool-accordion">
-          <summary class="tool-accordion-summary">
-            <span class="tool-accordion-title">How It Works</span>
-            <span class="tool-accordion-icon" aria-hidden="true"></span>
-          </summary>
-          <div class="tool-accordion-body">
-            <ol class="info-steps">
-              <li><strong>Choose your voice and speed.</strong> Six voices are available: Alloy (neutral), Echo (male), Fable (British male), Onyx (deep male), Nova (female) and Shimmer (soft female). Speed ranges from 0.75x to 1.5x normal pace.</li>
-              <li><strong>Paste or type your text.</strong> Up to 4,000 characters per conversion. For longer content, split it into sections and convert each one separately.</li>
-              <li><strong>Click Convert to Speech.</strong> The tool sends your text to OpenAI's TTS API, which generates an MP3 audio file. This typically takes 2 to 5 seconds depending on text length.</li>
-              <li><strong>Preview and download.</strong> The audio player appears once generation is complete. Use the player to preview, then click Download MP3 to save the file to your device.</li>
-            </ol>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary class="tool-accordion-summary">
-            <span class="tool-accordion-title">Key Points</span>
-            <span class="tool-accordion-icon" aria-hidden="true"></span>
-          </summary>
-          <div class="tool-accordion-body">
-            <ul class="info-points">
-              <li><strong>Powered by OpenAI TTS.</strong> This tool uses the tts-1 model from OpenAI, which produces natural-sounding speech without robotic artefacts. It is the same model used in ChatGPT voice mode.</li>
-              <li><strong>Six voice options.</strong> Each voice has a distinct character. Nova and Shimmer suit narration and editorial content. Onyx works well for podcasts and deep-read formats. Fable has a British English cadence suited to formal content.</li>
-              <li><strong>MP3 output, ready to use.</strong> The downloaded file is a standard MP3 that works in any audio player, podcast host, website embed or video editor.</li>
-              <li><strong>4,000 character limit per conversion.</strong> This is the maximum input length for the OpenAI TTS API per request. A typical 500-word article section fits comfortably within this limit.</li>
-              <li><strong>Free with a daily usage limit.</strong> There is no account required. A per-IP daily limit applies to keep the service available for all users. The limit resets at midnight UTC.</li>
-              <li><strong>Use case - article audio.</strong> Pre-generating MP3 files for news articles or blog posts and hosting them as static files is significantly cheaper than per-read API calls, at roughly $0.015 per 1,000 characters generated.</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
+        <details class="tool-accordion" open>
           <summary class="tool-accordion-summary">
             <span class="tool-accordion-title">Frequently Asked Questions</span>
             <span class="tool-accordion-icon" aria-hidden="true"></span>
@@ -234,6 +202,38 @@
                 <dd>The tts-1 model costs $0.015 per 1,000 characters of input text. A typical 500-word article (around 3,000 characters) costs approximately $0.045 to generate. The tts-1-hd model at $0.030 per 1,000 characters offers marginally better quality for studio-grade production use.</dd>
               </div>
             </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Choose your voice and speed.</strong> Six voices are available: Alloy (neutral), Echo (male), Fable (British male), Onyx (deep male), Nova (female) and Shimmer (soft female). Speed ranges from 0.75x to 1.5x normal pace.</li>
+              <li><strong>Paste or type your text.</strong> Up to 4,000 characters per conversion. For longer content, split it into sections and convert each one separately.</li>
+              <li><strong>Click Convert to Speech.</strong> The tool sends your text to OpenAI's TTS API, which generates an MP3 audio file. This typically takes 2 to 5 seconds depending on text length.</li>
+              <li><strong>Preview and download.</strong> The audio player appears once generation is complete. Use the player to preview, then click Download MP3 to save the file to your device.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>Powered by OpenAI TTS.</strong> This tool uses the tts-1 model from OpenAI, which produces natural-sounding speech without robotic artefacts. It is the same model used in ChatGPT voice mode.</li>
+              <li><strong>Six voice options.</strong> Each voice has a distinct character. Nova and Shimmer suit narration and editorial content. Onyx works well for podcasts and deep-read formats. Fable has a British English cadence suited to formal content.</li>
+              <li><strong>MP3 output, ready to use.</strong> The downloaded file is a standard MP3 that works in any audio player, podcast host, website embed or video editor.</li>
+              <li><strong>4,000 character limit per conversion.</strong> This is the maximum input length for the OpenAI TTS API per request. A typical 500-word article section fits comfortably within this limit.</li>
+              <li><strong>Free with a daily usage limit.</strong> There is no account required. A per-IP daily limit applies to keep the service available for all users. The limit resets at midnight UTC.</li>
+              <li><strong>Use case - article audio.</strong> Pre-generating MP3 files for news articles or blog posts and hosting them as static files is significantly cheaper than per-read API calls, at roughly $0.015 per 1,000 characters generated.</li>
+            </ul>
           </div>
         </details>
 
