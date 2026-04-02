@@ -91,37 +91,7 @@
 
     <div class="tool-accordions">
 
-      <details class="tool-accordion">
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">How It Works</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <ol class="info-steps">
-            <li><strong>Enter the total bill amount</strong> in pounds. This is the full amount before tip - what the restaurant is charging.</li>
-            <li><strong>Set a tip percentage.</strong> Common amounts are 10% (standard), 12.5% (often added automatically in London restaurants) and 15% (generous). Enter 0 for no tip.</li>
-            <li><strong>Enter the number of people</strong> splitting the bill. For a solo diner, leave this at 1.</li>
-            <li><strong>Click Calculate.</strong> The tool instantly returns the tip amount, the total bill with tip included, and the amount each person owes.</li>
-          </ol>
-        </div>
-      </details>
-
-      <details class="tool-accordion">
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">Key Points</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <ul class="info-points">
-            <li><strong>Runs entirely in your browser.</strong> No data is sent anywhere. The calculation uses <a href="https://pyodide.org" target="_blank" rel="noopener">Pyodide</a> - a Python runtime compiled to WebAssembly - so the logic runs locally without any server request.</li>
-            <li><strong>Works for any group size.</strong> Whether it is a table of two or a party of twenty, the per-person split updates instantly.</li>
-            <li><strong>Handles decimal inputs.</strong> Bill amounts like £47.80 and fractional tip percentages like 12.5% are supported.</li>
-            <li><strong>No account or internet connection required after load.</strong> Once the page has loaded, the calculator works offline.</li>
-          </ul>
-        </div>
-      </details>
-
-      <details class="tool-accordion">
+      <details class="tool-accordion" open>
         <summary class="tool-accordion-summary">
           <span class="tool-accordion-title">Frequently Asked Questions</span>
           <span class="tool-accordion-icon" aria-hidden="true"></span>
@@ -149,6 +119,36 @@
               <dd>No. The tool stores nothing. Your bill amount and settings exist only in the page for the duration of your visit and are not transmitted anywhere.</dd>
             </div>
           </dl>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">How It Works</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ol class="info-steps">
+            <li><strong>Enter the total bill amount</strong> in pounds. This is the full amount before tip - what the restaurant is charging.</li>
+            <li><strong>Set a tip percentage.</strong> Common amounts are 10% (standard), 12.5% (often added automatically in London restaurants) and 15% (generous). Enter 0 for no tip.</li>
+            <li><strong>Enter the number of people</strong> splitting the bill. For a solo diner, leave this at 1.</li>
+            <li><strong>Click Calculate.</strong> The tool instantly returns the tip amount, the total bill with tip included, and the amount each person owes.</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Key Points</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ul class="info-points">
+            <li><strong>Runs entirely in your browser.</strong> No data is sent anywhere. The calculation uses <a href="https://pyodide.org" target="_blank" rel="noopener">Pyodide</a> - a Python runtime compiled to WebAssembly - so the logic runs locally without any server request.</li>
+            <li><strong>Works for any group size.</strong> Whether it is a table of two or a party of twenty, the per-person split updates instantly.</li>
+            <li><strong>Handles decimal inputs.</strong> Bill amounts like £47.80 and fractional tip percentages like 12.5% are supported.</li>
+            <li><strong>No account or internet connection required after load.</strong> Once the page has loaded, the calculator works offline.</li>
+          </ul>
         </div>
       </details>
 

@@ -165,6 +165,37 @@
 
     <div class="tool-accordions">
 
+      <details class="tool-accordion" open>
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Frequently Asked Questions</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <dl class="info-faq">
+            <div class="faq-item">
+              <dt>What does the AI Copyeditor actually change in my text?</dt>
+              <dd>It corrects grammar and spelling, improves sentence clarity, adjusts tone to match your chosen writing style, and restructures awkward phrasing. It does not fact-check or add new information. The output is your article improved, not rewritten from scratch.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Which AI model does this tool use?</dt>
+              <dd>The tool uses <a href="https://www.anthropic.com/claude/haiku" target="_blank" rel="noopener">Claude Haiku by Anthropic</a> - specifically the <code>claude-haiku-4-5</code> model. Anthropic is an AI safety company and Claude is their primary language model family, designed to follow detailed instructions reliably.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Is my text stored or used to train the AI?</dt>
+              <dd>No. Your text is sent to Anthropic's API to process your request and is not retained or used for training. See the <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a> for full details. JohnB.io does not log or store the content you submit.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>What file types can I upload?</dt>
+              <dd>The tool accepts .txt, .doc and .docx files. Word documents (.docx) are recommended for best formatting fidelity. The text content of your document is extracted on upload - embedded images and tables are not processed.</dd>
+            </div>
+            <div class="faq-item">
+              <dt>Will the edited article pass AI detection tools?</dt>
+              <dd>Not reliably. If the AI rewrites significant portions of your text, those sections may be flagged by detectors such as <a href="https://gptzero.me" target="_blank" rel="noopener">GPTZero</a> or <a href="https://originality.ai" target="_blank" rel="noopener">Originality.ai</a>. Review the output and rewrite anything that does not sound like you before publishing.</dd>
+            </div>
+          </dl>
+        </div>
+      </details>
+
       <details class="tool-accordion">
         <summary class="tool-accordion-summary">
           <span class="tool-accordion-title">How It Works</span>
@@ -194,37 +225,6 @@
             <li><strong>Handles long-form content.</strong> The tool accepts full-length articles. Use the article length selector to target a specific word count or summarise longer pieces.</li>
             <li><strong>Export-ready output.</strong> Download edited articles as TXT or DOCX with one click - no copy-paste formatting issues.</li>
           </ul>
-        </div>
-      </details>
-
-      <details class="tool-accordion">
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">Frequently Asked Questions</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <dl class="info-faq">
-            <div class="faq-item">
-              <dt>What does the AI Copyeditor actually change in my text?</dt>
-              <dd>It corrects grammar and spelling, improves sentence clarity, adjusts tone to match your chosen writing style, and restructures awkward phrasing. It does not fact-check or add new information. The output is your article improved, not rewritten from scratch.</dd>
-            </div>
-            <div class="faq-item">
-              <dt>Which AI model does this tool use?</dt>
-              <dd>The tool uses <a href="https://www.anthropic.com/claude/haiku" target="_blank" rel="noopener">Claude Haiku by Anthropic</a> - specifically the <code>claude-haiku-4-5</code> model. Anthropic is an AI safety company and Claude is their primary language model family, designed to follow detailed instructions reliably.</dd>
-            </div>
-            <div class="faq-item">
-              <dt>Is my text stored or used to train the AI?</dt>
-              <dd>No. Your text is sent to Anthropic's API to process your request and is not retained or used for training. See the <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a> for full details. JohnB.io does not log or store the content you submit.</dd>
-            </div>
-            <div class="faq-item">
-              <dt>What file types can I upload?</dt>
-              <dd>The tool accepts .txt, .doc and .docx files. Word documents (.docx) are recommended for best formatting fidelity. The text content of your document is extracted on upload - embedded images and tables are not processed.</dd>
-            </div>
-            <div class="faq-item">
-              <dt>Will the edited article pass AI detection tools?</dt>
-              <dd>Not reliably. If the AI rewrites significant portions of your text, those sections may be flagged by detectors such as <a href="https://gptzero.me" target="_blank" rel="noopener">GPTZero</a> or <a href="https://originality.ai" target="_blank" rel="noopener">Originality.ai</a>. Review the output and rewrite anything that does not sound like you before publishing.</dd>
-            </div>
-          </dl>
         </div>
       </details>
 
