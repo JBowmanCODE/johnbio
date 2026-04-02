@@ -7,8 +7,28 @@ footer {
 
 .footer-banner {
   display: flex;
-  justify-content: center;
-  margin-bottom: 1.5rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.footer-banner img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-links {
+    justify-content: center;
+  }
+  .footer-banner img {
+    width: 320px;
+    height: auto;
+  }
 }
 
 .footer-inner {
