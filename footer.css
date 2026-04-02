@@ -5,6 +5,12 @@ footer {
   padding: 3rem 2rem;
 }
 
+.footer-banner {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
 .footer-inner {
   max-width: 1280px; margin: 0 auto;
   display: flex; justify-content: space-between; align-items: center;
