@@ -70,6 +70,82 @@ FAQ schema in JSON-LD must exactly match the visible on-page FAQ answers.
 - Add to `sitemap.xml` with `lastmod`, `changefreq`, `priority`
 - Add to `llms.txt` under the correct category section
 
+## Adding a new news article
+
+Use `news/test-ai.html` as the template — match its layout and features exactly.
+
+**Before writing, ask the user:**
+- What is the article about?
+- What is the main keyword?
+
+### Title rules
+- Max 60 characters (Google truncates beyond this)
+- Format: `Keyword: Short descriptor - JohnB.io`
+
+### Content writing rules
+
+You are an expert SEO writer creating content designed to rank on Google and be cited by AI systems (ChatGPT, Perplexity, Gemini).
+
+**Structure:**
+- Short intro (2–3 short paragraphs max)
+- Each section uses a clear H2 written as a question or term (e.g. "What is RAG in AI?")
+- Immediately follow with a 1–2 sentence direct definition
+- Then expand: simple explanation → why it matters → real-world example
+- Paragraphs max 2–3 lines
+- Add a "Key Takeaways" bullet section and short conclusion at the end
+
+**Writing style:**
+- Plain UK English, smart beginner level
+- No fluff, filler, long intros, or storytelling before answering
+- Clear, direct, useful
+
+**SEO + AEO:**
+- Real search-style questions as headings
+- Concise, snippet-friendly answers
+- Bold key definitions
+- Include comparison sections where relevant (e.g. "X vs Y")
+
+**GEO (AI search):**
+- Include extractable blocks: `Term:` / `Definition:`
+- Each section must stand alone as a complete answer
+
+**Authority signals:**
+- Reference real tools and companies where relevant (ChatGPT, Claude, Gemini, etc.)
+
+**Internal linking:**
+- Add natural internal links to related articles/tools where relevant
+
+### Accordion order — same as tools
+1. `<details class="tool-accordion" open>` — Frequently Asked Questions (open)
+2. `<details class="tool-accordion">` — How It Works (closed)
+3. `<details class="tool-accordion">` — Key Points (closed)
+4. `<details class="tool-accordion">` — Sources (closed)
+
+### Head checklist — every article must have
+- `<title>` max 60 chars
+- `<meta name="description">` unique, 150 chars max
+- `<meta name="robots" content="index, follow">`
+- `<link rel="canonical" href="https://johnb.io/news/article-slug">`
+- Full OG tags: `og:title`, `og:type` (`article`), `og:url`, `og:description`, `og:image`
+- `article:published_time`, `article:author`, `article:section`
+- Twitter card tags including `twitter:image:alt`
+- Google Analytics gtag
+- Schema.org JSON-LD blocks:
+  - `Article` — publisher must be `@type: Organization`, name `JohnB.io`
+  - `FAQPage` — answers must **exactly match** the visible on-page FAQ text
+  - `BreadcrumbList` — Home → News → Article name
+
+### Images and accessibility
+- All images must have descriptive `alt` tags
+- All interactive elements must have `aria-label` or visible labels
+- Semantic HTML throughout (`<article>`, `<nav>`, `<section>`, etc.)
+- Keyboard navigable
+
+### After creating the article
+- Prepend new entry to `NEWS_POSTS` in `news-data.js`
+- Add URL to `sitemap.xml` with `lastmod`, `changefreq="weekly"`, `priority="0.7"`
+- Add URL to `llms.txt` under the News/Blog section
+
 ## CSS cache busting
 
 Shared CSS files loaded in multiple pages (e.g. `news-chat.css`) use `?v=N` query strings. Increment `N` whenever the file changes so browsers pick up the update.
