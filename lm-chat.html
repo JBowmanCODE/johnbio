@@ -28,6 +28,21 @@
   <link rel="stylesheet" href="/header.css">
   <link rel="stylesheet" href="/footer.css">
   <link rel="stylesheet" href="/lm-chat.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "LLM Chat",
+    "description": "Compare Claude, OpenAI and Gemini side by side in real time.",
+    "url": "https://johnb.io/lm-chat",
+    "image": "https://johnb.io/og_images/lm_chat_og.webp",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+    "author": { "@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/" },
+    "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
+  }
+  </script>
 </head>
 <body>
 
@@ -119,21 +134,17 @@
 
 <div id="share-bar-placeholder"></div>
 
-<section class="tool-info" aria-label="About this tool" itemscope itemtype="https://schema.org/SoftwareApplication">
-  <meta itemprop="name" content="LLM Chat - Model Comparison Tool">
-  <meta itemprop="applicationCategory" content="UtilitiesApplication">
-  <meta itemprop="operatingSystem" content="Web">
-  <meta itemprop="url" content="https://johnb.io/lm-chat">
+<section class="tool-info" aria-label="About this tool">
 
   <div class="tool-info-inner">
 
     <div class="tool-info-meta">
       <span>Last updated: March 2026</span>
       <span class="tool-info-sep">·</span>
-      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a> - questions? Connect on LinkedIn.</span>
     </div>
 
-    <div class="tool-info-body" itemprop="description">
+    <div class="tool-info-body">
       <p>LLM Chat runs three AI models side by side - <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude Sonnet by Anthropic</a>, <a href="https://openai.com/gpt-4o-mini" target="_blank" rel="noopener">GPT-4o-mini by OpenAI</a>, and <a href="https://deepmind.google/technologies/gemini/flash/" target="_blank" rel="noopener">Gemini 2.5 Flash Lite by Google</a>. You can chat with each model individually or use the broadcast bar to send the same prompt to all three simultaneously and compare the responses in real time. It is useful for evaluating which model handles a specific task best, stress-testing prompts across providers, or simply exploring how different models approach the same question.</p>
       <p>Each model maintains its own conversation history within the session, so you can have multi-turn conversations with each one independently. Prompts are routed securely through a <a href="https://workers.cloudflare.com" target="_blank" rel="noopener">Cloudflare Worker</a> proxy to the respective provider APIs. Your messages are subject to the privacy policies of each provider: <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic</a>, <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">OpenAI</a>, and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a>. Do not include sensitive personal information in your prompts.</p>
     </div>

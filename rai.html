@@ -847,6 +847,21 @@
     .principles-grid { grid-template-columns: 1fr; }
   }
 </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "RAI Governance Framework",
+    "description": "A responsible AI governance framework for evaluating and managing AI risk. Covers principles, risk tiering, RAI checklists, system cards and an AI registry.",
+    "url": "https://johnb.io/rai",
+    "image": "https://johnb.io/og_images/rai_og.webp",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+    "author": { "@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/" },
+    "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
+  }
+  </script>
 </head>
 <body>
 
@@ -1817,21 +1832,17 @@ renderSystems();
 
 <div id="share-bar-placeholder"></div>
 
-<section class="tool-info" aria-label="About this tool" itemscope itemtype="https://schema.org/SoftwareApplication">
-  <meta itemprop="name" content="RAI Governance Framework">
-  <meta itemprop="applicationCategory" content="UtilitiesApplication">
-  <meta itemprop="operatingSystem" content="Web">
-  <meta itemprop="url" content="https://johnb.io/rai">
+<section class="tool-info" aria-label="About this tool">
 
   <div class="tool-info-inner">
 
     <div class="tool-info-meta">
       <span>Last updated: March 2026</span>
       <span class="tool-info-sep">·</span>
-      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a> - questions? Connect on LinkedIn.</span>
     </div>
 
-    <div class="tool-info-body" itemprop="description">
+    <div class="tool-info-body">
       <p>The RAI Governance Framework is a practical, browser-based toolkit for teams evaluating and managing AI risk. It covers the full governance lifecycle: classifying AI systems by risk tier, assigning accountability through a responsibility matrix, working through a structured pre-deployment checklist, generating system cards for documentation, maintaining a searchable system registry, and mapping your systems against current regulatory requirements. It is built for AI governance leads, risk managers, product teams and compliance functions who need structured documentation without standing up a dedicated platform.</p>
       <p>This tool runs entirely in your browser. No data is sent to any external server and nothing is stored outside your current session. It does not use an AI model to generate content - all outputs are driven by the information you enter. This makes it suitable for handling sensitive internal documentation about AI systems without privacy or data residency concerns. The framework references guidance from the <a href="https://www.gov.uk/guidance/the-ai-safety-institute" target="_blank" rel="noopener">AI Safety Institute</a>, the <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/key-dp-themes/explaining-decisions-made-with-ai/" target="_blank" rel="noopener">ICO's guidance on AI and data protection</a>, and the EU AI Act risk classification approach.</p>
     </div>

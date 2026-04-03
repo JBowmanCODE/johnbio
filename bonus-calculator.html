@@ -35,6 +35,21 @@
   <link rel="stylesheet" href="/header.css">
   <link rel="stylesheet" href="/footer.css">
   <link rel="stylesheet" href="/bonus-calculator.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "iGaming Bonus Cost Calculator",
+    "description": "Calculate the true cost of iGaming casino bonuses. Enter bonus amount, wagering requirement, house edge and completion rate to see net operator cost, breakeven point and scenario analysis.",
+    "url": "https://johnb.io/bonus-calculator",
+    "image": "https://johnb.io/og_images/bonus_calculator_og.webp",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+    "author": { "@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/" },
+    "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
+  }
+  </script>
 </head>
 <body>
   <div id="header-placeholder"></div>
@@ -111,20 +126,16 @@
 
   <div id="share-bar-placeholder"></div>
 
-  <section class="tool-info" aria-label="About this tool" itemscope itemtype="https://schema.org/SoftwareApplication">
-    <meta itemprop="name" content="iGaming Bonus Cost Calculator">
-    <meta itemprop="applicationCategory" content="UtilitiesApplication">
-    <meta itemprop="operatingSystem" content="Web">
-    <meta itemprop="url" content="https://johnb.io/bonus-calculator">
+  <section class="tool-info" aria-label="About this tool">
 
     <div class="tool-info-inner">
       <div class="tool-info-meta">
         <span>Last updated: March 2026</span>
         <span class="tool-info-sep">·</span>
-        <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a> - questions? Connect on LinkedIn.</span>
+        <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a> - questions? Connect on LinkedIn.</span>
       </div>
 
-      <div class="tool-info-body" itemprop="description">
+      <div class="tool-info-body">
         <p>The iGaming Bonus Cost Calculator models the true financial cost of a casino welcome bonus or promotional offer. Enter the bonus amount, wagering requirement multiplier, the house edge of the qualifying games, and your expected player completion rate - the tool returns the total wagering obligation, expected player loss, net cost to the operator per bonus issued, and the breakeven house edge. A scenario table shows how cost changes across five different completion rate assumptions.</p>
         <p>This tool is built for iGaming operators, CRM managers, affiliates and compliance teams who need to quickly assess whether a promotion is commercially viable. All calculations run in the browser - no data is sent to any server. The model assumes a simplified linear completion rate; real-world outcomes will vary based on game mix, bonus mechanics, player segment and session length distribution.</p>
       </div>
