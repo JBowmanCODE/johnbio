@@ -231,41 +231,69 @@ const projects = [
   },
 ];
 
-// ── LATEST NEWS CAROUSEL ─────────────────────────────────────────────────
-(function renderNewsCarousel() {
-  const track = document.getElementById('lnTrack');
-  if (!track || typeof NEWS_POSTS === 'undefined') return;
+// ── HERO NEWS PANEL ──────────────────────────────────────────────────────
+(function renderHeroNews() {
+  const panel = document.getElementById('heroNews');
+  if (!panel || typeof NEWS_POSTS === 'undefined') return;
 
-  const colors = ['pink', 'cyan', 'green'];
   const latest = NEWS_POSTS.slice(0, 3);
+  const colors = ['pink', 'cyan', 'green'];
+  let current = 0;
+  let timer;
 
+  // Top bar
+  panel.innerHTML = `
+    <div class="hn-topbar">
+      <span class="hn-label">Latest News</span>
+      <a href="/news" class="hn-view-all">View all <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+    </div>
+    <div class="hn-nav" id="hnNav"></div>
+  `;
+
+  // Slides
+  const nav = panel.querySelector('#hnNav');
   latest.forEach((post, i) => {
     const color = colors[i % colors.length];
-    const card = document.createElement('a');
-    card.href = post.slug;
-    card.className = `ln-card ln-${color}`;
-    card.setAttribute('role', 'listitem');
-    card.setAttribute('aria-label', post.title);
-
-    card.innerHTML = `
-      <div class="ln-img">
-        <img src="${post.image}" alt="${post.title}" loading="lazy" width="400" height="225"
-          onerror="this.style.display='none';" />
-        <span class="ln-cat ln-cat-${color}">${post.category}</span>
-      </div>
-      <div class="ln-body">
-        <div class="ln-meta">
-          <span>${post.dateDisplay}</span>
-          <span class="ln-meta-sep">·</span>
-          <span>${post.readTime}</span>
-        </div>
-        <h3 class="ln-article-title">${post.title}</h3>
-        <p class="ln-excerpt">${post.excerpt}</p>
-        <span class="ln-read">Read article <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+    const slide = document.createElement('a');
+    slide.href = post.slug;
+    slide.className = 'hn-slide' + (i === 0 ? ' active' : '');
+    slide.setAttribute('aria-label', post.title);
+    slide.innerHTML = `
+      <img class="hn-slide-img" src="${post.image}" alt="${post.title}" loading="${i === 0 ? 'eager' : 'lazy'}" width="800" height="600">
+      <div class="hn-slide-overlay"></div>
+      <div class="hn-slide-content">
+        <span class="hn-cat hn-cat-${color}">${post.category}</span>
+        <h3 class="hn-title">${post.title}</h3>
+        <div class="hn-meta">${post.dateDisplay} &middot; ${post.readTime}</div>
+        <span class="hn-read">Read article <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
       </div>
     `;
-    track.appendChild(card);
+    panel.insertBefore(slide, nav);
+
+    const dot = document.createElement('button');
+    dot.className = 'hn-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'News story ' + (i + 1));
+    dot.addEventListener('click', (e) => { e.preventDefault(); goTo(i); resetTimer(); });
+    nav.appendChild(dot);
   });
+
+  const slides = panel.querySelectorAll('.hn-slide');
+  const dots   = nav.querySelectorAll('.hn-dot');
+
+  function goTo(idx) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = idx;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo((current + 1) % slides.length), 5000);
+  }
+
+  resetTimer();
 })();
 
 // ── RENDER ────────────────────────────────────────────────────────────────
