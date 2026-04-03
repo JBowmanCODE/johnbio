@@ -18,6 +18,8 @@ Static HTML/CSS/JS site. No framework, no bundler, no package manager.
 
 **News/blog system:** `news-data.js` exports `NEWS_POSTS` array — the single source of truth. `news/index.html` renders the listing from it. Each article is a hand-built static HTML file in `/news/`. Adding a post = prepend to `NEWS_POSTS` + create the HTML file.
 
+**Home page news carousel:** `index.html` loads `news-data.js` (synchronous script, before `index.js`) and `index.js` renders the 3 latest posts into `#lnTrack` via `renderNewsCarousel()`. This updates automatically when new posts are prepended to `NEWS_POSTS` — no manual HTML change needed on the home page.
+
 ## Key files
 
 | File | Role |
