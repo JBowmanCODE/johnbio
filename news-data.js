@@ -1,5 +1,16 @@
 const NEWS_POSTS = [
   {
+    slug: '/news/claude-code-vsc',
+    title: 'Claude Code VSC: AI Coding for Beginners',
+    excerpt: 'Claude Code VSC is Anthropic\'s AI coding assistant built into Visual Studio Code. What it does, how to install it, what it costs, and what to try first - for beginners with no technical background.',
+    category: 'AI',
+    date: '2026-04-03',
+    dateDisplay: '3 April 2026',
+    readTime: '8 min read',
+    tags: ['AI', 'Claude Code', 'VS Code', 'Coding', 'Beginners'],
+    image: '/news/images/claude-code-vsc.webp'
+  },
+  {
     slug: '/news/ai-terms-explained',
     title: 'AI Terms Explained: A Beginner\'s Guide to LLMs, ML, and Every Buzzword in Between',
     excerpt: 'Confused by AI jargon? This plain-English guide explains the difference between AI, ML, LLMs, deep learning, and every other term you keep hearing - so you can finally follow the conversation.',
