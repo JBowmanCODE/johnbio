@@ -194,14 +194,16 @@ Replace with plain direct alternatives. If you can't think of one, cut the sente
 - `<meta name="description">` unique, 150 chars max
 - `<meta name="robots" content="index, follow">`
 - `<link rel="canonical" href="https://johnb.io/news/article-slug">`
-- Full OG tags: `og:title`, `og:type` (`article`), `og:url`, `og:description`, `og:image`
+- Full OG tags: `og:title`, `og:type` (`article`), `og:url`, `og:description`, `og:image`, `og:image:width` (1200), `og:image:height` (630), `og:image:alt`
 - `article:published_time`, `article:author`, `article:section`
 - Twitter card tags including `twitter:image:alt`
 - Google Analytics gtag
-- Schema.org JSON-LD blocks:
-  - `Article` — publisher must be `@type: Organization`, name `JohnB.io`
-  - `FAQPage` — answers must **exactly match** the visible on-page FAQ text
+- Schema.org JSON-LD blocks (all in `<head>`, no microdata in body):
+  - `Article` — must include `image` (full absolute URL), `datePublished` and `dateModified` in ISO 8601 with timezone (`2026-04-03T00:00:00+00:00`), full `Person` author with `name` and `url`, `Organization` publisher
+  - `FAQPage` — answers must exactly match the visible on-page FAQ text
   - `BreadcrumbList` — Home → News → Article name
+
+**Schema rule:** Use JSON-LD only. Never add `itemscope`, `itemtype`, or `itemprop` attributes to HTML elements — these create duplicate Article schema blocks that Google flags as errors. One JSON-LD block in `<head>` is the single source of truth.
 
 ### Images and accessibility
 - All images must have descriptive `alt` tags
