@@ -231,6 +231,43 @@ const projects = [
   },
 ];
 
+// ── LATEST NEWS CAROUSEL ─────────────────────────────────────────────────
+(function renderNewsCarousel() {
+  const track = document.getElementById('lnTrack');
+  if (!track || typeof NEWS_POSTS === 'undefined') return;
+
+  const colors = ['pink', 'cyan', 'green'];
+  const latest = NEWS_POSTS.slice(0, 3);
+
+  latest.forEach((post, i) => {
+    const color = colors[i % colors.length];
+    const card = document.createElement('a');
+    card.href = post.slug;
+    card.className = `ln-card ln-${color}`;
+    card.setAttribute('role', 'listitem');
+    card.setAttribute('aria-label', post.title);
+
+    card.innerHTML = `
+      <div class="ln-img">
+        <img src="${post.image}" alt="${post.title}" loading="lazy" width="400" height="225"
+          onerror="this.style.display='none';" />
+        <span class="ln-cat ln-cat-${color}">${post.category}</span>
+      </div>
+      <div class="ln-body">
+        <div class="ln-meta">
+          <span>${post.dateDisplay}</span>
+          <span class="ln-meta-sep">·</span>
+          <span>${post.readTime}</span>
+        </div>
+        <h3 class="ln-article-title">${post.title}</h3>
+        <p class="ln-excerpt">${post.excerpt}</p>
+        <span class="ln-read">Read article <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+      </div>
+    `;
+    track.appendChild(card);
+  });
+})();
+
 // ── RENDER ────────────────────────────────────────────────────────────────
 const INITIAL_SHOW = 6;
 const grid = document.getElementById('projectsGrid');
