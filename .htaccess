@@ -115,3 +115,6 @@ Options -Indexes
 # DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END
 
 AddType text/css .css
+AddType audio/mpeg .mp3
+AddType audio/mp4 .m4a
+AddType audio/x-m4a .m4a
