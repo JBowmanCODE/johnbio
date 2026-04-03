@@ -388,6 +388,26 @@ main.na-wrap {
   box-shadow: 0 0 15px 4px rgba(251,191,36,0.35), 0 0 30px 8px rgba(251,191,36,0.15);
 }
 
+.na-inline-figure {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.na-inline-figure img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+}
+
+.na-inline-figure figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: rgba(248,245,253,0.4);
+  font-style: italic;
+}
+
 .na-lede-img img {
   width: 100%;
   max-width: 100%;
