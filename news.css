@@ -393,12 +393,48 @@ main.na-wrap {
   text-align: center;
 }
 
+.na-inline-figure-wrap {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
 .na-inline-figure img {
   width: 100%;
   max-width: 100%;
   border-radius: 12px;
   display: block;
   margin: 0 auto;
+}
+
+.na-figure-zoom {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(13,13,20,0.82);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(248,245,253,0.85);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: 8px;
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.na-figure-zoom:hover {
+  background: rgba(255,0,127,0.18);
+  border-color: rgba(255,0,127,0.45);
+  color: #fff;
+}
+
+.na-figure-zoom .material-symbols-outlined {
+  font-size: 0.9rem;
 }
 
 .na-inline-figure figcaption {
