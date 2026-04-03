@@ -397,6 +397,7 @@ main.na-wrap {
   position: relative;
   display: inline-block;
   width: 100%;
+  padding-bottom: 14px;
 }
 
 .na-inline-figure img {
@@ -405,6 +406,30 @@ main.na-wrap {
   border-radius: 12px;
   display: block;
   margin: 0 auto;
+}
+
+.na-figure-zoom {
+  position: absolute;
+  bottom: -14px;
+  right: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  background: var(--primary);
+  color: var(--on-primary, #0d0d0d);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s, transform 0.15s;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+.na-figure-zoom:hover {
+  opacity: 0.85;
+  transform: scale(1.04);
 }
 
 .na-figure-actions {
