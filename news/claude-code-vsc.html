@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code VSC: AI Coding for Beginners - JohnB.io</title>
+  <meta name="keywords" content="Claude Code VSC, Claude Code VS Code, Claude Code extension, AI coding beginners, VS Code AI assistant, Anthropic Claude Code, install Claude Code, Claude Code tutorial">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <meta name="description" content="Claude Code VSC is Anthropic's AI coding assistant for VS Code. This beginner's guide explains what it does, how to install it, what it costs, and what to try first.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/news/claude-code-vsc">
+  <meta name="author" content="John Bowman">
+  <meta property="og:title" content="Claude Code VSC: AI Coding for Beginners">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://johnb.io/news/claude-code-vsc">
+  <meta property="og:description" content="Claude Code VSC is Anthropic's AI coding assistant built into VS Code. What it does, how to install it, what it costs, and what to try first - for beginners.">
+  <meta property="og:image" content="https://johnb.io/news/images/claude-code-vsc.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Claude Code VSC - AI coding assistant inside Visual Studio Code for beginners">
+  <meta property="article:published_time" content="2026-04-03">
+  <meta property="article:author" content="John Bowman">
+  <meta property="article:section" content="AI">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claude Code VSC: AI Coding for Beginners">
+  <meta name="twitter:description" content="Claude Code VSC is Anthropic's AI coding assistant built into VS Code. What it does, how to install it, what it costs, and what to try first.">
+  <meta name="twitter:image" content="https://johnb.io/news/images/claude-code-vsc.webp">
+  <meta name="twitter:image:alt" content="Claude Code VSC - AI coding assistant inside Visual Studio Code for beginners">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/header.css">
+  <link rel="stylesheet" href="/footer.css">
+  <link rel="stylesheet" href="/news.css?v=3">
+  <link rel="stylesheet" href="/news-chat.css?v=7">
+  <style>
+    main.na-wrap { max-width: 1120px; margin: 0 auto; padding-top: 120px; padding-left: 1.5rem; padding-right: 1.5rem; box-sizing: border-box; width: 100%; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Claude Code VSC: AI Coding for Beginners",
+    "description": "Claude Code VSC is Anthropic's AI coding assistant for Visual Studio Code. This beginner's guide explains what it does, how to install it, what it costs, and what to try first.",
+    "url": "https://johnb.io/news/claude-code-vsc",
+    "datePublished": "2026-04-03",
+    "dateModified": "2026-04-03",
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://www.linkedin.com/in/john-bowman/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    },
+    "keywords": "Claude Code VSC, Claude Code VS Code, AI coding beginners, VS Code AI assistant, Anthropic Claude Code",
+    "articleSection": "AI"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Claude Code VSC?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Claude Code VSC is the official Visual Studio Code extension for Claude Code, Anthropic's AI coding assistant. It puts Claude directly inside your code editor so you can ask it to write code, explain errors, and suggest fixes without leaving VS Code or copying and pasting between windows."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Claude Code VSC free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Claude Code requires either a Claude Max subscription (currently around $100 per month) or an Anthropic API key with pay-as-you-go credits. Anthropic offers a limited free trial of the API, which is a good way to test it before committing to a paid plan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need coding experience to use Claude Code VSC?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Some basic familiarity helps, but you don't need to be an experienced developer. Claude Code is particularly useful for beginners because it can explain code in plain English, identify errors, and write functions you don't know how to write yet. The more specific you are about what you want, the better the results."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Claude Code VSC and Claude.ai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Claude.ai is a web-based chat interface where you copy and paste code manually. Claude Code VSC lives inside VS Code and can see your files directly, make changes, run terminal commands, and hold context across your whole project. No copying and pasting needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a CLAUDE.md file?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CLAUDE.md is a text file you can add to your project folder to give Claude Code context about your project - what it does, how it is structured, and any rules you want it to follow. It acts as a briefing document. Setting one up early makes a noticeable difference to the quality of Claude Code's suggestions."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://johnb.io" },
+      { "@type": "ListItem", "position": 2, "name": "News", "item": "https://johnb.io/news" },
+      { "@type": "ListItem", "position": 3, "name": "Claude Code VSC", "item": "https://johnb.io/news/claude-code-vsc" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="ns-ambient"></div>
+
+  <main class="na-wrap">
+  <div class="na-layout">
+  <div class="na-content">
+
+    <div class="na-breadcrumb" role="navigation" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+      <a href="/news">News</a>
+      <span class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+      <span class="na-bc-current">Claude Code VSC</span>
+    </div>
+
+    <article itemscope itemtype="https://schema.org/Article">
+      <div class="na-header">
+        <h1 class="na-title" itemprop="headline">Claude Code VSC: AI Coding for Beginners</h1>
+        <div class="na-lede-row">
+          <p class="na-lede">Most guides about Claude Code are written for developers who already know their way around a terminal. This one isn't. Here's what Claude Code VSC is, how to get it running in VS Code, and what you can actually do with it from day one.</p>
+          <div class="na-lede-img">
+            <img src="/news/images/claude-code-vsc.webp" alt="Claude Code VSC - AI coding assistant inside Visual Studio Code, shown in the editor sidebar" itemprop="image">
+          </div>
+        </div>
+        <div class="na-author">
+          <a href="/about" aria-label="About John Bowman"><img src="/images/JohnB.webp" alt="John Bowman" class="na-author-img"></a>
+          <div class="na-author-details">
+            <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a>
+            <span class="na-author-role">Owner / AI Developer</span>
+          </div>
+          <div class="na-header-meta">
+            <span class="na-category-tag">AI</span>
+            <span class="na-date" itemprop="datePublished" content="2026-04-03">3 April 2026</span>
+            <span class="na-read">8 min read</span>
+          </div>
+        </div>
+        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
+          <span class="material-symbols-outlined">auto_awesome</span>
+          Ask Newsy AI about this article
+        </button>
+      </div>
+
+      <details class="na-mobile-toc">
+        <summary class="na-mobile-toc-trigger">
+          <span class="material-symbols-outlined">menu_book</span>
+          In this article
+          <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span>
+        </summary>
+        <ol class="na-mobile-toc-list">
+          <li><a href="#what-is-claude-code-vsc">What is Claude Code VSC?</a></li>
+          <li><a href="#vs-claude-ai">Claude Code VSC vs Claude.ai</a></li>
+          <li><a href="#how-to-install">How to install it</a></li>
+          <li><a href="#what-it-does">What it can actually do</a></li>
+          <li><a href="#not-a-developer">Do you need to be a developer?</a></li>
+          <li><a href="#cost">What does it cost?</a></li>
+          <li><a href="#getting-started">What to try first</a></li>
+        </ol>
+      </details>
+
+      <hr class="na-divider">
+
+      <div class="na-audio" aria-label="Listen to this article">
+        <span class="na-audio-icon material-symbols-outlined" aria-hidden="true">headphones</span>
+        <div class="na-audio-info">
+          <div class="na-audio-top">
+            <span class="na-audio-label">Listen to this article</span>
+            <div class="na-volume">
+              <button class="na-mute-btn" id="na-mute-btn" aria-label="Mute">
+                <span class="material-symbols-outlined">volume_up</span>
+              </button>
+              <input class="na-volume-slider" id="na-volume-slider" type="range" min="0" max="1" step="0.02" value="1" aria-label="Volume">
+            </div>
+          </div>
+          <audio id="na-player" preload="none" aria-label="Article audio"></audio>
+          <div class="na-audio-controls">
+            <button class="na-skip-btn" id="na-skip-back" aria-label="Skip back 10 seconds">
+              <span class="material-symbols-outlined">replay_10</span>
+            </button>
+            <button class="na-audio-btn" id="na-play-btn" aria-label="Play article audio">
+              <span class="material-symbols-outlined">play_arrow</span>
+            </button>
+            <button class="na-skip-btn" id="na-skip-fwd" aria-label="Skip forward 10 seconds">
+              <span class="material-symbols-outlined">forward_10</span>
+            </button>
+            <div class="na-speed-btns" role="group" aria-label="Playback speed">
+              <button class="na-speed-btn active" data-speed="1">1x</button>
+              <button class="na-speed-btn" data-speed="1.5">1.5x</button>
+              <button class="na-speed-btn" data-speed="2">2x</button>
+            </div>
+            <canvas id="na-waveform" class="na-waveform" width="200" height="52" aria-hidden="true"></canvas>
+          </div>
+          <div class="na-audio-progress-wrap">
+            <span class="na-audio-time" id="na-current-time">0:00</span>
+            <div class="na-progress" id="na-progress" role="slider" aria-label="Audio progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="na-progress-fill" id="na-progress-fill"></div>
+              <div class="na-progress-thumb" id="na-progress-thumb"></div>
+            </div>
+            <span class="na-audio-time na-audio-duration" id="na-duration">0:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="na-body" itemprop="articleBody">
+
+        <p>Most of the guides about Claude Code are written for developers. They assume you know what a terminal is, what a repository means, and why you'd care about something called a CLAUDE.md file. That's a narrow audience.</p>
+
+        <p>Claude Code inside VS Code is probably more useful for someone who barely knows how to code than for someone who does it all day. A senior developer already knows what they're doing. A beginner doesn't - and that's where an AI that can explain, write, and fix code alongside you starts to matter.</p>
+
+        <p>This is what Claude Code VSC actually is, how to get it running, and what you can do with it from day one.</p>
+
+        <h2 id="what-is-claude-code-vsc">What is Claude Code VSC?</h2>
+
+        <p><strong>Term: Claude Code VSC</strong><br>
+        <strong>Definition:</strong> Claude Code VSC is the official Visual Studio Code extension for Claude Code, Anthropic's AI coding assistant. It puts Claude directly inside your code editor so you can ask it to write code, explain errors, and suggest fixes - without switching to a separate browser window.</p>
+
+        <p><a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a> - the company that makes Claude - built Claude Code as a standalone tool for developers. The VS Code extension brings it into the editor itself. VS Code is a free code editor used by millions of people worldwide, and it runs on Windows, Mac, and Linux. If you've never installed it before, that's step one - download it free from <a href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a>.</p>
+
+        <p>The extension was released in late 2025. It's worth knowing that Claude Code also works as a command-line tool, but the VS Code extension is the more accessible option if you're not comfortable with terminals.</p>
+
+        <h2 id="vs-claude-ai">Claude Code VSC vs Claude.ai: what is the difference?</h2>
+
+        <p>This comparison matters more than most beginner guides acknowledge.</p>
+
+        <p>When you use Claude at <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>, you're copying and pasting. Write a question, paste some code, get an answer, copy the answer, paste it back into your file. It works, but the context disappears between conversations and you're always switching tabs.</p>
+
+        <p>Claude Code VSC lives inside VS Code. It can see your files directly, make edits for you, run commands in the terminal, and hold context across your whole project. You don't paste anything.</p>
+
+        <p>For a 20-line script, the difference is minor. For anything with multiple files or a specific project structure, it's substantial. Claude at claude.ai doesn't know what else is in your project. Claude Code VSC does.</p>
+
+        <h2 id="how-to-install">How do I install Claude Code in VS Code?</h2>
+
+        <p>Three steps before anything works:</p>
+
+        <ol>
+          <li><strong>Install VS Code.</strong> Download it free from <a href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a>. It's the editor itself - if you already have it, skip this.</li>
+          <li><strong>Install the Claude Code extension.</strong> Open VS Code, click the Extensions icon in the left sidebar (it looks like four squares), search for "Claude Code", and install the extension published by Anthropic.</li>
+          <li><strong>Connect your account.</strong> You'll need either a Claude Max subscription or an Anthropic API key with credits loaded. The extension walks you through this when you first open it.</li>
+        </ol>
+
+        <p>Once it's installed, a Spark icon appears in the Activity Bar on the left side of VS Code. Click it and the Claude Code panel opens. That's where you type your requests.</p>
+
+        <p>The setup takes about ten minutes. The extension itself installs in seconds - the time goes on getting your account credentials sorted.</p>
+
+        <h2 id="what-it-does">What can Claude Code VSC actually do?</h2>
+
+        <p>Expectations here tend to go either too high or too low.</p>
+
+        <p>It won't build a complete working app from scratch. That's not realistic for anything beyond a very simple project - and even then, you'll need to test and review what it produces. What it does well:</p>
+
+        <ul>
+          <li><strong>Writing functions you'd otherwise have to piece together from Google searches.</strong> Give it a clear description of what you need and it'll produce working code to start from.</li>
+          <li><strong>Explaining code in plain English.</strong> Highlight any block of code, ask "what does this do?" and you get a clear answer. No decoding documentation written for people who already know what they're doing.</li>
+          <li><strong>Finding the cause of errors.</strong> Paste the error message, ask what went wrong, and Claude Code usually identifies the problem and suggests a fix.</li>
+          <li><strong>Suggesting structural improvements.</strong> If a script has grown messy, it can suggest how to reorganise it.</li>
+          <li><strong>Generating test cases.</strong> Useful once your code is working and you want to check it handles edge cases.</li>
+        </ul>
+
+        <p>The explaining feature alone is worth installing it for beginners. Stack Overflow answers assume a lot of background knowledge. Claude Code doesn't.</p>
+
+        <h2 id="not-a-developer">Do I need to be a developer to use Claude Code VSC?</h2>
+
+        <p>Depends what you mean. You don't need a computer science degree or years of professional experience. But if you have no idea what you're trying to build and can't describe it clearly, you'll get generic output that doesn't help much.</p>
+
+        <p>Claude Code works across Python, JavaScript, HTML, CSS, and most other common languages. The more specific your request, the better the result. "Add a function that validates an email address" works. "Make it better" doesn't.</p>
+
+        <p>One thing worth knowing early: the <strong>CLAUDE.md file</strong>. It's a plain text file you can put in your project folder that tells Claude about the project - what it does, how it's structured, any preferences you have. Think of it as a briefing document. Beginners who skip this often find Claude seems to lose context between sessions, because it does - unless you give it somewhere to store that context permanently.</p>
+
+        <p>Setting one up takes five minutes and makes a noticeable difference.</p>
+
+        <h2 id="cost">How much does Claude Code VSC cost?</h2>
+
+        <p>Claude Code isn't free, which surprises people who've only used the free tier of claude.ai.</p>
+
+        <p>Two options:</p>
+
+        <ul>
+          <li><strong>Claude Max subscription</strong> - a monthly plan that gives you heavy usage limits. Currently around $100 per month (approximately £80). Worth it if you're using Claude Code regularly across large projects.</li>
+          <li><strong>Anthropic API key with pay-as-you-go credits</strong> - you pay per token, which is roughly per word processed. Cheaper for occasional use. You add credits to your account and they're used as you work.</li>
+        </ul>
+
+        <p>Anthropic does offer a free API trial with limited credits. Use it to test Claude Code before deciding on a paid plan. It's enough to get a real sense of whether it's useful for what you're doing.</p>
+
+        <p>There's no permanently free tier for Claude Code specifically. The tool costs money to run and Anthropic doesn't subsidise it past the trial.</p>
+
+        <h2 id="getting-started">What should I try first?</h2>
+
+        <p>Don't start with a blank project. Open something you already have - a script you've written, a small website, any file with code in it. Ask Claude Code to explain it. Then ask it to add something small: a comment, a function, a bit of error handling.</p>
+
+        <p>Watch how it suggests changes. See how you accept or reject them. Give it feedback on what you wanted differently. That back-and-forth is the skill - learning to describe what you want clearly enough that the output is actually useful.</p>
+
+        <p>Set up a CLAUDE.md file in your first real project. Write two or three sentences about what the project is and what language it uses. It's not required, but the difference in response quality is noticeable from the first session.</p>
+
+        <p>If you want to compare Claude against other AI models before committing, the <a href="/lm-chat">LLM Chat tool</a> on this site lets you ask the same question to Claude, OpenAI, and Gemini side by side for free.</p>
+
+      </div>
+
+      <!-- ── Deep Dive Podcast ── -->
+      <div class="na-podcast" role="region" aria-label="Deep Dive Podcast">
+        <div class="na-podcast-badge">
+          <span class="material-symbols-outlined" aria-hidden="true">podcasts</span>
+          Deep Dive Podcast
+        </div>
+        <div class="na-podcast-inner">
+          <div class="na-podcast-left">
+            <div class="na-podcast-icon" aria-hidden="true">
+              <span class="material-symbols-outlined">graphic_eq</span>
+            </div>
+            <div class="na-podcast-meta">
+              <p class="na-podcast-title">Claude Code VSC for Beginners</p>
+              <p class="na-podcast-sub">Created with <a href="https://notebooklm.google.com/" target="_blank" rel="noopener" class="na-podcast-notebooklm"><strong>Google NotebookLM</strong></a> &middot; AI-generated audio overview</p>
+            </div>
+          </div>
+          <audio id="na-podcast-audio" preload="none" aria-label="Deep Dive Podcast audio"></audio>
+          <div class="na-podcast-controls">
+            <div class="na-podcast-progress-wrap" role="group" aria-label="Playback progress">
+              <span class="na-podcast-time" id="na-pod-current">0:00</span>
+              <input type="range" class="na-podcast-progress" id="na-pod-progress" value="0" min="0" step="0.1" aria-label="Seek">
+              <span class="na-podcast-time" id="na-pod-duration">0:00</span>
+            </div>
+            <div class="na-podcast-btns">
+              <button class="na-pod-btn na-pod-btn--skip" id="na-pod-back" aria-label="Skip back 15 seconds">
+                <span class="material-symbols-outlined">replay</span><span class="na-pod-skip-label">15s</span>
+              </button>
+              <button class="na-pod-btn na-pod-btn--play" id="na-pod-play" aria-label="Play podcast">
+                <span class="material-symbols-outlined" id="na-pod-play-icon">play_arrow</span>
+              </button>
+              <button class="na-pod-btn na-pod-btn--skip" id="na-pod-fwd" aria-label="Skip forward 15 seconds">
+                <span class="material-symbols-outlined">forward</span><span class="na-pod-skip-label">15s</span>
+              </button>
+              <div class="na-pod-volume">
+                <button class="na-pod-btn na-pod-mute" id="na-pod-mute" aria-label="Mute">
+                  <span class="material-symbols-outlined" id="na-pod-mute-icon">volume_up</span>
+                </button>
+                <input type="range" class="na-pod-vol-slider" id="na-pod-vol" min="0" max="1" step="0.05" value="1" aria-label="Volume">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+      (function() {
+        const audio   = document.getElementById('na-podcast-audio');
+        const playBtn = document.getElementById('na-pod-play');
+        const playIco = document.getElementById('na-pod-play-icon');
+        const progress= document.getElementById('na-pod-progress');
+        const current = document.getElementById('na-pod-current');
+        const durEl   = document.getElementById('na-pod-duration');
+        const backBtn = document.getElementById('na-pod-back');
+        const fwdBtn  = document.getElementById('na-pod-fwd');
+        const muteBtn = document.getElementById('na-pod-mute');
+        const muteIco = document.getElementById('na-pod-mute-icon');
+        const volSldr = document.getElementById('na-pod-vol');
+
+        // Defer loading the audio file until 2s after page load
+        setTimeout(() => {
+          audio.src = '/news/claude-code-vsc.m4a';
+          audio.load();
+        }, 2000);
+
+        function fmt(s) {
+          const m = Math.floor(s / 60);
+          const sec = Math.floor(s % 60);
+          return m + ':' + (sec < 10 ? '0' : '') + sec;
+        }
+
+        audio.addEventListener('loadedmetadata', () => {
+          progress.max = audio.duration;
+          durEl.textContent = fmt(audio.duration);
+        });
+
+        playBtn.addEventListener('click', () => {
+          if (audio.paused) { audio.play(); playIco.textContent = 'pause'; }
+          else { audio.pause(); playIco.textContent = 'play_arrow'; }
+        });
+
+        audio.addEventListener('timeupdate', () => {
+          progress.value = audio.currentTime;
+          current.textContent = fmt(audio.currentTime);
+        });
+
+        audio.addEventListener('ended', () => { playIco.textContent = 'play_arrow'; });
+
+        progress.addEventListener('input', () => { audio.currentTime = progress.value; });
+        backBtn.addEventListener('click', () => { audio.currentTime = Math.max(0, audio.currentTime - 15); });
+        fwdBtn.addEventListener('click',  () => { audio.currentTime = Math.min(audio.duration, audio.currentTime + 15); });
+
+        muteBtn.addEventListener('click', () => {
+          audio.muted = !audio.muted;
+          muteIco.textContent = audio.muted ? 'volume_off' : 'volume_up';
+        });
+        volSldr.addEventListener('input', () => { audio.volume = volSldr.value; });
+      })();
+      </script>
+
+      <div class="na-tags" aria-label="Tags">
+        <span class="na-tag">AI</span>
+        <span class="na-tag">Claude Code</span>
+        <span class="na-tag">VS Code</span>
+        <span class="na-tag">Coding</span>
+        <span class="na-tag">Beginners</span>
+      </div>
+    </article>
+
+    <a href="/news" class="na-back">
+      <span class="material-symbols-outlined">arrow_back</span>
+      Back to News
+    </a>
+
+  </div><!-- /.na-content -->
+
+  <aside class="na-sidebar" aria-label="Table of contents">
+    <nav class="na-toc">
+      <p class="na-toc-title">In this article</p>
+      <ol class="na-toc-list">
+        <li><a href="#what-is-claude-code-vsc" data-num="1">What is Claude Code VSC?</a></li>
+        <li><a href="#vs-claude-ai" data-num="2">Claude Code VSC vs Claude.ai</a></li>
+        <li><a href="#how-to-install" data-num="3">How to install it</a></li>
+        <li><a href="#what-it-does" data-num="4">What it can actually do</a></li>
+        <li><a href="#not-a-developer" data-num="5">Do you need to be a developer?</a></li>
+        <li><a href="#cost" data-num="6">What does it cost?</a></li>
+        <li><a href="#getting-started" data-num="7">What to try first</a></li>
+      </ol>
+    </nav>
+    <div id="newsy-ai"></div>
+  </aside>
+
+  </div><!-- /.na-layout -->
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <section class="tool-info" aria-label="Article reference" itemscope itemtype="https://schema.org/Article">
+    <meta itemprop="headline" content="Claude Code VSC: AI Coding for Beginners">
+    <meta itemprop="url" content="https://johnb.io/news/claude-code-vsc">
+
+    <div class="tool-info-inner">
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>What is Claude Code VSC?</dt>
+                <dd>Claude Code VSC is the official Visual Studio Code extension for Claude Code, Anthropic's AI coding assistant. It puts Claude directly inside your code editor so you can ask it to write code, explain errors, and suggest fixes without leaving VS Code or copying and pasting between windows.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Is Claude Code VSC free?</dt>
+                <dd>No. Claude Code requires either a Claude Max subscription (currently around $100 per month) or an Anthropic API key with pay-as-you-go credits. Anthropic offers a limited free trial of the API, which is a good way to test it before committing to a paid plan.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Do I need coding experience to use Claude Code VSC?</dt>
+                <dd>Some basic familiarity helps, but you don't need to be an experienced developer. Claude Code is particularly useful for beginners because it can explain code in plain English, identify errors, and write functions you don't know how to write yet. The more specific you are about what you want, the better the results.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What is the difference between Claude Code VSC and Claude.ai?</dt>
+                <dd>Claude.ai is a web-based chat interface where you copy and paste code manually. Claude Code VSC lives inside VS Code and can see your files directly, make changes, run terminal commands, and hold context across your whole project. No copying and pasting needed.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What is a CLAUDE.md file?</dt>
+                <dd>CLAUDE.md is a text file you can add to your project folder to give Claude Code context about your project - what it does, how it is structured, and any rules you want it to follow. It acts as a briefing document. Setting one up early makes a noticeable difference to the quality of Claude Code's suggestions.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Install VS Code.</strong> Download the free code editor from <a href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a>. It runs on Windows, Mac and Linux.</li>
+              <li><strong>Install the Claude Code extension.</strong> Open the Extensions panel in VS Code (the four-squares icon in the left sidebar), search for "Claude Code", and install the extension published by Anthropic.</li>
+              <li><strong>Connect your account.</strong> Set up a Claude Max subscription or add credits to an Anthropic API key. The extension prompts you to do this on first launch.</li>
+              <li><strong>Open the Claude Code panel.</strong> Click the Spark icon in the Activity Bar on the left. The chat panel opens and you can start asking Claude about your code.</li>
+              <li><strong>Create a CLAUDE.md file</strong> in your project folder with a short description of what you're building. This gives Claude persistent context across sessions and improves the quality of its suggestions.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>Claude Code VSC is built into VS Code, not a browser tab.</strong> It can see your project files directly, make edits, run terminal commands, and hold context across the whole project - none of which is possible when using Claude.ai via copy-paste.</li>
+              <li><strong>It's useful for beginners, not just developers.</strong> The ability to explain code in plain English is one of its most practical features. Beginners often get more out of it than experienced developers who already know the answers.</li>
+              <li><strong>It's not free.</strong> Claude Code requires a Claude Max subscription or Anthropic API credits. A free API trial is available for testing before you commit.</li>
+              <li><strong>Set up CLAUDE.md early.</strong> A short briefing file in your project folder gives Claude persistent context and makes a noticeable difference to the quality of suggestions from the first session.</li>
+              <li><strong>Be specific about what you want.</strong> Vague requests produce generic results. The more clearly you describe what you need - the language, the goal, the constraints - the more useful the output.</li>
+              <li><strong>Always review what Claude produces.</strong> It writes plausible-looking code that can have subtle errors. Don't accept output without understanding what it does, especially in anything that handles data or goes live.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">Anthropic - Claude Code overview</a>. Anthropic.com. Accessed April 2026.</li>
+              <li><a href="https://code.visualstudio.com" target="_blank" rel="noopener">Visual Studio Code - Free code editor</a>. code.visualstudio.com. Accessed April 2026.</li>
+              <li><a href="https://marketplace.visualstudio.com/items?itemName=Anthropic.claude-code" target="_blank" rel="noopener">Claude Code - VS Code Marketplace</a>. marketplace.visualstudio.com. Accessed April 2026.</li>
+              <li><a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">Anthropic - Claude pricing and plans</a>. Anthropic.com. Accessed April 2026.</li>
+              <li><a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" rel="noopener">Anthropic - Claude Code documentation</a>. docs.anthropic.com. Accessed April 2026.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/news-data.js"></script>
+  <script src="/scripts.js" defer></script>
+  <script src="/news-chat.js" defer></script>
+  <script src="/news-recent.js" defer></script>
+  <script>
+    document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
+      const trigger = document.querySelector('.nc-trigger');
+      if (trigger) trigger.click();
+    });
+    // Close mobile TOC links after click
+    document.querySelectorAll('.na-mobile-toc-list a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.querySelector('.na-mobile-toc').removeAttribute('open');
+      });
+    });
+  </script>
+  <script>
+    // TOC scroll spy
+    (function () {
+      const headings = document.querySelectorAll('.na-body h2[id]');
+      const links = document.querySelectorAll('.na-toc-list a');
+      if (!headings.length || !links.length) return;
+      const map = {};
+      links.forEach(a => { map[a.getAttribute('href').slice(1)] = a; });
+      function onScroll() {
+        let active = headings[0].id;
+        headings.forEach(h => {
+          if (h.getBoundingClientRect().top <= 120) active = h.id;
+        });
+        links.forEach(a => a.classList.remove('active'));
+        if (map[active]) map[active].classList.add('active');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+  <script>
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+  <script>
+    (function () {
+      const player       = document.getElementById('na-player');
+      const playBtn      = document.getElementById('na-play-btn');
+      const playIcon     = playBtn.querySelector('.material-symbols-outlined');
+      const skipBack     = document.getElementById('na-skip-back');
+      const skipFwd      = document.getElementById('na-skip-fwd');
+      const speedBtns    = document.querySelectorAll('.na-speed-btn');
+      const progressBar  = document.getElementById('na-progress');
+      const progressFill = document.getElementById('na-progress-fill');
+      const progressThumb= document.getElementById('na-progress-thumb');
+      const currentTime  = document.getElementById('na-current-time');
+      const durationEl   = document.getElementById('na-duration');
+      const waveCanvas   = document.getElementById('na-waveform');
+      const waveCtx      = waveCanvas.getContext('2d');
+
+      let isDragging = false;
+
+      // Defer loading the audio file
+      setTimeout(() => {
+        player.src = '/news/claude-code-vsc.mp3';
+        player.load();
+      }, 2000);
+
+      function formatTime(seconds) {
+        const m = Math.floor(seconds / 60);
+        const s = Math.floor(seconds % 60);
+        return m + ':' + (s < 10 ? '0' : '') + s;
+      }
+
+      function drawWaveform() {
+        const w = waveCanvas.width, h = waveCanvas.height;
+        waveCtx.clearRect(0, 0, w, h);
+        const bars = 40;
+        const barW = Math.floor(w / bars) - 1;
+        const progress = player.duration ? player.currentTime / player.duration : 0;
+        for (let i = 0; i < bars; i++) {
+          const barH = 8 + Math.sin(i * 0.7) * 10 + Math.cos(i * 0.4) * 8;
+          const x = i * (barW + 1);
+          const y = (h - barH) / 2;
+          waveCtx.fillStyle = (i / bars) < progress ? 'var(--primary, #c8ff00)' : 'rgba(255,255,255,0.18)';
+          waveCtx.beginPath();
+          waveCtx.roundRect(x, y, barW, barH, 2);
+          waveCtx.fill();
+        }
+      }
+
+      player.addEventListener('loadedmetadata', () => {
+        durationEl.textContent = formatTime(player.duration);
+        drawWaveform();
+      });
+
+      player.addEventListener('timeupdate', () => {
+        if (!isDragging) {
+          const pct = player.duration ? player.currentTime / player.duration : 0;
+          progressFill.style.width = (pct * 100) + '%';
+          progressThumb.style.left = (pct * 100) + '%';
+          currentTime.textContent = formatTime(player.currentTime);
+          progressBar.setAttribute('aria-valuenow', Math.round(pct * 100));
+        }
+        drawWaveform();
+      });
+
+      player.addEventListener('ended', () => { playIcon.textContent = 'play_arrow'; drawWaveform(); });
+
+      playBtn.addEventListener('click', () => {
+        if (player.paused) { player.play(); playIcon.textContent = 'pause'; }
+        else { player.pause(); playIcon.textContent = 'play_arrow'; }
+      });
+
+      speedBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          player.playbackRate = parseFloat(btn.dataset.speed);
+          speedBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+
+      skipBack.addEventListener('click', () => { player.currentTime = Math.max(0, player.currentTime - 10); });
+      skipFwd.addEventListener('click',  () => { player.currentTime = Math.min(player.duration, player.currentTime + 10); });
+
+      function scrubTo(e) {
+        const rect = progressBar.getBoundingClientRect();
+        const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        player.currentTime = pct * player.duration;
+      }
+
+      progressBar.addEventListener('mousedown', e => { isDragging = true; scrubTo(e); });
+      window.addEventListener('mousemove', e => { if (isDragging) scrubTo(e); });
+      window.addEventListener('mouseup', () => { isDragging = false; });
+
+      const muteBtn = document.getElementById('na-mute-btn');
+      const volSlider = document.getElementById('na-volume-slider');
+      muteBtn.addEventListener('click', () => {
+        player.muted = !player.muted;
+        muteBtn.querySelector('.material-symbols-outlined').textContent = player.muted ? 'volume_off' : 'volume_up';
+      });
+      volSlider.addEventListener('input', () => { player.volume = volSlider.value; });
+
+      drawWaveform();
+    })();
+  </script>
+</body>
+</html>
