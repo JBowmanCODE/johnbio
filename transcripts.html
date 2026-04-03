@@ -37,6 +37,21 @@
   <link rel="stylesheet" href="/footer.css">
   <link rel="stylesheet" href="/transcripts.css">
   <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js" integrity="sha384-odPBjvtXVM/5hOYIr3A1dB+flh0c3wAT3bSesIOqEGmyUA4JoKf/YTWy0XKOYAY7" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "YouTube Blog Post Generator",
+    "description": "Generate SEO-optimised blog posts from YouTube video transcripts using AI.",
+    "url": "https://johnb.io/transcripts",
+    "image": "https://johnb.io/og_images/transcripts_og.webp",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+    "author": { "@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/" },
+    "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
+  }
+  </script>
 </head>
 <body>
 
@@ -137,21 +152,17 @@
 
 <div id="share-bar-placeholder"></div>
 
-<section class="tool-info" aria-label="About this tool" itemscope itemtype="https://schema.org/SoftwareApplication">
-  <meta itemprop="name" content="YouTube Blog Post Generator">
-  <meta itemprop="applicationCategory" content="UtilitiesApplication">
-  <meta itemprop="operatingSystem" content="Web">
-  <meta itemprop="url" content="https://johnb.io/transcripts">
+<section class="tool-info" aria-label="About this tool">
 
   <div class="tool-info-inner">
 
     <div class="tool-info-meta">
       <span>Last updated: March 2026</span>
       <span class="tool-info-sep">·</span>
-      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a> - questions? Connect on LinkedIn.</span>
     </div>
 
-    <div class="tool-info-body" itemprop="description">
+    <div class="tool-info-body">
       <p>This tool takes the raw transcript from any <a href="https://support.google.com/youtube/answer/100078" target="_blank" rel="noopener">YouTube video</a> and turns it into a structured, SEO-optimised blog post - complete with a title, meta description, and H2 headings. It is built for content teams, marketers, and solo creators who want to repurpose video content without spending hours rewriting from scratch.</p>
       <p>The generator runs on <a href="https://www.anthropic.com/claude/haiku" target="_blank" rel="noopener">Claude Haiku</a>, Anthropic's fast, lightweight language model. Your transcript is sent securely to Anthropic's API for processing and is not stored or used for training. The tool complies with <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/" target="_blank" rel="noopener">UK GDPR</a> and the <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a> as of March 2026. Always review the output before publishing - AI-generated content should be treated as a first draft.</p>
     </div>

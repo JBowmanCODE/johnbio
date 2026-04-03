@@ -37,6 +37,21 @@
     <link rel="stylesheet" href="/header.css">
     <link rel="stylesheet" href="/footer.css">
     <link rel="stylesheet" href="/text-to-voice.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Text to Voice",
+    "description": "Convert text to voice with speed control and word-by-word subtitle highlighting. Browser-based, no account required.",
+    "url": "https://johnb.io/text-to-voice",
+    "image": "https://johnb.io/og_images/text_to_voice_og.webp",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+    "author": { "@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/" },
+    "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
+  }
+  </script>
 </head>
 <body>
     <div id="header-placeholder"></div>
@@ -101,21 +116,17 @@ If this is too fast, use a lower speed setting. Have fun!</textarea>
 
     <div id="share-bar-placeholder"></div>
 
-<section class="tool-info" aria-label="About this tool" itemscope itemtype="https://schema.org/SoftwareApplication">
-  <meta itemprop="name" content="Text to Voice">
-  <meta itemprop="applicationCategory" content="UtilitiesApplication">
-  <meta itemprop="operatingSystem" content="Web">
-  <meta itemprop="url" content="https://johnb.io/text-to-voice">
+<section class="tool-info" aria-label="About this tool">
 
   <div class="tool-info-inner">
 
     <div class="tool-info-meta">
       <span>Last updated: March 2026</span>
       <span class="tool-info-sep">·</span>
-      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a> - questions? Connect on LinkedIn.</span>
     </div>
 
-    <div class="tool-info-body" itemprop="description">
+    <div class="tool-info-body">
       <p>Text to Voice converts any pasted text into speech using your browser's built-in <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API" target="_blank" rel="noopener">Web Speech API</a>. Paste your text, choose a voice from the voices installed on your device, set a playback speed between 0.8× and 1.75×, and hit Start. Word-by-word subtitles highlight each spoken word in real time as the audio plays. The tool also shows an estimated word count, reading time and listen time based on your chosen speed - useful for pacing articles, scripts or presentations.</p>
       <p>This tool runs entirely in your browser. No text is sent to any external server and no data leaves your device. It does not use an AI model or any third-party API. All processing is handled locally by your browser's speech synthesis engine, which means voice availability and quality depend on what your operating system has installed. Most modern browsers on Windows, macOS, iOS and Android include a range of voices in multiple languages.</p>
     </div>

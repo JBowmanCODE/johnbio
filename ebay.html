@@ -37,27 +37,38 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: "Segoe UI", -apple-system, sans-serif; padding-top: 72px; }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "eBay and Vinted Profit Calculator",
+    "description": "eBay and Vinted profit calculator for resellers. Calculate profit after fees, postage and purchase costs.",
+    "url": "https://johnb.io/ebay",
+    "image": "https://johnb.io/og_images/ebay_og.webp",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+    "author": { "@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/" },
+    "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
+  }
+  </script>
 </head>
 <body>
   <div id="header-placeholder"></div>
   <div id="root"></div>
   <div id="share-bar-placeholder"></div>
 
-<section class="tool-info" aria-label="About this tool" itemscope itemtype="https://schema.org/SoftwareApplication">
-  <meta itemprop="name" content="eBay &amp; Vinted Profit Calculator">
-  <meta itemprop="applicationCategory" content="UtilitiesApplication">
-  <meta itemprop="operatingSystem" content="Web">
-  <meta itemprop="url" content="https://johnb.io/ebay">
+<section class="tool-info" aria-label="About this tool">
 
   <div class="tool-info-inner">
 
     <div class="tool-info-meta">
       <span>Last updated: March 2026</span>
       <span class="tool-info-sep">·</span>
-      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a> - questions? Connect on LinkedIn.</span>
     </div>
 
-    <div class="tool-info-body" itemprop="description">
+    <div class="tool-info-body">
       <p>The eBay &amp; Vinted Profit Calculator helps resellers work out their actual profit after platform fees, postage costs and the original purchase price. It covers three selling channels: <a href="https://www.vinted.co.uk" target="_blank" rel="noopener">Vinted</a>, <a href="https://www.ebay.co.uk" target="_blank" rel="noopener">eBay</a>, and saleroom/auction sales. Enter your items, set your fee rates, and the tool calculates profit per item, total profit, return on investment and suggested minimum sale prices. Data is saved to your browser's localStorage so it persists between sessions.</p>
       <p>This tool runs entirely in your browser using <a href="https://react.dev" target="_blank" rel="noopener">React</a>. No data is sent to any external server. Your item lists and settings are stored locally in your browser and remain private to you. Default fee rates are based on standard platform rates as of March 2026 - always verify current rates directly with <a href="https://www.ebay.co.uk/help/selling/fees-credits-invoices/selling-fees" target="_blank" rel="noopener">eBay</a> and <a href="https://www.vinted.co.uk/help/selling" target="_blank" rel="noopener">Vinted</a> before making purchasing decisions.</p>
     </div>
