@@ -39,6 +39,21 @@
     <link rel="stylesheet" href="/header.css">
     <link rel="stylesheet" href="/footer.css">
     <link rel="stylesheet" href="/calculator.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Bill Calculator",
+    "description": "Split bills and calculate tips instantly. Free online bill splitter.",
+    "url": "https://johnb.io/calculator",
+    "image": "https://johnb.io/og_images/calculator_og.webp",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+    "author": { "@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/" },
+    "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
+  }
+  </script>
 </head>
 <body>
     <div id="header-placeholder"></div>
@@ -70,21 +85,17 @@
 
     <div id="share-bar-placeholder"></div>
 
-<section class="tool-info" aria-label="About this tool" itemscope itemtype="https://schema.org/SoftwareApplication">
-  <meta itemprop="name" content="Bill Calculator">
-  <meta itemprop="applicationCategory" content="UtilitiesApplication">
-  <meta itemprop="operatingSystem" content="Web">
-  <meta itemprop="url" content="https://johnb.io/calculator">
+<section class="tool-info" aria-label="About this tool">
 
   <div class="tool-info-inner">
 
     <div class="tool-info-meta">
       <span>Last updated: March 2026</span>
       <span class="tool-info-sep">·</span>
-      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" itemprop="author">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a> - questions? Connect on LinkedIn.</span>
     </div>
 
-    <div class="tool-info-body" itemprop="description">
+    <div class="tool-info-body">
       <p>The Bill Calculator splits any restaurant or group bill instantly. Enter the total, choose a tip percentage, set the number of people, and it returns the tip amount, total with tip, and the share per person. It handles the arithmetic so nobody at the table has to argue over it. The calculation runs entirely in your browser - no data is sent anywhere and the tool works offline once the page has loaded.</p>
       <p>This is a pure client-side tool with no AI, no external API and no data collection. It uses <a href="https://pyodide.org" target="_blank" rel="noopener">Pyodide</a> to run Python calculation logic directly in the browser via WebAssembly.</p>
     </div>
