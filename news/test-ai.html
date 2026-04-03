@@ -317,6 +317,99 @@
 
       </div>
 
+      <!-- ── Deep Dive Podcast ── -->
+      <div class="na-podcast" role="region" aria-label="Deep Dive Podcast">
+        <div class="na-podcast-badge">
+          <span class="material-symbols-outlined" aria-hidden="true">podcasts</span>
+          Deep Dive Podcast
+        </div>
+        <div class="na-podcast-inner">
+          <div class="na-podcast-left">
+            <div class="na-podcast-icon" aria-hidden="true">
+              <span class="material-symbols-outlined">graphic_eq</span>
+            </div>
+            <div class="na-podcast-meta">
+              <p class="na-podcast-title">Why AI Citation is the New SEO</p>
+              <p class="na-podcast-sub">Created with <strong>Google NotebookLM</strong> &middot; AI-generated audio overview</p>
+            </div>
+          </div>
+          <audio id="na-podcast-audio" src="/news/Why_AI_citation_is_the_new_SEO.m4a" preload="metadata" aria-label="Deep Dive Podcast audio"></audio>
+          <div class="na-podcast-controls">
+            <div class="na-podcast-progress-wrap" role="group" aria-label="Playback progress">
+              <span class="na-podcast-time" id="na-pod-current">0:00</span>
+              <input type="range" class="na-podcast-progress" id="na-pod-progress" value="0" min="0" step="0.1" aria-label="Seek">
+              <span class="na-podcast-time" id="na-pod-duration">0:00</span>
+            </div>
+            <div class="na-podcast-btns">
+              <button class="na-pod-btn" id="na-pod-back" aria-label="Skip back 15 seconds">
+                <span class="material-symbols-outlined">replay_15</span>
+              </button>
+              <button class="na-pod-btn na-pod-btn--play" id="na-pod-play" aria-label="Play podcast">
+                <span class="material-symbols-outlined" id="na-pod-play-icon">play_arrow</span>
+              </button>
+              <button class="na-pod-btn" id="na-pod-fwd" aria-label="Skip forward 15 seconds">
+                <span class="material-symbols-outlined">forward_15</span>
+              </button>
+              <div class="na-pod-volume">
+                <button class="na-pod-btn na-pod-mute" id="na-pod-mute" aria-label="Mute">
+                  <span class="material-symbols-outlined" id="na-pod-mute-icon">volume_up</span>
+                </button>
+                <input type="range" class="na-pod-vol-slider" id="na-pod-vol" min="0" max="1" step="0.05" value="1" aria-label="Volume">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+      (function() {
+        const audio   = document.getElementById('na-podcast-audio');
+        const playBtn = document.getElementById('na-pod-play');
+        const playIco = document.getElementById('na-pod-play-icon');
+        const progress= document.getElementById('na-pod-progress');
+        const current = document.getElementById('na-pod-current');
+        const durEl   = document.getElementById('na-pod-duration');
+        const backBtn = document.getElementById('na-pod-back');
+        const fwdBtn  = document.getElementById('na-pod-fwd');
+        const muteBtn = document.getElementById('na-pod-mute');
+        const muteIco = document.getElementById('na-pod-mute-icon');
+        const volSldr = document.getElementById('na-pod-vol');
+
+        function fmt(s) {
+          const m = Math.floor(s / 60);
+          const sec = Math.floor(s % 60);
+          return m + ':' + (sec < 10 ? '0' : '') + sec;
+        }
+
+        audio.addEventListener('loadedmetadata', () => {
+          progress.max = audio.duration;
+          durEl.textContent = fmt(audio.duration);
+        });
+
+        playBtn.addEventListener('click', () => {
+          if (audio.paused) { audio.play(); playIco.textContent = 'pause'; }
+          else { audio.pause(); playIco.textContent = 'play_arrow'; }
+        });
+
+        audio.addEventListener('timeupdate', () => {
+          progress.value = audio.currentTime;
+          current.textContent = fmt(audio.currentTime);
+        });
+
+        audio.addEventListener('ended', () => { playIco.textContent = 'play_arrow'; });
+
+        progress.addEventListener('input', () => { audio.currentTime = progress.value; });
+        backBtn.addEventListener('click', () => { audio.currentTime = Math.max(0, audio.currentTime - 15); });
+        fwdBtn.addEventListener('click',  () => { audio.currentTime = Math.min(audio.duration, audio.currentTime + 15); });
+
+        muteBtn.addEventListener('click', () => {
+          audio.muted = !audio.muted;
+          muteIco.textContent = audio.muted ? 'volume_off' : 'volume_up';
+        });
+        volSldr.addEventListener('input', () => { audio.volume = volSldr.value; });
+      })();
+      </script>
+
       <div class="na-tags" aria-label="Tags">
         <span class="na-tag">AI</span>
         <span class="na-tag">LLMs</span>
