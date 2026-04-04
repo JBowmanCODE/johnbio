@@ -136,5 +136,48 @@
     }, { passive: true });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
+
+  <script>
+    (function () {
+      const w1 = document.querySelector('.word-1');
+      const w2 = document.querySelector('.word-2');
+      if (!w1 || !w2) return;
+
+      let idleTimer;
+      let isIdle = false;
+
+      function swap(el, newText) {
+        el.style.transition = 'opacity 0.35s ease';
+        el.style.opacity = '0';
+        setTimeout(() => {
+          el.textContent = newText;
+          el.style.opacity = '1';
+        }, 350);
+      }
+
+      function goIdle() {
+        if (isIdle) return;
+        isIdle = true;
+        swap(w1, 'Wake');
+        swap(w2, 'Up');
+      }
+
+      function goActive() {
+        if (!isIdle) return;
+        isIdle = false;
+        swap(w1, 'Latest');
+        swap(w2, 'Projects');
+      }
+
+      function resetTimer() {
+        clearTimeout(idleTimer);
+        goActive();
+        idleTimer = setTimeout(goIdle, 15000);
+      }
+
+      document.addEventListener('mousemove', resetTimer, { passive: true });
+      idleTimer = setTimeout(goIdle, 15000);
+    })();
+  </script>
 </body>
 </html>
