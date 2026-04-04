@@ -163,6 +163,7 @@ signinForm && signinForm.addEventListener('submit', async (e) => {
     const cred = await signInWithEmailAndPassword(auth, email, pw);
     await ensureUserDoc(cred.user);
     showSuccess(`Welcome back! Redirecting to your dashboard...`);
+    setTimeout(() => { window.location.href = getRedirect(); }, 1200);
   } catch (err) {
     showError('signinError', friendlyError(err.code));
   } finally {
@@ -191,6 +192,7 @@ signupForm && signupForm.addEventListener('submit', async (e) => {
     await updateProfile(cred.user, { displayName: name });
     await ensureUserDoc(cred.user, { name });
     showSuccess(`Welcome, ${name}! Your account is ready. Redirecting...`);
+    setTimeout(() => { window.location.href = getRedirect(); }, 1200);
   } catch (err) {
     showError('signupError', friendlyError(err.code));
   } finally {
@@ -204,6 +206,7 @@ async function handleGoogle(errorElId) {
     const cred = await signInWithPopup(auth, googleProvider);
     await ensureUserDoc(cred.user);
     showSuccess(`Welcome! Redirecting to your dashboard...`);
+    setTimeout(() => { window.location.href = getRedirect(); }, 1200);
   } catch (err) {
     const msg = friendlyError(err.code);
     if (msg) showError(errorElId, msg);
@@ -219,6 +222,7 @@ async function handleGitHub(errorElId) {
     const cred = await signInWithPopup(auth, githubProvider);
     await ensureUserDoc(cred.user);
     showSuccess(`Welcome! Redirecting to your dashboard...`);
+    setTimeout(() => { window.location.href = getRedirect(); }, 1200);
   } catch (err) {
     const msg = friendlyError(err.code);
     if (msg) showError(errorElId, msg || 'GitHub sign-in is not yet configured.');
@@ -245,3 +249,11 @@ forgotLink && forgotLink.addEventListener('click', async (e) => {
     showError('signinError', friendlyError(err.code));
   }
 });
+
+/* ----- Redirect helper ----- */
+function getRedirect() {
+  const p = new URLSearchParams(location.search);
+  const dest = p.get('redirect');
+  if (dest && dest.startsWith('/')) return dest;
+  return '/course-dashboard';
+}

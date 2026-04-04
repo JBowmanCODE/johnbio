@@ -1,0 +1,225 @@
+/* ================================================
+   exam.css — Final exam styles
+   ================================================ */
+
+.ex-ambient {
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 40% at 20% 20%, rgba(99,102,241,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(255,0,127,0.06) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+
+.ex-wrap {
+  position: relative; z-index: 1;
+  padding: 2.5rem 1.5rem 5rem;
+  min-height: calc(100vh - 80px);
+}
+
+.ex-inner {
+  max-width: 680px; margin: 0 auto;
+}
+
+/* Loading */
+.ex-loading {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 300px;
+}
+.ex-spinner {
+  width: 36px; height: 36px;
+  border: 3px solid rgba(255,255,255,0.1);
+  border-top-color: rgba(99,102,241,0.8);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Intro screen */
+.ex-intro {
+  text-align: center; padding: 1rem 0;
+}
+.ex-intro-icon {
+  font-size: 3rem; margin-bottom: 1rem;
+  background: rgba(99,102,241,0.12);
+  border: 1px solid rgba(99,102,241,0.2);
+  border-radius: 50%;
+  width: 72px; height: 72px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+.ex-intro-icon .material-symbols-outlined { font-size: 2rem; color: rgb(99,102,241); }
+.ex-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700; color: #fff; margin: 0 0 0.5rem;
+}
+.ex-sub {
+  color: rgba(255,255,255,0.5); font-size: 0.9rem;
+  margin: 0 0 2rem; line-height: 1.6;
+}
+.ex-rules {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px; padding: 1.25rem 1.5rem;
+  text-align: left; margin-bottom: 2rem;
+  display: flex; flex-direction: column; gap: 0.625rem;
+}
+.ex-rule {
+  display: flex; align-items: center; gap: 0.75rem;
+  font-size: 0.875rem; color: rgba(255,255,255,0.6);
+}
+.ex-rule .material-symbols-outlined { font-size: 1.1rem; color: rgba(99,102,241,0.8); }
+.ex-start-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 2rem; border-radius: 8px; border: none;
+  background: rgb(99,102,241); color: #fff; cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem; font-weight: 600;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.ex-start-btn:hover {
+  background: rgb(79,82,221); transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(99,102,241,0.35);
+}
+
+/* Quiz screen */
+.ex-progress-wrap {
+  margin-bottom: 1.75rem;
+}
+.ex-progress-top {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem; color: rgba(255,255,255,0.4);
+}
+.ex-progress-bar-bg {
+  height: 4px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden;
+}
+.ex-progress-bar-fill {
+  height: 100%; background: rgb(99,102,241); border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.ex-question-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+.ex-q-num {
+  font-size: 0.78rem; font-weight: 600;
+  color: rgba(99,102,241,0.7);
+  text-transform: uppercase; letter-spacing: 0.07em;
+  margin-bottom: 0.875rem;
+}
+.ex-q-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem; font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.5; margin-bottom: 1.5rem;
+}
+.ex-options {
+  display: flex; flex-direction: column; gap: 0.625rem;
+}
+.ex-option {
+  display: flex; align-items: center; gap: 0.875rem;
+  padding: 0.75rem 1rem; border-radius: 10px;
+  border: 1.5px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.ex-option:hover { border-color: rgba(99,102,241,0.4); background: rgba(99,102,241,0.05); }
+.ex-option.selected {
+  border-color: rgba(99,102,241,0.6);
+  background: rgba(99,102,241,0.1);
+}
+.ex-option-letter {
+  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem; font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.ex-option.selected .ex-option-letter {
+  background: rgb(99,102,241); border-color: rgb(99,102,241); color: #fff;
+}
+.ex-option-text { font-size: 0.9rem; color: rgba(255,255,255,0.75); }
+
+/* Nav buttons */
+.ex-nav {
+  display: flex; justify-content: space-between; gap: 1rem;
+}
+.ex-nav-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.6rem 1.25rem; border-radius: 8px; border: none; cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem; font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+}
+.ex-nav-btn:hover { transform: translateY(-1px); }
+.ex-btn-back {
+  background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7);
+}
+.ex-btn-back:hover { background: rgba(255,255,255,0.1); }
+.ex-btn-next {
+  background: rgb(99,102,241); color: #fff; margin-left: auto;
+}
+.ex-btn-next:hover { background: rgb(79,82,221); }
+.ex-btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.ex-btn-submit {
+  background: #ff007f; color: #fff; margin-left: auto;
+}
+.ex-btn-submit:hover { background: #e6006f; }
+.ex-btn-submit:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.ex-nav-btn .material-symbols-outlined { font-size: 1rem; }
+
+/* Results screen */
+.ex-results { text-align: center; padding: 1rem 0; }
+.ex-result-ring-wrap {
+  position: relative; width: 120px; height: 120px; margin: 0 auto 1.75rem;
+}
+.ex-result-ring { width: 120px; height: 120px; transform: rotate(-90deg); }
+.ex-ring-bg { fill: none; stroke: rgba(255,255,255,0.07); stroke-width: 8; }
+.ex-ring-fill { fill: none; stroke-width: 8; stroke-linecap: round; stroke-dasharray: 314; stroke-dashoffset: 314; transition: stroke-dashoffset 1.2s ease; }
+.ex-ring-label {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.ex-ring-score {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem; font-weight: 700; color: #fff; line-height: 1;
+}
+.ex-ring-sub { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+.ex-result-grade {
+  display: inline-block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem; font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.ex-result-label {
+  font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;
+}
+.ex-result-sub {
+  font-size: 0.875rem; color: rgba(255,255,255,0.4);
+  margin-bottom: 2rem;
+}
+.ex-result-actions { display: flex; gap: 0.875rem; justify-content: center; flex-wrap: wrap; }
+.ex-result-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.65rem 1.25rem; border-radius: 8px; border: none; cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem; font-weight: 600; text-decoration: none;
+  transition: transform 0.15s;
+}
+.ex-result-btn:hover { transform: translateY(-1px); }
+.ex-btn-cert { background: #4ade80; color: #000; }
+.ex-btn-dash { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); }
+.ex-btn-retry { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); }
+
+@media (max-width: 480px) {
+  .ex-question-card { padding: 1.25rem; }
+  .ex-title { font-size: 1.4rem; }
+}
