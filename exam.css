@@ -12,8 +12,8 @@
 
 .ex-wrap {
   position: relative; z-index: 1;
-  padding: 2.5rem 1.5rem 5rem;
-  min-height: calc(100vh - 80px);
+  padding: calc(72px + 2.5rem) 1.5rem 5rem;
+  min-height: 100vh;
 }
 
 .ex-inner {
