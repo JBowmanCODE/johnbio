@@ -1,0 +1,261 @@
+/* ================================================
+   course.css — Lesson player styles
+   ================================================ */
+
+.cl-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: calc(100vh - 64px);
+  position: relative;
+}
+
+/* Sidebar */
+.cl-sidebar {
+  border-right: 1px solid rgba(255,255,255,0.07);
+  background: rgba(8,8,14,0.6);
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+.cl-sidebar-inner { padding: 1.25rem 0 2rem; }
+.cl-back-link {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.5rem 1.25rem 0.75rem;
+  font-size: 0.8125rem; color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  margin-bottom: 0.75rem;
+}
+.cl-back-link:hover { color: rgba(255,255,255,0.7); }
+.cl-back-link .material-symbols-outlined { font-size: 0.95rem; }
+
+/* Sidebar units */
+.cl-sb-unit { margin-bottom: 0.25rem; }
+.cl-sb-unit-title {
+  padding: 0.5rem 1.25rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem; font-weight: 600;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: color 0.2s;
+}
+.cl-sb-unit-title:hover { color: rgba(255,255,255,0.6); }
+.cl-sb-unit-title .material-symbols-outlined { font-size: 0.9rem; transition: transform 0.25s; }
+.cl-sb-unit.open .cl-sb-unit-title .material-symbols-outlined { transform: rotate(180deg); }
+
+.cl-sb-lessons { display: none; }
+.cl-sb-unit.open .cl-sb-lessons { display: block; }
+
+.cl-sb-lesson {
+  display: flex; align-items: center; gap: 0.625rem;
+  padding: 0.45rem 1.25rem 0.45rem 1.5rem;
+  text-decoration: none;
+  font-size: 0.8125rem; color: rgba(255,255,255,0.5);
+  transition: background 0.15s, color 0.15s;
+  border-radius: 4px;
+  margin: 0 0.5rem;
+}
+.cl-sb-lesson:hover { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.8); }
+.cl-sb-lesson.active {
+  background: rgba(255,0,127,0.12);
+  color: rgba(255,255,255,0.9);
+  border-left: 2px solid #ff007f;
+  padding-left: calc(1.5rem - 2px);
+}
+.cl-sb-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.cl-sb-dot.done { background: #4ade80; border-color: #4ade80; }
+.cl-sb-lesson.active .cl-sb-dot { border-color: #ff007f; }
+
+/* Mobile sidebar toggle */
+.cl-sidebar-toggle {
+  display: none;
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 100;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: #ff007f; border: none; cursor: pointer;
+  align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(255,0,127,0.4);
+}
+.cl-sidebar-toggle .material-symbols-outlined { font-size: 1.2rem; color: #fff; }
+
+/* Main */
+.cl-main {
+  min-width: 0;
+  padding: 2.5rem 2rem 5rem;
+}
+.cl-main-inner { max-width: 700px; }
+
+/* Breadcrumb */
+.cl-breadcrumb {
+  font-size: 0.8rem; color: rgba(255,255,255,0.3);
+  margin-bottom: 1.75rem;
+  display: flex; align-items: center; gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.cl-breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; }
+.cl-breadcrumb a:hover { color: rgba(255,255,255,0.7); }
+.cl-breadcrumb .sep { opacity: 0.3; }
+
+/* Article */
+.cl-article {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+}
+
+/* Loading */
+.cl-loading {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 200px;
+}
+.cl-spinner {
+  width: 32px; height: 32px;
+  border: 3px solid rgba(255,255,255,0.08);
+  border-top-color: rgba(255,0,127,0.8);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Lesson header */
+.cl-lesson-meta {
+  display: flex; align-items: center; gap: 0.625rem;
+  font-size: 0.78rem; color: rgba(255,255,255,0.35);
+  margin-bottom: 1rem;
+}
+.cl-lesson-unit-badge {
+  background: rgba(255,0,127,0.12);
+  border: 1px solid rgba(255,0,127,0.2);
+  color: rgba(255,0,127,0.8);
+  padding: 0.2rem 0.6rem; border-radius: 99px;
+  font-size: 0.72rem; font-weight: 500;
+}
+.cl-lesson-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  font-weight: 700; color: #fff;
+  margin: 0 0 1.5rem; line-height: 1.25;
+}
+
+/* Lesson content typography */
+.cl-body h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem; font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  margin: 1.75rem 0 0.625rem;
+}
+.cl-body h2:first-child { margin-top: 0; }
+.cl-body p {
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7; font-size: 0.95rem;
+  margin: 0 0 0.875rem;
+}
+.cl-body ul, .cl-body ol {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.95rem; line-height: 1.7;
+  padding-left: 1.5rem;
+  margin: 0 0 0.875rem;
+}
+.cl-body li { margin-bottom: 0.3rem; }
+.cl-body strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+.cl-body code {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  padding: 0.15em 0.45em;
+  font-size: 0.875em;
+  color: #e879f9;
+}
+
+/* Placeholder notice */
+.lesson-placeholder-notice {
+  background: rgba(255,183,0,0.08);
+  border: 1px solid rgba(255,183,0,0.2);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: rgba(255,183,0,0.8) !important;
+  font-size: 0.85rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Mark complete section */
+.cl-complete-wrap {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.cl-complete-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px; border: 1.5px solid rgba(74,222,128,0.3);
+  background: rgba(74,222,128,0.08);
+  color: #4ade80;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem; font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+.cl-complete-btn:hover {
+  background: rgba(74,222,128,0.15);
+  border-color: rgba(74,222,128,0.5);
+  transform: translateY(-1px);
+}
+.cl-complete-btn.done {
+  background: rgba(74,222,128,0.15);
+  border-color: rgba(74,222,128,0.5);
+  cursor: default;
+}
+.cl-complete-btn .material-symbols-outlined { font-size: 1.1rem; }
+.cl-login-nudge {
+  font-size: 0.82rem; color: rgba(255,255,255,0.35);
+  margin-top: 0.625rem;
+}
+.cl-login-nudge a { color: rgba(255,0,127,0.7); text-decoration: none; }
+.cl-login-nudge a:hover { color: #ff007f; }
+
+/* Bottom nav */
+.cl-nav-row {
+  display: flex; justify-content: space-between; gap: 1rem;
+}
+.cl-nav-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem; font-weight: 500;
+  transition: background 0.2s, transform 0.15s;
+  max-width: 280px;
+}
+.cl-nav-btn:hover { background: rgba(255,255,255,0.09); transform: translateY(-1px); }
+.cl-nav-btn.next { margin-left: auto; }
+.cl-nav-btn .material-symbols-outlined { font-size: 1rem; }
+.cl-nav-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cl-layout { grid-template-columns: 1fr; }
+  .cl-sidebar {
+    position: fixed; left: -300px; top: 0; bottom: 0; z-index: 200;
+    width: 280px; height: 100vh;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+  }
+  .cl-sidebar.open { left: 0; }
+  .cl-sidebar-toggle { display: flex; }
+  .cl-main { padding: 1.5rem 1rem 5rem; }
+  .cl-article { padding: 1.25rem; }
+}

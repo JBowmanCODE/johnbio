@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">AI Course - JohnB.io</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/header.css">
+  <link rel="stylesheet" href="/footer.css">
+  <link rel="stylesheet" href="/course.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <div class="cl-layout">
+
+    <!-- Sidebar -->
+    <aside class="cl-sidebar" id="clSidebar">
+      <div class="cl-sidebar-inner">
+        <a href="/course-dashboard" class="cl-back-link">
+          <span class="material-symbols-outlined">arrow_back</span>
+          My dashboard
+        </a>
+        <div class="cl-sidebar-units" id="clSidebarUnits"></div>
+      </div>
+    </aside>
+
+    <!-- Mobile sidebar toggle -->
+    <button class="cl-sidebar-toggle" id="clSidebarToggle" aria-label="Toggle course navigation">
+      <span class="material-symbols-outlined">menu_book</span>
+    </button>
+
+    <!-- Main content -->
+    <main class="cl-main">
+      <div class="cl-main-inner" id="clMainInner">
+
+        <!-- Top breadcrumb -->
+        <div class="cl-breadcrumb" id="clBreadcrumb"></div>
+
+        <!-- Lesson content -->
+        <article class="cl-article" id="clArticle">
+          <div class="cl-loading">
+            <div class="cl-spinner"></div>
+          </div>
+        </article>
+
+        <!-- Bottom nav -->
+        <nav class="cl-nav-row" id="clNavRow"></nav>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js" defer></script>
+  <script src="/course-data.js"></script>
+  <script type="module" src="/course.js"></script>
+</body>
+</html>

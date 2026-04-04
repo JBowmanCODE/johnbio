@@ -1,0 +1,192 @@
+/* ================================================
+   certificate.css
+   ================================================ */
+
+.cert-wrap {
+  max-width: 860px; margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+  min-height: calc(100vh - 80px);
+}
+
+.cert-loading {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 300px;
+}
+.cert-spinner {
+  width: 36px; height: 36px;
+  border: 3px solid rgba(255,255,255,0.1);
+  border-top-color: rgba(255,0,127,0.8);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.hidden { display: none !important; }
+
+/* Locked state */
+.cert-locked {
+  text-align: center; padding: 4rem 1rem;
+}
+.cert-locked .material-symbols-outlined {
+  font-size: 3rem; color: rgba(255,255,255,0.2);
+  display: block; margin-bottom: 1rem;
+}
+.cert-locked h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem; color: rgba(255,255,255,0.7); margin: 0 0 0.5rem;
+}
+.cert-locked p {
+  font-size: 0.9rem; color: rgba(255,255,255,0.35); margin: 0 0 1.5rem;
+}
+.cert-action-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.65rem 1.5rem; border-radius: 8px;
+  background: #ff007f; color: #fff; text-decoration: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem; font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+}
+.cert-action-btn:hover { background: #e6006f; transform: translateY(-1px); }
+
+/* Actions bar (above certificate) */
+.cert-actions {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+.cert-actions-left { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.cert-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.6rem 1.1rem; border-radius: 8px; border: none; cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem; font-weight: 600; text-decoration: none;
+  transition: transform 0.15s, background 0.2s;
+}
+.cert-btn:hover { transform: translateY(-1px); }
+.cert-btn-print { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.8); }
+.cert-btn-print:hover { background: rgba(255,255,255,0.12); }
+.cert-btn-dash { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.5); }
+.cert-btn-dash:hover { background: rgba(255,255,255,0.09); }
+.cert-btn .material-symbols-outlined { font-size: 1rem; }
+
+/* ---- The certificate itself ---- */
+.cert-doc {
+  background: #fff;
+  border-radius: 16px;
+  padding: 4rem;
+  position: relative;
+  overflow: hidden;
+  color: #111;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+}
+
+/* Decorative border */
+.cert-doc::before {
+  content: '';
+  position: absolute; inset: 12px;
+  border: 2px solid rgba(255,0,127,0.15);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+/* Corner accents */
+.cert-corner {
+  position: absolute; width: 40px; height: 40px;
+  border-color: #ff007f; border-style: solid;
+  opacity: 0.4;
+}
+.cert-corner.tl { top: 20px; left: 20px; border-width: 3px 0 0 3px; }
+.cert-corner.tr { top: 20px; right: 20px; border-width: 3px 3px 0 0; }
+.cert-corner.bl { bottom: 20px; left: 20px; border-width: 0 0 3px 3px; }
+.cert-corner.br { bottom: 20px; right: 20px; border-width: 0 3px 3px 0; }
+
+.cert-doc-inner {
+  position: relative; z-index: 1;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 1.25rem;
+}
+
+.cert-logo {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem; font-weight: 700; color: #111; letter-spacing: 0.02em;
+}
+.cert-logo-dot {
+  width: 10px; height: 10px; border-radius: 50%; background: #ff007f;
+}
+
+.cert-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: #888; margin: 0;
+}
+
+.cert-divider {
+  width: 60px; height: 2px; background: #ff007f; border-radius: 2px;
+}
+
+.cert-presents { font-size: 0.9rem; color: #666; margin: 0; }
+
+.cert-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 2.75rem);
+  font-weight: 700; color: #111;
+  margin: 0; line-height: 1.1;
+}
+
+.cert-has-completed { font-size: 0.9rem; color: #666; margin: 0; }
+
+.cert-course-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: 700; color: #111;
+  margin: 0;
+}
+
+.cert-grade-badge {
+  display: inline-flex; align-items: center; gap: 0.625rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 99px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem; font-weight: 600;
+}
+
+.cert-meta {
+  display: flex; gap: 2.5rem; justify-content: center;
+  flex-wrap: wrap;
+}
+.cert-meta-item {
+  display: flex; flex-direction: column; align-items: center; gap: 0.2rem;
+}
+.cert-meta-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #aaa; }
+.cert-meta-value { font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 600; color: #111; }
+
+.cert-seal {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: linear-gradient(135deg, #ff007f 0%, #7c3aed 100%);
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 0.5rem;
+}
+.cert-seal .material-symbols-outlined { font-size: 2rem; color: #fff; }
+
+.cert-footer-text {
+  font-size: 0.72rem; color: #bbb; margin: 0;
+}
+
+/* ---- Print styles ---- */
+@media print {
+  body > *:not(main) { display: none !important; }
+  .cert-wrap { padding: 0; margin: 0; }
+  .cert-actions { display: none !important; }
+  .cert-doc {
+    border-radius: 0; box-shadow: none;
+    padding: 3rem;
+    width: 100%; height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .cert-doc { padding: 2rem 1.25rem; }
+  .cert-meta { gap: 1.25rem; }
+}
