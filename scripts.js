@@ -4,43 +4,50 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function loadHeaderAndFooter() {
-    // Load header
-    fetch('/header.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.text();
-        })
-        .then(data => {
-            const headerPlaceholder = document.getElementById('header-placeholder');
-            if (headerPlaceholder) {
-                headerPlaceholder.innerHTML = data;
-                initializeHeader();
-            } else {
-                console.error('Header placeholder not found in the DOM.');
-            }
-        })
-        .catch(error => console.error('Error loading header:', error));
+    const headerPlaceholder = document.getElementById('header-placeholder');
+    const footerPlaceholder = document.getElementById('footer-placeholder');
 
-    // Load footer
-    fetch('/footer.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.text();
-        })
-        .then(data => {
-            const footerPlaceholder = document.getElementById('footer-placeholder');
-            if (footerPlaceholder) {
-                footerPlaceholder.innerHTML = data;
-                initializeFooter();
-            } else {
-                console.error('Footer placeholder not found in the DOM.');
-            }
-        })
-        .catch(error => console.error('Error loading footer:', error));
+    // Load header (use sessionStorage cache to avoid flash on navigation)
+    const cachedHeader = sessionStorage.getItem('site-header');
+    if (cachedHeader && headerPlaceholder) {
+        headerPlaceholder.innerHTML = cachedHeader;
+        initializeHeader();
+    } else {
+        fetch('/header.html')
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                return response.text();
+            })
+            .then(data => {
+                if (headerPlaceholder) {
+                    headerPlaceholder.innerHTML = data;
+                    sessionStorage.setItem('site-header', data);
+                    initializeHeader();
+                }
+            })
+            .catch(error => console.error('Error loading header:', error));
+    }
+
+    // Load footer (use sessionStorage cache)
+    const cachedFooter = sessionStorage.getItem('site-footer');
+    if (cachedFooter && footerPlaceholder) {
+        footerPlaceholder.innerHTML = cachedFooter;
+        initializeFooter();
+    } else {
+        fetch('/footer.html')
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                return response.text();
+            })
+            .then(data => {
+                if (footerPlaceholder) {
+                    footerPlaceholder.innerHTML = data;
+                    sessionStorage.setItem('site-footer', data);
+                    initializeFooter();
+                }
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    }
 }
 
 // Initialize header functionality
