@@ -1,0 +1,436 @@
+/* ================================================
+   test-login.css — Auth page styles
+   ================================================ */
+
+.login-ambient {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 20%, rgba(255,0,127,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 85% 80%, rgba(99,102,241,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.login-wrap {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+  min-height: calc(100vh - 80px);
+}
+
+/* ---- Auth card ---- */
+
+.auth-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  backdrop-filter: blur(12px);
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.auth-brand-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent, #ff007f);
+  box-shadow: 0 0 8px rgba(255,0,127,0.6);
+}
+
+.auth-brand-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text, #fff);
+  letter-spacing: 0.02em;
+}
+
+/* Tabs */
+
+.auth-tabs {
+  display: flex;
+  gap: 0;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  padding: 3px;
+  margin-bottom: 1.75rem;
+}
+
+.auth-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.45);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.auth-tab.active {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+.auth-tab:hover:not(.active) {
+  color: rgba(255,255,255,0.7);
+}
+
+/* Panels */
+
+.auth-panel { display: block; }
+.auth-panel.hidden { display: none; }
+
+.auth-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.375rem;
+}
+
+.auth-sub {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.5);
+  margin: 0 0 1.5rem;
+  line-height: 1.5;
+}
+
+/* Social buttons */
+
+.auth-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin-bottom: 1.25rem;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.85);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.social-btn:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-1px);
+}
+
+.social-btn:active { transform: translateY(0); }
+
+.github-btn svg { color: rgba(255,255,255,0.7); }
+
+/* Divider */
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  color: rgba(255,255,255,0.25);
+  font-size: 0.75rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+}
+
+/* Form */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.auth-field label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+}
+
+.auth-forgot {
+  font-size: 0.75rem;
+  color: rgba(255,0,127,0.8);
+  text-decoration: none;
+}
+
+.auth-forgot:hover { color: #ff007f; }
+
+.auth-input-wrap {
+  position: relative;
+}
+
+.auth-field input,
+.auth-input-wrap input {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.625rem 0.875rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.auth-input-wrap input { padding-right: 2.75rem; }
+
+.auth-field input:focus,
+.auth-input-wrap input:focus {
+  border-color: rgba(255,0,127,0.5);
+  background: rgba(255,255,255,0.07);
+}
+
+.auth-field input::placeholder,
+.auth-input-wrap input::placeholder {
+  color: rgba(255,255,255,0.2);
+}
+
+.toggle-pw {
+  position: absolute;
+  right: 0.625rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.35);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.toggle-pw:hover { color: rgba(255,255,255,0.7); }
+.toggle-pw .material-symbols-outlined { font-size: 1.1rem; }
+
+/* Password strength bar */
+
+.pw-strength {
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.07);
+  overflow: hidden;
+  margin-top: 0.25rem;
+  position: relative;
+}
+
+.pw-strength::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  border-radius: 2px;
+  transition: width 0.3s, background 0.3s;
+  width: var(--pw-w, 0%);
+  background: var(--pw-col, transparent);
+}
+
+/* Error */
+
+.auth-error {
+  font-size: 0.8rem;
+  color: #ff4d6d;
+  min-height: 1rem;
+  padding: 0;
+}
+
+.auth-error:not(:empty) {
+  background: rgba(255,77,109,0.1);
+  border: 1px solid rgba(255,77,109,0.25);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+}
+
+/* Submit button */
+
+.auth-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: var(--accent, #ff007f);
+  border: none;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  margin-top: 0.25rem;
+  position: relative;
+}
+
+.auth-submit:hover {
+  background: #e6006f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(255,0,127,0.35);
+}
+
+.auth-submit:active { transform: translateY(0); }
+
+.auth-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.auth-submit.loading .submit-label { opacity: 0.4; }
+.auth-submit.loading .submit-spinner { display: block; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Terms */
+
+.auth-terms {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  margin: 0;
+}
+
+.auth-terms a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: underline;
+}
+
+/* Success state */
+
+.auth-success-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.auth-success-icon .material-symbols-outlined {
+  font-size: 3rem;
+  color: #4ade80;
+}
+
+#panelSuccess .auth-title { text-align: center; }
+#panelSuccess .auth-sub { text-align: center; }
+
+/* ---- Info panel ---- */
+
+.auth-info {
+  padding: 1rem 0;
+}
+
+.auth-info h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 1.5rem;
+}
+
+.auth-info-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.auth-info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.auth-info-list .material-symbols-outlined {
+  font-size: 1.3rem;
+  color: var(--accent, #ff007f);
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.auth-info-list strong {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 0.2rem;
+}
+
+.auth-info-list span {
+  font-size: 0.8375rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.4;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 720px) {
+  .login-wrap {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem 4rem;
+    gap: 2rem;
+    min-height: unset;
+  }
+
+  .auth-info { order: -1; padding: 0; }
+  .auth-info h2 { font-size: 1.1rem; margin-bottom: 1rem; }
+
+  .auth-card { padding: 1.75rem 1.25rem; }
+}
