@@ -632,55 +632,144 @@
       const durationEl   = document.getElementById('na-duration');
       const waveCanvas   = document.getElementById('na-waveform');
       const waveCtx      = waveCanvas.getContext('2d');
+      const muteBtn      = document.getElementById('na-mute-btn');
+      const muteIcon     = muteBtn.querySelector('.material-symbols-outlined');
+      const volSlider    = document.getElementById('na-volume-slider');
+      let audioCtx, analyser, source, waveRaf;
 
-      let isDragging = false;
+      let lastVol = 1;
+      muteBtn.addEventListener('click', () => {
+        if (player.volume > 0) {
+          lastVol = player.volume;
+          player.volume = 0;
+          volSlider.value = 0;
+          muteIcon.textContent = 'volume_off';
+        } else {
+          player.volume = lastVol || 1;
+          volSlider.value = player.volume;
+          muteIcon.textContent = player.volume < 0.5 ? 'volume_down' : 'volume_up';
+        }
+      });
 
+      volSlider.addEventListener('input', () => {
+        player.volume = parseFloat(volSlider.value);
+        if (player.volume === 0) {
+          muteIcon.textContent = 'volume_off';
+        } else if (player.volume < 0.5) {
+          muteIcon.textContent = 'volume_down';
+        } else {
+          muteIcon.textContent = 'volume_up';
+        }
+      });
 
-      function formatTime(seconds) {
-        const m = Math.floor(seconds / 60);
-        const s = Math.floor(seconds % 60);
-        return m + ':' + (s < 10 ? '0' : '') + s;
+      function initAudio() {
+        if (audioCtx) return;
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 256;
+        source = audioCtx.createMediaElementSource(player);
+        source.connect(analyser);
+        analyser.connect(audioCtx.destination);
       }
 
-      function drawWaveform() {
-        const w = waveCanvas.width, h = waveCanvas.height;
+      function drawWave() {
+        waveRaf = requestAnimationFrame(drawWave);
+        const w = waveCanvas.offsetWidth;
+        if (waveCanvas.width !== w) waveCanvas.width = w;
+        const h = waveCanvas.height;
+        const buf = new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(buf);
         waveCtx.clearRect(0, 0, w, h);
-        const bars = 40;
-        const barW = Math.floor(w / bars) - 1;
-        const progress = player.duration ? player.currentTime / player.duration : 0;
+        const barW = 3, gap = 2, total = barW + gap;
+        const bars = Math.floor(w / total);
+        const usableBins = Math.floor(buf.length * 0.6);
         for (let i = 0; i < bars; i++) {
-          const barH = 8 + Math.sin(i * 0.7) * 10 + Math.cos(i * 0.4) * 8;
-          const x = i * (barW + 1);
+          const binIdx = Math.floor((i / bars) * usableBins);
+          const val = buf[binIdx] / 255;
+          const barH = Math.max(3, val * h);
+          const x = i * total;
           const y = (h - barH) / 2;
-          waveCtx.fillStyle = (i / bars) < progress ? 'var(--primary, #c8ff00)' : 'rgba(255,255,255,0.18)';
+          waveCtx.fillStyle = `rgba(251,191,36,${0.5 + val * 0.5})`;
           waveCtx.beginPath();
-          waveCtx.roundRect(x, y, barW, barH, 2);
+          waveCtx.roundRect(x, y, barW, barH, 1.5);
           waveCtx.fill();
         }
       }
 
+      function stopWave() {
+        if (waveRaf) cancelAnimationFrame(waveRaf);
+        waveCtx.clearRect(0, 0, waveCanvas.width, waveCanvas.height);
+      }
+
+      function fmt(s) {
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        return m + ':' + String(sec).padStart(2, '0');
+      }
+
+      function updateProgress() {
+        if (!player.duration) return;
+        const pct = (player.currentTime / player.duration) * 100;
+        progressFill.style.width = pct + '%';
+        progressThumb.style.left = pct + '%';
+        progressBar.setAttribute('aria-valuenow', Math.round(pct));
+        currentTime.textContent = fmt(player.currentTime);
+      }
+
       player.addEventListener('loadedmetadata', () => {
-        durationEl.textContent = formatTime(player.duration);
-        drawWaveform();
+        durationEl.textContent = fmt(player.duration);
       });
 
-      player.addEventListener('timeupdate', () => {
-        if (!isDragging) {
-          const pct = player.duration ? player.currentTime / player.duration : 0;
-          progressFill.style.width = (pct * 100) + '%';
-          progressThumb.style.left = (pct * 100) + '%';
-          currentTime.textContent = formatTime(player.currentTime);
-          progressBar.setAttribute('aria-valuenow', Math.round(pct * 100));
-        }
-        drawWaveform();
-      });
+      player.addEventListener('timeupdate', updateProgress);
 
-      player.addEventListener('ended', () => { playIcon.textContent = 'play_arrow'; drawWaveform(); });
+      player.addEventListener('ended', () => {
+        playIcon.textContent = 'play_arrow';
+        playBtn.setAttribute('aria-label', 'Play article audio');
+        stopWave();
+      });
 
       playBtn.addEventListener('click', () => {
-        if (player.paused) { player.play(); playIcon.textContent = 'pause'; }
-        else { player.pause(); playIcon.textContent = 'play_arrow'; }
+        if (player.paused) {
+          initAudio();
+          if (audioCtx.state === 'suspended') audioCtx.resume();
+          player.play();
+          playIcon.textContent = 'pause';
+          playBtn.setAttribute('aria-label', 'Pause article audio');
+          drawWave();
+        } else {
+          player.pause();
+          playIcon.textContent = 'play_arrow';
+          playBtn.setAttribute('aria-label', 'Play article audio');
+          stopWave();
+        }
       });
+
+      skipBack.addEventListener('click', () => { player.currentTime = Math.max(0, player.currentTime - 10); });
+      skipFwd.addEventListener('click',  () => { player.currentTime = Math.min(player.duration || 0, player.currentTime + 10); });
+
+      progressBar.addEventListener('click', e => {
+        if (!player.duration) return;
+        const rect = progressBar.getBoundingClientRect();
+        const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        player.currentTime = pct * player.duration;
+      });
+
+      let dragging = false;
+      progressBar.addEventListener('mousedown', () => { dragging = true; });
+      document.addEventListener('mousemove', e => {
+        if (!dragging || !player.duration) return;
+        const rect = progressBar.getBoundingClientRect();
+        const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        player.currentTime = pct * player.duration;
+      });
+      document.addEventListener('mouseup', () => { dragging = false; });
+
+      progressBar.addEventListener('touchmove', e => {
+        if (!player.duration) return;
+        const rect = progressBar.getBoundingClientRect();
+        const pct  = Math.max(0, Math.min(1, (e.touches[0].clientX - rect.left) / rect.width));
+        player.currentTime = pct * player.duration;
+      }, { passive: true });
 
       speedBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -689,29 +778,6 @@
           btn.classList.add('active');
         });
       });
-
-      skipBack.addEventListener('click', () => { player.currentTime = Math.max(0, player.currentTime - 10); });
-      skipFwd.addEventListener('click',  () => { player.currentTime = Math.min(player.duration, player.currentTime + 10); });
-
-      function scrubTo(e) {
-        const rect = progressBar.getBoundingClientRect();
-        const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-        player.currentTime = pct * player.duration;
-      }
-
-      progressBar.addEventListener('mousedown', e => { isDragging = true; scrubTo(e); });
-      window.addEventListener('mousemove', e => { if (isDragging) scrubTo(e); });
-      window.addEventListener('mouseup', () => { isDragging = false; });
-
-      const muteBtn = document.getElementById('na-mute-btn');
-      const volSlider = document.getElementById('na-volume-slider');
-      muteBtn.addEventListener('click', () => {
-        player.muted = !player.muted;
-        muteBtn.querySelector('.material-symbols-outlined').textContent = player.muted ? 'volume_off' : 'volume_up';
-      });
-      volSlider.addEventListener('input', () => { player.volume = volSlider.value; });
-
-      drawWaveform();
     })();
   </script>
 </body>
