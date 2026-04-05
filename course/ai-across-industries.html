@@ -129,6 +129,7 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/news.css">
   <link rel="stylesheet" href="/lesson.css">
+  <link rel="stylesheet" href="/news-chat.css?v=7">
 </head>
 <body class="lp-page">
 
@@ -137,28 +138,28 @@
   <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
     <div class="na-layout">
 
-      <!-- ── MAIN CONTENT ── -->
+      <!-- â”€â”€ MAIN CONTENT â”€â”€ -->
       <article class="na-content">
 
         <!-- Breadcrumb -->
         <nav class="na-breadcrumb" aria-label="Breadcrumb">
           <a href="/">Home</a>
-          <span aria-hidden="true">›</span>
+          <span aria-hidden="true">â€º</span>
           <a href="/course-dashboard">AI Course</a>
-          <span aria-hidden="true">›</span>
+          <span aria-hidden="true">â€º</span>
           <span>AI Across Industries</span>
         </nav>
 
         <!-- Unit badge + title -->
-        <div class="lp-unit-badge lp-unit-9">Unit 9 · AI Strategy &amp; Business Applications</div>
+        <div class="lp-unit-badge lp-unit-9">Unit 9 Â· AI Strategy &amp; Business Applications</div>
         <h1 class="na-title">AI Across Industries: Healthcare, Marketing, Finance and Beyond</h1>
 
         <!-- Meta row -->
         <div class="na-meta">
           <span>10 min read</span>
-          <span>·</span>
+          <span>Â·</span>
           <span>Lesson 3 of 4 in Unit 9</span>
-          <span>·</span>
+          <span>Â·</span>
           <span>Published 5 April 2026</span>
         </div>
 
@@ -172,6 +173,11 @@
             Your browser does not support audio playback.
           </audio>
         </section>
+
+        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
+          <span class="material-symbols-outlined">auto_awesome</span>
+          Ask Newsy AI about this lesson
+        </button>
 
         <!-- Body -->
         <div class="na-body">
@@ -280,7 +286,147 @@
         </section>
 
         <!-- Accordions -->
-        <details class="tool-accordion" open>
+        <!-- Prev / Next nav -->
+        <nav class="lp-nav" aria-label="Lesson navigation">
+          <a href="/course/build-vs-buy" class="lp-nav-btn lp-nav-prev" aria-label="Previous lesson">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>
+              <em>Previous</em>
+              Build vs. Buy
+            </span>
+          </a>
+          <a href="/course/business-case-for-ai" class="lp-nav-btn lp-nav-next" aria-label="Next lesson">
+            <span>
+              <em>Next</em>
+              Making the Business Case for AI
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </nav>
+
+</article>
+
+      <!-- â”€â”€ SIDEBAR â”€â”€ -->
+      <aside class="na-sidebar" aria-label="Course navigation">
+
+        <!-- Table of contents -->
+        <div class="na-toc">
+          <h2 class="na-toc-title">In this lesson</h2>
+          <ul class="na-toc-list">
+            <li><a href="#" onclick="document.querySelector('.na-body h2').scrollIntoView({behavior:'smooth'});return false;">Healthcare</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[1].scrollIntoView({behavior:'smooth'});return false;">Marketing</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[2].scrollIntoView({behavior:'smooth'});return false;">Finance</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[3].scrollIntoView({behavior:'smooth'});return false;">Manufacturing</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[4].scrollIntoView({behavior:'smooth'});return false;">Which industry leads</a></li>
+          </ul>
+        </div>
+
+        <!-- Course navigation -->
+        <nav class="lp-sidebar-nav" aria-label="All course lessons">
+          <h2 class="lp-sidebar-nav-title">Course contents</h2>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-1">Unit 1 Â· Introduction to AI</div>
+            <ul>
+              <li><a href="/course/what-is-ai">What is AI?</a></li>
+              <li><a href="/course/categories-of-ai">Categories of AI</a></li>
+              <li><a href="/course/how-ai-learns">How AI Learns</a></li>
+              <li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-2">Unit 2 Â· The Modern AI Landscape</div>
+            <ul>
+              <li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
+              <li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
+              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
+              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-3">Unit 3 Â· Ethics &amp; Governance</div>
+            <ul>
+              <li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
+              <li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
+              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-4">Unit 4 Â· Python for AI</div>
+            <ul>
+              <li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
+              <li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-5">Unit 5 Â· Machine Learning</div>
+            <ul>
+              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
+              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-6">Unit 6 Â· Deep Learning</div>
+            <ul>
+              <li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
+              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+              <li><a href="/course/backpropagation">Backpropagation</a></li>
+              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
+              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-7">Unit 7 Â· Generative AI</div>
+            <ul>
+              <li><a href="/course/generative-ai-models">Generative AI Models</a></li>
+              <li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
+              <li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-8">Unit 8 Â· AI in Production</div>
+            <ul>
+              <li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
+              <li><a href="/course/model-deployment">Model Deployment</a></li>
+              <li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
+              <li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-9">Unit 9 Â· AI Strategy</div>
+            <ul>
+              <li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
+              <li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
+              <li><a href="/course/ai-across-industries" class="lp-sidebar-current" aria-current="page">AI Across Industries</a></li>
+              <li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
+            </ul>
+          </div>
+
+        </nav>
+        <div id="newsy-ai"></div>
+      </aside>
+
+    </div>
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+  <section class="tool-info" aria-label="Lesson reference">
+    <div class="tool-info-inner">
+      <div class="tool-accordions">
+
+<details class="tool-accordion" open>
           <summary>Frequently Asked Questions</summary>
           <div class="tool-accordion-body">
             <h3>How is AI used in healthcare?</h3>
@@ -334,143 +480,33 @@
           </div>
         </details>
 
-        <!-- Prev / Next nav -->
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/build-vs-buy" class="lp-nav-btn lp-nav-prev" aria-label="Previous lesson">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            <span>
-              <em>Previous</em>
-              Build vs. Buy
-            </span>
-          </a>
-          <a href="/course/business-case-for-ai" class="lp-nav-btn lp-nav-next" aria-label="Next lesson">
-            <span>
-              <em>Next</em>
-              Making the Business Case for AI
-            </span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
-        </nav>
-
-      </article>
-
-      <!-- ── SIDEBAR ── -->
-      <aside class="na-sidebar" aria-label="Course navigation">
-
-        <!-- Table of contents -->
-        <div class="na-toc">
-          <h2 class="na-toc-title">In this lesson</h2>
-          <ul class="na-toc-list">
-            <li><a href="#" onclick="document.querySelector('.na-body h2').scrollIntoView({behavior:'smooth'});return false;">Healthcare</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[1].scrollIntoView({behavior:'smooth'});return false;">Marketing</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[2].scrollIntoView({behavior:'smooth'});return false;">Finance</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[3].scrollIntoView({behavior:'smooth'});return false;">Manufacturing</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[4].scrollIntoView({behavior:'smooth'});return false;">Which industry leads</a></li>
-          </ul>
-        </div>
-
-        <!-- Course navigation -->
-        <nav class="lp-sidebar-nav" aria-label="All course lessons">
-          <h2 class="lp-sidebar-nav-title">Course contents</h2>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-1">Unit 1 · Introduction to AI</div>
-            <ul>
-              <li><a href="/course/what-is-ai">What is AI?</a></li>
-              <li><a href="/course/categories-of-ai">Categories of AI</a></li>
-              <li><a href="/course/how-ai-learns">How AI Learns</a></li>
-              <li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-2">Unit 2 · The Modern AI Landscape</div>
-            <ul>
-              <li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
-              <li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
-              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
-              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-3">Unit 3 · Ethics &amp; Governance</div>
-            <ul>
-              <li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
-              <li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
-              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-4">Unit 4 · Python for AI</div>
-            <ul>
-              <li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
-              <li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-5">Unit 5 · Machine Learning</div>
-            <ul>
-              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
-              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
-              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
-              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-6">Unit 6 · Deep Learning</div>
-            <ul>
-              <li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
-              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
-              <li><a href="/course/backpropagation">Backpropagation</a></li>
-              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
-              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
-              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
-              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-7">Unit 7 · Generative AI</div>
-            <ul>
-              <li><a href="/course/generative-ai-models">Generative AI Models</a></li>
-              <li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
-              <li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-8">Unit 8 · AI in Production</div>
-            <ul>
-              <li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
-              <li><a href="/course/model-deployment">Model Deployment</a></li>
-              <li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
-              <li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-9">Unit 9 · AI Strategy</div>
-            <ul>
-              <li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
-              <li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
-              <li><a href="/course/ai-across-industries" class="lp-sidebar-current" aria-current="page">AI Across Industries</a></li>
-              <li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
-            </ul>
-          </div>
-
-        </nav>
-      </aside>
-
+      </div>
     </div>
-  </main>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
 
   <div id="footer-placeholder"></div>
 
+  <script src="/news-data.js"></script>
   <script src="/scripts.js"></script>
+  <script src="/news-article.js" defer></script>
+  <script src="/news-chat.js" defer></script>
+  <script>
+    document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
+      const trigger = document.querySelector('.nc-trigger');
+      if (trigger) trigger.click();
+    });
+    document.querySelectorAll('.na-mobile-toc-list a').forEach(a => {
+      a.addEventListener('click', () => {
+        const toc = document.querySelector('.na-mobile-toc');
+        if (toc) toc.removeAttribute('open');
+      });
+    });
+  </script>
   <script>
     // Quiz logic
     document.querySelectorAll('.lp-quiz-btn').forEach(btn => {

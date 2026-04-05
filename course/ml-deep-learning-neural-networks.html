@@ -150,7 +150,7 @@
 
       <article class="na-content" id="main-content">
 
-        <header class="na-header">
+        <div class="na-header">
           <div class="na-meta">
             <span class="lp-unit-badge lp-unit-2">Unit 2</span>
             <span class="na-category">AI Fundamentals</span>
@@ -165,7 +165,11 @@
               <time class="na-author-date" datetime="2026-04-05">5 April 2026</time>
             </div>
           </div>
-        </header>
+          <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
+            <span class="material-symbols-outlined">auto_awesome</span>
+            Ask Newsy AI about this lesson
+          </button>
+        </div>
 
         <nav class="na-toc-mobile" aria-label="On this page">
           <details>
@@ -285,7 +289,70 @@
 
         <div class="na-accordions">
 
-          <details class="tool-accordion" open>
+        <nav class="lp-nav" aria-label="Lesson navigation">
+          <a href="/course/traditional-vs-generative-ai" class="lp-nav-btn lp-nav-prev">
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+            <span class="lp-nav-label">
+              <span class="lp-nav-hint">Previous lesson</span>
+              <span class="lp-nav-title">Traditional vs Generative AI</span>
+            </span>
+          </a>
+          <a href="/course/key-ai-subfields" class="lp-nav-btn lp-nav-next">
+            <span class="lp-nav-label">
+              <span class="lp-nav-hint">Next lesson</span>
+              <span class="lp-nav-title">Key AI Subfields</span>
+            </span>
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          </a>
+        </nav>
+
+</div>
+
+      </article>
+
+      <aside class="na-sidebar" aria-label="Lesson sidebar">
+
+        <nav class="na-toc" aria-label="Table of contents">
+          <h2 class="na-toc-title">On this page</h2>
+          <ol class="na-toc-list">
+            <li><a href="#the-hierarchy">The Hierarchy</a></li>
+            <li><a href="#why-confusion">Why the Confusion Exists</a></li>
+            <li><a href="#why-layers-matter">Why Layers Matter</a></li>
+            <li><a href="#modern-ai">How This Maps to Modern AI</a></li>
+            <li><a href="#quiz">Lesson Quiz</a></li>
+          </ol>
+        </nav>
+
+        <nav class="lp-sidebar-nav" aria-label="Course navigation">
+          <h2 class="lp-sidebar-nav-title">
+            <a href="/course-dashboard">AI Course</a>
+          </h2>
+          <div class="lp-sidebar-unit">
+            <span class="lp-sidebar-unit-label lp-unit-2">Unit 2 - How AI Works</span>
+            <ul>
+              <li><a href="/course/traditional-vs-generative-ai">Traditional vs Generative AI</a></li>
+              <li class="lp-sidebar-current"><a href="/course/ml-deep-learning-neural-networks" aria-current="page">ML, Deep Learning &amp; Neural Networks</a></li>
+              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
+              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div id="newsy-sidebar-mount"></div>
+
+        <div id="newsy-ai"></div>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+  <section class="tool-info" aria-label="Lesson reference">
+    <div class="tool-info-inner">
+      <div class="tool-accordions">
+
+<details class="tool-accordion" open>
             <summary>Frequently Asked Questions</summary>
             <div class="tool-accordion-body">
               <h3>What is the difference between machine learning and deep learning?</h3>
@@ -339,68 +406,33 @@
             </div>
           </details>
 
-        </div>
-
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/traditional-vs-generative-ai" class="lp-nav-btn lp-nav-prev">
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Previous lesson</span>
-              <span class="lp-nav-title">Traditional vs Generative AI</span>
-            </span>
-          </a>
-          <a href="/course/key-ai-subfields" class="lp-nav-btn lp-nav-next">
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Next lesson</span>
-              <span class="lp-nav-title">Key AI Subfields</span>
-            </span>
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-          </a>
-        </nav>
-
-      </article>
-
-      <aside class="na-sidebar" aria-label="Lesson sidebar">
-
-        <nav class="na-toc" aria-label="Table of contents">
-          <h2 class="na-toc-title">On this page</h2>
-          <ol class="na-toc-list">
-            <li><a href="#the-hierarchy">The Hierarchy</a></li>
-            <li><a href="#why-confusion">Why the Confusion Exists</a></li>
-            <li><a href="#why-layers-matter">Why Layers Matter</a></li>
-            <li><a href="#modern-ai">How This Maps to Modern AI</a></li>
-            <li><a href="#quiz">Lesson Quiz</a></li>
-          </ol>
-        </nav>
-
-        <nav class="lp-sidebar-nav" aria-label="Course navigation">
-          <h2 class="lp-sidebar-nav-title">
-            <a href="/course-dashboard">AI Course</a>
-          </h2>
-          <div class="lp-sidebar-unit">
-            <span class="lp-sidebar-unit-label lp-unit-2">Unit 2 - How AI Works</span>
-            <ul>
-              <li><a href="/course/traditional-vs-generative-ai">Traditional vs Generative AI</a></li>
-              <li class="lp-sidebar-current"><a href="/course/ml-deep-learning-neural-networks" aria-current="page">ML, Deep Learning &amp; Neural Networks</a></li>
-              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
-              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
-            </ul>
-          </div>
-        </nav>
-
-        <div id="newsy-sidebar-mount"></div>
-
-      </aside>
-
+      </div>
     </div>
+  </section>
 
-  </main>
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
 
   <div id="footer-placeholder"></div>
 
+  <script src="/news-data.js"></script>
   <script src="/scripts.js"></script>
   <script src="/course-data.js"></script>
   <script src="/news-chat.js" defer></script>
+  <script>
+    document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
+      const trigger = document.querySelector('.nc-trigger');
+      if (trigger) trigger.click();
+    });
+    document.querySelectorAll('.na-mobile-toc-list a').forEach(a => {
+      a.addEventListener('click', () => {
+        const toc = document.querySelector('.na-mobile-toc');
+        if (toc) toc.removeAttribute('open');
+      });
+    });
+  </script>
 
   <script>
     // Quiz logic

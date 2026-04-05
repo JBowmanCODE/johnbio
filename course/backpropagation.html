@@ -150,7 +150,7 @@
 
       <article class="na-content" id="main-content">
 
-        <header class="na-header">
+        <div class="na-header">
           <div class="na-meta">
             <span class="lp-unit-badge lp-unit-6">Unit 6</span>
             <span class="na-category">Deep Learning</span>
@@ -165,7 +165,11 @@
               <time class="na-author-date" datetime="2026-04-05">5 April 2026</time>
             </div>
           </div>
-        </header>
+          <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
+            <span class="material-symbols-outlined">auto_awesome</span>
+            Ask Newsy AI about this lesson
+          </button>
+        </div>
 
         <nav class="na-toc-mobile" aria-label="On this page">
           <details>
@@ -276,7 +280,73 @@
 
         <div class="na-accordions">
 
-          <details class="tool-accordion" open>
+        <nav class="lp-nav" aria-label="Lesson navigation">
+          <a href="/course/neural-networks-forward-propagation" class="lp-nav-btn lp-nav-prev">
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+            <span class="lp-nav-label">
+              <span class="lp-nav-hint">Previous lesson</span>
+              <span class="lp-nav-title">Neural Networks and Forward Propagation</span>
+            </span>
+          </a>
+          <a href="/course/activation-functions-vanishing-gradient" class="lp-nav-btn lp-nav-next">
+            <span class="lp-nav-label">
+              <span class="lp-nav-hint">Next lesson</span>
+              <span class="lp-nav-title">Activation Functions and Vanishing Gradient</span>
+            </span>
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          </a>
+        </nav>
+
+</div>
+
+      </article>
+
+      <aside class="na-sidebar" aria-label="Lesson sidebar">
+
+        <nav class="na-toc" aria-label="Table of contents">
+          <h2 class="na-toc-title">On this page</h2>
+          <ol class="na-toc-list">
+            <li><a href="#the-problem">The Problem It's Solving</a></li>
+            <li><a href="#chain-rule">The Chain Rule</a></li>
+            <li><a href="#how-errors-flow">How Errors Flow Backward</a></li>
+            <li><a href="#why-breakthrough">Why This Was a Breakthrough</a></li>
+            <li><a href="#quiz">Lesson Quiz</a></li>
+          </ol>
+        </nav>
+
+        <nav class="lp-sidebar-nav" aria-label="Course navigation">
+          <h2 class="lp-sidebar-nav-title">
+            <a href="/course-dashboard">AI Course</a>
+          </h2>
+          <div class="lp-sidebar-unit">
+            <span class="lp-sidebar-unit-label lp-unit-6">Unit 6 - Deep Learning</span>
+            <ul>
+              <li><a href="/course/biological-vs-artificial-neurons">Biological vs Artificial Neurons</a></li>
+              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+              <li class="lp-sidebar-current"><a href="/course/backpropagation" aria-current="page">Backpropagation</a></li>
+              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
+              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div id="newsy-sidebar-mount"></div>
+
+        <div id="newsy-ai"></div>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+  <section class="tool-info" aria-label="Lesson reference">
+    <div class="tool-info-inner">
+      <div class="tool-accordions">
+
+<details class="tool-accordion" open>
             <summary>Frequently Asked Questions</summary>
             <div class="tool-accordion-body">
               <h3>What is backpropagation?</h3>
@@ -327,71 +397,33 @@
             </div>
           </details>
 
-        </div>
-
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/neural-networks-forward-propagation" class="lp-nav-btn lp-nav-prev">
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Previous lesson</span>
-              <span class="lp-nav-title">Neural Networks and Forward Propagation</span>
-            </span>
-          </a>
-          <a href="/course/activation-functions-vanishing-gradient" class="lp-nav-btn lp-nav-next">
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Next lesson</span>
-              <span class="lp-nav-title">Activation Functions and Vanishing Gradient</span>
-            </span>
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-          </a>
-        </nav>
-
-      </article>
-
-      <aside class="na-sidebar" aria-label="Lesson sidebar">
-
-        <nav class="na-toc" aria-label="Table of contents">
-          <h2 class="na-toc-title">On this page</h2>
-          <ol class="na-toc-list">
-            <li><a href="#the-problem">The Problem It's Solving</a></li>
-            <li><a href="#chain-rule">The Chain Rule</a></li>
-            <li><a href="#how-errors-flow">How Errors Flow Backward</a></li>
-            <li><a href="#why-breakthrough">Why This Was a Breakthrough</a></li>
-            <li><a href="#quiz">Lesson Quiz</a></li>
-          </ol>
-        </nav>
-
-        <nav class="lp-sidebar-nav" aria-label="Course navigation">
-          <h2 class="lp-sidebar-nav-title">
-            <a href="/course-dashboard">AI Course</a>
-          </h2>
-          <div class="lp-sidebar-unit">
-            <span class="lp-sidebar-unit-label lp-unit-6">Unit 6 - Deep Learning</span>
-            <ul>
-              <li><a href="/course/biological-vs-artificial-neurons">Biological vs Artificial Neurons</a></li>
-              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
-              <li class="lp-sidebar-current"><a href="/course/backpropagation" aria-current="page">Backpropagation</a></li>
-              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
-              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
-              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
-              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
-            </ul>
-          </div>
-        </nav>
-
-        <div id="newsy-sidebar-mount"></div>
-
-      </aside>
-
+      </div>
     </div>
+  </section>
 
-  </main>
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
 
   <div id="footer-placeholder"></div>
 
+  <script src="/news-data.js"></script>
   <script src="/scripts.js"></script>
   <script src="/course-data.js"></script>
   <script src="/news-chat.js" defer></script>
+  <script>
+    document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
+      const trigger = document.querySelector('.nc-trigger');
+      if (trigger) trigger.click();
+    });
+    document.querySelectorAll('.na-mobile-toc-list a').forEach(a => {
+      a.addEventListener('click', () => {
+        const toc = document.querySelector('.na-mobile-toc');
+        if (toc) toc.removeAttribute('open');
+      });
+    });
+  </script>
 
   <script>
     (function() {
