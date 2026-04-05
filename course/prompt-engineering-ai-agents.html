@@ -151,10 +151,8 @@
 <span>Prompt Engineering and AI Agents</span>
 </nav>
 <!-- Unit badge + title -->
-
-<h1 class="na-title">Prompt Engineering and AI Agents</h1>
+<h1 class="na-title">Prompt Engineering and AI Agents</h1><div class="na-lede-row"><p class="na-lede">Prompt engineering isn't wizardry. It's not about magic words or secret incantations that unlock hidden powers in language models. It's about being specific about what you want and structuring your request in ways the model can actually handle.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/prompt-engineering-ai-agents.webp"/></div></div>
 <!-- Meta row -->
-
 <!-- Audio player -->
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
@@ -167,7 +165,7 @@
 <span class="na-date">5 April 2026</span>
 <span class="na-read">10 min read</span>
 </div>
-</div><div aria-label="Listen to this lesson" class="na-audio">
+</div><details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#what-prompt-engineering-actually-is">What prompt engineering actually is</a></li><li><a href="#techniques-that-actually-work">Techniques that actually work</a></li><li><a href="#what-ai-agents-actually-are">What AI agents actually are</a></li><li><a href="#tool-use-and-multi-step-reasoning">Tool use and multi-step reasoning</a></li><li><a href="#will-prompt-engineer-survive-as-a-job-title">Will "prompt engineer" survive as a job title?</a></li></ol></details><div aria-label="Listen to this lesson" class="na-audio">
 <span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
 <div class="na-audio-info">
 <div class="na-audio-top">
@@ -207,27 +205,27 @@
 <div class="na-body">
 <p>Prompt engineering isn't wizardry. It's not about magic words or secret incantations that unlock hidden powers in language models. It's about being specific about what you want and structuring your request in ways the model can actually handle.</p>
 <p>Most people get this wrong. They treat prompts like wishes to a genie - vague, full of unstated assumptions, expecting the model to read their mind. Then they're surprised when the output is mediocre.</p>
-<h2>What prompt engineering actually is</h2>
+<h2 id="what-prompt-engineering-actually-is">What prompt engineering actually is</h2>
 <p>Prompt engineering is writing instructions that get you what you want from a language model. That's all.</p>
 <p>When you write "Write me an article," the model has to guess. Article about what? How long? Formal or casual? For what audience? The model will make assumptions, most of them wrong.</p>
 <p>When you write "Write a 400-word article about machine learning for someone who's never programmed, aimed at business executives, explaining why they should care," you've narrowed down the space of valid outputs dramatically. The model still has choices, but it knows what you're actually asking for.</p>
 <p>This isn't creativity or magic. It's being specific.</p>
-<h2>Techniques that actually work</h2>
+<h2 id="techniques-that-actually-work">Techniques that actually work</h2>
 <p><strong>Chain of thought.</strong> Ask the model to think step by step instead of jumping to conclusions. "What are the steps to solve this problem?" gets better results than "Solve this problem." The model writes out reasoning, which both helps it arrive at the right answer and lets you see where the thinking goes wrong.</p>
 <p><strong>Few-shot examples.</strong> Show the model examples of what you want. If you need a specific format or tone, give it two or three examples and ask for a new one in the same style. Models are good at learning from examples - better than from abstract descriptions.</p>
 <p><strong>Role prompting.</strong> Tell the model to adopt a perspective. "You're a senior software engineer reviewing this code" or "You're a product manager thinking about customer impact" changes how it approaches a problem. This works because the model has learned what different roles typically care about and how they communicate.</p>
 <p>These aren't tricks. They work because they align with how the model processes language. When you show examples, you're giving it a pattern to follow. When you ask it to think step by step, you're asking it to generate reasoning tokens, which helps with complex problems. When you define a role, you're activating patterns associated with that perspective.</p>
-<h2>What AI agents actually are</h2>
+<h2 id="what-ai-agents-actually-are">What AI agents actually are</h2>
 <p>An AI agent is a model that can take actions, not just generate text. It can call functions, read from databases, search the web, run code. It can plan a sequence of steps and execute them.</p>
 <p>This is different from a chatbot. A chatbot generates text responses. An agent generates text that includes decisions about what to do next.</p>
 <p>The mechanism is usually simple. The model outputs text that includes function calls. Something like: "I need to search for current stock prices. Let me use the search function. [SEARCH: AAPL stock price]. The result is..." The system intercepts the function call, executes it, and feeds the result back into the model's context.</p>
 <p>Why this matters: an agent can correct itself. If it tries something and it doesn't work, it can try a different approach. It can break a complex task into steps and verify each one before continuing.</p>
-<h2>Tool use and multi-step reasoning</h2>
+<h2 id="tool-use-and-multi-step-reasoning">Tool use and multi-step reasoning</h2>
 <p>Tool use is the agent calling a function. But what's interesting is when and how it decides to use tools.</p>
 <p>A capable agent decides "I need external information here" and calls a search function, gets results, incorporates them. It decides "This calculation requires precision" and uses a calculator tool. The agent reasons about what it doesn't know and what tools can help.</p>
 <p>Multi-step reasoning is the agent planning. "To answer this question I need to: 1) Find the current exchange rate, 2) Look up the historical price, 3) Calculate the difference." Then it executes those steps, handling failures along the way.</p>
 <p>Current models are reasonably good at this - not perfect, they get confused and sometimes use tools unnecessarily. But they can handle multi-step problems that would have required manual coordination between different systems.</p>
-<h2>Will "prompt engineer" survive as a job title?</h2>
+<h2 id="will-prompt-engineer-survive-as-a-job-title">Will "prompt engineer" survive as a job title?</h2>
 <p>Probably not, and that's fine.</p>
 <p>Right now "prompt engineer" is a job because prompting matters and most people are bad at it. In six months or a year, that may change. Models will get better at understanding vague requests. Tools will guide people toward better prompts. The skills may become table stakes - something everyone who works with AI does, not a specialised role.</p>
 <p>That doesn't mean the skills disappear. Writing clear specifications, thinking through what you actually want, breaking problems into steps - those matter more than ever. But they'll probably be part of every knowledge job rather than their own specialty.</p>
