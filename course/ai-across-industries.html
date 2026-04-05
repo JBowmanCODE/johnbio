@@ -133,10 +133,10 @@
 <link href="/header.css" rel="stylesheet"/>
 <link href="/footer.css" rel="stylesheet"/>
 <link href="/news.css" rel="stylesheet"/>
-<link href="/lesson.css?v=3" rel="stylesheet"/>
+<link href="/lesson.css?v=4" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
-<body class="lp-page">
+<body class="lp-page" data-slug="ai-across-industries">
 <div id="header-placeholder"></div><div aria-hidden="true" class="lp-ambient"></div>
 <main class="na-wrap">
 <div class="na-layout">
@@ -290,89 +290,7 @@
 </ol>
 </nav>
 <!-- Course navigation -->
-<nav aria-label="All course lessons" class="lp-sidebar-nav">
-<p class="lp-sidebar-nav-title">Course contents</p>
-<div class="lp-sidebar-unit">
-<span class="lp-sidebar-unit-label lp-unit-1">Unit 1 · Introduction to AI</span>
-<ul>
-<li><a href="/course/what-is-ai">What is AI?</a></li>
-<li><a href="/course/categories-of-ai">Categories of AI</a></li>
-<li><a href="/course/how-ai-learns">How AI Learns</a></li>
-<li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
-</ul>
-</div>
-<div class="lp-sidebar-unit">
-<span class="lp-sidebar-unit-label lp-unit-2">Unit 2 · The Modern AI Landscape</span>
-<ul>
-<li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
-<li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
-<li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
-<li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
-</ul>
-</div>
-<div class="lp-sidebar-unit">
-<span class="lp-sidebar-unit-label lp-unit-3">Unit 3 · Ethics &amp; Governance</span>
-<ul>
-<li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
-<li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
-<li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
-</ul>
-</div>
-<div class="lp-sidebar-unit">
-<span class="lp-sidebar-unit-label lp-unit-4">Unit 4 · Python for AI</span>
-<ul>
-<li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
-<li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
-</ul>
-</div>
-<div class="lp-sidebar-unit">
-<span class="lp-sidebar-unit-label lp-unit-5">Unit 5 · Machine Learning</span>
-<ul>
-<li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
-<li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
-<li><a href="/course/model-evaluation">Model Evaluation</a></li>
-<li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
-</ul>
-</div>
-<div class="lp-sidebar-unit">
-<span class="lp-sidebar-unit-label lp-unit-6">Unit 6 · Deep Learning</span>
-<ul>
-<li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
-<li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
-<li><a href="/course/backpropagation">Backpropagation</a></li>
-<li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
-<li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
-<li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
-<li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
-</ul>
-</div>
-<div class="lp-sidebar-unit">
-<span class="lp-sidebar-unit-label lp-unit-7">Unit 7 · Generative AI</span>
-<ul>
-<li><a href="/course/generative-ai-models">Generative AI Models</a></li>
-<li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
-<li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
-</ul>
-</div>
-<div class="lp-sidebar-unit">
-<span class="lp-sidebar-unit-label lp-unit-8">Unit 8 · AI in Production</span>
-<ul>
-<li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
-<li><a href="/course/model-deployment">Model Deployment</a></li>
-<li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
-<li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
-</ul>
-</div>
-<div class="lp-sidebar-unit">
-<span class="lp-sidebar-unit-label lp-unit-9">Unit 9 · AI Strategy</span>
-<ul>
-<li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
-<li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
-<li><a aria-current="page" class="lp-sidebar-current" href="/course/ai-across-industries">AI Across Industries</a></li>
-<li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
-</ul>
-</div>
-</nav>
+<div class="lp-sidebar-nav" id="lp-sidebar-nav"></div>
 <div id="newsy-ai"></div>
 </aside>
 </div>
@@ -422,7 +340,7 @@
 <span class="material-symbols-outlined">arrow_upward</span>
 </button>
 <div id="footer-placeholder"></div>
-<script src="/news-data.js"></script>
+<script src="/course-data.js"></script><script src="/news-data.js"></script>
 <script defer="" src="/scripts.js"></script>
 <script defer="" src="/news-article.js"></script>
 <script defer="" src="/news-chat.js"></script>

@@ -259,6 +259,76 @@
 
 })();
 
+// ── Course navigation sidebar ───────────────────────────────────
+(function () {
+  const nav = document.getElementById('lp-sidebar-nav');
+  if (!nav || typeof COURSE_UNITS === 'undefined') return;
+
+  const slug = document.body.getAttribute('data-slug');
+  if (!slug) return;
+
+  // Find which unit and lesson index this page is
+  let currentUnit = null, currentLesson = null, currentLessonIdx = -1;
+  for (const unit of COURSE_UNITS) {
+    const idx = unit.lessons.findIndex(l => l.slug === slug);
+    if (idx !== -1) {
+      currentUnit = unit;
+      currentLesson = unit.lessons[idx];
+      currentLessonIdx = idx;
+      break;
+    }
+  }
+  if (!currentUnit) return;
+
+  // Next unit (if this is the last lesson in the unit)
+  const isLastInUnit = currentLessonIdx === currentUnit.lessons.length - 1;
+  const unitIdx = COURSE_UNITS.indexOf(currentUnit);
+  const nextUnit = isLastInUnit && unitIdx < COURSE_UNITS.length - 1
+    ? COURSE_UNITS[unitIdx + 1] : null;
+
+  // Build HTML
+  let html = `
+    <p class="lp-sidebar-nav-title">Course navigation</p>
+    <a class="lp-sidebar-nav-link" href="/course-dashboard">
+      <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>My dashboard
+    </a>
+    <hr class="lp-unit-sep">
+    <p class="lp-sidebar-nav-title" style="margin-bottom:0.5rem">
+      Unit ${currentUnit.id} &mdash; ${currentUnit.title}
+    </p>
+    <ul class="lp-unit-lessons">`;
+
+  for (const lesson of currentUnit.lessons) {
+    const isCurrent = lesson.slug === slug;
+    html += `<li class="${isCurrent ? 'lp-lesson-current' : ''}">
+      <a href="/course/${lesson.slug}">${lesson.title.replace(/ [—–] .*$/, '')}</a>
+    </li>`;
+  }
+
+  html += `</ul>`;
+
+  if (nextUnit) {
+    const firstSlug = nextUnit.lessons[0].slug;
+    html += `
+    <hr class="lp-unit-sep">
+    <a class="lp-next-unit" href="/course/${firstSlug}">
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+      <div>
+        <span class="lp-next-unit-label">Next unit</span>
+        Unit ${nextUnit.id}: ${nextUnit.title}
+      </div>
+    </a>`;
+  }
+
+  html += `
+    <hr class="lp-unit-sep">
+    <a class="lp-sidebar-nav-link" href="/exam">
+      <span class="material-symbols-outlined" aria-hidden="true">quiz</span>Final exam
+    </a>`;
+
+  nav.innerHTML = html;
+})();
+
 // ── Quiz interaction ────────────────────────────────────────────
 document.querySelectorAll('.lp-quiz-option').forEach(btn => {
   btn.addEventListener('click', function() {

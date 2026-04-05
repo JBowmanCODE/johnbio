@@ -39,7 +39,7 @@
 <link href="/header.css" rel="stylesheet"/>
 <link href="/footer.css" rel="stylesheet"/>
 <link href="/news.css?v=3" rel="stylesheet"/>
-<link href="/lesson.css?v=3" rel="stylesheet"/>
+<link href="/lesson.css?v=4" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/>
 <style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 <script type="application/ld+json">
@@ -98,7 +98,7 @@
   }
   </script>
 </head>
-<body class="lp-page">
+<body class="lp-page" data-slug="biological-vs-artificial-neurons">
 <div id="header-placeholder"></div>
 <div class="lp-ambient"></div>
 <main class="na-wrap">
@@ -124,7 +124,7 @@
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
 <a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
-<span class="na-author-role">AI Strategist & Developer</span>
+<span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta">
 <span class="lp-unit-badge lp-unit-6">Unit 6</span>
@@ -298,19 +298,7 @@
 <li><a class="na-toc-link" href="#helps-hurts">Does it help or hurt beginners?</a></li>
 </ol>
 </nav>
-<div class="lp-sidebar-nav">
-<p class="lp-sidebar-nav-title">Course navigation</p>
-<a class="lp-sidebar-nav-link" href="/course-dashboard">
-<span aria-hidden="true" class="material-symbols-outlined">dashboard</span>My dashboard
-      </a>
-<a class="lp-sidebar-nav-link" href="/course/neural-networks-forward-propagation">
-<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span>
-<div><span class="lp-sidebar-nav-label">Next</span>Neural Networks and Forward Propagation</div>
-</a>
-<a class="lp-sidebar-nav-link" href="/exam">
-<span aria-hidden="true" class="material-symbols-outlined">quiz</span>Final exam
-      </a>
-</div>
+<div class="lp-sidebar-nav" id="lp-sidebar-nav"></div>
 <div id="newsy-ai"></div>
 </aside>
 </div><!-- /na-layout -->
@@ -371,7 +359,7 @@
 <span class="material-symbols-outlined">arrow_upward</span>
 </button>
 <div id="footer-placeholder"></div>
-<script src="/news-data.js"></script>
+<script src="/course-data.js"></script><script src="/news-data.js"></script>
 <script defer="" src="/scripts.js"></script>
 <script defer="" src="/news-article.js"></script>
 <script defer="" src="/news-chat.js"></script>
@@ -387,6 +375,5 @@
       });
     });
   </script>
-
 </body>
 </html>
