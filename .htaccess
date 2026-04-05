@@ -1,3 +1,6 @@
+# Disable Passenger globally — this is a static site
+PassengerEnabled off
+
 # Serve HTML content for the root
 DirectoryIndex index.html index.htm
 
