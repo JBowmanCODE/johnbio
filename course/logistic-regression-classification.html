@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logistic Regression and Classification Explained - JohnB.io</title>
+  <meta name="description" content="Logistic regression predicts probabilities, not numbers. The sigmoid function maps any value to 0-1. It's fast, interpretable, and underrated. Here's how it works.">
+  <meta name="keywords" content="logistic regression explained, classification machine learning, sigmoid function, binary classification, decision boundary">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/course/logistic-regression-classification">
+
+  <meta property="og:title" content="Logistic Regression and Classification Explained">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://johnb.io/course/logistic-regression-classification">
+  <meta property="og:description" content="Logistic regression predicts probabilities, not numbers. The sigmoid function maps any value to 0-1. It's fast, interpretable, and underrated. Here's how it works.">
+  <meta property="og:image" content="https://johnb.io/images/course-og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Logistic Regression and Classification Explained">
+  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
+  <meta property="article:author" content="John Bowman">
+  <meta property="article:section" content="AI Course">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Logistic Regression and Classification Explained">
+  <meta name="twitter:description" content="Logistic regression predicts probabilities, not numbers. The sigmoid function maps any value to 0-1. It's fast, interpretable, and underrated. Here's how it works.">
+  <meta name="twitter:image" content="https://johnb.io/images/course-og.jpg">
+  <meta name="twitter:image:alt" content="Logistic Regression and Classification Explained">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Logistic Regression and Classification Explained",
+    "description": "Logistic regression predicts probabilities, not numbers. The sigmoid function maps any value to 0-1. It's fast, interpretable, and underrated. Here's how it works.",
+    "image": "https://johnb.io/images/course-og.jpg",
+    "datePublished": "2026-04-05T00:00:00+00:00",
+    "dateModified": "2026-04-05T00:00:00+00:00",
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://johnb.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between regression and classification?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Regression predicts a continuous number - house prices, salary, temperature. Classification predicts a category - spam or not spam, cat or dog, fraudulent or legitimate. They need different models. Linear regression predicts numbers. Logistic regression predicts categories by outputting a probability that you then threshold into a class decision."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does logistic regression actually output?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Logistic regression outputs a probability between 0 and 1. It uses the sigmoid function to transform the linear regression output (which can be any number) into this probability range. You then apply a threshold - typically 0.5 - to turn the probability into a class prediction. The threshold can be adjusted based on the cost of different types of errors."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the sigmoid function?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The sigmoid function maps any real number to a value between 0 and 1. Very negative inputs map close to 0, very positive inputs map close to 1, and 0 maps to 0.5. It produces an S-shaped curve. In logistic regression, it transforms the linear output into a valid probability. In neural networks, it was historically used as an activation function (though ReLU is now more common)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should you use logistic regression instead of a neural network?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use logistic regression when: you need to explain predictions to humans or regulators (it's interpretable), you have limited training data (simpler models generalise better), speed matters in production (it's orders of magnitude faster than deep models), or the problem is approximately linearly separable. Always try logistic regression as a baseline before moving to more complex models."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://johnb.io"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "AI Course",
+        "item": "https://johnb.io/course-dashboard"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Logistic Regression and Classification Explained",
+        "item": "https://johnb.io/course/logistic-regression-classification"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/news.css?v=4">
+  <link rel="stylesheet" href="/news-chat.css?v=4">
+  <link rel="stylesheet" href="/lesson.css?v=1">
+</head>
+<body class="lp-page">
+
+  <div id="header-placeholder"></div>
+
+  <div class="lp-ambient" aria-hidden="true"></div>
+
+  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
+
+    <nav class="na-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/course-dashboard">AI Course</a>
+      <span aria-hidden="true">›</span>
+      <span>Logistic Regression and Classification</span>
+    </nav>
+
+    <div class="na-layout">
+
+      <article class="na-content" id="main-content">
+
+        <header class="na-header">
+          <div class="na-meta">
+            <span class="lp-unit-badge lp-unit-5">Unit 5</span>
+            <span class="na-category">Machine Learning</span>
+            <span class="na-read-time">8 min read</span>
+          </div>
+          <h1 class="na-title">Logistic Regression and Classification: How Machines Learn to Make Decisions</h1>
+          <p class="na-lede">Logistic regression isn't regression - it's classification. The name is a historical accident. It predicts probabilities rather than numbers, and it's faster and more interpretable than almost anything else. It's also chronically underused.</p>
+          <div class="na-author">
+            <img src="/images/john-avatar.jpg" alt="John Bowman" class="na-author-img" width="36" height="36">
+            <div class="na-author-info">
+              <span class="na-author-name">John Bowman</span>
+              <time class="na-author-date" datetime="2026-04-05">5 April 2026</time>
+            </div>
+          </div>
+        </header>
+
+        <nav class="na-toc-mobile" aria-label="On this page">
+          <details>
+            <summary>On this page</summary>
+            <ol>
+              <li><a href="#regression-vs-classification">Regression vs Classification</a></li>
+              <li><a href="#what-it-does">What Logistic Regression Does</a></li>
+              <li><a href="#sigmoid">The Sigmoid Function</a></li>
+              <li><a href="#examples">Real Classification Problems</a></li>
+              <li><a href="#when-to-use">When It Beats Fancier Models</a></li>
+              <li><a href="#quiz">Lesson Quiz</a></li>
+            </ol>
+          </details>
+        </nav>
+
+        <div class="na-audio-player">
+          <div class="na-audio-label">
+            <span class="material-symbols-outlined" aria-hidden="true">headphones</span>
+            Listen to this lesson
+          </div>
+          <audio controls preload="none" aria-label="Audio version of this lesson">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+
+        <div class="na-body">
+
+          <section id="regression-vs-classification">
+            <h2>Regression Predicts Numbers, Classification Predicts Categories</h2>
+            <p><strong>Regression</strong> predicts a continuous number. Given a house's size, predict its price. Given an animal's age, predict its weight. The output is a real number on a number line.</p>
+            <p><strong>Classification</strong> predicts a category. Given an email, is it spam or not? Given an image, is it a dog or a cat? The output is one of a discrete set of possibilities.</p>
+            <p>Linear regression predicts numbers. Logistic regression predicts categories. The names are similar - confusingly so. "Logistic regression" isn't regression; it's classification. Someone named it regression because it borrows the regression framework. It stuck.</p>
+            <p>You can't just use linear regression for classification. If you train it to predict whether an email is spam (0 for not spam, 1 for spam), it'll happily predict 2.5 for some emails. That doesn't make sense. An email is either spam or it isn't. Logistic regression fixes that.</p>
+          </section>
+
+          <section id="what-it-does">
+            <h2>What Logistic Regression Does</h2>
+            <p>Logistic regression outputs a probability. Instead of predicting "spam" or "not spam," it predicts "99% chance this is spam" or "5% chance this is spam."</p>
+            <p>The maths transforms the linear regression output (which can be any number) into a probability between 0 and 1. Then you set a threshold. Probabilities above 0.5? Predict the positive class. Below 0.5? Predict the negative class.</p>
+            <p>Probabilities are more informative than hard decisions. If the model says "87% chance spam," you're confident. If it says "51% chance spam," you're less sure. You can adjust your threshold based on the cost of being wrong. If false positives are expensive, only mark emails as spam at 95% or higher. If missing spam is more costly, lower the threshold to 30%.</p>
+            <p>Training is the same process as linear regression: gradient descent minimising a loss function. The loss function is different - cross-entropy loss rather than mean squared error - but the training loop is identical.</p>
+          </section>
+
+          <section id="sigmoid">
+            <h2>The Sigmoid Function</h2>
+            <p>The sigmoid function is the mathematical transformation that turns any number into a probability between 0 and 1. Very negative inputs map close to 0. Very positive inputs map close to 1. Zero maps to 0.5. It produces an S-shaped curve.</p>
+            <p>You don't need to memorise the formula. Intuitively: data points from two classes are scattered on a 2D plot. Linear regression draws a straight line through the middle. Logistic regression bends that line into a curve where the probability transitions smoothly from "mostly class A" to "mostly class B."</p>
+            <p>The sigmoid constrains outputs to the valid range for probabilities. That's the whole job.</p>
+          </section>
+
+          <section id="examples">
+            <h2>Real Examples of Classification Problems</h2>
+            <p><strong>Email filtering</strong>: spam or not spam. Binary classification (two classes).</p>
+            <p><strong>Medical diagnosis</strong>: does the patient have disease X? Doctors sometimes want probabilities rather than hard decisions: "85% confident this is pneumonia." That maps directly to logistic regression output.</p>
+            <p><strong>Credit approval</strong>: approve or deny. Companies often output a score or probability rather than a hard yes/no, so humans can review borderline cases.</p>
+            <p><strong>Image recognition</strong>: is this a cat, dog, bird, or fish? Multi-class classification. Logistic regression extends to this with softmax - a generalisation of sigmoid that produces probabilities across multiple classes simultaneously.</p>
+            <p><strong>Fraud detection</strong>: is this transaction fraudulent? Binary classification where both false positives (blocking legitimate transactions) and false negatives (missing fraud) are costly. Adjusting the decision threshold lets you control the balance between them.</p>
+            <p>All of these share the same structure: input data, model predicts probability, apply a threshold, make a decision.</p>
+          </section>
+
+          <section id="when-to-use">
+            <h2>When Logistic Regression Beats Fancier Models</h2>
+            <p>Logistic regression is underrated. People jump to random forests or neural networks without trying it first. That's a mistake.</p>
+            <p>It wins when the problem is approximately linearly separable - when the two classes naturally separate with a linear boundary. Adding complexity doesn't help. It wins with limited data: simpler models generalise better on small datasets, where a fancy model would overfit. It wins when you need explainability: you can look at the trained weights and understand exactly which features push predictions in which direction. Try explaining that with a deep neural network. And it wins on speed: logistic regression makes predictions in microseconds.</p>
+            <p>When does it lose? When the decision boundary is complicated - curves in ways a linear boundary can't capture. Random forests and neural networks model those curves. Logistic regression can't.</p>
+            <p>My advice: always try logistic regression first. It's your baseline. If it solves the problem, use it. If not, understand why - is it accuracy, speed, or something else? Then choose the next model based on that gap, not based on what sounds impressive.</p>
+          </section>
+
+          <section id="quiz" class="lp-quiz-section">
+            <h2>Lesson Quiz</h2>
+            <p>Two questions to check your understanding before moving on.</p>
+
+            <div class="lp-quiz" id="quiz-1">
+              <p class="lp-quiz-q">Question 1: What does logistic regression output, and why is that useful?</p>
+              <ul class="lp-quiz-options" role="list">
+                <li><button class="lp-quiz-btn" data-index="0" type="button">A continuous number like price or salary</button></li>
+                <li><button class="lp-quiz-btn" data-index="1" type="button">A probability between 0 and 1, which lets you adjust the decision threshold based on the cost of different errors</button></li>
+                <li><button class="lp-quiz-btn" data-index="2" type="button">The raw feature weights learned during training</button></li>
+                <li><button class="lp-quiz-btn" data-index="3" type="button">A ranking of input features by importance</button></li>
+              </ul>
+              <div class="lp-quiz-feedback" aria-live="polite"></div>
+            </div>
+
+            <div class="lp-quiz" id="quiz-2">
+              <p class="lp-quiz-q">Question 2: In which situations does logistic regression typically beat more complex models like neural networks?</p>
+              <ul class="lp-quiz-options" role="list">
+                <li><button class="lp-quiz-btn" data-index="0" type="button">When the dataset has millions of examples and the decision boundary is very complex</button></li>
+                <li><button class="lp-quiz-btn" data-index="1" type="button">When image or audio data is involved</button></li>
+                <li><button class="lp-quiz-btn" data-index="2" type="button">When you need explainability, have limited data, need fast predictions, or the problem is approximately linearly separable</button></li>
+                <li><button class="lp-quiz-btn" data-index="3" type="button">When the output needs to be a multi-dimensional vector</button></li>
+              </ul>
+              <div class="lp-quiz-feedback" aria-live="polite"></div>
+            </div>
+
+          </section>
+
+        </div>
+
+        <section class="na-podcast">
+          <h2 class="na-podcast-title">
+            <span class="material-symbols-outlined" aria-hidden="true">podcast</span>
+            Podcast Version
+          </h2>
+          <p class="na-podcast-desc">Prefer to listen? The full lesson is available as a podcast episode.</p>
+          <audio controls preload="none" aria-label="Podcast version of this lesson">
+            Your browser does not support the audio element.
+          </audio>
+        </section>
+
+        <div id="share-bar-placeholder"></div>
+
+        <div class="na-accordions">
+
+          <details class="tool-accordion" open>
+            <summary>Frequently Asked Questions</summary>
+            <div class="tool-accordion-body">
+              <h3>What is the difference between regression and classification?</h3>
+              <p>Regression predicts a continuous number - house prices, salary, temperature. Classification predicts a category - spam or not spam, cat or dog, fraudulent or legitimate. They need different models. Linear regression predicts numbers. Logistic regression predicts categories by outputting a probability that you then threshold into a class decision.</p>
+
+              <h3>What does logistic regression actually output?</h3>
+              <p>Logistic regression outputs a probability between 0 and 1. It uses the sigmoid function to transform the linear regression output (which can be any number) into this probability range. You then apply a threshold - typically 0.5 - to turn the probability into a class prediction. The threshold can be adjusted based on the cost of different types of errors.</p>
+
+              <h3>What is the sigmoid function?</h3>
+              <p>The sigmoid function maps any real number to a value between 0 and 1. Very negative inputs map close to 0, very positive inputs map close to 1, and 0 maps to 0.5. It produces an S-shaped curve. In logistic regression, it transforms the linear output into a valid probability. In neural networks, it was historically used as an activation function (though ReLU is now more common).</p>
+
+              <h3>When should you use logistic regression instead of a neural network?</h3>
+              <p>Use logistic regression when: you need to explain predictions to humans or regulators (it's interpretable), you have limited training data (simpler models generalise better), speed matters in production (it's orders of magnitude faster than deep models), or the problem is approximately linearly separable. Always try logistic regression as a baseline before moving to more complex models.</p>
+            </div>
+          </details>
+
+          <details class="tool-accordion">
+            <summary>How It Works</summary>
+            <div class="tool-accordion-body">
+              <p>Logistic regression applies a linear combination of input features: <code>z = w1*x1 + w2*x2 + ... + b</code>. This value z is then passed through the sigmoid function: <code>p = 1 / (1 + e^(-z))</code>, producing a probability. If <code>p &gt; 0.5</code>, predict class 1; otherwise predict class 0.</p>
+              <p>Training minimises cross-entropy loss (also called log loss): <code>L = -[y*log(p) + (1-y)*log(1-p)]</code>. This penalises confident wrong predictions heavily. Gradient descent adjusts weights to minimise this loss over the training data, exactly as in linear regression.</p>
+              <p>For multi-class problems (more than two categories), the softmax function generalises sigmoid: it produces a probability distribution over all classes simultaneously, ensuring probabilities sum to 1. The class with the highest probability is the prediction.</p>
+            </div>
+          </details>
+
+          <details class="tool-accordion">
+            <summary>Key Points</summary>
+            <div class="tool-accordion-body">
+              <ul>
+                <li>Regression predicts numbers; classification predicts categories. Different problems, different models.</li>
+                <li>Logistic regression is a classification model despite the name - historical naming accident.</li>
+                <li>Output is a probability (0 to 1), not a hard class decision. You apply a threshold to get the decision.</li>
+                <li>The sigmoid function maps any number to (0, 1) - this is how probabilities are produced.</li>
+                <li>Training uses gradient descent with cross-entropy loss, same structure as linear regression.</li>
+                <li>Logistic regression advantages: fast, interpretable, works with limited data, no hyperparameter tuning.</li>
+                <li>It loses when the decision boundary is genuinely non-linear - random forests and neural networks handle those cases.</li>
+                <li>Always use logistic regression as your baseline before trying more complex models.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="tool-accordion">
+            <summary>Sources</summary>
+            <div class="tool-accordion-body">
+              <ul>
+                <li>Hosmer, D.W. &amp; Lemeshow, S. (2000). <em>Applied Logistic Regression</em> (2nd ed.). Wiley.</li>
+                <li>Hastie, T., Tibshirani, R. &amp; Friedman, J. (2009). <em>The Elements of Statistical Learning</em>. Springer.</li>
+                <li>Bishop, C.M. (2006). <em>Pattern Recognition and Machine Learning</em>. Springer.</li>
+              </ul>
+            </div>
+          </details>
+
+        </div>
+
+        <nav class="lp-nav" aria-label="Lesson navigation">
+          <a href="/course/linear-regression-gradient-descent" class="lp-nav-btn lp-nav-prev">
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+            <span class="lp-nav-label">
+              <span class="lp-nav-hint">Previous lesson</span>
+              <span class="lp-nav-title">Linear Regression and Gradient Descent</span>
+            </span>
+          </a>
+          <a href="/course/model-evaluation" class="lp-nav-btn lp-nav-next">
+            <span class="lp-nav-label">
+              <span class="lp-nav-hint">Next lesson</span>
+              <span class="lp-nav-title">Model Evaluation</span>
+            </span>
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          </a>
+        </nav>
+
+      </article>
+
+      <aside class="na-sidebar" aria-label="Lesson sidebar">
+
+        <nav class="na-toc" aria-label="Table of contents">
+          <h2 class="na-toc-title">On this page</h2>
+          <ol class="na-toc-list">
+            <li><a href="#regression-vs-classification">Regression vs Classification</a></li>
+            <li><a href="#what-it-does">What Logistic Regression Does</a></li>
+            <li><a href="#sigmoid">The Sigmoid Function</a></li>
+            <li><a href="#examples">Real Classification Problems</a></li>
+            <li><a href="#when-to-use">When It Beats Fancier Models</a></li>
+            <li><a href="#quiz">Lesson Quiz</a></li>
+          </ol>
+        </nav>
+
+        <nav class="lp-sidebar-nav" aria-label="Course navigation">
+          <h2 class="lp-sidebar-nav-title">
+            <a href="/course-dashboard">AI Course</a>
+          </h2>
+          <div class="lp-sidebar-unit">
+            <span class="lp-sidebar-unit-label lp-unit-5">Unit 5 - Machine Learning</span>
+            <ul>
+              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+              <li class="lp-sidebar-current"><a href="/course/logistic-regression-classification" aria-current="page">Logistic Regression &amp; Classification</a></li>
+              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
+              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div id="newsy-sidebar-mount"></div>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js"></script>
+  <script src="/course-data.js"></script>
+  <script src="/news-chat.js" defer></script>
+
+  <script>
+    (function() {
+      var quizzes = [
+        { correct: 1, explanation: "Correct. Logistic regression outputs a probability between 0 and 1. This is more useful than a hard class decision because you can adjust the threshold based on context. If missing fraud is very costly, lower the threshold so borderline cases get flagged. If false positives are expensive, raise it." },
+        { correct: 2, explanation: "Correct. Logistic regression wins when you need interpretability (you can explain decisions), have limited data (simpler models generalise better), need fast predictions, or the problem is approximately linearly separable. It's the right baseline to try before reaching for neural networks." }
+      ];
+
+      quizzes.forEach(function(quiz, qi) {
+        var container = document.getElementById('quiz-' + (qi + 1));
+        if (!container) return;
+        var buttons = container.querySelectorAll('.lp-quiz-btn');
+        var feedback = container.querySelector('.lp-quiz-feedback');
+        var answered = false;
+
+        buttons.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            if (answered) return;
+            answered = true;
+            var idx = parseInt(btn.getAttribute('data-index'), 10);
+            var isCorrect = idx === quiz.correct;
+
+            buttons.forEach(function(b, bi) {
+              b.disabled = true;
+              if (bi === quiz.correct) b.classList.add('lp-quiz-correct');
+              else if (bi === idx && !isCorrect) b.classList.add('lp-quiz-wrong');
+            });
+
+            feedback.textContent = quiz.explanation;
+            feedback.className = 'lp-quiz-feedback ' + (isCorrect ? 'lp-quiz-feedback-correct' : 'lp-quiz-feedback-wrong');
+          });
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

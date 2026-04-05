@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biological vs Artificial Neurons Explained - JohnB.io</title>
+  <meta name="description" content="How do biological neurons compare to artificial ones? Learn the real similarities, where the brain analogy breaks down, and why it matters for understanding deep learning.">
+  <meta name="keywords" content="biological neurons, artificial neurons, deep learning, neural network, synapse, weights, bias, activation, brain analogy">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="John Bowman">
+  <link rel="canonical" href="https://johnb.io/course/biological-vs-artificial-neurons">
+  <meta property="og:title" content="Biological vs Artificial Neurons Explained">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://johnb.io/course/biological-vs-artificial-neurons">
+  <meta property="og:description" content="How do biological neurons compare to artificial ones? Learn the real similarities, where the brain analogy breaks down, and why letting go of it makes you a better deep learning practitioner.">
+  <meta property="og:image" content="https://johnb.io/images/course/biological-vs-artificial-neurons.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Biological vs Artificial Neurons lesson cover - JohnB.io AI Course">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Biological vs Artificial Neurons Explained">
+  <meta name="twitter:description" content="How do biological neurons compare to artificial ones? Learn the real similarities and where the brain analogy breaks down for deep learning.">
+  <meta name="twitter:image" content="https://johnb.io/images/course/biological-vs-artificial-neurons.webp">
+  <meta name="twitter:image:alt" content="Biological vs Artificial Neurons lesson cover - JohnB.io AI Course">
+  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
+  <meta property="article:author" content="John Bowman">
+  <meta property="article:section" content="AI Course">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J6PBWMRNY');</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/header.css">
+  <link rel="stylesheet" href="/footer.css">
+  <link rel="stylesheet" href="/news.css?v=3">
+  <link rel="stylesheet" href="/lesson.css">
+  <style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Biological vs Artificial Neurons Explained",
+    "description": "How do biological neurons compare to artificial ones? Learn the real similarities, where the brain analogy breaks down, and why it matters for understanding deep learning.",
+    "url": "https://johnb.io/course/biological-vs-artificial-neurons",
+    "image": "https://johnb.io/images/course/biological-vs-artificial-neurons.webp",
+    "datePublished": "2026-04-05T00:00:00+00:00",
+    "dateModified": "2026-04-05T00:00:00+00:00",
+    "author": {"@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/"},
+    "publisher": {"@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io"},
+    "keywords": "biological neurons, artificial neurons, deep learning, neural network, synaptic plasticity, weights, bias",
+    "articleSection": "AI Course"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the main difference between biological and artificial neurons?",
+        "acceptedAnswer": {"@type": "Answer", "text": "A biological neuron fires electrical pulses through chemical processes at synapses, changing connection strength over time. An artificial neuron multiplies inputs by weights, adds a bias, and applies a function to produce a number. There's no chemistry, no timing, and no physical firing - just arithmetic."}
+      },
+      {
+        "@type": "Question",
+        "name": "What do artificial neural networks borrow from the brain?",
+        "acceptedAnswer": {"@type": "Answer", "text": "The core idea: a unit receives multiple inputs, processes them, and produces an output. Weights in artificial networks play a similar role to synaptic strength - they control how much each input matters. Beyond that, the two systems diverge quickly."}
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the brain analogy mislead people learning deep learning?",
+        "acceptedAnswer": {"@type": "Answer", "text": "The analogy makes it easy to assume that deeper networks are always smarter, more connections always help, and mimicking neurobiology more closely leads to better results. None of that follows. When a network trains poorly, the reason is mathematical, not biological. You need to think in terms of gradients, loss functions, and matrix operations - not neurons firing."}
+      },
+      {
+        "@type": "Question",
+        "name": "When should you stop using the brain analogy when learning AI?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Use it to motivate why learning systems that improve without explicit rules might work. Then drop it. Once you start building networks, the brain metaphor blocks the actual understanding you need - gradients, activation functions, and weight updates. The sooner you switch to mathematical thinking, the faster progress comes."}
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://johnb.io"},
+      {"@type": "ListItem", "position": 2, "name": "AI Course", "item": "https://johnb.io/course-dashboard"},
+      {"@type": "ListItem", "position": 3, "name": "Biological vs Artificial Neurons", "item": "https://johnb.io/course/biological-vs-artificial-neurons"}
+    ]
+  }
+  </script>
+</head>
+<body class="lp-page">
+  <div id="header-placeholder"></div>
+  <div class="lp-ambient"></div>
+
+  <main class="na-wrap">
+  <div class="na-layout">
+  <div class="na-content">
+
+    <nav class="na-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+      <a href="/course-dashboard">AI Course</a>
+      <span class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+      <span class="na-bc-current">Biological vs Artificial Neurons</span>
+    </nav>
+
+    <article>
+      <header class="na-header">
+        <h1 class="na-title">Biological vs Artificial Neurons: How the Brain Inspired Deep Learning</h1>
+        <div class="na-lede-row">
+          <p class="na-lede">The brain is a terrible metaphor for what deep learning actually does - and that's exactly why it works so well as a starting point. Here's what biological neurons actually do, what artificial ones borrowed, and when to drop the analogy entirely.</p>
+          <div class="na-lede-img">
+            <img src="/images/course/biological-vs-artificial-neurons.webp" alt="Biological vs artificial neurons - how the brain inspired deep learning" loading="lazy">
+          </div>
+        </div>
+        <div class="na-author">
+          <a href="/about" aria-label="About John Bowman"><img src="/images/JohnB.webp" alt="John Bowman" class="na-author-img"></a>
+          <div class="na-author-details">
+            <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a>
+            <span class="na-author-role">Owner / AI Developer</span>
+          </div>
+          <div class="na-header-meta">
+            <span class="lp-unit-badge lp-unit-6">Unit 6</span>
+            <span class="na-date">5 April 2026</span>
+            <span class="na-read">7 min read</span>
+          </div>
+        </div>
+      </header>
+
+      <details class="na-mobile-toc">
+        <summary class="na-mobile-toc-trigger">
+          <span class="material-symbols-outlined">menu_book</span>
+          In this lesson
+          <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span>
+        </summary>
+        <ol class="na-mobile-toc-list">
+          <li><a href="#biological-neurons">How biological neurons actually work</a></li>
+          <li><a href="#what-artificial-borrowed">What artificial neurons borrowed</a></li>
+          <li><a href="#analogy-useful-misleading">Why the analogy is useful but misleading</a></li>
+          <li><a href="#helps-hurts">Does the brain analogy help or hurt beginners?</a></li>
+        </ol>
+      </details>
+
+      <hr class="na-divider">
+
+      <div class="na-audio" aria-label="Listen to this lesson">
+        <span class="na-audio-icon material-symbols-outlined" aria-hidden="true">headphones</span>
+        <div class="na-audio-info">
+          <div class="na-audio-top">
+            <span class="na-audio-label">Listen to this lesson</span>
+            <div class="na-volume">
+              <button class="na-mute-btn" id="na-mute-btn" aria-label="Mute"><span class="material-symbols-outlined">volume_up</span></button>
+              <input class="na-volume-slider" id="na-volume-slider" type="range" min="0" max="1" step="0.02" value="1" aria-label="Volume">
+            </div>
+          </div>
+          <audio id="na-player" preload="none"></audio>
+          <div class="na-audio-controls">
+            <button class="na-skip-btn" id="na-skip-back" aria-label="Skip back 10 seconds"><span class="material-symbols-outlined">replay_10</span></button>
+            <button class="na-audio-btn" id="na-play-btn" aria-label="Play lesson audio"><span class="material-symbols-outlined">play_arrow</span></button>
+            <button class="na-skip-btn" id="na-skip-fwd" aria-label="Skip forward 10 seconds"><span class="material-symbols-outlined">forward_10</span></button>
+            <div class="na-speed-btns" role="group" aria-label="Playback speed">
+              <button class="na-speed-btn active" data-speed="1">1x</button>
+              <button class="na-speed-btn" data-speed="1.5">1.5x</button>
+              <button class="na-speed-btn" data-speed="2">2x</button>
+            </div>
+            <canvas id="na-waveform" class="na-waveform" width="200" height="52" aria-hidden="true"></canvas>
+          </div>
+          <div class="na-audio-progress-wrap">
+            <span class="na-audio-time" id="na-current-time">0:00</span>
+            <div class="na-progress" id="na-progress" role="slider" aria-label="Audio progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="na-progress-fill" id="na-progress-fill"></div>
+              <div class="na-progress-thumb" id="na-progress-thumb"></div>
+            </div>
+            <span class="na-audio-time na-audio-duration" id="na-duration">0:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="na-body">
+
+        <p>The brain is a terrible metaphor for what deep learning actually does. That's not a reason to avoid it - it's a reason to use it carefully and know exactly when to drop it.</p>
+
+        <h2 id="biological-neurons">How Biological Neurons Actually Work</h2>
+
+        <p>A neuron in your brain is a cell that receives signals from other neurons through connections called synapses. When enough signals arrive, the neuron fires - it sends an electrical pulse down its axon to connected neurons. The strength of each connection depends on neurotransmitters and a process called <a href="https://en.wikipedia.org/wiki/Long-term_potentiation" target="_blank" rel="noopener">long-term potentiation</a>, where connections get stronger or weaker based on repeated activity.</p>
+
+        <p>Here's what actually matters: a neuron doesn't compute. It fires or doesn't fire. The "learning" happens when connections between neurons strengthen or weaken based on repeated patterns. This is partly what we call synaptic plasticity.</p>
+
+        <p>That's the biological side. It's not really about maths. It's about chemical and electrical signals changing over time. There's a time dimension - neurons fire in sequences, patterns emerge over milliseconds - that has no direct equivalent in most artificial systems.</p>
+
+        <h2 id="what-artificial-borrowed">What Artificial Neurons Borrowed</h2>
+
+        <p>Artificial neurons take one key idea from biology: a unit receives multiple inputs, processes them, and produces an output. That part is accurate. Where it diverges immediately is in how it processes.</p>
+
+        <p>An artificial neuron multiplies each input by a number called a weight, adds all those products together, adds another number called a bias, and then applies a function to that sum. That's it. Multiplication and addition. No chemistry, no timing, no physical firing.</p>
+
+        <p>The weights in an artificial network play a similar role to synaptic strength - they control how much each input matters to the output. But artificial neurons don't have the time dimension that real neurons do. They don't fire over time. They take inputs in and output a number, that's the entire operation.</p>
+
+        <p>See <a href="/course/neural-networks-forward-propagation">Lesson 19</a> for exactly how this arithmetic chains together across layers to produce a full neural network prediction.</p>
+
+        <h2 id="analogy-useful-misleading">Why the Analogy Is Useful but Misleading</h2>
+
+        <p>The analogy helps because it gives you permission to think of networks as learning systems that improve without explicit programming. That's true for both brains and neural networks, even though the mechanisms are completely different. If you're new to the field, that framing is helpful - it makes the idea feel less arbitrary.</p>
+
+        <p>The problem is that people then think: deeper networks must be smarter, more connections must be better, and mimicking neural biology more closely must produce better results. None of that follows from the analogy, and none of it is true in practice.</p>
+
+        <p>The analogy breaks down the moment you need to understand why something doesn't work. When a network trains poorly, it's not because the "neurons are firing the wrong way." It's because the maths is set up wrong - the loss function is mismatched, gradients are vanishing, the learning rate is too high. You need to think mathematically to fix it, not biologically. The brain metaphor points you at the wrong level of abstraction.</p>
+
+        <h2 id="helps-hurts">Does the Brain Analogy Help or Hurt Beginners?</h2>
+
+        <p>It helps initially - it makes the idea seem less arbitrary and gives you a way to talk about "learning" that feels intuitive. Then it actively hurts.</p>
+
+        <p>Once you start building networks, you need to let go of the brain metaphor and think about gradients, <a href="/course/backpropagation">backpropagation</a>, loss functions, and matrix operations. Holding on to "this is basically a brain" will make you miss the actual principles that make deep learning work. You'll ask the wrong questions and reach for the wrong explanations.</p>
+
+        <p>The best approach: use the brain analogy to motivate why we might want systems that improve from examples without explicit rules. Then immediately drop it and learn the actual maths. The sooner you stop thinking of artificial neurons as biological neurons, the faster you'll understand what's actually happening when a network trains.</p>
+
+        <!-- Quiz -->
+        <div class="lp-quiz" aria-label="Lesson quiz">
+          <div class="lp-quiz-header">
+            <div class="lp-quiz-icon"><span class="material-symbols-outlined" aria-hidden="true">quiz</span></div>
+            <div>
+              <p class="lp-quiz-title">Check your understanding</p>
+              <p class="lp-quiz-sub">2 questions — select an answer then check it</p>
+            </div>
+          </div>
+
+          <div class="lp-quiz-q" id="q1">
+            <p class="lp-quiz-q-num">Question 1 of 2</p>
+            <p class="lp-quiz-q-text">What operation does an artificial neuron perform on its inputs?</p>
+            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
+              <button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>It fires an electrical pulse when inputs exceed a chemical threshold</button>
+              <button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>It multiplies each input by a weight, sums the results, adds a bias, and applies a function</button>
+              <button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>It selects the highest input value and passes it to the next layer</button>
+              <button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>It fires or doesn't fire based on how many inputs are active simultaneously</button>
+            </div>
+            <button class="lp-quiz-check" data-q="1" data-answer="B" disabled>Check answer</button>
+            <p class="lp-quiz-feedback" id="q1-fb"></p>
+          </div>
+
+          <div class="lp-quiz-q" id="q2">
+            <p class="lp-quiz-q-num">Question 2 of 2</p>
+            <p class="lp-quiz-q-text">According to the lesson, when does the brain analogy start actively hurting your understanding of deep learning?</p>
+            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
+              <button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>From the very beginning - it should never be used</button>
+              <button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>Once you start building networks and need to think in terms of gradients and loss functions</button>
+              <button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>Only when working with networks that have more than three hidden layers</button>
+              <button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>When you start using recurrent neural networks rather than feedforward ones</button>
+            </div>
+            <button class="lp-quiz-check" data-q="2" data-answer="B" disabled>Check answer</button>
+            <p class="lp-quiz-feedback" id="q2-fb"></p>
+          </div>
+        </div>
+
+      </div><!-- /na-body -->
+
+      <!-- Deep Dive Podcast -->
+      <div class="na-podcast" role="region" aria-label="Deep Dive Podcast">
+        <div class="na-podcast-badge"><span class="material-symbols-outlined" aria-hidden="true">podcasts</span>Deep Dive Podcast</div>
+        <div class="na-podcast-inner">
+          <div class="na-podcast-left">
+            <div class="na-podcast-icon" aria-hidden="true"><span class="material-symbols-outlined">graphic_eq</span></div>
+            <div class="na-podcast-meta">
+              <p class="na-podcast-title">Biological vs Artificial Neurons</p>
+              <p class="na-podcast-sub">Created with <a href="https://notebooklm.google.com/" target="_blank" rel="noopener" class="na-podcast-notebooklm"><strong>Google NotebookLM</strong></a> &middot; AI-generated audio overview</p>
+            </div>
+          </div>
+          <audio id="na-podcast-audio" preload="none" aria-label="Deep Dive Podcast audio"></audio>
+          <div class="na-podcast-controls">
+            <div class="na-podcast-progress-wrap" role="group" aria-label="Playback progress">
+              <span class="na-podcast-time" id="na-pod-current">0:00</span>
+              <input type="range" class="na-podcast-progress" id="na-pod-progress" value="0" min="0" step="0.1" aria-label="Seek">
+              <span class="na-podcast-time" id="na-pod-duration">0:00</span>
+            </div>
+            <div class="na-podcast-btns">
+              <button class="na-pod-btn na-pod-btn--skip" id="na-pod-back" aria-label="Skip back 15 seconds"><span class="material-symbols-outlined">replay</span><span class="na-pod-skip-label">15s</span></button>
+              <button class="na-pod-btn na-pod-btn--play" id="na-pod-play" aria-label="Play podcast"><span class="material-symbols-outlined" id="na-pod-play-icon">play_arrow</span></button>
+              <button class="na-pod-btn na-pod-btn--skip" id="na-pod-fwd" aria-label="Skip forward 15 seconds"><span class="material-symbols-outlined">forward</span><span class="na-pod-skip-label">15s</span></button>
+              <div class="na-pod-volume">
+                <button class="na-pod-btn na-pod-mute" id="na-pod-mute" aria-label="Mute"><span class="material-symbols-outlined" id="na-pod-mute-icon">volume_up</span></button>
+                <input type="range" class="na-pod-vol-slider" id="na-pod-vol" min="0" max="1" step="0.05" value="1" aria-label="Volume">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordions -->
+      <details class="tool-accordion" open>
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Frequently Asked Questions</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <h3>What is the main difference between biological and artificial neurons?</h3>
+          <p>A biological neuron fires electrical pulses through chemical processes at synapses, changing connection strength over time. An artificial neuron multiplies inputs by weights, adds a bias, and applies a function to produce a number. There's no chemistry, no timing, and no physical firing - just arithmetic.</p>
+          <h3>What do artificial neural networks borrow from the brain?</h3>
+          <p>The core idea: a unit receives multiple inputs, processes them, and produces an output. Weights in artificial networks play a similar role to synaptic strength - they control how much each input matters. Beyond that, the two systems diverge quickly.</p>
+          <h3>Why does the brain analogy mislead people learning deep learning?</h3>
+          <p>The analogy makes it easy to assume that deeper networks are always smarter, more connections always help, and mimicking neurobiology more closely leads to better results. None of that follows. When a network trains poorly, the reason is mathematical, not biological. You need to think in terms of gradients, loss functions, and matrix operations - not neurons firing.</p>
+          <h3>When should you stop using the brain analogy when learning AI?</h3>
+          <p>Use it to motivate why learning systems that improve without explicit rules might work. Then drop it. Once you start building networks, the brain metaphor blocks the actual understanding you need - gradients, activation functions, and weight updates. The sooner you switch to mathematical thinking, the faster progress comes.</p>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">How It Works</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <p>A biological neuron collects electrochemical signals at its dendrites. When the combined signal crosses a threshold, the neuron fires an action potential - a voltage spike that travels down the axon to the next neuron's synapse. The synapse releases neurotransmitters, which either excite or inhibit the next neuron.</p>
+          <p>An artificial neuron computes: output = activation_function(sum(weight_i * input_i) + bias). Each weight is a floating-point number. Training adjusts weights using <a href="/course/backpropagation">backpropagation</a> so the network's outputs match desired targets.</p>
+          <p>The biological system has time - neurons fire in sequences over milliseconds and patterns emerge from timing. The artificial system has none of that by default. A standard feedforward network processes one set of inputs and produces one output, with no memory of what came before unless explicitly built in (as with recurrent networks).</p>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Key Points</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ul>
+            <li>Biological neurons fire or don't fire - learning happens through changes in synaptic strength over time, driven by electrochemical processes</li>
+            <li>Artificial neurons multiply inputs by weights, sum the results, add a bias, and apply an activation function - pure arithmetic</li>
+            <li>Weights in artificial networks play a similar role to synaptic strength, but the mechanisms are completely different</li>
+            <li>The brain analogy is useful for motivating why learning systems work without explicit rules, then it becomes actively misleading</li>
+            <li>When a network trains poorly, the reason is mathematical - not because "neurons are firing the wrong way"</li>
+            <li>Drop the biological metaphor and switch to thinking about gradients, loss functions, and matrix operations as soon as you start building networks</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Sources</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Neuron" target="_blank" rel="noopener">Neuron - Wikipedia</a> - overview of biological neuron structure and function</li>
+            <li><a href="https://en.wikipedia.org/wiki/Long-term_potentiation" target="_blank" rel="noopener">Long-term potentiation - Wikipedia</a> - the biological mechanism behind synaptic strengthening</li>
+            <li><a href="https://en.wikipedia.org/wiki/Artificial_neuron" target="_blank" rel="noopener">Artificial neuron - Wikipedia</a> - the mathematical model compared to biology</li>
+            <li><a href="https://neuralnetworksanddeeplearning.com/" target="_blank" rel="noopener">Neural Networks and Deep Learning - Michael Nielsen</a> - free online book covering the mathematical foundations</li>
+            <li><a href="https://www.deeplearningbook.org/" target="_blank" rel="noopener">Deep Learning - Goodfellow, Bengio, Courville</a> - the standard reference text for the field</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Lesson navigation -->
+      <nav class="lp-nav" aria-label="Lesson navigation">
+        <a class="lp-nav-btn" href="/course/key-ml-algorithms">
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+          <div>
+            <span class="lp-nav-label">Previous lesson</span>
+            <span class="lp-nav-title">Key ML Algorithms</span>
+          </div>
+        </a>
+        <a class="lp-nav-btn next" href="/course/neural-networks-forward-propagation">
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          <div>
+            <span class="lp-nav-label">Next lesson</span>
+            <span class="lp-nav-title">Neural Networks and Forward Propagation</span>
+          </div>
+        </a>
+      </nav>
+
+    </article>
+  </div><!-- /na-content -->
+
+  <!-- Sidebar -->
+  <aside class="na-sidebar" aria-label="Lesson navigation sidebar">
+    <nav class="na-toc" aria-label="In this lesson">
+      <p class="na-toc-title">In this lesson</p>
+      <ol class="na-toc-list">
+        <li><a class="na-toc-link" href="#biological-neurons">How biological neurons work</a></li>
+        <li><a class="na-toc-link" href="#what-artificial-borrowed">What artificial neurons borrowed</a></li>
+        <li><a class="na-toc-link" href="#analogy-useful-misleading">Why the analogy is misleading</a></li>
+        <li><a class="na-toc-link" href="#helps-hurts">Does it help or hurt beginners?</a></li>
+      </ol>
+    </nav>
+    <div class="lp-sidebar-nav">
+      <p class="lp-sidebar-nav-title">Course navigation</p>
+      <a class="lp-sidebar-nav-link" href="/course-dashboard">
+        <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>My dashboard
+      </a>
+      <a class="lp-sidebar-nav-link" href="/course/neural-networks-forward-propagation">
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        <div><span class="lp-sidebar-nav-label">Next</span>Neural Networks and Forward Propagation</div>
+      </a>
+      <a class="lp-sidebar-nav-link" href="/exam">
+        <span class="material-symbols-outlined" aria-hidden="true">quiz</span>Final exam
+      </a>
+    </div>
+  </aside>
+
+  </div><!-- /na-layout -->
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js" defer></script>
+  <script src="/news-article.js" defer></script>
+  <script>
+  // Quiz interaction
+  document.querySelectorAll('.lp-quiz-option').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const q = this.dataset.q;
+      document.querySelectorAll(`.lp-quiz-option[data-q="${q}"]`).forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+      const checkBtn = document.querySelector(`.lp-quiz-check[data-q="${q}"]`);
+      if (checkBtn) checkBtn.disabled = false;
+    });
+  });
+  document.querySelectorAll('.lp-quiz-check').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const q = this.dataset.q;
+      const answer = this.dataset.answer;
+      const selected = document.querySelector(`.lp-quiz-option[data-q="${q}"].selected`);
+      if (!selected) return;
+      const fb = document.getElementById(`q${q}-fb`);
+      document.querySelectorAll(`.lp-quiz-option[data-q="${q}"]`).forEach(b => {
+        b.disabled = true;
+        if (b.dataset.v === answer) b.classList.add('correct');
+        else if (b.classList.contains('selected')) b.classList.add('wrong');
+      });
+      this.disabled = true;
+      if (selected.dataset.v === answer) {
+        fb.textContent = 'Correct!';
+        fb.className = 'lp-quiz-feedback correct';
+      } else {
+        fb.textContent = `Not quite - the correct answer is ${answer}.`;
+        fb.className = 'lp-quiz-feedback wrong';
+      }
+    });
+  });
+  </script>
+</body>
+</html>

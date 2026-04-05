@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLMs, AI Agents and RAG: AI Tools Landscape 2026 - JohnB.io</title>
+  <meta name="description" content="LLMs predict text. Agents act on the world. RAG connects models to your data. Understanding these three concepts explains most of what's available in AI tools in 2026.">
+  <meta name="keywords" content="LLMs explained, AI agents, RAG retrieval augmented generation, AI tools 2026, ChatGPT vs Claude">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/course/ai-tools-platforms-2026">
+
+  <meta property="og:title" content="LLMs, AI Agents and RAG: AI Tools Landscape 2026">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://johnb.io/course/ai-tools-platforms-2026">
+  <meta property="og:description" content="LLMs predict text. Agents act on the world. RAG connects models to your data. Understanding these three concepts explains most of what's available in AI tools in 2026.">
+  <meta property="og:image" content="https://johnb.io/images/course-og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="LLMs, AI Agents and RAG: AI Tools Landscape 2026">
+  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
+  <meta property="article:author" content="John Bowman">
+  <meta property="article:section" content="AI Course">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LLMs, AI Agents and RAG: AI Tools Landscape 2026">
+  <meta name="twitter:description" content="LLMs predict text. Agents act on the world. RAG connects models to your data. Understanding these three concepts explains most of what's available in AI tools in 2026.">
+  <meta name="twitter:image" content="https://johnb.io/images/course-og.jpg">
+  <meta name="twitter:image:alt" content="LLMs, AI Agents and RAG: AI Tools Landscape 2026">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "LLMs, AI Agents and RAG: AI Tools Landscape 2026",
+    "description": "LLMs predict text. Agents act on the world. RAG connects models to your data. Understanding these three concepts explains most of what's available in AI tools in 2026.",
+    "image": "https://johnb.io/images/course-og.jpg",
+    "datePublished": "2026-04-05T00:00:00+00:00",
+    "dateModified": "2026-04-05T00:00:00+00:00",
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://johnb.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a large language model (LLM)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A large language model is a neural network trained on vast amounts of text to predict the next word. When you give it a prompt, it keeps predicting what word comes next until it's finished. ChatGPT, Claude, Gemini, and Llama are all LLMs. They can approximate reasoning and writing because they learned language patterns deeply enough - but they're not actually thinking or understanding."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is an AI agent?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An AI agent is an LLM connected to tools so it can take action beyond generating text. A plain LLM can tell you how to book a flight. An agent can actually book it. Agents can search the web, run code, access databases, send emails, and iterate through multi-step tasks. They're more useful than chatbots but less reliable - current agents can misuse tools or get stuck in loops."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is RAG (retrieval-augmented generation)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RAG is a technique where an LLM retrieves relevant documents before generating a response, instead of relying only on its training data. When you ask a question, the system searches a database for relevant content and feeds that to the LLM along with your question. This lets the model answer questions about recent events or proprietary data it wasn't trained on, and reduces hallucination."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How should you choose between AI tools in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Prioritise accuracy over features, integration over raw capability, and reliability over cutting-edge. For LLMs, start with mainstream options (GPT-4, Claude, Gemini) - they're expensive but reliable. For agents, start simple with clear tool definitions and human review. For enterprise use, RAG with your own data reduces hallucination and keeps answers grounded. Don't assume you need the biggest, newest model."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://johnb.io"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "AI Course",
+        "item": "https://johnb.io/course-dashboard"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "LLMs, AI Agents and RAG: AI Tools Landscape 2026",
+        "item": "https://johnb.io/course/ai-tools-platforms-2026"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/news.css?v=4">
+  <link rel="stylesheet" href="/news-chat.css?v=4">
+  <link rel="stylesheet" href="/lesson.css?v=1">
+</head>
+<body class="lp-page">
+
+  <div id="header-placeholder"></div>
+
+  <div class="lp-ambient" aria-hidden="true"></div>
+
+  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
+
+    <nav class="na-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/course-dashboard">AI Course</a>
+      <span aria-hidden="true">›</span>
+      <span>AI Tools and Platforms 2026</span>
+    </nav>
+
+    <div class="na-layout">
+
+      <article class="na-content" id="main-content">
+
+        <header class="na-header">
+          <div class="na-meta">
+            <span class="lp-unit-badge lp-unit-2">Unit 2</span>
+            <span class="na-category">AI Fundamentals</span>
+            <span class="na-read-time">9 min read</span>
+          </div>
+          <h1 class="na-title">LLMs, AI Agents and RAG: Making Sense of the AI Tools Landscape in 2026</h1>
+          <p class="na-lede">The AI tools market is fractured and moving fast. LLMs, agents, RAG - these terms get thrown around, often incorrectly. Three concepts explain almost everything: what LLMs actually do, how agents extend them, and why RAG makes them useful in production.</p>
+          <div class="na-author">
+            <img src="/images/john-avatar.jpg" alt="John Bowman" class="na-author-img" width="36" height="36">
+            <div class="na-author-info">
+              <span class="na-author-name">John Bowman</span>
+              <time class="na-author-date" datetime="2026-04-05">5 April 2026</time>
+            </div>
+          </div>
+        </header>
+
+        <nav class="na-toc-mobile" aria-label="On this page">
+          <details>
+            <summary>On this page</summary>
+            <ol>
+              <li><a href="#llms">Large Language Models</a></li>
+              <li><a href="#agents">AI Agents</a></li>
+              <li><a href="#rag">RAG</a></li>
+              <li><a href="#market">The Tools Market in 2026</a></li>
+              <li><a href="#choosing">Choosing AI Tools</a></li>
+              <li><a href="#quiz">Lesson Quiz</a></li>
+            </ol>
+          </details>
+        </nav>
+
+        <div class="na-audio-player">
+          <div class="na-audio-label">
+            <span class="material-symbols-outlined" aria-hidden="true">headphones</span>
+            Listen to this lesson
+          </div>
+          <audio controls preload="none" aria-label="Audio version of this lesson">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+
+        <div class="na-body">
+
+          <section id="llms">
+            <h2>Large Language Models (LLMs) - The Foundation</h2>
+            <p>An LLM is a neural network trained on vast amounts of text to predict the next word. That's it.</p>
+            <p>When you interact with ChatGPT, Claude, Gemini, or Llama, you're talking to an LLM. The system got fed books, websites, code repositories, research papers - billions of words. It learned statistical patterns in how language works. Give it a prompt and it predicts which words should come next, then keeps predicting until it's done.</p>
+            <p>This is why LLMs can do surprisingly well at tasks they were never explicitly trained on. They learned language deeply enough that they can approximate reasoning, coding, maths, writing, and explanation. They're not actually thinking or understanding. But the patterns they learned allow them to generate plausible text about almost anything.</p>
+            <p>The mechanism behind it: take "The cat sat on the" and ask an LLM what comes next. Based on patterns from billions of examples, it calculates that "mat" is statistically likely. Given "The cat sat on the mat," it calculates that a full stop or continuation is likely next. This all happens through matrix mathematics and attention mechanisms that let the system weigh different parts of the input when generating output.</p>
+            <p>The catch is fundamental, not fixable with more data. LLMs are predicting probable sequences - not reasoning. They hallucinate confidently. They don't know what they don't know. If an LLM generated something, there's no guarantee it's accurate. It was just the statistically likely next words.</p>
+          </section>
+
+          <section id="agents">
+            <h2>AI Agents - Making LLMs Actually Do Things</h2>
+            <p>An AI agent is an LLM connected to tools so it can take action beyond generating text.</p>
+            <p>A plain LLM can only talk to you. An AI agent can use tools: search the web, run code, access databases, send emails, check calendars. The pattern is: you give the agent a task, it decides which tool it needs, uses that tool, gets the result, then decides on the next step or reports back.</p>
+            <p>A chatbot can tell you how to book a flight. An agent can actually book it - if you give it permission.</p>
+            <p>Some real examples. An agent could read your email, identify which messages need replies, search your knowledge base for relevant context, draft responses, and wait for your approval before sending. An agent could debug code by running it, reading the error, modifying the code, running it again, and iterating. An agent could research a trip by checking flight prices, hotel availability, and reviews, then summarise options with total costs.</p>
+            <p>The challenge right now: agents aren't reliable. They can misunderstand results, use the wrong tool, or get stuck in loops. They need careful setup and human oversight. But agents are where the real utility lies. Text generation is impressive but limited. Agents that take action on real systems are useful in a different way - they save time on tasks that require multiple steps and tool use.</p>
+          </section>
+
+          <section id="rag">
+            <h2>RAG (Retrieval-Augmented Generation)</h2>
+            <p>RAG is a technique where an LLM retrieves relevant information from documents or databases before generating a response, rather than relying only on what was in its training data.</p>
+            <p>The problem RAG solves: LLMs are trained once and have a knowledge cutoff. They don't know recent events. They don't know your company's internal data. They hallucinate about both, confidently.</p>
+            <p>RAG connects the LLM to a retrieval system. When you ask a question, the system searches a database for relevant documents, feeds those to the LLM along with your question, and the LLM generates an answer based on the documents. The model can cite sources. Answers stay grounded in real content rather than statistical patterns from training.</p>
+            <p>Enterprise support systems using RAG pull relevant help articles when answering customer questions - answers are accurate and up to date. Research assistants using RAG search internal documents and databases rather than guessing. Medical systems using RAG pull current treatment guidelines rather than relying on training data that may be two years old.</p>
+            <p>This is why enterprises care: RAG makes LLMs reliable enough to use for actual business decisions. An LLM that confidently makes things up is useful for drafts. An LLM grounded in your real data is useful for operations.</p>
+          </section>
+
+          <section id="market">
+            <h2>The State of the AI Tools Market in 2026</h2>
+            <p>OpenAI dominates consumer mindshare with ChatGPT. It's the brand people recognise. GPT-4o and later models are genuinely capable, the tooling is mature, and the ecosystem is large.</p>
+            <p>Anthropic's Claude has become the preference for many developers for reasoning tasks and long-document work. Google's Gemini is deeply integrated with Google products and strong on multimodal tasks.</p>
+            <p>Open-source models have caught up more than most expected. Meta's Llama series is freely available and competitive on many benchmarks. Mistral and others proved you don't need billions in funding to produce capable models. For many use cases, an open-source model running on your own infrastructure beats a paid API - lower cost, better privacy, no rate limits.</p>
+            <p>The agent ecosystem is still messy. Frameworks like LangChain and dozens of alternatives claim to make agents easy to build. Most are still unstable. This will consolidate over the next year or two.</p>
+            <p>RAG has become a standard pattern. Vector databases like Pinecone and Weaviate exist largely to support RAG workflows. Most enterprise AI implementations are some variation of: mainstream LLM + RAG over company data.</p>
+          </section>
+
+          <section id="choosing">
+            <h2>What Actually Matters When Choosing AI Tools</h2>
+            <p>Accuracy beats features. An LLM that hallucinates eloquently is worse than one that admits uncertainty. Test the tool on your actual use case before committing.</p>
+            <p>Integration beats raw capability. A tool that connects to your existing data and systems is more valuable than a marginally better tool that's isolated. RAG only helps if you can feed it your data.</p>
+            <p>Cost scales with usage. API-based tools like OpenAI charge per token. Calculate what your costs look like at real usage volumes, not promotional pricing. Open-source models running on your own hardware have different economics that often win at scale.</p>
+            <p>Reliability matters more than cutting-edge. An agent that works 80% of the time is frustrating in production. A human-in-the-loop system that catches the 20% it gets wrong is actually useful.</p>
+            <p>My take: start with mainstream LLMs (GPT-4, Claude 3.5, Gemini Pro) for most tasks - they're expensive but well-documented and reliable. If you're building agents, start simple, define tools clearly, and keep humans in the loop. If you're deploying for enterprise, RAG plus your own data is the default path. Don't assume you need the newest, largest model. Usually you need something that works reliably on your specific problem, and that's often a smaller, cheaper model with good prompting.</p>
+          </section>
+
+          <section id="quiz" class="lp-quiz-section">
+            <h2>Lesson Quiz</h2>
+            <p>Two questions to check your understanding before moving on.</p>
+
+            <div class="lp-quiz" id="quiz-1">
+              <p class="lp-quiz-q">Question 1: What is the key problem RAG (retrieval-augmented generation) solves?</p>
+              <ul class="lp-quiz-options" role="list">
+                <li><button class="lp-quiz-btn" data-index="0" type="button">It makes LLMs faster by caching common responses</button></li>
+                <li><button class="lp-quiz-btn" data-index="1" type="button">It connects LLMs to external documents so they can answer questions beyond their training data without hallucinating</button></li>
+                <li><button class="lp-quiz-btn" data-index="2" type="button">It reduces the number of parameters an LLM needs</button></li>
+                <li><button class="lp-quiz-btn" data-index="3" type="button">It lets LLMs run on edge devices without internet</button></li>
+              </ul>
+              <div class="lp-quiz-feedback" aria-live="polite"></div>
+            </div>
+
+            <div class="lp-quiz" id="quiz-2">
+              <p class="lp-quiz-q">Question 2: What makes an AI agent different from a plain LLM chatbot?</p>
+              <ul class="lp-quiz-options" role="list">
+                <li><button class="lp-quiz-btn" data-index="0" type="button">Agents use larger models with more parameters</button></li>
+                <li><button class="lp-quiz-btn" data-index="1" type="button">Agents have been trained on more recent data</button></li>
+                <li><button class="lp-quiz-btn" data-index="2" type="button">Agents are connected to tools and can take actions beyond generating text</button></li>
+                <li><button class="lp-quiz-btn" data-index="3" type="button">Agents only work with structured data, not natural language</button></li>
+              </ul>
+              <div class="lp-quiz-feedback" aria-live="polite"></div>
+            </div>
+
+          </section>
+
+        </div>
+
+        <section class="na-podcast">
+          <h2 class="na-podcast-title">
+            <span class="material-symbols-outlined" aria-hidden="true">podcast</span>
+            Podcast Version
+          </h2>
+          <p class="na-podcast-desc">Prefer to listen? The full lesson is available as a podcast episode.</p>
+          <audio controls preload="none" aria-label="Podcast version of this lesson">
+            Your browser does not support the audio element.
+          </audio>
+        </section>
+
+        <div id="share-bar-placeholder"></div>
+
+        <div class="na-accordions">
+
+          <details class="tool-accordion" open>
+            <summary>Frequently Asked Questions</summary>
+            <div class="tool-accordion-body">
+              <h3>What is a large language model (LLM)?</h3>
+              <p>A large language model is a neural network trained on vast amounts of text to predict the next word. When you give it a prompt, it keeps predicting what word comes next until it's finished. ChatGPT, Claude, Gemini, and Llama are all LLMs. They can approximate reasoning and writing because they learned language patterns deeply enough - but they're not actually thinking or understanding.</p>
+
+              <h3>What is an AI agent?</h3>
+              <p>An AI agent is an LLM connected to tools so it can take action beyond generating text. A plain LLM can tell you how to book a flight. An agent can actually book it. Agents can search the web, run code, access databases, send emails, and iterate through multi-step tasks. They're more useful than chatbots but less reliable - current agents can misuse tools or get stuck in loops.</p>
+
+              <h3>What is RAG (retrieval-augmented generation)?</h3>
+              <p>RAG is a technique where an LLM retrieves relevant documents before generating a response, instead of relying only on its training data. When you ask a question, the system searches a database for relevant content and feeds that to the LLM along with your question. This lets the model answer questions about recent events or proprietary data it wasn't trained on, and reduces hallucination.</p>
+
+              <h3>How should you choose between AI tools in 2026?</h3>
+              <p>Prioritise accuracy over features, integration over raw capability, and reliability over cutting-edge. For LLMs, start with mainstream options (GPT-4, Claude, Gemini) - they're expensive but reliable. For agents, start simple with clear tool definitions and human review. For enterprise use, RAG with your own data reduces hallucination and keeps answers grounded. Don't assume you need the biggest, newest model.</p>
+            </div>
+          </details>
+
+          <details class="tool-accordion">
+            <summary>How It Works</summary>
+            <div class="tool-accordion-body">
+              <p><strong>LLMs</strong> use transformer architectures with attention mechanisms. The model processes your input as tokens, calculates attention weights across all tokens, and generates output one token at a time. Each output token is sampled from a probability distribution over the vocabulary.</p>
+              <p><strong>Agents</strong> work through tool-calling: the LLM generates a structured "use this tool with these parameters" output, the framework executes the tool, the result is appended to the conversation context, and the LLM generates the next step. This loop continues until the task is complete or a stopping condition is met.</p>
+              <p><strong>RAG</strong> uses vector embeddings. Documents are encoded as numerical vectors capturing semantic meaning. When a query arrives, it's also encoded as a vector. The system finds documents whose vectors are closest to the query vector (nearest-neighbour search), retrieves those documents, and passes them to the LLM as context alongside the question.</p>
+            </div>
+          </details>
+
+          <details class="tool-accordion">
+            <summary>Key Points</summary>
+            <div class="tool-accordion-body">
+              <ul>
+                <li>LLMs predict the next word based on statistical patterns in training data - they're not reasoning.</li>
+                <li>LLMs hallucinate: they generate plausible-sounding text that may be entirely false.</li>
+                <li>AI agents add tool use to LLMs, enabling real-world actions like searching, coding, and sending messages.</li>
+                <li>Agents are still unreliable in 2026 - keep humans in the loop for anything important.</li>
+                <li>RAG connects LLMs to external documents, enabling answers about data beyond the training cutoff.</li>
+                <li>RAG reduces hallucination by grounding responses in retrieved source documents.</li>
+                <li>Major LLM providers: OpenAI (ChatGPT/GPT-4), Anthropic (Claude), Google (Gemini), Meta (Llama - open source).</li>
+                <li>Start with mainstream, reliable tools before optimising for cutting-edge capability.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="tool-accordion">
+            <summary>Sources</summary>
+            <div class="tool-accordion-body">
+              <ul>
+                <li>Brown, T. et al. (2020). Language Models are Few-Shot Learners (GPT-3). <em>NeurIPS 2020</em>.</li>
+                <li>Lewis, P. et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. <em>NeurIPS 2020</em>.</li>
+                <li>Yao, S. et al. (2023). ReAct: Synergizing Reasoning and Acting in Language Models. <em>ICLR 2023</em>.</li>
+                <li>Meta AI (2023). Llama 2: Open Foundation and Fine-Tuned Chat Models. <em>arXiv</em>:2307.09288.</li>
+              </ul>
+            </div>
+          </details>
+
+        </div>
+
+        <nav class="lp-nav" aria-label="Lesson navigation">
+          <a href="/course/key-ai-subfields" class="lp-nav-btn lp-nav-prev">
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+            <span class="lp-nav-label">
+              <span class="lp-nav-hint">Previous lesson</span>
+              <span class="lp-nav-title">Key AI Subfields</span>
+            </span>
+          </a>
+          <a href="/course/ai-failures-ethics" class="lp-nav-btn lp-nav-next">
+            <span class="lp-nav-label">
+              <span class="lp-nav-hint">Next lesson</span>
+              <span class="lp-nav-title">AI Failures and Ethics</span>
+            </span>
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          </a>
+        </nav>
+
+      </article>
+
+      <aside class="na-sidebar" aria-label="Lesson sidebar">
+
+        <nav class="na-toc" aria-label="Table of contents">
+          <h2 class="na-toc-title">On this page</h2>
+          <ol class="na-toc-list">
+            <li><a href="#llms">Large Language Models</a></li>
+            <li><a href="#agents">AI Agents</a></li>
+            <li><a href="#rag">RAG</a></li>
+            <li><a href="#market">The Tools Market in 2026</a></li>
+            <li><a href="#choosing">Choosing AI Tools</a></li>
+            <li><a href="#quiz">Lesson Quiz</a></li>
+          </ol>
+        </nav>
+
+        <nav class="lp-sidebar-nav" aria-label="Course navigation">
+          <h2 class="lp-sidebar-nav-title">
+            <a href="/course-dashboard">AI Course</a>
+          </h2>
+          <div class="lp-sidebar-unit">
+            <span class="lp-sidebar-unit-label lp-unit-2">Unit 2 - How AI Works</span>
+            <ul>
+              <li><a href="/course/traditional-vs-generative-ai">Traditional vs Generative AI</a></li>
+              <li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
+              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
+              <li class="lp-sidebar-current"><a href="/course/ai-tools-platforms-2026" aria-current="page">AI Tools &amp; Platforms 2026</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div id="newsy-sidebar-mount"></div>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js"></script>
+  <script src="/course-data.js"></script>
+  <script src="/news-chat.js" defer></script>
+
+  <script>
+    (function() {
+      var quizzes = [
+        { correct: 1, explanation: "Correct. RAG solves the problem of LLMs being limited to their training data. By retrieving relevant documents before generating a response, the model can answer questions about recent events, proprietary data, and anything beyond its training cutoff - with sources to back up the answers." },
+        { correct: 2, explanation: "Correct. An AI agent is an LLM connected to tools that let it take real-world actions: searching the web, running code, accessing databases, sending messages. A chatbot can only generate text. An agent can act on the world." }
+      ];
+
+      quizzes.forEach(function(quiz, qi) {
+        var container = document.getElementById('quiz-' + (qi + 1));
+        if (!container) return;
+        var buttons = container.querySelectorAll('.lp-quiz-btn');
+        var feedback = container.querySelector('.lp-quiz-feedback');
+        var answered = false;
+
+        buttons.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            if (answered) return;
+            answered = true;
+            var idx = parseInt(btn.getAttribute('data-index'), 10);
+            var isCorrect = idx === quiz.correct;
+
+            buttons.forEach(function(b, bi) {
+              b.disabled = true;
+              if (bi === quiz.correct) b.classList.add('lp-quiz-correct');
+              else if (bi === idx && !isCorrect) b.classList.add('lp-quiz-wrong');
+            });
+
+            feedback.textContent = quiz.explanation;
+            feedback.className = 'lp-quiz-feedback ' + (isCorrect ? 'lp-quiz-feedback-correct' : 'lp-quiz-feedback-wrong');
+          });
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

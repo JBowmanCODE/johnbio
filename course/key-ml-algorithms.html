@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decision Trees, SVMs and Key ML Algorithms - JohnB.io</title>
+  <meta name="description" content="Decision trees, random forests, SVMs, KNN, Naive Bayes. What each algorithm does, when to use it, and why you should master simple models before neural networks.">
+  <meta name="keywords" content="decision trees machine learning, random forest algorithm, SVM explained, machine learning algorithms comparison, when to use which algorithm">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/course/key-ml-algorithms">
+
+  <meta property="og:title" content="Decision Trees, SVMs and Key ML Algorithms">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://johnb.io/course/key-ml-algorithms">
+  <meta property="og:description" content="Decision trees, random forests, SVMs, KNN, Naive Bayes. What each algorithm does, when to use it, and why you should master simple models before neural networks.">
+  <meta property="og:image" content="https://johnb.io/images/course-og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Decision Trees, SVMs and Key ML Algorithms">
+  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
+  <meta property="article:author" content="John Bowman">
+  <meta property="article:section" content="AI Course">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Decision Trees, SVMs and Key ML Algorithms">
+  <meta name="twitter:description" content="Decision trees, random forests, SVMs, KNN, Naive Bayes. What each algorithm does, when to use it, and why you should master simple models before neural networks.">
+  <meta name="twitter:image" content="https://johnb.io/images/course-og.jpg">
+  <meta name="twitter:image:alt" content="Decision Trees, SVMs and Key ML Algorithms">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Decision Trees, SVMs and Key ML Algorithms",
+    "description": "Decision trees, random forests, SVMs, KNN, Naive Bayes. What each algorithm does, when to use it, and why you should master simple models before neural networks.",
+    "image": "https://johnb.io/images/course-og.jpg",
+    "datePublished": "2026-04-05T00:00:00+00:00",
+    "dateModified": "2026-04-05T00:00:00+00:00",
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://johnb.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a decision tree in machine learning?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A decision tree is a machine learning model that makes predictions through a series of yes/no questions about input features. At each node, it finds the question that best separates the classes. The result is interpretable: you can trace any prediction back to the rules that produced it. Decision trees tend to overfit, which is why random forests (many trees voting together) are more commonly used in practice."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a random forest?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A random forest is an ensemble of hundreds of decision trees, each trained on a random subset of the data and features. Predictions are made by majority vote. Because the trees are diverse (each overfits in a different way), their errors average out and the ensemble is more accurate and robust than any individual tree. Random forests are a strong default for most structured data problems."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a support vector machine (SVM)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An SVM finds the decision boundary with the largest margin - the biggest gap between the boundary and the nearest training points of each class. A larger margin generalises better to new data. When classes aren't linearly separable, SVMs use the kernel trick to implicitly map data into a higher-dimensional space where a linear boundary works. SVMs perform well on small to medium structured datasets."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which machine learning algorithm should beginners learn first?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start with logistic regression or decision trees. Logistic regression teaches loss functions, gradient descent, and probability - concepts that transfer to every other model. Decision trees teach overfitting, feature importance, and the bias-variance trade-off intuitively. Then learn random forests as an extension. Resist jumping to neural networks first - you'll spend weeks debugging things you don't understand."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://johnb.io"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "AI Course",
+        "item": "https://johnb.io/course-dashboard"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Decision Trees, SVMs and Key ML Algorithms",
+        "item": "https://johnb.io/course/key-ml-algorithms"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/news.css?v=4">
+  <link rel="stylesheet" href="/news-chat.css?v=4">
+  <link rel="stylesheet" href="/lesson.css?v=1">
+</head>
+<body class="lp-page">
+
+  <div id="header-placeholder"></div>
+
+  <div class="lp-ambient" aria-hidden="true"></div>
+
+  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
+
+    <nav class="na-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/course-dashboard">AI Course</a>
+      <span aria-hidden="true">›</span>
+      <span>Key ML Algorithms</span>
+    </nav>
+
+    <div class="na-layout">
+
+      <article class="na-content" id="main-content">
+
+        <header class="na-header">
+          <div class="na-meta">
+            <span class="lp-unit-badge lp-unit-5">Unit 5</span>
+            <span class="na-category">Machine Learning</span>
+            <span class="na-read-time">9 min read</span>
+          </div>
+          <h1 class="na-title">Decision Trees, SVMs and More: Key Machine Learning Algorithms for Beginners</h1>
+          <p class="na-lede">There are many machine learning algorithms. This lesson covers the ones you'll encounter most often: decision trees, random forests, SVMs, KNN, and Naive Bayes. Each has a different strength, a different weakness, and a different situation where it's the right tool.</p>
+          <div class="na-author">
+            <img src="/images/john-avatar.jpg" alt="John Bowman" class="na-author-img" width="36" height="36">
+            <div class="na-author-info">
+              <span class="na-author-name">John Bowman</span>
+              <time class="na-author-date" datetime="2026-04-05">5 April 2026</time>
+            </div>
+          </div>
+        </header>
+
+        <nav class="na-toc-mobile" aria-label="On this page">
+          <details>
+            <summary>On this page</summary>
+            <ol>
+              <li><a href="#decision-trees">Decision Trees</a></li>
+              <li><a href="#random-forests">Random Forests</a></li>
+              <li><a href="#svms">Support Vector Machines</a></li>
+              <li><a href="#knn-naive-bayes">KNN and Naive Bayes</a></li>
+              <li><a href="#when-to-use">When to Use Which</a></li>
+              <li><a href="#quiz">Lesson Quiz</a></li>
+            </ol>
+          </details>
+        </nav>
+
+        <div class="na-audio-player">
+          <div class="na-audio-label">
+            <span class="material-symbols-outlined" aria-hidden="true">headphones</span>
+            Listen to this lesson
+          </div>
+          <audio controls preload="none" aria-label="Audio version of this lesson">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+
+        <div class="na-body">
+
+          <section id="decision-trees">
+            <h2>Decision Trees: How They Work and Why They're Intuitive</h2>
+            <p>Decision trees are probably the most intuitive machine learning model. A human can look at a trained decision tree and understand exactly what it's doing.</p>
+            <p>The idea: you ask a series of yes/no questions about the data, and each answer narrows down the prediction. Is the email long? If yes, branch A. If no, branch B. In branch A, does it contain certain words? If yes, probably spam. This is how you'd manually build a flowchart. A decision tree is that flowchart, built automatically from data.</p>
+            <p>Mathematically, the tree is built by recursively splitting the data. At each node, the algorithm finds the single question that splits data into two groups as homogeneously as possible - where "homogeneous" means all items in each group belong to the same class. The algorithm measures this with Gini impurity or entropy, and keeps splitting until groups are pure or a stopping condition is met.</p>
+            <p>Why are trees intuitive? You can trace any prediction back to the rule that produced it: "This email is spam because it's long and contains the word 'prize'." You can argue with the tree. You can understand why it learned that rule. This is in stark contrast to neural networks, which produce a prediction with no auditable explanation.</p>
+            <p>The downside: single trees tend to overfit. They'll learn very specific rules that fit the training data but don't generalise. That's where random forests come in.</p>
+          </section>
+
+          <section id="random-forests">
+            <h2>Random Forests: An Extension of Decision Trees</h2>
+            <p>A random forest is hundreds of decision trees trained slightly differently. You train each tree on a random subset of the data and a random subset of the features. Then you predict by having all trees vote. If 300 trees say "spam" and 200 say "not spam," predict spam.</p>
+            <p>Why does voting help? Because the trees are diverse. Each overfits in a different way. The errors average out. The ensemble is more robust than any individual tree - and usually more accurate than a single tree by a significant margin.</p>
+            <p>Random forests are widely used and a strong default for most structured data problems. They're less interpretable than a single tree (you can't point to "the rule"), but far more accurate. The trade-off: single trees for interpretability, forests for accuracy.</p>
+          </section>
+
+          <section id="svms">
+            <h2>Support Vector Machines: The Core Idea</h2>
+            <p>SVMs try to find the best decision boundary between two classes. Imagine two groups of points in 2D space. SVM finds the line that separates them, but not just any line - the one with the largest margin, the biggest gap between the boundary and the nearest points of each class.</p>
+            <p>A larger margin means better generalisation. A line that barely separates training data is fragile - new points will likely land on the wrong side. A line with a wide gap is more robust.</p>
+            <p>When data isn't linearly separable, SVMs use the kernel trick: they transform data into a higher-dimensional space where a linear boundary does work, without explicitly doing the transformation. Mathematically elegant, a bit abstract in practice.</p>
+            <p>SVMs work well on small to medium structured datasets. Training gets slow for large datasets. They also require feature scaling - if features aren't normalised to similar ranges, the algorithm gets confused about what matters.</p>
+          </section>
+
+          <section id="knn-naive-bayes">
+            <h2>KNN and Naive Bayes</h2>
+            <p><strong>K-nearest neighbours (KNN)</strong> is simple: to predict a new point, find the k nearest points in training data and let them vote. To predict whether an email is spam, find the 5 most similar emails in training data and check how many are spam.</p>
+            <p>Pros: easy to understand, often works. Cons: slow at prediction time (compare to every training example), struggles with high-dimensional data (in high dimensions, all points are roughly equidistant from each other, so "nearest" loses meaning), and doesn't learn anything - it's just storing training data.</p>
+            <p><strong>Naive Bayes</strong> uses probability. Given an email's features, what's the probability it's spam? It uses Bayes' theorem with one simplifying assumption: features are independent of each other. That's almost always false (spam words tend to co-occur), hence "naive." Despite the bad assumption, it works surprisingly well and is very fast.</p>
+            <p>Naive Bayes is a strong baseline for text classification. If your fancy model barely beats Naive Bayes, the extra complexity probably isn't worth it.</p>
+          </section>
+
+          <section id="when-to-use">
+            <h2>When to Use Which Algorithm</h2>
+            <p><strong>Decision trees:</strong> when interpretability matters - you need to explain decisions to humans or regulators. Also useful when exploring data to understand which features matter.</p>
+            <p><strong>Random forests:</strong> the default for most structured data problems. Fast, robust, accurate, and needs little tuning.</p>
+            <p><strong>SVMs:</strong> clean, structured data where performance matters more than interpretability. Less common in industry now because random forests are easier and deep learning gets the headlines, but still mathematically sound and worth knowing.</p>
+            <p><strong>KNN:</strong> as a quick baseline or when the problem is simple enough that memorisation works. Rarely your main model.</p>
+            <p><strong>Naive Bayes:</strong> text and document classification as a fast, strong baseline.</p>
+            <p><strong>Logistic regression:</strong> simple, interpretable, fast, and surprisingly often good enough.</p>
+            <p><strong>Neural networks:</strong> when you have lots of data and compute, and simpler models aren't working - or when dealing with images, audio, and sequences where deep architectures genuinely shine.</p>
+            <p>Start with logistic regression or decision trees. They teach the fundamentals. Random forests are an immediate practical extension. The temptation is to jump to neural networks because they're famous. Resist it. Once you understand how simpler models work and what can go wrong, neural networks make sense. Before that, they're black boxes and you'll waste time debugging things you don't understand.</p>
+          </section>
+
+          <section id="quiz" class="lp-quiz-section">
+            <h2>Lesson Quiz</h2>
+            <p>Two questions to check your understanding before moving on.</p>
+
+            <div class="lp-quiz" id="quiz-1">
+              <p class="lp-quiz-q">Question 1: Why does a random forest typically outperform a single decision tree?</p>
+              <ul class="lp-quiz-options" role="list">
+                <li><button class="lp-quiz-btn" data-index="0" type="button">Random forests use a different learning algorithm that is mathematically superior to decision trees</button></li>
+                <li><button class="lp-quiz-btn" data-index="1" type="button">Hundreds of trees, each trained on slightly different data, overfit in different ways - their errors average out, making the ensemble more robust and accurate</button></li>
+                <li><button class="lp-quiz-btn" data-index="2" type="button">Random forests require less training data than single decision trees</button></li>
+                <li><button class="lp-quiz-btn" data-index="3" type="button">Random forests are always more interpretable than single trees</button></li>
+              </ul>
+              <div class="lp-quiz-feedback" aria-live="polite"></div>
+            </div>
+
+            <div class="lp-quiz" id="quiz-2">
+              <p class="lp-quiz-q">Question 2: What is the "kernel trick" in SVMs?</p>
+              <ul class="lp-quiz-options" role="list">
+                <li><button class="lp-quiz-btn" data-index="0" type="button">A method to reduce the number of training examples needed</button></li>
+                <li><button class="lp-quiz-btn" data-index="1" type="button">A way to increase the learning rate during training automatically</button></li>
+                <li><button class="lp-quiz-btn" data-index="2" type="button">A technique that allows SVMs to find linear boundaries in a higher-dimensional space without explicitly transforming the data</button></li>
+                <li><button class="lp-quiz-btn" data-index="3" type="button">A regularisation method that reduces overfitting in large models</button></li>
+              </ul>
+              <div class="lp-quiz-feedback" aria-live="polite"></div>
+            </div>
+
+          </section>
+
+        </div>
+
+        <section class="na-podcast">
+          <h2 class="na-podcast-title">
+            <span class="material-symbols-outlined" aria-hidden="true">podcast</span>
+            Podcast Version
+          </h2>
+          <p class="na-podcast-desc">Prefer to listen? The full lesson is available as a podcast episode.</p>
+          <audio controls preload="none" aria-label="Podcast version of this lesson">
+            Your browser does not support the audio element.
+          </audio>
+        </section>
+
+        <div id="share-bar-placeholder"></div>
+
+        <div class="na-accordions">
+
+          <details class="tool-accordion" open>
+            <summary>Frequently Asked Questions</summary>
+            <div class="tool-accordion-body">
+              <h3>What is a decision tree in machine learning?</h3>
+              <p>A decision tree is a machine learning model that makes predictions through a series of yes/no questions about input features. At each node, it finds the question that best separates the classes. The result is interpretable: you can trace any prediction back to the rules that produced it. Decision trees tend to overfit, which is why random forests (many trees voting together) are more commonly used in practice.</p>
+
+              <h3>What is a random forest?</h3>
+              <p>A random forest is an ensemble of hundreds of decision trees, each trained on a random subset of the data and features. Predictions are made by majority vote. Because the trees are diverse (each overfits in a different way), their errors average out and the ensemble is more accurate and robust than any individual tree. Random forests are a strong default for most structured data problems.</p>
+
+              <h3>What is a support vector machine (SVM)?</h3>
+              <p>An SVM finds the decision boundary with the largest margin - the biggest gap between the boundary and the nearest training points of each class. A larger margin generalises better to new data. When classes aren't linearly separable, SVMs use the kernel trick to implicitly map data into a higher-dimensional space where a linear boundary works. SVMs perform well on small to medium structured datasets.</p>
+
+              <h3>Which machine learning algorithm should beginners learn first?</h3>
+              <p>Start with logistic regression or decision trees. Logistic regression teaches loss functions, gradient descent, and probability - concepts that transfer to every other model. Decision trees teach overfitting, feature importance, and the bias-variance trade-off intuitively. Then learn random forests as an extension. Resist jumping to neural networks first - you'll spend weeks debugging things you don't understand.</p>
+            </div>
+          </details>
+
+          <details class="tool-accordion">
+            <summary>How It Works</summary>
+            <div class="tool-accordion-body">
+              <p><strong>Decision trees</strong> are built recursively. At each node, the algorithm evaluates every possible feature and threshold, picks the split that minimises impurity (Gini or entropy), and creates two child nodes. This continues until a stopping criterion (max depth, min samples, or pure nodes) is met.</p>
+              <p><strong>Random forests</strong> use bagging (bootstrap aggregating): each tree trains on a random sample of the training data with replacement, and at each split only a random subset of features is considered. This decorrelates the trees, ensuring diverse errors that cancel when averaged.</p>
+              <p><strong>SVMs</strong> solve a convex optimisation problem to find the maximum-margin hyperplane. The kernel function (linear, polynomial, RBF) determines how the feature space is implicitly extended. The key parameters are C (trade-off between margin and classification errors) and the kernel choice.</p>
+            </div>
+          </details>
+
+          <details class="tool-accordion">
+            <summary>Key Points</summary>
+            <div class="tool-accordion-body">
+              <ul>
+                <li>Decision trees: interpretable, intuitive, but overfit easily. Good for explainability.</li>
+                <li>Random forests: ensemble of many trees, errors average out. Strong default for structured data.</li>
+                <li>SVMs: maximise the margin between classes. Kernel trick handles non-linear boundaries. Slow on large datasets.</li>
+                <li>KNN: predict by majority vote of k nearest training examples. Simple but slow and doesn't generalise well in high dimensions.</li>
+                <li>Naive Bayes: fast probabilistic classifier. Excellent baseline for text classification despite the independence assumption.</li>
+                <li>Algorithm selection guide: interpretability → decision trees; accuracy on structured data → random forests; text → Naive Bayes; limited data → logistic regression; images/sequences → neural networks.</li>
+                <li>Learn simpler models first. Neural networks make sense after you understand what can go wrong in simpler ones.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="tool-accordion">
+            <summary>Sources</summary>
+            <div class="tool-accordion-body">
+              <ul>
+                <li>Breiman, L. (2001). Random Forests. <em>Machine Learning</em>, 45(1), 5-32.</li>
+                <li>Cortes, C. &amp; Vapnik, V. (1995). Support-vector networks. <em>Machine Learning</em>, 20, 273-297.</li>
+                <li>Hastie, T., Tibshirani, R. &amp; Friedman, J. (2009). <em>The Elements of Statistical Learning</em>. Springer.</li>
+                <li>Geron, A. (2022). <em>Hands-On Machine Learning</em> (3rd ed.). O'Reilly Media.</li>
+              </ul>
+            </div>
+          </details>
+
+        </div>
+
+        <nav class="lp-nav" aria-label="Lesson navigation">
+          <a href="/course/model-evaluation" class="lp-nav-btn lp-nav-prev">
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+            <span class="lp-nav-label">
+              <span class="lp-nav-hint">Previous lesson</span>
+              <span class="lp-nav-title">Model Evaluation</span>
+            </span>
+          </a>
+          <a href="/course/biological-vs-artificial-neurons" class="lp-nav-btn lp-nav-next">
+            <span class="lp-nav-label">
+              <span class="lp-nav-hint">Next lesson</span>
+              <span class="lp-nav-title">Biological vs Artificial Neurons</span>
+            </span>
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          </a>
+        </nav>
+
+      </article>
+
+      <aside class="na-sidebar" aria-label="Lesson sidebar">
+
+        <nav class="na-toc" aria-label="Table of contents">
+          <h2 class="na-toc-title">On this page</h2>
+          <ol class="na-toc-list">
+            <li><a href="#decision-trees">Decision Trees</a></li>
+            <li><a href="#random-forests">Random Forests</a></li>
+            <li><a href="#svms">Support Vector Machines</a></li>
+            <li><a href="#knn-naive-bayes">KNN and Naive Bayes</a></li>
+            <li><a href="#when-to-use">When to Use Which</a></li>
+            <li><a href="#quiz">Lesson Quiz</a></li>
+          </ol>
+        </nav>
+
+        <nav class="lp-sidebar-nav" aria-label="Course navigation">
+          <h2 class="lp-sidebar-nav-title">
+            <a href="/course-dashboard">AI Course</a>
+          </h2>
+          <div class="lp-sidebar-unit">
+            <span class="lp-sidebar-unit-label lp-unit-5">Unit 5 - Machine Learning</span>
+            <ul>
+              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
+              <li class="lp-sidebar-current"><a href="/course/key-ml-algorithms" aria-current="page">Key ML Algorithms</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div id="newsy-sidebar-mount"></div>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js"></script>
+  <script src="/course-data.js"></script>
+  <script src="/news-chat.js" defer></script>
+
+  <script>
+    (function() {
+      var quizzes = [
+        { correct: 1, explanation: "Correct. A random forest trains hundreds of trees, each on a slightly different random subset of data and features. Each tree overfits in a different direction. When they all vote, these diverse errors average out, producing a more accurate and robust prediction than any single tree could give." },
+        { correct: 2, explanation: "Correct. The kernel trick lets SVMs handle non-linearly separable data by implicitly mapping it into a higher-dimensional space where a linear boundary works. Importantly, it does this without explicitly computing the transformation - it just computes distances in that higher space using a kernel function, which is much more efficient." }
+      ];
+
+      quizzes.forEach(function(quiz, qi) {
+        var container = document.getElementById('quiz-' + (qi + 1));
+        if (!container) return;
+        var buttons = container.querySelectorAll('.lp-quiz-btn');
+        var feedback = container.querySelector('.lp-quiz-feedback');
+        var answered = false;
+
+        buttons.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            if (answered) return;
+            answered = true;
+            var idx = parseInt(btn.getAttribute('data-index'), 10);
+            var isCorrect = idx === quiz.correct;
+
+            buttons.forEach(function(b, bi) {
+              b.disabled = true;
+              if (bi === quiz.correct) b.classList.add('lp-quiz-correct');
+              else if (bi === idx && !isCorrect) b.classList.add('lp-quiz-wrong');
+            });
+
+            feedback.textContent = quiz.explanation;
+            feedback.className = 'lp-quiz-feedback ' + (isCorrect ? 'lp-quiz-feedback-correct' : 'lp-quiz-feedback-wrong');
+          });
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

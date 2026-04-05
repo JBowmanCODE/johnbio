@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-World AI Failures and Ethics in AI - JohnB.io</title>
+  <meta name="description" content="Facial recognition arresting the wrong person. Hiring algorithms filtering out women. Healthcare AI denying Black patients. Real AI failures and why ethics isn't optional.">
+  <meta name="keywords" content="AI ethics, AI failures, facial recognition bias, algorithmic discrimination, responsible AI">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/course/ai-failures-ethics">
+
+  <meta property="og:title" content="Real-World AI Failures and Ethics in AI">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://johnb.io/course/ai-failures-ethics">
+  <meta property="og:description" content="Facial recognition arresting the wrong person. Hiring algorithms filtering out women. Healthcare AI denying Black patients. Real AI failures and why ethics isn't optional.">
+  <meta property="og:image" content="https://johnb.io/images/course-og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Real-World AI Failures and Ethics in AI">
+  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
+  <meta property="article:author" content="John Bowman">
+  <meta property="article:section" content="AI Course">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Real-World AI Failures and Ethics in AI">
+  <meta name="twitter:description" content="Facial recognition arresting the wrong person. Hiring algorithms filtering out women. Healthcare AI denying Black patients. Real AI failures and why ethics isn't optional.">
+  <meta name="twitter:image" content="https://johnb.io/images/course-og.jpg">
+  <meta name="twitter:image:alt" content="Real-World AI Failures and Ethics in AI">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Real-World AI Failures and Ethics in AI",
+    "description": "Facial recognition arresting the wrong person. Hiring algorithms filtering out women. Healthcare AI denying Black patients. Real AI failures and why ethics isn't optional.",
+    "image": "https://johnb.io/images/course-og.jpg",
+    "datePublished": "2026-04-05T00:00:00+00:00",
+    "dateModified": "2026-04-05T00:00:00+00:00",
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://johnb.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are real-world examples of AI failures?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Detroit man was wrongfully arrested in 2020 after facial recognition misidentified him - the system had a ~35% error rate on Black faces. Amazon's hiring algorithm downranked women because it learned from male-dominated hiring history. A healthcare algorithm recommended fewer services to Black patients because it used spending as a proxy for need, ignoring that access barriers had suppressed that spending."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is there an accountability gap in AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When a human makes a bad decision, there's a person accountable. When an AI does it, companies use the complexity of the system as a shield - 'the algorithm decided' becomes a way to avoid responsibility. This is made worse by opacity: companies often keep training data and model behaviour proprietary, making independent auditing impossible."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should companies actually do about AI ethics?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ethics in AI means testing for bias before deployment, not after. It means building slower when the stakes are high, accepting that sometimes you don't deploy because the risk is too great. It means treating an AI system that affects people's opportunities or freedom the way you'd treat an untested medical device - with rigorous pre-deployment validation, not a quiet post-launch fix when things go wrong."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does AI bias relate to training data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI systems learn patterns from their training data. If that data reflects historical discrimination - male-dominated hiring, underfunded healthcare in certain communities, racially biased criminal justice records - the model learns those patterns and replicates them. The system didn't choose to discriminate; it learned a pattern that produces discriminatory outputs. That's why auditing training data is as important as auditing the model."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://johnb.io"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "AI Course",
+        "item": "https://johnb.io/course-dashboard"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Real-World AI Failures and Ethics in AI",
+        "item": "https://johnb.io/course/ai-failures-ethics"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/news.css?v=4">
+  <link rel="stylesheet" href="/news-chat.css?v=4">
+  <link rel="stylesheet" href="/lesson.css?v=1">
+</head>
+<body class="lp-page">
+
+  <div id="header-placeholder"></div>
+
+  <div class="lp-ambient" aria-hidden="true"></div>
+
+  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
+
+    <nav class="na-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/course-dashboard">AI Course</a>
+      <span aria-hidden="true">›</span>
+      <span>AI Failures and Ethics</span>
+    </nav>
+
+    <div class="na-layout">
+
+      <article class="na-content" id="main-content">
+
+        <header class="na-header">
+          <div class="na-meta">
+            <span class="lp-unit-badge lp-unit-3">Unit 3</span>
+            <span class="na-category">AI Ethics</span>
+            <span class="na-read-time">8 min read</span>
+          </div>
+          <h1 class="na-title">Real-World AI Failures and Why Ethics in AI Actually Matter</h1>
+          <p class="na-lede">AI companies talk about breakthroughs. They don't advertise the times their systems failed spectacularly and hurt real people. This lesson covers documented failures, the accountability gap they expose, and what genuine ethics in AI requires.</p>
+          <div class="na-author">
+            <img src="/images/john-avatar.jpg" alt="John Bowman" class="na-author-img" width="36" height="36">
+            <div class="na-author-info">
+              <span class="na-author-name">John Bowman</span>
+              <time class="na-author-date" datetime="2026-04-05">5 April 2026</time>
+            </div>
+          </div>
+        </header>
+
+        <nav class="na-toc-mobile" aria-label="On this page">
+          <details>
+            <summary>On this page</summary>
+            <ol>
+              <li><a href="#failures">The Concrete Failures</a></li>
+              <li><a href="#accountability">The Accountability Gap</a></li>
+              <li><a href="#deniability">Plausible Deniability</a></li>
+              <li><a href="#what-companies-do">What Companies Are Actually Doing</a></li>
+              <li><a href="#quiz">Lesson Quiz</a></li>
+            </ol>
+          </details>
+        </nav>
+
+        <div class="na-audio-player">
+          <div class="na-audio-label">
+            <span class="material-symbols-outlined" aria-hidden="true">headphones</span>
+            Listen to this lesson
+          </div>
+          <audio controls preload="none" aria-label="Audio version of this lesson">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+
+        <div class="na-body">
+
+          <section id="failures">
+            <h2>The Concrete Problems</h2>
+            <p>In 2020, an innocent Black man was arrested in Detroit because the police department's facial recognition system misidentified him. The technology had a documented error rate of around 35% when identifying Black faces, compared to less than 1% for white faces. This wasn't a philosophical debate about bias - it was a person spending hours in jail for something an algorithm got wrong.</p>
+            <p>Amazon's hiring algorithm, built in 2014, was trained on historical hiring data from an industry (tech) that's massively male-dominated. The system learned that pattern and started automatically downranking female applicants' resumes. Amazon scrapped it eventually, but only after the problem became public. How many qualified women didn't get a chance before then?</p>
+            <p>Medical AI has similar problems. A widely-used algorithm for allocating healthcare resources systematically recommended fewer services to Black patients because it used healthcare spending as a proxy for need. Sicker patients cost more to treat. Since Black Americans face systemic barriers to healthcare access, they spent less - so the algorithm concluded they needed less help. The mathematical logic was sound. The results were discriminatory.</p>
+          </section>
+
+          <section id="accountability">
+            <h2>Why "The AI Made a Mistake" Isn't an Excuse</h2>
+            <p>When a human makes a bad hiring decision, they're accountable. When a doctor misdiagnoses a patient, there's a paper trail and responsibility. When an algorithm does it, suddenly everyone's hands are clean.</p>
+            <p>"The AI made the decision" gets treated like an act of nature rather than the act of people who built it, trained it, deployed it, and chose not to audit it properly. Companies use opacity as a shield. They can say "it's too complex to explain why it failed" when what they really mean is "we didn't think hard about whether it would work fairly."</p>
+            <p>Amazon retired its hiring algorithm with a quiet press release. Detroit's police department faced some scrutiny. The man who was arrested had to prove his innocence. The accountability is almost entirely one-directional: towards the person harmed, not towards the organisation that deployed the system.</p>
+          </section>
+
+          <section id="deniability">
+            <h2>The Gap Between "AI Said So" and Accountability</h2>
+            <p>A loan approval system denies you credit. Can you ask why? Usually not. There's no equivalent to asking a human loan officer to justify their decision. When an AI's decision affects your life and you can't appeal to any logic, something's broken about how we're using these tools.</p>
+            <p>Medical devices are slightly better because of regulatory oversight, but not by much. A hospital implements an algorithm validated on one dataset, then uses it on a different population. When outcomes are worse, who's liable? The algorithm developer? The hospital? Nobody's figured that out yet.</p>
+            <p>Companies love AI's plausible deniability. They can say "we didn't program it to discriminate" - and technically, they didn't. The system learned discrimination from the data. That's both true and completely insufficient as an excuse. The people who chose the training data, chose not to audit for demographic disparities, and chose to deploy anyway - they made decisions.</p>
+          </section>
+
+          <section id="what-companies-do">
+            <h2>What Companies Are Actually Doing</h2>
+            <p>Some organisations have started taking this seriously. Microsoft published a responsible AI playbook. Google made bias detection tools public. Better than nothing. But better than nothing isn't good.</p>
+            <p>Most companies still treat ethics as a PR move, not a design requirement. They audit models after deployment rather than before. They talk about transparency while keeping training data proprietary. They hire ethics teams and then ignore them when there's a deadline.</p>
+            <p>Deploying an AI system that affects people's opportunities, health, or freedom without rigorous bias testing should be treated the same way as using an untested drug on patients. It isn't. Companies get years of market advantage before anyone holds them accountable. By then, the biased decisions have affected thousands of people and become normalised.</p>
+            <p>Real ethics in AI means building slower, testing harder, and accepting that sometimes you don't deploy because the risk is too high. It means admitting when you don't know if something works fairly. I'm sceptical that happens on its own without external pressure - regulatory or otherwise.</p>
+          </section>
+
+          <section id="quiz" class="lp-quiz-section">
+            <h2>Lesson Quiz</h2>
+            <p>Two questions to check your understanding before moving on.</p>
+
+            <div class="lp-quiz" id="quiz-1">
+              <p class="lp-quiz-q">Question 1: Why did Amazon's hiring algorithm downrank female applicants?</p>
+              <ul class="lp-quiz-options" role="list">
+                <li><button class="lp-quiz-btn" data-index="0" type="button">It was deliberately programmed to favour male candidates</button></li>
+                <li><button class="lp-quiz-btn" data-index="1" type="button">It learned patterns from historically male-dominated hiring data and replicated them</button></li>
+                <li><button class="lp-quiz-btn" data-index="2" type="button">Female applicants had fewer technical qualifications on average</button></li>
+                <li><button class="lp-quiz-btn" data-index="3" type="button">The algorithm only processed resumes that matched a male name format</button></li>
+              </ul>
+              <div class="lp-quiz-feedback" aria-live="polite"></div>
+            </div>
+
+            <div class="lp-quiz" id="quiz-2">
+              <p class="lp-quiz-q">Question 2: What does the "accountability gap" in AI mean?</p>
+              <ul class="lp-quiz-options" role="list">
+                <li><button class="lp-quiz-btn" data-index="0" type="button">AI companies don't keep records of how their systems perform</button></li>
+                <li><button class="lp-quiz-btn" data-index="1" type="button">AI systems cost too much for small companies to afford</button></li>
+                <li><button class="lp-quiz-btn" data-index="2" type="button">When AI causes harm, organisations can deflect responsibility by pointing to the algorithm rather than the human decisions behind it</button></li>
+                <li><button class="lp-quiz-btn" data-index="3" type="button">AI cannot explain decisions because models are too simple</button></li>
+              </ul>
+              <div class="lp-quiz-feedback" aria-live="polite"></div>
+            </div>
+
+          </section>
+
+        </div>
+
+        <section class="na-podcast">
+          <h2 class="na-podcast-title">
+            <span class="material-symbols-outlined" aria-hidden="true">podcast</span>
+            Podcast Version
+          </h2>
+          <p class="na-podcast-desc">Prefer to listen? The full lesson is available as a podcast episode.</p>
+          <audio controls preload="none" aria-label="Podcast version of this lesson">
+            Your browser does not support the audio element.
+          </audio>
+        </section>
+
+        <div id="share-bar-placeholder"></div>
+
+        <div class="na-accordions">
+
+          <details class="tool-accordion" open>
+            <summary>Frequently Asked Questions</summary>
+            <div class="tool-accordion-body">
+              <h3>What are real-world examples of AI failures?</h3>
+              <p>A Detroit man was wrongfully arrested in 2020 after facial recognition misidentified him - the system had a ~35% error rate on Black faces. Amazon's hiring algorithm downranked women because it learned from male-dominated hiring history. A healthcare algorithm recommended fewer services to Black patients because it used spending as a proxy for need, ignoring that access barriers had suppressed that spending.</p>
+
+              <h3>Why is there an accountability gap in AI?</h3>
+              <p>When a human makes a bad decision, there's a person accountable. When an AI does it, companies use the complexity of the system as a shield - "the algorithm decided" becomes a way to avoid responsibility. This is made worse by opacity: companies often keep training data and model behaviour proprietary, making independent auditing impossible.</p>
+
+              <h3>What should companies actually do about AI ethics?</h3>
+              <p>Ethics in AI means testing for bias before deployment, not after. It means building slower when the stakes are high, accepting that sometimes you don't deploy because the risk is too great. It means treating an AI system that affects people's opportunities or freedom the way you'd treat an untested medical device - with rigorous pre-deployment validation, not a quiet post-launch fix when things go wrong.</p>
+
+              <h3>How does AI bias relate to training data?</h3>
+              <p>AI systems learn patterns from their training data. If that data reflects historical discrimination - male-dominated hiring, underfunded healthcare in certain communities, racially biased criminal justice records - the model learns those patterns and replicates them. The system didn't choose to discriminate; it learned a pattern that produces discriminatory outputs. That's why auditing training data is as important as auditing the model.</p>
+            </div>
+          </details>
+
+          <details class="tool-accordion">
+            <summary>How It Works</summary>
+            <div class="tool-accordion-body">
+              <p>Algorithmic bias typically arises through three mechanisms. <strong>Training data bias</strong>: the model learns from data that reflects existing inequalities - historical hiring patterns, healthcare access disparities, or policing practices. <strong>Proxy variables</strong>: the model uses a neutral-seeming variable (like postcode or healthcare spending) that correlates with a protected characteristic (like race or income). <strong>Feedback loops</strong>: biased predictions influence real-world outcomes, which generate more biased training data in future iterations.</p>
+              <p>Facial recognition systems have higher error rates for darker skin tones because most benchmark datasets historically over-represented lighter-skinned faces. When models train on these datasets, they learn finer distinctions for the overrepresented group and coarser distinctions for the rest.</p>
+            </div>
+          </details>
+
+          <details class="tool-accordion">
+            <summary>Key Points</summary>
+            <div class="tool-accordion-body">
+              <ul>
+                <li>Real AI failures include wrongful arrests from facial recognition, discriminatory hiring algorithms, and biased healthcare resource allocation.</li>
+                <li>Bias in AI comes from training data that reflects historical inequalities - the system learns and replicates those patterns.</li>
+                <li>The accountability gap: organisations deploy AI, harm occurs, but nobody is clearly responsible because "the algorithm decided."</li>
+                <li>Companies use opacity as a shield - keeping training data proprietary makes independent bias auditing impossible.</li>
+                <li>Ethics in AI is not philosophy: it's the difference between auditing for bias before deployment versus after people are harmed.</li>
+                <li>Most companies treat ethics as PR rather than a design requirement - auditing after deployment instead of before.</li>
+                <li>Systems affecting people's opportunities, health, or freedom need the same rigorous pre-deployment testing as medical devices.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="tool-accordion">
+            <summary>Sources</summary>
+            <div class="tool-accordion-body">
+              <ul>
+                <li>Buolamwini, J. &amp; Gebru, T. (2018). Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification. <em>FAccT 2018</em>.</li>
+                <li>Dastin, J. (2018). Amazon scraps secret AI recruiting tool that showed bias against women. <em>Reuters</em>.</li>
+                <li>Obermeyer, Z. et al. (2019). Dissecting racial bias in an algorithm used to manage the health of populations. <em>Science</em>, 366(6464).</li>
+                <li>Hill, K. (2020). Wrongfully Accused by an Algorithm. <em>New York Times</em>.</li>
+              </ul>
+            </div>
+          </details>
+
+        </div>
+
+        <nav class="lp-nav" aria-label="Lesson navigation">
+          <a href="/course/ai-tools-platforms-2026" class="lp-nav-btn lp-nav-prev">
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+            <span class="lp-nav-label">
+              <span class="lp-nav-hint">Previous lesson</span>
+              <span class="lp-nav-title">AI Tools and Platforms 2026</span>
+            </span>
+          </a>
+          <a href="/course/ai-hallucinations-bias-ip" class="lp-nav-btn lp-nav-next">
+            <span class="lp-nav-label">
+              <span class="lp-nav-hint">Next lesson</span>
+              <span class="lp-nav-title">AI Hallucinations, Bias and IP</span>
+            </span>
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          </a>
+        </nav>
+
+      </article>
+
+      <aside class="na-sidebar" aria-label="Lesson sidebar">
+
+        <nav class="na-toc" aria-label="Table of contents">
+          <h2 class="na-toc-title">On this page</h2>
+          <ol class="na-toc-list">
+            <li><a href="#failures">The Concrete Failures</a></li>
+            <li><a href="#accountability">The Accountability Gap</a></li>
+            <li><a href="#deniability">Plausible Deniability</a></li>
+            <li><a href="#what-companies-do">What Companies Are Doing</a></li>
+            <li><a href="#quiz">Lesson Quiz</a></li>
+          </ol>
+        </nav>
+
+        <nav class="lp-sidebar-nav" aria-label="Course navigation">
+          <h2 class="lp-sidebar-nav-title">
+            <a href="/course-dashboard">AI Course</a>
+          </h2>
+          <div class="lp-sidebar-unit">
+            <span class="lp-sidebar-unit-label lp-unit-3">Unit 3 - AI Ethics</span>
+            <ul>
+              <li class="lp-sidebar-current"><a href="/course/ai-failures-ethics" aria-current="page">AI Failures and Ethics</a></li>
+              <li><a href="/course/ai-hallucinations-bias-ip">AI Hallucinations, Bias &amp; IP</a></li>
+              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div id="newsy-sidebar-mount"></div>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js"></script>
+  <script src="/course-data.js"></script>
+  <script src="/news-chat.js" defer></script>
+
+  <script>
+    (function() {
+      var quizzes = [
+        { correct: 1, explanation: "Correct. Amazon's algorithm wasn't deliberately biased - it learned from training data that reflected a male-dominated industry. It found that 'being male' correlated with getting hired in its training set and replicated that pattern. The discrimination was learned, not programmed." },
+        { correct: 2, explanation: "Correct. The accountability gap means organisations can deflect responsibility when AI causes harm by pointing to the algorithm as the decision-maker. The people who chose the training data, decided not to audit for bias, and chose to deploy anyway made decisions - but that chain of responsibility gets obscured." }
+      ];
+
+      quizzes.forEach(function(quiz, qi) {
+        var container = document.getElementById('quiz-' + (qi + 1));
+        if (!container) return;
+        var buttons = container.querySelectorAll('.lp-quiz-btn');
+        var feedback = container.querySelector('.lp-quiz-feedback');
+        var answered = false;
+
+        buttons.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            if (answered) return;
+            answered = true;
+            var idx = parseInt(btn.getAttribute('data-index'), 10);
+            var isCorrect = idx === quiz.correct;
+
+            buttons.forEach(function(b, bi) {
+              b.disabled = true;
+              if (bi === quiz.correct) b.classList.add('lp-quiz-correct');
+              else if (bi === idx && !isCorrect) b.classList.add('lp-quiz-wrong');
+            });
+
+            feedback.textContent = quiz.explanation;
+            feedback.className = 'lp-quiz-feedback ' + (isCorrect ? 'lp-quiz-feedback-correct' : 'lp-quiz-feedback-wrong');
+          });
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
