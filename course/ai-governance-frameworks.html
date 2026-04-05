@@ -8,23 +8,24 @@
 <meta content="The EU AI Act, NIST AI Risk Management Framework, and enterprise AI governance. What they require, why governance lags capability, and what's actually needed." name="description"/>
 <meta content="AI governance, EU AI Act, NIST AI framework, enterprise AI guidelines, AI regulation" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/ai-governance-frameworks" rel="canonical"/>
 <meta content="AI Governance Frameworks and Enterprise Guidelines" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/ai-governance-frameworks" property="og:url"/>
 <meta content="The EU AI Act, NIST AI Risk Management Framework, and enterprise AI governance. What they require, why governance lags capability, and what's actually needed." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.jpg" property="og:image"/>
+<meta content="https://johnb.io/images/course/ai-governance-frameworks.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="AI Governance Frameworks and Enterprise Guidelines" property="og:image:alt"/>
+<meta content="AI Governance Frameworks and Enterprise Guidelines lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="John Bowman" property="article:author"/>
 <meta content="AI Course" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="AI Governance Frameworks and Enterprise Guidelines" name="twitter:title"/>
 <meta content="The EU AI Act, NIST AI Risk Management Framework, and enterprise AI governance. What they require, why governance lags capability, and what's actually needed." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.jpg" name="twitter:image"/>
-<meta content="AI Governance Frameworks and Enterprise Guidelines" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/ai-governance-frameworks.webp" name="twitter:image"/>
+<meta content="AI Governance Frameworks and Enterprise Guidelines lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -38,19 +39,22 @@
     "@type": "Article",
     "headline": "AI Governance Frameworks and Enterprise Guidelines",
     "description": "The EU AI Act, NIST AI Risk Management Framework, and enterprise AI governance. What they require, why governance lags capability, and what's actually needed.",
-    "image": "https://johnb.io/images/course-og.jpg",
+    "url": "https://johnb.io/course/ai-governance-frameworks",
+    "image": "https://johnb.io/images/course/ai-governance-frameworks.webp",
     "datePublished": "2026-04-05T00:00:00+00:00",
     "dateModified": "2026-04-05T00:00:00+00:00",
     "author": {
       "@type": "Person",
       "name": "John Bowman",
-      "url": "https://johnb.io"
+      "url": "https://www.linkedin.com/in/john-bowman/"
     },
     "publisher": {
       "@type": "Organization",
       "name": "JohnB.io",
       "url": "https://johnb.io"
-    }
+    },
+    "keywords": "AI governance, EU AI Act, NIST AI framework, enterprise AI guidelines, AI regulation",
+    "articleSection": "AI Course"
   }
   </script>
 <script type="application/ld+json">
@@ -148,7 +152,7 @@
 <article class="na-content" id="main-content">
 <div class="na-header">
 <h1 class="na-title">AI Governance Frameworks and Enterprise Guidelines: What They Are and Why You Should Care</h1>
-<div class="na-lede-row"><p class="na-lede">AI governance sounds abstract until you realise it's about control: who decides what an AI system can do, what standards it must meet, and who's accountable when it breaks. Right now, governance is a patchwork - some law, some self-regulation, and a lot of gaps.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/ai-governance-frameworks.webp"/></div></div>
+<div class="na-lede-row"><p class="na-lede">AI governance sounds abstract until you realise it's about control: who decides what an AI system can do, what standards it must meet, and who's accountable when it breaks. Right now, governance is a patchwork - some law, some self-regulation, and a lot of gaps.</p><div class="na-lede-img"><img alt="AI governance frameworks and enterprise AI policy" loading="lazy" src="/images/course/ai-governance-frameworks.webp"/></div></div>
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
@@ -199,7 +203,7 @@
 <h2>What AI Governance Actually Means in Practice</h2>
 <p>In practice, governance means rules. Rules about how data gets handled, who can access models, what happens before deployment, and how you audit for problems. It also means accountability - knowing who's responsible when something goes wrong.</p>
 <p>Right now, governance is a patchwork. Some governments are legislating. Some companies are self-regulating. Most organisations are doing whatever they can get away with.</p>
-<p>The EU is furthest along. Their AI Act categorises AI systems by risk level. High-risk applications - facial recognition, hiring systems, credit decisions - face strict requirements: mandatory audits, record-keeping, transparency about limitations. Lower-risk systems have fewer requirements. It's not perfect, but it's actual law with enforcement mechanisms.</p>
+<p>The EU is furthest along. Their <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" rel="noopener" target="_blank">EU AI Act</a> categorises AI systems by risk level. High-risk applications - facial recognition, hiring systems, credit decisions - face strict requirements: mandatory audits, record-keeping, transparency about limitations. Lower-risk systems have fewer requirements. It's not perfect, but it's actual law with enforcement mechanisms.</p>
 <p>The US has moved more slowly. The NIST AI Risk Management Framework provides guidelines and practices that organisations can follow, but don't have to. It covers four functions: Govern (setting policies), Map (understanding what your system does), Measure (testing for problems), and Manage (acting on findings). More robust than nothing, but voluntary.</p>
 <p>China's approach is more centralised, with government mandates about what AI can do. The UK has taken a lighter touch, preferring industry self-regulation. The approaches vary significantly, which creates problems for organisations operating across borders.</p>
 </section>
@@ -207,7 +211,7 @@
 <h2>What Enterprise Governance Actually Looks Like</h2>
 <p>Inside organisations that take this seriously, governance is operational, not decorative.</p>
 <p>You can't just build an AI system and deploy it. There are review gates. A model goes through evaluation before launch: does it work fairly for different groups? Have we tested edge cases? Do we understand its failure modes? Who's liable if it breaks?</p>
-<p>Some companies have AI review boards - cross-functional teams with authority to block projects that are too risky. Others have review boards in name only, with no real power to stop a deployment driven by a revenue target.</p>
+<p>Some companies have AI review boards - cross-functional teams with authority to block projects that are too risky. Others have review boards in name only, with no real power to stop a <a href="/course/ai-adoption-journey">deployment</a> driven by a revenue target.</p>
 <p>The best implementations audit continuously, not just at launch. They monitor how the model performs in the real world. If accuracy drops for a specific demographic, they catch it. If the model starts making decisions that violate company standards, there's a process to pull it back.</p>
 <p>Governance also means documentation. Why did we make this decision? What data trained this model? What are the known limitations? Documentation is the difference between "we forgot why we built this" and "we know exactly what we did and we can explain it to regulators or lawyers."</p>
 <p>The problem is cost. Rigorous testing takes time and money. Most companies do the minimum they think will keep them legally safe, then hope nobody looks closely. That's most companies.</p>
@@ -222,9 +226,9 @@
 <section id="is-it-adequate">
 <h2>Is Current Governance Adequate?</h2>
 <p>No. The frameworks exist, but they're not binding enough and they're not keeping up.</p>
-<p>The EU AI Act is the most serious attempt, but it's getting criticised for being vague about what counts as "high-risk." Companies will find loopholes - they always do. The US has nothing comparable at the federal level.</p>
-<p>What bothers me most is that governance relies on companies self-reporting problems. If an AI system causes harm, does the company tell regulators? More likely they tell their lawyers first. Proactive disclosure opens liability. So the incentives push against transparency.</p>
-<p>What's actually needed: mandatory third-party audits before deployment for systems affecting people's opportunities, safety, or civil rights. Real liability, not "we did our best." Transparency requirements so that if AI makes decisions about you, you can find out what data it used. And some international standard, because companies will otherwise operate from whichever jurisdiction has the weakest rules.</p>
+<p>The EU AI Act is the most serious attempt, but it's getting criticised for being vague about what counts as "high-risk." Companies will find loopholes - they always do. The US has nothing comparable at the federal level. Real-world <a href="/course/ai-failures-ethics">AI failures</a> keep showing why this matters.</p>
+<p>What bothers me most is that governance relies on companies self-reporting problems. If an AI system causes <a href="/course/ai-hallucinations-bias-ip">hallucinations or bias</a>, does the company tell regulators? More likely they tell their lawyers first. Proactive disclosure opens liability. So the incentives push against transparency.</p>
+<p>What's actually needed: mandatory third-party audits before deployment for systems affecting people's opportunities, safety, or civil rights. Real liability, not "we did our best." Transparency requirements so that if AI makes decisions about you, you can find out what data it used. And some international standard, because companies will otherwise operate from whichever jurisdiction has the weakest rules. Frameworks like <a href="https://www.iso.org/standard/81230.html" rel="noopener" target="_blank">ISO/IEC 42001</a> are a start.</p>
 <p>None of this is happening at the scale it should be. Most companies are choosing which governance rules to follow based on what's politically convenient in their market. That's not governance. It's regulatory arbitrage.</p>
 </section>
 <div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What is the key difference between the EU AI Act and the NIST AI Risk Management Framework?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>The EU AI Act only covers public sector AI; NIST covers private companies</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>The EU AI Act is binding law with enforcement; NIST is voluntary guidance organisations can choose to follow</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>NIST requires mandatory audits; the EU AI Act does not</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>They cover different types of AI - the EU Act for generative AI, NIST for machine learning</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">Why does AI governance typically lag behind AI capability?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>Governments have no interest in regulating AI</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>AI systems take years to develop so there's always enough time to regulate them</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>Companies can deploy new AI systems far faster than regulators can understand, legislate, and enforce rules about them</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>AI systems are too simple for existing laws to apply to</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>

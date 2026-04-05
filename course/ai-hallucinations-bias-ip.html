@@ -8,23 +8,24 @@
 <meta content="AI hallucinations are confident false outputs. Bias is skewed outputs that look reasonable. IP ownership of AI-generated content is legally unsettled. Here's what you need to know." name="description"/>
 <meta content="AI hallucinations, AI bias, AI intellectual property, AI generated content ownership, algorithmic bias explained" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/ai-hallucinations-bias-ip" rel="canonical"/>
 <meta content="AI Hallucinations, Bias and Intellectual Property" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/ai-hallucinations-bias-ip" property="og:url"/>
 <meta content="AI hallucinations are confident false outputs. Bias is skewed outputs that look reasonable. IP ownership of AI-generated content is legally unsettled. Here's what you need to know." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.jpg" property="og:image"/>
+<meta content="https://johnb.io/images/course/ai-hallucinations-bias-ip.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="AI Hallucinations, Bias and Intellectual Property" property="og:image:alt"/>
+<meta content="AI Hallucinations, Bias and Intellectual Property lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="John Bowman" property="article:author"/>
 <meta content="AI Course" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="AI Hallucinations, Bias and Intellectual Property" name="twitter:title"/>
 <meta content="AI hallucinations are confident false outputs. Bias is skewed outputs that look reasonable. IP ownership of AI-generated content is legally unsettled. Here's what you need to know." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.jpg" name="twitter:image"/>
-<meta content="AI Hallucinations, Bias and Intellectual Property" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/ai-hallucinations-bias-ip.webp" name="twitter:image"/>
+<meta content="AI Hallucinations, Bias and Intellectual Property lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -38,19 +39,22 @@
     "@type": "Article",
     "headline": "AI Hallucinations, Bias and Intellectual Property",
     "description": "AI hallucinations are confident false outputs. Bias is skewed outputs that look reasonable. IP ownership of AI-generated content is legally unsettled. Here's what you need to know.",
-    "image": "https://johnb.io/images/course-og.jpg",
+    "url": "https://johnb.io/course/ai-hallucinations-bias-ip",
+    "image": "https://johnb.io/images/course/ai-hallucinations-bias-ip.webp",
     "datePublished": "2026-04-05T00:00:00+00:00",
     "dateModified": "2026-04-05T00:00:00+00:00",
     "author": {
       "@type": "Person",
       "name": "John Bowman",
-      "url": "https://johnb.io"
+      "url": "https://www.linkedin.com/in/john-bowman/"
     },
     "publisher": {
       "@type": "Organization",
       "name": "JohnB.io",
       "url": "https://johnb.io"
-    }
+    },
+    "keywords": "AI hallucinations, AI bias, AI intellectual property, AI generated content ownership, algorithmic bias explained",
+    "articleSection": "AI Course"
   }
   </script>
 <script type="application/ld+json">
@@ -148,7 +152,7 @@
 <article class="na-content" id="main-content">
 <div class="na-header">
 <h1 class="na-title">AI Hallucinations, Bias and Intellectual Property: What You Need to Understand</h1>
-<div class="na-lede-row"><p class="na-lede">Three distinct problems in AI, often confused. Hallucinations are confident false outputs. Bias is skewed outputs that look correct. IP ownership of AI-generated content is legally unresolved. Each requires different thinking.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/ai-hallucinations-bias-ip.webp"/></div></div>
+<div class="na-lede-row"><p class="na-lede">Three distinct problems in AI, often confused. Hallucinations are confident false outputs. Bias is skewed outputs that look correct. IP ownership of AI-generated content is legally unresolved. Each requires different thinking.</p><div class="na-lede-img"><img alt="AI hallucinations, bias, and intellectual property risks explained" loading="lazy" src="/images/course/ai-hallucinations-bias-ip.webp"/></div></div>
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
@@ -197,11 +201,11 @@
 <div class="na-body">
 <section id="hallucinations">
 <h2>What AI Hallucinations Actually Are</h2>
-<p>An AI hallucination is when an AI confidently outputs something completely false.</p>
+<p>An <a href="https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)" rel="noopener" target="_blank">AI hallucination</a> is when an AI confidently outputs something completely false.</p>
 <p>You ask ChatGPT for the name of a famous biologist from the 1800s. It gives you a detailed answer about "Dr Margaret Livingston" with a full biographical paragraph. Sounds great. Completely made up. The person never existed.</p>
 <p>Or you ask for a specific study. The model generates a perfectly formatted academic reference that sounds real, uses actual researchers' names, but the study itself doesn't exist. The model didn't remember the study - it invented one. The format was convincing enough that people have cited these fake papers in real academic work.</p>
 <p>This happens because language models don't "know" things the way you do. They predict the next word based on patterns in training data. If the pattern suggests a plausible-sounding next word, they pick it. There's no internal fact-checker running in parallel, no system that says "wait, is this actually true?"</p>
-<p>The confidence is the real danger. The AI doesn't hedge or say "I'm not sure." It states things like it knows. A humble wrong answer is less harmful than a confident hallucination.</p>
+<p>The confidence is the real danger. The AI doesn't hedge or say "I'm not sure." It states things like it knows. A humble wrong answer is less harmful than a confident hallucination. Approaches like <a href="/course/rag-finetuning-enterprise-ai">RAG</a> help by grounding responses in real documents rather than pure pattern prediction.</p>
 </section>
 <section id="hallucination-vs-bias">
 <h2>The Difference Between Hallucination and Bias</h2>
@@ -212,17 +216,17 @@
 </section>
 <section id="where-bias-comes-from">
 <h2>Where Bias Comes From and What It Produces</h2>
-<p>Bias starts with data, but it's not always obvious where.</p>
+<p>Bias starts with <a href="/course/how-ai-learns">training data</a>, but it's not always obvious where.</p>
 <p>If you train a medical AI on data from hospitals serving wealthy populations, it works well for those people. Deploy it in a clinic serving a completely different population - different genetics, lifestyle factors, disease presentations - and it fails. That's data bias: the training data didn't represent the real world the model has to handle.</p>
 <p>Sometimes it's inherited from human writing. Train a language model on internet text and it absorbs every bias, stereotype, and harmful pattern that exists in human communication. The model can't distinguish "this reflects reality" from "this is a harmful stereotype." It just learns the pattern.</p>
-<p>What gets produced? Wrong decisions that appear systematic. Résumé-screening that filters out qualified candidates. Criminal justice algorithms that recommend longer sentences based on demographic factors. Loan approval systems that vary by postcode after controlling for credit score.</p>
-<p>The scary part is how well these biases hide. You deploy an algorithm, it works on your test set, and you never check whether it's working differently for different groups. The problem only surfaces if someone specifically looks for demographic disparities. Most deployments don't check.</p>
+<p>What gets produced? Wrong decisions that appear systematic. Résumé-screening that filters out qualified candidates. <a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing" rel="noopener" target="_blank">Criminal justice algorithms</a> that recommend longer sentences based on demographic factors. Loan approval systems that vary by postcode after controlling for credit score.</p>
+<p>The scary part is how well these biases hide. You deploy an algorithm, it works on your test set, and you never check whether it's working differently for different groups. The problem only surfaces if someone specifically looks for demographic disparities. Most deployments don't check. These are the kinds of <a href="/course/ai-failures-ethics">real-world AI failures</a> that governance frameworks are supposed to prevent.</p>
 </section>
 <section id="ip">
 <h2>The Intellectual Property Question</h2>
 <p>You use AI to write a song, generate art, or produce code. Who owns it? You, who prompted it? The AI company that built the model? The original creators whose work the model was trained on?</p>
 <p>There isn't a clear answer yet, and companies are betting you won't figure this out quickly.</p>
-<p>Some AI companies claim the user owns the output - convenient for them, as they take no liability. Others claim the company retains rights. Many are deliberately vague. Courts haven't settled major cases definitively, which means everyone's in a legal grey area right now.</p>
+<p>Some AI companies claim the user owns the output - convenient for them, as they take no liability. Others claim the company retains rights. Many are deliberately vague. Courts haven't settled major cases definitively, which means everyone's in a legal grey area right now. The UK government has published <a href="https://www.gov.uk/guidance/copyright-in-ai-generated-works" rel="noopener" target="_blank">guidance on copyright in AI-generated works</a>.</p>
 <p>The situation for original creators is genuinely unjust. AI companies trained on millions of images from photographers, artists, and illustrators without explicit permission. Those creators didn't consent to their work being used to train something that would compete with them.</p>
 <p>But the counterpoint: if you personally prompt an AI and it generates something original-looking, saying the original artists "own" your specific output because the model trained on their work is also a stretch. The line is blurry on purpose - nobody wants to be the one who draws it.</p>
 <p>If you're creating AI-generated content to sell or monetise, you're taking a legal risk right now. Some jurisdictions are starting to move - the EU is exploring requirements for AI companies to disclose training data, which would at least let creators see whether their work was used. That's a start, not a resolution.</p>
