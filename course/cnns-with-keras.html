@@ -1,45 +1,42 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CNNs with Keras: How Machines Learn to See - JohnB.io</title>
-  <meta name="description" content="How convolutional neural networks detect patterns in images, what pooling layers do, and how to build a CNN in Keras. Unit 6, Lesson 6.">
-  <meta name="keywords" content="convolutional neural networks, CNN, Keras, computer vision, pooling layers, deep learning, image classification">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://johnb.io/course/cnns-with-keras">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="CNNs with Keras: How Machines Learn to See">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://johnb.io/course/cnns-with-keras">
-  <meta property="og:description" content="How convolutional neural networks detect patterns in images, what pooling layers do, and how to build a CNN in Keras.">
-  <meta property="og:image" content="https://johnb.io/images/course-og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="CNNs with Keras lesson - JohnB.io AI Course">
-  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
-  <meta property="article:author" content="https://johnb.io">
-  <meta property="article:section" content="Deep Learning &amp; Neural Networks">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CNNs with Keras: How Machines Learn to See">
-  <meta name="twitter:description" content="How convolutional neural networks detect patterns in images, what pooling layers do, and how to build a CNN in Keras.">
-  <meta name="twitter:image" content="https://johnb.io/images/course-og.png">
-  <meta name="twitter:image:alt" content="CNNs with Keras lesson - JohnB.io AI Course">
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CNNs with Keras: How Machines Learn to See - JohnB.io</title>
+<meta content="How convolutional neural networks detect patterns in images, what pooling layers do, and how to build a CNN in Keras. Unit 6, Lesson 6." name="description"/>
+<meta content="convolutional neural networks, CNN, Keras, computer vision, pooling layers, deep learning, image classification" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://johnb.io/course/cnns-with-keras" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="CNNs with Keras: How Machines Learn to See" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://johnb.io/course/cnns-with-keras" property="og:url"/>
+<meta content="How convolutional neural networks detect patterns in images, what pooling layers do, and how to build a CNN in Keras." property="og:description"/>
+<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="CNNs with Keras lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
+<meta content="https://johnb.io" property="article:author"/>
+<meta content="Deep Learning &amp; Neural Networks" property="article:section"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="CNNs with Keras: How Machines Learn to See" name="twitter:title"/>
+<meta content="How convolutional neural networks detect patterns in images, what pooling layers do, and how to build a CNN in Keras." name="twitter:description"/>
+<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
+<meta content="CNNs with Keras lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-0J6PBWMRNY');
   </script>
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -125,109 +122,80 @@
     ]
   }
   </script>
-
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/footer.css">
-  <link rel="stylesheet" href="/news.css">
-  <link rel="stylesheet" href="/lesson.css?v=3">
-  <link rel="stylesheet" href="/news-chat.css?v=7">
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/header.css" rel="stylesheet"/>
+<link href="/footer.css" rel="stylesheet"/>
+<link href="/news.css" rel="stylesheet"/>
+<link href="/lesson.css?v=3" rel="stylesheet"/>
+<link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
 <body class="lp-page">
-
-  <div id="header-placeholder"></div>
-
-  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
-    <div class="na-layout">
-
-      <!-- â”€â”€ MAIN CONTENT â”€â”€ -->
-      <article class="na-content">
-
-        <!-- Breadcrumb -->
-        <nav class="na-breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span aria-hidden="true">â€º</span>
-          <a href="/course-dashboard">AI Course</a>
-          <span aria-hidden="true">â€º</span>
-          <span>CNNs with Keras</span>
-        </nav>
-
-        <!-- Unit badge + title -->
-        <div class="lp-unit-badge lp-unit-6">Unit 6 Â· Deep Learning &amp; Neural Networks</div>
-        <h1 class="na-title">Convolutional Neural Networks (CNNs) with Keras</h1>
-
-        <!-- Meta row -->
-        <div class="na-meta">
-          <span>12 min read</span>
-          <span>Â·</span>
-          <span>Lesson 6 of 7 in Unit 6</span>
-          <span>Â·</span>
-          <span>Published 5 April 2026</span>
-        </div>
-
-        <!-- Audio player -->
-        <section class="lp-audio-section" aria-label="Lesson audio">
-          <div class="lp-audio-label">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+<div id="header-placeholder"></div><div aria-hidden="true" class="lp-ambient"></div>
+<main class="na-wrap">
+<div class="na-layout">
+<!-- â”€â”€ MAIN CONTENT â”€â”€ -->
+<article class="na-content">
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="na-breadcrumb">
+<a href="/">Home</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<a href="/course-dashboard">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span>CNNs with Keras</span>
+</nav>
+<!-- Unit badge + title -->
+<div class="lp-unit-badge lp-unit-6">Unit 6 · Deep Learning &amp; Neural Networks</div>
+<h1 class="na-title">Convolutional Neural Networks (CNNs) with Keras</h1>
+<!-- Meta row -->
+<div class="na-meta">
+<span>12 min read</span>
+<span>·</span>
+<span>Lesson 6 of 7 in Unit 6</span>
+<span>·</span>
+<span>Published 5 April 2026</span>
+</div>
+<!-- Audio player -->
+<section aria-label="Lesson audio" class="lp-audio-section">
+<div class="lp-audio-label">
+<svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
             Listen to this lesson
           </div>
-          <audio controls aria-label="Lesson audio player">
+<audio aria-label="Lesson audio player" controls="">
             Your browser does not support audio playback.
           </audio>
-        </section>
-
-        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-          <span class="material-symbols-outlined">auto_awesome</span>
+</section>
+<button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
           Ask Newsy AI about this lesson
         </button>
-
-        <!-- Body -->
-        <div class="na-body">
-
-          <p>CNNs were the first architecture that made computer vision actually work. Before them, machines couldn't recognise images reliably. After them, they could outperform humans. That shift mattered.</p>
-
-          <h2>What a CNN is trying to do</h2>
-
-          <p>You have an image - pixels in a grid. You want to know what it contains. Is it a cat? A dog? A car?</p>
-
-          <p>A regular neural network would treat each pixel as a separate input. For a 28x28 image, that's 784 inputs. For a 256x256 image, it's 65,536 inputs. And the network has to learn independently whether pixel 5 relates to pixel 6, whether pixel 142 is important, and so on.</p>
-
-          <p>A CNN does something smarter. It assumes that nearby pixels relate to each other, and that the same pattern - like a cat's whisker - might appear in different parts of the image. It looks for small patterns first, then combinations of patterns, then more complex shapes.</p>
-
-          <p>It builds understanding from simple to complex, which matches how we actually see. We don't recognise a cat by analysing individual pixels. We recognise edges, then fur texture, then cat-shaped silhouettes, then "that's a cat."</p>
-
-          <h2>Convolutional layers - what they're detecting</h2>
-
-          <p>A convolutional layer applies small filters across the image. A filter might be 3x3 or 5x5 pixels. It slides across the image, and at each position it computes a dot product with the image patch beneath it.</p>
-
-          <p>What's the filter detecting? Early on, simple patterns: edges, vertical lines, diagonal lines, corners. Later layers take the output from early layers as input and detect more complex patterns - textures, shapes, parts of objects.</p>
-
-          <p>You don't hardcode these filters. The network learns them during training, adjusting them so they detect features useful for whatever task you're solving.</p>
-
-          <p>The output of a convolutional layer is a set of feature maps - one for each filter. If you have 32 filters, you get 32 feature maps. Each represents where that filter's pattern shows up across the image.</p>
-
-          <h2>Pooling layers - why they're there</h2>
-
-          <p>After a convolutional layer, you often have a pooling layer. The most common is max pooling. It takes small regions - like 2x2 - and outputs only the maximum value.</p>
-
-          <p>This does two things. First, it shrinks the feature maps, reducing computation. Second, it makes the network tolerant to small shifts. If a pattern moves one pixel, max pooling usually still catches it.</p>
-
-          <p>Pooling says: we detected this feature somewhere in this region - we don't care exactly where. That's useful because a cat's eyes appear in different positions in different photos, but we still want to recognise it as a cat.</p>
-
-          <p>You don't always need pooling. Modern networks sometimes skip it. But it's standard because it works and it's efficient.</p>
-
-          <h2>Building a simple CNN in Keras</h2>
-
-          <p>Here's the structure of a basic CNN for image classification. Seven layers total: two convolution-pooling pairs, a flatten, a dense layer, and an output.</p>
-
-          <pre class="lp-code-block"><code>model = Sequential([
+<!-- Body -->
+<div class="na-body">
+<p>CNNs were the first architecture that made computer vision actually work. Before them, machines couldn't recognise images reliably. After them, they could outperform humans. That shift mattered.</p>
+<h2>What a CNN is trying to do</h2>
+<p>You have an image - pixels in a grid. You want to know what it contains. Is it a cat? A dog? A car?</p>
+<p>A regular neural network would treat each pixel as a separate input. For a 28x28 image, that's 784 inputs. For a 256x256 image, it's 65,536 inputs. And the network has to learn independently whether pixel 5 relates to pixel 6, whether pixel 142 is important, and so on.</p>
+<p>A CNN does something smarter. It assumes that nearby pixels relate to each other, and that the same pattern - like a cat's whisker - might appear in different parts of the image. It looks for small patterns first, then combinations of patterns, then more complex shapes.</p>
+<p>It builds understanding from simple to complex, which matches how we actually see. We don't recognise a cat by analysing individual pixels. We recognise edges, then fur texture, then cat-shaped silhouettes, then "that's a cat."</p>
+<h2>Convolutional layers - what they're detecting</h2>
+<p>A convolutional layer applies small filters across the image. A filter might be 3x3 or 5x5 pixels. It slides across the image, and at each position it computes a dot product with the image patch beneath it.</p>
+<p>What's the filter detecting? Early on, simple patterns: edges, vertical lines, diagonal lines, corners. Later layers take the output from early layers as input and detect more complex patterns - textures, shapes, parts of objects.</p>
+<p>You don't hardcode these filters. The network learns them during training, adjusting them so they detect features useful for whatever task you're solving.</p>
+<p>The output of a convolutional layer is a set of feature maps - one for each filter. If you have 32 filters, you get 32 feature maps. Each represents where that filter's pattern shows up across the image.</p>
+<h2>Pooling layers - why they're there</h2>
+<p>After a convolutional layer, you often have a pooling layer. The most common is max pooling. It takes small regions - like 2x2 - and outputs only the maximum value.</p>
+<p>This does two things. First, it shrinks the feature maps, reducing computation. Second, it makes the network tolerant to small shifts. If a pattern moves one pixel, max pooling usually still catches it.</p>
+<p>Pooling says: we detected this feature somewhere in this region - we don't care exactly where. That's useful because a cat's eyes appear in different positions in different photos, but we still want to recognise it as a cat.</p>
+<p>You don't always need pooling. Modern networks sometimes skip it. But it's standard because it works and it's efficient.</p>
+<h2>Building a simple CNN in Keras</h2>
+<p>Here's the structure of a basic CNN for image classification. Seven layers total: two convolution-pooling pairs, a flatten, a dense layer, and an output.</p>
+<pre class="lp-code-block"><code>model = Sequential([
     Conv2D(32, 3, activation='relu', input_shape=(28, 28, 1)),
     MaxPooling2D(2),
     Conv2D(64, 3, activation='relu'),
@@ -236,276 +204,227 @@
     Dense(128, activation='relu'),
     Dense(10, activation='softmax')
 ])</code></pre>
-
-          <p>The first convolutional layer uses 32 filters of size 3x3, detecting simple patterns. Max pooling shrinks the feature maps. The second convolutional layer uses 64 filters and detects more complex patterns built on the first. Another round of max pooling. Then Flatten converts the feature maps into a 1D vector, the Dense layer learns combinations of features, and the output layer gives probabilities across 10 categories.</p>
-
-          <p>You compile with an optimiser and loss function, then fit it to image data. The network learns which filters and weights work best for recognising whatever you're training it on. That's the entire idea: stack convolutions and pooling, then fully connected layers at the end.</p>
-
-          <h2>Where CNNs are still the right tool</h2>
-
-          <p>CNNs are excellent for image classification and object detection. They're efficient, they learn good features, and they work well on reasonable-sized datasets.</p>
-
-          <p>But they're not the only option any more. Vision Transformers (ViTs) apply the transformer architecture to images and are competitive with CNNs - sometimes better, especially with lots of data. For most state-of-the-art vision research in the last few years, Transformers have taken over.</p>
-
-          <p>So why still learn CNNs? Because they're more efficient with small datasets, simpler to understand, and the intuition - convolutions detect patterns - is valuable for understanding any vision model. For many practical applications, a CNN works fine. You probably don't need cutting-edge.</p>
-
-          <p>If you're building something with massive training data and unlimited compute, maybe reach for a Vision Transformer. If you're learning, or if you have reasonable data and want to train fast, CNNs are still the right choice. They're not obsolete. They've just been supplemented by approaches that sometimes work better.</p>
-
-        </div>
-
-        <!-- Quiz -->
-        <section class="lp-quiz" aria-label="Lesson quiz">
-          <h2 class="lp-quiz-title">Check your understanding</h2>
-
-          <!-- Q1 -->
-          <div class="lp-quiz-q">
-            <p class="lp-quiz-question">What does max pooling do in a CNN?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
-              <button class="lp-quiz-btn" data-q="1" data-i="0">A) Detects edges in the image by applying filters</button>
-              <button class="lp-quiz-btn lp-quiz-correct" data-q="1" data-i="1">B) Reduces feature map size and provides tolerance to small positional shifts</button>
-              <button class="lp-quiz-btn" data-q="1" data-i="2">C) Applies the activation function to every pixel individually</button>
-              <button class="lp-quiz-btn" data-q="1" data-i="3">D) Increases the number of filters in the next layer</button>
-            </div>
-            <div class="lp-quiz-feedback-correct" id="q1-correct" hidden>Correct. Max pooling takes the maximum value from small regions, shrinking the feature map while preserving which patterns were detected. The position tolerance is key: a feature that shifted by one pixel still gets caught.</div>
-            <div class="lp-quiz-feedback-wrong" id="q1-wrong" hidden>Not quite. Max pooling doesn't detect features - that's the convolutional layer's job. Pooling takes the output of convolutions and reduces it, also making the result less sensitive to exact position.</div>
-          </div>
-
-          <!-- Q2 -->
-          <div class="lp-quiz-q">
-            <p class="lp-quiz-question">Why are CNNs still worth learning when Vision Transformers exist?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
-              <button class="lp-quiz-btn" data-q="2" data-i="0">A) CNNs always outperform Vision Transformers on every task</button>
-              <button class="lp-quiz-btn" data-q="2" data-i="1">B) Vision Transformers can't process colour images</button>
-              <button class="lp-quiz-btn lp-quiz-correct" data-q="2" data-i="2">C) CNNs are more efficient on smaller datasets and the convolution intuition helps you understand all vision models</button>
-              <button class="lp-quiz-btn" data-q="2" data-i="3">D) Keras doesn't support Vision Transformers yet</button>
-            </div>
-            <div class="lp-quiz-feedback-correct" id="q2-correct" hidden>Correct. CNNs need less data to train well and are computationally cheaper. Understanding how convolutions build up pattern detection is also foundational for understanding newer architectures.</div>
-            <div class="lp-quiz-feedback-wrong" id="q2-wrong" hidden>Not quite. CNNs don't always win - Vision Transformers outperform them with large datasets. The real reason CNNs remain worth learning is their efficiency on smaller datasets and the conceptual value of the convolution intuition.</div>
-          </div>
-        </section>
-
-        <!-- Podcast -->
-        <section class="lp-podcast-section" aria-label="Podcast version">
-          <h2 class="lp-podcast-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line><line x1="2" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="22" y2="12"></line></svg>
+<p>The first convolutional layer uses 32 filters of size 3x3, detecting simple patterns. Max pooling shrinks the feature maps. The second convolutional layer uses 64 filters and detects more complex patterns built on the first. Another round of max pooling. Then Flatten converts the feature maps into a 1D vector, the Dense layer learns combinations of features, and the output layer gives probabilities across 10 categories.</p>
+<p>You compile with an optimiser and loss function, then fit it to image data. The network learns which filters and weights work best for recognising whatever you're training it on. That's the entire idea: stack convolutions and pooling, then fully connected layers at the end.</p>
+<h2>Where CNNs are still the right tool</h2>
+<p>CNNs are excellent for image classification and object detection. They're efficient, they learn good features, and they work well on reasonable-sized datasets.</p>
+<p>But they're not the only option any more. Vision Transformers (ViTs) apply the transformer architecture to images and are competitive with CNNs - sometimes better, especially with lots of data. For most state-of-the-art vision research in the last few years, Transformers have taken over.</p>
+<p>So why still learn CNNs? Because they're more efficient with small datasets, simpler to understand, and the intuition - convolutions detect patterns - is valuable for understanding any vision model. For many practical applications, a CNN works fine. You probably don't need cutting-edge.</p>
+<p>If you're building something with massive training data and unlimited compute, maybe reach for a Vision Transformer. If you're learning, or if you have reasonable data and want to train fast, CNNs are still the right choice. They're not obsolete. They've just been supplemented by approaches that sometimes work better.</p>
+</div>
+<!-- Quiz -->
+<section aria-label="Lesson quiz" class="lp-quiz">
+<h2 class="lp-quiz-title">Check your understanding</h2>
+<!-- Q1 -->
+<div class="lp-quiz-q">
+<p class="lp-quiz-question">What does max pooling do in a CNN?</p>
+<div aria-label="Question 1 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-btn" data-i="0" data-q="1">A) Detects edges in the image by applying filters</button>
+<button class="lp-quiz-btn lp-quiz-correct" data-i="1" data-q="1">B) Reduces feature map size and provides tolerance to small positional shifts</button>
+<button class="lp-quiz-btn" data-i="2" data-q="1">C) Applies the activation function to every pixel individually</button>
+<button class="lp-quiz-btn" data-i="3" data-q="1">D) Increases the number of filters in the next layer</button>
+</div>
+<div class="lp-quiz-feedback-correct" hidden="" id="q1-correct">Correct. Max pooling takes the maximum value from small regions, shrinking the feature map while preserving which patterns were detected. The position tolerance is key: a feature that shifted by one pixel still gets caught.</div>
+<div class="lp-quiz-feedback-wrong" hidden="" id="q1-wrong">Not quite. Max pooling doesn't detect features - that's the convolutional layer's job. Pooling takes the output of convolutions and reduces it, also making the result less sensitive to exact position.</div>
+</div>
+<!-- Q2 -->
+<div class="lp-quiz-q">
+<p class="lp-quiz-question">Why are CNNs still worth learning when Vision Transformers exist?</p>
+<div aria-label="Question 2 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-btn" data-i="0" data-q="2">A) CNNs always outperform Vision Transformers on every task</button>
+<button class="lp-quiz-btn" data-i="1" data-q="2">B) Vision Transformers can't process colour images</button>
+<button class="lp-quiz-btn lp-quiz-correct" data-i="2" data-q="2">C) CNNs are more efficient on smaller datasets and the convolution intuition helps you understand all vision models</button>
+<button class="lp-quiz-btn" data-i="3" data-q="2">D) Keras doesn't support Vision Transformers yet</button>
+</div>
+<div class="lp-quiz-feedback-correct" hidden="" id="q2-correct">Correct. CNNs need less data to train well and are computationally cheaper. Understanding how convolutions build up pattern detection is also foundational for understanding newer architectures.</div>
+<div class="lp-quiz-feedback-wrong" hidden="" id="q2-wrong">Not quite. CNNs don't always win - Vision Transformers outperform them with large datasets. The real reason CNNs remain worth learning is their efficiency on smaller datasets and the conceptual value of the convolution intuition.</div>
+</div>
+</section>
+<!-- Podcast -->
+<section aria-label="Podcast version" class="lp-podcast-section">
+<h2 class="lp-podcast-title">
+<svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" x2="12" y1="2" y2="5"></line><line x1="12" x2="12" y1="19" y2="22"></line><line x1="2" x2="5" y1="12" y2="12"></line><line x1="19" x2="22" y1="12" y2="12"></line></svg>
             Podcast version
           </h2>
-          <p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
-          <audio controls aria-label="Podcast episode audio player">
+<p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
+<audio aria-label="Podcast episode audio player" controls="">
             Your browser does not support audio playback.
           </audio>
-        </section>
-
-        <!-- Accordions -->
-        <!-- Prev / Next nav -->
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/tensorflow-pytorch-keras" class="lp-nav-btn lp-nav-prev" aria-label="Previous lesson">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            <span>
-              <em>Previous</em>
-              TensorFlow, PyTorch and Keras
-            </span>
-          </a>
-          <a href="/course/rnns-transformers-autoencoders" class="lp-nav-btn lp-nav-next" aria-label="Next lesson">
-            <span>
-              <em>Next</em>
-              RNNs, Transformers and Autoencoders
-            </span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
-        </nav>
-
+</section>
+<!-- Accordions -->
+<!-- Prev / Next nav -->
+<nav aria-label="Lesson navigation" class="lp-nav">
+<a aria-label="Previous lesson" class="lp-nav-btn" href="/course/tensorflow-pytorch-keras"><span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_forward</span></div><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_back</span></div>
+<div><span class="lp-nav-label">Previous lesson</span><span class="lp-nav-title">TensorFlow, PyTorch and Keras</span></div>
+</a>
+<a aria-label="Next lesson" class="lp-nav-btn" href="/course/rnns-transformers-autoencoders"><span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_forward</span></div>
+<div><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">Next lesson</span></div><span class="lp-nav-title">RNNs, Transformers and Autoencoders</span></div>
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span></a>
+</nav>
 </article>
-
-      <!-- â”€â”€ SIDEBAR â”€â”€ -->
-      <aside class="na-sidebar" aria-label="Course navigation">
-
-        <!-- Table of contents -->
-        <div class="na-toc">
-          <h2 class="na-toc-title">In this lesson</h2>
-          <ul class="na-toc-list">
-            <li><a href="#" onclick="document.querySelector('.na-body h2').scrollIntoView({behavior:'smooth'});return false;">What a CNN is trying to do</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[1].scrollIntoView({behavior:'smooth'});return false;">Convolutional layers</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[2].scrollIntoView({behavior:'smooth'});return false;">Pooling layers</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[3].scrollIntoView({behavior:'smooth'});return false;">Building a CNN in Keras</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[4].scrollIntoView({behavior:'smooth'});return false;">Where CNNs still win</a></li>
-          </ul>
-        </div>
-
-        <!-- Course navigation -->
-        <nav class="lp-sidebar-nav" aria-label="All course lessons">
-          <h2 class="lp-sidebar-nav-title">Course contents</h2>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-1">Unit 1 Â· Introduction to AI</div>
-            <ul>
-              <li><a href="/course/what-is-ai">What is AI?</a></li>
-              <li><a href="/course/categories-of-ai">Categories of AI</a></li>
-              <li><a href="/course/how-ai-learns">How AI Learns</a></li>
-              <li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-2">Unit 2 Â· The Modern AI Landscape</div>
-            <ul>
-              <li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
-              <li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
-              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
-              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-3">Unit 3 Â· Ethics &amp; Governance</div>
-            <ul>
-              <li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
-              <li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
-              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-4">Unit 4 Â· Python for AI</div>
-            <ul>
-              <li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
-              <li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-5">Unit 5 Â· Machine Learning</div>
-            <ul>
-              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
-              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
-              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
-              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-6">Unit 6 Â· Deep Learning</div>
-            <ul>
-              <li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
-              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
-              <li><a href="/course/backpropagation">Backpropagation</a></li>
-              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
-              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
-              <li><a href="/course/cnns-with-keras" class="lp-sidebar-current" aria-current="page">CNNs with Keras</a></li>
-              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-7">Unit 7 Â· Generative AI</div>
-            <ul>
-              <li><a href="/course/generative-ai-models">Generative AI Models</a></li>
-              <li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
-              <li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-8">Unit 8 Â· AI in Production</div>
-            <ul>
-              <li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
-              <li><a href="/course/model-deployment">Model Deployment</a></li>
-              <li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
-              <li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-9">Unit 9 Â· AI Strategy</div>
-            <ul>
-              <li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
-              <li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
-              <li><a href="/course/ai-across-industries">AI Across Industries</a></li>
-              <li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
-            </ul>
-          </div>
-
-        </nav>
-        <div id="newsy-ai"></div>
-      </aside>
-
-    </div>
-  </main>
-
-  <div id="share-bar-placeholder"></div>
-  <section class="tool-info" aria-label="Lesson reference">
-    <div class="tool-info-inner">
-      <div class="tool-accordions">
-
-<details class="tool-accordion" open>
-          <summary>Frequently Asked Questions</summary>
-          <div class="tool-accordion-body">
-            <h3>What is a convolutional neural network?</h3>
-            <p>A CNN is a neural network architecture designed for image data. It assumes nearby pixels relate to each other and applies small filters that slide across the image to detect patterns - edges first, then textures, then complex shapes. This hierarchy of pattern detection is what makes CNNs so effective for vision tasks.</p>
-
-            <h3>What does a pooling layer do in a CNN?</h3>
-            <p>A pooling layer reduces the size of feature maps and makes the network tolerant to small shifts in position. Max pooling takes the maximum value from small regions, so if a pattern moved one pixel it still gets detected. This reduces computation and improves generalisation.</p>
-
-            <h3>Are CNNs still relevant now that Vision Transformers exist?</h3>
-            <p>Yes. CNNs are more efficient on smaller datasets, faster to train, and easier to understand. Vision Transformers need large amounts of data to outperform CNNs. For most practical applications, CNNs remain a strong choice. They're not obsolete - they've been supplemented.</p>
-
-            <h3>What is transfer learning with CNNs?</h3>
-            <p>Transfer learning uses a CNN pre-trained on a large dataset (like ImageNet) as a starting point. You keep the learned filters and fine-tune the final layers on your specific task. This dramatically reduces the data and compute needed to build an effective image classifier.</p>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>How It Works</summary>
-          <div class="tool-accordion-body">
-            <p>A CNN processes an image through alternating convolutional and pooling layers. Each convolutional layer applies learned filters that slide across the input, computing a dot product at each position to produce feature maps. Early filters detect simple patterns like edges; later filters detect combinations of those patterns.</p>
-            <p>Pooling layers reduce spatial dimensions, making the network faster and more robust to small position changes. After several conv-pool pairs, the feature maps are flattened into a vector and fed into fully connected (dense) layers, which learn to combine the detected features into a final prediction.</p>
-            <p>Training adjusts all filter weights and dense layer weights via backpropagation, minimising the difference between predictions and true labels. The network discovers what patterns are useful for the task - you don't specify them.</p>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>Key Points</summary>
-          <div class="tool-accordion-body">
-            <ul>
-              <li>CNNs exploit the spatial structure of images: nearby pixels are related, and patterns appear in multiple locations</li>
-              <li>Convolutional filters detect patterns at different scales and complexities across layers</li>
-              <li>Filters are learned during training - not hand-coded</li>
-              <li>Max pooling reduces feature map size and provides shift tolerance</li>
-              <li>A standard CNN stacks conv-pool pairs, then flattens into dense layers for the final prediction</li>
-              <li>Vision Transformers have surpassed CNNs in research but CNNs remain practical for smaller datasets</li>
-              <li>Transfer learning lets you reuse pre-trained CNN filters, reducing data and compute requirements significantly</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>Sources</summary>
-          <div class="tool-accordion-body">
-            <ul>
-              <li>LeCun, Y. et al. (1998). Gradient-based learning applied to document recognition. <em>Proceedings of the IEEE</em>.</li>
-              <li>He, K. et al. (2016). Deep Residual Learning for Image Recognition. <em>CVPR</em>.</li>
-              <li>Dosovitskiy, A. et al. (2021). An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. <em>ICLR</em>.</li>
-              <li>Chollet, F. (2021). <em>Deep Learning with Python</em>, 2nd ed. Manning Publications.</li>
-            </ul>
-          </div>
-        </details>
-
-      </div>
-    </div>
-  </section>
-
-  <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
-  </button>
-
-
-  <div id="footer-placeholder"></div>
-
-  <script src="/news-data.js"></script>
-  <script src="/scripts.js" defer></script>
-  <script src="/news-article.js" defer></script>
-  <script src="/news-chat.js" defer></script>
-  <script>
+<!-- â”€â”€ SIDEBAR â”€â”€ -->
+<aside aria-label="Course navigation" class="na-sidebar">
+<!-- Table of contents -->
+<nav aria-label="In this lesson" class="na-toc">
+<p class="na-toc-title">In this lesson</p>
+<ol class="na-toc-list">
+<li><a class="na-toc-link" href="#">What a CNN is trying to do</a></li>
+<li><a class="na-toc-link" href="#">Convolutional layers</a></li>
+<li><a class="na-toc-link" href="#">Pooling layers</a></li>
+<li><a class="na-toc-link" href="#">Building a CNN in Keras</a></li>
+<li><a class="na-toc-link" href="#">Where CNNs still win</a></li>
+</ol>
+</nav>
+<!-- Course navigation -->
+<nav aria-label="All course lessons" class="lp-sidebar-nav">
+<p class="lp-sidebar-nav-title">Course contents</p>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-1">Unit 1 · Introduction to AI</span>
+<ul>
+<li><a href="/course/what-is-ai">What is AI?</a></li>
+<li><a href="/course/categories-of-ai">Categories of AI</a></li>
+<li><a href="/course/how-ai-learns">How AI Learns</a></li>
+<li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-2">Unit 2 · The Modern AI Landscape</span>
+<ul>
+<li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
+<li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
+<li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
+<li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-3">Unit 3 · Ethics &amp; Governance</span>
+<ul>
+<li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
+<li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
+<li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-4">Unit 4 · Python for AI</span>
+<ul>
+<li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
+<li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-5">Unit 5 · Machine Learning</span>
+<ul>
+<li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+<li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+<li><a href="/course/model-evaluation">Model Evaluation</a></li>
+<li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-6">Unit 6 · Deep Learning</span>
+<ul>
+<li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
+<li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+<li><a href="/course/backpropagation">Backpropagation</a></li>
+<li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+<li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+<li><a aria-current="page" class="lp-sidebar-current" href="/course/cnns-with-keras">CNNs with Keras</a></li>
+<li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-7">Unit 7 · Generative AI</span>
+<ul>
+<li><a href="/course/generative-ai-models">Generative AI Models</a></li>
+<li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
+<li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-8">Unit 8 · AI in Production</span>
+<ul>
+<li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
+<li><a href="/course/model-deployment">Model Deployment</a></li>
+<li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
+<li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-9">Unit 9 · AI Strategy</span>
+<ul>
+<li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
+<li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
+<li><a href="/course/ai-across-industries">AI Across Industries</a></li>
+<li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
+</ul>
+</div>
+</nav>
+<div id="newsy-ai"></div>
+</aside>
+</div>
+</main>
+<div id="share-bar-placeholder"></div>
+<section aria-label="Lesson reference" class="tool-info">
+<div class="tool-info-inner">
+<div class="tool-accordions">
+<details class="tool-accordion" open="">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<h3>What is a convolutional neural network?</h3>
+<p>A CNN is a neural network architecture designed for image data. It assumes nearby pixels relate to each other and applies small filters that slide across the image to detect patterns - edges first, then textures, then complex shapes. This hierarchy of pattern detection is what makes CNNs so effective for vision tasks.</p>
+<h3>What does a pooling layer do in a CNN?</h3>
+<p>A pooling layer reduces the size of feature maps and makes the network tolerant to small shifts in position. Max pooling takes the maximum value from small regions, so if a pattern moved one pixel it still gets detected. This reduces computation and improves generalisation.</p>
+<h3>Are CNNs still relevant now that Vision Transformers exist?</h3>
+<p>Yes. CNNs are more efficient on smaller datasets, faster to train, and easier to understand. Vision Transformers need large amounts of data to outperform CNNs. For most practical applications, CNNs remain a strong choice. They're not obsolete - they've been supplemented.</p>
+<h3>What is transfer learning with CNNs?</h3>
+<p>Transfer learning uses a CNN pre-trained on a large dataset (like ImageNet) as a starting point. You keep the learned filters and fine-tune the final layers on your specific task. This dramatically reduces the data and compute needed to build an effective image classifier.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<p>A CNN processes an image through alternating convolutional and pooling layers. Each convolutional layer applies learned filters that slide across the input, computing a dot product at each position to produce feature maps. Early filters detect simple patterns like edges; later filters detect combinations of those patterns.</p>
+<p>Pooling layers reduce spatial dimensions, making the network faster and more robust to small position changes. After several conv-pool pairs, the feature maps are flattened into a vector and fed into fully connected (dense) layers, which learn to combine the detected features into a final prediction.</p>
+<p>Training adjusts all filter weights and dense layer weights via backpropagation, minimising the difference between predictions and true labels. The network discovers what patterns are useful for the task - you don't specify them.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>CNNs exploit the spatial structure of images: nearby pixels are related, and patterns appear in multiple locations</li>
+<li>Convolutional filters detect patterns at different scales and complexities across layers</li>
+<li>Filters are learned during training - not hand-coded</li>
+<li>Max pooling reduces feature map size and provides shift tolerance</li>
+<li>A standard CNN stacks conv-pool pairs, then flattens into dense layers for the final prediction</li>
+<li>Vision Transformers have surpassed CNNs in research but CNNs remain practical for smaller datasets</li>
+<li>Transfer learning lets you reuse pre-trained CNN filters, reducing data and compute requirements significantly</li>
+</ul>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>LeCun, Y. et al. (1998). Gradient-based learning applied to document recognition. <em>Proceedings of the IEEE</em>.</li>
+<li>He, K. et al. (2016). Deep Residual Learning for Image Recognition. <em>CVPR</em>.</li>
+<li>Dosovitskiy, A. et al. (2021). An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. <em>ICLR</em>.</li>
+<li>Chollet, F. (2021). <em>Deep Learning with Python</em>, 2nd ed. Manning Publications.</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</section>
+<button aria-label="Back to top" id="back-to-top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div id="footer-placeholder"></div>
+<script src="/news-data.js"></script>
+<script defer="" src="/scripts.js"></script>
+<script defer="" src="/news-article.js"></script>
+<script defer="" src="/news-chat.js"></script>
+<script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
       if (trigger) trigger.click();
@@ -517,7 +436,7 @@
       });
     });
   </script>
-  <script>
+<script>
     // Quiz logic
     document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
       btn.addEventListener('click', function() {

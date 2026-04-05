@@ -1,45 +1,42 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RAG, Fine-Tuning and Enterprise AI Strategy - JohnB.io</title>
-  <meta name="description" content="What RAG and fine-tuning solve, why most enterprises should try RAG first, the build vs buy decision, and the three mistakes businesses make with AI. Unit 7, Lesson 3.">
-  <meta name="keywords" content="RAG, retrieval augmented generation, fine-tuning, enterprise AI, LLM, hallucination, vector search">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://johnb.io/course/rag-finetuning-enterprise-ai">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="RAG, Fine-Tuning and Enterprise AI Strategy">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://johnb.io/course/rag-finetuning-enterprise-ai">
-  <meta property="og:description" content="What RAG and fine-tuning solve, why most enterprises should try RAG first, the build vs buy decision, and the three mistakes businesses make with AI.">
-  <meta property="og:image" content="https://johnb.io/images/course-og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="RAG, Fine-Tuning and Enterprise AI lesson - JohnB.io AI Course">
-  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
-  <meta property="article:author" content="https://johnb.io">
-  <meta property="article:section" content="Generative AI &amp; Practical Applications">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="RAG, Fine-Tuning and Enterprise AI Strategy">
-  <meta name="twitter:description" content="What RAG and fine-tuning solve, why most enterprises should try RAG first, the build vs buy decision, and the three mistakes businesses make with AI.">
-  <meta name="twitter:image" content="https://johnb.io/images/course-og.png">
-  <meta name="twitter:image:alt" content="RAG, Fine-Tuning and Enterprise AI lesson - JohnB.io AI Course">
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RAG, Fine-Tuning and Enterprise AI Strategy - JohnB.io</title>
+<meta content="What RAG and fine-tuning solve, why most enterprises should try RAG first, the build vs buy decision, and the three mistakes businesses make with AI. Unit 7, Lesson 3." name="description"/>
+<meta content="RAG, retrieval augmented generation, fine-tuning, enterprise AI, LLM, hallucination, vector search" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://johnb.io/course/rag-finetuning-enterprise-ai" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="RAG, Fine-Tuning and Enterprise AI Strategy" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://johnb.io/course/rag-finetuning-enterprise-ai" property="og:url"/>
+<meta content="What RAG and fine-tuning solve, why most enterprises should try RAG first, the build vs buy decision, and the three mistakes businesses make with AI." property="og:description"/>
+<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="RAG, Fine-Tuning and Enterprise AI lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
+<meta content="https://johnb.io" property="article:author"/>
+<meta content="Generative AI &amp; Practical Applications" property="article:section"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="RAG, Fine-Tuning and Enterprise AI Strategy" name="twitter:title"/>
+<meta content="What RAG and fine-tuning solve, why most enterprises should try RAG first, the build vs buy decision, and the three mistakes businesses make with AI." name="twitter:description"/>
+<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
+<meta content="RAG, Fine-Tuning and Enterprise AI lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-0J6PBWMRNY');
   </script>
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -125,399 +122,313 @@
     ]
   }
   </script>
-
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/footer.css">
-  <link rel="stylesheet" href="/news.css">
-  <link rel="stylesheet" href="/lesson.css?v=3">
-  <link rel="stylesheet" href="/news-chat.css?v=7">
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/header.css" rel="stylesheet"/>
+<link href="/footer.css" rel="stylesheet"/>
+<link href="/news.css" rel="stylesheet"/>
+<link href="/lesson.css?v=3" rel="stylesheet"/>
+<link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
 <body class="lp-page">
-
-  <div id="header-placeholder"></div>
-
-  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
-    <div class="na-layout">
-
-      <!-- â”€â”€ MAIN CONTENT â”€â”€ -->
-      <article class="na-content">
-
-        <!-- Breadcrumb -->
-        <nav class="na-breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span aria-hidden="true">â€º</span>
-          <a href="/course-dashboard">AI Course</a>
-          <span aria-hidden="true">â€º</span>
-          <span>RAG, Fine-Tuning and Enterprise AI</span>
-        </nav>
-
-        <!-- Unit badge + title -->
-        <div class="lp-unit-badge lp-unit-7">Unit 7 Â· Generative AI &amp; Practical Applications</div>
-        <h1 class="na-title">RAG, Fine-Tuning and Enterprise AI Strategy</h1>
-
-        <!-- Meta row -->
-        <div class="na-meta">
-          <span>11 min read</span>
-          <span>Â·</span>
-          <span>Lesson 3 of 3 in Unit 7</span>
-          <span>Â·</span>
-          <span>Published 5 April 2026</span>
-        </div>
-
-        <!-- Audio player -->
-        <section class="lp-audio-section" aria-label="Lesson audio">
-          <div class="lp-audio-label">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+<div id="header-placeholder"></div><div aria-hidden="true" class="lp-ambient"></div>
+<main class="na-wrap">
+<div class="na-layout">
+<!-- â”€â”€ MAIN CONTENT â”€â”€ -->
+<article class="na-content">
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="na-breadcrumb">
+<a href="/">Home</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<a href="/course-dashboard">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span>RAG, Fine-Tuning and Enterprise AI</span>
+</nav>
+<!-- Unit badge + title -->
+<div class="lp-unit-badge lp-unit-7">Unit 7 · Generative AI &amp; Practical Applications</div>
+<h1 class="na-title">RAG, Fine-Tuning and Enterprise AI Strategy</h1>
+<!-- Meta row -->
+<div class="na-meta">
+<span>11 min read</span>
+<span>·</span>
+<span>Lesson 3 of 3 in Unit 7</span>
+<span>·</span>
+<span>Published 5 April 2026</span>
+</div>
+<!-- Audio player -->
+<section aria-label="Lesson audio" class="lp-audio-section">
+<div class="lp-audio-label">
+<svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
             Listen to this lesson
           </div>
-          <audio controls aria-label="Lesson audio player">
+<audio aria-label="Lesson audio player" controls="">
             Your browser does not support audio playback.
           </audio>
-        </section>
-
-        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-          <span class="material-symbols-outlined">auto_awesome</span>
+</section>
+<button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
           Ask Newsy AI about this lesson
         </button>
-
-        <!-- Body -->
-        <div class="na-body">
-
-          <p>A language model knows stuff about the world up until its training cutoff. After that, it's making things up. Ask it about private company data and it's hallucinating. Ask it about a document it never saw, and it doesn't have the information.</p>
-
-          <p>Enterprises need their AI systems to work with current, private data. That means feeding context to the model beyond what it was trained on. You have two main strategies: retrieval-augmented generation and fine-tuning. They solve different problems.</p>
-
-          <h2>The problem RAG is solving</h2>
-
-          <p>A language model is like someone who read a lot in school and then never read anything new. Ask it about something after its training cutoff and it'll confidently make something up. Ask it about an internal document it never saw, and it either hasn't seen it or confabulates details.</p>
-
-          <p>That's hallucination. It's not malice or stupidity - the model does what it was trained to do, predict plausible text. But plausible isn't the same as true.</p>
-
-          <p>RAG solves this by giving the model access to relevant context before it answers. You ask a question, RAG finds relevant documents or database entries, and feeds those to the model along with your question. Now the model has actual facts to work with.</p>
-
-          <h2>How RAG works: retrieve then generate</h2>
-
-          <p>The process has two steps. First, retrieve. You take the user's query and search a database of documents to find relevant ones. Usually by embedding the query and finding documents with similar embeddings - semantic similarity, not keyword matching.</p>
-
-          <p>Then generate. You take the retrieved documents and the original query and feed them both to a language model. The model generates an answer with those documents as context. If the documents contain the answer, the model can usually find it.</p>
-
-          <p>This works well. The model doesn't have to know the answer - it has to be able to read and synthesise information from documents. That's something language models do well.</p>
-
-          <p>The limitations are real. If retrieval gets the wrong documents, generation works from bad context. If your documents are poorly structured or low quality, retrieval won't help. If the answer requires combining information across many documents in complex ways, even a good model might struggle.</p>
-
-          <h2>What fine-tuning is and when it's actually needed</h2>
-
-          <p>Fine-tuning means taking a pre-trained model and training it further on your specific data. You're adapting the model's weights to your domain.</p>
-
-          <p>It's expensive. You need lots of labelled examples - usually hundreds or thousands of good training pairs. You need compute. It takes time. And you end up with a model that's different from the base model, which your tools and infrastructure need to handle.</p>
-
-          <p>Fine-tuning makes sense when you have a very specific style or format the model needs to match, specialised terminology the base model handles poorly, consistent patterns your data follows that a model can learn, and enough labelled examples to train on.</p>
-
-          <p>What doesn't make sense: fine-tuning to make a model "know" your private data. A model can't memorise its way to better knowledge tasks. Fine-tuning helps with style, format, and specialised language. It doesn't turn a model into a domain expert.</p>
-
-          <p>That's where the confusion happens. People think: "I'll fine-tune on our documents so it knows our data." But models don't work that way. Fine-tuning with documents mostly teaches the model the style of your documents, not their content. For content, you need retrieval.</p>
-
-          <h2>Why most enterprises should try RAG first</h2>
-
-          <p>RAG should be your first move. Every time.</p>
-
-          <p>RAG is cheaper. It's faster to set up. You don't need to train anything. You don't need labelled data. You can iterate and improve retrieval without retraining. If your documents are bad, you fix the documents instead of retraining a model.</p>
-
-          <p>RAG scales. Add new documents and the system immediately has access to them. No retraining, no waiting.</p>
-
-          <p>The only real downside is latency. Retrieval takes time. If you need sub-100ms response times, RAG is harder. For most enterprise applications, that's not a constraint.</p>
-
-          <p>Should you eventually fine-tune on top of RAG? Maybe. If you have specific style requirements or a lot of domain-specific terminology, fine-tuning a model to use within your RAG system could help. But that's a second step. Start with RAG. Get it working. Then instrument to see where it's failing. Then optimise based on real data about where it breaks.</p>
-
-          <h2>The build, buy, or use-an-API decision</h2>
-
-          <p>You can build your own RAG system using open-source components. You can buy a commercial RAG platform. You can use API-based RAG from an LLM provider.</p>
-
-          <p>Building means you own everything and can customise everything. It also means you're responsible for everything - security, availability, monitoring. You need ML and engineering expertise in house.</p>
-
-          <p>Buying a platform means someone else handles the infrastructure. But you're paying per query or per month, and you're locked into their choices about retrieval algorithms and embedding models.</p>
-
-          <p>Using an API (like file upload features from OpenAI or Anthropic) is easy to start with but can get expensive and gives you less control.</p>
-
-          <p>For most businesses: buy or use an API first. Once you understand your requirements better, then consider building something custom. Don't build the infrastructure before you understand the problem.</p>
-
-          <h2>Where most businesses get it wrong</h2>
-
-          <p>Mistake one: trying to do everything with fine-tuning instead of retrieval. People have 200 documents and think the solution is to fine-tune a model on them. That won't work well. Fine-tuning teaches the model about those documents in aggregate, not what's in them.</p>
-
-          <p>Mistake two: building before understanding the problem. Teams build elaborate RAG systems with custom retrieval logic and complex architectures before they've validated that RAG is even the right solution. Start simple. Retrieve with vector search, generate with an API, iterate from there.</p>
-
-          <p>Mistake three: assuming quality data. Your RAG system is only as good as your documents. If they're outdated, poorly structured, or low quality, RAG won't fix that. Audit your data first.</p>
-
-          <p>Most businesses build too much, too early. Get a RAG system working with open-source tools and APIs. See where it breaks. Then optimise. Then maybe build custom pieces. The default should be "use what exists" not "build something custom."</p>
-
-        </div>
-
-        <!-- Quiz -->
-        <section class="lp-quiz" aria-label="Lesson quiz">
-          <h2 class="lp-quiz-title">Check your understanding</h2>
-
-          <!-- Q1 -->
-          <div class="lp-quiz-q">
-            <p class="lp-quiz-question">What problem does RAG solve that fine-tuning doesn't?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
-              <button class="lp-quiz-btn" data-q="1" data-i="0">A) Making the model write in a specific house style</button>
-              <button class="lp-quiz-btn lp-quiz-correct" data-q="1" data-i="1">B) Allowing the model to reason over private or post-cutoff data without hallucinating</button>
-              <button class="lp-quiz-btn" data-q="1" data-i="2">C) Reducing the model's inference latency</button>
-              <button class="lp-quiz-btn" data-q="1" data-i="3">D) Teaching the model specialised technical terminology</button>
-            </div>
-            <div class="lp-quiz-feedback-correct" id="q1-correct" hidden>Correct. Fine-tuning adapts a model's style, format, and terminology - but it can't give the model access to private documents or information after its training cutoff. RAG solves that by retrieving relevant context at query time and passing it to the model.</div>
-            <div class="lp-quiz-feedback-wrong" id="q1-wrong" hidden>Not quite. Style and terminology are what fine-tuning is good at. RAG's unique contribution is connecting the model to external documents - solving the training cutoff problem and enabling reasoning over private data.</div>
-          </div>
-
-          <!-- Q2 -->
-          <div class="lp-quiz-q">
-            <p class="lp-quiz-question">Why is fine-tuning on company documents usually the wrong first move?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
-              <button class="lp-quiz-btn" data-q="2" data-i="0">A) Fine-tuning always costs more than building a full RAG system from scratch</button>
-              <button class="lp-quiz-btn lp-quiz-correct" data-q="2" data-i="1">B) Fine-tuning teaches the model the style and format of documents, not their specific content</button>
-              <button class="lp-quiz-btn" data-q="2" data-i="2">C) Fine-tuned models can't be accessed via standard APIs</button>
-              <button class="lp-quiz-btn" data-q="2" data-i="3">D) Fine-tuning requires real-time internet access to work properly</button>
-            </div>
-            <div class="lp-quiz-feedback-correct" id="q2-correct" hidden>Correct. Fine-tuning on documents teaches the aggregate style of those documents - how they're written, what terminology they use. It doesn't make the model remember specific facts from them. If you want the model to know what's in a document, you need retrieval.</div>
-            <div class="lp-quiz-feedback-wrong" id="q2-wrong" hidden>Not quite. The core issue is what fine-tuning actually learns: style and format, not content. Fine-tuning 200 documents won't make a model recall specific facts from them - for that you need RAG.</div>
-          </div>
-        </section>
-
-        <!-- Podcast -->
-        <section class="lp-podcast-section" aria-label="Podcast version">
-          <h2 class="lp-podcast-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line><line x1="2" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="22" y2="12"></line></svg>
+<!-- Body -->
+<div class="na-body">
+<p>A language model knows stuff about the world up until its training cutoff. After that, it's making things up. Ask it about private company data and it's hallucinating. Ask it about a document it never saw, and it doesn't have the information.</p>
+<p>Enterprises need their AI systems to work with current, private data. That means feeding context to the model beyond what it was trained on. You have two main strategies: retrieval-augmented generation and fine-tuning. They solve different problems.</p>
+<h2>The problem RAG is solving</h2>
+<p>A language model is like someone who read a lot in school and then never read anything new. Ask it about something after its training cutoff and it'll confidently make something up. Ask it about an internal document it never saw, and it either hasn't seen it or confabulates details.</p>
+<p>That's hallucination. It's not malice or stupidity - the model does what it was trained to do, predict plausible text. But plausible isn't the same as true.</p>
+<p>RAG solves this by giving the model access to relevant context before it answers. You ask a question, RAG finds relevant documents or database entries, and feeds those to the model along with your question. Now the model has actual facts to work with.</p>
+<h2>How RAG works: retrieve then generate</h2>
+<p>The process has two steps. First, retrieve. You take the user's query and search a database of documents to find relevant ones. Usually by embedding the query and finding documents with similar embeddings - semantic similarity, not keyword matching.</p>
+<p>Then generate. You take the retrieved documents and the original query and feed them both to a language model. The model generates an answer with those documents as context. If the documents contain the answer, the model can usually find it.</p>
+<p>This works well. The model doesn't have to know the answer - it has to be able to read and synthesise information from documents. That's something language models do well.</p>
+<p>The limitations are real. If retrieval gets the wrong documents, generation works from bad context. If your documents are poorly structured or low quality, retrieval won't help. If the answer requires combining information across many documents in complex ways, even a good model might struggle.</p>
+<h2>What fine-tuning is and when it's actually needed</h2>
+<p>Fine-tuning means taking a pre-trained model and training it further on your specific data. You're adapting the model's weights to your domain.</p>
+<p>It's expensive. You need lots of labelled examples - usually hundreds or thousands of good training pairs. You need compute. It takes time. And you end up with a model that's different from the base model, which your tools and infrastructure need to handle.</p>
+<p>Fine-tuning makes sense when you have a very specific style or format the model needs to match, specialised terminology the base model handles poorly, consistent patterns your data follows that a model can learn, and enough labelled examples to train on.</p>
+<p>What doesn't make sense: fine-tuning to make a model "know" your private data. A model can't memorise its way to better knowledge tasks. Fine-tuning helps with style, format, and specialised language. It doesn't turn a model into a domain expert.</p>
+<p>That's where the confusion happens. People think: "I'll fine-tune on our documents so it knows our data." But models don't work that way. Fine-tuning with documents mostly teaches the model the style of your documents, not their content. For content, you need retrieval.</p>
+<h2>Why most enterprises should try RAG first</h2>
+<p>RAG should be your first move. Every time.</p>
+<p>RAG is cheaper. It's faster to set up. You don't need to train anything. You don't need labelled data. You can iterate and improve retrieval without retraining. If your documents are bad, you fix the documents instead of retraining a model.</p>
+<p>RAG scales. Add new documents and the system immediately has access to them. No retraining, no waiting.</p>
+<p>The only real downside is latency. Retrieval takes time. If you need sub-100ms response times, RAG is harder. For most enterprise applications, that's not a constraint.</p>
+<p>Should you eventually fine-tune on top of RAG? Maybe. If you have specific style requirements or a lot of domain-specific terminology, fine-tuning a model to use within your RAG system could help. But that's a second step. Start with RAG. Get it working. Then instrument to see where it's failing. Then optimise based on real data about where it breaks.</p>
+<h2>The build, buy, or use-an-API decision</h2>
+<p>You can build your own RAG system using open-source components. You can buy a commercial RAG platform. You can use API-based RAG from an LLM provider.</p>
+<p>Building means you own everything and can customise everything. It also means you're responsible for everything - security, availability, monitoring. You need ML and engineering expertise in house.</p>
+<p>Buying a platform means someone else handles the infrastructure. But you're paying per query or per month, and you're locked into their choices about retrieval algorithms and embedding models.</p>
+<p>Using an API (like file upload features from OpenAI or Anthropic) is easy to start with but can get expensive and gives you less control.</p>
+<p>For most businesses: buy or use an API first. Once you understand your requirements better, then consider building something custom. Don't build the infrastructure before you understand the problem.</p>
+<h2>Where most businesses get it wrong</h2>
+<p>Mistake one: trying to do everything with fine-tuning instead of retrieval. People have 200 documents and think the solution is to fine-tune a model on them. That won't work well. Fine-tuning teaches the model about those documents in aggregate, not what's in them.</p>
+<p>Mistake two: building before understanding the problem. Teams build elaborate RAG systems with custom retrieval logic and complex architectures before they've validated that RAG is even the right solution. Start simple. Retrieve with vector search, generate with an API, iterate from there.</p>
+<p>Mistake three: assuming quality data. Your RAG system is only as good as your documents. If they're outdated, poorly structured, or low quality, RAG won't fix that. Audit your data first.</p>
+<p>Most businesses build too much, too early. Get a RAG system working with open-source tools and APIs. See where it breaks. Then optimise. Then maybe build custom pieces. The default should be "use what exists" not "build something custom."</p>
+</div>
+<!-- Quiz -->
+<section aria-label="Lesson quiz" class="lp-quiz">
+<h2 class="lp-quiz-title">Check your understanding</h2>
+<!-- Q1 -->
+<div class="lp-quiz-q">
+<p class="lp-quiz-question">What problem does RAG solve that fine-tuning doesn't?</p>
+<div aria-label="Question 1 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-btn" data-i="0" data-q="1">A) Making the model write in a specific house style</button>
+<button class="lp-quiz-btn lp-quiz-correct" data-i="1" data-q="1">B) Allowing the model to reason over private or post-cutoff data without hallucinating</button>
+<button class="lp-quiz-btn" data-i="2" data-q="1">C) Reducing the model's inference latency</button>
+<button class="lp-quiz-btn" data-i="3" data-q="1">D) Teaching the model specialised technical terminology</button>
+</div>
+<div class="lp-quiz-feedback-correct" hidden="" id="q1-correct">Correct. Fine-tuning adapts a model's style, format, and terminology - but it can't give the model access to private documents or information after its training cutoff. RAG solves that by retrieving relevant context at query time and passing it to the model.</div>
+<div class="lp-quiz-feedback-wrong" hidden="" id="q1-wrong">Not quite. Style and terminology are what fine-tuning is good at. RAG's unique contribution is connecting the model to external documents - solving the training cutoff problem and enabling reasoning over private data.</div>
+</div>
+<!-- Q2 -->
+<div class="lp-quiz-q">
+<p class="lp-quiz-question">Why is fine-tuning on company documents usually the wrong first move?</p>
+<div aria-label="Question 2 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-btn" data-i="0" data-q="2">A) Fine-tuning always costs more than building a full RAG system from scratch</button>
+<button class="lp-quiz-btn lp-quiz-correct" data-i="1" data-q="2">B) Fine-tuning teaches the model the style and format of documents, not their specific content</button>
+<button class="lp-quiz-btn" data-i="2" data-q="2">C) Fine-tuned models can't be accessed via standard APIs</button>
+<button class="lp-quiz-btn" data-i="3" data-q="2">D) Fine-tuning requires real-time internet access to work properly</button>
+</div>
+<div class="lp-quiz-feedback-correct" hidden="" id="q2-correct">Correct. Fine-tuning on documents teaches the aggregate style of those documents - how they're written, what terminology they use. It doesn't make the model remember specific facts from them. If you want the model to know what's in a document, you need retrieval.</div>
+<div class="lp-quiz-feedback-wrong" hidden="" id="q2-wrong">Not quite. The core issue is what fine-tuning actually learns: style and format, not content. Fine-tuning 200 documents won't make a model recall specific facts from them - for that you need RAG.</div>
+</div>
+</section>
+<!-- Podcast -->
+<section aria-label="Podcast version" class="lp-podcast-section">
+<h2 class="lp-podcast-title">
+<svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" x2="12" y1="2" y2="5"></line><line x1="12" x2="12" y1="19" y2="22"></line><line x1="2" x2="5" y1="12" y2="12"></line><line x1="19" x2="22" y1="12" y2="12"></line></svg>
             Podcast version
           </h2>
-          <p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
-          <audio controls aria-label="Podcast episode audio player">
+<p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
+<audio aria-label="Podcast episode audio player" controls="">
             Your browser does not support audio playback.
           </audio>
-        </section>
-
-        <!-- Accordions -->
-        <!-- Prev / Next nav -->
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/prompt-engineering-ai-agents" class="lp-nav-btn lp-nav-prev" aria-label="Previous lesson">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            <span>
-              <em>Previous</em>
-              Prompt Engineering and AI Agents
-            </span>
-          </a>
-          <a href="/course/intro-to-mlops" class="lp-nav-btn lp-nav-next" aria-label="Next lesson">
-            <span>
-              <em>Next</em>
-              Introduction to MLOps
-            </span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
-        </nav>
-
+</section>
+<!-- Accordions -->
+<!-- Prev / Next nav -->
+<nav aria-label="Lesson navigation" class="lp-nav">
+<a aria-label="Previous lesson" class="lp-nav-btn" href="/course/prompt-engineering-ai-agents"><span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_forward</span></div><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_back</span></div>
+<div><span class="lp-nav-label">Previous lesson</span><span class="lp-nav-title">Prompt Engineering and AI Agents</span></div>
+</a>
+<a aria-label="Next lesson" class="lp-nav-btn" href="/course/intro-to-mlops"><span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_forward</span></div>
+<div><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">Next lesson</span></div><span class="lp-nav-title">Introduction to MLOps</span></div>
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span></a>
+</nav>
 </article>
-
-      <!-- â”€â”€ SIDEBAR â”€â”€ -->
-      <aside class="na-sidebar" aria-label="Course navigation">
-
-        <!-- Table of contents -->
-        <div class="na-toc">
-          <h2 class="na-toc-title">In this lesson</h2>
-          <ul class="na-toc-list">
-            <li><a href="#" onclick="document.querySelector('.na-body h2').scrollIntoView({behavior:'smooth'});return false;">The problem RAG solves</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[1].scrollIntoView({behavior:'smooth'});return false;">How RAG works</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[2].scrollIntoView({behavior:'smooth'});return false;">When to fine-tune</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[3].scrollIntoView({behavior:'smooth'});return false;">Why RAG comes first</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[4].scrollIntoView({behavior:'smooth'});return false;">Build, buy or API</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[5].scrollIntoView({behavior:'smooth'});return false;">Common mistakes</a></li>
-          </ul>
-        </div>
-
-        <!-- Course navigation -->
-        <nav class="lp-sidebar-nav" aria-label="All course lessons">
-          <h2 class="lp-sidebar-nav-title">Course contents</h2>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-1">Unit 1 Â· Introduction to AI</div>
-            <ul>
-              <li><a href="/course/what-is-ai">What is AI?</a></li>
-              <li><a href="/course/categories-of-ai">Categories of AI</a></li>
-              <li><a href="/course/how-ai-learns">How AI Learns</a></li>
-              <li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-2">Unit 2 Â· The Modern AI Landscape</div>
-            <ul>
-              <li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
-              <li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
-              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
-              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-3">Unit 3 Â· Ethics &amp; Governance</div>
-            <ul>
-              <li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
-              <li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
-              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-4">Unit 4 Â· Python for AI</div>
-            <ul>
-              <li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
-              <li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-5">Unit 5 Â· Machine Learning</div>
-            <ul>
-              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
-              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
-              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
-              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-6">Unit 6 Â· Deep Learning</div>
-            <ul>
-              <li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
-              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
-              <li><a href="/course/backpropagation">Backpropagation</a></li>
-              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
-              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
-              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
-              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-7">Unit 7 Â· Generative AI</div>
-            <ul>
-              <li><a href="/course/generative-ai-models">Generative AI Models</a></li>
-              <li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
-              <li><a href="/course/rag-finetuning-enterprise-ai" class="lp-sidebar-current" aria-current="page">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-8">Unit 8 Â· AI in Production</div>
-            <ul>
-              <li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
-              <li><a href="/course/model-deployment">Model Deployment</a></li>
-              <li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
-              <li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-9">Unit 9 Â· AI Strategy</div>
-            <ul>
-              <li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
-              <li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
-              <li><a href="/course/ai-across-industries">AI Across Industries</a></li>
-              <li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
-            </ul>
-          </div>
-
-        </nav>
-        <div id="newsy-ai"></div>
-      </aside>
-
-    </div>
-  </main>
-
-  <div id="share-bar-placeholder"></div>
-  <section class="tool-info" aria-label="Lesson reference">
-    <div class="tool-info-inner">
-      <div class="tool-accordions">
-
-<details class="tool-accordion" open>
-          <summary>Frequently Asked Questions</summary>
-          <div class="tool-accordion-body">
-            <h3>What is Retrieval-Augmented Generation (RAG)?</h3>
-            <p>RAG is a technique that connects a language model to a document database. When a user asks a question, relevant documents are retrieved first (usually via semantic similarity search), then passed to the model along with the question. The model generates an answer using those documents as context. This solves the training cutoff problem and allows models to reason over private data without retraining.</p>
-
-            <h3>When should you use fine-tuning instead of RAG?</h3>
-            <p>Fine-tuning makes sense when you have a specific style or format the model needs to match consistently, specialised terminology the base model handles poorly, or enough labelled training examples. It doesn't make sense for making a model "know" your documents - fine-tuning teaches style, not content. For content, use RAG.</p>
-
-            <h3>What are the main ways to deploy RAG?</h3>
-            <p>You can build your own RAG pipeline using open-source components (full control, full responsibility), buy a commercial RAG platform (managed infrastructure, less control), or use an API with file upload features from an LLM provider (easiest to start, can get expensive). For most businesses: use an API or buy a platform first. Build custom only when you understand your specific requirements.</p>
-
-            <h3>What is the most common mistake businesses make with RAG?</h3>
-            <p>Trying to use fine-tuning instead of retrieval to make a model "know" company data. Fine-tuning 200 documents doesn't make a model remember what's in them - it teaches the model the aggregate style of those documents. The second most common mistake is building a complex custom system before validating that a simpler approach works.</p>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>How It Works</summary>
-          <div class="tool-accordion-body">
-            <p><strong>RAG pipeline:</strong> 1) Index your documents by embedding them and storing the embeddings in a vector database. 2) At query time, embed the user's question. 3) Search the vector database for documents with similar embeddings. 4) Take the top k results and concatenate them with the question in the model's context. 5) The model generates an answer with those documents visible.</p>
-            <p><strong>Fine-tuning:</strong> Start with a pre-trained model. Assemble a dataset of input-output pairs that demonstrate the behaviour you want. Train for additional epochs on that dataset, updating the model's weights. The result is a new model checkpoint adapted to your domain style and format.</p>
-            <p><strong>When to combine them:</strong> RAG + fine-tuning can work together. Fine-tune a model to adopt your domain's tone and terminology, then use it as the generator in a RAG system. The retrieval handles factual accuracy; the fine-tuning handles style consistency.</p>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>Key Points</summary>
-          <div class="tool-accordion-body">
-            <ul>
-              <li>Language models hallucinate about post-cutoff events and private data they've never seen</li>
-              <li>RAG retrieves relevant documents at query time and gives them to the model as context</li>
-              <li>RAG uses semantic similarity (embeddings) rather than keyword matching for retrieval</li>
-              <li>Fine-tuning adapts a model's style, format, and terminology - not its factual knowledge</li>
-              <li>Fine-tuning on documents teaches document style, not document content</li>
-              <li>RAG is cheaper, faster to deploy, and doesn't require labelled data</li>
-              <li>New documents become immediately available in a RAG system - no retraining needed</li>
-              <li>Most businesses should try RAG first, fine-tune second if needed</li>
-              <li>The most common mistake: fine-tuning to make a model "know" your data</li>
-              <li>Start simple: vector search + API. Validate. Then optimise.</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>Sources</summary>
-          <div class="tool-accordion-body">
-            <ul>
-              <li>Lewis, P. et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. <em>NeurIPS</em>.</li>
-              <li>Hu, E. et al. (2022). LoRA: Low-Rank Adaptation of Large Language Models. <em>ICLR</em>.</li>
-              <li>Gao, L. et al. (2024). Retrieval-Augmented Generation for Large Language Models: A Survey. <em>arXiv</em>.</li>
-              <li>Anthropic. (2024). Building Effective Agents. <em>anthropic.com</em>.</li>
-            </ul>
-          </div>
-        </details>
-
-      </div>
-    </div>
-  </section>
-
-  <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
-  </button>
-
-
-  <div id="footer-placeholder"></div>
-
-  <script src="/news-data.js"></script>
-  <script src="/scripts.js" defer></script>
-  <script src="/news-article.js" defer></script>
-  <script src="/news-chat.js" defer></script>
-  <script>
+<!-- â”€â”€ SIDEBAR â”€â”€ -->
+<aside aria-label="Course navigation" class="na-sidebar">
+<!-- Table of contents -->
+<nav aria-label="In this lesson" class="na-toc">
+<p class="na-toc-title">In this lesson</p>
+<ol class="na-toc-list">
+<li><a class="na-toc-link" href="#">The problem RAG solves</a></li>
+<li><a class="na-toc-link" href="#">How RAG works</a></li>
+<li><a class="na-toc-link" href="#">When to fine-tune</a></li>
+<li><a class="na-toc-link" href="#">Why RAG comes first</a></li>
+<li><a class="na-toc-link" href="#">Build, buy or API</a></li>
+<li><a class="na-toc-link" href="#">Common mistakes</a></li>
+</ol>
+</nav>
+<!-- Course navigation -->
+<nav aria-label="All course lessons" class="lp-sidebar-nav">
+<p class="lp-sidebar-nav-title">Course contents</p>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-1">Unit 1 · Introduction to AI</span>
+<ul>
+<li><a href="/course/what-is-ai">What is AI?</a></li>
+<li><a href="/course/categories-of-ai">Categories of AI</a></li>
+<li><a href="/course/how-ai-learns">How AI Learns</a></li>
+<li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-2">Unit 2 · The Modern AI Landscape</span>
+<ul>
+<li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
+<li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
+<li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
+<li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-3">Unit 3 · Ethics &amp; Governance</span>
+<ul>
+<li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
+<li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
+<li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-4">Unit 4 · Python for AI</span>
+<ul>
+<li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
+<li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-5">Unit 5 · Machine Learning</span>
+<ul>
+<li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+<li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+<li><a href="/course/model-evaluation">Model Evaluation</a></li>
+<li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-6">Unit 6 · Deep Learning</span>
+<ul>
+<li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
+<li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+<li><a href="/course/backpropagation">Backpropagation</a></li>
+<li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+<li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+<li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
+<li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-7">Unit 7 · Generative AI</span>
+<ul>
+<li><a href="/course/generative-ai-models">Generative AI Models</a></li>
+<li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
+<li><a aria-current="page" class="lp-sidebar-current" href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-8">Unit 8 · AI in Production</span>
+<ul>
+<li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
+<li><a href="/course/model-deployment">Model Deployment</a></li>
+<li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
+<li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-9">Unit 9 · AI Strategy</span>
+<ul>
+<li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
+<li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
+<li><a href="/course/ai-across-industries">AI Across Industries</a></li>
+<li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
+</ul>
+</div>
+</nav>
+<div id="newsy-ai"></div>
+</aside>
+</div>
+</main>
+<div id="share-bar-placeholder"></div>
+<section aria-label="Lesson reference" class="tool-info">
+<div class="tool-info-inner">
+<div class="tool-accordions">
+<details class="tool-accordion" open="">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<h3>What is Retrieval-Augmented Generation (RAG)?</h3>
+<p>RAG is a technique that connects a language model to a document database. When a user asks a question, relevant documents are retrieved first (usually via semantic similarity search), then passed to the model along with the question. The model generates an answer using those documents as context. This solves the training cutoff problem and allows models to reason over private data without retraining.</p>
+<h3>When should you use fine-tuning instead of RAG?</h3>
+<p>Fine-tuning makes sense when you have a specific style or format the model needs to match consistently, specialised terminology the base model handles poorly, or enough labelled training examples. It doesn't make sense for making a model "know" your documents - fine-tuning teaches style, not content. For content, use RAG.</p>
+<h3>What are the main ways to deploy RAG?</h3>
+<p>You can build your own RAG pipeline using open-source components (full control, full responsibility), buy a commercial RAG platform (managed infrastructure, less control), or use an API with file upload features from an LLM provider (easiest to start, can get expensive). For most businesses: use an API or buy a platform first. Build custom only when you understand your specific requirements.</p>
+<h3>What is the most common mistake businesses make with RAG?</h3>
+<p>Trying to use fine-tuning instead of retrieval to make a model "know" company data. Fine-tuning 200 documents doesn't make a model remember what's in them - it teaches the model the aggregate style of those documents. The second most common mistake is building a complex custom system before validating that a simpler approach works.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<p><strong>RAG pipeline:</strong> 1) Index your documents by embedding them and storing the embeddings in a vector database. 2) At query time, embed the user's question. 3) Search the vector database for documents with similar embeddings. 4) Take the top k results and concatenate them with the question in the model's context. 5) The model generates an answer with those documents visible.</p>
+<p><strong>Fine-tuning:</strong> Start with a pre-trained model. Assemble a dataset of input-output pairs that demonstrate the behaviour you want. Train for additional epochs on that dataset, updating the model's weights. The result is a new model checkpoint adapted to your domain style and format.</p>
+<p><strong>When to combine them:</strong> RAG + fine-tuning can work together. Fine-tune a model to adopt your domain's tone and terminology, then use it as the generator in a RAG system. The retrieval handles factual accuracy; the fine-tuning handles style consistency.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Language models hallucinate about post-cutoff events and private data they've never seen</li>
+<li>RAG retrieves relevant documents at query time and gives them to the model as context</li>
+<li>RAG uses semantic similarity (embeddings) rather than keyword matching for retrieval</li>
+<li>Fine-tuning adapts a model's style, format, and terminology - not its factual knowledge</li>
+<li>Fine-tuning on documents teaches document style, not document content</li>
+<li>RAG is cheaper, faster to deploy, and doesn't require labelled data</li>
+<li>New documents become immediately available in a RAG system - no retraining needed</li>
+<li>Most businesses should try RAG first, fine-tune second if needed</li>
+<li>The most common mistake: fine-tuning to make a model "know" your data</li>
+<li>Start simple: vector search + API. Validate. Then optimise.</li>
+</ul>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Lewis, P. et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. <em>NeurIPS</em>.</li>
+<li>Hu, E. et al. (2022). LoRA: Low-Rank Adaptation of Large Language Models. <em>ICLR</em>.</li>
+<li>Gao, L. et al. (2024). Retrieval-Augmented Generation for Large Language Models: A Survey. <em>arXiv</em>.</li>
+<li>Anthropic. (2024). Building Effective Agents. <em>anthropic.com</em>.</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</section>
+<button aria-label="Back to top" id="back-to-top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div id="footer-placeholder"></div>
+<script src="/news-data.js"></script>
+<script defer="" src="/scripts.js"></script>
+<script defer="" src="/news-article.js"></script>
+<script defer="" src="/news-chat.js"></script>
+<script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
       if (trigger) trigger.click();
@@ -529,7 +440,7 @@
       });
     });
   </script>
-  <script>
+<script>
     // Quiz logic
     document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
       btn.addEventListener('click', function() {

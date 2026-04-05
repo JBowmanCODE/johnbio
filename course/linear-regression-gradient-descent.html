@@ -1,41 +1,38 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Linear Regression and Gradient Descent Explained - JohnB.io</title>
-  <meta name="description" content="Linear regression draws the best line through data. Gradient descent finds that line by walking downhill on an error surface. These ideas underpin every ML model.">
-  <meta name="keywords" content="linear regression explained, gradient descent tutorial, machine learning basics, loss function, learning rate">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://johnb.io/course/linear-regression-gradient-descent">
-
-  <meta property="og:title" content="Linear Regression and Gradient Descent Explained">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://johnb.io/course/linear-regression-gradient-descent">
-  <meta property="og:description" content="Linear regression draws the best line through data. Gradient descent finds that line by walking downhill on an error surface. These ideas underpin every ML model.">
-  <meta property="og:image" content="https://johnb.io/images/course-og.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Linear Regression and Gradient Descent Explained">
-  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
-  <meta property="article:author" content="John Bowman">
-  <meta property="article:section" content="AI Course">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Linear Regression and Gradient Descent Explained">
-  <meta name="twitter:description" content="Linear regression draws the best line through data. Gradient descent finds that line by walking downhill on an error surface. These ideas underpin every ML model.">
-  <meta name="twitter:image" content="https://johnb.io/images/course-og.jpg">
-  <meta name="twitter:image:alt" content="Linear Regression and Gradient Descent Explained">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Linear Regression and Gradient Descent Explained - JohnB.io</title>
+<meta content="Linear regression draws the best line through data. Gradient descent finds that line by walking downhill on an error surface. These ideas underpin every ML model." name="description"/>
+<meta content="linear regression explained, gradient descent tutorial, machine learning basics, loss function, learning rate" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://johnb.io/course/linear-regression-gradient-descent" rel="canonical"/>
+<meta content="Linear Regression and Gradient Descent Explained" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://johnb.io/course/linear-regression-gradient-descent" property="og:url"/>
+<meta content="Linear regression draws the best line through data. Gradient descent finds that line by walking downhill on an error surface. These ideas underpin every ML model." property="og:description"/>
+<meta content="https://johnb.io/images/course-og.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Linear Regression and Gradient Descent Explained" property="og:image:alt"/>
+<meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
+<meta content="John Bowman" property="article:author"/>
+<meta content="AI Course" property="article:section"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Linear Regression and Gradient Descent Explained" name="twitter:title"/>
+<meta content="Linear regression draws the best line through data. Gradient descent finds that line by walking downhill on an error surface. These ideas underpin every ML model." name="twitter:description"/>
+<meta content="https://johnb.io/images/course-og.jpg" name="twitter:image"/>
+<meta content="Linear Regression and Gradient Descent Explained" name="twitter:image:alt"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-0J6PBWMRNY');
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -56,8 +53,7 @@
     }
   }
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -97,8 +93,7 @@
     ]
   }
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -124,309 +119,226 @@
     ]
   }
   </script>
-
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/footer.css">
-  <link rel="stylesheet" href="/news.css?v=4">
-  <link rel="stylesheet" href="/news-chat.css?v=7">
-  <link rel="stylesheet" href="/lesson.css?v=3">
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/header.css" rel="stylesheet"/>
+<link href="/footer.css" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
+<link href="/news-chat.css?v=7" rel="stylesheet"/>
+<link href="/lesson.css?v=3" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
 <body class="lp-page">
-
-  <div id="header-placeholder"></div>
-
-  <div class="lp-ambient" aria-hidden="true"></div>
-
-  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
-
-    <nav class="na-breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Home</a>
-      <span aria-hidden="true">›</span>
-      <a href="/course-dashboard">AI Course</a>
-      <span aria-hidden="true">›</span>
-      <span>Linear Regression and Gradient Descent</span>
-    </nav>
-
-    <div class="na-layout">
-
-      <article class="na-content" id="main-content">
-
-        <div class="na-header">
-          <div class="na-meta">
-            <span class="lp-unit-badge lp-unit-5">Unit 5</span>
-            <span class="na-category">Machine Learning</span>
-            <span class="na-read-time">9 min read</span>
-          </div>
-          <h1 class="na-title">Linear Regression and Gradient Descent: The Foundation of Machine Learning Explained</h1>
-          <p class="na-lede">Linear regression is the simplest machine learning model. But the ideas behind it - loss functions, gradient descent, convergence - are the same ideas behind every other model. Getting this right makes everything else easier.</p>
-          <div class="na-author">
-            <img src="/images/john-avatar.jpg" alt="John Bowman" class="na-author-img" width="36" height="36">
-            <div class="na-author-info">
-              <span class="na-author-name">John Bowman</span>
-              <time class="na-author-date" datetime="2026-04-05">5 April 2026</time>
-            </div>
-          </div>
-          <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-            <span class="material-symbols-outlined">auto_awesome</span>
+<div id="header-placeholder"></div>
+<div aria-hidden="true" class="lp-ambient"></div>
+<main class="na-wrap">
+<nav aria-label="Breadcrumb" class="na-breadcrumb">
+<a href="/">Home</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<a href="/course-dashboard">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span>Linear Regression and Gradient Descent</span>
+</nav>
+<div class="na-layout">
+<article class="na-content" id="main-content">
+<div class="na-header">
+<h1 class="na-title">Linear Regression and Gradient Descent: The Foundation of Machine Learning Explained</h1>
+<p class="na-lede">Linear regression is the simplest machine learning model. But the ideas behind it - loss functions, gradient descent, convergence - are the same ideas behind every other model. Getting this right makes everything else easier.</p>
+<div class="na-author">
+<a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
+<div class="na-author-details">
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<span class="na-author-role">Owner / AI Developer</span>
+</div>
+<div class="na-header-meta"><span class="lp-unit-badge lp-unit-5">Unit 5</span><span class="na-date">5 April 2026</span><span class="na-read">9 min read</span></div></div>
+<button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
             Ask Newsy AI about this lesson
           </button>
-        </div>
-
-        <nav class="na-toc-mobile" aria-label="On this page">
-          <details>
-            <summary>On this page</summary>
-            <ol>
-              <li><a href="#what-it-does">What Linear Regression Does</a></li>
-              <li><a href="#line-of-best-fit">The Line of Best Fit</a></li>
-              <li><a href="#gradient-descent">What Gradient Descent Is</a></li>
-              <li><a href="#training-loop">How Training Works</a></li>
-              <li><a href="#foundation">Why This Is the Foundation</a></li>
-              <li><a href="#quiz">Lesson Quiz</a></li>
-            </ol>
-          </details>
-        </nav>
-
-        <div class="na-audio-player">
-          <div class="na-audio-label">
-            <span class="material-symbols-outlined" aria-hidden="true">headphones</span>
-            Listen to this lesson
-          </div>
-          <audio controls preload="none" aria-label="Audio version of this lesson">
-            Your browser does not support the audio element.
-          </audio>
-        </div>
-
-        <div class="na-body">
-
-          <section id="what-it-does">
-            <h2>What Linear Regression Is and What It's Trying to Do</h2>
-            <p>Linear regression is the simplest machine learning model. It draws a line through data.</p>
-            <p>You have data points. Each has an input (x) and an output (y): house size and price, years of experience and salary, temperature and ice cream sales. The model's job is to find the line that best predicts y from x. Once you have it, give it any x and it predicts y.</p>
-            <p>Why start here? Because it's interpretable - you can understand why it made a prediction. It's fast. It works well when the relationship is actually linear. And the concepts transfer to every other model: deep learning, random forests, neural networks all try to find a function that maps inputs to outputs. Linear regression is the simplest function. Everything else is more complicated.</p>
-          </section>
-
-          <section id="line-of-best-fit">
-            <h2>The Line of Best Fit Without Heavy Maths</h2>
-            <p>You define "distance" mathematically. If the line predicts <code>y_predicted</code> and the actual value is <code>y_actual</code>, the error is the difference. You can't just add errors up - positives and negatives would cancel. So you square them (squared error is always positive) and add them all up. This is mean squared error (MSE).</p>
-            <p>The computer's job: find the line that minimises MSE. A line is defined by slope (m) and intercept (b): <code>y = mx + b</code>. The search is for values of m and b that make MSE as small as possible. That search is gradient descent.</p>
-          </section>
-
-          <section id="gradient-descent">
-            <h2>What Gradient Descent Is: The Hill-Walking Analogy</h2>
-            <p>Imagine you're lost in fog on a hill. You can't see the bottom, but you can feel the slope under your feet. If you always walk downhill, you'll eventually reach the bottom. Gradient descent is that algorithm.</p>
-            <p>Start with random values for m and b. Compute the error. Ask: if I change m slightly, does the error get smaller or bigger? If smaller, move that way. Adjust m and b a little. Ask again. Keep doing this - always moving in the direction of smaller error - until moving in any direction makes things worse. That's the bottom. That's your best fit.</p>
-            <p>The gradient is the slope of the error surface. The direction the gradient points is where error increases fastest. Moving opposite to the gradient means moving towards lower error.</p>
-            <p>The learning rate controls step size. Big steps are fast but risky - you might overshoot. Small steps are slow but safe. You pick a learning rate and tune it experimentally.</p>
-          </section>
-
-          <section id="training-loop">
-            <h2>How Gradient Descent Finds the Best Model</h2>
-            <p>In practice:</p>
-            <ol>
-              <li>Start with random m and b</li>
-              <li>Compute the error (MSE)</li>
-              <li>Compute the gradient - the direction to change m and b to reduce error</li>
-              <li>Take a small step in that direction</li>
-              <li>Repeat hundreds or thousands of times</li>
-            </ol>
-            <p>After many iterations, m and b stop changing meaningfully. You've converged. That's your trained model.</p>
-            <p>This is the basic training loop for almost every machine learning model. Neural networks have way more parameters to adjust, but the idea is identical: define what "good" means (loss function), compute the gradient, take steps to reduce loss.</p>
-            <p>For linear regression, the mathematics guarantees the error surface is bowl-shaped - convex, with one minimum. Gradient descent finds it reliably. For more complex models the surface can be bumpier, which is why training neural networks is more involved.</p>
-          </section>
-
-          <section id="foundation">
-            <h2>Why This Matters as a Foundation for Everything Else</h2>
-            <p>Every model you build later has the same structure: a loss function (how to measure wrong), parameters to adjust, an optimisation algorithm (usually gradient descent or a variant), and validation to check whether the model generalises.</p>
-            <p>In logistic regression, you're still minimising a loss function with gradient descent. In neural networks, same thing - just with way more parameters. In random forests, you're still measuring how well predictions match reality.</p>
-            <p>Understanding linear regression gives you intuition for why those models work. And it's often the right tool. When you have a big complicated dataset with fancy models available, sometimes the simplest thing that works is a linear regression. It's interpretable, fast, and deployable. If a deep learning model gets 2% higher accuracy but you can't explain its predictions, the linear regression might be the better choice.</p>
-            <p>You don't need to derive gradient formulas by hand. But you should understand what a loss function is, why you minimise it, how gradient descent navigates the error surface, and what convergence means. That understanding is the difference between calling <code>fit()</code> as magic and actually being able to debug when training goes wrong.</p>
-          </section>
-
-          <section id="quiz" class="lp-quiz-section">
-            <h2>Lesson Quiz</h2>
-            <p>Two questions to check your understanding before moving on.</p>
-
-            <div class="lp-quiz" id="quiz-1">
-              <p class="lp-quiz-q">Question 1: What does gradient descent do during model training?</p>
-              <ul class="lp-quiz-options" role="list">
-                <li><button class="lp-quiz-btn" data-index="0" type="button">It loads training data from a CSV file into the model</button></li>
-                <li><button class="lp-quiz-btn" data-index="1" type="button">It iteratively adjusts model parameters in the direction that reduces error, like walking downhill on a loss surface</button></li>
-                <li><button class="lp-quiz-btn" data-index="2" type="button">It selects the best features from the training dataset automatically</button></li>
-                <li><button class="lp-quiz-btn" data-index="3" type="button">It splits data into training and test sets</button></li>
-              </ul>
-              <div class="lp-quiz-feedback" aria-live="polite"></div>
-            </div>
-
-            <div class="lp-quiz" id="quiz-2">
-              <p class="lp-quiz-q">Question 2: Why is the learning rate important in gradient descent?</p>
-              <ul class="lp-quiz-options" role="list">
-                <li><button class="lp-quiz-btn" data-index="0" type="button">It determines how many features the model can learn from</button></li>
-                <li><button class="lp-quiz-btn" data-index="1" type="button">It sets the number of training examples used per batch</button></li>
-                <li><button class="lp-quiz-btn" data-index="2" type="button">It controls step size: too large and you overshoot the minimum, too small and training is very slow</button></li>
-                <li><button class="lp-quiz-btn" data-index="3" type="button">It controls how many layers the neural network has</button></li>
-              </ul>
-              <div class="lp-quiz-feedback" aria-live="polite"></div>
-            </div>
-
-          </section>
-
-        </div>
-
-        <section class="na-podcast">
-          <h2 class="na-podcast-title">
-            <span class="material-symbols-outlined" aria-hidden="true">podcast</span>
-            Podcast Version
-          </h2>
-          <p class="na-podcast-desc">Prefer to listen? The full lesson is available as a podcast episode.</p>
-          <audio controls preload="none" aria-label="Podcast version of this lesson">
-            Your browser does not support the audio element.
-          </audio>
-        </section>
-
-        <div id="share-bar-placeholder"></div>
-
-        <div class="na-accordions">
-
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/numpy-pandas" class="lp-nav-btn lp-nav-prev">
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Previous lesson</span>
-              <span class="lp-nav-title">NumPy and Pandas</span>
-            </span>
-          </a>
-          <a href="/course/logistic-regression-classification" class="lp-nav-btn lp-nav-next">
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Next lesson</span>
-              <span class="lp-nav-title">Logistic Regression and Classification</span>
-            </span>
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-          </a>
-        </nav>
-
 </div>
-
-      </article>
-
-      <aside class="na-sidebar" aria-label="Lesson sidebar">
-
-        <nav class="na-toc" aria-label="Table of contents">
-          <h2 class="na-toc-title">On this page</h2>
-          <ol class="na-toc-list">
-            <li><a href="#what-it-does">What Linear Regression Does</a></li>
-            <li><a href="#line-of-best-fit">The Line of Best Fit</a></li>
-            <li><a href="#gradient-descent">What Gradient Descent Is</a></li>
-            <li><a href="#training-loop">How Training Works</a></li>
-            <li><a href="#foundation">Why This Is the Foundation</a></li>
-            <li><a href="#quiz">Lesson Quiz</a></li>
-          </ol>
-        </nav>
-
-        <nav class="lp-sidebar-nav" aria-label="Course navigation">
-          <h2 class="lp-sidebar-nav-title">
-            <a href="/course-dashboard">AI Course</a>
-          </h2>
-          <div class="lp-sidebar-unit">
-            <span class="lp-sidebar-unit-label lp-unit-5">Unit 5 - Machine Learning</span>
-            <ul>
-              <li class="lp-sidebar-current"><a href="/course/linear-regression-gradient-descent" aria-current="page">Linear Regression &amp; Gradient Descent</a></li>
-              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
-              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
-              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
-            </ul>
-          </div>
-        </nav>
-
-        <div id="newsy-sidebar-mount"></div>
-
-        <div id="newsy-ai"></div>
-      </aside>
-
-    </div>
-
-  </main>
-
-  <div id="share-bar-placeholder"></div>
-  <section class="tool-info" aria-label="Lesson reference">
-    <div class="tool-info-inner">
-      <div class="tool-accordions">
-
-<details class="tool-accordion" open>
-            <summary>Frequently Asked Questions</summary>
-            <div class="tool-accordion-body">
-              <h3>What is linear regression in machine learning?</h3>
-              <p>Linear regression is the simplest machine learning model. It finds a line (or plane, in multiple dimensions) that best predicts an output value from input values. It works by minimising mean squared error - the sum of squared differences between predictions and actual values. It's useful when the relationship between input and output is roughly linear, and it's the foundation for understanding how more complex models work.</p>
-
-              <h3>What is gradient descent?</h3>
-              <p>Gradient descent is an optimisation algorithm that finds the model parameters that minimise a loss function. Imagine standing in fog on a hill - you can feel the slope but can't see the bottom. If you always step in the direction that feels downhill, you'll eventually reach the lowest point. Gradient descent does this mathematically: it computes the slope of the error surface (the gradient) and adjusts parameters in the direction of decreasing error.</p>
-
-              <h3>What is a learning rate in gradient descent?</h3>
-              <p>The learning rate controls how large each step is during gradient descent. A large learning rate means faster training but risks overshooting the minimum. A small learning rate is safer but training takes longer. Finding the right learning rate is usually done experimentally. Modern deep learning frameworks have adaptive learning rate methods (like Adam) that adjust the rate automatically during training.</p>
-
-              <h3>Why should beginners understand linear regression and gradient descent?</h3>
-              <p>Because the same patterns appear in every other machine learning model: a loss function (how to measure wrong), parameters to adjust, an optimisation algorithm (usually gradient descent), and validation to check generalisation. Neural networks, random forests, and logistic regression all share this structure. Understanding linear regression gives you intuition for why those models work and how to debug them when they don't.</p>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>How It Works</summary>
-            <div class="tool-accordion-body">
-              <p>Linear regression fits a model of the form <code>y = w1*x1 + w2*x2 + ... + b</code>, where the w values are weights (slopes) and b is the bias (intercept). Training adjusts these parameters to minimise mean squared error (MSE) across all training examples.</p>
-              <p>Gradient descent computes the partial derivative of MSE with respect to each parameter. This gives the direction of steepest ascent on the error surface. Moving in the opposite direction (steepest descent) reduces error. The update rule is: <code>parameter = parameter - learning_rate * gradient</code>. This repeats until gradients are near zero (convergence).</p>
-              <p>For linear regression specifically, the loss surface is convex - bowl-shaped with one global minimum. This guarantees gradient descent converges to the optimal solution (given a suitable learning rate). For non-convex models like neural networks, this guarantee doesn't hold.</p>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>Key Points</summary>
-            <div class="tool-accordion-body">
-              <ul>
-                <li>Linear regression finds the line that minimises mean squared error between predictions and actual values.</li>
-                <li>MSE squares errors before summing to avoid positive and negative errors cancelling each other out.</li>
-                <li>Gradient descent: start with random parameters, compute gradient (slope of error surface), take small steps in direction of decreasing error, repeat until convergence.</li>
-                <li>Learning rate: too large = overshoot minimum; too small = slow convergence.</li>
-                <li>For linear regression, the error surface is convex - one global minimum, guaranteed to be found.</li>
-                <li>The training loop (loss function + gradient descent) is the same for logistic regression, neural networks, and almost every ML model.</li>
-                <li>Linear regression is interpretable, fast, and often the right tool - don't skip it for fancier models without trying it first.</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>Sources</summary>
-            <div class="tool-accordion-body">
-              <ul>
-                <li>Hastie, T., Tibshirani, R. &amp; Friedman, J. (2009). <em>The Elements of Statistical Learning</em> (2nd ed.). Springer. (Free PDF at web.stanford.edu/~hastie/ElemStatLearn/)</li>
-                <li>Ruder, S. (2016). An overview of gradient descent optimisation algorithms. <em>arXiv</em>:1609.04747.</li>
-                <li>Ng, A. Machine Learning course lecture notes. Stanford University / Coursera.</li>
-              </ul>
-            </div>
-          </details>
-
-      </div>
-    </div>
-  </section>
-
-  <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
-  </button>
-
-
-  <div id="footer-placeholder"></div>
-
-  <script src="/news-data.js"></script>
-  <script src="/scripts.js" defer></script>
-  <script src="/news-article.js" defer></script>
-  <script src="/news-chat.js" defer></script>
-  <script>
+<details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#what-it-does">What Linear Regression Does</a></li><li><a href="#line-of-best-fit">The Line of Best Fit</a></li><li><a href="#gradient-descent">What Gradient Descent Is</a></li><li><a href="#training-loop">How Training Works</a></li><li><a href="#foundation">Why This Is the Foundation</a></li><li><a href="#quiz">Lesson Quiz</a></li></ol></details><hr class="na-divider"/>
+<div aria-label="Listen to this lesson" class="na-audio"><span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span><div class="na-audio-info"><div class="na-audio-top"><span class="na-audio-label">Listen to this lesson</span></div><audio aria-label="Audio version of this lesson" controls="True" preload="none" style="width:100%;margin-top:0.5rem;">
+            Your browser does not support the audio element.
+          </audio></div></div>
+<div class="na-body">
+<section id="what-it-does">
+<h2>What Linear Regression Is and What It's Trying to Do</h2>
+<p>Linear regression is the simplest machine learning model. It draws a line through data.</p>
+<p>You have data points. Each has an input (x) and an output (y): house size and price, years of experience and salary, temperature and ice cream sales. The model's job is to find the line that best predicts y from x. Once you have it, give it any x and it predicts y.</p>
+<p>Why start here? Because it's interpretable - you can understand why it made a prediction. It's fast. It works well when the relationship is actually linear. And the concepts transfer to every other model: deep learning, random forests, neural networks all try to find a function that maps inputs to outputs. Linear regression is the simplest function. Everything else is more complicated.</p>
+</section>
+<section id="line-of-best-fit">
+<h2>The Line of Best Fit Without Heavy Maths</h2>
+<p>You define "distance" mathematically. If the line predicts <code>y_predicted</code> and the actual value is <code>y_actual</code>, the error is the difference. You can't just add errors up - positives and negatives would cancel. So you square them (squared error is always positive) and add them all up. This is mean squared error (MSE).</p>
+<p>The computer's job: find the line that minimises MSE. A line is defined by slope (m) and intercept (b): <code>y = mx + b</code>. The search is for values of m and b that make MSE as small as possible. That search is gradient descent.</p>
+</section>
+<section id="gradient-descent">
+<h2>What Gradient Descent Is: The Hill-Walking Analogy</h2>
+<p>Imagine you're lost in fog on a hill. You can't see the bottom, but you can feel the slope under your feet. If you always walk downhill, you'll eventually reach the bottom. Gradient descent is that algorithm.</p>
+<p>Start with random values for m and b. Compute the error. Ask: if I change m slightly, does the error get smaller or bigger? If smaller, move that way. Adjust m and b a little. Ask again. Keep doing this - always moving in the direction of smaller error - until moving in any direction makes things worse. That's the bottom. That's your best fit.</p>
+<p>The gradient is the slope of the error surface. The direction the gradient points is where error increases fastest. Moving opposite to the gradient means moving towards lower error.</p>
+<p>The learning rate controls step size. Big steps are fast but risky - you might overshoot. Small steps are slow but safe. You pick a learning rate and tune it experimentally.</p>
+</section>
+<section id="training-loop">
+<h2>How Gradient Descent Finds the Best Model</h2>
+<p>In practice:</p>
+<ol>
+<li>Start with random m and b</li>
+<li>Compute the error (MSE)</li>
+<li>Compute the gradient - the direction to change m and b to reduce error</li>
+<li>Take a small step in that direction</li>
+<li>Repeat hundreds or thousands of times</li>
+</ol>
+<p>After many iterations, m and b stop changing meaningfully. You've converged. That's your trained model.</p>
+<p>This is the basic training loop for almost every machine learning model. Neural networks have way more parameters to adjust, but the idea is identical: define what "good" means (loss function), compute the gradient, take steps to reduce loss.</p>
+<p>For linear regression, the mathematics guarantees the error surface is bowl-shaped - convex, with one minimum. Gradient descent finds it reliably. For more complex models the surface can be bumpier, which is why training neural networks is more involved.</p>
+</section>
+<section id="foundation">
+<h2>Why This Matters as a Foundation for Everything Else</h2>
+<p>Every model you build later has the same structure: a loss function (how to measure wrong), parameters to adjust, an optimisation algorithm (usually gradient descent or a variant), and validation to check whether the model generalises.</p>
+<p>In logistic regression, you're still minimising a loss function with gradient descent. In neural networks, same thing - just with way more parameters. In random forests, you're still measuring how well predictions match reality.</p>
+<p>Understanding linear regression gives you intuition for why those models work. And it's often the right tool. When you have a big complicated dataset with fancy models available, sometimes the simplest thing that works is a linear regression. It's interpretable, fast, and deployable. If a deep learning model gets 2% higher accuracy but you can't explain its predictions, the linear regression might be the better choice.</p>
+<p>You don't need to derive gradient formulas by hand. But you should understand what a loss function is, why you minimise it, how gradient descent navigates the error surface, and what convergence means. That understanding is the difference between calling <code>fit()</code> as magic and actually being able to debug when training goes wrong.</p>
+</section>
+<section class="lp-quiz-section" id="quiz">
+<h2>Lesson Quiz</h2>
+<p>Two questions to check your understanding before moving on.</p>
+<div class="lp-quiz" id="quiz-1">
+<p class="lp-quiz-q">Question 1: What does gradient descent do during model training?</p>
+<ul class="lp-quiz-options" role="list">
+<li><button class="lp-quiz-btn" data-index="0" type="button">It loads training data from a CSV file into the model</button></li>
+<li><button class="lp-quiz-btn" data-index="1" type="button">It iteratively adjusts model parameters in the direction that reduces error, like walking downhill on a loss surface</button></li>
+<li><button class="lp-quiz-btn" data-index="2" type="button">It selects the best features from the training dataset automatically</button></li>
+<li><button class="lp-quiz-btn" data-index="3" type="button">It splits data into training and test sets</button></li>
+</ul>
+<div aria-live="polite" class="lp-quiz-feedback"></div>
+</div>
+<div class="lp-quiz" id="quiz-2">
+<p class="lp-quiz-q">Question 2: Why is the learning rate important in gradient descent?</p>
+<ul class="lp-quiz-options" role="list">
+<li><button class="lp-quiz-btn" data-index="0" type="button">It determines how many features the model can learn from</button></li>
+<li><button class="lp-quiz-btn" data-index="1" type="button">It sets the number of training examples used per batch</button></li>
+<li><button class="lp-quiz-btn" data-index="2" type="button">It controls step size: too large and you overshoot the minimum, too small and training is very slow</button></li>
+<li><button class="lp-quiz-btn" data-index="3" type="button">It controls how many layers the neural network has</button></li>
+</ul>
+<div aria-live="polite" class="lp-quiz-feedback"></div>
+</div>
+</section>
+</div>
+<div aria-label="Deep Dive Podcast" class="na-podcast" role="region"><div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div><div class="na-podcast-inner"><div class="na-podcast-left"><div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div><div class="na-podcast-meta"><p class="na-podcast-title">Podcast Version</p><p class="na-podcast-sub">AI-generated audio overview of this lesson</p></div></div><audio aria-label="Podcast version of this lesson" controls="True" preload="none" style="width:100%;margin-top:0.75rem;">
+            Your browser does not support the audio element.
+          </audio></div></div>
+<div id="share-bar-placeholder"></div>
+<div class="na-accordions">
+<nav aria-label="Lesson navigation" class="lp-nav">
+<a class="lp-nav-btn" href="/course/numpy-pandas">
+<span aria-hidden="true" class="material-symbols-outlined">arrow_back</span>
+<div><span class="lp-nav-label">Previous lesson</span><span class="lp-nav-title">NumPy and Pandas</span></div>
+</a>
+<a class="lp-nav-btn" href="/course/logistic-regression-classification">
+<div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">Logistic Regression and Classification</span></div>
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span>
+</a>
+</nav>
+</div>
+</article>
+<aside aria-label="Lesson sidebar" class="na-sidebar">
+<nav aria-label="Table of contents" class="na-toc">
+<h2 class="na-toc-title">On this page</h2>
+<ol class="na-toc-list">
+<li><a class="na-toc-link" href="#what-it-does">What Linear Regression Does</a></li>
+<li><a class="na-toc-link" href="#line-of-best-fit">The Line of Best Fit</a></li>
+<li><a class="na-toc-link" href="#gradient-descent">What Gradient Descent Is</a></li>
+<li><a class="na-toc-link" href="#training-loop">How Training Works</a></li>
+<li><a class="na-toc-link" href="#foundation">Why This Is the Foundation</a></li>
+<li><a class="na-toc-link" href="#quiz">Lesson Quiz</a></li>
+</ol>
+</nav>
+<nav aria-label="Course navigation" class="lp-sidebar-nav">
+<h2 class="lp-sidebar-nav-title">
+<a href="/course-dashboard">AI Course</a>
+</h2>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-5">Unit 5 - Machine Learning</span>
+<ul>
+<li class="lp-sidebar-current"><a aria-current="page" href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+<li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+<li><a href="/course/model-evaluation">Model Evaluation</a></li>
+<li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+</ul>
+</div>
+</nav>
+<div id="newsy-sidebar-mount"></div>
+<div id="newsy-ai"></div>
+</aside>
+</div>
+</main>
+<div id="share-bar-placeholder"></div>
+<section aria-label="Lesson reference" class="tool-info">
+<div class="tool-info-inner">
+<div class="tool-accordions">
+<details class="tool-accordion" open="">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<h3>What is linear regression in machine learning?</h3>
+<p>Linear regression is the simplest machine learning model. It finds a line (or plane, in multiple dimensions) that best predicts an output value from input values. It works by minimising mean squared error - the sum of squared differences between predictions and actual values. It's useful when the relationship between input and output is roughly linear, and it's the foundation for understanding how more complex models work.</p>
+<h3>What is gradient descent?</h3>
+<p>Gradient descent is an optimisation algorithm that finds the model parameters that minimise a loss function. Imagine standing in fog on a hill - you can feel the slope but can't see the bottom. If you always step in the direction that feels downhill, you'll eventually reach the lowest point. Gradient descent does this mathematically: it computes the slope of the error surface (the gradient) and adjusts parameters in the direction of decreasing error.</p>
+<h3>What is a learning rate in gradient descent?</h3>
+<p>The learning rate controls how large each step is during gradient descent. A large learning rate means faster training but risks overshooting the minimum. A small learning rate is safer but training takes longer. Finding the right learning rate is usually done experimentally. Modern deep learning frameworks have adaptive learning rate methods (like Adam) that adjust the rate automatically during training.</p>
+<h3>Why should beginners understand linear regression and gradient descent?</h3>
+<p>Because the same patterns appear in every other machine learning model: a loss function (how to measure wrong), parameters to adjust, an optimisation algorithm (usually gradient descent), and validation to check generalisation. Neural networks, random forests, and logistic regression all share this structure. Understanding linear regression gives you intuition for why those models work and how to debug them when they don't.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<p>Linear regression fits a model of the form <code>y = w1*x1 + w2*x2 + ... + b</code>, where the w values are weights (slopes) and b is the bias (intercept). Training adjusts these parameters to minimise mean squared error (MSE) across all training examples.</p>
+<p>Gradient descent computes the partial derivative of MSE with respect to each parameter. This gives the direction of steepest ascent on the error surface. Moving in the opposite direction (steepest descent) reduces error. The update rule is: <code>parameter = parameter - learning_rate * gradient</code>. This repeats until gradients are near zero (convergence).</p>
+<p>For linear regression specifically, the loss surface is convex - bowl-shaped with one global minimum. This guarantees gradient descent converges to the optimal solution (given a suitable learning rate). For non-convex models like neural networks, this guarantee doesn't hold.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Linear regression finds the line that minimises mean squared error between predictions and actual values.</li>
+<li>MSE squares errors before summing to avoid positive and negative errors cancelling each other out.</li>
+<li>Gradient descent: start with random parameters, compute gradient (slope of error surface), take small steps in direction of decreasing error, repeat until convergence.</li>
+<li>Learning rate: too large = overshoot minimum; too small = slow convergence.</li>
+<li>For linear regression, the error surface is convex - one global minimum, guaranteed to be found.</li>
+<li>The training loop (loss function + gradient descent) is the same for logistic regression, neural networks, and almost every ML model.</li>
+<li>Linear regression is interpretable, fast, and often the right tool - don't skip it for fancier models without trying it first.</li>
+</ul>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Hastie, T., Tibshirani, R. &amp; Friedman, J. (2009). <em>The Elements of Statistical Learning</em> (2nd ed.). Springer. (Free PDF at web.stanford.edu/~hastie/ElemStatLearn/)</li>
+<li>Ruder, S. (2016). An overview of gradient descent optimisation algorithms. <em>arXiv</em>:1609.04747.</li>
+<li>Ng, A. Machine Learning course lecture notes. Stanford University / Coursera.</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</section>
+<button aria-label="Back to top" id="back-to-top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div id="footer-placeholder"></div>
+<script src="/news-data.js"></script>
+<script defer="" src="/scripts.js"></script>
+<script defer="" src="/news-article.js"></script>
+<script defer="" src="/news-chat.js"></script>
+<script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
       if (trigger) trigger.click();
@@ -438,8 +350,7 @@
       });
     });
   </script>
-
-  <script>
+<script>
     (function() {
       var quizzes = [
         { correct: 1, explanation: "Correct. Gradient descent iteratively adjusts model parameters in the direction that reduces the loss/error - like walking downhill in fog. It computes the gradient (slope of the error surface) and takes small steps opposite to that gradient until it converges at the minimum." },
@@ -473,6 +384,5 @@
       });
     })();
   </script>
-
 </body>
 </html>

@@ -1,45 +1,42 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generative AI Models: VAEs, GANs and Diffusion - JohnB.io</title>
-  <meta name="description" content="How VAEs, GANs and diffusion models generate new images and data, why diffusion became dominant, and what each approach is still good for. Unit 7, Lesson 1.">
-  <meta name="keywords" content="generative AI, VAE, GAN, diffusion models, image generation, variational autoencoder, deep learning">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://johnb.io/course/generative-ai-models">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Generative AI Models: VAEs, GANs and Diffusion Explained">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://johnb.io/course/generative-ai-models">
-  <meta property="og:description" content="How VAEs, GANs and diffusion models generate new images and data, why diffusion became dominant, and what each approach is still good for.">
-  <meta property="og:image" content="https://johnb.io/images/course-og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Generative AI Models lesson - JohnB.io AI Course">
-  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
-  <meta property="article:author" content="https://johnb.io">
-  <meta property="article:section" content="Generative AI &amp; Practical Applications">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Generative AI Models: VAEs, GANs and Diffusion Explained">
-  <meta name="twitter:description" content="How VAEs, GANs and diffusion models generate new images and data, why diffusion became dominant, and what each approach is still good for.">
-  <meta name="twitter:image" content="https://johnb.io/images/course-og.png">
-  <meta name="twitter:image:alt" content="Generative AI Models lesson - JohnB.io AI Course">
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Generative AI Models: VAEs, GANs and Diffusion - JohnB.io</title>
+<meta content="How VAEs, GANs and diffusion models generate new images and data, why diffusion became dominant, and what each approach is still good for. Unit 7, Lesson 1." name="description"/>
+<meta content="generative AI, VAE, GAN, diffusion models, image generation, variational autoencoder, deep learning" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://johnb.io/course/generative-ai-models" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="Generative AI Models: VAEs, GANs and Diffusion Explained" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://johnb.io/course/generative-ai-models" property="og:url"/>
+<meta content="How VAEs, GANs and diffusion models generate new images and data, why diffusion became dominant, and what each approach is still good for." property="og:description"/>
+<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Generative AI Models lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
+<meta content="https://johnb.io" property="article:author"/>
+<meta content="Generative AI &amp; Practical Applications" property="article:section"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Generative AI Models: VAEs, GANs and Diffusion Explained" name="twitter:title"/>
+<meta content="How VAEs, GANs and diffusion models generate new images and data, why diffusion became dominant, and what each approach is still good for." name="twitter:description"/>
+<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
+<meta content="Generative AI Models lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-0J6PBWMRNY');
   </script>
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -125,380 +122,302 @@
     ]
   }
   </script>
-
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/footer.css">
-  <link rel="stylesheet" href="/news.css">
-  <link rel="stylesheet" href="/lesson.css?v=3">
-  <link rel="stylesheet" href="/news-chat.css?v=7">
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/header.css" rel="stylesheet"/>
+<link href="/footer.css" rel="stylesheet"/>
+<link href="/news.css" rel="stylesheet"/>
+<link href="/lesson.css?v=3" rel="stylesheet"/>
+<link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
 <body class="lp-page">
-
-  <div id="header-placeholder"></div>
-
-  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
-    <div class="na-layout">
-
-      <!-- â”€â”€ MAIN CONTENT â”€â”€ -->
-      <article class="na-content">
-
-        <!-- Breadcrumb -->
-        <nav class="na-breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span aria-hidden="true">â€º</span>
-          <a href="/course-dashboard">AI Course</a>
-          <span aria-hidden="true">â€º</span>
-          <span>Generative AI Models</span>
-        </nav>
-
-        <!-- Unit badge + title -->
-        <div class="lp-unit-badge lp-unit-7">Unit 7 Â· Generative AI &amp; Practical Applications</div>
-        <h1 class="na-title">Generative AI Models: VAEs, GANs and Diffusion</h1>
-
-        <!-- Meta row -->
-        <div class="na-meta">
-          <span>11 min read</span>
-          <span>Â·</span>
-          <span>Lesson 1 of 3 in Unit 7</span>
-          <span>Â·</span>
-          <span>Published 5 April 2026</span>
-        </div>
-
-        <!-- Audio player -->
-        <section class="lp-audio-section" aria-label="Lesson audio">
-          <div class="lp-audio-label">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+<div id="header-placeholder"></div><div aria-hidden="true" class="lp-ambient"></div>
+<main class="na-wrap">
+<div class="na-layout">
+<!-- â”€â”€ MAIN CONTENT â”€â”€ -->
+<article class="na-content">
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="na-breadcrumb">
+<a href="/">Home</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<a href="/course-dashboard">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span>Generative AI Models</span>
+</nav>
+<!-- Unit badge + title -->
+<div class="lp-unit-badge lp-unit-7">Unit 7 · Generative AI &amp; Practical Applications</div>
+<h1 class="na-title">Generative AI Models: VAEs, GANs and Diffusion</h1>
+<!-- Meta row -->
+<div class="na-meta">
+<span>11 min read</span>
+<span>·</span>
+<span>Lesson 1 of 3 in Unit 7</span>
+<span>·</span>
+<span>Published 5 April 2026</span>
+</div>
+<!-- Audio player -->
+<section aria-label="Lesson audio" class="lp-audio-section">
+<div class="lp-audio-label">
+<svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
             Listen to this lesson
           </div>
-          <audio controls aria-label="Lesson audio player">
+<audio aria-label="Lesson audio player" controls="">
             Your browser does not support audio playback.
           </audio>
-        </section>
-
-        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-          <span class="material-symbols-outlined">auto_awesome</span>
+</section>
+<button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
           Ask Newsy AI about this lesson
         </button>
-
-        <!-- Body -->
-        <div class="na-body">
-
-          <p>Generative AI doesn't understand anything. It's learning patterns in data and playing them back in new combinations. Everything else is details about how to make that work.</p>
-
-          <p>The actual problem is hard though. If you want a machine to create new images, music, or text that doesn't exist in your training data, you need a way to learn what makes those things valid - not memorise the training set.</p>
-
-          <h2>What generative models are trying to do</h2>
-
-          <p>A generative model learns a probability distribution. It's learning P(x) - the probability of seeing something like x. Once it learns that distribution, you can sample from it to create new things.</p>
-
-          <p>This matters because you can't just memorise. Your training set might have a million images, but the space of possible images is infinite. The model has to compress what it learns into something that can generate novel examples.</p>
-
-          <h2>Variational Autoencoders (VAEs)</h2>
-
-          <p>VAEs work in two pieces. The encoder compresses an image down to a small vector of numbers - a latent representation. The decoder reconstructs the image from that vector.</p>
-
-          <p>The clever part is what happens in the middle. VAEs don't learn a fixed compression. They learn a distribution over possible latent codes. The encoder outputs a mean and variance, and you sample from that distribution. Then you decode the sample.</p>
-
-          <p>This forces the model to learn a smooth latent space. Move slightly in that space, and the decoded image changes smoothly. You can interpolate between two images by interpolating in latent space.</p>
-
-          <p>VAEs are mathematically elegant - you can write down and understand why they work. But the images they generate often look blurry. The model is averaging over possibilities rather than committing to sharp details.</p>
-
-          <h2>GANs: the generator vs discriminator game</h2>
-
-          <p>GANs are adversarial. Two networks fight each other. The generator creates fake images from random noise. The discriminator tries to tell which images are real and which are fake.</p>
-
-          <p>If the discriminator gets too good, the generator has to make more convincing fakes. If the generator gets too good, the discriminator can't tell the difference. In theory they reach a Nash equilibrium where the generator produces indistinguishable samples.</p>
-
-          <p>This was genuinely exciting when it came out. GANs could produce sharp, detailed images in ways VAEs couldn't. People built increasingly sophisticated GAN architectures and got impressive results.</p>
-
-          <p>But GANs are hard to train. The adversarial dynamic is unstable. Mode collapse happens - the generator learns to produce a few variations really well instead of the full diversity of the training distribution. Training requires careful tuning, careful architecture choices, and often luck. Most practitioners working with images today aren't using GANs. The technology works but it's temperamental.</p>
-
-          <h2>Diffusion models: the dominant approach</h2>
-
-          <p>Diffusion models solve image generation differently. They start with random noise and gradually denoise it over many steps.</p>
-
-          <p>Take an image and add noise to it repeatedly until it's pure random noise - that's the forward process. Then train a model to reverse it: to predict what the image was before the last noise was added.</p>
-
-          <p>If you can predict denoising at every step, you can start from pure noise and iteratively denoise. Each step removes a little noise until you have a generated image.</p>
-
-          <p>This is simple. Elegantly simple. The training objective is clear - predict the noise that was added. It's not adversarial, so there's no mode collapse. You get as much diversity as your training data had.</p>
-
-          <p>The trade-off is speed. Sampling requires many steps - maybe 50 to 1,000 denoising steps, versus one forward pass for a VAE or GAN. But over the last few years, researchers have developed better sampling algorithms that dramatically reduced the number of steps needed without losing quality.</p>
-
-          <h2>Why diffusion won</h2>
-
-          <p>Diffusion models became dominant for a simple reason: they work reliably and they scale. They're stable to train. Mode collapse isn't a problem. You get good diversity. The maths is clean.</p>
-
-          <p>GANs can generate quickly, which matters in some applications. VAEs are mathematically elegant and have a clean probabilistic interpretation. But if you're building an image generation system today, you're probably starting with diffusion.</p>
-
-          <p>If you're learning generative models to understand what's happening under the hood, VAEs are worth understanding - the latent space interpretation is genuinely useful. GANs are interesting historically; they opened up adversarial training as a concept that matters beyond just image generation. But diffusion is what's shipping and what's driving progress.</p>
-
-          <p>The interesting questions now aren't which model type is best. They're how to make diffusion faster and how to control what gets generated - prompting and conditioning. The foundation work is largely solved.</p>
-
-        </div>
-
-        <!-- Quiz -->
-        <section class="lp-quiz" aria-label="Lesson quiz">
-          <h2 class="lp-quiz-title">Check your understanding</h2>
-
-          <!-- Q1 -->
-          <div class="lp-quiz-q">
-            <p class="lp-quiz-question">Why do diffusion models produce sharper images than VAEs?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
-              <button class="lp-quiz-btn" data-q="1" data-i="0">A) They use larger training datasets by default</button>
-              <button class="lp-quiz-btn" data-q="1" data-i="1">B) Their adversarial training forces the model to commit to sharper details</button>
-              <button class="lp-quiz-btn lp-quiz-correct" data-q="1" data-i="2">C) They predict noise removal step by step rather than averaging over all possibilities</button>
-              <button class="lp-quiz-btn" data-q="1" data-i="3">D) They use convolutional layers that VAEs don't have</button>
-            </div>
-            <div class="lp-quiz-feedback-correct" id="q1-correct" hidden>Correct. VAEs learn to average over all plausible reconstructions, which produces blurry outputs. Diffusion models predict the precise denoising step needed, producing sharper, more committed outputs.</div>
-            <div class="lp-quiz-feedback-wrong" id="q1-wrong" hidden>Not quite. The adversarial training description applies to GANs, not diffusion. Diffusion models are sharper than VAEs because they iteratively commit to specific details rather than averaging over all possibilities.</div>
-          </div>
-
-          <!-- Q2 -->
-          <div class="lp-quiz-q">
-            <p class="lp-quiz-question">What is the main reason GANs are less commonly used for image generation today?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
-              <button class="lp-quiz-btn" data-q="2" data-i="0">A) They can only generate greyscale images</button>
-              <button class="lp-quiz-btn" data-q="2" data-i="1">B) They require large amounts of labelled training data</button>
-              <button class="lp-quiz-btn lp-quiz-correct" data-q="2" data-i="2">C) They're unstable to train and prone to mode collapse, producing limited diversity</button>
-              <button class="lp-quiz-btn" data-q="2" data-i="3">D) They're too slow to generate images at inference time</button>
-            </div>
-            <div class="lp-quiz-feedback-correct" id="q2-correct" hidden>Correct. Training instability and mode collapse are the core problems. The generator can learn to produce a narrow range of convincing outputs while ignoring the full diversity of the training distribution. This makes GANs temperamental compared to diffusion models.</div>
-            <div class="lp-quiz-feedback-wrong" id="q2-wrong" hidden>Not quite. GANs are actually fast at inference - that's one of their advantages. The problem is training instability and mode collapse, which make them harder to work with than diffusion models.</div>
-          </div>
-        </section>
-
-        <!-- Podcast -->
-        <section class="lp-podcast-section" aria-label="Podcast version">
-          <h2 class="lp-podcast-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line><line x1="2" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="22" y2="12"></line></svg>
+<!-- Body -->
+<div class="na-body">
+<p>Generative AI doesn't understand anything. It's learning patterns in data and playing them back in new combinations. Everything else is details about how to make that work.</p>
+<p>The actual problem is hard though. If you want a machine to create new images, music, or text that doesn't exist in your training data, you need a way to learn what makes those things valid - not memorise the training set.</p>
+<h2>What generative models are trying to do</h2>
+<p>A generative model learns a probability distribution. It's learning P(x) - the probability of seeing something like x. Once it learns that distribution, you can sample from it to create new things.</p>
+<p>This matters because you can't just memorise. Your training set might have a million images, but the space of possible images is infinite. The model has to compress what it learns into something that can generate novel examples.</p>
+<h2>Variational Autoencoders (VAEs)</h2>
+<p>VAEs work in two pieces. The encoder compresses an image down to a small vector of numbers - a latent representation. The decoder reconstructs the image from that vector.</p>
+<p>The clever part is what happens in the middle. VAEs don't learn a fixed compression. They learn a distribution over possible latent codes. The encoder outputs a mean and variance, and you sample from that distribution. Then you decode the sample.</p>
+<p>This forces the model to learn a smooth latent space. Move slightly in that space, and the decoded image changes smoothly. You can interpolate between two images by interpolating in latent space.</p>
+<p>VAEs are mathematically elegant - you can write down and understand why they work. But the images they generate often look blurry. The model is averaging over possibilities rather than committing to sharp details.</p>
+<h2>GANs: the generator vs discriminator game</h2>
+<p>GANs are adversarial. Two networks fight each other. The generator creates fake images from random noise. The discriminator tries to tell which images are real and which are fake.</p>
+<p>If the discriminator gets too good, the generator has to make more convincing fakes. If the generator gets too good, the discriminator can't tell the difference. In theory they reach a Nash equilibrium where the generator produces indistinguishable samples.</p>
+<p>This was genuinely exciting when it came out. GANs could produce sharp, detailed images in ways VAEs couldn't. People built increasingly sophisticated GAN architectures and got impressive results.</p>
+<p>But GANs are hard to train. The adversarial dynamic is unstable. Mode collapse happens - the generator learns to produce a few variations really well instead of the full diversity of the training distribution. Training requires careful tuning, careful architecture choices, and often luck. Most practitioners working with images today aren't using GANs. The technology works but it's temperamental.</p>
+<h2>Diffusion models: the dominant approach</h2>
+<p>Diffusion models solve image generation differently. They start with random noise and gradually denoise it over many steps.</p>
+<p>Take an image and add noise to it repeatedly until it's pure random noise - that's the forward process. Then train a model to reverse it: to predict what the image was before the last noise was added.</p>
+<p>If you can predict denoising at every step, you can start from pure noise and iteratively denoise. Each step removes a little noise until you have a generated image.</p>
+<p>This is simple. Elegantly simple. The training objective is clear - predict the noise that was added. It's not adversarial, so there's no mode collapse. You get as much diversity as your training data had.</p>
+<p>The trade-off is speed. Sampling requires many steps - maybe 50 to 1,000 denoising steps, versus one forward pass for a VAE or GAN. But over the last few years, researchers have developed better sampling algorithms that dramatically reduced the number of steps needed without losing quality.</p>
+<h2>Why diffusion won</h2>
+<p>Diffusion models became dominant for a simple reason: they work reliably and they scale. They're stable to train. Mode collapse isn't a problem. You get good diversity. The maths is clean.</p>
+<p>GANs can generate quickly, which matters in some applications. VAEs are mathematically elegant and have a clean probabilistic interpretation. But if you're building an image generation system today, you're probably starting with diffusion.</p>
+<p>If you're learning generative models to understand what's happening under the hood, VAEs are worth understanding - the latent space interpretation is genuinely useful. GANs are interesting historically; they opened up adversarial training as a concept that matters beyond just image generation. But diffusion is what's shipping and what's driving progress.</p>
+<p>The interesting questions now aren't which model type is best. They're how to make diffusion faster and how to control what gets generated - prompting and conditioning. The foundation work is largely solved.</p>
+</div>
+<!-- Quiz -->
+<section aria-label="Lesson quiz" class="lp-quiz">
+<h2 class="lp-quiz-title">Check your understanding</h2>
+<!-- Q1 -->
+<div class="lp-quiz-q">
+<p class="lp-quiz-question">Why do diffusion models produce sharper images than VAEs?</p>
+<div aria-label="Question 1 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-btn" data-i="0" data-q="1">A) They use larger training datasets by default</button>
+<button class="lp-quiz-btn" data-i="1" data-q="1">B) Their adversarial training forces the model to commit to sharper details</button>
+<button class="lp-quiz-btn lp-quiz-correct" data-i="2" data-q="1">C) They predict noise removal step by step rather than averaging over all possibilities</button>
+<button class="lp-quiz-btn" data-i="3" data-q="1">D) They use convolutional layers that VAEs don't have</button>
+</div>
+<div class="lp-quiz-feedback-correct" hidden="" id="q1-correct">Correct. VAEs learn to average over all plausible reconstructions, which produces blurry outputs. Diffusion models predict the precise denoising step needed, producing sharper, more committed outputs.</div>
+<div class="lp-quiz-feedback-wrong" hidden="" id="q1-wrong">Not quite. The adversarial training description applies to GANs, not diffusion. Diffusion models are sharper than VAEs because they iteratively commit to specific details rather than averaging over all possibilities.</div>
+</div>
+<!-- Q2 -->
+<div class="lp-quiz-q">
+<p class="lp-quiz-question">What is the main reason GANs are less commonly used for image generation today?</p>
+<div aria-label="Question 2 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-btn" data-i="0" data-q="2">A) They can only generate greyscale images</button>
+<button class="lp-quiz-btn" data-i="1" data-q="2">B) They require large amounts of labelled training data</button>
+<button class="lp-quiz-btn lp-quiz-correct" data-i="2" data-q="2">C) They're unstable to train and prone to mode collapse, producing limited diversity</button>
+<button class="lp-quiz-btn" data-i="3" data-q="2">D) They're too slow to generate images at inference time</button>
+</div>
+<div class="lp-quiz-feedback-correct" hidden="" id="q2-correct">Correct. Training instability and mode collapse are the core problems. The generator can learn to produce a narrow range of convincing outputs while ignoring the full diversity of the training distribution. This makes GANs temperamental compared to diffusion models.</div>
+<div class="lp-quiz-feedback-wrong" hidden="" id="q2-wrong">Not quite. GANs are actually fast at inference - that's one of their advantages. The problem is training instability and mode collapse, which make them harder to work with than diffusion models.</div>
+</div>
+</section>
+<!-- Podcast -->
+<section aria-label="Podcast version" class="lp-podcast-section">
+<h2 class="lp-podcast-title">
+<svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" x2="12" y1="2" y2="5"></line><line x1="12" x2="12" y1="19" y2="22"></line><line x1="2" x2="5" y1="12" y2="12"></line><line x1="19" x2="22" y1="12" y2="12"></line></svg>
             Podcast version
           </h2>
-          <p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
-          <audio controls aria-label="Podcast episode audio player">
+<p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
+<audio aria-label="Podcast episode audio player" controls="">
             Your browser does not support audio playback.
           </audio>
-        </section>
-
-        <!-- Accordions -->
-        <!-- Prev / Next nav -->
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/rnns-transformers-autoencoders" class="lp-nav-btn lp-nav-prev" aria-label="Previous lesson">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            <span>
-              <em>Previous</em>
-              RNNs, Transformers and Autoencoders
-            </span>
-          </a>
-          <a href="/course/prompt-engineering-ai-agents" class="lp-nav-btn lp-nav-next" aria-label="Next lesson">
-            <span>
-              <em>Next</em>
-              Prompt Engineering and AI Agents
-            </span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
-        </nav>
-
+</section>
+<!-- Accordions -->
+<!-- Prev / Next nav -->
+<nav aria-label="Lesson navigation" class="lp-nav">
+<a aria-label="Previous lesson" class="lp-nav-btn" href="/course/rnns-transformers-autoencoders"><span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_forward</span></div><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_back</span></div>
+<div><span class="lp-nav-label">Previous lesson</span><span class="lp-nav-title">RNNs, Transformers and Autoencoders</span></div>
+</a>
+<a aria-label="Next lesson" class="lp-nav-btn" href="/course/prompt-engineering-ai-agents"><span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_forward</span></div>
+<div><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">Next lesson</span></div><span class="lp-nav-title">Prompt Engineering and AI Agents</span></div>
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span></a>
+</nav>
 </article>
-
-      <!-- â”€â”€ SIDEBAR â”€â”€ -->
-      <aside class="na-sidebar" aria-label="Course navigation">
-
-        <!-- Table of contents -->
-        <div class="na-toc">
-          <h2 class="na-toc-title">In this lesson</h2>
-          <ul class="na-toc-list">
-            <li><a href="#" onclick="document.querySelector('.na-body h2').scrollIntoView({behavior:'smooth'});return false;">What generative models do</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[1].scrollIntoView({behavior:'smooth'});return false;">Variational Autoencoders</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[2].scrollIntoView({behavior:'smooth'});return false;">GANs</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[3].scrollIntoView({behavior:'smooth'});return false;">Diffusion models</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[4].scrollIntoView({behavior:'smooth'});return false;">Why diffusion won</a></li>
-          </ul>
-        </div>
-
-        <!-- Course navigation -->
-        <nav class="lp-sidebar-nav" aria-label="All course lessons">
-          <h2 class="lp-sidebar-nav-title">Course contents</h2>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-1">Unit 1 Â· Introduction to AI</div>
-            <ul>
-              <li><a href="/course/what-is-ai">What is AI?</a></li>
-              <li><a href="/course/categories-of-ai">Categories of AI</a></li>
-              <li><a href="/course/how-ai-learns">How AI Learns</a></li>
-              <li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-2">Unit 2 Â· The Modern AI Landscape</div>
-            <ul>
-              <li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
-              <li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
-              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
-              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-3">Unit 3 Â· Ethics &amp; Governance</div>
-            <ul>
-              <li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
-              <li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
-              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-4">Unit 4 Â· Python for AI</div>
-            <ul>
-              <li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
-              <li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-5">Unit 5 Â· Machine Learning</div>
-            <ul>
-              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
-              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
-              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
-              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-6">Unit 6 Â· Deep Learning</div>
-            <ul>
-              <li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
-              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
-              <li><a href="/course/backpropagation">Backpropagation</a></li>
-              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
-              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
-              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
-              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-7">Unit 7 Â· Generative AI</div>
-            <ul>
-              <li><a href="/course/generative-ai-models" class="lp-sidebar-current" aria-current="page">Generative AI Models</a></li>
-              <li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
-              <li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-8">Unit 8 Â· AI in Production</div>
-            <ul>
-              <li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
-              <li><a href="/course/model-deployment">Model Deployment</a></li>
-              <li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
-              <li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-9">Unit 9 Â· AI Strategy</div>
-            <ul>
-              <li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
-              <li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
-              <li><a href="/course/ai-across-industries">AI Across Industries</a></li>
-              <li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
-            </ul>
-          </div>
-
-        </nav>
-        <div id="newsy-ai"></div>
-      </aside>
-
-    </div>
-  </main>
-
-  <div id="share-bar-placeholder"></div>
-  <section class="tool-info" aria-label="Lesson reference">
-    <div class="tool-info-inner">
-      <div class="tool-accordions">
-
-<details class="tool-accordion" open>
-          <summary>Frequently Asked Questions</summary>
-          <div class="tool-accordion-body">
-            <h3>What is a generative AI model?</h3>
-            <p>A generative model learns a probability distribution from training data, then samples from that distribution to create new examples. It can't memorise all possible images, so it learns the underlying structure of what makes something a valid image, piece of music, or sentence. The three main approaches are VAEs, GANs, and diffusion models.</p>
-
-            <h3>What is the difference between a VAE and a GAN?</h3>
-            <p>A VAE (Variational Autoencoder) compresses data to a latent distribution and reconstructs from it. The training is stable and the latent space is smooth, but outputs tend to be blurry. A GAN (Generative Adversarial Network) pits a generator against a discriminator in an adversarial game. GANs produce sharper images but are notoriously unstable to train and prone to mode collapse.</p>
-
-            <h3>How does a diffusion model work?</h3>
-            <p>A diffusion model learns to reverse a noise-adding process. During training, noise is added to images step by step until they're pure noise. The model learns to predict what was there before each noise step. At generation time, you start with pure noise and iteratively denoise, producing a new image. The training is stable, there's no mode collapse, and the results are high quality.</p>
-
-            <h3>Why did diffusion models win over GANs?</h3>
-            <p>Diffusion models are stable to train, produce diverse outputs, and scale well. GANs produce sharp images but suffer from mode collapse and training instability. Diffusion models' main disadvantage - slow sampling - has been largely addressed by improved sampling algorithms. For most image generation tasks today, diffusion is the default choice.</p>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>How It Works</summary>
-          <div class="tool-accordion-body">
-            <p><strong>VAEs:</strong> The encoder maps input data to a mean and variance in latent space. A sample is drawn from this distribution and passed to the decoder, which reconstructs the original input. The loss function combines reconstruction error with a regularisation term (KL divergence) that keeps the latent space smooth and continuous.</p>
-            <p><strong>GANs:</strong> The generator takes random noise and produces a fake sample. The discriminator takes both real and fake samples and outputs a probability of being real. Both networks train simultaneously: the generator minimises its ability to be detected, the discriminator maximises its detection accuracy. The ideal result is a generator that produces samples indistinguishable from real data.</p>
-            <p><strong>Diffusion:</strong> The forward process adds Gaussian noise to data over T steps until the data is pure noise. The model (typically a U-Net) is trained to predict the noise added at each step. At generation time, you sample pure noise and run T denoising steps using the model, each step subtracting the predicted noise to recover the original signal.</p>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>Key Points</summary>
-          <div class="tool-accordion-body">
-            <ul>
-              <li>Generative models learn probability distributions over data, not just to classify it</li>
-              <li>VAEs learn smooth latent spaces but produce blurry outputs due to averaging</li>
-              <li>GANs use adversarial training to produce sharp images but are unstable and prone to mode collapse</li>
-              <li>Diffusion models add then remove noise iteratively - stable to train, high-quality outputs</li>
-              <li>Diffusion's slow sampling has been largely solved by improved algorithms</li>
-              <li>Diffusion models underpin Stable Diffusion, DALL-E 3, Midjourney, and Sora</li>
-              <li>VAEs remain useful for understanding latent spaces and as components in larger systems</li>
-              <li>GAN training concepts (adversarial objectives) remain relevant beyond image generation</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>Sources</summary>
-          <div class="tool-accordion-body">
-            <ul>
-              <li>Kingma, D. &amp; Welling, M. (2013). Auto-Encoding Variational Bayes. <em>arXiv</em>.</li>
-              <li>Goodfellow, I. et al. (2014). Generative Adversarial Networks. <em>NeurIPS</em>.</li>
-              <li>Ho, J. et al. (2020). Denoising Diffusion Probabilistic Models. <em>NeurIPS</em>.</li>
-              <li>Rombach, R. et al. (2022). High-Resolution Image Synthesis with Latent Diffusion Models. <em>CVPR</em>.</li>
-            </ul>
-          </div>
-        </details>
-
-      </div>
-    </div>
-  </section>
-
-  <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
-  </button>
-
-
-  <div id="footer-placeholder"></div>
-
-  <script src="/news-data.js"></script>
-  <script src="/scripts.js" defer></script>
-  <script src="/news-article.js" defer></script>
-  <script src="/news-chat.js" defer></script>
-  <script>
+<!-- â”€â”€ SIDEBAR â”€â”€ -->
+<aside aria-label="Course navigation" class="na-sidebar">
+<!-- Table of contents -->
+<nav aria-label="In this lesson" class="na-toc">
+<p class="na-toc-title">In this lesson</p>
+<ol class="na-toc-list">
+<li><a class="na-toc-link" href="#">What generative models do</a></li>
+<li><a class="na-toc-link" href="#">Variational Autoencoders</a></li>
+<li><a class="na-toc-link" href="#">GANs</a></li>
+<li><a class="na-toc-link" href="#">Diffusion models</a></li>
+<li><a class="na-toc-link" href="#">Why diffusion won</a></li>
+</ol>
+</nav>
+<!-- Course navigation -->
+<nav aria-label="All course lessons" class="lp-sidebar-nav">
+<p class="lp-sidebar-nav-title">Course contents</p>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-1">Unit 1 · Introduction to AI</span>
+<ul>
+<li><a href="/course/what-is-ai">What is AI?</a></li>
+<li><a href="/course/categories-of-ai">Categories of AI</a></li>
+<li><a href="/course/how-ai-learns">How AI Learns</a></li>
+<li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-2">Unit 2 · The Modern AI Landscape</span>
+<ul>
+<li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
+<li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
+<li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
+<li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-3">Unit 3 · Ethics &amp; Governance</span>
+<ul>
+<li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
+<li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
+<li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-4">Unit 4 · Python for AI</span>
+<ul>
+<li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
+<li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-5">Unit 5 · Machine Learning</span>
+<ul>
+<li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+<li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+<li><a href="/course/model-evaluation">Model Evaluation</a></li>
+<li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-6">Unit 6 · Deep Learning</span>
+<ul>
+<li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
+<li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+<li><a href="/course/backpropagation">Backpropagation</a></li>
+<li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+<li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+<li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
+<li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-7">Unit 7 · Generative AI</span>
+<ul>
+<li><a aria-current="page" class="lp-sidebar-current" href="/course/generative-ai-models">Generative AI Models</a></li>
+<li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
+<li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-8">Unit 8 · AI in Production</span>
+<ul>
+<li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
+<li><a href="/course/model-deployment">Model Deployment</a></li>
+<li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
+<li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-9">Unit 9 · AI Strategy</span>
+<ul>
+<li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
+<li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
+<li><a href="/course/ai-across-industries">AI Across Industries</a></li>
+<li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
+</ul>
+</div>
+</nav>
+<div id="newsy-ai"></div>
+</aside>
+</div>
+</main>
+<div id="share-bar-placeholder"></div>
+<section aria-label="Lesson reference" class="tool-info">
+<div class="tool-info-inner">
+<div class="tool-accordions">
+<details class="tool-accordion" open="">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<h3>What is a generative AI model?</h3>
+<p>A generative model learns a probability distribution from training data, then samples from that distribution to create new examples. It can't memorise all possible images, so it learns the underlying structure of what makes something a valid image, piece of music, or sentence. The three main approaches are VAEs, GANs, and diffusion models.</p>
+<h3>What is the difference between a VAE and a GAN?</h3>
+<p>A VAE (Variational Autoencoder) compresses data to a latent distribution and reconstructs from it. The training is stable and the latent space is smooth, but outputs tend to be blurry. A GAN (Generative Adversarial Network) pits a generator against a discriminator in an adversarial game. GANs produce sharper images but are notoriously unstable to train and prone to mode collapse.</p>
+<h3>How does a diffusion model work?</h3>
+<p>A diffusion model learns to reverse a noise-adding process. During training, noise is added to images step by step until they're pure noise. The model learns to predict what was there before each noise step. At generation time, you start with pure noise and iteratively denoise, producing a new image. The training is stable, there's no mode collapse, and the results are high quality.</p>
+<h3>Why did diffusion models win over GANs?</h3>
+<p>Diffusion models are stable to train, produce diverse outputs, and scale well. GANs produce sharp images but suffer from mode collapse and training instability. Diffusion models' main disadvantage - slow sampling - has been largely addressed by improved sampling algorithms. For most image generation tasks today, diffusion is the default choice.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<p><strong>VAEs:</strong> The encoder maps input data to a mean and variance in latent space. A sample is drawn from this distribution and passed to the decoder, which reconstructs the original input. The loss function combines reconstruction error with a regularisation term (KL divergence) that keeps the latent space smooth and continuous.</p>
+<p><strong>GANs:</strong> The generator takes random noise and produces a fake sample. The discriminator takes both real and fake samples and outputs a probability of being real. Both networks train simultaneously: the generator minimises its ability to be detected, the discriminator maximises its detection accuracy. The ideal result is a generator that produces samples indistinguishable from real data.</p>
+<p><strong>Diffusion:</strong> The forward process adds Gaussian noise to data over T steps until the data is pure noise. The model (typically a U-Net) is trained to predict the noise added at each step. At generation time, you sample pure noise and run T denoising steps using the model, each step subtracting the predicted noise to recover the original signal.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Generative models learn probability distributions over data, not just to classify it</li>
+<li>VAEs learn smooth latent spaces but produce blurry outputs due to averaging</li>
+<li>GANs use adversarial training to produce sharp images but are unstable and prone to mode collapse</li>
+<li>Diffusion models add then remove noise iteratively - stable to train, high-quality outputs</li>
+<li>Diffusion's slow sampling has been largely solved by improved algorithms</li>
+<li>Diffusion models underpin Stable Diffusion, DALL-E 3, Midjourney, and Sora</li>
+<li>VAEs remain useful for understanding latent spaces and as components in larger systems</li>
+<li>GAN training concepts (adversarial objectives) remain relevant beyond image generation</li>
+</ul>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Kingma, D. &amp; Welling, M. (2013). Auto-Encoding Variational Bayes. <em>arXiv</em>.</li>
+<li>Goodfellow, I. et al. (2014). Generative Adversarial Networks. <em>NeurIPS</em>.</li>
+<li>Ho, J. et al. (2020). Denoising Diffusion Probabilistic Models. <em>NeurIPS</em>.</li>
+<li>Rombach, R. et al. (2022). High-Resolution Image Synthesis with Latent Diffusion Models. <em>CVPR</em>.</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</section>
+<button aria-label="Back to top" id="back-to-top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div id="footer-placeholder"></div>
+<script src="/news-data.js"></script>
+<script defer="" src="/scripts.js"></script>
+<script defer="" src="/news-article.js"></script>
+<script defer="" src="/news-chat.js"></script>
+<script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
       if (trigger) trigger.click();
@@ -510,7 +429,7 @@
       });
     });
   </script>
-  <script>
+<script>
     // Quiz logic
     document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
       btn.addEventListener('click', function() {

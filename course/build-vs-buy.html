@@ -1,45 +1,42 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Build vs Buy: Evaluating AI Tools as a Business - JohnB.io</title>
-  <meta name="description" content="The real cost of building AI systems, when to build vs buy, the hidden costs on both sides, and why buying should be the default first move. Unit 9, Lesson 2.">
-  <meta name="keywords" content="build vs buy AI, AI procurement, make or buy decision, AI tools evaluation, enterprise AI strategy">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://johnb.io/course/build-vs-buy">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Build vs Buy: Evaluating AI Tools as a Business">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://johnb.io/course/build-vs-buy">
-  <meta property="og:description" content="The real cost of building AI systems, when to build vs buy, the hidden costs on both sides, and why buying should be the default first move.">
-  <meta property="og:image" content="https://johnb.io/images/course-og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Build vs Buy lesson - JohnB.io AI Course">
-  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
-  <meta property="article:author" content="https://johnb.io">
-  <meta property="article:section" content="AI Strategy &amp; Business Applications">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Build vs Buy: Evaluating AI Tools as a Business">
-  <meta name="twitter:description" content="The real cost of building AI systems, when to build vs buy, the hidden costs on both sides, and why buying should be the default first move.">
-  <meta name="twitter:image" content="https://johnb.io/images/course-og.png">
-  <meta name="twitter:image:alt" content="Build vs Buy lesson - JohnB.io AI Course">
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Build vs Buy: Evaluating AI Tools as a Business - JohnB.io</title>
+<meta content="The real cost of building AI systems, when to build vs buy, the hidden costs on both sides, and why buying should be the default first move. Unit 9, Lesson 2." name="description"/>
+<meta content="build vs buy AI, AI procurement, make or buy decision, AI tools evaluation, enterprise AI strategy" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://johnb.io/course/build-vs-buy" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="Build vs Buy: Evaluating AI Tools as a Business" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://johnb.io/course/build-vs-buy" property="og:url"/>
+<meta content="The real cost of building AI systems, when to build vs buy, the hidden costs on both sides, and why buying should be the default first move." property="og:description"/>
+<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Build vs Buy lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
+<meta content="https://johnb.io" property="article:author"/>
+<meta content="AI Strategy &amp; Business Applications" property="article:section"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Build vs Buy: Evaluating AI Tools as a Business" name="twitter:title"/>
+<meta content="The real cost of building AI systems, when to build vs buy, the hidden costs on both sides, and why buying should be the default first move." name="twitter:description"/>
+<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
+<meta content="Build vs Buy lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-0J6PBWMRNY');
   </script>
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -78,7 +75,7 @@
             "name": "What is the realistic cost of building a production ML system?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Â£150,000 to Â£800,000+ depending on complexity and team salaries. This includes model development (3-6 months), infrastructure and serving (2-3 months more), data collection and labelling if needed, plus ongoing maintenance (one person part-time to full-time permanently). Most teams significantly underestimate this before they start."
+              "text": "£150,000 to £800,000+ depending on complexity and team salaries. This includes model development (3-6 months), infrastructure and serving (2-3 months more), data collection and labelling if needed, plus ongoing maintenance (one person part-time to full-time permanently). Most teams significantly underestimate this before they start."
             }
           },
           {
@@ -125,384 +122,304 @@
     ]
   }
   </script>
-
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/footer.css">
-  <link rel="stylesheet" href="/news.css">
-  <link rel="stylesheet" href="/lesson.css?v=3">
-  <link rel="stylesheet" href="/news-chat.css?v=7">
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/header.css" rel="stylesheet"/>
+<link href="/footer.css" rel="stylesheet"/>
+<link href="/news.css" rel="stylesheet"/>
+<link href="/lesson.css?v=3" rel="stylesheet"/>
+<link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
 <body class="lp-page">
-
-  <div id="header-placeholder"></div>
-
-  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
-    <div class="na-layout">
-
-      <!-- â”€â”€ MAIN CONTENT â”€â”€ -->
-      <article class="na-content">
-
-        <!-- Breadcrumb -->
-        <nav class="na-breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span aria-hidden="true">â€º</span>
-          <a href="/course-dashboard">AI Course</a>
-          <span aria-hidden="true">â€º</span>
-          <span>Build vs. Buy</span>
-        </nav>
-
-        <!-- Unit badge + title -->
-        <div class="lp-unit-badge lp-unit-9">Unit 9 Â· AI Strategy &amp; Business Applications</div>
-        <h1 class="na-title">Build vs. Buy: Evaluating AI Tools as a Business</h1>
-
-        <!-- Meta row -->
-        <div class="na-meta">
-          <span>8 min read</span>
-          <span>Â·</span>
-          <span>Lesson 2 of 4 in Unit 9</span>
-          <span>Â·</span>
-          <span>Published 5 April 2026</span>
-        </div>
-
-        <!-- Audio player -->
-        <section class="lp-audio-section" aria-label="Lesson audio">
-          <div class="lp-audio-label">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+<div id="header-placeholder"></div><div aria-hidden="true" class="lp-ambient"></div>
+<main class="na-wrap">
+<div class="na-layout">
+<!-- â”€â”€ MAIN CONTENT â”€â”€ -->
+<article class="na-content">
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="na-breadcrumb">
+<a href="/">Home</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<a href="/course-dashboard">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span>Build vs. Buy</span>
+</nav>
+<!-- Unit badge + title -->
+<div class="lp-unit-badge lp-unit-9">Unit 9 · AI Strategy &amp; Business Applications</div>
+<h1 class="na-title">Build vs. Buy: Evaluating AI Tools as a Business</h1>
+<!-- Meta row -->
+<div class="na-meta">
+<span>8 min read</span>
+<span>·</span>
+<span>Lesson 2 of 4 in Unit 9</span>
+<span>·</span>
+<span>Published 5 April 2026</span>
+</div>
+<!-- Audio player -->
+<section aria-label="Lesson audio" class="lp-audio-section">
+<div class="lp-audio-label">
+<svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
             Listen to this lesson
           </div>
-          <audio controls aria-label="Lesson audio player">
+<audio aria-label="Lesson audio player" controls="">
             Your browser does not support audio playback.
           </audio>
-        </section>
-
-        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-          <span class="material-symbols-outlined">auto_awesome</span>
+</section>
+<button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
           Ask Newsy AI about this lesson
         </button>
-
-        <!-- Body -->
-        <div class="na-body">
-
-          <p>You need an AI capability. You have two choices: build it yourself or buy it from someone else.</p>
-
-          <p>This decision usually goes wrong. Teams build things that already exist. Or they buy tools that are too generic for their use case. Or they build something half-baked because they underestimated the effort. There's a framework for thinking about this clearly.</p>
-
-          <h2>The real cost of building</h2>
-
-          <p>Building sounds cheap. You have engineers. You have a problem. You build a solution.</p>
-
-          <p>But the real cost is higher than people think.</p>
-
-          <p><strong>Development time.</strong> Building an ML system takes longer than anyone predicts. Feature engineering, data collection, model experimentation, debugging failures. You're looking at 3-6 months minimum for something production-ready. That's expensive.</p>
-
-          <p><strong>Infrastructure.</strong> You need to serve the model, monitor it, and set up retraining pipelines. This is software engineering work, not just ML. Maybe another 2-3 months if you do it well.</p>
-
-          <p><strong>Data.</strong> You need good data to train on. If you don't have it, you need to collect it. Labelling data is expensive and slow.</p>
-
-          <p><strong>Ongoing maintenance.</strong> The model will degrade over time. You'll need to retrain it and monitor it. That's a permanent cost - maybe one person part-time, maybe full-time.</p>
-
-          <p><strong>Opportunity cost.</strong> While your engineers are building this AI system, they're not building other things. What are they not doing?</p>
-
-          <p>A realistic total cost for building a production ML system: Â£150,000 to Â£800,000+ depending on complexity, scope, and your salary base. That's building the model, infrastructure, and setting up operations. This might be worth it. But you need to know the number going in.</p>
-
-          <h2>When building makes sense</h2>
-
-          <p>Build when you have proprietary data or methods that give you competitive advantage - buying a generic tool won't capture that. Build when your specific requirements aren't met by available products. Build when you have in-house ML engineering and infrastructure expertise - if you don't, you're either hiring (expensive) or struggling (slow). Build when the problem is unique to your business. Build when you've already failed with products and know exactly what you need.</p>
-
-          <p>But the default should not be "build." Most organisations overestimate their need to build.</p>
-
-          <h2>When buying (or using APIs) is smarter</h2>
-
-          <p>Buy when the problem is general. Fraud detection, demand forecasting, customer churn - these are solved problems. Products exist. Buy when you don't have the ML expertise to build well. Buy when you need to move fast - you can't afford a 6-month development cycle. Buy when the cost of failure is low and you're learning what's possible. Buy when you need the vendor to keep the product updated as your domain changes.</p>
-
-          <p>For most organisations, buying is smarter. The cost is lower, you get something faster, and you reduce risk.</p>
-
-          <h2>The hidden costs on both sides</h2>
-
-          <p>Building has hidden costs: hiring the right people, learning from failures slowly, integration nightmares discovered late, and ongoing maintenance that's more expensive than estimated.</p>
-
-          <p>Buying has hidden costs: vendor lock-in (expensive to switch later), integration work (the product almost never fits perfectly), customisation costs (making the product work for your use case requires engineering), increasing licensing costs over time, and depending on the vendor for updates and support.</p>
-
-          <p>A product that costs Â£40,000 per year sounds cheap. But if it requires Â£80,000 of integration work and six months of your engineer's time, the total cost of ownership is high. Calculate the full number, not the sticker price.</p>
-
-          <h2>What the default should be</h2>
-
-          <p>Build is seductive. Engineers like building. It feels like you're creating something. It feels smart.</p>
-
-          <p>But the default answer should be buy. Every time.</p>
-
-          <p>Here's why: building is expensive, slow, and risky. The chance you'll end up with something better than a professional product is low. The chance you'll exceed budget and timeline is high.</p>
-
-          <p>Start with buying. Try a product. Set a clear timeline - 3 months. If the product works, great, you got ROI. If it doesn't, you've learned something. You now know what you actually need. Either you customise the product or you know enough to build better.</p>
-
-          <p>The organisations that build first waste time building the wrong thing. The organisations that buy first learn fast and either find the product works or know what to build next.</p>
-
-          <p>This is controversial in engineering circles. Engineers think buying is "not invented here" syndrome. I think building first is "we're smarter than everyone else" syndrome. A company that focused on this specific problem for years probably solved it better than you will in six months. Most organisations that reverse this - build first, buy later - end up spending more.</p>
-
-        </div>
-
-        <!-- Quiz -->
-        <section class="lp-quiz" aria-label="Lesson quiz">
-          <h2 class="lp-quiz-title">Check your understanding</h2>
-
-          <!-- Q1 -->
-          <div class="lp-quiz-q">
-            <p class="lp-quiz-question">When does building an AI system make the most sense?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
-              <button class="lp-quiz-btn" data-q="1" data-i="0">A) Whenever the team has engineers who enjoy ML projects</button>
-              <button class="lp-quiz-btn lp-quiz-correct" data-q="1" data-i="1">B) When you have proprietary data or methods that give competitive advantage no generic product can capture</button>
-              <button class="lp-quiz-btn" data-q="1" data-i="2">C) When the problem is common and many vendors have already solved it</button>
-              <button class="lp-quiz-btn" data-q="1" data-i="3">D) When you need to move quickly and can't wait for vendor integration</button>
-            </div>
-            <div class="lp-quiz-feedback-correct" id="q1-correct" hidden>Correct. The strongest justification for building is when your advantage comes from something proprietary - your data, your methods, your domain-specific requirements. If the problem is generic and products exist, building is almost always the wrong first move.</div>
-            <div class="lp-quiz-feedback-wrong" id="q1-wrong" hidden>Not quite. Engineers enjoying ML is not a business reason to build. When you need speed, buying is actually better - you get something working in weeks, not months. Build when your specific situation can't be served by any available product.</div>
-          </div>
-
-          <!-- Q2 -->
-          <div class="lp-quiz-q">
-            <p class="lp-quiz-question">Why is "buy first" recommended as the default approach?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
-              <button class="lp-quiz-btn" data-q="2" data-i="0">A) Bought products always perform better than custom-built systems</button>
-              <button class="lp-quiz-btn" data-q="2" data-i="1">B) Building in-house requires regulatory approval in most industries</button>
-              <button class="lp-quiz-btn lp-quiz-correct" data-q="2" data-i="2">C) It's faster and cheaper, and even if it fails you learn what you actually need before building</button>
-              <button class="lp-quiz-btn" data-q="2" data-i="3">D) Cloud vendor products are always more secure than internal builds</button>
-            </div>
-            <div class="lp-quiz-feedback-correct" id="q2-correct" hidden>Correct. Buying gives you something working quickly and at lower cost. If the product works, great. If it doesn't, you've now discovered your specific requirements through real experience - which makes any subsequent build much more targeted and less likely to miss the mark.</div>
-            <div class="lp-quiz-feedback-wrong" id="q2-wrong" hidden>Not quite. Bought products don't always perform better, and regulatory requirements vary. The reason to buy first is speed and learning: you get faster ROI if it works, and you learn your actual requirements if it doesn't - making any future build far more targeted.</div>
-          </div>
-        </section>
-
-        <!-- Podcast -->
-        <section class="lp-podcast-section" aria-label="Podcast version">
-          <h2 class="lp-podcast-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line><line x1="2" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="22" y2="12"></line></svg>
+<!-- Body -->
+<div class="na-body">
+<p>You need an AI capability. You have two choices: build it yourself or buy it from someone else.</p>
+<p>This decision usually goes wrong. Teams build things that already exist. Or they buy tools that are too generic for their use case. Or they build something half-baked because they underestimated the effort. There's a framework for thinking about this clearly.</p>
+<h2>The real cost of building</h2>
+<p>Building sounds cheap. You have engineers. You have a problem. You build a solution.</p>
+<p>But the real cost is higher than people think.</p>
+<p><strong>Development time.</strong> Building an ML system takes longer than anyone predicts. Feature engineering, data collection, model experimentation, debugging failures. You're looking at 3-6 months minimum for something production-ready. That's expensive.</p>
+<p><strong>Infrastructure.</strong> You need to serve the model, monitor it, and set up retraining pipelines. This is software engineering work, not just ML. Maybe another 2-3 months if you do it well.</p>
+<p><strong>Data.</strong> You need good data to train on. If you don't have it, you need to collect it. Labelling data is expensive and slow.</p>
+<p><strong>Ongoing maintenance.</strong> The model will degrade over time. You'll need to retrain it and monitor it. That's a permanent cost - maybe one person part-time, maybe full-time.</p>
+<p><strong>Opportunity cost.</strong> While your engineers are building this AI system, they're not building other things. What are they not doing?</p>
+<p>A realistic total cost for building a production ML system: £150,000 to £800,000+ depending on complexity, scope, and your salary base. That's building the model, infrastructure, and setting up operations. This might be worth it. But you need to know the number going in.</p>
+<h2>When building makes sense</h2>
+<p>Build when you have proprietary data or methods that give you competitive advantage - buying a generic tool won't capture that. Build when your specific requirements aren't met by available products. Build when you have in-house ML engineering and infrastructure expertise - if you don't, you're either hiring (expensive) or struggling (slow). Build when the problem is unique to your business. Build when you've already failed with products and know exactly what you need.</p>
+<p>But the default should not be "build." Most organisations overestimate their need to build.</p>
+<h2>When buying (or using APIs) is smarter</h2>
+<p>Buy when the problem is general. Fraud detection, demand forecasting, customer churn - these are solved problems. Products exist. Buy when you don't have the ML expertise to build well. Buy when you need to move fast - you can't afford a 6-month development cycle. Buy when the cost of failure is low and you're learning what's possible. Buy when you need the vendor to keep the product updated as your domain changes.</p>
+<p>For most organisations, buying is smarter. The cost is lower, you get something faster, and you reduce risk.</p>
+<h2>The hidden costs on both sides</h2>
+<p>Building has hidden costs: hiring the right people, learning from failures slowly, integration nightmares discovered late, and ongoing maintenance that's more expensive than estimated.</p>
+<p>Buying has hidden costs: vendor lock-in (expensive to switch later), integration work (the product almost never fits perfectly), customisation costs (making the product work for your use case requires engineering), increasing licensing costs over time, and depending on the vendor for updates and support.</p>
+<p>A product that costs £40,000 per year sounds cheap. But if it requires £80,000 of integration work and six months of your engineer's time, the total cost of ownership is high. Calculate the full number, not the sticker price.</p>
+<h2>What the default should be</h2>
+<p>Build is seductive. Engineers like building. It feels like you're creating something. It feels smart.</p>
+<p>But the default answer should be buy. Every time.</p>
+<p>Here's why: building is expensive, slow, and risky. The chance you'll end up with something better than a professional product is low. The chance you'll exceed budget and timeline is high.</p>
+<p>Start with buying. Try a product. Set a clear timeline - 3 months. If the product works, great, you got ROI. If it doesn't, you've learned something. You now know what you actually need. Either you customise the product or you know enough to build better.</p>
+<p>The organisations that build first waste time building the wrong thing. The organisations that buy first learn fast and either find the product works or know what to build next.</p>
+<p>This is controversial in engineering circles. Engineers think buying is "not invented here" syndrome. I think building first is "we're smarter than everyone else" syndrome. A company that focused on this specific problem for years probably solved it better than you will in six months. Most organisations that reverse this - build first, buy later - end up spending more.</p>
+</div>
+<!-- Quiz -->
+<section aria-label="Lesson quiz" class="lp-quiz">
+<h2 class="lp-quiz-title">Check your understanding</h2>
+<!-- Q1 -->
+<div class="lp-quiz-q">
+<p class="lp-quiz-question">When does building an AI system make the most sense?</p>
+<div aria-label="Question 1 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-btn" data-i="0" data-q="1">A) Whenever the team has engineers who enjoy ML projects</button>
+<button class="lp-quiz-btn lp-quiz-correct" data-i="1" data-q="1">B) When you have proprietary data or methods that give competitive advantage no generic product can capture</button>
+<button class="lp-quiz-btn" data-i="2" data-q="1">C) When the problem is common and many vendors have already solved it</button>
+<button class="lp-quiz-btn" data-i="3" data-q="1">D) When you need to move quickly and can't wait for vendor integration</button>
+</div>
+<div class="lp-quiz-feedback-correct" hidden="" id="q1-correct">Correct. The strongest justification for building is when your advantage comes from something proprietary - your data, your methods, your domain-specific requirements. If the problem is generic and products exist, building is almost always the wrong first move.</div>
+<div class="lp-quiz-feedback-wrong" hidden="" id="q1-wrong">Not quite. Engineers enjoying ML is not a business reason to build. When you need speed, buying is actually better - you get something working in weeks, not months. Build when your specific situation can't be served by any available product.</div>
+</div>
+<!-- Q2 -->
+<div class="lp-quiz-q">
+<p class="lp-quiz-question">Why is "buy first" recommended as the default approach?</p>
+<div aria-label="Question 2 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-btn" data-i="0" data-q="2">A) Bought products always perform better than custom-built systems</button>
+<button class="lp-quiz-btn" data-i="1" data-q="2">B) Building in-house requires regulatory approval in most industries</button>
+<button class="lp-quiz-btn lp-quiz-correct" data-i="2" data-q="2">C) It's faster and cheaper, and even if it fails you learn what you actually need before building</button>
+<button class="lp-quiz-btn" data-i="3" data-q="2">D) Cloud vendor products are always more secure than internal builds</button>
+</div>
+<div class="lp-quiz-feedback-correct" hidden="" id="q2-correct">Correct. Buying gives you something working quickly and at lower cost. If the product works, great. If it doesn't, you've now discovered your specific requirements through real experience - which makes any subsequent build much more targeted and less likely to miss the mark.</div>
+<div class="lp-quiz-feedback-wrong" hidden="" id="q2-wrong">Not quite. Bought products don't always perform better, and regulatory requirements vary. The reason to buy first is speed and learning: you get faster ROI if it works, and you learn your actual requirements if it doesn't - making any future build far more targeted.</div>
+</div>
+</section>
+<!-- Podcast -->
+<section aria-label="Podcast version" class="lp-podcast-section">
+<h2 class="lp-podcast-title">
+<svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" x2="12" y1="2" y2="5"></line><line x1="12" x2="12" y1="19" y2="22"></line><line x1="2" x2="5" y1="12" y2="12"></line><line x1="19" x2="22" y1="12" y2="12"></line></svg>
             Podcast version
           </h2>
-          <p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
-          <audio controls aria-label="Podcast episode audio player">
+<p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
+<audio aria-label="Podcast episode audio player" controls="">
             Your browser does not support audio playback.
           </audio>
-        </section>
-
-        <!-- Accordions -->
-        <!-- Prev / Next nav -->
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/ai-adoption-journey" class="lp-nav-btn lp-nav-prev" aria-label="Previous lesson">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            <span>
-              <em>Previous</em>
-              How Organisations Adopt AI
-            </span>
-          </a>
-          <a href="/course/ai-across-industries" class="lp-nav-btn lp-nav-next" aria-label="Next lesson">
-            <span>
-              <em>Next</em>
-              AI Across Industries
-            </span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
-        </nav>
-
+</section>
+<!-- Accordions -->
+<!-- Prev / Next nav -->
+<nav aria-label="Lesson navigation" class="lp-nav">
+<a aria-label="Previous lesson" class="lp-nav-btn" href="/course/ai-adoption-journey"><span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_forward</span></div><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_back</span></div>
+<div><span class="lp-nav-label">Previous lesson</span><span class="lp-nav-title">How Organisations Adopt AI</span></div>
+</a>
+<a aria-label="Next lesson" class="lp-nav-btn" href="/course/ai-across-industries"><span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_forward</span></div>
+<div><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">Next lesson</span></div><span class="lp-nav-title">AI Across Industries</span></div>
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span></a>
+</nav>
 </article>
-
-      <!-- â”€â”€ SIDEBAR â”€â”€ -->
-      <aside class="na-sidebar" aria-label="Course navigation">
-
-        <!-- Table of contents -->
-        <div class="na-toc">
-          <h2 class="na-toc-title">In this lesson</h2>
-          <ul class="na-toc-list">
-            <li><a href="#" onclick="document.querySelector('.na-body h2').scrollIntoView({behavior:'smooth'});return false;">The real cost of building</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[1].scrollIntoView({behavior:'smooth'});return false;">When building makes sense</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[2].scrollIntoView({behavior:'smooth'});return false;">When buying is smarter</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[3].scrollIntoView({behavior:'smooth'});return false;">Hidden costs on both sides</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[4].scrollIntoView({behavior:'smooth'});return false;">What the default should be</a></li>
-          </ul>
-        </div>
-
-        <!-- Course navigation -->
-        <nav class="lp-sidebar-nav" aria-label="All course lessons">
-          <h2 class="lp-sidebar-nav-title">Course contents</h2>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-1">Unit 1 Â· Introduction to AI</div>
-            <ul>
-              <li><a href="/course/what-is-ai">What is AI?</a></li>
-              <li><a href="/course/categories-of-ai">Categories of AI</a></li>
-              <li><a href="/course/how-ai-learns">How AI Learns</a></li>
-              <li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-2">Unit 2 Â· The Modern AI Landscape</div>
-            <ul>
-              <li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
-              <li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
-              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
-              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-3">Unit 3 Â· Ethics &amp; Governance</div>
-            <ul>
-              <li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
-              <li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
-              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-4">Unit 4 Â· Python for AI</div>
-            <ul>
-              <li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
-              <li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-5">Unit 5 Â· Machine Learning</div>
-            <ul>
-              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
-              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
-              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
-              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-6">Unit 6 Â· Deep Learning</div>
-            <ul>
-              <li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
-              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
-              <li><a href="/course/backpropagation">Backpropagation</a></li>
-              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
-              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
-              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
-              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-7">Unit 7 Â· Generative AI</div>
-            <ul>
-              <li><a href="/course/generative-ai-models">Generative AI Models</a></li>
-              <li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
-              <li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-8">Unit 8 Â· AI in Production</div>
-            <ul>
-              <li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
-              <li><a href="/course/model-deployment">Model Deployment</a></li>
-              <li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
-              <li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-9">Unit 9 Â· AI Strategy</div>
-            <ul>
-              <li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
-              <li><a href="/course/build-vs-buy" class="lp-sidebar-current" aria-current="page">Build vs. Buy</a></li>
-              <li><a href="/course/ai-across-industries">AI Across Industries</a></li>
-              <li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
-            </ul>
-          </div>
-
-        </nav>
-        <div id="newsy-ai"></div>
-      </aside>
-
-    </div>
-  </main>
-
-  <div id="share-bar-placeholder"></div>
-  <section class="tool-info" aria-label="Lesson reference">
-    <div class="tool-info-inner">
-      <div class="tool-accordions">
-
-<details class="tool-accordion" open>
-          <summary>Frequently Asked Questions</summary>
-          <div class="tool-accordion-body">
-            <h3>When should you build an AI system instead of buying one?</h3>
-            <p>Build when you have proprietary data or methods that give competitive advantage, when your specific requirements aren't met by available products, when you have in-house ML and engineering expertise, when the problem is unique to your business, or when you've already tried buying and it didn't work. The default should not be build - most organisations overestimate their need to build.</p>
-
-            <h3>What is the realistic cost of building a production ML system?</h3>
-            <p>Â£150,000 to Â£800,000+ depending on complexity and team salaries. This includes model development (3-6 months), infrastructure and serving (2-3 months more), data collection and labelling if needed, plus ongoing maintenance (one person part-time to full-time permanently). Most teams significantly underestimate this before they start.</p>
-
-            <h3>What are the hidden costs of buying an AI product?</h3>
-            <p>Vendor lock-in (expensive to switch later), integration work (the product never fits perfectly out of the box), customisation costs (making it work for your use case requires engineering), increasing licensing costs over time, and dependency on the vendor for updates and support. A product that appears cheap per month can have a high total cost of ownership.</p>
-
-            <h3>What should be the default first move: build or buy?</h3>
-            <p>Buy or use an API first. Set a 3-month timeline. If the product works, you got ROI quickly. If it doesn't, you've learned exactly what you need - either to customise the product or what to build. Organisations that build first waste time building the wrong thing. Organisations that buy first learn fast and make better decisions about what to build next.</p>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>How It Works</summary>
-          <div class="tool-accordion-body">
-            <p><strong>Build vs buy decision framework:</strong></p>
-            <p>1. Is this problem generic or specific? If generic (fraud detection, demand forecasting, NLP tasks), products exist - try buying first. If specific, consider building. 2. Do we have the expertise? If no ML engineers or MLOps capability, buying is almost always better. 3. What's the timeline? If &lt; 3 months needed, buy. 4. What's the total cost of ownership? Calculate build cost (dev time + infra + maintenance) vs buy cost (licensing + integration + customisation). 5. What's the switching cost? If you buy and it doesn't work, how much do you lose? If you build and it doesn't work, how much do you lose?</p>
-            <p><strong>Typical progression:</strong> Use an API â†’ buy a product â†’ customise a product â†’ build a hybrid â†’ build custom. Move right only when the left fails to meet specific requirements you can articulate precisely.</p>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>Key Points</summary>
-          <div class="tool-accordion-body">
-            <ul>
-              <li>Building an AI system typically costs Â£150,000-Â£800,000+ and takes 6-12+ months including infrastructure</li>
-              <li>Build when you have proprietary advantage that no generic product can capture</li>
-              <li>Buy when the problem is generic, you lack expertise, or you need speed</li>
-              <li>Hidden build costs: hiring, slow learning from failure, late-discovered integration problems</li>
-              <li>Hidden buy costs: vendor lock-in, integration work, customisation engineering, escalating licences</li>
-              <li>Always calculate total cost of ownership, not just sticker price</li>
-              <li>The default should be buy first - even failure teaches you what to build</li>
-              <li>Organisations that build first tend to build the wrong thing; those that buy first learn what's actually needed</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>Sources</summary>
-          <div class="tool-accordion-body">
-            <ul>
-              <li>Andreessen Horowitz. (2020). The Cost of Cloud, A Trillion Dollar Paradox. <em>a16z.com</em>.</li>
-              <li>Gartner. (2024). Build vs Buy for AI Capabilities. <em>gartner.com</em>.</li>
-              <li>Huyen, C. (2022). <em>Designing Machine Learning Systems</em>. O'Reilly.</li>
-              <li>McKinsey Global Institute. (2023). The Economic Potential of Generative AI. <em>mckinsey.com</em>.</li>
-            </ul>
-          </div>
-        </details>
-
-      </div>
-    </div>
-  </section>
-
-  <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
-  </button>
-
-
-  <div id="footer-placeholder"></div>
-
-  <script src="/news-data.js"></script>
-  <script src="/scripts.js" defer></script>
-  <script src="/news-article.js" defer></script>
-  <script src="/news-chat.js" defer></script>
-  <script>
+<!-- â”€â”€ SIDEBAR â”€â”€ -->
+<aside aria-label="Course navigation" class="na-sidebar">
+<!-- Table of contents -->
+<nav aria-label="In this lesson" class="na-toc">
+<p class="na-toc-title">In this lesson</p>
+<ol class="na-toc-list">
+<li><a class="na-toc-link" href="#">The real cost of building</a></li>
+<li><a class="na-toc-link" href="#">When building makes sense</a></li>
+<li><a class="na-toc-link" href="#">When buying is smarter</a></li>
+<li><a class="na-toc-link" href="#">Hidden costs on both sides</a></li>
+<li><a class="na-toc-link" href="#">What the default should be</a></li>
+</ol>
+</nav>
+<!-- Course navigation -->
+<nav aria-label="All course lessons" class="lp-sidebar-nav">
+<p class="lp-sidebar-nav-title">Course contents</p>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-1">Unit 1 · Introduction to AI</span>
+<ul>
+<li><a href="/course/what-is-ai">What is AI?</a></li>
+<li><a href="/course/categories-of-ai">Categories of AI</a></li>
+<li><a href="/course/how-ai-learns">How AI Learns</a></li>
+<li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-2">Unit 2 · The Modern AI Landscape</span>
+<ul>
+<li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
+<li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
+<li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
+<li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-3">Unit 3 · Ethics &amp; Governance</span>
+<ul>
+<li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
+<li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
+<li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-4">Unit 4 · Python for AI</span>
+<ul>
+<li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
+<li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-5">Unit 5 · Machine Learning</span>
+<ul>
+<li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+<li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+<li><a href="/course/model-evaluation">Model Evaluation</a></li>
+<li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-6">Unit 6 · Deep Learning</span>
+<ul>
+<li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
+<li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+<li><a href="/course/backpropagation">Backpropagation</a></li>
+<li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+<li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+<li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
+<li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-7">Unit 7 · Generative AI</span>
+<ul>
+<li><a href="/course/generative-ai-models">Generative AI Models</a></li>
+<li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
+<li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-8">Unit 8 · AI in Production</span>
+<ul>
+<li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
+<li><a href="/course/model-deployment">Model Deployment</a></li>
+<li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
+<li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-9">Unit 9 · AI Strategy</span>
+<ul>
+<li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
+<li><a aria-current="page" class="lp-sidebar-current" href="/course/build-vs-buy">Build vs. Buy</a></li>
+<li><a href="/course/ai-across-industries">AI Across Industries</a></li>
+<li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
+</ul>
+</div>
+</nav>
+<div id="newsy-ai"></div>
+</aside>
+</div>
+</main>
+<div id="share-bar-placeholder"></div>
+<section aria-label="Lesson reference" class="tool-info">
+<div class="tool-info-inner">
+<div class="tool-accordions">
+<details class="tool-accordion" open="">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<h3>When should you build an AI system instead of buying one?</h3>
+<p>Build when you have proprietary data or methods that give competitive advantage, when your specific requirements aren't met by available products, when you have in-house ML and engineering expertise, when the problem is unique to your business, or when you've already tried buying and it didn't work. The default should not be build - most organisations overestimate their need to build.</p>
+<h3>What is the realistic cost of building a production ML system?</h3>
+<p>£150,000 to £800,000+ depending on complexity and team salaries. This includes model development (3-6 months), infrastructure and serving (2-3 months more), data collection and labelling if needed, plus ongoing maintenance (one person part-time to full-time permanently). Most teams significantly underestimate this before they start.</p>
+<h3>What are the hidden costs of buying an AI product?</h3>
+<p>Vendor lock-in (expensive to switch later), integration work (the product never fits perfectly out of the box), customisation costs (making it work for your use case requires engineering), increasing licensing costs over time, and dependency on the vendor for updates and support. A product that appears cheap per month can have a high total cost of ownership.</p>
+<h3>What should be the default first move: build or buy?</h3>
+<p>Buy or use an API first. Set a 3-month timeline. If the product works, you got ROI quickly. If it doesn't, you've learned exactly what you need - either to customise the product or what to build. Organisations that build first waste time building the wrong thing. Organisations that buy first learn fast and make better decisions about what to build next.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<p><strong>Build vs buy decision framework:</strong></p>
+<p>1. Is this problem generic or specific? If generic (fraud detection, demand forecasting, NLP tasks), products exist - try buying first. If specific, consider building. 2. Do we have the expertise? If no ML engineers or MLOps capability, buying is almost always better. 3. What's the timeline? If &lt; 3 months needed, buy. 4. What's the total cost of ownership? Calculate build cost (dev time + infra + maintenance) vs buy cost (licensing + integration + customisation). 5. What's the switching cost? If you buy and it doesn't work, how much do you lose? If you build and it doesn't work, how much do you lose?</p>
+<p><strong>Typical progression:</strong> Use an API â†’ buy a product â†’ customise a product â†’ build a hybrid â†’ build custom. Move right only when the left fails to meet specific requirements you can articulate precisely.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Building an AI system typically costs £150,000-£800,000+ and takes 6-12+ months including infrastructure</li>
+<li>Build when you have proprietary advantage that no generic product can capture</li>
+<li>Buy when the problem is generic, you lack expertise, or you need speed</li>
+<li>Hidden build costs: hiring, slow learning from failure, late-discovered integration problems</li>
+<li>Hidden buy costs: vendor lock-in, integration work, customisation engineering, escalating licences</li>
+<li>Always calculate total cost of ownership, not just sticker price</li>
+<li>The default should be buy first - even failure teaches you what to build</li>
+<li>Organisations that build first tend to build the wrong thing; those that buy first learn what's actually needed</li>
+</ul>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Andreessen Horowitz. (2020). The Cost of Cloud, A Trillion Dollar Paradox. <em>a16z.com</em>.</li>
+<li>Gartner. (2024). Build vs Buy for AI Capabilities. <em>gartner.com</em>.</li>
+<li>Huyen, C. (2022). <em>Designing Machine Learning Systems</em>. O'Reilly.</li>
+<li>McKinsey Global Institute. (2023). The Economic Potential of Generative AI. <em>mckinsey.com</em>.</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</section>
+<button aria-label="Back to top" id="back-to-top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div id="footer-placeholder"></div>
+<script src="/news-data.js"></script>
+<script defer="" src="/scripts.js"></script>
+<script defer="" src="/news-article.js"></script>
+<script defer="" src="/news-chat.js"></script>
+<script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
       if (trigger) trigger.click();
@@ -514,7 +431,7 @@
       });
     });
   </script>
-  <script>
+<script>
     // Quiz logic
     document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
       btn.addEventListener('click', function() {

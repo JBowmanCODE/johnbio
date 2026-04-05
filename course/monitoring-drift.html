@@ -1,45 +1,42 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monitoring and Drift: Keeping ML Models Healthy - JohnB.io</title>
-  <meta name="description" content="What data drift and concept drift are, how to detect them, what to do when drift is detected, and why most teams don't monitor seriously enough. Unit 8, Lesson 3.">
-  <meta name="keywords" content="model drift, data drift, concept drift, ML monitoring, production ML, model degradation">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://johnb.io/course/monitoring-drift">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Monitoring and Drift: Keeping ML Models Healthy in Production">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://johnb.io/course/monitoring-drift">
-  <meta property="og:description" content="What data drift and concept drift are, how to detect them, what to do when drift is detected, and why most teams don't monitor seriously enough.">
-  <meta property="og:image" content="https://johnb.io/images/course-og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Monitoring and Drift lesson - JohnB.io AI Course">
-  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
-  <meta property="article:author" content="https://johnb.io">
-  <meta property="article:section" content="AI in Production">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Monitoring and Drift: Keeping ML Models Healthy in Production">
-  <meta name="twitter:description" content="What data drift and concept drift are, how to detect them, what to do when drift is detected, and why most teams don't monitor seriously enough.">
-  <meta name="twitter:image" content="https://johnb.io/images/course-og.png">
-  <meta name="twitter:image:alt" content="Monitoring and Drift lesson - JohnB.io AI Course">
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Monitoring and Drift: Keeping ML Models Healthy - JohnB.io</title>
+<meta content="What data drift and concept drift are, how to detect them, what to do when drift is detected, and why most teams don't monitor seriously enough. Unit 8, Lesson 3." name="description"/>
+<meta content="model drift, data drift, concept drift, ML monitoring, production ML, model degradation" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://johnb.io/course/monitoring-drift" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="Monitoring and Drift: Keeping ML Models Healthy in Production" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://johnb.io/course/monitoring-drift" property="og:url"/>
+<meta content="What data drift and concept drift are, how to detect them, what to do when drift is detected, and why most teams don't monitor seriously enough." property="og:description"/>
+<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Monitoring and Drift lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
+<meta content="https://johnb.io" property="article:author"/>
+<meta content="AI in Production" property="article:section"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Monitoring and Drift: Keeping ML Models Healthy in Production" name="twitter:title"/>
+<meta content="What data drift and concept drift are, how to detect them, what to do when drift is detected, and why most teams don't monitor seriously enough." name="twitter:description"/>
+<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
+<meta content="Monitoring and Drift lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-0J6PBWMRNY');
   </script>
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -125,396 +122,310 @@
     ]
   }
   </script>
-
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/footer.css">
-  <link rel="stylesheet" href="/news.css">
-  <link rel="stylesheet" href="/lesson.css?v=3">
-  <link rel="stylesheet" href="/news-chat.css?v=7">
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/header.css" rel="stylesheet"/>
+<link href="/footer.css" rel="stylesheet"/>
+<link href="/news.css" rel="stylesheet"/>
+<link href="/lesson.css?v=3" rel="stylesheet"/>
+<link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
 <body class="lp-page">
-
-  <div id="header-placeholder"></div>
-
-  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
-    <div class="na-layout">
-
-      <!-- â”€â”€ MAIN CONTENT â”€â”€ -->
-      <article class="na-content">
-
-        <!-- Breadcrumb -->
-        <nav class="na-breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span aria-hidden="true">â€º</span>
-          <a href="/course-dashboard">AI Course</a>
-          <span aria-hidden="true">â€º</span>
-          <span>Monitoring and Drift</span>
-        </nav>
-
-        <!-- Unit badge + title -->
-        <div class="lp-unit-badge lp-unit-8">Unit 8 Â· AI in Production</div>
-        <h1 class="na-title">Monitoring and Drift: Keeping Models Healthy in Production</h1>
-
-        <!-- Meta row -->
-        <div class="na-meta">
-          <span>9 min read</span>
-          <span>Â·</span>
-          <span>Lesson 3 of 4 in Unit 8</span>
-          <span>Â·</span>
-          <span>Published 5 April 2026</span>
-        </div>
-
-        <!-- Audio player -->
-        <section class="lp-audio-section" aria-label="Lesson audio">
-          <div class="lp-audio-label">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+<div id="header-placeholder"></div><div aria-hidden="true" class="lp-ambient"></div>
+<main class="na-wrap">
+<div class="na-layout">
+<!-- â”€â”€ MAIN CONTENT â”€â”€ -->
+<article class="na-content">
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="na-breadcrumb">
+<a href="/">Home</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<a href="/course-dashboard">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span>Monitoring and Drift</span>
+</nav>
+<!-- Unit badge + title -->
+<div class="lp-unit-badge lp-unit-8">Unit 8 · AI in Production</div>
+<h1 class="na-title">Monitoring and Drift: Keeping Models Healthy in Production</h1>
+<!-- Meta row -->
+<div class="na-meta">
+<span>9 min read</span>
+<span>·</span>
+<span>Lesson 3 of 4 in Unit 8</span>
+<span>·</span>
+<span>Published 5 April 2026</span>
+</div>
+<!-- Audio player -->
+<section aria-label="Lesson audio" class="lp-audio-section">
+<div class="lp-audio-label">
+<svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
             Listen to this lesson
           </div>
-          <audio controls aria-label="Lesson audio player">
+<audio aria-label="Lesson audio player" controls="">
             Your browser does not support audio playback.
           </audio>
-        </section>
-
-        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-          <span class="material-symbols-outlined">auto_awesome</span>
+</section>
+<button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
           Ask Newsy AI about this lesson
         </button>
-
-        <!-- Body -->
-        <div class="na-body">
-
-          <p>You deploy a model. It's tested. It works. You put it in production on a Monday.</p>
-
-          <p>By Friday it's performing badly. Not because you changed it. Because the world changed. The data your model sees in production is different from the data it trained on. This is drift and it's normal - and it's what kills most ML systems in production.</p>
-
-          <h2>Why a model that worked at launch can stop working</h2>
-
-          <p>A model learns patterns from training data. Those patterns are true for that data at that time. In production, the conditions change.</p>
-
-          <p>An example: you build a model to predict whether someone will buy a product based on their browsing behaviour. You trained it on data from 2024. You deploy it in January 2025. There's a new marketing campaign that changes browsing patterns. Suddenly your model is wrong about what user behaviour means.</p>
-
-          <p>Or simpler: you train on historical data that includes 40% of a specific user segment. In production, that segment is 10% of your traffic. The distribution changed, and the model's predictions aren't calibrated for the new distribution.</p>
-
-          <p>The model doesn't change. The data it's receiving changed. So performance degrades. This is inevitable - you can't train on data that doesn't exist yet. The only question is how fast you notice and how you respond.</p>
-
-          <h2>What data drift is</h2>
-
-          <p>Data drift is when the input data distribution changes. The features your model sees in production are statistically different from the features it saw in training.</p>
-
-          <p>You trained on data where customer age ranged from 18 to 65. In production, you're seeing users from 15 to 85. That's drift. You trained on mobile and desktop users equally. In production, 80% are mobile. Drift. You trained on products in three categories. A new category launched and now 30% of your predictions are on that category. Drift.</p>
-
-          <p>Data drift is relatively easy to detect. You log the features you see in production. You compare them to the training data distribution. If the statistics are significantly different, you have drift. Calculate means, variances, percentiles of features in a recent production window and compare to training data. Statistical tests like the Kolmogorov-Smirnov test or Wasserstein distance can quantify the difference.</p>
-
-          <h2>What concept drift is and how it differs</h2>
-
-          <p>Concept drift is different. It's when the relationship between features and the target changes. The features look the same but they mean different things.</p>
-
-          <p>You train a model: "If a user visits a product page for 10 seconds, they're likely to buy." You deploy it. In production, people are reading reviews more carefully and time on page means something different. The relationship changed even though the feature is the same.</p>
-
-          <p>Or: you train on data from a recession. Now the economy is different. Economic patterns that predicted buying behaviour then don't predict it now.</p>
-
-          <p>Concept drift is harder to detect than data drift. You can see data drift immediately - the input distribution changed. With concept drift, you only notice when performance metrics degrade over time. That's slower feedback, and slower feedback means more damage before you notice.</p>
-
-          <h2>How to detect drift</h2>
-
-          <p>You need to monitor your model's inputs and outputs.</p>
-
-          <p>For inputs: log the features and track their distributions. Set thresholds for how much change is acceptable. If feature distributions change significantly compared to training data, you have data drift.</p>
-
-          <p>For outputs: log predictions and track the distribution. If the model suddenly predicts "yes" 90% of the time when it used to predict 50%, something's wrong. Crude but catches obvious issues fast.</p>
-
-          <p>For performance: this is the hard part. You need ground truth labels to measure performance. In some domains you get them quickly - if you're predicting credit default, you know in months. In others it's slow. Identify where you can measure performance and monitor it actively.</p>
-
-          <p>Most teams set up a monitoring dashboard: input distributions, output distributions, performance metrics if labels are available. Set alerts that fire when things deviate significantly from baseline.</p>
-
-          <h2>What to do when drift is detected</h2>
-
-          <p>You have a few options.</p>
-
-          <p><strong>Investigate first.</strong> Understand what changed. Are your assumptions about the problem still valid? Did the business change? Did user behaviour change? Did your data pipeline break? Understanding the cause matters because it determines the solution.</p>
-
-          <p><strong>Retrain.</strong> Most commonly, you retrain on newer data. If drift is detected, gather recent data, retrain, and deploy a new model. Ideally this is automated - drift detection triggers retraining which triggers evaluation which triggers deployment if the new model is better.</p>
-
-          <p><strong>Accept it.</strong> Sometimes drift is acceptable. If your model is degrading slowly and retraining is expensive, the cost may not be worth it. A business decision, not a technical one.</p>
-
-          <p><strong>Change the problem.</strong> Sometimes drift signals that your original assumption is wrong. If the business has fundamentally changed, you might need a different model for a different problem.</p>
-
-          <p><strong>Fix the pipeline.</strong> Sometimes drift happens because your data pipeline is broken. You're supposed to log customer demographics but they're not being logged correctly. Fix the pipeline and drift might disappear.</p>
-
-          <h2>How seriously most teams take monitoring</h2>
-
-          <p>Not seriously enough.</p>
-
-          <p>Most teams log some metrics and maybe watch a dashboard occasionally. But they don't have automated alerts. They don't have processes for responding to drift. When a model starts failing, they discover it because customers complain or because a business metric tanks.</p>
-
-          <p>Good practices: automated drift detection with alerts. Someone on-call who responds to alerts. An automated retraining pipeline that tests new models before deploying. Monitoring that covers inputs, outputs, and performance.</p>
-
-          <p>This is hard. It requires infrastructure and maintenance. But it's the difference between a model that degrades gracefully and one that crashes and burns. The teams that are good at ML in production treat monitoring the same as running any service. Observability matters. You plan for failure and you have processes to respond. You don't ship and forget.</p>
-
-        </div>
-
-        <!-- Quiz -->
-        <section class="lp-quiz" aria-label="Lesson quiz">
-          <h2 class="lp-quiz-title">Check your understanding</h2>
-
-          <!-- Q1 -->
-          <div class="lp-quiz-q">
-            <p class="lp-quiz-question">What is the key difference between data drift and concept drift?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
-              <button class="lp-quiz-btn" data-q="1" data-i="0">A) Data drift only affects classification models; concept drift only affects regression models</button>
-              <button class="lp-quiz-btn lp-quiz-correct" data-q="1" data-i="1">B) Data drift is when input distributions change; concept drift is when the relationship between inputs and the target changes</button>
-              <button class="lp-quiz-btn" data-q="1" data-i="2">C) Data drift is gradual; concept drift happens suddenly overnight</button>
-              <button class="lp-quiz-btn" data-q="1" data-i="3">D) Data drift requires retraining; concept drift can be fixed by adjusting prediction thresholds</button>
-            </div>
-            <div class="lp-quiz-feedback-correct" id="q1-correct" hidden>Correct. Data drift: the statistical distribution of inputs changes (different ages, different devices, etc.). Concept drift: inputs look the same but their relationship to the target changes (10 seconds on a page used to mean "interested buyer" but now means "confused reader"). Data drift is detectable immediately; concept drift only becomes visible when performance degrades.</div>
-            <div class="lp-quiz-feedback-wrong" id="q1-wrong" hidden>Not quite. The core distinction is about what changes. Data drift: the input feature distributions shift. Concept drift: the relationship between inputs and target shifts even if the inputs themselves look similar. Both affect all model types.</div>
-          </div>
-
-          <!-- Q2 -->
-          <div class="lp-quiz-q">
-            <p class="lp-quiz-question">Why is concept drift harder to detect than data drift?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
-              <button class="lp-quiz-btn" data-q="2" data-i="0">A) Concept drift only affects models with more than 100 features</button>
-              <button class="lp-quiz-btn" data-q="2" data-i="1">B) Concept drift requires specialised hardware to detect</button>
-              <button class="lp-quiz-btn lp-quiz-correct" data-q="2" data-i="2">C) You need ground truth labels to see performance degradation, and labels may take days or weeks to arrive</button>
-              <button class="lp-quiz-btn" data-q="2" data-i="3">D) Concept drift only occurs in deep learning models, not traditional ML</button>
-            </div>
-            <div class="lp-quiz-feedback-correct" id="q2-correct" hidden>Correct. With data drift, you can see the input distribution change immediately. With concept drift, the inputs look normal - you only notice through degraded performance, which requires comparing predictions to ground truth labels. Those labels might take days, weeks, or months to become available depending on the domain.</div>
-            <div class="lp-quiz-feedback-wrong" id="q2-wrong" hidden>Not quite. Concept drift is harder to detect because the inputs look normal - you can only see it through performance degradation, which requires ground truth labels. Those labels may not be available immediately.</div>
-          </div>
-        </section>
-
-        <!-- Podcast -->
-        <section class="lp-podcast-section" aria-label="Podcast version">
-          <h2 class="lp-podcast-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line><line x1="2" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="22" y2="12"></line></svg>
+<!-- Body -->
+<div class="na-body">
+<p>You deploy a model. It's tested. It works. You put it in production on a Monday.</p>
+<p>By Friday it's performing badly. Not because you changed it. Because the world changed. The data your model sees in production is different from the data it trained on. This is drift and it's normal - and it's what kills most ML systems in production.</p>
+<h2>Why a model that worked at launch can stop working</h2>
+<p>A model learns patterns from training data. Those patterns are true for that data at that time. In production, the conditions change.</p>
+<p>An example: you build a model to predict whether someone will buy a product based on their browsing behaviour. You trained it on data from 2024. You deploy it in January 2025. There's a new marketing campaign that changes browsing patterns. Suddenly your model is wrong about what user behaviour means.</p>
+<p>Or simpler: you train on historical data that includes 40% of a specific user segment. In production, that segment is 10% of your traffic. The distribution changed, and the model's predictions aren't calibrated for the new distribution.</p>
+<p>The model doesn't change. The data it's receiving changed. So performance degrades. This is inevitable - you can't train on data that doesn't exist yet. The only question is how fast you notice and how you respond.</p>
+<h2>What data drift is</h2>
+<p>Data drift is when the input data distribution changes. The features your model sees in production are statistically different from the features it saw in training.</p>
+<p>You trained on data where customer age ranged from 18 to 65. In production, you're seeing users from 15 to 85. That's drift. You trained on mobile and desktop users equally. In production, 80% are mobile. Drift. You trained on products in three categories. A new category launched and now 30% of your predictions are on that category. Drift.</p>
+<p>Data drift is relatively easy to detect. You log the features you see in production. You compare them to the training data distribution. If the statistics are significantly different, you have drift. Calculate means, variances, percentiles of features in a recent production window and compare to training data. Statistical tests like the Kolmogorov-Smirnov test or Wasserstein distance can quantify the difference.</p>
+<h2>What concept drift is and how it differs</h2>
+<p>Concept drift is different. It's when the relationship between features and the target changes. The features look the same but they mean different things.</p>
+<p>You train a model: "If a user visits a product page for 10 seconds, they're likely to buy." You deploy it. In production, people are reading reviews more carefully and time on page means something different. The relationship changed even though the feature is the same.</p>
+<p>Or: you train on data from a recession. Now the economy is different. Economic patterns that predicted buying behaviour then don't predict it now.</p>
+<p>Concept drift is harder to detect than data drift. You can see data drift immediately - the input distribution changed. With concept drift, you only notice when performance metrics degrade over time. That's slower feedback, and slower feedback means more damage before you notice.</p>
+<h2>How to detect drift</h2>
+<p>You need to monitor your model's inputs and outputs.</p>
+<p>For inputs: log the features and track their distributions. Set thresholds for how much change is acceptable. If feature distributions change significantly compared to training data, you have data drift.</p>
+<p>For outputs: log predictions and track the distribution. If the model suddenly predicts "yes" 90% of the time when it used to predict 50%, something's wrong. Crude but catches obvious issues fast.</p>
+<p>For performance: this is the hard part. You need ground truth labels to measure performance. In some domains you get them quickly - if you're predicting credit default, you know in months. In others it's slow. Identify where you can measure performance and monitor it actively.</p>
+<p>Most teams set up a monitoring dashboard: input distributions, output distributions, performance metrics if labels are available. Set alerts that fire when things deviate significantly from baseline.</p>
+<h2>What to do when drift is detected</h2>
+<p>You have a few options.</p>
+<p><strong>Investigate first.</strong> Understand what changed. Are your assumptions about the problem still valid? Did the business change? Did user behaviour change? Did your data pipeline break? Understanding the cause matters because it determines the solution.</p>
+<p><strong>Retrain.</strong> Most commonly, you retrain on newer data. If drift is detected, gather recent data, retrain, and deploy a new model. Ideally this is automated - drift detection triggers retraining which triggers evaluation which triggers deployment if the new model is better.</p>
+<p><strong>Accept it.</strong> Sometimes drift is acceptable. If your model is degrading slowly and retraining is expensive, the cost may not be worth it. A business decision, not a technical one.</p>
+<p><strong>Change the problem.</strong> Sometimes drift signals that your original assumption is wrong. If the business has fundamentally changed, you might need a different model for a different problem.</p>
+<p><strong>Fix the pipeline.</strong> Sometimes drift happens because your data pipeline is broken. You're supposed to log customer demographics but they're not being logged correctly. Fix the pipeline and drift might disappear.</p>
+<h2>How seriously most teams take monitoring</h2>
+<p>Not seriously enough.</p>
+<p>Most teams log some metrics and maybe watch a dashboard occasionally. But they don't have automated alerts. They don't have processes for responding to drift. When a model starts failing, they discover it because customers complain or because a business metric tanks.</p>
+<p>Good practices: automated drift detection with alerts. Someone on-call who responds to alerts. An automated retraining pipeline that tests new models before deploying. Monitoring that covers inputs, outputs, and performance.</p>
+<p>This is hard. It requires infrastructure and maintenance. But it's the difference between a model that degrades gracefully and one that crashes and burns. The teams that are good at ML in production treat monitoring the same as running any service. Observability matters. You plan for failure and you have processes to respond. You don't ship and forget.</p>
+</div>
+<!-- Quiz -->
+<section aria-label="Lesson quiz" class="lp-quiz">
+<h2 class="lp-quiz-title">Check your understanding</h2>
+<!-- Q1 -->
+<div class="lp-quiz-q">
+<p class="lp-quiz-question">What is the key difference between data drift and concept drift?</p>
+<div aria-label="Question 1 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-btn" data-i="0" data-q="1">A) Data drift only affects classification models; concept drift only affects regression models</button>
+<button class="lp-quiz-btn lp-quiz-correct" data-i="1" data-q="1">B) Data drift is when input distributions change; concept drift is when the relationship between inputs and the target changes</button>
+<button class="lp-quiz-btn" data-i="2" data-q="1">C) Data drift is gradual; concept drift happens suddenly overnight</button>
+<button class="lp-quiz-btn" data-i="3" data-q="1">D) Data drift requires retraining; concept drift can be fixed by adjusting prediction thresholds</button>
+</div>
+<div class="lp-quiz-feedback-correct" hidden="" id="q1-correct">Correct. Data drift: the statistical distribution of inputs changes (different ages, different devices, etc.). Concept drift: inputs look the same but their relationship to the target changes (10 seconds on a page used to mean "interested buyer" but now means "confused reader"). Data drift is detectable immediately; concept drift only becomes visible when performance degrades.</div>
+<div class="lp-quiz-feedback-wrong" hidden="" id="q1-wrong">Not quite. The core distinction is about what changes. Data drift: the input feature distributions shift. Concept drift: the relationship between inputs and target shifts even if the inputs themselves look similar. Both affect all model types.</div>
+</div>
+<!-- Q2 -->
+<div class="lp-quiz-q">
+<p class="lp-quiz-question">Why is concept drift harder to detect than data drift?</p>
+<div aria-label="Question 2 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-btn" data-i="0" data-q="2">A) Concept drift only affects models with more than 100 features</button>
+<button class="lp-quiz-btn" data-i="1" data-q="2">B) Concept drift requires specialised hardware to detect</button>
+<button class="lp-quiz-btn lp-quiz-correct" data-i="2" data-q="2">C) You need ground truth labels to see performance degradation, and labels may take days or weeks to arrive</button>
+<button class="lp-quiz-btn" data-i="3" data-q="2">D) Concept drift only occurs in deep learning models, not traditional ML</button>
+</div>
+<div class="lp-quiz-feedback-correct" hidden="" id="q2-correct">Correct. With data drift, you can see the input distribution change immediately. With concept drift, the inputs look normal - you only notice through degraded performance, which requires comparing predictions to ground truth labels. Those labels might take days, weeks, or months to become available depending on the domain.</div>
+<div class="lp-quiz-feedback-wrong" hidden="" id="q2-wrong">Not quite. Concept drift is harder to detect because the inputs look normal - you can only see it through performance degradation, which requires ground truth labels. Those labels may not be available immediately.</div>
+</div>
+</section>
+<!-- Podcast -->
+<section aria-label="Podcast version" class="lp-podcast-section">
+<h2 class="lp-podcast-title">
+<svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" x2="12" y1="2" y2="5"></line><line x1="12" x2="12" y1="19" y2="22"></line><line x1="2" x2="5" y1="12" y2="12"></line><line x1="19" x2="22" y1="12" y2="12"></line></svg>
             Podcast version
           </h2>
-          <p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
-          <audio controls aria-label="Podcast episode audio player">
+<p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
+<audio aria-label="Podcast episode audio player" controls="">
             Your browser does not support audio playback.
           </audio>
-        </section>
-
-        <!-- Accordions -->
-        <!-- Prev / Next nav -->
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/model-deployment" class="lp-nav-btn lp-nav-prev" aria-label="Previous lesson">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            <span>
-              <em>Previous</em>
-              Model Deployment
-            </span>
-          </a>
-          <a href="/course/cicd-for-ml" class="lp-nav-btn lp-nav-next" aria-label="Next lesson">
-            <span>
-              <em>Next</em>
-              CI/CD for ML
-            </span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
-        </nav>
-
+</section>
+<!-- Accordions -->
+<!-- Prev / Next nav -->
+<nav aria-label="Lesson navigation" class="lp-nav">
+<a aria-label="Previous lesson" class="lp-nav-btn" href="/course/model-deployment"><span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_forward</span></div><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_back</span></div>
+<div><span class="lp-nav-label">Previous lesson</span><span class="lp-nav-title">Model Deployment</span></div>
+</a>
+<a aria-label="Next lesson" class="lp-nav-btn" href="/course/cicd-for-ml"><span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_forward</span></div>
+<div><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">Next lesson</span></div><span class="lp-nav-title">CI/CD for ML</span></div>
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span></a>
+</nav>
 </article>
-
-      <!-- â”€â”€ SIDEBAR â”€â”€ -->
-      <aside class="na-sidebar" aria-label="Course navigation">
-
-        <!-- Table of contents -->
-        <div class="na-toc">
-          <h2 class="na-toc-title">In this lesson</h2>
-          <ul class="na-toc-list">
-            <li><a href="#" onclick="document.querySelector('.na-body h2').scrollIntoView({behavior:'smooth'});return false;">Why models stop working</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[1].scrollIntoView({behavior:'smooth'});return false;">Data drift</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[2].scrollIntoView({behavior:'smooth'});return false;">Concept drift</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[3].scrollIntoView({behavior:'smooth'});return false;">How to detect drift</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[4].scrollIntoView({behavior:'smooth'});return false;">What to do when drift hits</a></li>
-          </ul>
-        </div>
-
-        <!-- Course navigation -->
-        <nav class="lp-sidebar-nav" aria-label="All course lessons">
-          <h2 class="lp-sidebar-nav-title">Course contents</h2>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-1">Unit 1 Â· Introduction to AI</div>
-            <ul>
-              <li><a href="/course/what-is-ai">What is AI?</a></li>
-              <li><a href="/course/categories-of-ai">Categories of AI</a></li>
-              <li><a href="/course/how-ai-learns">How AI Learns</a></li>
-              <li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-2">Unit 2 Â· The Modern AI Landscape</div>
-            <ul>
-              <li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
-              <li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
-              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
-              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-3">Unit 3 Â· Ethics &amp; Governance</div>
-            <ul>
-              <li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
-              <li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
-              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-4">Unit 4 Â· Python for AI</div>
-            <ul>
-              <li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
-              <li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-5">Unit 5 Â· Machine Learning</div>
-            <ul>
-              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
-              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
-              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
-              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-6">Unit 6 Â· Deep Learning</div>
-            <ul>
-              <li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
-              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
-              <li><a href="/course/backpropagation">Backpropagation</a></li>
-              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
-              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
-              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
-              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-7">Unit 7 Â· Generative AI</div>
-            <ul>
-              <li><a href="/course/generative-ai-models">Generative AI Models</a></li>
-              <li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
-              <li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-8">Unit 8 Â· AI in Production</div>
-            <ul>
-              <li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
-              <li><a href="/course/model-deployment">Model Deployment</a></li>
-              <li><a href="/course/monitoring-drift" class="lp-sidebar-current" aria-current="page">Monitoring &amp; Drift</a></li>
-              <li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-9">Unit 9 Â· AI Strategy</div>
-            <ul>
-              <li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
-              <li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
-              <li><a href="/course/ai-across-industries">AI Across Industries</a></li>
-              <li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
-            </ul>
-          </div>
-
-        </nav>
-        <div id="newsy-ai"></div>
-      </aside>
-
-    </div>
-  </main>
-
-  <div id="share-bar-placeholder"></div>
-  <section class="tool-info" aria-label="Lesson reference">
-    <div class="tool-info-inner">
-      <div class="tool-accordions">
-
-<details class="tool-accordion" open>
-          <summary>Frequently Asked Questions</summary>
-          <div class="tool-accordion-body">
-            <h3>What is data drift in machine learning?</h3>
-            <p>Data drift is when the statistical distribution of input features in production changes compared to training. The model was trained on one distribution, but in production it sees a different one. This is detectable immediately by comparing feature statistics - means, variances, percentiles - between a recent production window and the training baseline.</p>
-
-            <h3>What is concept drift and how does it differ from data drift?</h3>
-            <p>Concept drift is when the relationship between features and the target changes, even if the features themselves look the same. The data may look identical but what it means has changed. Concept drift is harder to detect because you need ground truth labels to see it - you only notice it when performance metrics degrade over time.</p>
-
-            <h3>How do you detect model drift?</h3>
-            <p>For data drift: log input features in production, track their distributions over time, and compare to training data using statistical tests (Kolmogorov-Smirnov, Wasserstein distance). For output drift: track prediction distributions - if the model starts predicting one class 90% of the time when it used to predict 50%, something changed. For performance drift: compare predictions to ground truth labels as they become available.</p>
-
-            <h3>What should you do when drift is detected?</h3>
-            <p>First investigate: understand what changed and why. Then choose a response: retrain on newer data (most common), accept the degradation if it's minor, change the problem definition if the business has fundamentally changed, or fix the data pipeline if the drift is caused by a broken ingestion step. Drift detection should be automated and should trigger a defined response process.</p>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>How It Works</summary>
-          <div class="tool-accordion-body">
-            <p><strong>Detecting data drift:</strong> At training time, record baseline statistics for each feature (mean, standard deviation, quartiles, value counts for categoricals). At serving time, maintain a rolling window of recent predictions. Periodically compute the same statistics on the window and compare. Statistical tests like KS test (for continuous features) or chi-squared (for categorical features) quantify how different the distributions are.</p>
-            <p><strong>Detecting concept drift:</strong> Requires labels. Track accuracy, precision, recall, or domain-specific metrics on a rolling window. If performance is significantly below the training baseline, concept drift is likely. Shadow mode - running a challenger model in parallel and comparing - can also surface concept drift before it affects production users.</p>
-            <p><strong>Automated retraining pipelines:</strong> Drift alert triggers data collection. New labelled data is assembled. A new model trains. Evaluation gate compares new model vs current production model on a holdout set. If the new model wins, it's deployed gradually (10%, 50%, 100%). If it loses, the alert is escalated to a human.</p>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>Key Points</summary>
-          <div class="tool-accordion-body">
-            <ul>
-              <li>Drift is inevitable - the world changes, training data doesn't update automatically</li>
-              <li>Data drift: input feature distributions shift - detectable immediately by comparing statistics</li>
-              <li>Concept drift: the feature-target relationship changes - only visible through performance degradation</li>
-              <li>Monitor inputs (feature distributions), outputs (prediction distributions), and performance (if labels available)</li>
-              <li>KS test and Wasserstein distance are standard statistical tools for quantifying distribution differences</li>
-              <li>Drift detection should trigger automated alerts, not wait for customer complaints</li>
-              <li>Response options: retrain, accept degradation, change the problem, or fix the pipeline</li>
-              <li>Most teams don't monitor seriously enough - they find out about drift from business metrics, not ML metrics</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>Sources</summary>
-          <div class="tool-accordion-body">
-            <ul>
-              <li>Gama, J. et al. (2014). A Survey on Concept Drift Adaptation. <em>ACM Computing Surveys</em>.</li>
-              <li>Klaise, J. et al. (2020). Alibi Detect: Algorithms for Outlier, Adversarial and Drift Detection. <em>JMLR</em>.</li>
-              <li>Ackerman, S. et al. (2021). Machine Learning Monitoring. <em>arXiv</em>.</li>
-              <li>Evidently AI. (2024). Open-Source ML Monitoring. <em>evidentlyai.com</em>.</li>
-            </ul>
-          </div>
-        </details>
-
-      </div>
-    </div>
-  </section>
-
-  <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
-  </button>
-
-
-  <div id="footer-placeholder"></div>
-
-  <script src="/news-data.js"></script>
-  <script src="/scripts.js" defer></script>
-  <script src="/news-article.js" defer></script>
-  <script src="/news-chat.js" defer></script>
-  <script>
+<!-- â”€â”€ SIDEBAR â”€â”€ -->
+<aside aria-label="Course navigation" class="na-sidebar">
+<!-- Table of contents -->
+<nav aria-label="In this lesson" class="na-toc">
+<p class="na-toc-title">In this lesson</p>
+<ol class="na-toc-list">
+<li><a class="na-toc-link" href="#">Why models stop working</a></li>
+<li><a class="na-toc-link" href="#">Data drift</a></li>
+<li><a class="na-toc-link" href="#">Concept drift</a></li>
+<li><a class="na-toc-link" href="#">How to detect drift</a></li>
+<li><a class="na-toc-link" href="#">What to do when drift hits</a></li>
+</ol>
+</nav>
+<!-- Course navigation -->
+<nav aria-label="All course lessons" class="lp-sidebar-nav">
+<p class="lp-sidebar-nav-title">Course contents</p>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-1">Unit 1 · Introduction to AI</span>
+<ul>
+<li><a href="/course/what-is-ai">What is AI?</a></li>
+<li><a href="/course/categories-of-ai">Categories of AI</a></li>
+<li><a href="/course/how-ai-learns">How AI Learns</a></li>
+<li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-2">Unit 2 · The Modern AI Landscape</span>
+<ul>
+<li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
+<li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
+<li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
+<li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-3">Unit 3 · Ethics &amp; Governance</span>
+<ul>
+<li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
+<li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
+<li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-4">Unit 4 · Python for AI</span>
+<ul>
+<li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
+<li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-5">Unit 5 · Machine Learning</span>
+<ul>
+<li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+<li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+<li><a href="/course/model-evaluation">Model Evaluation</a></li>
+<li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-6">Unit 6 · Deep Learning</span>
+<ul>
+<li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
+<li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+<li><a href="/course/backpropagation">Backpropagation</a></li>
+<li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+<li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+<li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
+<li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-7">Unit 7 · Generative AI</span>
+<ul>
+<li><a href="/course/generative-ai-models">Generative AI Models</a></li>
+<li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
+<li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-8">Unit 8 · AI in Production</span>
+<ul>
+<li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
+<li><a href="/course/model-deployment">Model Deployment</a></li>
+<li><a aria-current="page" class="lp-sidebar-current" href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
+<li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-9">Unit 9 · AI Strategy</span>
+<ul>
+<li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
+<li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
+<li><a href="/course/ai-across-industries">AI Across Industries</a></li>
+<li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
+</ul>
+</div>
+</nav>
+<div id="newsy-ai"></div>
+</aside>
+</div>
+</main>
+<div id="share-bar-placeholder"></div>
+<section aria-label="Lesson reference" class="tool-info">
+<div class="tool-info-inner">
+<div class="tool-accordions">
+<details class="tool-accordion" open="">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<h3>What is data drift in machine learning?</h3>
+<p>Data drift is when the statistical distribution of input features in production changes compared to training. The model was trained on one distribution, but in production it sees a different one. This is detectable immediately by comparing feature statistics - means, variances, percentiles - between a recent production window and the training baseline.</p>
+<h3>What is concept drift and how does it differ from data drift?</h3>
+<p>Concept drift is when the relationship between features and the target changes, even if the features themselves look the same. The data may look identical but what it means has changed. Concept drift is harder to detect because you need ground truth labels to see it - you only notice it when performance metrics degrade over time.</p>
+<h3>How do you detect model drift?</h3>
+<p>For data drift: log input features in production, track their distributions over time, and compare to training data using statistical tests (Kolmogorov-Smirnov, Wasserstein distance). For output drift: track prediction distributions - if the model starts predicting one class 90% of the time when it used to predict 50%, something changed. For performance drift: compare predictions to ground truth labels as they become available.</p>
+<h3>What should you do when drift is detected?</h3>
+<p>First investigate: understand what changed and why. Then choose a response: retrain on newer data (most common), accept the degradation if it's minor, change the problem definition if the business has fundamentally changed, or fix the data pipeline if the drift is caused by a broken ingestion step. Drift detection should be automated and should trigger a defined response process.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<p><strong>Detecting data drift:</strong> At training time, record baseline statistics for each feature (mean, standard deviation, quartiles, value counts for categoricals). At serving time, maintain a rolling window of recent predictions. Periodically compute the same statistics on the window and compare. Statistical tests like KS test (for continuous features) or chi-squared (for categorical features) quantify how different the distributions are.</p>
+<p><strong>Detecting concept drift:</strong> Requires labels. Track accuracy, precision, recall, or domain-specific metrics on a rolling window. If performance is significantly below the training baseline, concept drift is likely. Shadow mode - running a challenger model in parallel and comparing - can also surface concept drift before it affects production users.</p>
+<p><strong>Automated retraining pipelines:</strong> Drift alert triggers data collection. New labelled data is assembled. A new model trains. Evaluation gate compares new model vs current production model on a holdout set. If the new model wins, it's deployed gradually (10%, 50%, 100%). If it loses, the alert is escalated to a human.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Drift is inevitable - the world changes, training data doesn't update automatically</li>
+<li>Data drift: input feature distributions shift - detectable immediately by comparing statistics</li>
+<li>Concept drift: the feature-target relationship changes - only visible through performance degradation</li>
+<li>Monitor inputs (feature distributions), outputs (prediction distributions), and performance (if labels available)</li>
+<li>KS test and Wasserstein distance are standard statistical tools for quantifying distribution differences</li>
+<li>Drift detection should trigger automated alerts, not wait for customer complaints</li>
+<li>Response options: retrain, accept degradation, change the problem, or fix the pipeline</li>
+<li>Most teams don't monitor seriously enough - they find out about drift from business metrics, not ML metrics</li>
+</ul>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Gama, J. et al. (2014). A Survey on Concept Drift Adaptation. <em>ACM Computing Surveys</em>.</li>
+<li>Klaise, J. et al. (2020). Alibi Detect: Algorithms for Outlier, Adversarial and Drift Detection. <em>JMLR</em>.</li>
+<li>Ackerman, S. et al. (2021). Machine Learning Monitoring. <em>arXiv</em>.</li>
+<li>Evidently AI. (2024). Open-Source ML Monitoring. <em>evidentlyai.com</em>.</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</section>
+<button aria-label="Back to top" id="back-to-top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div id="footer-placeholder"></div>
+<script src="/news-data.js"></script>
+<script defer="" src="/scripts.js"></script>
+<script defer="" src="/news-article.js"></script>
+<script defer="" src="/news-chat.js"></script>
+<script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
       if (trigger) trigger.click();
@@ -526,7 +437,7 @@
       });
     });
   </script>
-  <script>
+<script>
     // Quiz logic
     document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
       btn.addEventListener('click', function() {

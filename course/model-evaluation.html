@@ -1,41 +1,38 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Model Evaluation: Overfitting and ML Metrics - JohnB.io</title>
-  <meta name="description" content="Overfitting, train/val/test splits, accuracy vs precision vs recall vs F1. What model evaluation actually means and the mistakes beginners always make.">
-  <meta name="keywords" content="overfitting machine learning, model evaluation metrics, precision recall F1, train test split, validation set">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://johnb.io/course/model-evaluation">
-
-  <meta property="og:title" content="Model Evaluation: Overfitting and ML Metrics">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://johnb.io/course/model-evaluation">
-  <meta property="og:description" content="Overfitting, train/val/test splits, accuracy vs precision vs recall vs F1. What model evaluation actually means and the mistakes beginners always make.">
-  <meta property="og:image" content="https://johnb.io/images/course-og.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Model Evaluation: Overfitting and ML Metrics">
-  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
-  <meta property="article:author" content="John Bowman">
-  <meta property="article:section" content="AI Course">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Model Evaluation: Overfitting and ML Metrics">
-  <meta name="twitter:description" content="Overfitting, train/val/test splits, accuracy vs precision vs recall vs F1. What model evaluation actually means and the mistakes beginners always make.">
-  <meta name="twitter:image" content="https://johnb.io/images/course-og.jpg">
-  <meta name="twitter:image:alt" content="Model Evaluation: Overfitting and ML Metrics">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Model Evaluation: Overfitting and ML Metrics - JohnB.io</title>
+<meta content="Overfitting, train/val/test splits, accuracy vs precision vs recall vs F1. What model evaluation actually means and the mistakes beginners always make." name="description"/>
+<meta content="overfitting machine learning, model evaluation metrics, precision recall F1, train test split, validation set" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://johnb.io/course/model-evaluation" rel="canonical"/>
+<meta content="Model Evaluation: Overfitting and ML Metrics" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://johnb.io/course/model-evaluation" property="og:url"/>
+<meta content="Overfitting, train/val/test splits, accuracy vs precision vs recall vs F1. What model evaluation actually means and the mistakes beginners always make." property="og:description"/>
+<meta content="https://johnb.io/images/course-og.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Model Evaluation: Overfitting and ML Metrics" property="og:image:alt"/>
+<meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
+<meta content="John Bowman" property="article:author"/>
+<meta content="AI Course" property="article:section"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Model Evaluation: Overfitting and ML Metrics" name="twitter:title"/>
+<meta content="Overfitting, train/val/test splits, accuracy vs precision vs recall vs F1. What model evaluation actually means and the mistakes beginners always make." name="twitter:description"/>
+<meta content="https://johnb.io/images/course-og.jpg" name="twitter:image"/>
+<meta content="Model Evaluation: Overfitting and ML Metrics" name="twitter:image:alt"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-0J6PBWMRNY');
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -56,8 +53,7 @@
     }
   }
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -97,8 +93,7 @@
     ]
   }
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -124,309 +119,226 @@
     ]
   }
   </script>
-
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/footer.css">
-  <link rel="stylesheet" href="/news.css?v=4">
-  <link rel="stylesheet" href="/news-chat.css?v=7">
-  <link rel="stylesheet" href="/lesson.css?v=3">
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/header.css" rel="stylesheet"/>
+<link href="/footer.css" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
+<link href="/news-chat.css?v=7" rel="stylesheet"/>
+<link href="/lesson.css?v=3" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
 <body class="lp-page">
-
-  <div id="header-placeholder"></div>
-
-  <div class="lp-ambient" aria-hidden="true"></div>
-
-  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
-
-    <nav class="na-breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Home</a>
-      <span aria-hidden="true">›</span>
-      <a href="/course-dashboard">AI Course</a>
-      <span aria-hidden="true">›</span>
-      <span>Model Evaluation</span>
-    </nav>
-
-    <div class="na-layout">
-
-      <article class="na-content" id="main-content">
-
-        <div class="na-header">
-          <div class="na-meta">
-            <span class="lp-unit-badge lp-unit-5">Unit 5</span>
-            <span class="na-category">Machine Learning</span>
-            <span class="na-read-time">9 min read</span>
-          </div>
-          <h1 class="na-title">Model Evaluation: Validation, Overfitting and the Metrics That Actually Matter</h1>
-          <p class="na-lede">Training accuracy is the most misleading number in machine learning. A 99% training score can mean you've built something useless. Here's how to evaluate models honestly - including the mistakes almost everyone makes at the start.</p>
-          <div class="na-author">
-            <img src="/images/john-avatar.jpg" alt="John Bowman" class="na-author-img" width="36" height="36">
-            <div class="na-author-info">
-              <span class="na-author-name">John Bowman</span>
-              <time class="na-author-date" datetime="2026-04-05">5 April 2026</time>
-            </div>
-          </div>
-          <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-            <span class="material-symbols-outlined">auto_awesome</span>
+<div id="header-placeholder"></div>
+<div aria-hidden="true" class="lp-ambient"></div>
+<main class="na-wrap">
+<nav aria-label="Breadcrumb" class="na-breadcrumb">
+<a href="/">Home</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<a href="/course-dashboard">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span>Model Evaluation</span>
+</nav>
+<div class="na-layout">
+<article class="na-content" id="main-content">
+<div class="na-header">
+<h1 class="na-title">Model Evaluation: Validation, Overfitting and the Metrics That Actually Matter</h1>
+<p class="na-lede">Training accuracy is the most misleading number in machine learning. A 99% training score can mean you've built something useless. Here's how to evaluate models honestly - including the mistakes almost everyone makes at the start.</p>
+<div class="na-author">
+<a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
+<div class="na-author-details">
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<span class="na-author-role">Owner / AI Developer</span>
+</div>
+<div class="na-header-meta"><span class="lp-unit-badge lp-unit-5">Unit 5</span><span class="na-date">5 April 2026</span><span class="na-read">9 min read</span></div></div>
+<button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
             Ask Newsy AI about this lesson
           </button>
-        </div>
-
-        <nav class="na-toc-mobile" aria-label="On this page">
-          <details>
-            <summary>On this page</summary>
-            <ol>
-              <li><a href="#overfitting">What Overfitting Is</a></li>
-              <li><a href="#splits">Training, Validation and Test Sets</a></li>
-              <li><a href="#metrics">Key Metrics</a></li>
-              <li><a href="#why-accuracy-misleads">Why Accuracy Misleads</a></li>
-              <li><a href="#common-mistakes">Common Mistakes</a></li>
-              <li><a href="#quiz">Lesson Quiz</a></li>
-            </ol>
-          </details>
-        </nav>
-
-        <div class="na-audio-player">
-          <div class="na-audio-label">
-            <span class="material-symbols-outlined" aria-hidden="true">headphones</span>
-            Listen to this lesson
-          </div>
-          <audio controls preload="none" aria-label="Audio version of this lesson">
-            Your browser does not support the audio element.
-          </audio>
-        </div>
-
-        <div class="na-body">
-
-          <section id="overfitting">
-            <h2>What Overfitting Is and Why It's the Most Common ML Mistake</h2>
-            <p>Overfitting is when a model memorises training data instead of learning patterns.</p>
-            <p>You're training a model to predict house prices. The training set has 100 houses. Your model has 10,000 parameters. Mathematically, it has way more capacity than it needs. Instead of learning "big houses cost more," it learns "houses on streets with three-syllable names cost £5,000 more." It fits the training data perfectly.</p>
-            <p>Then you test it on new houses. It fails spectacularly. It memorised noise that doesn't generalise.</p>
-            <p>The overfitting trap is subtle because training accuracy looks great. Your model got 99% right! Then you test on new data and it's 60% right. Training accuracy is 95%, validation accuracy is 65%. That gap is overfitting - the model learned noise in training data that doesn't exist in new data.</p>
-            <p>You're not trying to avoid overfitting entirely - you're trying to find the sweet spot between fitting too little (underfitting) and fitting too much. Everyone encounters this. It's not a sign you're bad at machine learning. It's a sign you're doing machine learning.</p>
-          </section>
-
-          <section id="splits">
-            <h2>Training, Validation, and Test Sets</h2>
-            <p>To evaluate properly, you need three separate datasets.</p>
-            <p><strong>Training set (60-70%):</strong> The model trains on this. It sees this data, learns from it, updates its parameters. This is the only data the model learns from.</p>
-            <p><strong>Validation set (15-20%):</strong> You don't train on this, but you use it to tune the model. Should I use more regularisation? Decrease the learning rate? You train, check validation performance, adjust, and retrain. The validation set answers "how well does it generalise?" without using your final test data.</p>
-            <p><strong>Test set (15-20%):</strong> You don't touch this until the very end. Train on training data, tune on validation data, and only at the end evaluate on test data. This is your final honest assessment. Like a final exam - you don't study the exam questions; you study the material, then take the exam. If you tune your model to perform well on test data, the result is meaningless.</p>
-            <p>The process: train, check validation metrics, adjust, retrain, check validation again. Repeat until validation metrics stop improving. Then evaluate once on the test set.</p>
-          </section>
-
-          <section id="metrics">
-            <h2>Key Metrics: Accuracy, Precision, Recall, F1</h2>
-            <p><strong>Accuracy</strong>: what fraction of predictions were correct? If you predicted 100 emails and got 95 right, accuracy is 95%. Easy to understand, easy to misuse.</p>
-            <p><strong>Precision</strong>: of everything I predicted as positive, how many were actually positive? If you flag 50 emails as spam and 40 were spam, precision is 80%. Precision measures false positives - how often you cry wolf.</p>
-            <p><strong>Recall</strong>: of all actual positives, how many did I catch? If 100 emails are actually spam and you caught 40, recall is 40%. Recall measures false negatives - how often you miss the real thing.</p>
-            <p>They trade off. Perfect recall is easy: predict everything as positive. You'll catch all the spam but flag everything. Perfect precision is also achievable: predict almost nothing as positive. You'll rarely be wrong, but you'll miss most spam.</p>
-            <p><strong>F1 score</strong>: the harmonic mean of precision and recall, balancing both into one number. If precision is 80% and recall is 40%, F1 is about 53%.</p>
-            <p>When to use which: <strong>accuracy</strong> when false positives and false negatives are equally bad (rare). <strong>Precision</strong> when false positives are expensive - fraud detection where false alarms waste investigator time. <strong>Recall</strong> when false negatives are expensive - medical diagnosis where missing a disease is dangerous. <strong>F1</strong> when you want a single balanced number and aren't sure which error type matters more.</p>
-          </section>
-
-          <section id="why-accuracy-misleads">
-            <h2>Why Accuracy Alone Is Misleading</h2>
-            <p>If 99% of patients don't have a rare disease, and your model predicts "no disease" for everyone, accuracy is 99%. The model catches zero actual cases. Medically useless, statistically impressive.</p>
-            <p>Accuracy is meaningful only when classes are balanced. With 50% disease and 50% healthy, 92% accuracy means something. With 99% healthy and 1% disease, you need to think much harder about what your accuracy number actually means.</p>
-            <p>Always look at precision and recall, or a confusion matrix. Accuracy hides problems in imbalanced datasets, which describes most real business problems.</p>
-          </section>
-
-          <section id="common-mistakes">
-            <h2>What Beginners Always Get Wrong</h2>
-            <p>The biggest mistake: tuning on the test set. You train a model, get 95% test accuracy, ship it, and it fails in production. You measured yourself against the exam paper while studying. That's not an honest evaluation.</p>
-            <p>Ignoring class imbalance is the second. 10,000 negative examples, 50 positive. The model predicts negative for everything, gets 99% accuracy, and you declare victory. Recall is near zero. You haven't solved the problem.</p>
-            <p>Training and validation sets from different distributions is the third. Train on 2020 data, validate on 2019 data. The model passes validation but fails in production because real data is different. This is distribution shift, and it's common.</p>
-            <p>Not looking at error cases is the fourth. You check an 85% accuracy number and move on. Instead: what does the confusion matrix look like? Which class does it struggle with? Why? Those errors teach you something. The summary number doesn't.</p>
-            <p>All of these are about skipping evaluation rigour. Machine learning is hard. The evaluation process keeps you honest. Skip it and you'll ship broken models with confidence.</p>
-          </section>
-
-          <section id="quiz" class="lp-quiz-section">
-            <h2>Lesson Quiz</h2>
-            <p>Two questions to check your understanding before moving on.</p>
-
-            <div class="lp-quiz" id="quiz-1">
-              <p class="lp-quiz-q">Question 1: What is the main sign that a model is overfitting?</p>
-              <ul class="lp-quiz-options" role="list">
-                <li><button class="lp-quiz-btn" data-index="0" type="button">Training accuracy and validation accuracy are both low</button></li>
-                <li><button class="lp-quiz-btn" data-index="1" type="button">Training accuracy is high but validation accuracy is significantly lower</button></li>
-                <li><button class="lp-quiz-btn" data-index="2" type="button">The model takes too long to train</button></li>
-                <li><button class="lp-quiz-btn" data-index="3" type="button">Validation accuracy is higher than training accuracy</button></li>
-              </ul>
-              <div class="lp-quiz-feedback" aria-live="polite"></div>
-            </div>
-
-            <div class="lp-quiz" id="quiz-2">
-              <p class="lp-quiz-q">Question 2: In medical diagnosis, which metric is most important: precision or recall?</p>
-              <ul class="lp-quiz-options" role="list">
-                <li><button class="lp-quiz-btn" data-index="0" type="button">Precision, because you want to avoid false positives at all costs</button></li>
-                <li><button class="lp-quiz-btn" data-index="1" type="button">Recall, because missing an actual disease (false negative) is more dangerous than a false alarm</button></li>
-                <li><button class="lp-quiz-btn" data-index="2" type="button">Accuracy, because it gives the most complete picture</button></li>
-                <li><button class="lp-quiz-btn" data-index="3" type="button">Neither - only the F1 score matters in medical settings</button></li>
-              </ul>
-              <div class="lp-quiz-feedback" aria-live="polite"></div>
-            </div>
-
-          </section>
-
-        </div>
-
-        <section class="na-podcast">
-          <h2 class="na-podcast-title">
-            <span class="material-symbols-outlined" aria-hidden="true">podcast</span>
-            Podcast Version
-          </h2>
-          <p class="na-podcast-desc">Prefer to listen? The full lesson is available as a podcast episode.</p>
-          <audio controls preload="none" aria-label="Podcast version of this lesson">
-            Your browser does not support the audio element.
-          </audio>
-        </section>
-
-        <div id="share-bar-placeholder"></div>
-
-        <div class="na-accordions">
-
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/logistic-regression-classification" class="lp-nav-btn lp-nav-prev">
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Previous lesson</span>
-              <span class="lp-nav-title">Logistic Regression and Classification</span>
-            </span>
-          </a>
-          <a href="/course/key-ml-algorithms" class="lp-nav-btn lp-nav-next">
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Next lesson</span>
-              <span class="lp-nav-title">Key ML Algorithms</span>
-            </span>
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-          </a>
-        </nav>
-
 </div>
-
-      </article>
-
-      <aside class="na-sidebar" aria-label="Lesson sidebar">
-
-        <nav class="na-toc" aria-label="Table of contents">
-          <h2 class="na-toc-title">On this page</h2>
-          <ol class="na-toc-list">
-            <li><a href="#overfitting">What Overfitting Is</a></li>
-            <li><a href="#splits">Training, Validation and Test Sets</a></li>
-            <li><a href="#metrics">Key Metrics</a></li>
-            <li><a href="#why-accuracy-misleads">Why Accuracy Misleads</a></li>
-            <li><a href="#common-mistakes">Common Mistakes</a></li>
-            <li><a href="#quiz">Lesson Quiz</a></li>
-          </ol>
-        </nav>
-
-        <nav class="lp-sidebar-nav" aria-label="Course navigation">
-          <h2 class="lp-sidebar-nav-title">
-            <a href="/course-dashboard">AI Course</a>
-          </h2>
-          <div class="lp-sidebar-unit">
-            <span class="lp-sidebar-unit-label lp-unit-5">Unit 5 - Machine Learning</span>
-            <ul>
-              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
-              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
-              <li class="lp-sidebar-current"><a href="/course/model-evaluation" aria-current="page">Model Evaluation</a></li>
-              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
-            </ul>
-          </div>
-        </nav>
-
-        <div id="newsy-sidebar-mount"></div>
-
-        <div id="newsy-ai"></div>
-      </aside>
-
-    </div>
-
-  </main>
-
-  <div id="share-bar-placeholder"></div>
-  <section class="tool-info" aria-label="Lesson reference">
-    <div class="tool-info-inner">
-      <div class="tool-accordions">
-
-<details class="tool-accordion" open>
-            <summary>Frequently Asked Questions</summary>
-            <div class="tool-accordion-body">
-              <h3>What is overfitting in machine learning?</h3>
-              <p>Overfitting is when a model memorises training data instead of learning generalisable patterns. It fits perfectly to the training examples - including noise and quirks that don't appear in new data. A sign of overfitting: training accuracy is high (95%) but validation accuracy is much lower (65%). The gap between those two numbers is the overfitting signal.</p>
-
-              <h3>What is the difference between training, validation, and test sets?</h3>
-              <p>Training set (60-70%): the model learns from this data. Validation set (15-20%): used to tune the model without touching test data - you check how well the model generalises and adjust hyperparameters. Test set (15-20%): used only once, at the end, for the final honest assessment. Tuning on test data invalidates it - it becomes just another form of training.</p>
-
-              <h3>What is the difference between precision and recall?</h3>
-              <p>Precision: of everything the model predicted as positive, how many were actually positive? High precision means few false positives. Recall: of all actual positives, how many did the model catch? High recall means few false negatives. They trade off - you can improve one by sacrificing the other. F1 score balances both into a single number.</p>
-
-              <h3>Why is accuracy alone a misleading metric?</h3>
-              <p>Accuracy is misleading when classes are imbalanced. If 99% of patients don't have a rare disease, a model that predicts "no disease" for everyone is 99% accurate but catches zero actual cases. Accuracy only means something when classes are roughly balanced. Always check precision, recall, or a confusion matrix to understand what the model is actually doing.</p>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>How It Works</summary>
-            <div class="tool-accordion-body">
-              <p>A <strong>confusion matrix</strong> shows the full picture of a classifier's performance. For binary classification, it has four cells: true positives (correctly predicted positive), true negatives (correctly predicted negative), false positives (predicted positive but actually negative), and false negatives (predicted negative but actually positive). Precision = TP / (TP + FP). Recall = TP / (TP + FN). F1 = 2 * (Precision * Recall) / (Precision + Recall).</p>
-              <p>Overfitting is caused by a model with too much capacity relative to the amount of training data. Common fixes: collect more data, reduce model complexity, use regularisation (L1/L2 penalties on parameters), use dropout (for neural networks), or use early stopping (halt training when validation loss stops improving).</p>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>Key Points</summary>
-            <div class="tool-accordion-body">
-              <ul>
-                <li>Overfitting: model memorises training data, performs well on training but poorly on new data.</li>
-                <li>Sign of overfitting: large gap between training accuracy and validation accuracy.</li>
-                <li>Three data splits: training (learn), validation (tune), test (final honest evaluation - use once).</li>
-                <li>Never tune on test data - it invalidates the evaluation.</li>
-                <li>Accuracy is misleading with imbalanced classes - use precision, recall, or F1 instead.</li>
-                <li>Precision: low false positives. Recall: low false negatives. F1: balanced between both.</li>
-                <li>Choose metrics based on the cost of different error types, not convenience.</li>
-                <li>Always look at error cases and confusion matrices, not just summary numbers.</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>Sources</summary>
-            <div class="tool-accordion-body">
-              <ul>
-                <li>Hastie, T., Tibshirani, R. &amp; Friedman, J. (2009). <em>The Elements of Statistical Learning</em>. Springer.</li>
-                <li>Provost, F. &amp; Fawcett, T. (2013). <em>Data Science for Business</em>. O'Reilly Media.</li>
-                <li>Geron, A. (2022). <em>Hands-On Machine Learning with Scikit-Learn, Keras and TensorFlow</em> (3rd ed.). O'Reilly.</li>
-              </ul>
-            </div>
-          </details>
-
-      </div>
-    </div>
-  </section>
-
-  <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
-  </button>
-
-
-  <div id="footer-placeholder"></div>
-
-  <script src="/news-data.js"></script>
-  <script src="/scripts.js" defer></script>
-  <script src="/news-article.js" defer></script>
-  <script src="/news-chat.js" defer></script>
-  <script>
+<details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#overfitting">What Overfitting Is</a></li><li><a href="#splits">Training, Validation and Test Sets</a></li><li><a href="#metrics">Key Metrics</a></li><li><a href="#why-accuracy-misleads">Why Accuracy Misleads</a></li><li><a href="#common-mistakes">Common Mistakes</a></li><li><a href="#quiz">Lesson Quiz</a></li></ol></details><hr class="na-divider"/>
+<div aria-label="Listen to this lesson" class="na-audio"><span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span><div class="na-audio-info"><div class="na-audio-top"><span class="na-audio-label">Listen to this lesson</span></div><audio aria-label="Audio version of this lesson" controls="True" preload="none" style="width:100%;margin-top:0.5rem;">
+            Your browser does not support the audio element.
+          </audio></div></div>
+<div class="na-body">
+<section id="overfitting">
+<h2>What Overfitting Is and Why It's the Most Common ML Mistake</h2>
+<p>Overfitting is when a model memorises training data instead of learning patterns.</p>
+<p>You're training a model to predict house prices. The training set has 100 houses. Your model has 10,000 parameters. Mathematically, it has way more capacity than it needs. Instead of learning "big houses cost more," it learns "houses on streets with three-syllable names cost £5,000 more." It fits the training data perfectly.</p>
+<p>Then you test it on new houses. It fails spectacularly. It memorised noise that doesn't generalise.</p>
+<p>The overfitting trap is subtle because training accuracy looks great. Your model got 99% right! Then you test on new data and it's 60% right. Training accuracy is 95%, validation accuracy is 65%. That gap is overfitting - the model learned noise in training data that doesn't exist in new data.</p>
+<p>You're not trying to avoid overfitting entirely - you're trying to find the sweet spot between fitting too little (underfitting) and fitting too much. Everyone encounters this. It's not a sign you're bad at machine learning. It's a sign you're doing machine learning.</p>
+</section>
+<section id="splits">
+<h2>Training, Validation, and Test Sets</h2>
+<p>To evaluate properly, you need three separate datasets.</p>
+<p><strong>Training set (60-70%):</strong> The model trains on this. It sees this data, learns from it, updates its parameters. This is the only data the model learns from.</p>
+<p><strong>Validation set (15-20%):</strong> You don't train on this, but you use it to tune the model. Should I use more regularisation? Decrease the learning rate? You train, check validation performance, adjust, and retrain. The validation set answers "how well does it generalise?" without using your final test data.</p>
+<p><strong>Test set (15-20%):</strong> You don't touch this until the very end. Train on training data, tune on validation data, and only at the end evaluate on test data. This is your final honest assessment. Like a final exam - you don't study the exam questions; you study the material, then take the exam. If you tune your model to perform well on test data, the result is meaningless.</p>
+<p>The process: train, check validation metrics, adjust, retrain, check validation again. Repeat until validation metrics stop improving. Then evaluate once on the test set.</p>
+</section>
+<section id="metrics">
+<h2>Key Metrics: Accuracy, Precision, Recall, F1</h2>
+<p><strong>Accuracy</strong>: what fraction of predictions were correct? If you predicted 100 emails and got 95 right, accuracy is 95%. Easy to understand, easy to misuse.</p>
+<p><strong>Precision</strong>: of everything I predicted as positive, how many were actually positive? If you flag 50 emails as spam and 40 were spam, precision is 80%. Precision measures false positives - how often you cry wolf.</p>
+<p><strong>Recall</strong>: of all actual positives, how many did I catch? If 100 emails are actually spam and you caught 40, recall is 40%. Recall measures false negatives - how often you miss the real thing.</p>
+<p>They trade off. Perfect recall is easy: predict everything as positive. You'll catch all the spam but flag everything. Perfect precision is also achievable: predict almost nothing as positive. You'll rarely be wrong, but you'll miss most spam.</p>
+<p><strong>F1 score</strong>: the harmonic mean of precision and recall, balancing both into one number. If precision is 80% and recall is 40%, F1 is about 53%.</p>
+<p>When to use which: <strong>accuracy</strong> when false positives and false negatives are equally bad (rare). <strong>Precision</strong> when false positives are expensive - fraud detection where false alarms waste investigator time. <strong>Recall</strong> when false negatives are expensive - medical diagnosis where missing a disease is dangerous. <strong>F1</strong> when you want a single balanced number and aren't sure which error type matters more.</p>
+</section>
+<section id="why-accuracy-misleads">
+<h2>Why Accuracy Alone Is Misleading</h2>
+<p>If 99% of patients don't have a rare disease, and your model predicts "no disease" for everyone, accuracy is 99%. The model catches zero actual cases. Medically useless, statistically impressive.</p>
+<p>Accuracy is meaningful only when classes are balanced. With 50% disease and 50% healthy, 92% accuracy means something. With 99% healthy and 1% disease, you need to think much harder about what your accuracy number actually means.</p>
+<p>Always look at precision and recall, or a confusion matrix. Accuracy hides problems in imbalanced datasets, which describes most real business problems.</p>
+</section>
+<section id="common-mistakes">
+<h2>What Beginners Always Get Wrong</h2>
+<p>The biggest mistake: tuning on the test set. You train a model, get 95% test accuracy, ship it, and it fails in production. You measured yourself against the exam paper while studying. That's not an honest evaluation.</p>
+<p>Ignoring class imbalance is the second. 10,000 negative examples, 50 positive. The model predicts negative for everything, gets 99% accuracy, and you declare victory. Recall is near zero. You haven't solved the problem.</p>
+<p>Training and validation sets from different distributions is the third. Train on 2020 data, validate on 2019 data. The model passes validation but fails in production because real data is different. This is distribution shift, and it's common.</p>
+<p>Not looking at error cases is the fourth. You check an 85% accuracy number and move on. Instead: what does the confusion matrix look like? Which class does it struggle with? Why? Those errors teach you something. The summary number doesn't.</p>
+<p>All of these are about skipping evaluation rigour. Machine learning is hard. The evaluation process keeps you honest. Skip it and you'll ship broken models with confidence.</p>
+</section>
+<section class="lp-quiz-section" id="quiz">
+<h2>Lesson Quiz</h2>
+<p>Two questions to check your understanding before moving on.</p>
+<div class="lp-quiz" id="quiz-1">
+<p class="lp-quiz-q">Question 1: What is the main sign that a model is overfitting?</p>
+<ul class="lp-quiz-options" role="list">
+<li><button class="lp-quiz-btn" data-index="0" type="button">Training accuracy and validation accuracy are both low</button></li>
+<li><button class="lp-quiz-btn" data-index="1" type="button">Training accuracy is high but validation accuracy is significantly lower</button></li>
+<li><button class="lp-quiz-btn" data-index="2" type="button">The model takes too long to train</button></li>
+<li><button class="lp-quiz-btn" data-index="3" type="button">Validation accuracy is higher than training accuracy</button></li>
+</ul>
+<div aria-live="polite" class="lp-quiz-feedback"></div>
+</div>
+<div class="lp-quiz" id="quiz-2">
+<p class="lp-quiz-q">Question 2: In medical diagnosis, which metric is most important: precision or recall?</p>
+<ul class="lp-quiz-options" role="list">
+<li><button class="lp-quiz-btn" data-index="0" type="button">Precision, because you want to avoid false positives at all costs</button></li>
+<li><button class="lp-quiz-btn" data-index="1" type="button">Recall, because missing an actual disease (false negative) is more dangerous than a false alarm</button></li>
+<li><button class="lp-quiz-btn" data-index="2" type="button">Accuracy, because it gives the most complete picture</button></li>
+<li><button class="lp-quiz-btn" data-index="3" type="button">Neither - only the F1 score matters in medical settings</button></li>
+</ul>
+<div aria-live="polite" class="lp-quiz-feedback"></div>
+</div>
+</section>
+</div>
+<div aria-label="Deep Dive Podcast" class="na-podcast" role="region"><div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div><div class="na-podcast-inner"><div class="na-podcast-left"><div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div><div class="na-podcast-meta"><p class="na-podcast-title">Podcast Version</p><p class="na-podcast-sub">AI-generated audio overview of this lesson</p></div></div><audio aria-label="Podcast version of this lesson" controls="True" preload="none" style="width:100%;margin-top:0.75rem;">
+            Your browser does not support the audio element.
+          </audio></div></div>
+<div id="share-bar-placeholder"></div>
+<div class="na-accordions">
+<nav aria-label="Lesson navigation" class="lp-nav">
+<a class="lp-nav-btn" href="/course/logistic-regression-classification">
+<span aria-hidden="true" class="material-symbols-outlined">arrow_back</span>
+<div><span class="lp-nav-label">Previous lesson</span><span class="lp-nav-title">Logistic Regression and Classification</span></div>
+</a>
+<a class="lp-nav-btn" href="/course/key-ml-algorithms">
+<div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">Key ML Algorithms</span></div>
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span>
+</a>
+</nav>
+</div>
+</article>
+<aside aria-label="Lesson sidebar" class="na-sidebar">
+<nav aria-label="Table of contents" class="na-toc">
+<h2 class="na-toc-title">On this page</h2>
+<ol class="na-toc-list">
+<li><a class="na-toc-link" href="#overfitting">What Overfitting Is</a></li>
+<li><a class="na-toc-link" href="#splits">Training, Validation and Test Sets</a></li>
+<li><a class="na-toc-link" href="#metrics">Key Metrics</a></li>
+<li><a class="na-toc-link" href="#why-accuracy-misleads">Why Accuracy Misleads</a></li>
+<li><a class="na-toc-link" href="#common-mistakes">Common Mistakes</a></li>
+<li><a class="na-toc-link" href="#quiz">Lesson Quiz</a></li>
+</ol>
+</nav>
+<nav aria-label="Course navigation" class="lp-sidebar-nav">
+<h2 class="lp-sidebar-nav-title">
+<a href="/course-dashboard">AI Course</a>
+</h2>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-5">Unit 5 - Machine Learning</span>
+<ul>
+<li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+<li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+<li class="lp-sidebar-current"><a aria-current="page" href="/course/model-evaluation">Model Evaluation</a></li>
+<li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+</ul>
+</div>
+</nav>
+<div id="newsy-sidebar-mount"></div>
+<div id="newsy-ai"></div>
+</aside>
+</div>
+</main>
+<div id="share-bar-placeholder"></div>
+<section aria-label="Lesson reference" class="tool-info">
+<div class="tool-info-inner">
+<div class="tool-accordions">
+<details class="tool-accordion" open="">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<h3>What is overfitting in machine learning?</h3>
+<p>Overfitting is when a model memorises training data instead of learning generalisable patterns. It fits perfectly to the training examples - including noise and quirks that don't appear in new data. A sign of overfitting: training accuracy is high (95%) but validation accuracy is much lower (65%). The gap between those two numbers is the overfitting signal.</p>
+<h3>What is the difference between training, validation, and test sets?</h3>
+<p>Training set (60-70%): the model learns from this data. Validation set (15-20%): used to tune the model without touching test data - you check how well the model generalises and adjust hyperparameters. Test set (15-20%): used only once, at the end, for the final honest assessment. Tuning on test data invalidates it - it becomes just another form of training.</p>
+<h3>What is the difference between precision and recall?</h3>
+<p>Precision: of everything the model predicted as positive, how many were actually positive? High precision means few false positives. Recall: of all actual positives, how many did the model catch? High recall means few false negatives. They trade off - you can improve one by sacrificing the other. F1 score balances both into a single number.</p>
+<h3>Why is accuracy alone a misleading metric?</h3>
+<p>Accuracy is misleading when classes are imbalanced. If 99% of patients don't have a rare disease, a model that predicts "no disease" for everyone is 99% accurate but catches zero actual cases. Accuracy only means something when classes are roughly balanced. Always check precision, recall, or a confusion matrix to understand what the model is actually doing.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<p>A <strong>confusion matrix</strong> shows the full picture of a classifier's performance. For binary classification, it has four cells: true positives (correctly predicted positive), true negatives (correctly predicted negative), false positives (predicted positive but actually negative), and false negatives (predicted negative but actually positive). Precision = TP / (TP + FP). Recall = TP / (TP + FN). F1 = 2 * (Precision * Recall) / (Precision + Recall).</p>
+<p>Overfitting is caused by a model with too much capacity relative to the amount of training data. Common fixes: collect more data, reduce model complexity, use regularisation (L1/L2 penalties on parameters), use dropout (for neural networks), or use early stopping (halt training when validation loss stops improving).</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Overfitting: model memorises training data, performs well on training but poorly on new data.</li>
+<li>Sign of overfitting: large gap between training accuracy and validation accuracy.</li>
+<li>Three data splits: training (learn), validation (tune), test (final honest evaluation - use once).</li>
+<li>Never tune on test data - it invalidates the evaluation.</li>
+<li>Accuracy is misleading with imbalanced classes - use precision, recall, or F1 instead.</li>
+<li>Precision: low false positives. Recall: low false negatives. F1: balanced between both.</li>
+<li>Choose metrics based on the cost of different error types, not convenience.</li>
+<li>Always look at error cases and confusion matrices, not just summary numbers.</li>
+</ul>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Hastie, T., Tibshirani, R. &amp; Friedman, J. (2009). <em>The Elements of Statistical Learning</em>. Springer.</li>
+<li>Provost, F. &amp; Fawcett, T. (2013). <em>Data Science for Business</em>. O'Reilly Media.</li>
+<li>Geron, A. (2022). <em>Hands-On Machine Learning with Scikit-Learn, Keras and TensorFlow</em> (3rd ed.). O'Reilly.</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</section>
+<button aria-label="Back to top" id="back-to-top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div id="footer-placeholder"></div>
+<script src="/news-data.js"></script>
+<script defer="" src="/scripts.js"></script>
+<script defer="" src="/news-article.js"></script>
+<script defer="" src="/news-chat.js"></script>
+<script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
       if (trigger) trigger.click();
@@ -438,8 +350,7 @@
       });
     });
   </script>
-
-  <script>
+<script>
     (function() {
       var quizzes = [
         { correct: 1, explanation: "Correct. The key sign of overfitting is a large gap between training accuracy and validation accuracy - high training performance but significantly lower validation performance. The model has memorised the training data, including its noise, rather than learning patterns that generalise." },
@@ -473,6 +384,5 @@
       });
     })();
   </script>
-
 </body>
 </html>
