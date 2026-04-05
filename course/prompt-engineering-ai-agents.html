@@ -162,15 +162,38 @@
 <span>Published 5 April 2026</span>
 </div>
 <!-- Audio player -->
-<section aria-label="Lesson audio" class="lp-audio-section">
-<div class="lp-audio-label">
-<svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-            Listen to this lesson
-          </div>
-<audio aria-label="Lesson audio player" controls="">
-            Your browser does not support audio playback.
-          </audio>
-</section>
+<div aria-label="Listen to this lesson" class="na-audio">
+<span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
+<div class="na-audio-info">
+<div class="na-audio-top">
+<span class="na-audio-label">Listen to this lesson</span>
+<div class="na-volume">
+<button aria-label="Mute" class="na-mute-btn" id="na-mute-btn"><span class="material-symbols-outlined">volume_up</span></button>
+<input aria-label="Volume" class="na-volume-slider" id="na-volume-slider" max="1" min="0" step="0.02" type="range" value="1"/>
+</div>
+</div>
+<audio id="na-player" preload="none"></audio>
+<div class="na-audio-controls">
+<button aria-label="Skip back 10 seconds" class="na-skip-btn" id="na-skip-back"><span class="material-symbols-outlined">replay_10</span></button>
+<button aria-label="Play lesson audio" class="na-audio-btn" id="na-play-btn"><span class="material-symbols-outlined">play_arrow</span></button>
+<button aria-label="Skip forward 10 seconds" class="na-skip-btn" id="na-skip-fwd"><span class="material-symbols-outlined">forward_10</span></button>
+<div aria-label="Playback speed" class="na-speed-btns" role="group">
+<button class="na-speed-btn active" data-speed="1">1x</button>
+<button class="na-speed-btn" data-speed="1.5">1.5x</button>
+<button class="na-speed-btn" data-speed="2">2x</button>
+</div>
+<canvas aria-hidden="true" class="na-waveform" height="52" id="na-waveform" width="200"></canvas>
+</div>
+<div class="na-audio-progress-wrap">
+<span class="na-audio-time" id="na-current-time">0:00</span>
+<div aria-label="Audio progress" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="na-progress" id="na-progress" role="slider">
+<div class="na-progress-fill" id="na-progress-fill"></div>
+<div class="na-progress-thumb" id="na-progress-thumb"></div>
+</div>
+<span class="na-audio-time na-audio-duration" id="na-duration">0:00</span>
+</div>
+</div>
+</div>
 <button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
 <span class="material-symbols-outlined">auto_awesome</span>
           Ask Newsy AI about this lesson
@@ -234,16 +257,35 @@
 </div>
 </section>
 <!-- Podcast -->
-<section aria-label="Podcast version" class="lp-podcast-section">
-<h2 class="lp-podcast-title">
-<svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" x2="12" y1="2" y2="5"></line><line x1="12" x2="12" y1="19" y2="22"></line><line x1="2" x2="5" y1="12" y2="12"></line><line x1="19" x2="22" y1="12" y2="12"></line></svg>
-            Podcast version
-          </h2>
-<p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
-<audio aria-label="Podcast episode audio player" controls="">
-            Your browser does not support audio playback.
-          </audio>
-</section>
+<div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
+<div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>
+<div class="na-podcast-inner">
+<div class="na-podcast-left">
+<div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
+<div class="na-podcast-meta">
+<p class="na-podcast-title">Podcast Version</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+</div>
+</div>
+<audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="none"></audio>
+<div class="na-podcast-controls">
+<div aria-label="Playback progress" class="na-podcast-progress-wrap" role="group">
+<span class="na-podcast-time" id="na-pod-current">0:00</span>
+<input aria-label="Seek" class="na-podcast-progress" id="na-pod-progress" min="0" step="0.1" type="range" value="0"/>
+<span class="na-podcast-time" id="na-pod-duration">0:00</span>
+</div>
+<div class="na-podcast-btns">
+<button aria-label="Skip back 15 seconds" class="na-pod-btn na-pod-btn--skip" id="na-pod-back"><span class="material-symbols-outlined">replay</span><span class="na-pod-skip-label">15s</span></button>
+<button aria-label="Play podcast" class="na-pod-btn na-pod-btn--play" id="na-pod-play"><span class="material-symbols-outlined" id="na-pod-play-icon">play_arrow</span></button>
+<button aria-label="Skip forward 15 seconds" class="na-pod-btn na-pod-btn--skip" id="na-pod-fwd"><span class="material-symbols-outlined">forward</span><span class="na-pod-skip-label">15s</span></button>
+<div class="na-pod-volume">
+<button aria-label="Mute" class="na-pod-btn na-pod-mute" id="na-pod-mute"><span class="material-symbols-outlined" id="na-pod-mute-icon">volume_up</span></button>
+<input aria-label="Volume" class="na-pod-vol-slider" id="na-pod-vol" max="1" min="0" step="0.05" type="range" value="1"/>
+</div>
+</div>
+</div>
+</div>
+</div>
 <!-- Accordions -->
 <!-- Prev / Next nav -->
 <nav aria-label="Lesson navigation" class="lp-nav">
