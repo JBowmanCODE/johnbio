@@ -329,6 +329,77 @@
   nav.innerHTML = html;
 })();
 
+// ── Lesson prev/next navigation ────────────────────────────────
+(function () {
+  const nav = document.getElementById('lp-lesson-nav');
+  if (!nav || typeof COURSE_UNITS === 'undefined') return;
+
+  const slug = document.body.getAttribute('data-slug');
+  if (!slug) return;
+
+  // Build flat ordered lesson list from all units
+  const allLessons = [];
+  for (const unit of COURSE_UNITS) {
+    for (const lesson of unit.lessons) {
+      allLessons.push(lesson);
+    }
+  }
+
+  const idx = allLessons.findIndex(l => l.slug === slug);
+  if (idx === -1) return;
+
+  const prev = idx > 0 ? allLessons[idx - 1] : null;
+  const next = idx < allLessons.length - 1 ? allLessons[idx + 1] : null;
+  const isLast = idx === allLessons.length - 1;
+
+  function shortTitle(t) {
+    // Strip subtitle after em-dash or long dash
+    return t.replace(/\s+[—–\-]{1,2}\s+.*$/, '').trim();
+  }
+
+  let html = '';
+
+  // Left button: previous lesson or back to dashboard
+  if (prev) {
+    html += `<a class="lp-nav-btn" href="/course/${prev.slug}">
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+      <div>
+        <span class="lp-nav-label">Previous lesson</span>
+        <span class="lp-nav-title">${shortTitle(prev.title)}</span>
+      </div>
+    </a>`;
+  } else {
+    html += `<a class="lp-nav-btn" href="/course-dashboard">
+      <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
+      <div>
+        <span class="lp-nav-label">Back to</span>
+        <span class="lp-nav-title">Course dashboard</span>
+      </div>
+    </a>`;
+  }
+
+  // Right button: next lesson or final exam
+  if (next) {
+    html += `<a class="lp-nav-btn next" href="/course/${next.slug}">
+      <div>
+        <span class="lp-nav-label">Next lesson</span>
+        <span class="lp-nav-title">${shortTitle(next.title)}</span>
+      </div>
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+    </a>`;
+  } else if (isLast) {
+    html += `<a class="lp-nav-btn next lp-nav-exam" href="/exam">
+      <div>
+        <span class="lp-nav-label">You've finished the course</span>
+        <span class="lp-nav-title">Take the final exam</span>
+      </div>
+      <span class="material-symbols-outlined" aria-hidden="true">quiz</span>
+    </a>`;
+  }
+
+  nav.innerHTML = html;
+})();
+
 // ── Quiz interaction ────────────────────────────────────────────
 document.querySelectorAll('.lp-quiz-option').forEach(btn => {
   btn.addEventListener('click', function() {
