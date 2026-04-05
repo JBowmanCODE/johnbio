@@ -8,16 +8,17 @@
 <meta content="What RAG and fine-tuning solve, why most enterprises should try RAG first, the build vs buy decision, and the three mistakes businesses make with AI. Unit 7, Lesson 3." name="description"/>
 <meta content="RAG, retrieval augmented generation, fine-tuning, enterprise AI, LLM, hallucination, vector search" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/rag-finetuning-enterprise-ai" rel="canonical"/>
 <!-- Open Graph -->
 <meta content="RAG, Fine-Tuning and Enterprise AI Strategy" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/rag-finetuning-enterprise-ai" property="og:url"/>
 <meta content="What RAG and fine-tuning solve, why most enterprises should try RAG first, the build vs buy decision, and the three mistakes businesses make with AI." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="https://johnb.io/images/course/rag-finetuning-enterprise-ai.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="RAG, Fine-Tuning and Enterprise AI lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="RAG, Fine-Tuning and Enterprise AI Strategy lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="https://johnb.io" property="article:author"/>
 <meta content="Generative AI &amp; Practical Applications" property="article:section"/>
@@ -25,8 +26,8 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="RAG, Fine-Tuning and Enterprise AI Strategy" name="twitter:title"/>
 <meta content="What RAG and fine-tuning solve, why most enterprises should try RAG first, the build vs buy decision, and the three mistakes businesses make with AI." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
-<meta content="RAG, Fine-Tuning and Enterprise AI lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/rag-finetuning-enterprise-ai.webp" name="twitter:image"/>
+<meta content="RAG, Fine-Tuning and Enterprise AI Strategy lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <!-- Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
@@ -44,19 +45,22 @@
         "@type": "Article",
         "headline": "RAG, Fine-Tuning and Enterprise AI Strategy",
         "description": "What RAG and fine-tuning solve, why most enterprises should try RAG first, the build vs buy decision, and the three mistakes businesses make with AI.",
-        "image": "https://johnb.io/images/course-og.png",
+    "url": "https://johnb.io/course/rag-finetuning-enterprise-ai",
+        "image": "https://johnb.io/images/course/rag-finetuning-enterprise-ai.webp",
         "datePublished": "2026-04-05T00:00:00+00:00",
         "dateModified": "2026-04-05T00:00:00+00:00",
         "author": {
           "@type": "Person",
           "name": "John Bowman",
-          "url": "https://johnb.io"
-        },
-        "publisher": {
+          "url": "https://www.linkedin.com/in/john-bowman/"
+    },
+    "publisher": {
           "@type": "Organization",
           "name": "JohnB.io",
           "url": "https://johnb.io"
         },
+    "keywords": "RAG, retrieval augmented generation, fine-tuning, enterprise AI, LLM, hallucination, vector search",
+    "articleSection": "AI Course",
         "mainEntityOfPage": "https://johnb.io/course/rag-finetuning-enterprise-ai"
       },
       {
@@ -132,7 +136,7 @@
 <link href="/styles.css" rel="stylesheet"/>
 <link href="/header.css" rel="stylesheet"/>
 <link href="/footer.css" rel="stylesheet"/>
-<link href="/news.css?v=3" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
 <link href="/lesson.css?v=4" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
@@ -151,7 +155,7 @@
 <span>RAG, Fine-Tuning and Enterprise AI</span>
 </nav>
 <!-- Unit badge + title -->
-<h1 class="na-title">RAG, Fine-Tuning and Enterprise AI Strategy</h1><div class="na-lede-row"><p class="na-lede">A language model knows stuff about the world up until its training cutoff. After that, it's making things up. Ask it about private company data and it's hallucinating. Ask it about a document it never saw, and it doesn't have the information.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/rag-finetuning-enterprise-ai.webp"/></div></div>
+<h1 class="na-title">RAG, Fine-Tuning and Enterprise AI Strategy</h1><div class="na-lede-row"><p class="na-lede">A language model knows stuff about the world up until its training cutoff. After that, it's making things up. Ask it about private company data and it's hallucinating. Ask it about a document it never saw, and it doesn't have the information.</p><div class="na-lede-img"><img alt="RAG, fine-tuning and enterprise AI strategy" loading="lazy" src="/images/course/rag-finetuning-enterprise-ai.webp"/></div></div>
 <!-- Meta row -->
 <!-- Audio player -->
 <div class="na-author">
@@ -280,12 +284,12 @@
 <nav aria-label="In this lesson" class="na-toc">
 <p class="na-toc-title">In this lesson</p>
 <ol class="na-toc-list">
-<li><a class="na-toc-link" href="#">The problem RAG solves</a></li>
-<li><a class="na-toc-link" href="#">How RAG works</a></li>
-<li><a class="na-toc-link" href="#">When to fine-tune</a></li>
-<li><a class="na-toc-link" href="#">Why RAG comes first</a></li>
-<li><a class="na-toc-link" href="#">Build, buy or API</a></li>
-<li><a class="na-toc-link" href="#">Common mistakes</a></li>
+<li><a class="na-toc-link" href="#the-problem-rag-is-solving">The problem RAG solves</a></li>
+<li><a class="na-toc-link" href="#how-rag-works-retrieve-then-generate">How RAG works</a></li>
+<li><a class="na-toc-link" href="#what-fine-tuning-is-and-when-its-actually-needed">When to fine-tune</a></li>
+<li><a class="na-toc-link" href="#why-most-enterprises-should-try-rag-first">Why RAG comes first</a></li>
+<li><a class="na-toc-link" href="#the-build-buy-or-use-an-api-decision">Build, buy or API</a></li>
+<li><a class="na-toc-link" href="#where-most-businesses-get-it-wrong">Common mistakes</a></li>
 </ol>
 </nav>
 <!-- Course navigation -->

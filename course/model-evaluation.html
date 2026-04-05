@@ -8,23 +8,24 @@
 <meta content="Overfitting, train/val/test splits, accuracy vs precision vs recall vs F1. What model evaluation actually means and the mistakes beginners always make." name="description"/>
 <meta content="overfitting machine learning, model evaluation metrics, precision recall F1, train test split, validation set" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/model-evaluation" rel="canonical"/>
 <meta content="Model Evaluation: Overfitting and ML Metrics" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/model-evaluation" property="og:url"/>
 <meta content="Overfitting, train/val/test splits, accuracy vs precision vs recall vs F1. What model evaluation actually means and the mistakes beginners always make." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.jpg" property="og:image"/>
+<meta content="https://johnb.io/images/course/model-evaluation.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Model Evaluation: Overfitting and ML Metrics" property="og:image:alt"/>
+<meta content="Model Evaluation: Overfitting and ML Metrics lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="John Bowman" property="article:author"/>
 <meta content="AI Course" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Model Evaluation: Overfitting and ML Metrics" name="twitter:title"/>
 <meta content="Overfitting, train/val/test splits, accuracy vs precision vs recall vs F1. What model evaluation actually means and the mistakes beginners always make." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.jpg" name="twitter:image"/>
-<meta content="Model Evaluation: Overfitting and ML Metrics" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/model-evaluation.webp" name="twitter:image"/>
+<meta content="Model Evaluation: Overfitting and ML Metrics lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -38,19 +39,22 @@
     "@type": "Article",
     "headline": "Model Evaluation: Overfitting and ML Metrics",
     "description": "Overfitting, train/val/test splits, accuracy vs precision vs recall vs F1. What model evaluation actually means and the mistakes beginners always make.",
-    "image": "https://johnb.io/images/course-og.jpg",
+    "url": "https://johnb.io/course/model-evaluation",
+    "image": "https://johnb.io/images/course/model-evaluation.webp",
     "datePublished": "2026-04-05T00:00:00+00:00",
     "dateModified": "2026-04-05T00:00:00+00:00",
     "author": {
       "@type": "Person",
       "name": "John Bowman",
-      "url": "https://johnb.io"
+      "url": "https://www.linkedin.com/in/john-bowman/"
     },
     "publisher": {
       "@type": "Organization",
       "name": "JohnB.io",
       "url": "https://johnb.io"
-    }
+    },
+    "keywords": "overfitting machine learning, model evaluation metrics, precision recall F1, train test split, validation set",
+    "articleSection": "AI Course"
   }
   </script>
 <script type="application/ld+json">
@@ -148,7 +152,7 @@
 <article class="na-content" id="main-content">
 <div class="na-header">
 <h1 class="na-title">Model Evaluation: Validation, Overfitting and the Metrics That Actually Matter</h1>
-<div class="na-lede-row"><p class="na-lede">Training accuracy is the most misleading number in machine learning. A 99% training score can mean you've built something useless. Here's how to evaluate models honestly - including the mistakes almost everyone makes at the start.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/model-evaluation.webp"/></div></div>
+<div class="na-lede-row"><p class="na-lede">Training accuracy is the most misleading number in machine learning. A 99% training score can mean you've built something useless. Here's how to evaluate models honestly - including the mistakes almost everyone makes at the start.</p><div class="na-lede-img"><img alt="Model evaluation - validation, overfitting detection and performance metrics" loading="lazy" src="/images/course/model-evaluation.webp"/></div></div>
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
@@ -234,7 +238,7 @@
 <p>Not looking at error cases is the fourth. You check an 85% accuracy number and move on. Instead: what does the confusion matrix look like? Which class does it struggle with? Why? Those errors teach you something. The summary number doesn't.</p>
 <p>All of these are about skipping evaluation rigour. Machine learning is hard. The evaluation process keeps you honest. Skip it and you'll ship broken models with confidence.</p>
 </section>
-<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What is the main sign that a model is overfitting?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>Training accuracy and validation accuracy are both low</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>Training accuracy is high but validation accuracy is significantly lower</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>The model takes too long to train</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>Validation accuracy is higher than training accuracy</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">In medical diagnosis, which metric is most important: precision or recall?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>Precision, because you want to avoid false positives at all costs</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>Recall, because missing an actual disease (false negative) is more dangerous than a false alarm</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>Accuracy, because it gives the most complete picture</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>Neither - only the F1 score matters in medical settings</button></div><button class="lp-quiz-check" data-answer="B" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
+<div aria-label="Lesson quiz" class="lp-quiz" id="quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What is the main sign that a model is overfitting?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>Training accuracy and validation accuracy are both low</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>Training accuracy is high but validation accuracy is significantly lower</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>The model takes too long to train</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>Validation accuracy is higher than training accuracy</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">In medical diagnosis, which metric is most important: precision or recall?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>Precision, because you want to avoid false positives at all costs</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>Recall, because missing an actual disease (false negative) is more dangerous than a false alarm</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>Accuracy, because it gives the most complete picture</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>Neither - only the F1 score matters in medical settings</button></div><button class="lp-quiz-check" data-answer="B" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 </div>
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
 <div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>

@@ -8,16 +8,17 @@
 <meta content="How to serve ML models via REST APIs, what Docker containers do for deployment, cloud deployment options, and the five mistakes beginners make. Unit 8, Lesson 2." name="description"/>
 <meta content="model deployment, REST API, Docker, containers, SageMaker, cloud ML, FastAPI, serving ML models" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/model-deployment" rel="canonical"/>
 <!-- Open Graph -->
 <meta content="Model Deployment: APIs, Containers and Cloud Services" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/model-deployment" property="og:url"/>
 <meta content="How to serve ML models via REST APIs, what Docker containers do for deployment, cloud deployment options, and the five mistakes beginners make." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="https://johnb.io/images/course/model-deployment.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Model Deployment lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="Model Deployment: APIs, Containers and Cloud Services lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="https://johnb.io" property="article:author"/>
 <meta content="AI in Production" property="article:section"/>
@@ -25,8 +26,8 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Model Deployment: APIs, Containers and Cloud Services" name="twitter:title"/>
 <meta content="How to serve ML models via REST APIs, what Docker containers do for deployment, cloud deployment options, and the five mistakes beginners make." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
-<meta content="Model Deployment lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/model-deployment.webp" name="twitter:image"/>
+<meta content="Model Deployment: APIs, Containers and Cloud Services lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <!-- Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
@@ -44,19 +45,22 @@
         "@type": "Article",
         "headline": "Model Deployment: APIs, Containers and Cloud Services",
         "description": "How to serve ML models via REST APIs, what Docker containers do for deployment, cloud deployment options, and the five mistakes beginners make.",
-        "image": "https://johnb.io/images/course-og.png",
+    "url": "https://johnb.io/course/model-deployment",
+        "image": "https://johnb.io/images/course/model-deployment.webp",
         "datePublished": "2026-04-05T00:00:00+00:00",
         "dateModified": "2026-04-05T00:00:00+00:00",
         "author": {
           "@type": "Person",
           "name": "John Bowman",
-          "url": "https://johnb.io"
-        },
-        "publisher": {
+          "url": "https://www.linkedin.com/in/john-bowman/"
+    },
+    "publisher": {
           "@type": "Organization",
           "name": "JohnB.io",
           "url": "https://johnb.io"
         },
+    "keywords": "model deployment, REST API, Docker, containers, SageMaker, cloud ML, FastAPI, serving ML models",
+    "articleSection": "AI Course",
         "mainEntityOfPage": "https://johnb.io/course/model-deployment"
       },
       {
@@ -132,7 +136,7 @@
 <link href="/styles.css" rel="stylesheet"/>
 <link href="/header.css" rel="stylesheet"/>
 <link href="/footer.css" rel="stylesheet"/>
-<link href="/news.css?v=3" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
 <link href="/lesson.css?v=4" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
@@ -151,7 +155,7 @@
 <span>Model Deployment</span>
 </nav>
 <!-- Unit badge + title -->
-<h1 class="na-title">Model Deployment: APIs, Containers and Cloud Services</h1><div class="na-lede-row"><p class="na-lede">You've got a trained model sitting on your laptop. Now what? You can't tell millions of users "download this Python file and run it locally." You need to serve the model so that applications can request predictions.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/model-deployment.webp"/></div></div>
+<h1 class="na-title">Model Deployment: APIs, Containers and Cloud Services</h1><div class="na-lede-row"><p class="na-lede">You've got a trained model sitting on your laptop. Now what? You can't tell millions of users "download this Python file and run it locally." You need to serve the model so that applications can request predictions.</p><div class="na-lede-img"><img alt="Model deployment using APIs, containers and cloud services" loading="lazy" src="/images/course/model-deployment.webp"/></div></div>
 <!-- Meta row -->
 <!-- Audio player -->
 <div class="na-author">
@@ -286,11 +290,11 @@ CMD ["python", "app.py"]</code></pre>
 <nav aria-label="In this lesson" class="na-toc">
 <p class="na-toc-title">In this lesson</p>
 <ol class="na-toc-list">
-<li><a class="na-toc-link" href="#">What deployment means</a></li>
-<li><a class="na-toc-link" href="#">Serving via an API</a></li>
-<li><a class="na-toc-link" href="#">Docker containers</a></li>
-<li><a class="na-toc-link" href="#">Cloud deployment options</a></li>
-<li><a class="na-toc-link" href="#">Common beginner mistakes</a></li>
+<li><a class="na-toc-link" href="#what-deployment-means-in-the-ml-context">What deployment means</a></li>
+<li><a class="na-toc-link" href="#serving-a-model-via-an-api">Serving via an API</a></li>
+<li><a class="na-toc-link" href="#what-docker-containers-are-and-why-they-matter">Docker containers</a></li>
+<li><a class="na-toc-link" href="#cloud-deployment-options">Cloud deployment options</a></li>
+<li><a class="na-toc-link" href="#where-beginners-go-wrong-with-deployment">Common beginner mistakes</a></li>
 </ol>
 </nav>
 <!-- Course navigation -->

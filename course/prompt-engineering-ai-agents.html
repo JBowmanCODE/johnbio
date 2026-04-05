@@ -8,16 +8,17 @@
 <meta content="What prompt engineering actually is, the techniques that work, how AI agents differ from chatbots, and whether prompt engineer will last as a job title. Unit 7, Lesson 2." name="description"/>
 <meta content="prompt engineering, AI agents, chain of thought, few-shot prompting, tool use, LLM, ChatGPT" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/prompt-engineering-ai-agents" rel="canonical"/>
 <!-- Open Graph -->
 <meta content="Prompt Engineering and AI Agents Explained" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/prompt-engineering-ai-agents" property="og:url"/>
 <meta content="What prompt engineering actually is, the techniques that work, how AI agents differ from chatbots, and whether prompt engineer will last as a job title." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="https://johnb.io/images/course/prompt-engineering-ai-agents.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Prompt Engineering and AI Agents lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="Prompt Engineering and AI Agents Explained lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="https://johnb.io" property="article:author"/>
 <meta content="Generative AI &amp; Practical Applications" property="article:section"/>
@@ -25,8 +26,8 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Prompt Engineering and AI Agents Explained" name="twitter:title"/>
 <meta content="What prompt engineering actually is, the techniques that work, how AI agents differ from chatbots, and whether prompt engineer will last as a job title." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
-<meta content="Prompt Engineering and AI Agents lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/prompt-engineering-ai-agents.webp" name="twitter:image"/>
+<meta content="Prompt Engineering and AI Agents Explained lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <!-- Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
@@ -44,19 +45,22 @@
         "@type": "Article",
         "headline": "Prompt Engineering and AI Agents Explained",
         "description": "What prompt engineering actually is, the techniques that work, how AI agents differ from chatbots, and whether prompt engineer will last as a job title.",
-        "image": "https://johnb.io/images/course-og.png",
+    "url": "https://johnb.io/course/prompt-engineering-ai-agents",
+        "image": "https://johnb.io/images/course/prompt-engineering-ai-agents.webp",
         "datePublished": "2026-04-05T00:00:00+00:00",
         "dateModified": "2026-04-05T00:00:00+00:00",
         "author": {
           "@type": "Person",
           "name": "John Bowman",
-          "url": "https://johnb.io"
-        },
-        "publisher": {
+          "url": "https://www.linkedin.com/in/john-bowman/"
+    },
+    "publisher": {
           "@type": "Organization",
           "name": "JohnB.io",
           "url": "https://johnb.io"
         },
+    "keywords": "prompt engineering, AI agents, chain of thought, few-shot prompting, tool use, LLM, ChatGPT",
+    "articleSection": "AI Course",
         "mainEntityOfPage": "https://johnb.io/course/prompt-engineering-ai-agents"
       },
       {
@@ -132,7 +136,7 @@
 <link href="/styles.css" rel="stylesheet"/>
 <link href="/header.css" rel="stylesheet"/>
 <link href="/footer.css" rel="stylesheet"/>
-<link href="/news.css?v=3" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
 <link href="/lesson.css?v=4" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
@@ -151,7 +155,7 @@
 <span>Prompt Engineering and AI Agents</span>
 </nav>
 <!-- Unit badge + title -->
-<h1 class="na-title">Prompt Engineering and AI Agents</h1><div class="na-lede-row"><p class="na-lede">Prompt engineering isn't wizardry. It's not about magic words or secret incantations that unlock hidden powers in language models. It's about being specific about what you want and structuring your request in ways the model can actually handle.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/prompt-engineering-ai-agents.webp"/></div></div>
+<h1 class="na-title">Prompt Engineering and AI Agents</h1><div class="na-lede-row"><p class="na-lede">Prompt engineering isn't wizardry. It's not about magic words or secret incantations that unlock hidden powers in language models. It's about being specific about what you want and structuring your request in ways the model can actually handle.</p><div class="na-lede-img"><img alt="Prompt engineering techniques and AI agents explained" loading="lazy" src="/images/course/prompt-engineering-ai-agents.webp"/></div></div>
 <!-- Meta row -->
 <!-- Audio player -->
 <div class="na-author">
@@ -273,11 +277,11 @@
 <nav aria-label="In this lesson" class="na-toc">
 <p class="na-toc-title">In this lesson</p>
 <ol class="na-toc-list">
-<li><a class="na-toc-link" href="#">What prompt engineering is</a></li>
-<li><a class="na-toc-link" href="#">Techniques that work</a></li>
-<li><a class="na-toc-link" href="#">What AI agents are</a></li>
-<li><a class="na-toc-link" href="#">Tool use and multi-step reasoning</a></li>
-<li><a class="na-toc-link" href="#">The prompt engineer job title</a></li>
+<li><a class="na-toc-link" href="#what-prompt-engineering-actually-is">What prompt engineering is</a></li>
+<li><a class="na-toc-link" href="#techniques-that-actually-work">Techniques that work</a></li>
+<li><a class="na-toc-link" href="#what-ai-agents-actually-are">What AI agents are</a></li>
+<li><a class="na-toc-link" href="#tool-use-and-multi-step-reasoning">Tool use and multi-step reasoning</a></li>
+<li><a class="na-toc-link" href="#will-prompt-engineer-survive-as-a-job-title">The prompt engineer job title</a></li>
 </ol>
 </nav>
 <!-- Course navigation -->

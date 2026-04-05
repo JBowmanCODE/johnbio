@@ -8,16 +8,17 @@
 <meta content="What data drift and concept drift are, how to detect them, what to do when drift is detected, and why most teams don't monitor seriously enough. Unit 8, Lesson 3." name="description"/>
 <meta content="model drift, data drift, concept drift, ML monitoring, production ML, model degradation" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/monitoring-drift" rel="canonical"/>
 <!-- Open Graph -->
 <meta content="Monitoring and Drift: Keeping ML Models Healthy in Production" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/monitoring-drift" property="og:url"/>
 <meta content="What data drift and concept drift are, how to detect them, what to do when drift is detected, and why most teams don't monitor seriously enough." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="https://johnb.io/images/course/monitoring-drift.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Monitoring and Drift lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="Monitoring and Drift: Keeping ML Models Healthy in Production lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="https://johnb.io" property="article:author"/>
 <meta content="AI in Production" property="article:section"/>
@@ -25,8 +26,8 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Monitoring and Drift: Keeping ML Models Healthy in Production" name="twitter:title"/>
 <meta content="What data drift and concept drift are, how to detect them, what to do when drift is detected, and why most teams don't monitor seriously enough." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
-<meta content="Monitoring and Drift lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/monitoring-drift.webp" name="twitter:image"/>
+<meta content="Monitoring and Drift: Keeping ML Models Healthy in Production lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <!-- Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
@@ -44,19 +45,22 @@
         "@type": "Article",
         "headline": "Monitoring and Drift: Keeping ML Models Healthy in Production",
         "description": "What data drift and concept drift are, how to detect them, what to do when drift is detected, and why most teams don't monitor seriously enough.",
-        "image": "https://johnb.io/images/course-og.png",
+    "url": "https://johnb.io/course/monitoring-drift",
+        "image": "https://johnb.io/images/course/monitoring-drift.webp",
         "datePublished": "2026-04-05T00:00:00+00:00",
         "dateModified": "2026-04-05T00:00:00+00:00",
         "author": {
           "@type": "Person",
           "name": "John Bowman",
-          "url": "https://johnb.io"
-        },
-        "publisher": {
+          "url": "https://www.linkedin.com/in/john-bowman/"
+    },
+    "publisher": {
           "@type": "Organization",
           "name": "JohnB.io",
           "url": "https://johnb.io"
         },
+    "keywords": "model drift, data drift, concept drift, ML monitoring, production ML, model degradation",
+    "articleSection": "AI Course",
         "mainEntityOfPage": "https://johnb.io/course/monitoring-drift"
       },
       {
@@ -132,7 +136,7 @@
 <link href="/styles.css" rel="stylesheet"/>
 <link href="/header.css" rel="stylesheet"/>
 <link href="/footer.css" rel="stylesheet"/>
-<link href="/news.css?v=3" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
 <link href="/lesson.css?v=4" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
@@ -151,7 +155,7 @@
 <span>Monitoring and Drift</span>
 </nav>
 <!-- Unit badge + title -->
-<h1 class="na-title">Monitoring and Drift: Keeping Models Healthy in Production</h1><div class="na-lede-row"><p class="na-lede">You deploy a model. It's tested. It works. You put it in production on a Monday.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/monitoring-drift.webp"/></div></div>
+<h1 class="na-title">Monitoring and Drift: Keeping Models Healthy in Production</h1><div class="na-lede-row"><p class="na-lede">You deploy a model. It's tested. It works. You put it in production on a Monday.</p><div class="na-lede-img"><img alt="Monitoring and drift detection to keep production ML models healthy" loading="lazy" src="/images/course/monitoring-drift.webp"/></div></div>
 <!-- Meta row -->
 <!-- Audio player -->
 <div class="na-author">
@@ -280,11 +284,11 @@
 <nav aria-label="In this lesson" class="na-toc">
 <p class="na-toc-title">In this lesson</p>
 <ol class="na-toc-list">
-<li><a class="na-toc-link" href="#">Why models stop working</a></li>
-<li><a class="na-toc-link" href="#">Data drift</a></li>
-<li><a class="na-toc-link" href="#">Concept drift</a></li>
-<li><a class="na-toc-link" href="#">How to detect drift</a></li>
-<li><a class="na-toc-link" href="#">What to do when drift hits</a></li>
+<li><a class="na-toc-link" href="#why-a-model-that-worked-at-launch-can-stop-working">Why models stop working</a></li>
+<li><a class="na-toc-link" href="#what-data-drift-is">Data drift</a></li>
+<li><a class="na-toc-link" href="#what-concept-drift-is-and-how-it-differs">Concept drift</a></li>
+<li><a class="na-toc-link" href="#how-to-detect-drift">How to detect drift</a></li>
+<li><a class="na-toc-link" href="#what-to-do-when-drift-is-detected">What to do when drift hits</a></li>
 </ol>
 </nav>
 <!-- Course navigation -->

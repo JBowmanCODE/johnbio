@@ -8,16 +8,17 @@
 <meta content="What CI/CD for ML covers, why ML pipelines need more than regular software CI/CD, the tools in use, and how mature ML automation is in 2026. Unit 8, Lesson 4." name="description"/>
 <meta content="CI/CD for ML, MLOps, GitHub Actions, Airflow, DVC, MLflow, automated ML pipelines, model testing" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/cicd-for-ml" rel="canonical"/>
 <!-- Open Graph -->
 <meta content="CI/CD for ML: Automating the Machine Learning Pipeline" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/cicd-for-ml" property="og:url"/>
 <meta content="What CI/CD for ML covers, why ML pipelines need more than regular software CI/CD, the tools in use, and how mature ML automation is in 2026." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="https://johnb.io/images/course/cicd-for-ml.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="CI/CD for ML lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="CI/CD for ML: Automating the Machine Learning Pipeline lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="https://johnb.io" property="article:author"/>
 <meta content="AI in Production" property="article:section"/>
@@ -25,8 +26,8 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="CI/CD for ML: Automating the Machine Learning Pipeline" name="twitter:title"/>
 <meta content="What CI/CD for ML covers, why ML pipelines need more than regular software CI/CD, the tools in use, and how mature ML automation is in 2026." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
-<meta content="CI/CD for ML lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/cicd-for-ml.webp" name="twitter:image"/>
+<meta content="CI/CD for ML: Automating the Machine Learning Pipeline lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <!-- Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
@@ -44,19 +45,22 @@
         "@type": "Article",
         "headline": "CI/CD for ML: Automating the Machine Learning Pipeline",
         "description": "What CI/CD for ML covers, why ML pipelines need more than regular software CI/CD, the tools in use, and how mature ML automation is in 2026.",
-        "image": "https://johnb.io/images/course-og.png",
+    "url": "https://johnb.io/course/cicd-for-ml",
+        "image": "https://johnb.io/images/course/cicd-for-ml.webp",
         "datePublished": "2026-04-05T00:00:00+00:00",
         "dateModified": "2026-04-05T00:00:00+00:00",
         "author": {
           "@type": "Person",
           "name": "John Bowman",
-          "url": "https://johnb.io"
-        },
-        "publisher": {
+          "url": "https://www.linkedin.com/in/john-bowman/"
+    },
+    "publisher": {
           "@type": "Organization",
           "name": "JohnB.io",
           "url": "https://johnb.io"
         },
+    "keywords": "CI/CD for ML, MLOps, GitHub Actions, Airflow, DVC, MLflow, automated ML pipelines, model testing",
+    "articleSection": "AI Course",
         "mainEntityOfPage": "https://johnb.io/course/cicd-for-ml"
       },
       {
@@ -132,7 +136,7 @@
 <link href="/styles.css" rel="stylesheet"/>
 <link href="/header.css" rel="stylesheet"/>
 <link href="/footer.css" rel="stylesheet"/>
-<link href="/news.css?v=3" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
 <link href="/lesson.css?v=4" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
@@ -151,7 +155,7 @@
 <span>CI/CD for ML</span>
 </nav>
 <!-- Unit badge + title -->
-<h1 class="na-title">CI/CD for ML: Automating the Machine Learning Pipeline</h1><div class="na-lede-row"><p class="na-lede">In regular software, CI/CD is standard practice. You push code, tests run automatically, if tests pass your code gets deployed. It's automated, reliable, and happens dozens of times a day.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/cicd-for-ml.webp"/></div></div>
+<h1 class="na-title">CI/CD for ML: Automating the Machine Learning Pipeline</h1><div class="na-lede-row"><p class="na-lede">In regular software, CI/CD is standard practice. You push code, tests run automatically, if tests pass your code gets deployed. It's automated, reliable, and happens dozens of times a day.</p><div class="na-lede-img"><img alt="CI/CD for machine learning - automating the ML pipeline" loading="lazy" src="/images/course/cicd-for-ml.webp"/></div></div>
 <!-- Meta row -->
 <!-- Audio player -->
 <div class="na-author">
@@ -275,10 +279,10 @@
 <nav aria-label="In this lesson" class="na-toc">
 <p class="na-toc-title">In this lesson</p>
 <ol class="na-toc-list">
-<li><a class="na-toc-link" href="#">Why ML needs its own CI/CD</a></li>
-<li><a class="na-toc-link" href="#">What ML CI/CD covers</a></li>
-<li><a class="na-toc-link" href="#">Tools in this space</a></li>
-<li><a class="na-toc-link" href="#">How mature it is now</a></li>
+<li><a class="na-toc-link" href="#why-ml-pipelines-need-their-own-version-of-cicd">Why ML needs its own CI/CD</a></li>
+<li><a class="na-toc-link" href="#what-ml-cicd-covers">What ML CI/CD covers</a></li>
+<li><a class="na-toc-link" href="#tools-in-this-space">Tools in this space</a></li>
+<li><a class="na-toc-link" href="#how-mature-ml-automation-is-right-now">How mature it is now</a></li>
 </ol>
 </nav>
 <!-- Course navigation -->
