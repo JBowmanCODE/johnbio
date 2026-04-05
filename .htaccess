@@ -1,6 +1,3 @@
-# Disable Passenger globally — this is a static site
-PassengerEnabled off
-
 # Serve HTML content for the root
 DirectoryIndex index.html index.htm
 
@@ -25,14 +22,8 @@ RewriteRule ^news/?$ news/index.html [L]
 # Serve course directory index directly (bypass Passenger)
 RewriteRule ^course/?$ course/index.html [L]
 
-# Disable Passenger for static directories
-<LocationMatch "^/$">
-    PassengerEnabled off
-</LocationMatch>
-<LocationMatch "^/news">
-    PassengerEnabled off
-</LocationMatch>
-<LocationMatch "^/course">
+# Disable Passenger for everything — static site
+<LocationMatch "^/">
     PassengerEnabled off
 </LocationMatch>
 
