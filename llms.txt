@@ -42,7 +42,7 @@
 
 ## AI Course
 
-- [AI Course Dashboard](https://johnb.io/course-dashboard): Full AI course covering 9 units and 35 lessons — from AI fundamentals and machine learning to MLOps and business strategy.
+- [AI & Machine Learning Course](https://johnb.io/course-dashboard): Free AI and machine learning course with certificate. 9 units and 35 lessons covering AI fundamentals, deep learning, NLP, MLOps and business strategy. No login required to browse.
 - [Final Exam](https://johnb.io/exam): 30-question randomised exam drawn from a 60-question bank covering all 9 units.
 
 ### Unit 1 — Introduction to AI
