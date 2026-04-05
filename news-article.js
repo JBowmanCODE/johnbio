@@ -139,24 +139,24 @@
     player.addEventListener('timeupdate', updateProgress);
     player.addEventListener('ended', () => {
       if (playIcon) playIcon.textContent = 'play_arrow';
-      if (playBtn) playBtn.setAttribute('aria-label', 'Play lesson audio');
+      if (playBtn) playBtn.setAttribute('aria-label', 'Play audio');
       stopWave();
     });
 
     if (playBtn) {
       playBtn.addEventListener('click', () => {
-        if (!player.src) return; // no audio file yet
+        if (!player.src) return;
         if (player.paused) {
           initAudio();
           if (audioCtx.state === 'suspended') audioCtx.resume();
           player.play();
           if (playIcon) playIcon.textContent = 'pause';
-          playBtn.setAttribute('aria-label', 'Pause lesson audio');
+          playBtn.setAttribute('aria-label', 'Pause audio');
           drawWave();
         } else {
           player.pause();
           if (playIcon) playIcon.textContent = 'play_arrow';
-          playBtn.setAttribute('aria-label', 'Play lesson audio');
+          playBtn.setAttribute('aria-label', 'Play audio');
           stopWave();
         }
       });
@@ -169,23 +169,20 @@
       progressBar.addEventListener('click', e => {
         if (!player.duration) return;
         const rect = progressBar.getBoundingClientRect();
-        const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-        player.currentTime = pct * player.duration;
+        player.currentTime = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) * player.duration;
       });
       let dragging = false;
       progressBar.addEventListener('mousedown', () => { dragging = true; });
       document.addEventListener('mousemove', e => {
         if (!dragging || !player.duration) return;
         const rect = progressBar.getBoundingClientRect();
-        const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-        player.currentTime = pct * player.duration;
+        player.currentTime = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) * player.duration;
       });
       document.addEventListener('mouseup', () => { dragging = false; });
       progressBar.addEventListener('touchmove', e => {
         if (!player.duration) return;
         const rect = progressBar.getBoundingClientRect();
-        const pct  = Math.max(0, Math.min(1, (e.touches[0].clientX - rect.left) / rect.width));
-        player.currentTime = pct * player.duration;
+        player.currentTime = Math.max(0, Math.min(1, (e.touches[0].clientX - rect.left) / rect.width)) * player.duration;
       }, { passive: true });
     }
 
@@ -201,6 +198,15 @@
   // ── Podcast player ──────────────────────────────────────────────
   const podAudio = document.getElementById('na-podcast-audio');
   if (podAudio) {
+    // data-src: deferred load (avoids blocking page load for large audio files)
+    const podSrc = podAudio.getAttribute('data-src');
+    if (podSrc) {
+      setTimeout(() => {
+        podAudio.src = podSrc;
+        podAudio.load();
+      }, 2000);
+    }
+
     const playBtn  = document.getElementById('na-pod-play');
     const playIco  = document.getElementById('na-pod-play-icon');
     const progress = document.getElementById('na-pod-progress');
@@ -222,19 +228,17 @@
       if (progress) progress.max = podAudio.duration;
       if (durEl) durEl.textContent = fmt(podAudio.duration);
     });
-
     podAudio.addEventListener('timeupdate', () => {
       if (progress) progress.value = podAudio.currentTime;
       if (current) current.textContent = fmt(podAudio.currentTime);
     });
-
     podAudio.addEventListener('ended', () => {
       if (playIco) playIco.textContent = 'play_arrow';
     });
 
     if (playBtn) {
       playBtn.addEventListener('click', () => {
-        if (!podAudio.src) return; // no audio file yet
+        if (!podAudio.src) return;
         if (podAudio.paused) { podAudio.play(); if (playIco) playIco.textContent = 'pause'; }
         else { podAudio.pause(); if (playIco) playIco.textContent = 'play_arrow'; }
       });
