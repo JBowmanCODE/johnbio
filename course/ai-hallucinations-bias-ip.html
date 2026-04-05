@@ -330,29 +330,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is an AI hallucination?</h3>
-<p>An AI hallucination is when an AI system confidently outputs something completely false. Language models predict the next word based on statistical patterns - they have no internal fact-checker. So when a plausible-sounding answer exists in the pattern space, the model generates it whether or not it's true. The danger is the confidence: the AI doesn't hedge or admit uncertainty, it states falsehoods as fact.</p>
-<h3>What is the difference between AI hallucination and AI bias?</h3>
-<p>Hallucinations are false outputs - the AI invented something that doesn't exist. Bias is skewed outputs - the AI produces real patterns but wrong ones. A hiring algorithm that recommends fewer women isn't inventing things; it learned a pattern from biased historical data and replicates it. Bias is often harder to detect because biased outputs can look entirely reasonable until you check demographic breakdowns.</p>
-<h3>Who owns AI-generated content?</h3>
-<p>This is legally unsettled. Different AI companies take different positions - some say the user owns it, some claim the company retains rights, many are deliberately vague. Courts haven't definitively resolved major cases yet. If you're creating AI-generated content to sell or monetise, you're currently in a legal grey area. The situation around whether original creators whose work trained AI models have rights is also unresolved.</p>
-<h3>Why is AI bias hard to detect?</h3>
-<p>Biased AI outputs often look reasonable on the surface. A hiring algorithm recommending mostly men, a loan algorithm approving fewer applications from certain postcodes - these can pass validation on aggregate metrics while hiding systematic disparities. You only find the bias if you specifically look for it by comparing outcomes across demographic groups. Most deployments don't do this check at all.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is an AI hallucination?</dt><dd>An AI hallucination is when an AI system confidently outputs something completely false. Language models predict the next word based on statistical patterns - they have no internal fact-checker. So when a plausible-sounding answer exists in the pattern space, the model generates it whether or not it's true. The danger is the confidence: the AI doesn't hedge or admit uncertainty, it states falsehoods as fact.</dd></div><div class="faq-item"><dt>What is the difference between AI hallucination and AI bias?</dt><dd>Hallucinations are false outputs - the AI invented something that doesn't exist. Bias is skewed outputs - the AI produces real patterns but wrong ones. A hiring algorithm that recommends fewer women isn't inventing things; it learned a pattern from biased historical data and replicates it. Bias is often harder to detect because biased outputs can look entirely reasonable until you check demographic breakdowns.</dd></div><div class="faq-item"><dt>Who owns AI-generated content?</dt><dd>This is legally unsettled. Different AI companies take different positions - some say the user owns it, some claim the company retains rights, many are deliberately vague. Courts haven't definitively resolved major cases yet. If you're creating AI-generated content to sell or monetise, you're currently in a legal grey area. The situation around whether original creators whose work trained AI models have rights is also unresolved.</dd></div><div class="faq-item"><dt>Why is AI bias hard to detect?</dt><dd>Biased AI outputs often look reasonable on the surface. A hiring algorithm recommending mostly men, a loan algorithm approving fewer applications from certain postcodes - these can pass validation on aggregate metrics while hiding systematic disparities. You only find the bias if you specifically look for it by comparing outcomes across demographic groups. Most deployments don't do this check at all.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p><strong>Hallucinations</strong> arise from the nature of language model generation. The model samples from a probability distribution over possible next tokens. It has no external memory, no fact database, and no truth-checking mechanism. When asked about something not clearly in its training data, it generates the statistically most plausible continuation - which can be entirely fabricated but formatted to look credible.</p>
-<p><strong>Bias</strong> propagates through training data. If a dataset over-represents one demographic in positive contexts, the model learns that association. Standard validation metrics (overall accuracy, F1 score) can miss this entirely if the biased subgroup is small relative to the overall dataset. Proper bias auditing requires disaggregated evaluation - checking performance separately for each demographic group.</p>
-<p><strong>IP issues</strong> arise because AI models are trained on copyrighted content at scale. The legal framework for copyright was built around human creators copying from identifiable sources - it doesn't map cleanly onto statistical pattern learning from billions of training examples.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li><strong>Hallucinations</strong> arise from the nature of language model generation. The model samples from a probability distribution over possible next tokens. It has no external memory, no fact database, and no truth-checking mechanism. When asked about something not clearly in its training data, it generates the statistically most plausible continuation - which can be entirely fabricated but formatted to look credible.</li><li><strong>Bias</strong> propagates through training data. If a dataset over-represents one demographic in positive contexts, the model learns that association. Standard validation metrics (overall accuracy, F1 score) can miss this entirely if the biased subgroup is small relative to the overall dataset. Proper bias auditing requires disaggregated evaluation - checking performance separately for each demographic group.</li><li><strong>IP issues</strong> arise because AI models are trained on copyrighted content at scale. The legal framework for copyright was built around human creators copying from identifiable sources - it doesn't map cleanly onto statistical pattern learning from billions of training examples.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>AI hallucinations: models generate confident false information because they predict likely word sequences, not verified facts.</li>
 <li>The confidence of hallucinations makes them dangerous - they're indistinguishable from correct answers without external verification.</li>
 <li>AI bias: models learn skewed patterns from biased training data and reproduce them in outputs.</li>
@@ -366,12 +353,12 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Ji, Z. et al. (2023). Survey of Hallucination in Natural Language Generation. <em>ACM Computing Surveys</em>, 55(12).</li>
 <li>Bender, E. et al. (2021). On the Dangers of Stochastic Parrots: Can Language Models Be Too Big? <em>FAccT 2021</em>.</li>
 <li>Mehrabi, N. et al. (2021). A Survey on Bias and Fairness in Machine Learning. <em>ACM Computing Surveys</em>, 54(6).</li>
 <li>Andersen v. Stability AI Ltd (N.D. Cal. 2023) - landmark AI copyright case.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

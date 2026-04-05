@@ -331,30 +331,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What do activation functions do in neural networks?</h3>
-<p>Activation functions add non-linearity to neural networks. Without them, stacking layers of multiply-and-add operations would still only compute linear functions - regardless of how many layers you add. Non-linearity allows networks to learn complex, curved relationships between inputs and outputs: recognising faces, understanding language, detecting patterns in arbitrary data.</p>
-<h3>What is the vanishing gradient problem?</h3>
-<p>The vanishing gradient problem occurs when gradients become extremely small as they're propagated backward through many layers. With sigmoid and tanh activation functions, gradients in the flat regions are very small. Multiply many small numbers together and you get something near zero. Early layers of the network receive such tiny gradient signals that they barely learn anything. This made training deep networks with sigmoid/tanh effectively impossible.</p>
-<h3>What is ReLU and why is it the standard activation function?</h3>
-<p>ReLU (rectified linear unit) outputs the input unchanged if it's positive, or zero if it's negative. That's it. Its gradient is either 0 or 1 - never a tiny fraction. This solved the vanishing gradient problem: gradients don't shrink as they pass through ReLU. It's also computationally cheap (just a comparison, no transcendental functions). These properties made training deep networks practical, and ReLU became the default for hidden layers.</p>
-<h3>When should you use sigmoid vs ReLU?</h3>
-<p>Use ReLU (or its variants like Leaky ReLU, GELU) for hidden layers. Use sigmoid for binary classification output layers (where you need a probability between 0 and 1) or similar outputs that need to be constrained to a range. For multi-class classification output, use softmax instead of sigmoid.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What do activation functions do in neural networks?</dt><dd>Activation functions add non-linearity to neural networks. Without them, stacking layers of multiply-and-add operations would still only compute linear functions - regardless of how many layers you add. Non-linearity allows networks to learn complex, curved relationships between inputs and outputs: recognising faces, understanding language, detecting patterns in arbitrary data.</dd></div><div class="faq-item"><dt>What is the vanishing gradient problem?</dt><dd>The vanishing gradient problem occurs when gradients become extremely small as they're propagated backward through many layers. With sigmoid and tanh activation functions, gradients in the flat regions are very small. Multiply many small numbers together and you get something near zero. Early layers of the network receive such tiny gradient signals that they barely learn anything. This made training deep networks with sigmoid/tanh effectively impossible.</dd></div><div class="faq-item"><dt>What is ReLU and why is it the standard activation function?</dt><dd>ReLU (rectified linear unit) outputs the input unchanged if it's positive, or zero if it's negative. That's it. Its gradient is either 0 or 1 - never a tiny fraction. This solved the vanishing gradient problem: gradients don't shrink as they pass through ReLU. It's also computationally cheap (just a comparison, no transcendental functions). These properties made training deep networks practical, and ReLU became the default for hidden layers.</dd></div><div class="faq-item"><dt>When should you use sigmoid vs ReLU?</dt><dd>Use ReLU (or its variants like Leaky ReLU, GELU) for hidden layers. Use sigmoid for binary classification output layers (where you need a probability between 0 and 1) or similar outputs that need to be constrained to a range. For multi-class classification output, use softmax instead of sigmoid.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p><strong>Sigmoid</strong>: <code>σ(x) = 1 / (1 + e^(-x))</code>. Output range: (0, 1). Gradient: <code>σ(x) * (1 - σ(x))</code>, which approaches 0 for very large or very small x. This is the source of the vanishing gradient problem.</p>
-<p><strong>Tanh</strong>: <code>tanh(x) = (e^x - e^(-x)) / (e^x + e^(-x))</code>. Output range: (-1, 1). Gradient: <code>1 - tanh(x)^2</code>, also approaches 0 at extremes.</p>
-<p><strong>ReLU</strong>: <code>relu(x) = max(0, x)</code>. Output range: [0, ∞). Gradient: 1 for x &gt; 0, 0 for x &lt; 0, undefined at x = 0 (treated as 0 in practice). No vanishing gradient for positive activations.</p>
-<p><strong>Leaky ReLU</strong>: <code>max(0.01x, x)</code>. Like ReLU but allows a small negative output, preventing "dead neurons" where a ReLU is permanently zero.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li><strong>Sigmoid</strong>: <code>σ(x) = 1 / (1 + e^(-x))</code>. Output range: (0, 1). Gradient: <code>σ(x) * (1 - σ(x))</code>, which approaches 0 for very large or very small x. This is the source of the vanishing gradient problem.</li><li><strong>Tanh</strong>: <code>tanh(x) = (e^x - e^(-x)) / (e^x + e^(-x))</code>. Output range: (-1, 1). Gradient: <code>1 - tanh(x)^2</code>, also approaches 0 at extremes.</li><li><strong>ReLU</strong>: <code>relu(x) = max(0, x)</code>. Output range: [0, ∞). Gradient: 1 for x &gt; 0, 0 for x &lt; 0, undefined at x = 0 (treated as 0 in practice). No vanishing gradient for positive activations.</li><li><strong>Leaky ReLU</strong>: <code>max(0.01x, x)</code>. Like ReLU but allows a small negative output, preventing "dead neurons" where a ReLU is permanently zero.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>Activation functions add non-linearity - without them, deep networks can only compute linear functions.</li>
 <li>Sigmoid: squashes output to (0,1). Historically popular, now mostly used for binary output layers.</li>
 <li>Tanh: squashes output to (-1,1). Same vanishing gradient problem as sigmoid.</li>
@@ -368,11 +354,11 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Nair, V. &amp; Hinton, G. (2010). Rectified Linear Units Improve Restricted Boltzmann Machines. <em>ICML 2010</em>.</li>
 <li>Glorot, X., Bordes, A. &amp; Bengio, Y. (2011). Deep Sparse Rectifier Neural Networks. <em>AISTATS 2011</em>.</li>
 <li>Hochreiter, S. (1991). Untersuchungen zu dynamischen neuronalen Netzen. (The original vanishing gradient paper, diploma thesis, TU Munich.)</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

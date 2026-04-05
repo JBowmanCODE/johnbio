@@ -1,48 +1,48 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Python Essentials for AI: Variables and Control Flow - JohnB.io</title>
-  <meta name="description" content="Learn the Python basics you actually need for AI: variables, data types, lists, dictionaries, loops and conditionals - with real machine learning examples.">
-  <meta name="keywords" content="python for AI, python variables, python lists, python loops, python for machine learning, python beginner, AI course">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="John Bowman">
-  <link rel="canonical" href="https://johnb.io/course/python-essentials-for-ai">
-  <meta property="og:title" content="Python Essentials for AI: Variables, Data Structures and Control Flow">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://johnb.io/course/python-essentials-for-ai">
-  <meta property="og:description" content="The Python you actually need for AI. Variables, lists, dictionaries, loops and conditionals - explained with real machine learning examples from the ground up.">
-  <meta property="og:image" content="https://johnb.io/images/course/python-essentials-for-ai.webp">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Python Essentials for AI lesson cover - JohnB.io AI Course">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Python Essentials for AI: Variables, Data Structures and Control Flow">
-  <meta name="twitter:description" content="The Python you actually need for AI. Variables, lists, dictionaries, loops and conditionals explained with real ML examples.">
-  <meta name="twitter:image" content="https://johnb.io/images/course/python-essentials-for-ai.webp">
-  <meta name="twitter:image:alt" content="Python Essentials for AI lesson cover - JohnB.io AI Course">
-  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
-  <meta property="article:author" content="John Bowman">
-  <meta property="article:section" content="AI Course">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J6PBWMRNY');</script>
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/footer.css">
-  <link rel="stylesheet" href="/news.css?v=3">
-  <link rel="stylesheet" href="/lesson.css?v=3">
-  <link rel="stylesheet" href="/news-chat.css?v=7">
-  <style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
-
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Python Essentials for AI: Variables and Control Flow - JohnB.io</title>
+<meta content="Learn the Python basics you actually need for AI: variables, data types, lists, dictionaries, loops and conditionals - with real machine learning examples." name="description"/>
+<meta content="python for AI, python variables, python lists, python loops, python for machine learning, python beginner, AI course" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
+<link href="https://johnb.io/course/python-essentials-for-ai" rel="canonical"/>
+<meta content="Python Essentials for AI: Variables, Data Structures and Control Flow" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://johnb.io/course/python-essentials-for-ai" property="og:url"/>
+<meta content="The Python you actually need for AI. Variables, lists, dictionaries, loops and conditionals - explained with real machine learning examples from the ground up." property="og:description"/>
+<meta content="https://johnb.io/images/course/python-essentials-for-ai.webp" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Python Essentials for AI lesson cover - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Python Essentials for AI: Variables, Data Structures and Control Flow" name="twitter:title"/>
+<meta content="The Python you actually need for AI. Variables, lists, dictionaries, loops and conditionals explained with real ML examples." name="twitter:description"/>
+<meta content="https://johnb.io/images/course/python-essentials-for-ai.webp" name="twitter:image"/>
+<meta content="Python Essentials for AI lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
+<meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
+<meta content="John Bowman" property="article:author"/>
+<meta content="AI Course" property="article:section"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J6PBWMRNY');</script>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/header.css" rel="stylesheet"/>
+<link href="/footer.css" rel="stylesheet"/>
+<link href="/news.css?v=3" rel="stylesheet"/>
+<link href="/lesson.css?v=3" rel="stylesheet"/>
+<link href="/news-chat.css?v=7" rel="stylesheet"/>
+<style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -58,7 +58,7 @@
     "articleSection": "AI Course"
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -86,7 +86,7 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -99,192 +99,148 @@
   </script>
 </head>
 <body class="lp-page">
-  <div id="header-placeholder"></div>
-  <div class="lp-ambient"></div>
-
-  <main class="na-wrap">
-  <div class="na-layout">
-  <div class="na-content">
-
-    <nav class="na-breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Home</a>
-      <span class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
-      <a href="/course-dashboard">AI Course</a>
-      <span class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
-      <span class="na-bc-current">Python Essentials for AI</span>
-    </nav>
-
-    <article>
-      <div class="na-header">
-        <h1 class="na-title">Python Essentials for AI: Variables, Data Structures and Control Flow</h1>
-        <div class="na-lede-row">
-          <p class="na-lede">Everyone says Python is beginner-friendly. That's true but incomplete. Here's what you actually need to know about Python before you touch any machine learning library - and what you can safely skip.</p>
-          <div class="na-lede-img">
-            <img src="/images/course/python-essentials-for-ai.webp" alt="Python Essentials for AI - variables, data structures and control flow" loading="lazy">
-          </div>
-        </div>
-        <div class="na-author">
-          <a href="/about" aria-label="About John Bowman"><img src="/images/JohnB.webp" alt="John Bowman" class="na-author-img"></a>
-          <div class="na-author-details">
-            <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a>
-            <span class="na-author-role">Owner / AI Developer</span>
-          </div>
-          <div class="na-header-meta">
-            <span class="lp-unit-badge lp-unit-4">Unit 4</span>
-            <span class="na-date">5 April 2026</span>
-            <span class="na-read">8 min read</span>
-          </div>
-        </div>
-        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-          <span class="material-symbols-outlined">auto_awesome</span>
+<div id="header-placeholder"></div>
+<div class="lp-ambient"></div>
+<main class="na-wrap">
+<div class="na-layout">
+<div class="na-content">
+<nav aria-label="Breadcrumb" class="na-breadcrumb">
+<a href="/">Home</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<a href="/course-dashboard">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span class="na-bc-current">Python Essentials for AI</span>
+</nav>
+<article>
+<div class="na-header">
+<h1 class="na-title">Python Essentials for AI: Variables, Data Structures and Control Flow</h1>
+<div class="na-lede-row">
+<p class="na-lede">Everyone says Python is beginner-friendly. That's true but incomplete. Here's what you actually need to know about Python before you touch any machine learning library - and what you can safely skip.</p>
+<div class="na-lede-img">
+<img alt="Python Essentials for AI - variables, data structures and control flow" loading="lazy" src="/images/course/python-essentials-for-ai.webp"/>
+</div>
+</div>
+<div class="na-author">
+<a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
+<div class="na-author-details">
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<span class="na-author-role">Owner / AI Developer</span>
+</div>
+<div class="na-header-meta">
+<span class="lp-unit-badge lp-unit-4">Unit 4</span>
+<span class="na-date">5 April 2026</span>
+<span class="na-read">8 min read</span>
+</div>
+</div>
+<button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
           Ask Newsy AI about this lesson
         </button>
-      </div>
-
-      <details class="na-mobile-toc">
-        <summary class="na-mobile-toc-trigger">
-          <span class="material-symbols-outlined">menu_book</span>
+</div>
+<details class="na-mobile-toc">
+<summary class="na-mobile-toc-trigger">
+<span class="material-symbols-outlined">menu_book</span>
           In this lesson
           <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span>
-        </summary>
-        <ol class="na-mobile-toc-list">
-          <li><a href="#why-python">Why Python became the language of AI</a></li>
-          <li><a href="#variables">Variables and data types</a></li>
-          <li><a href="#lists-dicts">Lists and dictionaries</a></li>
-          <li><a href="#loops">Loops and conditionals</a></li>
-          <li><a href="#worked-example">A worked example</a></li>
-          <li><a href="#how-deep">How deep do you actually need to go?</a></li>
-        </ol>
-      </details>
-
-      <hr class="na-divider">
-
-      <div class="na-audio" aria-label="Listen to this lesson">
-        <span class="na-audio-icon material-symbols-outlined" aria-hidden="true">headphones</span>
-        <div class="na-audio-info">
-          <div class="na-audio-top">
-            <span class="na-audio-label">Listen to this lesson</span>
-            <div class="na-volume">
-              <button class="na-mute-btn" id="na-mute-btn" aria-label="Mute"><span class="material-symbols-outlined">volume_up</span></button>
-              <input class="na-volume-slider" id="na-volume-slider" type="range" min="0" max="1" step="0.02" value="1" aria-label="Volume">
-            </div>
-          </div>
-          <audio id="na-player" preload="none"></audio>
-          <div class="na-audio-controls">
-            <button class="na-skip-btn" id="na-skip-back" aria-label="Skip back 10 seconds"><span class="material-symbols-outlined">replay_10</span></button>
-            <button class="na-audio-btn" id="na-play-btn" aria-label="Play lesson audio"><span class="material-symbols-outlined">play_arrow</span></button>
-            <button class="na-skip-btn" id="na-skip-fwd" aria-label="Skip forward 10 seconds"><span class="material-symbols-outlined">forward_10</span></button>
-            <div class="na-speed-btns" role="group" aria-label="Playback speed">
-              <button class="na-speed-btn active" data-speed="1">1x</button>
-              <button class="na-speed-btn" data-speed="1.5">1.5x</button>
-              <button class="na-speed-btn" data-speed="2">2x</button>
-            </div>
-            <canvas id="na-waveform" class="na-waveform" width="200" height="52" aria-hidden="true"></canvas>
-          </div>
-          <div class="na-audio-progress-wrap">
-            <span class="na-audio-time" id="na-current-time">0:00</span>
-            <div class="na-progress" id="na-progress" role="slider" aria-label="Audio progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-              <div class="na-progress-fill" id="na-progress-fill"></div>
-              <div class="na-progress-thumb" id="na-progress-thumb"></div>
-            </div>
-            <span class="na-audio-time na-audio-duration" id="na-duration">0:00</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="na-body">
-
-        <p>Python didn't become the dominant AI language just because it's easy to learn. There are real structural reasons. Understanding them helps you understand why the Python you learn here transfers directly to ML work - and what you can skip.</p>
-
-        <h2 id="why-python">Why Python Became the Language of AI</h2>
-
-        <p>The math libraries came early. <a href="/course/numpy-pandas">NumPy and SciPy</a> were built in the 2000s when AI research was getting serious. They made numerical computing efficient in Python - which shouldn't be possible, because Python is slow. But these libraries run C under the hood, so they're actually fast. Once those existed, everything else could build on top.</p>
-
-        <p>Then academic researchers adopted Python. Machine learning papers came with code in Python. Everyone who wanted to replicate results learned Python. Momentum is everything, and Python had it.</p>
-
-        <p>Honest take: you don't strictly need Python to do AI. You can do it in R, Julia, or JavaScript. The tools are better in Python because everyone uses Python. If everyone switched to R tomorrow, R would become just as good. But if you're starting from nothing, learn Python. The ecosystem is there, the examples are there, and you'll find answers when you're stuck.</p>
-
-        <h2 id="variables">Variables and Data Types</h2>
-
-        <p>A variable is a container for information. You put something in, give it a name, and later ask for it by name.</p>
-
+</summary>
+<ol class="na-mobile-toc-list">
+<li><a href="#why-python">Why Python became the language of AI</a></li>
+<li><a href="#variables">Variables and data types</a></li>
+<li><a href="#lists-dicts">Lists and dictionaries</a></li>
+<li><a href="#loops">Loops and conditionals</a></li>
+<li><a href="#worked-example">A worked example</a></li>
+<li><a href="#how-deep">How deep do you actually need to go?</a></li>
+</ol>
+</details>
+<hr class="na-divider"/>
+<div aria-label="Listen to this lesson" class="na-audio">
+<span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
+<div class="na-audio-info">
+<div class="na-audio-top">
+<span class="na-audio-label">Listen to this lesson</span>
+<div class="na-volume">
+<button aria-label="Mute" class="na-mute-btn" id="na-mute-btn"><span class="material-symbols-outlined">volume_up</span></button>
+<input aria-label="Volume" class="na-volume-slider" id="na-volume-slider" max="1" min="0" step="0.02" type="range" value="1"/>
+</div>
+</div>
+<audio id="na-player" preload="none"></audio>
+<div class="na-audio-controls">
+<button aria-label="Skip back 10 seconds" class="na-skip-btn" id="na-skip-back"><span class="material-symbols-outlined">replay_10</span></button>
+<button aria-label="Play lesson audio" class="na-audio-btn" id="na-play-btn"><span class="material-symbols-outlined">play_arrow</span></button>
+<button aria-label="Skip forward 10 seconds" class="na-skip-btn" id="na-skip-fwd"><span class="material-symbols-outlined">forward_10</span></button>
+<div aria-label="Playback speed" class="na-speed-btns" role="group">
+<button class="na-speed-btn active" data-speed="1">1x</button>
+<button class="na-speed-btn" data-speed="1.5">1.5x</button>
+<button class="na-speed-btn" data-speed="2">2x</button>
+</div>
+<canvas aria-hidden="true" class="na-waveform" height="52" id="na-waveform" width="200"></canvas>
+</div>
+<div class="na-audio-progress-wrap">
+<span class="na-audio-time" id="na-current-time">0:00</span>
+<div aria-label="Audio progress" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="na-progress" id="na-progress" role="slider">
+<div class="na-progress-fill" id="na-progress-fill"></div>
+<div class="na-progress-thumb" id="na-progress-thumb"></div>
+</div>
+<span class="na-audio-time na-audio-duration" id="na-duration">0:00</span>
+</div>
+</div>
+</div>
+<div class="na-body">
+<p>Python didn't become the dominant AI language just because it's easy to learn. There are real structural reasons. Understanding them helps you understand why the Python you learn here transfers directly to ML work - and what you can skip.</p>
+<h2 id="why-python">Why Python Became the Language of AI</h2>
+<p>The math libraries came early. <a href="/course/numpy-pandas">NumPy and SciPy</a> were built in the 2000s when AI research was getting serious. They made numerical computing efficient in Python - which shouldn't be possible, because Python is slow. But these libraries run C under the hood, so they're actually fast. Once those existed, everything else could build on top.</p>
+<p>Then academic researchers adopted Python. Machine learning papers came with code in Python. Everyone who wanted to replicate results learned Python. Momentum is everything, and Python had it.</p>
+<p>Honest take: you don't strictly need Python to do AI. You can do it in R, Julia, or JavaScript. The tools are better in Python because everyone uses Python. If everyone switched to R tomorrow, R would become just as good. But if you're starting from nothing, learn Python. The ecosystem is there, the examples are there, and you'll find answers when you're stuck.</p>
+<h2 id="variables">Variables and Data Types</h2>
+<p>A variable is a container for information. You put something in, give it a name, and later ask for it by name.</p>
 <pre><code>price = 19.99
 name = "Alice"
 is_available = True</code></pre>
-
-        <p><code>price</code> holds a number. <code>name</code> holds text. <code>is_available</code> holds a true/false value. Python figures out the type from what you put in - you don't have to declare it.</p>
-
-        <p>Why does this matter for AI? Because data comes in types. A feature in your model might be a number (age, income) or text (country, category). A model expects numbers, so if you have text categories, you have to convert them first. Knowing your data types is where that process starts.</p>
-
-        <p>Python's core types:</p>
-
-        <p><strong>Integers</strong> and <strong>floats</strong> are numbers. Integers are whole (5). Floats have decimals (5.2). In AI work, you'll mostly use floats because real-world measurements are rarely whole numbers.</p>
-
-        <p><strong>Strings</strong> are text. When you're working with categorical data ("red", "blue", "green"), you're working with strings, and you'll eventually convert them to numbers so a model can use them.</p>
-
-        <p><strong>Booleans</strong> are true/false. They're useful for filtering: "show me all rows where age > 18" produces a list of true/false values you then use to filter your data.</p>
-
-        <h2 id="lists-dicts">Lists and Dictionaries: How Data Gets Organised</h2>
-
-        <p>A list is an ordered collection. You create it with square brackets.</p>
-
+<p><code>price</code> holds a number. <code>name</code> holds text. <code>is_available</code> holds a true/false value. Python figures out the type from what you put in - you don't have to declare it.</p>
+<p>Why does this matter for AI? Because data comes in types. A feature in your model might be a number (age, income) or text (country, category). A model expects numbers, so if you have text categories, you have to convert them first. Knowing your data types is where that process starts.</p>
+<p>Python's core types:</p>
+<p><strong>Integers</strong> and <strong>floats</strong> are numbers. Integers are whole (5). Floats have decimals (5.2). In AI work, you'll mostly use floats because real-world measurements are rarely whole numbers.</p>
+<p><strong>Strings</strong> are text. When you're working with categorical data ("red", "blue", "green"), you're working with strings, and you'll eventually convert them to numbers so a model can use them.</p>
+<p><strong>Booleans</strong> are true/false. They're useful for filtering: "show me all rows where age &gt; 18" produces a list of true/false values you then use to filter your data.</p>
+<h2 id="lists-dicts">Lists and Dictionaries: How Data Gets Organised</h2>
+<p>A list is an ordered collection. You create it with square brackets.</p>
 <pre><code>ages = [25, 30, 22, 45]
 temperatures = [72.5, 68.3, 75.1]</code></pre>
-
-        <p>You access items by their position (starting from 0):</p>
-
+<p>You access items by their position (starting from 0):</p>
 <pre><code>ages[0]  # gives you 25
 ages[2]  # gives you 22</code></pre>
-
-        <p>In AI, datasets are often lists. A column in a spreadsheet becomes a list. You loop through it, do something with each item, and build results. Lists are everywhere.</p>
-
-        <p>A dictionary is unordered, but items have names. You create it with curly braces.</p>
-
+<p>In AI, datasets are often lists. A column in a spreadsheet becomes a list. You loop through it, do something with each item, and build results. Lists are everywhere.</p>
+<p>A dictionary is unordered, but items have names. You create it with curly braces.</p>
 <pre><code>person = {
     "name": "Alice",
     "age": 28,
     "city": "Portland"
 }</code></pre>
-
-        <p>You access items by their key:</p>
-
+<p>You access items by their key:</p>
 <pre><code>person["name"]  # gives you "Alice"
 person["age"]   # gives you 28</code></pre>
-
-        <p>Real data has structure. A row in a dataset isn't just a list of numbers - it's "this person has age 28, income 50000, and education level 3." Dictionaries let you organise that logically. In <a href="/course/numpy-pandas">pandas</a>, dictionaries become DataFrames. Understanding them now makes DataFrames make sense later.</p>
-
-        <h2 id="loops">Loops and Conditionals: The Logic of Programming</h2>
-
-        <p>A loop repeats code. The simplest is a <code>for</code> loop.</p>
-
+<p>Real data has structure. A row in a dataset isn't just a list of numbers - it's "this person has age 28, income 50000, and education level 3." Dictionaries let you organise that logically. In <a href="/course/numpy-pandas">pandas</a>, dictionaries become DataFrames. Understanding them now makes DataFrames make sense later.</p>
+<h2 id="loops">Loops and Conditionals: The Logic of Programming</h2>
+<p>A loop repeats code. The simplest is a <code>for</code> loop.</p>
 <pre><code>ages = [25, 30, 22, 45]
 for age in ages:
     print(age)</code></pre>
-
-        <p>This prints each age, one per line. You've written code once but applied it to every item. In AI, this is how you process data - loop through a list of records, and for each one you clean it, validate it, or extract features from it.</p>
-
-        <p>A conditional makes decisions:</p>
-
-<pre><code>if age > 30:
+<p>This prints each age, one per line. You've written code once but applied it to every item. In AI, this is how you process data - loop through a list of records, and for each one you clean it, validate it, or extract features from it.</p>
+<p>A conditional makes decisions:</p>
+<pre><code>if age &gt; 30:
     print("Over 30")
 else:
     print("30 or under")</code></pre>
-
-        <p>Combine loops and conditionals and you can do real work:</p>
-
+<p>Combine loops and conditionals and you can do real work:</p>
 <pre><code>ages = [25, 30, 22, 45, 28]
 older_people = []
 
 for age in ages:
-    if age > 30:
+    if age &gt; 30:
         older_people.append(age)</code></pre>
-
-        <p>Now <code>older_people</code> contains only <code>[45]</code>. You've filtered a list based on a condition. In machine learning, you'll write loops that load training examples, check if they're valid, extract features, and feed them to the model. This is how models learn - one piece of data at a time, in a loop.</p>
-
-        <h2 id="worked-example">A Worked Example: Building a Feature from Raw Data</h2>
-
-        <p>Say you have customer data: names, ages, and annual spending. You want to create a feature called <code>high_value</code> that's true if someone spent more than £1000.</p>
-
+<p>Now <code>older_people</code> contains only <code>[45]</code>. You've filtered a list based on a condition. In machine learning, you'll write loops that load training examples, check if they're valid, extract features, and feed them to the model. This is how models learn - one piece of data at a time, in a loop.</p>
+<h2 id="worked-example">A Worked Example: Building a Feature from Raw Data</h2>
+<p>Say you have customer data: names, ages, and annual spending. You want to create a feature called <code>high_value</code> that's true if someone spent more than £1000.</p>
 <pre><code>customers = [
     {"name": "Alice", "age": 28, "spending": 1500},
     {"name": "Bob", "age": 35, "spending": 800},
@@ -292,230 +248,192 @@ for age in ages:
 ]
 
 for customer in customers:
-    if customer["spending"] > 1000:
+    if customer["spending"] &gt; 1000:
         customer["high_value"] = True
     else:
         customer["high_value"] = False</code></pre>
-
-        <p>Now each customer has a <code>high_value</code> field. This is the kind of work you do constantly in ML. Raw data comes in, you create features, and you feed those features to a model.</p>
-
-        <p>This example uses everything above: a list of dictionaries, a loop, a conditional, and a comparison. That's the core of data processing.</p>
-
-        <h2 id="how-deep">How Deep Do You Actually Need to Go?</h2>
-
-        <p>You need to be comfortable with the basics - variables, lists, loops, conditionals. You need to understand what code is doing. But you don't need to be a Python expert.</p>
-
-        <p>I've seen people do serious ML work without understanding object-oriented programming, decorators, or metaclasses. Those are advanced Python features you probably won't need. What you will need is the ability to read code, debug simple problems, and write basic scripts that manipulate data.</p>
-
-        <p>The mistake beginners make is thinking they need to learn Python perfectly before touching ML. You don't. Learn the basics, then jump into <a href="/course/numpy-pandas">NumPy and pandas</a>. You'll learn the rest as you need it.</p>
-
-        <!-- Quiz -->
-        <div class="lp-quiz" aria-label="Lesson quiz">
-          <div class="lp-quiz-header">
-            <div class="lp-quiz-icon"><span class="material-symbols-outlined" aria-hidden="true">quiz</span></div>
-            <div>
-              <p class="lp-quiz-title">Check your understanding</p>
-              <p class="lp-quiz-sub">2 questions — select an answer then check it</p>
-            </div>
-          </div>
-
-          <div class="lp-quiz-q" id="q1">
-            <p class="lp-quiz-q-num">Question 1 of 2</p>
-            <p class="lp-quiz-q-text">In a Python dictionary, how do you access a specific piece of data?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
-              <button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>By its position, starting from 0</button>
-              <button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>By its key (name)</button>
-              <button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>By looping through all items until you find the right one</button>
-              <button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>By its data type</button>
-            </div>
-            <button class="lp-quiz-check" data-q="1" data-answer="B" disabled>Check answer</button>
-            <p class="lp-quiz-feedback" id="q1-fb"></p>
-          </div>
-
-          <div class="lp-quiz-q" id="q2">
-            <p class="lp-quiz-q-num">Question 2 of 2</p>
-            <p class="lp-quiz-q-text">Why do AI models need text categories (like "red", "blue", "green") to be converted to numbers before training?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
-              <button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>Python can't store text in variables</button>
-              <button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>Text takes up too much memory</button>
-              <button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>Models do mathematical operations and require numerical inputs</button>
-              <button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>String comparisons are always inaccurate</button>
-            </div>
-            <button class="lp-quiz-check" data-q="2" data-answer="C" disabled>Check answer</button>
-            <p class="lp-quiz-feedback" id="q2-fb"></p>
-          </div>
-        </div>
-
-      </div><!-- /na-body -->
-
-      <!-- Deep Dive Podcast -->
-      <div class="na-podcast" role="region" aria-label="Deep Dive Podcast">
-        <div class="na-podcast-badge"><span class="material-symbols-outlined" aria-hidden="true">podcasts</span>Deep Dive Podcast</div>
-        <div class="na-podcast-inner">
-          <div class="na-podcast-left">
-            <div class="na-podcast-icon" aria-hidden="true"><span class="material-symbols-outlined">graphic_eq</span></div>
-            <div class="na-podcast-meta">
-              <p class="na-podcast-title">Python Essentials for AI</p>
-              <p class="na-podcast-sub">Created with <a href="https://notebooklm.google.com/" target="_blank" rel="noopener" class="na-podcast-notebooklm"><strong>Google NotebookLM</strong></a> &middot; AI-generated audio overview</p>
-            </div>
-          </div>
-          <audio id="na-podcast-audio" preload="none" aria-label="Deep Dive Podcast audio"></audio>
-          <div class="na-podcast-controls">
-            <div class="na-podcast-progress-wrap" role="group" aria-label="Playback progress">
-              <span class="na-podcast-time" id="na-pod-current">0:00</span>
-              <input type="range" class="na-podcast-progress" id="na-pod-progress" value="0" min="0" step="0.1" aria-label="Seek">
-              <span class="na-podcast-time" id="na-pod-duration">0:00</span>
-            </div>
-            <div class="na-podcast-btns">
-              <button class="na-pod-btn na-pod-btn--skip" id="na-pod-back" aria-label="Skip back 15 seconds"><span class="material-symbols-outlined">replay</span><span class="na-pod-skip-label">15s</span></button>
-              <button class="na-pod-btn na-pod-btn--play" id="na-pod-play" aria-label="Play podcast"><span class="material-symbols-outlined" id="na-pod-play-icon">play_arrow</span></button>
-              <button class="na-pod-btn na-pod-btn--skip" id="na-pod-fwd" aria-label="Skip forward 15 seconds"><span class="material-symbols-outlined">forward</span><span class="na-pod-skip-label">15s</span></button>
-              <div class="na-pod-volume">
-                <button class="na-pod-btn na-pod-mute" id="na-pod-mute" aria-label="Mute"><span class="material-symbols-outlined" id="na-pod-mute-icon">volume_up</span></button>
-                <input type="range" class="na-pod-vol-slider" id="na-pod-vol" min="0" max="1" step="0.05" value="1" aria-label="Volume">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Accordions -->
-      <!-- Lesson navigation -->
-      <nav class="lp-nav" aria-label="Lesson navigation">
-        <a class="lp-nav-btn" href="/course/ai-governance-frameworks">
-          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-          <div>
-            <span class="lp-nav-label">Previous lesson</span>
-            <span class="lp-nav-title">AI Governance Frameworks</span>
-          </div>
-        </a>
-        <a class="lp-nav-btn next" href="/course/numpy-pandas">
-          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-          <div>
-            <span class="lp-nav-label">Next lesson</span>
-            <span class="lp-nav-title">NumPy and Pandas</span>
-          </div>
-        </a>
-      </nav>
-
+<p>Now each customer has a <code>high_value</code> field. This is the kind of work you do constantly in ML. Raw data comes in, you create features, and you feed those features to a model.</p>
+<p>This example uses everything above: a list of dictionaries, a loop, a conditional, and a comparison. That's the core of data processing.</p>
+<h2 id="how-deep">How Deep Do You Actually Need to Go?</h2>
+<p>You need to be comfortable with the basics - variables, lists, loops, conditionals. You need to understand what code is doing. But you don't need to be a Python expert.</p>
+<p>I've seen people do serious ML work without understanding object-oriented programming, decorators, or metaclasses. Those are advanced Python features you probably won't need. What you will need is the ability to read code, debug simple problems, and write basic scripts that manipulate data.</p>
+<p>The mistake beginners make is thinking they need to learn Python perfectly before touching ML. You don't. Learn the basics, then jump into <a href="/course/numpy-pandas">NumPy and pandas</a>. You'll learn the rest as you need it.</p>
+<!-- Quiz -->
+<div aria-label="Lesson quiz" class="lp-quiz">
+<div class="lp-quiz-header">
+<div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div>
+<div>
+<p class="lp-quiz-title">Check your understanding</p>
+<p class="lp-quiz-sub">2 questions — select an answer then check it</p>
+</div>
+</div>
+<div class="lp-quiz-q" id="q1">
+<p class="lp-quiz-q-num">Question 1 of 2</p>
+<p class="lp-quiz-q-text">In a Python dictionary, how do you access a specific piece of data?</p>
+<div aria-label="Question 1 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>By its position, starting from 0</button>
+<button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>By its key (name)</button>
+<button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>By looping through all items until you find the right one</button>
+<button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>By its data type</button>
+</div>
+<button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button>
+<p class="lp-quiz-feedback" id="q1-fb"></p>
+</div>
+<div class="lp-quiz-q" id="q2">
+<p class="lp-quiz-q-num">Question 2 of 2</p>
+<p class="lp-quiz-q-text">Why do AI models need text categories (like "red", "blue", "green") to be converted to numbers before training?</p>
+<div aria-label="Question 2 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>Python can't store text in variables</button>
+<button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>Text takes up too much memory</button>
+<button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>Models do mathematical operations and require numerical inputs</button>
+<button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>String comparisons are always inaccurate</button>
+</div>
+<button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button>
+<p class="lp-quiz-feedback" id="q2-fb"></p>
+</div>
+</div>
+</div><!-- /na-body -->
+<!-- Deep Dive Podcast -->
+<div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
+<div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>
+<div class="na-podcast-inner">
+<div class="na-podcast-left">
+<div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
+<div class="na-podcast-meta">
+<p class="na-podcast-title">Python Essentials for AI</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+</div>
+</div>
+<audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="none"></audio>
+<div class="na-podcast-controls">
+<div aria-label="Playback progress" class="na-podcast-progress-wrap" role="group">
+<span class="na-podcast-time" id="na-pod-current">0:00</span>
+<input aria-label="Seek" class="na-podcast-progress" id="na-pod-progress" min="0" step="0.1" type="range" value="0"/>
+<span class="na-podcast-time" id="na-pod-duration">0:00</span>
+</div>
+<div class="na-podcast-btns">
+<button aria-label="Skip back 15 seconds" class="na-pod-btn na-pod-btn--skip" id="na-pod-back"><span class="material-symbols-outlined">replay</span><span class="na-pod-skip-label">15s</span></button>
+<button aria-label="Play podcast" class="na-pod-btn na-pod-btn--play" id="na-pod-play"><span class="material-symbols-outlined" id="na-pod-play-icon">play_arrow</span></button>
+<button aria-label="Skip forward 15 seconds" class="na-pod-btn na-pod-btn--skip" id="na-pod-fwd"><span class="material-symbols-outlined">forward</span><span class="na-pod-skip-label">15s</span></button>
+<div class="na-pod-volume">
+<button aria-label="Mute" class="na-pod-btn na-pod-mute" id="na-pod-mute"><span class="material-symbols-outlined" id="na-pod-mute-icon">volume_up</span></button>
+<input aria-label="Volume" class="na-pod-vol-slider" id="na-pod-vol" max="1" min="0" step="0.05" type="range" value="1"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordions -->
+<!-- Lesson navigation -->
+<nav aria-label="Lesson navigation" class="lp-nav">
+<a class="lp-nav-btn" href="/course/ai-governance-frameworks">
+<span aria-hidden="true" class="material-symbols-outlined">arrow_back</span>
+<div>
+<span class="lp-nav-label">Previous lesson</span>
+<span class="lp-nav-title">AI Governance Frameworks</span>
+</div>
+</a>
+<a class="lp-nav-btn next" href="/course/numpy-pandas">
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span>
+<div>
+<span class="lp-nav-label">Next lesson</span>
+<span class="lp-nav-title">NumPy and Pandas</span>
+</div>
+</a>
+</nav>
 </article>
-  </div><!-- /na-content -->
-
-  <!-- Sidebar -->
-  <aside class="na-sidebar" aria-label="Lesson navigation sidebar">
-    <nav class="na-toc" aria-label="In this lesson">
-      <p class="na-toc-title">In this lesson</p>
-      <ol class="na-toc-list">
-        <li><a class="na-toc-link" href="#why-python">Why Python became the language of AI</a></li>
-        <li><a class="na-toc-link" href="#variables">Variables and data types</a></li>
-        <li><a class="na-toc-link" href="#lists-dicts">Lists and dictionaries</a></li>
-        <li><a class="na-toc-link" href="#loops">Loops and conditionals</a></li>
-        <li><a class="na-toc-link" href="#worked-example">A worked example</a></li>
-        <li><a class="na-toc-link" href="#how-deep">How deep do you need to go?</a></li>
-      </ol>
-    </nav>
-    <div class="lp-sidebar-nav">
-      <p class="lp-sidebar-nav-title">Course navigation</p>
-      <a class="lp-sidebar-nav-link" href="/course-dashboard">
-        <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>My dashboard
+</div><!-- /na-content -->
+<!-- Sidebar -->
+<aside aria-label="Lesson navigation sidebar" class="na-sidebar">
+<nav aria-label="In this lesson" class="na-toc">
+<p class="na-toc-title">In this lesson</p>
+<ol class="na-toc-list">
+<li><a class="na-toc-link" href="#why-python">Why Python became the language of AI</a></li>
+<li><a class="na-toc-link" href="#variables">Variables and data types</a></li>
+<li><a class="na-toc-link" href="#lists-dicts">Lists and dictionaries</a></li>
+<li><a class="na-toc-link" href="#loops">Loops and conditionals</a></li>
+<li><a class="na-toc-link" href="#worked-example">A worked example</a></li>
+<li><a class="na-toc-link" href="#how-deep">How deep do you need to go?</a></li>
+</ol>
+</nav>
+<div class="lp-sidebar-nav">
+<p class="lp-sidebar-nav-title">Course navigation</p>
+<a class="lp-sidebar-nav-link" href="/course-dashboard">
+<span aria-hidden="true" class="material-symbols-outlined">dashboard</span>My dashboard
       </a>
-      <a class="lp-sidebar-nav-link" href="/course/numpy-pandas">
-        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-        <div><span class="lp-sidebar-nav-label">Next</span>NumPy and Pandas</div>
+<a class="lp-sidebar-nav-link" href="/course/numpy-pandas">
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span>
+<div><span class="lp-sidebar-nav-label">Next</span>NumPy and Pandas</div>
+</a>
+<a class="lp-sidebar-nav-link" href="/exam">
+<span aria-hidden="true" class="material-symbols-outlined">quiz</span>Final exam
       </a>
-      <a class="lp-sidebar-nav-link" href="/exam">
-        <span class="material-symbols-outlined" aria-hidden="true">quiz</span>Final exam
-      </a>
-    </div>
-    <div id="newsy-ai"></div>
-  </aside>
-
-  </div><!-- /na-layout -->
-  </main>
-
-  <div id="share-bar-placeholder"></div>
-  <section class="tool-info" aria-label="Lesson reference">
-    <div class="tool-info-inner">
-      <div class="tool-accordions">
-
-<details class="tool-accordion" open>
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">Frequently Asked Questions</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <h3>Why do AI developers use Python instead of other languages?</h3>
-          <p>Python became dominant in AI for three reasons: the core math libraries (NumPy, SciPy) were built early and are fast because they run C under the hood; academic researchers adopted Python and published their code in it, creating momentum; and Python is genuinely readable, which matters when you're debugging models. You could do AI in R or Julia, but the tools and examples are all in Python, so that's where you'll find answers when stuck.</p>
-          <h3>What Python concepts do you actually need for machine learning?</h3>
-          <p>You need variables and data types (integers, floats, strings, booleans), lists and dictionaries for organising data, for loops to process records, and if/else conditionals to make decisions. You don't need object-oriented programming, decorators, or metaclasses for most ML work. Learn the basics, then jump into pandas and NumPy - you'll pick up anything else as you need it.</p>
-          <h3>What is the difference between a Python list and a dictionary?</h3>
-          <p>A list is an ordered collection accessed by position: <code>ages[0]</code> gives you the first item. A dictionary is a collection where each item has a name (key): <code>person['age']</code> gives you the age. In machine learning, lists represent columns of data (a list of values), while dictionaries represent individual records (a row with named fields). Understanding both is essential because pandas DataFrames are built on top of them.</p>
-          <h3>Do you need to be an expert in Python before learning machine learning?</h3>
-          <p>No. You need to be comfortable with the basics - variables, lists, loops, conditionals - and able to read and debug simple scripts. The mistake beginners make is thinking they need to master Python before touching ML. Learn the basics, then jump into pandas and NumPy. You'll learn the rest as you need it.</p>
-        </div>
-      </details>
-
-      <details class="tool-accordion">
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">How It Works</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <p>Python is an interpreted language, meaning code runs line by line rather than being compiled before execution. Each variable you create is stored in memory under a name, and Python dynamically assigns a type based on the value you provide.</p>
-          <p>Lists are stored as contiguous blocks of references in memory, making index-based access fast. Dictionaries use a hash table internally - Python converts the key into a number (a hash), uses that to find the storage location, and returns the value. This makes dictionary lookup very fast regardless of how many items are in it.</p>
-          <p>For loops iterate through sequences by requesting items one at a time. The loop body runs once per item, and Python manages the iteration automatically. This is the same pattern used internally by pandas when processing DataFrame columns - which is why understanding Python loops helps you understand what pandas is doing under the hood.</p>
-        </div>
-      </details>
-
-      <details class="tool-accordion">
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">Key Points</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <ul>
-            <li>Python dominates AI because NumPy/SciPy gave it fast numerical computing early, and academic researchers built momentum around it</li>
-            <li>Variables store data; Python infers the type automatically from what you assign</li>
-            <li>Floats (decimal numbers) are more common than integers in AI because real-world measurements are rarely whole numbers</li>
-            <li>Lists are ordered collections accessed by position; dictionaries are named collections accessed by key</li>
-            <li>For loops let you apply the same operation to every item in a list - the core pattern for processing training data</li>
-            <li>You don't need advanced Python (OOP, decorators, metaclasses) for most machine learning work</li>
-            <li>The goal isn't to master Python first - learn the basics and dive into pandas and NumPy, picking up extra Python as you need it</li>
-          </ul>
-        </div>
-      </details>
-
-      <details class="tool-accordion">
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">Sources</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <ul>
-            <li><a href="https://docs.python.org/3/tutorial/index.html" target="_blank" rel="noopener">Python Official Tutorial</a> - the definitive beginner reference for Python</li>
-            <li><a href="https://numpy.org/doc/stable/user/absolute_beginners.html" target="_blank" rel="noopener">NumPy for Absolute Beginners</a> - official NumPy introduction</li>
-            <li><a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html" target="_blank" rel="noopener">Pandas Getting Started Tutorials</a> - official pandas introduction</li>
-            <li><a href="https://scikit-learn.org/stable/getting_started.html" target="_blank" rel="noopener">Scikit-learn Getting Started</a> - the main ML library built on NumPy and pandas</li>
-          </ul>
-        </div>
-      </details>
-
-      </div>
-    </div>
-  </section>
-
-  <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
-  </button>
-
-
-  <div id="footer-placeholder"></div>
-
-  <script src="/news-data.js"></script>
-  <script src="/scripts.js" defer></script>
-  <script src="/news-article.js" defer></script>
-  <script src="/news-chat.js" defer></script>
-  <script>
+</div>
+<div id="newsy-ai"></div>
+</aside>
+</div><!-- /na-layout -->
+</main>
+<div id="share-bar-placeholder"></div>
+<section aria-label="Lesson reference" class="tool-info">
+<div class="tool-info-inner">
+<div class="tool-accordions">
+<details class="tool-accordion" open="">
+<summary class="tool-accordion-summary">
+<span class="tool-accordion-title">Frequently Asked Questions</span>
+<span aria-hidden="true" class="tool-accordion-icon"></span>
+</summary>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>Why do AI developers use Python instead of other languages?</dt><dd>Python became dominant in AI for three reasons: the core math libraries (NumPy, SciPy) were built early and are fast because they run C under the hood; academic researchers adopted Python and published their code in it, creating momentum; and Python is genuinely readable, which matters when you're debugging models. You could do AI in R or Julia, but the tools and examples are all in Python, so that's where you'll find answers when stuck.</dd></div><div class="faq-item"><dt>What Python concepts do you actually need for machine learning?</dt><dd>You need variables and data types (integers, floats, strings, booleans), lists and dictionaries for organising data, for loops to process records, and if/else conditionals to make decisions. You don't need object-oriented programming, decorators, or metaclasses for most ML work. Learn the basics, then jump into pandas and NumPy - you'll pick up anything else as you need it.</dd></div><div class="faq-item"><dt>What is the difference between a Python list and a dictionary?</dt><dd>A list is an ordered collection accessed by position: <code>ages[0]</code> gives you the first item. A dictionary is a collection where each item has a name (key): <code>person['age']</code> gives you the age. In machine learning, lists represent columns of data (a list of values), while dictionaries represent individual records (a row with named fields). Understanding both is essential because pandas DataFrames are built on top of them.</dd></div><div class="faq-item"><dt>Do you need to be an expert in Python before learning machine learning?</dt><dd>No. You need to be comfortable with the basics - variables, lists, loops, conditionals - and able to read and debug simple scripts. The mistake beginners make is thinking they need to master Python before touching ML. Learn the basics, then jump into pandas and NumPy. You'll learn the rest as you need it.</dd></div></dl></div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary">
+<span class="tool-accordion-title">How It Works</span>
+<span aria-hidden="true" class="tool-accordion-icon"></span>
+</summary>
+<div class="tool-accordion-body"><ol class="info-steps"><li>Python is an interpreted language, meaning code runs line by line rather than being compiled before execution. Each variable you create is stored in memory under a name, and Python dynamically assigns a type based on the value you provide.</li><li>Lists are stored as contiguous blocks of references in memory, making index-based access fast. Dictionaries use a hash table internally - Python converts the key into a number (a hash), uses that to find the storage location, and returns the value. This makes dictionary lookup very fast regardless of how many items are in it.</li><li>For loops iterate through sequences by requesting items one at a time. The loop body runs once per item, and Python manages the iteration automatically. This is the same pattern used internally by pandas when processing DataFrame columns - which is why understanding Python loops helps you understand what pandas is doing under the hood.</li></ol></div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary">
+<span class="tool-accordion-title">Key Points</span>
+<span aria-hidden="true" class="tool-accordion-icon"></span>
+</summary>
+<div class="tool-accordion-body">
+<ul class="info-points">
+<li>Python dominates AI because NumPy/SciPy gave it fast numerical computing early, and academic researchers built momentum around it</li>
+<li>Variables store data; Python infers the type automatically from what you assign</li>
+<li>Floats (decimal numbers) are more common than integers in AI because real-world measurements are rarely whole numbers</li>
+<li>Lists are ordered collections accessed by position; dictionaries are named collections accessed by key</li>
+<li>For loops let you apply the same operation to every item in a list - the core pattern for processing training data</li>
+<li>You don't need advanced Python (OOP, decorators, metaclasses) for most machine learning work</li>
+<li>The goal isn't to master Python first - learn the basics and dive into pandas and NumPy, picking up extra Python as you need it</li>
+</ul>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary">
+<span class="tool-accordion-title">Sources</span>
+<span aria-hidden="true" class="tool-accordion-icon"></span>
+</summary>
+<div class="tool-accordion-body">
+<ol class="info-sources">
+<li><a href="https://docs.python.org/3/tutorial/index.html" rel="noopener" target="_blank">Python Official Tutorial</a> - the definitive beginner reference for Python</li>
+<li><a href="https://numpy.org/doc/stable/user/absolute_beginners.html" rel="noopener" target="_blank">NumPy for Absolute Beginners</a> - official NumPy introduction</li>
+<li><a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html" rel="noopener" target="_blank">Pandas Getting Started Tutorials</a> - official pandas introduction</li>
+<li><a href="https://scikit-learn.org/stable/getting_started.html" rel="noopener" target="_blank">Scikit-learn Getting Started</a> - the main ML library built on NumPy and pandas</li>
+</ol>
+</div>
+</details>
+</div>
+</div>
+</section>
+<button aria-label="Back to top" id="back-to-top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div id="footer-placeholder"></div>
+<script src="/news-data.js"></script>
+<script defer="" src="/scripts.js"></script>
+<script defer="" src="/news-article.js"></script>
+<script defer="" src="/news-chat.js"></script>
+<script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
       if (trigger) trigger.click();
@@ -527,7 +445,7 @@ for customer in customers:
       });
     });
   </script>
-  <script>
+<script>
   // Quiz interaction
   document.querySelectorAll('.lp-quiz-option').forEach(btn => {
     btn.addEventListener('click', function() {

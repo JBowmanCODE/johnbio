@@ -405,29 +405,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is MLOps?</h3>
-<p>MLOps is the infrastructure and practices that turn a trained model into a system that works reliably in production. It borrows from DevOps but adds complexity because ML systems have three moving parts: code, data, and model weights. A regular application's source of truth is the code; an ML system's source of truth is the data and model.</p>
-<h3>Why do ML models fail in production?</h3>
-<p>ML models fail in production primarily because the world changes. The model learned patterns from training data, but in production the data distribution shifts - users behave differently, products change, markets move. This is called drift and it's inevitable. Unlike regular software bugs that you fix once, drift is ongoing and requires continuous monitoring and retraining.</p>
-<h3>What are the four stages of the ML lifecycle?</h3>
-<p>Data management (versioning, quality, distribution tracking), training (reproducible experiments, hyperparameter tracking, model versioning), deployment (serving with low latency and high availability, gradual rollouts), and monitoring (tracking performance on real data, detecting drift, alerting on degradation). These stages feed back into each other in a continuous cycle.</p>
-<h3>Do data scientists need to learn MLOps?</h3>
-<p>They don't need to become MLOps engineers, but they should understand the basics. How models go from notebook to production. What happens when data distribution changes. How to instrument a model so it's debuggable. The companies that are good at ML have data scientists who care that their models work reliably, not just that they score well on a held-out test set.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is MLOps?</dt><dd>MLOps is the infrastructure and practices that turn a trained model into a system that works reliably in production. It borrows from DevOps but adds complexity because ML systems have three moving parts: code, data, and model weights. A regular application's source of truth is the code; an ML system's source of truth is the data and model.</dd></div><div class="faq-item"><dt>Why do ML models fail in production?</dt><dd>ML models fail in production primarily because the world changes. The model learned patterns from training data, but in production the data distribution shifts - users behave differently, products change, markets move. This is called drift and it's inevitable. Unlike regular software bugs that you fix once, drift is ongoing and requires continuous monitoring and retraining.</dd></div><div class="faq-item"><dt>What are the four stages of the ML lifecycle?</dt><dd>Data management (versioning, quality, distribution tracking), training (reproducible experiments, hyperparameter tracking, model versioning), deployment (serving with low latency and high availability, gradual rollouts), and monitoring (tracking performance on real data, detecting drift, alerting on degradation). These stages feed back into each other in a continuous cycle.</dd></div><div class="faq-item"><dt>Do data scientists need to learn MLOps?</dt><dd>They don't need to become MLOps engineers, but they should understand the basics. How models go from notebook to production. What happens when data distribution changes. How to instrument a model so it's debuggable. The companies that are good at ML have data scientists who care that their models work reliably, not just that they score well on a held-out test set.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p>MLOps combines three areas: infrastructure for running ML workloads, processes for managing the ML lifecycle, and monitoring for keeping models healthy in production.</p>
-<p>A mature MLOps setup has: a feature store (centralised, versioned features for training and serving), an experiment tracker (MLflow, Weights &amp; Biases - logs params, metrics, and model artefacts), a model registry (stores model versions with their lineage), a serving infrastructure (APIs, containers, or managed services), and a monitoring system (tracks input distributions, output distributions, and performance metrics).</p>
-<p>When things work well: new data triggers a pipeline, models retrain automatically, evaluation gates compare new vs old, deployment is gradual (A/B or canary), and alerts fire before customers notice problems.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li>MLOps combines three areas: infrastructure for running ML workloads, processes for managing the ML lifecycle, and monitoring for keeping models healthy in production.</li><li>A mature MLOps setup has: a feature store (centralised, versioned features for training and serving), an experiment tracker (MLflow, Weights &amp; Biases - logs params, metrics, and model artefacts), a model registry (stores model versions with their lineage), a serving infrastructure (APIs, containers, or managed services), and a monitoring system (tracks input distributions, output distributions, and performance metrics).</li><li>When things work well: new data triggers a pipeline, models retrain automatically, evaluation gates compare new vs old, deployment is gradual (A/B or canary), and alerts fire before customers notice problems.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>The gap between notebook experiment and production system is where most ML projects fail</li>
 <li>Production requirements notebooks don't handle: continuous data, version control, rollback, monitoring, retraining</li>
 <li>MLOps is DevOps adapted for ML's three moving parts: code, data, and models</li>
@@ -442,12 +429,12 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Sculley, D. et al. (2015). Hidden Technical Debt in Machine Learning Systems. <em>NeurIPS</em>.</li>
 <li>Shankar, S. et al. (2022). Operationalizing Machine Learning: An Interview Study. <em>arXiv</em>.</li>
 <li>Google. (2022). MLOps: Continuous delivery and automation pipelines in machine learning. <em>cloud.google.com</em>.</li>
 <li>Kleppmann, M. (2017). <em>Designing Data-Intensive Applications</em>. O'Reilly.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

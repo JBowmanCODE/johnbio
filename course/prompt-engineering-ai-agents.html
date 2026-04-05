@@ -404,31 +404,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is prompt engineering?</h3>
-<p>Prompt engineering is writing instructions that get you what you want from a language model. It's not magic - it's being specific about what you're asking for. The more precisely you describe the task, format, audience, and constraints, the more the model can narrow down to a useful output.</p>
-<h3>What is chain-of-thought prompting?</h3>
-<p>Chain-of-thought prompting asks the model to write out its reasoning step by step before giving a final answer. This works because generating reasoning tokens helps the model work through complex problems rather than jumping to a conclusion. It also makes the reasoning visible so you can see where the model goes wrong.</p>
-<h3>What is an AI agent?</h3>
-<p>An AI agent is a language model that can take actions, not just generate text. It can call functions, search the web, run code, read databases, and plan multi-step sequences. A chatbot responds; an agent acts. The mechanism is usually the model outputting structured function calls that a surrounding system intercepts and executes.</p>
-<h3>Will prompt engineering survive as a job title?</h3>
-<p>Probably not long-term. The skills matter - writing clear specifications, breaking problems into steps, understanding what you actually want - but these will likely become standard parts of working with AI rather than a standalone role. The craft survives; the job title probably doesn't.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is prompt engineering?</dt><dd>Prompt engineering is writing instructions that get you what you want from a language model. It's not magic - it's being specific about what you're asking for. The more precisely you describe the task, format, audience, and constraints, the more the model can narrow down to a useful output.</dd></div><div class="faq-item"><dt>What is chain-of-thought prompting?</dt><dd>Chain-of-thought prompting asks the model to write out its reasoning step by step before giving a final answer. This works because generating reasoning tokens helps the model work through complex problems rather than jumping to a conclusion. It also makes the reasoning visible so you can see where the model goes wrong.</dd></div><div class="faq-item"><dt>What is an AI agent?</dt><dd>An AI agent is a language model that can take actions, not just generate text. It can call functions, search the web, run code, read databases, and plan multi-step sequences. A chatbot responds; an agent acts. The mechanism is usually the model outputting structured function calls that a surrounding system intercepts and executes.</dd></div><div class="faq-item"><dt>Will prompt engineering survive as a job title?</dt><dd>Probably not long-term. The skills matter - writing clear specifications, breaking problems into steps, understanding what you actually want - but these will likely become standard parts of working with AI rather than a standalone role. The craft survives; the job title probably doesn't.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p><strong>Zero-shot prompting:</strong> Give the task with no examples. Works for simple, well-defined tasks where the model has strong priors from training.</p>
-<p><strong>Few-shot prompting:</strong> Include 2-5 examples of input-output pairs before the actual query. The model learns the pattern from the examples and applies it. Most effective when the format or style is hard to describe in words.</p>
-<p><strong>Chain-of-thought:</strong> Add "think step by step" or include examples that show intermediate reasoning. The model generates reasoning tokens before the final answer, which substantially improves accuracy on multi-step problems.</p>
-<p><strong>System prompts:</strong> A system-level instruction that sets the context for the whole conversation - defining the model's role, constraints, and behaviour. Separate from the user prompt in most modern APIs.</p>
-<p><strong>AI agents (tool use):</strong> The model is given a list of available functions and their schemas. When it decides a function is needed, it outputs a structured function call. The surrounding system executes the call, returns the result, and continues the conversation. This loop continues until the task is complete.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li><strong>Zero-shot prompting:</strong> Give the task with no examples. Works for simple, well-defined tasks where the model has strong priors from training.</li><li><strong>Few-shot prompting:</strong> Include 2-5 examples of input-output pairs before the actual query. The model learns the pattern from the examples and applies it. Most effective when the format or style is hard to describe in words.</li><li><strong>Chain-of-thought:</strong> Add "think step by step" or include examples that show intermediate reasoning. The model generates reasoning tokens before the final answer, which substantially improves accuracy on multi-step problems.</li><li><strong>System prompts:</strong> A system-level instruction that sets the context for the whole conversation - defining the model's role, constraints, and behaviour. Separate from the user prompt in most modern APIs.</li><li><strong>AI agents (tool use):</strong> The model is given a list of available functions and their schemas. When it decides a function is needed, it outputs a structured function call. The surrounding system executes the call, returns the result, and continues the conversation. This loop continues until the task is complete.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>Prompt engineering is about specificity - vague prompts produce vague outputs</li>
 <li>Chain-of-thought prompting improves accuracy on complex problems by generating intermediate reasoning</li>
 <li>Few-shot examples are often more effective than detailed text descriptions of the required format</li>
@@ -443,12 +428,12 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Wei, J. et al. (2022). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. <em>NeurIPS</em>.</li>
 <li>Brown, T. et al. (2020). Language Models are Few-Shot Learners (GPT-3). <em>NeurIPS</em>.</li>
 <li>Schick, T. et al. (2023). Toolformer: Language Models Can Teach Themselves to Use Tools. <em>arXiv</em>.</li>
 <li>OpenAI. (2023). Function Calling Documentation. <em>platform.openai.com</em>.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

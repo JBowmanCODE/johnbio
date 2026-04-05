@@ -341,28 +341,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is the basic structure of a neural network?</h3>
-<p>A neural network has three types of layers: input (your raw data), hidden layers (where the actual computation happens), and output (the final prediction). Each hidden layer contains neurons that take all values from the previous layer, multiply each by a weight, add them up, add a bias, and pass the result through an activation function.</p>
-<h3>What does a single artificial neuron do?</h3>
-<p>A single neuron takes multiple inputs, multiplies each by its corresponding weight, adds all those products together, adds a bias value, and passes the result through an activation function. That's it: multiply, add, apply a function. The weights and bias are what the network learns during training.</p>
-<h3>What is forward propagation in a neural network?</h3>
-<p>Forward propagation is passing data through the network from input to output. Data enters the input layer, flows through each hidden layer (where neurons apply their multiply-add-activate operations), and reaches the output layer which produces a prediction. It's called "forward" to distinguish it from backpropagation, where errors flow backward to update the weights.</p>
-<h3>What are weights and biases in a neural network?</h3>
-<p>Weights control how much each input influences a neuron's output. A large positive weight means that input has a big positive effect; near-zero means it barely matters; negative means it pushes the output down. Bias is a constant that shifts the neuron's baseline output. Together, weights and biases are what the network adjusts during training to improve its predictions.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is the basic structure of a neural network?</dt><dd>A neural network has three types of layers: input (your raw data), hidden layers (where the actual computation happens), and output (the final prediction). Each hidden layer contains neurons that take all values from the previous layer, multiply each by a weight, add them up, add a bias, and pass the result through an activation function.</dd></div><div class="faq-item"><dt>What does a single artificial neuron do?</dt><dd>A single neuron takes multiple inputs, multiplies each by its corresponding weight, adds all those products together, adds a bias value, and passes the result through an activation function. That's it: multiply, add, apply a function. The weights and bias are what the network learns during training.</dd></div><div class="faq-item"><dt>What is forward propagation in a neural network?</dt><dd>Forward propagation is passing data through the network from input to output. Data enters the input layer, flows through each hidden layer (where neurons apply their multiply-add-activate operations), and reaches the output layer which produces a prediction. It's called "forward" to distinguish it from backpropagation, where errors flow backward to update the weights.</dd></div><div class="faq-item"><dt>What are weights and biases in a neural network?</dt><dd>Weights control how much each input influences a neuron's output. A large positive weight means that input has a big positive effect; near-zero means it barely matters; negative means it pushes the output down. Bias is a constant that shifts the neuron's baseline output. Together, weights and biases are what the network adjusts during training to improve its predictions.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p>In matrix form, a full hidden layer can be computed as: <code>output = activation(W * x + b)</code>, where W is the weight matrix, x is the input vector, and b is the bias vector. This matrix multiplication computes all neuron outputs simultaneously, which is why GPUs (optimised for matrix maths) make neural networks so much faster to train.</p>
-<p>For a network with multiple layers, the output of one layer becomes the input to the next: <code>h1 = activation(W1 * x + b1)</code>, <code>h2 = activation(W2 * h1 + b2)</code>, and so on. The final output layer often uses a different activation (softmax for classification, linear for regression) suited to the prediction task.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li>In matrix form, a full hidden layer can be computed as: <code>output = activation(W * x + b)</code>, where W is the weight matrix, x is the input vector, and b is the bias vector. This matrix multiplication computes all neuron outputs simultaneously, which is why GPUs (optimised for matrix maths) make neural networks so much faster to train.</li><li>For a network with multiple layers, the output of one layer becomes the input to the next: <code>h1 = activation(W1 * x + b1)</code>, <code>h2 = activation(W2 * h1 + b2)</code>, and so on. The final output layer often uses a different activation (softmax for classification, linear for regression) suited to the prediction task.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>Neural networks have input, hidden, and output layers.</li>
 <li>Each neuron: multiply each input by its weight, sum everything, add bias, apply activation function.</li>
 <li>Weights and biases are the only things that change during training - architecture stays fixed.</li>
@@ -376,11 +364,11 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>LeCun, Y., Bengio, Y. &amp; Hinton, G. (2015). Deep learning. <em>Nature</em>, 521, 436-444.</li>
 <li>Goodfellow, I., Bengio, Y. &amp; Courville, A. (2016). <em>Deep Learning</em>. MIT Press. (Free at deeplearningbook.org)</li>
 <li>Nielsen, M. (2015). <em>Neural Networks and Deep Learning</em>. (Free at neuralnetworksanddeeplearning.com)</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

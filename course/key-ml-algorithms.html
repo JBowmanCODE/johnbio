@@ -339,29 +339,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is a decision tree in machine learning?</h3>
-<p>A decision tree is a machine learning model that makes predictions through a series of yes/no questions about input features. At each node, it finds the question that best separates the classes. The result is interpretable: you can trace any prediction back to the rules that produced it. Decision trees tend to overfit, which is why random forests (many trees voting together) are more commonly used in practice.</p>
-<h3>What is a random forest?</h3>
-<p>A random forest is an ensemble of hundreds of decision trees, each trained on a random subset of the data and features. Predictions are made by majority vote. Because the trees are diverse (each overfits in a different way), their errors average out and the ensemble is more accurate and robust than any individual tree. Random forests are a strong default for most structured data problems.</p>
-<h3>What is a support vector machine (SVM)?</h3>
-<p>An SVM finds the decision boundary with the largest margin - the biggest gap between the boundary and the nearest training points of each class. A larger margin generalises better to new data. When classes aren't linearly separable, SVMs use the kernel trick to implicitly map data into a higher-dimensional space where a linear boundary works. SVMs perform well on small to medium structured datasets.</p>
-<h3>Which machine learning algorithm should beginners learn first?</h3>
-<p>Start with logistic regression or decision trees. Logistic regression teaches loss functions, gradient descent, and probability - concepts that transfer to every other model. Decision trees teach overfitting, feature importance, and the bias-variance trade-off intuitively. Then learn random forests as an extension. Resist jumping to neural networks first - you'll spend weeks debugging things you don't understand.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is a decision tree in machine learning?</dt><dd>A decision tree is a machine learning model that makes predictions through a series of yes/no questions about input features. At each node, it finds the question that best separates the classes. The result is interpretable: you can trace any prediction back to the rules that produced it. Decision trees tend to overfit, which is why random forests (many trees voting together) are more commonly used in practice.</dd></div><div class="faq-item"><dt>What is a random forest?</dt><dd>A random forest is an ensemble of hundreds of decision trees, each trained on a random subset of the data and features. Predictions are made by majority vote. Because the trees are diverse (each overfits in a different way), their errors average out and the ensemble is more accurate and robust than any individual tree. Random forests are a strong default for most structured data problems.</dd></div><div class="faq-item"><dt>What is a support vector machine (SVM)?</dt><dd>An SVM finds the decision boundary with the largest margin - the biggest gap between the boundary and the nearest training points of each class. A larger margin generalises better to new data. When classes aren't linearly separable, SVMs use the kernel trick to implicitly map data into a higher-dimensional space where a linear boundary works. SVMs perform well on small to medium structured datasets.</dd></div><div class="faq-item"><dt>Which machine learning algorithm should beginners learn first?</dt><dd>Start with logistic regression or decision trees. Logistic regression teaches loss functions, gradient descent, and probability - concepts that transfer to every other model. Decision trees teach overfitting, feature importance, and the bias-variance trade-off intuitively. Then learn random forests as an extension. Resist jumping to neural networks first - you'll spend weeks debugging things you don't understand.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p><strong>Decision trees</strong> are built recursively. At each node, the algorithm evaluates every possible feature and threshold, picks the split that minimises impurity (Gini or entropy), and creates two child nodes. This continues until a stopping criterion (max depth, min samples, or pure nodes) is met.</p>
-<p><strong>Random forests</strong> use bagging (bootstrap aggregating): each tree trains on a random sample of the training data with replacement, and at each split only a random subset of features is considered. This decorrelates the trees, ensuring diverse errors that cancel when averaged.</p>
-<p><strong>SVMs</strong> solve a convex optimisation problem to find the maximum-margin hyperplane. The kernel function (linear, polynomial, RBF) determines how the feature space is implicitly extended. The key parameters are C (trade-off between margin and classification errors) and the kernel choice.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li><strong>Decision trees</strong> are built recursively. At each node, the algorithm evaluates every possible feature and threshold, picks the split that minimises impurity (Gini or entropy), and creates two child nodes. This continues until a stopping criterion (max depth, min samples, or pure nodes) is met.</li><li><strong>Random forests</strong> use bagging (bootstrap aggregating): each tree trains on a random sample of the training data with replacement, and at each split only a random subset of features is considered. This decorrelates the trees, ensuring diverse errors that cancel when averaged.</li><li><strong>SVMs</strong> solve a convex optimisation problem to find the maximum-margin hyperplane. The kernel function (linear, polynomial, RBF) determines how the feature space is implicitly extended. The key parameters are C (trade-off between margin and classification errors) and the kernel choice.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>Decision trees: interpretable, intuitive, but overfit easily. Good for explainability.</li>
 <li>Random forests: ensemble of many trees, errors average out. Strong default for structured data.</li>
 <li>SVMs: maximise the margin between classes. Kernel trick handles non-linear boundaries. Slow on large datasets.</li>
@@ -375,12 +362,12 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Breiman, L. (2001). Random Forests. <em>Machine Learning</em>, 45(1), 5-32.</li>
 <li>Cortes, C. &amp; Vapnik, V. (1995). Support-vector networks. <em>Machine Learning</em>, 20, 273-297.</li>
 <li>Hastie, T., Tibshirani, R. &amp; Friedman, J. (2009). <em>The Elements of Statistical Learning</em>. Springer.</li>
 <li>Geron, A. (2022). <em>Hands-On Machine Learning</em> (3rd ed.). O'Reilly Media.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

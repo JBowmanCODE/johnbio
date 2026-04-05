@@ -340,29 +340,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is a large language model (LLM)?</h3>
-<p>A large language model is a neural network trained on vast amounts of text to predict the next word. When you give it a prompt, it keeps predicting what word comes next until it's finished. ChatGPT, Claude, Gemini, and Llama are all LLMs. They can approximate reasoning and writing because they learned language patterns deeply enough - but they're not actually thinking or understanding.</p>
-<h3>What is an AI agent?</h3>
-<p>An AI agent is an LLM connected to tools so it can take action beyond generating text. A plain LLM can tell you how to book a flight. An agent can actually book it. Agents can search the web, run code, access databases, send emails, and iterate through multi-step tasks. They're more useful than chatbots but less reliable - current agents can misuse tools or get stuck in loops.</p>
-<h3>What is RAG (retrieval-augmented generation)?</h3>
-<p>RAG is a technique where an LLM retrieves relevant documents before generating a response, instead of relying only on its training data. When you ask a question, the system searches a database for relevant content and feeds that to the LLM along with your question. This lets the model answer questions about recent events or proprietary data it wasn't trained on, and reduces hallucination.</p>
-<h3>How should you choose between AI tools in 2026?</h3>
-<p>Prioritise accuracy over features, integration over raw capability, and reliability over cutting-edge. For LLMs, start with mainstream options (GPT-4, Claude, Gemini) - they're expensive but reliable. For agents, start simple with clear tool definitions and human review. For enterprise use, RAG with your own data reduces hallucination and keeps answers grounded. Don't assume you need the biggest, newest model.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is a large language model (LLM)?</dt><dd>A large language model is a neural network trained on vast amounts of text to predict the next word. When you give it a prompt, it keeps predicting what word comes next until it's finished. ChatGPT, Claude, Gemini, and Llama are all LLMs. They can approximate reasoning and writing because they learned language patterns deeply enough - but they're not actually thinking or understanding.</dd></div><div class="faq-item"><dt>What is an AI agent?</dt><dd>An AI agent is an LLM connected to tools so it can take action beyond generating text. A plain LLM can tell you how to book a flight. An agent can actually book it. Agents can search the web, run code, access databases, send emails, and iterate through multi-step tasks. They're more useful than chatbots but less reliable - current agents can misuse tools or get stuck in loops.</dd></div><div class="faq-item"><dt>What is RAG (retrieval-augmented generation)?</dt><dd>RAG is a technique where an LLM retrieves relevant documents before generating a response, instead of relying only on its training data. When you ask a question, the system searches a database for relevant content and feeds that to the LLM along with your question. This lets the model answer questions about recent events or proprietary data it wasn't trained on, and reduces hallucination.</dd></div><div class="faq-item"><dt>How should you choose between AI tools in 2026?</dt><dd>Prioritise accuracy over features, integration over raw capability, and reliability over cutting-edge. For LLMs, start with mainstream options (GPT-4, Claude, Gemini) - they're expensive but reliable. For agents, start simple with clear tool definitions and human review. For enterprise use, RAG with your own data reduces hallucination and keeps answers grounded. Don't assume you need the biggest, newest model.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p><strong>LLMs</strong> use transformer architectures with attention mechanisms. The model processes your input as tokens, calculates attention weights across all tokens, and generates output one token at a time. Each output token is sampled from a probability distribution over the vocabulary.</p>
-<p><strong>Agents</strong> work through tool-calling: the LLM generates a structured "use this tool with these parameters" output, the framework executes the tool, the result is appended to the conversation context, and the LLM generates the next step. This loop continues until the task is complete or a stopping condition is met.</p>
-<p><strong>RAG</strong> uses vector embeddings. Documents are encoded as numerical vectors capturing semantic meaning. When a query arrives, it's also encoded as a vector. The system finds documents whose vectors are closest to the query vector (nearest-neighbour search), retrieves those documents, and passes them to the LLM as context alongside the question.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li><strong>LLMs</strong> use transformer architectures with attention mechanisms. The model processes your input as tokens, calculates attention weights across all tokens, and generates output one token at a time. Each output token is sampled from a probability distribution over the vocabulary.</li><li><strong>Agents</strong> work through tool-calling: the LLM generates a structured "use this tool with these parameters" output, the framework executes the tool, the result is appended to the conversation context, and the LLM generates the next step. This loop continues until the task is complete or a stopping condition is met.</li><li><strong>RAG</strong> uses vector embeddings. Documents are encoded as numerical vectors capturing semantic meaning. When a query arrives, it's also encoded as a vector. The system finds documents whose vectors are closest to the query vector (nearest-neighbour search), retrieves those documents, and passes them to the LLM as context alongside the question.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>LLMs predict the next word based on statistical patterns in training data - they're not reasoning.</li>
 <li>LLMs hallucinate: they generate plausible-sounding text that may be entirely false.</li>
 <li>AI agents add tool use to LLMs, enabling real-world actions like searching, coding, and sending messages.</li>
@@ -377,12 +364,12 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Brown, T. et al. (2020). Language Models are Few-Shot Learners (GPT-3). <em>NeurIPS 2020</em>.</li>
 <li>Lewis, P. et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. <em>NeurIPS 2020</em>.</li>
 <li>Yao, S. et al. (2023). ReAct: Synergizing Reasoning and Acting in Language Models. <em>ICLR 2023</em>.</li>
 <li>Meta AI (2023). Llama 2: Open Foundation and Fine-Tuned Chat Models. <em>arXiv</em>:2307.09288.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

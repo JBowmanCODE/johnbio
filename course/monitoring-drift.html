@@ -411,29 +411,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is data drift in machine learning?</h3>
-<p>Data drift is when the statistical distribution of input features in production changes compared to training. The model was trained on one distribution, but in production it sees a different one. This is detectable immediately by comparing feature statistics - means, variances, percentiles - between a recent production window and the training baseline.</p>
-<h3>What is concept drift and how does it differ from data drift?</h3>
-<p>Concept drift is when the relationship between features and the target changes, even if the features themselves look the same. The data may look identical but what it means has changed. Concept drift is harder to detect because you need ground truth labels to see it - you only notice it when performance metrics degrade over time.</p>
-<h3>How do you detect model drift?</h3>
-<p>For data drift: log input features in production, track their distributions over time, and compare to training data using statistical tests (Kolmogorov-Smirnov, Wasserstein distance). For output drift: track prediction distributions - if the model starts predicting one class 90% of the time when it used to predict 50%, something changed. For performance drift: compare predictions to ground truth labels as they become available.</p>
-<h3>What should you do when drift is detected?</h3>
-<p>First investigate: understand what changed and why. Then choose a response: retrain on newer data (most common), accept the degradation if it's minor, change the problem definition if the business has fundamentally changed, or fix the data pipeline if the drift is caused by a broken ingestion step. Drift detection should be automated and should trigger a defined response process.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is data drift in machine learning?</dt><dd>Data drift is when the statistical distribution of input features in production changes compared to training. The model was trained on one distribution, but in production it sees a different one. This is detectable immediately by comparing feature statistics - means, variances, percentiles - between a recent production window and the training baseline.</dd></div><div class="faq-item"><dt>What is concept drift and how does it differ from data drift?</dt><dd>Concept drift is when the relationship between features and the target changes, even if the features themselves look the same. The data may look identical but what it means has changed. Concept drift is harder to detect because you need ground truth labels to see it - you only notice it when performance metrics degrade over time.</dd></div><div class="faq-item"><dt>How do you detect model drift?</dt><dd>For data drift: log input features in production, track their distributions over time, and compare to training data using statistical tests (Kolmogorov-Smirnov, Wasserstein distance). For output drift: track prediction distributions - if the model starts predicting one class 90% of the time when it used to predict 50%, something changed. For performance drift: compare predictions to ground truth labels as they become available.</dd></div><div class="faq-item"><dt>What should you do when drift is detected?</dt><dd>First investigate: understand what changed and why. Then choose a response: retrain on newer data (most common), accept the degradation if it's minor, change the problem definition if the business has fundamentally changed, or fix the data pipeline if the drift is caused by a broken ingestion step. Drift detection should be automated and should trigger a defined response process.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p><strong>Detecting data drift:</strong> At training time, record baseline statistics for each feature (mean, standard deviation, quartiles, value counts for categoricals). At serving time, maintain a rolling window of recent predictions. Periodically compute the same statistics on the window and compare. Statistical tests like KS test (for continuous features) or chi-squared (for categorical features) quantify how different the distributions are.</p>
-<p><strong>Detecting concept drift:</strong> Requires labels. Track accuracy, precision, recall, or domain-specific metrics on a rolling window. If performance is significantly below the training baseline, concept drift is likely. Shadow mode - running a challenger model in parallel and comparing - can also surface concept drift before it affects production users.</p>
-<p><strong>Automated retraining pipelines:</strong> Drift alert triggers data collection. New labelled data is assembled. A new model trains. Evaluation gate compares new model vs current production model on a holdout set. If the new model wins, it's deployed gradually (10%, 50%, 100%). If it loses, the alert is escalated to a human.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li><strong>Detecting data drift:</strong> At training time, record baseline statistics for each feature (mean, standard deviation, quartiles, value counts for categoricals). At serving time, maintain a rolling window of recent predictions. Periodically compute the same statistics on the window and compare. Statistical tests like KS test (for continuous features) or chi-squared (for categorical features) quantify how different the distributions are.</li><li><strong>Detecting concept drift:</strong> Requires labels. Track accuracy, precision, recall, or domain-specific metrics on a rolling window. If performance is significantly below the training baseline, concept drift is likely. Shadow mode - running a challenger model in parallel and comparing - can also surface concept drift before it affects production users.</li><li><strong>Automated retraining pipelines:</strong> Drift alert triggers data collection. New labelled data is assembled. A new model trains. Evaluation gate compares new model vs current production model on a holdout set. If the new model wins, it's deployed gradually (10%, 50%, 100%). If it loses, the alert is escalated to a human.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>Drift is inevitable - the world changes, training data doesn't update automatically</li>
 <li>Data drift: input feature distributions shift - detectable immediately by comparing statistics</li>
 <li>Concept drift: the feature-target relationship changes - only visible through performance degradation</li>
@@ -448,12 +435,12 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Gama, J. et al. (2014). A Survey on Concept Drift Adaptation. <em>ACM Computing Surveys</em>.</li>
 <li>Klaise, J. et al. (2020). Alibi Detect: Algorithms for Outlier, Adversarial and Drift Detection. <em>JMLR</em>.</li>
 <li>Ackerman, S. et al. (2021). Machine Learning Monitoring. <em>arXiv</em>.</li>
 <li>Evidently AI. (2024). Open-Source ML Monitoring. <em>evidentlyai.com</em>.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

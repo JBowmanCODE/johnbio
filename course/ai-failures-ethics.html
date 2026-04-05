@@ -323,28 +323,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What are real-world examples of AI failures?</h3>
-<p>A Detroit man was wrongfully arrested in 2020 after facial recognition misidentified him - the system had a ~35% error rate on Black faces. Amazon's hiring algorithm downranked women because it learned from male-dominated hiring history. A healthcare algorithm recommended fewer services to Black patients because it used spending as a proxy for need, ignoring that access barriers had suppressed that spending.</p>
-<h3>Why is there an accountability gap in AI?</h3>
-<p>When a human makes a bad decision, there's a person accountable. When an AI does it, companies use the complexity of the system as a shield - "the algorithm decided" becomes a way to avoid responsibility. This is made worse by opacity: companies often keep training data and model behaviour proprietary, making independent auditing impossible.</p>
-<h3>What should companies actually do about AI ethics?</h3>
-<p>Ethics in AI means testing for bias before deployment, not after. It means building slower when the stakes are high, accepting that sometimes you don't deploy because the risk is too great. It means treating an AI system that affects people's opportunities or freedom the way you'd treat an untested medical device - with rigorous pre-deployment validation, not a quiet post-launch fix when things go wrong.</p>
-<h3>How does AI bias relate to training data?</h3>
-<p>AI systems learn patterns from their training data. If that data reflects historical discrimination - male-dominated hiring, underfunded healthcare in certain communities, racially biased criminal justice records - the model learns those patterns and replicates them. The system didn't choose to discriminate; it learned a pattern that produces discriminatory outputs. That's why auditing training data is as important as auditing the model.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What are real-world examples of AI failures?</dt><dd>A Detroit man was wrongfully arrested in 2020 after facial recognition misidentified him - the system had a ~35% error rate on Black faces. Amazon's hiring algorithm downranked women because it learned from male-dominated hiring history. A healthcare algorithm recommended fewer services to Black patients because it used spending as a proxy for need, ignoring that access barriers had suppressed that spending.</dd></div><div class="faq-item"><dt>Why is there an accountability gap in AI?</dt><dd>When a human makes a bad decision, there's a person accountable. When an AI does it, companies use the complexity of the system as a shield - "the algorithm decided" becomes a way to avoid responsibility. This is made worse by opacity: companies often keep training data and model behaviour proprietary, making independent auditing impossible.</dd></div><div class="faq-item"><dt>What should companies actually do about AI ethics?</dt><dd>Ethics in AI means testing for bias before deployment, not after. It means building slower when the stakes are high, accepting that sometimes you don't deploy because the risk is too great. It means treating an AI system that affects people's opportunities or freedom the way you'd treat an untested medical device - with rigorous pre-deployment validation, not a quiet post-launch fix when things go wrong.</dd></div><div class="faq-item"><dt>How does AI bias relate to training data?</dt><dd>AI systems learn patterns from their training data. If that data reflects historical discrimination - male-dominated hiring, underfunded healthcare in certain communities, racially biased criminal justice records - the model learns those patterns and replicates them. The system didn't choose to discriminate; it learned a pattern that produces discriminatory outputs. That's why auditing training data is as important as auditing the model.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p>Algorithmic bias typically arises through three mechanisms. <strong>Training data bias</strong>: the model learns from data that reflects existing inequalities - historical hiring patterns, healthcare access disparities, or policing practices. <strong>Proxy variables</strong>: the model uses a neutral-seeming variable (like postcode or healthcare spending) that correlates with a protected characteristic (like race or income). <strong>Feedback loops</strong>: biased predictions influence real-world outcomes, which generate more biased training data in future iterations.</p>
-<p>Facial recognition systems have higher error rates for darker skin tones because most benchmark datasets historically over-represented lighter-skinned faces. When models train on these datasets, they learn finer distinctions for the overrepresented group and coarser distinctions for the rest.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li>Algorithmic bias typically arises through three mechanisms. <strong>Training data bias</strong>: the model learns from data that reflects existing inequalities - historical hiring patterns, healthcare access disparities, or policing practices. <strong>Proxy variables</strong>: the model uses a neutral-seeming variable (like postcode or healthcare spending) that correlates with a protected characteristic (like race or income). <strong>Feedback loops</strong>: biased predictions influence real-world outcomes, which generate more biased training data in future iterations.</li><li>Facial recognition systems have higher error rates for darker skin tones because most benchmark datasets historically over-represented lighter-skinned faces. When models train on these datasets, they learn finer distinctions for the overrepresented group and coarser distinctions for the rest.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>Real AI failures include wrongful arrests from facial recognition, discriminatory hiring algorithms, and biased healthcare resource allocation.</li>
 <li>Bias in AI comes from training data that reflects historical inequalities - the system learns and replicates those patterns.</li>
 <li>The accountability gap: organisations deploy AI, harm occurs, but nobody is clearly responsible because "the algorithm decided."</li>
@@ -358,12 +346,12 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Buolamwini, J. &amp; Gebru, T. (2018). Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification. <em>FAccT 2018</em>.</li>
 <li>Dastin, J. (2018). Amazon scraps secret AI recruiting tool that showed bias against women. <em>Reuters</em>.</li>
 <li>Obermeyer, Z. et al. (2019). Dissecting racial bias in an algorithm used to manage the health of populations. <em>Science</em>, 366(6464).</li>
 <li>Hill, K. (2020). Wrongfully Accused by an Algorithm. <em>New York Times</em>.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

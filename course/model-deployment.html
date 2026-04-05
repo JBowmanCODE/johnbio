@@ -417,29 +417,16 @@ CMD ["python", "app.py"]</code></pre>
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What does it mean to deploy an ML model?</h3>
-<p>Deploying a model means making it accessible to applications that need predictions. Your model runs on a server, listens for HTTP requests containing input data, runs inference, and returns a prediction. A deployed model is not a one-time job - it's infrastructure that keeps running and needs monitoring, updates, and maintenance.</p>
-<h3>What is a Docker container and why is it used for ML deployment?</h3>
-<p>A Docker container packages your code, model, and dependencies into a single image that runs identically anywhere. For ML this solves reproducibility: you develop and test in a container locally, then deploy the exact same container to production with no dependency version mismatches or "works on my machine" problems.</p>
-<h3>Which cloud services can host ML models?</h3>
-<p>AWS SageMaker, GCP Vertex AI, and Azure Machine Learning all provide managed model serving. You upload your model and they handle serving, scaling, and monitoring. For more control you can deploy containers directly to Kubernetes or serverless container platforms. Beginners should start with managed services and move to custom infrastructure only when they hit specific limitations.</p>
-<h3>What is the most common mistake when deploying ML models?</h3>
-<p>Treating deployment as a one-time step. A deployed model is a running service that needs monitoring, updates, and a strategy for rolling out new versions without downtime. Other common mistakes: not planning for failure, storing model weights in Git instead of a model registry, and not logging predictions.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What does it mean to deploy an ML model?</dt><dd>Deploying a model means making it accessible to applications that need predictions. Your model runs on a server, listens for HTTP requests containing input data, runs inference, and returns a prediction. A deployed model is not a one-time job - it's infrastructure that keeps running and needs monitoring, updates, and maintenance.</dd></div><div class="faq-item"><dt>What is a Docker container and why is it used for ML deployment?</dt><dd>A Docker container packages your code, model, and dependencies into a single image that runs identically anywhere. For ML this solves reproducibility: you develop and test in a container locally, then deploy the exact same container to production with no dependency version mismatches or "works on my machine" problems.</dd></div><div class="faq-item"><dt>Which cloud services can host ML models?</dt><dd>AWS SageMaker, GCP Vertex AI, and Azure Machine Learning all provide managed model serving. You upload your model and they handle serving, scaling, and monitoring. For more control you can deploy containers directly to Kubernetes or serverless container platforms. Beginners should start with managed services and move to custom infrastructure only when they hit specific limitations.</dd></div><div class="faq-item"><dt>What is the most common mistake when deploying ML models?</dt><dd>Treating deployment as a one-time step. A deployed model is a running service that needs monitoring, updates, and a strategy for rolling out new versions without downtime. Other common mistakes: not planning for failure, storing model weights in Git instead of a model registry, and not logging predictions.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p><strong>REST API serving:</strong> A web framework (Flask, FastAPI) loads the model on startup and keeps it in memory. Incoming POST requests carry the input features as JSON. The handler deserialises the request, runs preprocessing, calls model.predict(), postprocesses the output, and returns JSON. FastAPI is preferred for new projects because of automatic OpenAPI documentation and async support.</p>
-<p><strong>Containers:</strong> Docker builds an image from a Dockerfile. The image contains OS, Python runtime, installed packages, model file, and serving code. Running the image creates a container - an isolated process with its own filesystem. Kubernetes orchestrates multiple containers across servers, handling load balancing, scaling, and restarts.</p>
-<p><strong>Gradual rollouts:</strong> Don't deploy a new model to 100% of traffic immediately. Roll out to 10%, monitor performance vs the old model, expand if metrics improve, roll back if they don't. This pattern (A/B testing or canary deployment) limits the blast radius of a bad model update.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li><strong>REST API serving:</strong> A web framework (Flask, FastAPI) loads the model on startup and keeps it in memory. Incoming POST requests carry the input features as JSON. The handler deserialises the request, runs preprocessing, calls model.predict(), postprocesses the output, and returns JSON. FastAPI is preferred for new projects because of automatic OpenAPI documentation and async support.</li><li><strong>Containers:</strong> Docker builds an image from a Dockerfile. The image contains OS, Python runtime, installed packages, model file, and serving code. Running the image creates a container - an isolated process with its own filesystem. Kubernetes orchestrates multiple containers across servers, handling load balancing, scaling, and restarts.</li><li><strong>Gradual rollouts:</strong> Don't deploy a new model to 100% of traffic immediately. Roll out to 10%, monitor performance vs the old model, expand if metrics improve, roll back if they don't. This pattern (A/B testing or canary deployment) limits the blast radius of a bad model update.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>Deployment means making a model accessible via a network interface, not just running it locally</li>
 <li>REST APIs are the standard serving mechanism: HTTP request in, prediction response out</li>
 <li>Flask and FastAPI are the most common Python frameworks for model serving</li>
@@ -455,12 +442,12 @@ CMD ["python", "app.py"]</code></pre>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>FastAPI Documentation. (2024). <em>fastapi.tiangolo.com</em>.</li>
 <li>Docker Documentation. (2024). <em>docs.docker.com</em>.</li>
 <li>AWS. (2024). Amazon SageMaker Model Deployment. <em>docs.aws.amazon.com</em>.</li>
 <li>Sato, D. et al. (2019). Continuous Delivery for Machine Learning. <em>martinfowler.com</em>.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

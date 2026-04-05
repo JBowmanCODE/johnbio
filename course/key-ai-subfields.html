@@ -329,29 +329,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is natural language processing (NLP)?</h3>
-<p>NLP is the AI subfield that handles human language - text, speech, and conversation. It powers systems like ChatGPT, search engines that understand intent, machine translation, spam filters, and voice assistants. NLP systems learn statistical patterns in language, which is why they're good at generating fluent text but poor at distinguishing true from false information.</p>
-<h3>What is computer vision in AI?</h3>
-<p>Computer vision is the AI subfield that handles images and video. It powers autonomous vehicles, medical imaging diagnostics, retail shelf monitoring, and manufacturing quality control. Computer vision systems identify objects, detect faces, read text in images, and track movement - but they can fail on unusual angles or lighting not seen in training.</p>
-<h3>What is edge AI?</h3>
-<p>Edge AI means running AI models on devices rather than sending data to cloud servers. Your phone's face unlock, fitness watches detecting exercise, and industrial sensors spotting equipment faults are all edge AI. The main advantage is speed, privacy, and offline capability. The challenge is that the best AI models are too large for most edge hardware.</p>
-<h3>Which AI subfield will have the most impact?</h3>
-<p>Edge AI may have the most transformative impact over the next decade. NLP gets more attention, but getting efficient AI running on billions of devices - phones, watches, cars, industrial sensors - is a foundational shift. It moves AI from cloud-dependent services to always-on, local intelligence. The bottleneck right now is model size: most state-of-the-art models are too large for edge hardware.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is natural language processing (NLP)?</dt><dd>NLP is the AI subfield that handles human language - text, speech, and conversation. It powers systems like ChatGPT, search engines that understand intent, machine translation, spam filters, and voice assistants. NLP systems learn statistical patterns in language, which is why they're good at generating fluent text but poor at distinguishing true from false information.</dd></div><div class="faq-item"><dt>What is computer vision in AI?</dt><dd>Computer vision is the AI subfield that handles images and video. It powers autonomous vehicles, medical imaging diagnostics, retail shelf monitoring, and manufacturing quality control. Computer vision systems identify objects, detect faces, read text in images, and track movement - but they can fail on unusual angles or lighting not seen in training.</dd></div><div class="faq-item"><dt>What is edge AI?</dt><dd>Edge AI means running AI models on devices rather than sending data to cloud servers. Your phone's face unlock, fitness watches detecting exercise, and industrial sensors spotting equipment faults are all edge AI. The main advantage is speed, privacy, and offline capability. The challenge is that the best AI models are too large for most edge hardware.</dd></div><div class="faq-item"><dt>Which AI subfield will have the most impact?</dt><dd>Edge AI may have the most transformative impact over the next decade. NLP gets more attention, but getting efficient AI running on billions of devices - phones, watches, cars, industrial sensors - is a foundational shift. It moves AI from cloud-dependent services to always-on, local intelligence. The bottleneck right now is model size: most state-of-the-art models are too large for edge hardware.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p><strong>NLP</strong> systems are trained on large text datasets. They learn statistical relationships between words - which words appear together, in what contexts, following what patterns. Modern NLP uses transformer architectures with attention mechanisms that let the system weight different parts of the input when generating each output token.</p>
-<p><strong>Computer vision</strong> typically uses convolutional neural networks (CNNs). These apply filters that scan across an image, detecting edges, textures, and shapes at progressively higher levels of abstraction. The final layer classifies what the image contains or localises where objects are.</p>
-<p><strong>Edge AI</strong> requires model compression. Techniques include quantisation (reducing precision from 32-bit floats to 8-bit integers), pruning (removing low-importance connections), and knowledge distillation (training a small model to mimic a large one). Dedicated chips - Apple's Neural Engine, Qualcomm's Hexagon - run these compressed models efficiently on battery-powered devices.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li><strong>NLP</strong> systems are trained on large text datasets. They learn statistical relationships between words - which words appear together, in what contexts, following what patterns. Modern NLP uses transformer architectures with attention mechanisms that let the system weight different parts of the input when generating each output token.</li><li><strong>Computer vision</strong> typically uses convolutional neural networks (CNNs). These apply filters that scan across an image, detecting edges, textures, and shapes at progressively higher levels of abstraction. The final layer classifies what the image contains or localises where objects are.</li><li><strong>Edge AI</strong> requires model compression. Techniques include quantisation (reducing precision from 32-bit floats to 8-bit integers), pruning (removing low-importance connections), and knowledge distillation (training a small model to mimic a large one). Dedicated chips - Apple's Neural Engine, Qualcomm's Hexagon - run these compressed models efficiently on battery-powered devices.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>NLP handles language: translation, summarisation, text generation, speech recognition, question answering.</li>
 <li>NLP systems match language patterns - they don't understand truth or meaning, and can hallucinate confidently.</li>
 <li>Computer vision handles images and video: object detection, facial recognition, medical imaging, quality control.</li>
@@ -366,12 +353,12 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Vaswani, A. et al. (2017). Attention Is All You Need. <em>NeurIPS 2017</em>.</li>
 <li>He, K. et al. (2016). Deep Residual Learning for Image Recognition. <em>CVPR 2016</em>.</li>
 <li>Goodfellow, I. et al. (2014). Explaining and Harnessing Adversarial Examples. <em>arXiv</em>:1412.6572.</li>
 <li>Howard, A. et al. (2017). MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications. <em>arXiv</em>:1704.04861.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

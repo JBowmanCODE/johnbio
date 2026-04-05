@@ -339,28 +339,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is overfitting in machine learning?</h3>
-<p>Overfitting is when a model memorises training data instead of learning generalisable patterns. It fits perfectly to the training examples - including noise and quirks that don't appear in new data. A sign of overfitting: training accuracy is high (95%) but validation accuracy is much lower (65%). The gap between those two numbers is the overfitting signal.</p>
-<h3>What is the difference between training, validation, and test sets?</h3>
-<p>Training set (60-70%): the model learns from this data. Validation set (15-20%): used to tune the model without touching test data - you check how well the model generalises and adjust hyperparameters. Test set (15-20%): used only once, at the end, for the final honest assessment. Tuning on test data invalidates it - it becomes just another form of training.</p>
-<h3>What is the difference between precision and recall?</h3>
-<p>Precision: of everything the model predicted as positive, how many were actually positive? High precision means few false positives. Recall: of all actual positives, how many did the model catch? High recall means few false negatives. They trade off - you can improve one by sacrificing the other. F1 score balances both into a single number.</p>
-<h3>Why is accuracy alone a misleading metric?</h3>
-<p>Accuracy is misleading when classes are imbalanced. If 99% of patients don't have a rare disease, a model that predicts "no disease" for everyone is 99% accurate but catches zero actual cases. Accuracy only means something when classes are roughly balanced. Always check precision, recall, or a confusion matrix to understand what the model is actually doing.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is overfitting in machine learning?</dt><dd>Overfitting is when a model memorises training data instead of learning generalisable patterns. It fits perfectly to the training examples - including noise and quirks that don't appear in new data. A sign of overfitting: training accuracy is high (95%) but validation accuracy is much lower (65%). The gap between those two numbers is the overfitting signal.</dd></div><div class="faq-item"><dt>What is the difference between training, validation, and test sets?</dt><dd>Training set (60-70%): the model learns from this data. Validation set (15-20%): used to tune the model without touching test data - you check how well the model generalises and adjust hyperparameters. Test set (15-20%): used only once, at the end, for the final honest assessment. Tuning on test data invalidates it - it becomes just another form of training.</dd></div><div class="faq-item"><dt>What is the difference between precision and recall?</dt><dd>Precision: of everything the model predicted as positive, how many were actually positive? High precision means few false positives. Recall: of all actual positives, how many did the model catch? High recall means few false negatives. They trade off - you can improve one by sacrificing the other. F1 score balances both into a single number.</dd></div><div class="faq-item"><dt>Why is accuracy alone a misleading metric?</dt><dd>Accuracy is misleading when classes are imbalanced. If 99% of patients don't have a rare disease, a model that predicts "no disease" for everyone is 99% accurate but catches zero actual cases. Accuracy only means something when classes are roughly balanced. Always check precision, recall, or a confusion matrix to understand what the model is actually doing.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p>A <strong>confusion matrix</strong> shows the full picture of a classifier's performance. For binary classification, it has four cells: true positives (correctly predicted positive), true negatives (correctly predicted negative), false positives (predicted positive but actually negative), and false negatives (predicted negative but actually positive). Precision = TP / (TP + FP). Recall = TP / (TP + FN). F1 = 2 * (Precision * Recall) / (Precision + Recall).</p>
-<p>Overfitting is caused by a model with too much capacity relative to the amount of training data. Common fixes: collect more data, reduce model complexity, use regularisation (L1/L2 penalties on parameters), use dropout (for neural networks), or use early stopping (halt training when validation loss stops improving).</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li>A <strong>confusion matrix</strong> shows the full picture of a classifier's performance. For binary classification, it has four cells: true positives (correctly predicted positive), true negatives (correctly predicted negative), false positives (predicted positive but actually negative), and false negatives (predicted negative but actually positive). Precision = TP / (TP + FP). Recall = TP / (TP + FN). F1 = 2 * (Precision * Recall) / (Precision + Recall).</li><li>Overfitting is caused by a model with too much capacity relative to the amount of training data. Common fixes: collect more data, reduce model complexity, use regularisation (L1/L2 penalties on parameters), use dropout (for neural networks), or use early stopping (halt training when validation loss stops improving).</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>Overfitting: model memorises training data, performs well on training but poorly on new data.</li>
 <li>Sign of overfitting: large gap between training accuracy and validation accuracy.</li>
 <li>Three data splits: training (learn), validation (tune), test (final honest evaluation - use once).</li>
@@ -375,11 +363,11 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Hastie, T., Tibshirani, R. &amp; Friedman, J. (2009). <em>The Elements of Statistical Learning</em>. Springer.</li>
 <li>Provost, F. &amp; Fawcett, T. (2013). <em>Data Science for Business</em>. O'Reilly Media.</li>
 <li>Geron, A. (2022). <em>Hands-On Machine Learning with Scikit-Learn, Keras and TensorFlow</em> (3rd ed.). O'Reilly.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

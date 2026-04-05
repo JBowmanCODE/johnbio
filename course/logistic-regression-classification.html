@@ -336,29 +336,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is the difference between regression and classification?</h3>
-<p>Regression predicts a continuous number - house prices, salary, temperature. Classification predicts a category - spam or not spam, cat or dog, fraudulent or legitimate. They need different models. Linear regression predicts numbers. Logistic regression predicts categories by outputting a probability that you then threshold into a class decision.</p>
-<h3>What does logistic regression actually output?</h3>
-<p>Logistic regression outputs a probability between 0 and 1. It uses the sigmoid function to transform the linear regression output (which can be any number) into this probability range. You then apply a threshold - typically 0.5 - to turn the probability into a class prediction. The threshold can be adjusted based on the cost of different types of errors.</p>
-<h3>What is the sigmoid function?</h3>
-<p>The sigmoid function maps any real number to a value between 0 and 1. Very negative inputs map close to 0, very positive inputs map close to 1, and 0 maps to 0.5. It produces an S-shaped curve. In logistic regression, it transforms the linear output into a valid probability. In neural networks, it was historically used as an activation function (though ReLU is now more common).</p>
-<h3>When should you use logistic regression instead of a neural network?</h3>
-<p>Use logistic regression when: you need to explain predictions to humans or regulators (it's interpretable), you have limited training data (simpler models generalise better), speed matters in production (it's orders of magnitude faster than deep models), or the problem is approximately linearly separable. Always try logistic regression as a baseline before moving to more complex models.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is the difference between regression and classification?</dt><dd>Regression predicts a continuous number - house prices, salary, temperature. Classification predicts a category - spam or not spam, cat or dog, fraudulent or legitimate. They need different models. Linear regression predicts numbers. Logistic regression predicts categories by outputting a probability that you then threshold into a class decision.</dd></div><div class="faq-item"><dt>What does logistic regression actually output?</dt><dd>Logistic regression outputs a probability between 0 and 1. It uses the sigmoid function to transform the linear regression output (which can be any number) into this probability range. You then apply a threshold - typically 0.5 - to turn the probability into a class prediction. The threshold can be adjusted based on the cost of different types of errors.</dd></div><div class="faq-item"><dt>What is the sigmoid function?</dt><dd>The sigmoid function maps any real number to a value between 0 and 1. Very negative inputs map close to 0, very positive inputs map close to 1, and 0 maps to 0.5. It produces an S-shaped curve. In logistic regression, it transforms the linear output into a valid probability. In neural networks, it was historically used as an activation function (though ReLU is now more common).</dd></div><div class="faq-item"><dt>When should you use logistic regression instead of a neural network?</dt><dd>Use logistic regression when: you need to explain predictions to humans or regulators (it's interpretable), you have limited training data (simpler models generalise better), speed matters in production (it's orders of magnitude faster than deep models), or the problem is approximately linearly separable. Always try logistic regression as a baseline before moving to more complex models.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p>Logistic regression applies a linear combination of input features: <code>z = w1*x1 + w2*x2 + ... + b</code>. This value z is then passed through the sigmoid function: <code>p = 1 / (1 + e^(-z))</code>, producing a probability. If <code>p &gt; 0.5</code>, predict class 1; otherwise predict class 0.</p>
-<p>Training minimises cross-entropy loss (also called log loss): <code>L = -[y*log(p) + (1-y)*log(1-p)]</code>. This penalises confident wrong predictions heavily. Gradient descent adjusts weights to minimise this loss over the training data, exactly as in linear regression.</p>
-<p>For multi-class problems (more than two categories), the softmax function generalises sigmoid: it produces a probability distribution over all classes simultaneously, ensuring probabilities sum to 1. The class with the highest probability is the prediction.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li>Logistic regression applies a linear combination of input features: <code>z = w1*x1 + w2*x2 + ... + b</code>. This value z is then passed through the sigmoid function: <code>p = 1 / (1 + e^(-z))</code>, producing a probability. If <code>p &gt; 0.5</code>, predict class 1; otherwise predict class 0.</li><li>Training minimises cross-entropy loss (also called log loss): <code>L = -[y*log(p) + (1-y)*log(1-p)]</code>. This penalises confident wrong predictions heavily. Gradient descent adjusts weights to minimise this loss over the training data, exactly as in linear regression.</li><li>For multi-class problems (more than two categories), the softmax function generalises sigmoid: it produces a probability distribution over all classes simultaneously, ensuring probabilities sum to 1. The class with the highest probability is the prediction.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>Regression predicts numbers; classification predicts categories. Different problems, different models.</li>
 <li>Logistic regression is a classification model despite the name - historical naming accident.</li>
 <li>Output is a probability (0 to 1), not a hard class decision. You apply a threshold to get the decision.</li>
@@ -373,11 +360,11 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Hosmer, D.W. &amp; Lemeshow, S. (2000). <em>Applied Logistic Regression</em> (2nd ed.). Wiley.</li>
 <li>Hastie, T., Tibshirani, R. &amp; Friedman, J. (2009). <em>The Elements of Statistical Learning</em>. Springer.</li>
 <li>Bishop, C.M. (2006). <em>Pattern Recognition and Machine Learning</em>. Springer.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

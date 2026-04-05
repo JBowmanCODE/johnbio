@@ -365,28 +365,16 @@ df['age'].value_counts() # count at each age</code></pre>
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is NumPy and why is it used in AI?</h3>
-<p>NumPy (Numerical Python) is a library for working with arrays of numbers. It's used in AI because it performs numerical operations much faster than standard Python lists - it processes entire arrays at once rather than looping through items. Machine learning datasets and model weights are arrays of numbers, so NumPy is the foundation of nearly every AI pipeline.</p>
-<h3>What is a Pandas DataFrame?</h3>
-<p>A Pandas DataFrame is a table-like data structure with named columns and rows, similar to a spreadsheet. Each column can hold a different type of data (numbers, text, dates). DataFrames make it easy to load, inspect, filter, group, and clean data before passing it to a machine learning model.</p>
-<h3>What is the difference between NumPy and Pandas?</h3>
-<p>NumPy is optimised for pure numerical operations on arrays. Pandas builds on NumPy and adds structure for working with labelled, mixed-type data. NumPy is what happens inside models during training. Pandas is what you use to load, explore, and clean your data before it goes anywhere near a model.</p>
-<h3>Is NumPy and Pandas hard to learn?</h3>
-<p>Not particularly. Pandas has many functions but you only need around 20 to be productive: how to load data (read_csv), inspect it (head, info, describe), filter it (boolean indexing), group and summarise it (groupby, agg), and handle missing values (dropna, fillna). NumPy basics are straightforward for array creation and arithmetic. The harder skill is thinking systematically about your data.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is NumPy and why is it used in AI?</dt><dd>NumPy (Numerical Python) is a library for working with arrays of numbers. It's used in AI because it performs numerical operations much faster than standard Python lists - it processes entire arrays at once rather than looping through items. Machine learning datasets and model weights are arrays of numbers, so NumPy is the foundation of nearly every AI pipeline.</dd></div><div class="faq-item"><dt>What is a Pandas DataFrame?</dt><dd>A Pandas DataFrame is a table-like data structure with named columns and rows, similar to a spreadsheet. Each column can hold a different type of data (numbers, text, dates). DataFrames make it easy to load, inspect, filter, group, and clean data before passing it to a machine learning model.</dd></div><div class="faq-item"><dt>What is the difference between NumPy and Pandas?</dt><dd>NumPy is optimised for pure numerical operations on arrays. Pandas builds on NumPy and adds structure for working with labelled, mixed-type data. NumPy is what happens inside models during training. Pandas is what you use to load, explore, and clean your data before it goes anywhere near a model.</dd></div><div class="faq-item"><dt>Is NumPy and Pandas hard to learn?</dt><dd>Not particularly. Pandas has many functions but you only need around 20 to be productive: how to load data (read_csv), inspect it (head, info, describe), filter it (boolean indexing), group and summarise it (groupby, agg), and handle missing values (dropna, fillna). NumPy basics are straightforward for array creation and arithmetic. The harder skill is thinking systematically about your data.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p>NumPy achieves its speed through vectorisation. Instead of executing a Python loop (which has interpreter overhead per iteration), NumPy operations are compiled C code that applies to the entire array in a single call. A NumPy operation on a million-element array can be hundreds of times faster than an equivalent Python loop.</p>
-<p>Pandas DataFrames are built on top of NumPy arrays. Each column is stored as a typed NumPy array under the hood. The DataFrame layer adds the column names, index, and the higher-level API for grouping, merging, and reshaping. When you call <code>groupby().mean()</code>, Pandas is ultimately delegating to NumPy operations on the underlying arrays.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li>NumPy achieves its speed through vectorisation. Instead of executing a Python loop (which has interpreter overhead per iteration), NumPy operations are compiled C code that applies to the entire array in a single call. A NumPy operation on a million-element array can be hundreds of times faster than an equivalent Python loop.</li><li>Pandas DataFrames are built on top of NumPy arrays. Each column is stored as a typed NumPy array under the hood. The DataFrame layer adds the column names, index, and the higher-level API for grouping, merging, and reshaping. When you call <code>groupby().mean()</code>, Pandas is ultimately delegating to NumPy operations on the underlying arrays.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>NumPy arrays are optimised for numerical operations - faster than Python lists for large datasets.</li>
 <li>Operations like <code>array + 10</code> or <code>array.mean()</code> apply to the entire array at once (vectorisation).</li>
 <li>Machine learning datasets and model weights are stored as NumPy arrays.</li>
@@ -401,11 +389,11 @@ df['age'].value_counts() # count at each age</code></pre>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Harris, C.R. et al. (2020). Array programming with NumPy. <em>Nature</em>, 585, 357-362.</li>
 <li>McKinney, W. (2010). Data Structures for Statistical Computing in Python. <em>Proceedings of the 9th Python in Science Conference</em>.</li>
 <li>VanderPlas, J. (2016). <em>Python Data Science Handbook</em>. O'Reilly Media. (Open access at jakevdp.github.io)</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>
