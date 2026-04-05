@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CI/CD for ML: Automating the Machine Learning Pipeline - JohnB.io</title>
+  <meta name="description" content="What CI/CD for ML covers, why ML pipelines need more than regular software CI/CD, the tools in use, and how mature ML automation is in 2026. Unit 8, Lesson 4.">
+  <meta name="keywords" content="CI/CD for ML, MLOps, GitHub Actions, Airflow, DVC, MLflow, automated ML pipelines, model testing">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/course/cicd-for-ml">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CI/CD for ML: Automating the Machine Learning Pipeline">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://johnb.io/course/cicd-for-ml">
+  <meta property="og:description" content="What CI/CD for ML covers, why ML pipelines need more than regular software CI/CD, the tools in use, and how mature ML automation is in 2026.">
+  <meta property="og:image" content="https://johnb.io/images/course-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CI/CD for ML lesson - JohnB.io AI Course">
+  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
+  <meta property="article:author" content="https://johnb.io">
+  <meta property="article:section" content="AI in Production">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CI/CD for ML: Automating the Machine Learning Pipeline">
+  <meta name="twitter:description" content="What CI/CD for ML covers, why ML pipelines need more than regular software CI/CD, the tools in use, and how mature ML automation is in 2026.">
+  <meta name="twitter:image" content="https://johnb.io/images/course-og.png">
+  <meta name="twitter:image:alt" content="CI/CD for ML lesson - JohnB.io AI Course">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "CI/CD for ML: Automating the Machine Learning Pipeline",
+        "description": "What CI/CD for ML covers, why ML pipelines need more than regular software CI/CD, the tools in use, and how mature ML automation is in 2026.",
+        "image": "https://johnb.io/images/course-og.png",
+        "datePublished": "2026-04-05T00:00:00+00:00",
+        "dateModified": "2026-04-05T00:00:00+00:00",
+        "author": {
+          "@type": "Person",
+          "name": "John Bowman",
+          "url": "https://johnb.io"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "JohnB.io",
+          "url": "https://johnb.io"
+        },
+        "mainEntityOfPage": "https://johnb.io/course/cicd-for-ml"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is CI/CD for machine learning?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CI/CD for ML means automating the pipeline from raw data to a deployed model. When code, data, or requirements change, the system automatically validates data, trains a model, evaluates it against the current production model, and deploys it if performance improves. This replaces manual steps that are slow and error-prone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does ML CI/CD differ from regular software CI/CD?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Regular software CI/CD is about code: you change code, tests run, it gets deployed. ML CI/CD covers three things: code, data, and models. You need to validate data hasn't corrupted, test that the new model is actually better than the current one, and track the lineage of every model (what data, what code, what parameters created it). This requires additional tooling beyond standard CI/CD."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What tools are used for ML CI/CD?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Common tools include GitHub Actions (for ML workflows triggered by code changes), Apache Airflow (workflow orchestration with DAGs), DVC (Data Version Control - versions code, data, and models together), and MLflow (experiment tracking - logs parameters, metrics, and model artefacts). The landscape is fragmented; different teams use different combinations depending on their infrastructure."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How mature is ML automation in 2026?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Less mature than regular software CI/CD. Good companies have automated retraining pipelines but typically built them themselves or stitched together multiple tools. Most companies still retrain manually. The tools exist and the knowledge exists, but standardisation is behind. Teams building ML systems should prioritise automation - the investment pays off immediately in reliability and speed."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://johnb.io"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI Course",
+            "item": "https://johnb.io/dashboard"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "CI/CD for ML",
+            "item": "https://johnb.io/course/cicd-for-ml"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/news.css">
+  <link rel="stylesheet" href="/lesson.css">
+</head>
+<body class="lp-page">
+
+  <div id="header-placeholder"></div>
+
+  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
+    <div class="na-layout">
+
+      <!-- ── MAIN CONTENT ── -->
+      <article class="na-content">
+
+        <!-- Breadcrumb -->
+        <nav class="na-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">›</span>
+          <a href="/dashboard">AI Course</a>
+          <span aria-hidden="true">›</span>
+          <span>CI/CD for ML</span>
+        </nav>
+
+        <!-- Unit badge + title -->
+        <div class="lp-unit-badge lp-unit-8">Unit 8 · AI in Production</div>
+        <h1 class="na-title">CI/CD for ML: Automating the Machine Learning Pipeline</h1>
+
+        <!-- Meta row -->
+        <div class="na-meta">
+          <span>10 min read</span>
+          <span>·</span>
+          <span>Lesson 4 of 4 in Unit 8</span>
+          <span>·</span>
+          <span>Published 5 April 2026</span>
+        </div>
+
+        <!-- Audio player -->
+        <section class="lp-audio-section" aria-label="Lesson audio">
+          <div class="lp-audio-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            Listen to this lesson
+          </div>
+          <audio controls aria-label="Lesson audio player">
+            Your browser does not support audio playback.
+          </audio>
+        </section>
+
+        <!-- Body -->
+        <div class="na-body">
+
+          <p>In regular software, CI/CD is standard practice. You push code, tests run automatically, if tests pass your code gets deployed. It's automated, reliable, and happens dozens of times a day.</p>
+
+          <p>ML teams mostly don't have this. They have notebooks, manual steps, and occasional production deployments that are stressful events.</p>
+
+          <p>CI/CD for ML means automating the pipeline from raw data to a deployed model. When things change - when new data arrives, when code changes, when a bug is fixed - the system automatically tests, trains, evaluates, and deploys. No manual steps.</p>
+
+          <h2>Why ML pipelines need their own version of CI/CD</h2>
+
+          <p>Regular software CI/CD is about code. You change code, tests run, code gets deployed.</p>
+
+          <p>ML CI/CD is about three things: code, data, and models. You need to test that your code changes work. You need to test that your data hasn't corrupted. You need to test that your model is actually better than the previous one before deploying it.</p>
+
+          <p>This is more complex. A test for code is straightforward: does the function return the right answer? A test for an ML model is: is the accuracy better? Better than what? Better than the previous model? Better than a baseline? Better by a statistically significant margin?</p>
+
+          <p>You also need reproducibility. If someone asks "why did this model perform this way?" you need to know exactly what code, data, and hyperparameters created it. Every model needs lineage - what data trained it, what code was used, what parameters were set. Regular software has this for code through version control. ML needs it for code, data, and models. That's the additional complexity.</p>
+
+          <h2>What ML CI/CD covers</h2>
+
+          <p><strong>Data validation.</strong> When new data arrives, validate it. Are the column names correct? Are the data types what we expect? Are there missing values where we expect them? Are the value ranges reasonable? If data doesn't match schema, flag it and don't proceed. A corrupted dataset that silently trains a broken model is worse than a pipeline that fails loudly.</p>
+
+          <p><strong>Feature engineering.</strong> Transform raw data into features. This runs automatically as part of the pipeline - code that generates features from raw data, versioned and reproducible.</p>
+
+          <p><strong>Training runs.</strong> Automatically train models when code or data changes. Log hyperparameters, results, and training time. Keep track of which training run corresponds to which data and code version.</p>
+
+          <p><strong>Model testing.</strong> Evaluate the new model. Does it perform better than the current production model? Does it meet minimum performance standards? Is the performance improvement statistically significant? Different metrics for different use cases.</p>
+
+          <p><strong>Deployment.</strong> If the model passes tests, deploy it. Gradually roll it out - 10% of traffic, then 50%, then 100% - so you can catch issues before they affect everyone.</p>
+
+          <p>Data comes in, gets validated, gets transformed, trains a model, evaluates the model, deploys if good, monitors in production. That's the pipeline.</p>
+
+          <h2>Tools in this space</h2>
+
+          <p>Jenkins is a general-purpose CI/CD system. You can configure it to run ML pipelines. It's not specific to ML but it works and a lot of teams use it.</p>
+
+          <p>GitHub Actions integrates directly with GitHub. You write workflows that run on code changes. Teams use it for ML pipelines - train models, evaluate, commit results back to the repo. It's accessible and has good community support.</p>
+
+          <p>Apache Airflow is a workflow orchestration tool. You define a directed acyclic graph (DAG) of tasks - data loading, preprocessing, training, evaluation. Airflow schedules and monitors those tasks. Complex to set up but powerful for production workloads.</p>
+
+          <p>DVC (Data Version Control) addresses the ML-specific problem. It versions code, data, and models together. It integrates with Git and tracks how data flows through a pipeline. Running dvc repro reruns only the pipeline stages that have changed.</p>
+
+          <p>MLflow tracks experiments. You log parameters, metrics, and models. You can compare experiments and reproduce runs. It has a model registry component for versioning what's in production.</p>
+
+          <p>The landscape is fragmented. There's no universal standard yet. Different teams use different combinations depending on their infrastructure and scale. Most production systems I'm aware of stitch together two or three of these tools.</p>
+
+          <h2>How mature ML automation is right now</h2>
+
+          <p>Honest answer: less mature than regular software CI/CD.</p>
+
+          <p>Good companies have automated retraining. New data arrives, a pipeline trains a model, tests it, and maybe deploys it. But they had to build a lot of it themselves or integrate multiple tools. It wasn't a matter of following a standard playbook.</p>
+
+          <p>Most companies don't have this. They retrain manually. Someone gets data, runs training code, evaluates results, decides if it's worth deploying, manually deploys. Slow and error-prone.</p>
+
+          <p>The tools exist. The knowledge exists. But it's not as standardised and straightforward as software CI/CD.</p>
+
+          <p>My view: if you're building ML systems, prioritise automation. Don't manually retrain models. Don't manually evaluate. Don't manually deploy. Build a pipeline that does this. The infrastructure investment pays off immediately in reliability and speed - and in the ability to respond quickly when drift is detected.</p>
+
+          <p>The maturity gap is biggest at small companies. A startup building an ML system probably doesn't have the engineering resources to build a sophisticated pipeline, so they do things manually and accept the messiness. Larger companies can invest in infrastructure. Eventually the tools will be good enough that even small teams can have mature practices without building everything from scratch.</p>
+
+        </div>
+
+        <!-- Quiz -->
+        <section class="lp-quiz" aria-label="Lesson quiz">
+          <h2 class="lp-quiz-title">Check your understanding</h2>
+
+          <!-- Q1 -->
+          <div class="lp-quiz-q">
+            <p class="lp-quiz-question">Why does ML CI/CD need to handle more than regular software CI/CD?</p>
+            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
+              <button class="lp-quiz-btn" data-q="1" data-i="0">A) ML code is written in Python which doesn't support standard CI/CD tools</button>
+              <button class="lp-quiz-btn lp-quiz-correct" data-q="1" data-i="1">B) ML has three moving parts - code, data, and models - all of which need versioning, testing, and tracking</button>
+              <button class="lp-quiz-btn" data-q="1" data-i="2">C) ML models are too large to deploy automatically without manual review</button>
+              <button class="lp-quiz-btn" data-q="1" data-i="3">D) Regular CI/CD tools can't connect to GPU servers needed for training</button>
+            </div>
+            <div class="lp-quiz-feedback-correct" id="q1-correct" hidden>Correct. Regular software CI/CD is about code only. ML adds data (needs validation and versioning) and models (need their own lineage tracking and performance evaluation gates). A model that passes all code tests might still be worse than the current production model - and that comparison must be automated.</div>
+            <div class="lp-quiz-feedback-wrong" id="q1-wrong" hidden>Not quite. Standard CI/CD tools can work with Python and GPUs. The additional complexity is conceptual: ML needs to version and test not just code, but data and model artefacts too. And "does the model work?" requires a different kind of test than "does the function return the right value?"</div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="lp-quiz-q">
+            <p class="lp-quiz-question">What does DVC (Data Version Control) specifically solve for ML pipelines?</p>
+            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
+              <button class="lp-quiz-btn" data-q="2" data-i="0">A) It provides a visual dashboard for comparing model experiment results</button>
+              <button class="lp-quiz-btn" data-q="2" data-i="1">B) It replaces Git entirely for ML projects</button>
+              <button class="lp-quiz-btn lp-quiz-correct" data-q="2" data-i="2">C) It versions code, data, and models together so every model has full lineage tracking</button>
+              <button class="lp-quiz-btn" data-q="2" data-i="3">D) It automatically deploys models to AWS SageMaker</button>
+            </div>
+            <div class="lp-quiz-feedback-correct" id="q2-correct" hidden>Correct. DVC integrates with Git and tracks how data flows through a pipeline alongside the code. Each model is linked to the exact data and code that produced it. Running dvc repro reruns only the stages that have changed, making pipelines reproducible and auditable.</div>
+            <div class="lp-quiz-feedback-wrong" id="q2-wrong" hidden>Not quite. MLflow provides the experiment dashboard. DVC works with Git (not instead of it) and solves the lineage problem: making sure every model can be traced back to the exact data and code that created it.</div>
+          </div>
+        </section>
+
+        <!-- Podcast -->
+        <section class="lp-podcast-section" aria-label="Podcast version">
+          <h2 class="lp-podcast-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line><line x1="2" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="22" y2="12"></line></svg>
+            Podcast version
+          </h2>
+          <p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
+          <audio controls aria-label="Podcast episode audio player">
+            Your browser does not support audio playback.
+          </audio>
+        </section>
+
+        <!-- Accordions -->
+        <details class="tool-accordion" open>
+          <summary>Frequently Asked Questions</summary>
+          <div class="tool-accordion-body">
+            <h3>What is CI/CD for machine learning?</h3>
+            <p>CI/CD for ML means automating the pipeline from raw data to a deployed model. When code, data, or requirements change, the system automatically validates data, trains a model, evaluates it against the current production model, and deploys it if performance improves. This replaces manual steps that are slow and error-prone.</p>
+
+            <h3>How does ML CI/CD differ from regular software CI/CD?</h3>
+            <p>Regular software CI/CD is about code: you change code, tests run, it gets deployed. ML CI/CD covers three things: code, data, and models. You need to validate data hasn't corrupted, test that the new model is actually better than the current one, and track the lineage of every model (what data, what code, what parameters created it). This requires additional tooling beyond standard CI/CD.</p>
+
+            <h3>What tools are used for ML CI/CD?</h3>
+            <p>Common tools include GitHub Actions (for ML workflows triggered by code changes), Apache Airflow (workflow orchestration with DAGs), DVC (Data Version Control - versions code, data, and models together), and MLflow (experiment tracking - logs parameters, metrics, and model artefacts). The landscape is fragmented; different teams use different combinations depending on their infrastructure.</p>
+
+            <h3>How mature is ML automation in 2026?</h3>
+            <p>Less mature than regular software CI/CD. Good companies have automated retraining pipelines but typically built them themselves or stitched together multiple tools. Most companies still retrain manually. The tools exist and the knowledge exists, but standardisation is behind. Teams building ML systems should prioritise automation - the investment pays off immediately in reliability and speed.</p>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary>How It Works</summary>
+          <div class="tool-accordion-body">
+            <p><strong>A typical ML CI/CD pipeline:</strong></p>
+            <p>1. Trigger (new data, code commit, scheduled run). 2. Data validation: check schema, value ranges, missing values - fail loudly if data is corrupt. 3. Feature engineering: run transformation code, version the output. 4. Training: launch a training run, log to MLflow or equivalent. 5. Evaluation: compare new model vs current production model on a held-out evaluation set. 6. Gate: if new model meets performance threshold AND beats current model, proceed. Otherwise, alert a human. 7. Deployment: roll out to 10% of traffic, monitor, expand to 100% or roll back. 8. Monitor: log inputs, outputs, performance in production.</p>
+            <p><strong>Lineage tracking:</strong> Every model in a registry should have: the git commit hash of the code that trained it, a pointer to the exact dataset version used, the hyperparameter configuration, and the evaluation metrics. Without this, you can't reproduce a model or debug why it behaved a certain way.</p>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary>Key Points</summary>
+          <div class="tool-accordion-body">
+            <ul>
+              <li>Most ML teams still rely on manual retraining - CI/CD is less standard in ML than in software</li>
+              <li>ML CI/CD covers code, data, and models - three things to version, test, and track</li>
+              <li>Data validation should fail loudly before training starts, not silently produce a broken model</li>
+              <li>Model testing means comparing new model vs current production model, not just checking code syntax</li>
+              <li>Lineage tracking: every model should trace back to its exact code, data, and parameters</li>
+              <li>Common tools: GitHub Actions, Airflow, DVC, MLflow - often used in combination</li>
+              <li>The landscape is fragmented - no universal standard for ML CI/CD yet</li>
+              <li>Automation pays off immediately in reliability and speed of response to drift</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary>Sources</summary>
+          <div class="tool-accordion-body">
+            <ul>
+              <li>Sato, D. et al. (2019). Continuous Delivery for Machine Learning. <em>martinfowler.com</em>.</li>
+              <li>DVC Documentation. (2024). <em>dvc.org</em>.</li>
+              <li>MLflow Documentation. (2024). <em>mlflow.org</em>.</li>
+              <li>Huyen, C. (2022). <em>Designing Machine Learning Systems</em>. O'Reilly.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Prev / Next nav -->
+        <nav class="lp-nav" aria-label="Lesson navigation">
+          <a href="/course/monitoring-drift" class="lp-nav-btn lp-nav-prev" aria-label="Previous lesson">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>
+              <em>Previous</em>
+              Monitoring and Drift
+            </span>
+          </a>
+          <a href="/course/ai-adoption-journey" class="lp-nav-btn lp-nav-next" aria-label="Next lesson">
+            <span>
+              <em>Next</em>
+              How Organisations Adopt AI
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </nav>
+
+      </article>
+
+      <!-- ── SIDEBAR ── -->
+      <aside class="na-sidebar" aria-label="Course navigation">
+
+        <!-- Table of contents -->
+        <div class="na-toc">
+          <h2 class="na-toc-title">In this lesson</h2>
+          <ul class="na-toc-list">
+            <li><a href="#" onclick="document.querySelector('.na-body h2').scrollIntoView({behavior:'smooth'});return false;">Why ML needs its own CI/CD</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[1].scrollIntoView({behavior:'smooth'});return false;">What ML CI/CD covers</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[2].scrollIntoView({behavior:'smooth'});return false;">Tools in this space</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[3].scrollIntoView({behavior:'smooth'});return false;">How mature it is now</a></li>
+          </ul>
+        </div>
+
+        <!-- Course navigation -->
+        <nav class="lp-sidebar-nav" aria-label="All course lessons">
+          <h2 class="lp-sidebar-nav-title">Course contents</h2>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-1">Unit 1 · Introduction to AI</div>
+            <ul>
+              <li><a href="/course/what-is-ai">What is AI?</a></li>
+              <li><a href="/course/categories-of-ai">Categories of AI</a></li>
+              <li><a href="/course/how-ai-learns">How AI Learns</a></li>
+              <li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-2">Unit 2 · The Modern AI Landscape</div>
+            <ul>
+              <li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
+              <li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
+              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
+              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-3">Unit 3 · Ethics &amp; Governance</div>
+            <ul>
+              <li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
+              <li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
+              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-4">Unit 4 · Python for AI</div>
+            <ul>
+              <li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
+              <li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-5">Unit 5 · Machine Learning</div>
+            <ul>
+              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
+              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-6">Unit 6 · Deep Learning</div>
+            <ul>
+              <li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
+              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+              <li><a href="/course/backpropagation">Backpropagation</a></li>
+              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
+              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-7">Unit 7 · Generative AI</div>
+            <ul>
+              <li><a href="/course/generative-ai-models">Generative AI Models</a></li>
+              <li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
+              <li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-8">Unit 8 · AI in Production</div>
+            <ul>
+              <li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
+              <li><a href="/course/model-deployment">Model Deployment</a></li>
+              <li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
+              <li><a href="/course/cicd-for-ml" class="lp-sidebar-current" aria-current="page">CI/CD for ML</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-9">Unit 9 · AI Strategy</div>
+            <ul>
+              <li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
+              <li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
+              <li><a href="/course/ai-across-industries">AI Across Industries</a></li>
+              <li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
+            </ul>
+          </div>
+
+        </nav>
+      </aside>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js"></script>
+  <script>
+    // Quiz logic
+    document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const q = this.dataset.q;
+        const group = document.querySelectorAll(`.lp-quiz-btn[data-q="${q}"]`);
+        group.forEach(b => b.disabled = true);
+        const isCorrect = this.classList.contains('lp-quiz-correct');
+        this.classList.add(isCorrect ? 'lp-quiz-selected-correct' : 'lp-quiz-selected-wrong');
+        document.getElementById(`q${q}-${isCorrect ? 'correct' : 'wrong'}`).hidden = false;
+      });
+    });
+  </script>
+</body>
+</html>

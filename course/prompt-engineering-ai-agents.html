@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Engineering and AI Agents Explained - JohnB.io</title>
+  <meta name="description" content="What prompt engineering actually is, the techniques that work, how AI agents differ from chatbots, and whether prompt engineer will last as a job title. Unit 7, Lesson 2.">
+  <meta name="keywords" content="prompt engineering, AI agents, chain of thought, few-shot prompting, tool use, LLM, ChatGPT">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/course/prompt-engineering-ai-agents">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Prompt Engineering and AI Agents Explained">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://johnb.io/course/prompt-engineering-ai-agents">
+  <meta property="og:description" content="What prompt engineering actually is, the techniques that work, how AI agents differ from chatbots, and whether prompt engineer will last as a job title.">
+  <meta property="og:image" content="https://johnb.io/images/course-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Prompt Engineering and AI Agents lesson - JohnB.io AI Course">
+  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
+  <meta property="article:author" content="https://johnb.io">
+  <meta property="article:section" content="Generative AI &amp; Practical Applications">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Prompt Engineering and AI Agents Explained">
+  <meta name="twitter:description" content="What prompt engineering actually is, the techniques that work, how AI agents differ from chatbots, and whether prompt engineer will last as a job title.">
+  <meta name="twitter:image" content="https://johnb.io/images/course-og.png">
+  <meta name="twitter:image:alt" content="Prompt Engineering and AI Agents lesson - JohnB.io AI Course">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Prompt Engineering and AI Agents Explained",
+        "description": "What prompt engineering actually is, the techniques that work, how AI agents differ from chatbots, and whether prompt engineer will last as a job title.",
+        "image": "https://johnb.io/images/course-og.png",
+        "datePublished": "2026-04-05T00:00:00+00:00",
+        "dateModified": "2026-04-05T00:00:00+00:00",
+        "author": {
+          "@type": "Person",
+          "name": "John Bowman",
+          "url": "https://johnb.io"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "JohnB.io",
+          "url": "https://johnb.io"
+        },
+        "mainEntityOfPage": "https://johnb.io/course/prompt-engineering-ai-agents"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is prompt engineering?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Prompt engineering is writing instructions that get you what you want from a language model. It's not magic - it's being specific about what you're asking for. The more precisely you describe the task, format, audience, and constraints, the more the model can narrow down to a useful output."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is chain-of-thought prompting?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Chain-of-thought prompting asks the model to write out its reasoning step by step before giving a final answer. This works because generating reasoning tokens helps the model work through complex problems rather than jumping to a conclusion. It also makes the reasoning visible so you can see where the model goes wrong."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is an AI agent?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "An AI agent is a language model that can take actions, not just generate text. It can call functions, search the web, run code, read databases, and plan multi-step sequences. A chatbot responds; an agent acts. The mechanism is usually the model outputting structured function calls that a surrounding system intercepts and executes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will prompt engineering survive as a job title?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Probably not long-term. The skills matter - writing clear specifications, breaking problems into steps, understanding what you actually want - but these will likely become standard parts of working with AI rather than a standalone role. The craft survives; the job title probably doesn't."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://johnb.io"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI Course",
+            "item": "https://johnb.io/dashboard"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Prompt Engineering and AI Agents",
+            "item": "https://johnb.io/course/prompt-engineering-ai-agents"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/news.css">
+  <link rel="stylesheet" href="/lesson.css">
+</head>
+<body class="lp-page">
+
+  <div id="header-placeholder"></div>
+
+  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
+    <div class="na-layout">
+
+      <!-- ── MAIN CONTENT ── -->
+      <article class="na-content">
+
+        <!-- Breadcrumb -->
+        <nav class="na-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">›</span>
+          <a href="/dashboard">AI Course</a>
+          <span aria-hidden="true">›</span>
+          <span>Prompt Engineering and AI Agents</span>
+        </nav>
+
+        <!-- Unit badge + title -->
+        <div class="lp-unit-badge lp-unit-7">Unit 7 · Generative AI &amp; Practical Applications</div>
+        <h1 class="na-title">Prompt Engineering and AI Agents</h1>
+
+        <!-- Meta row -->
+        <div class="na-meta">
+          <span>10 min read</span>
+          <span>·</span>
+          <span>Lesson 2 of 3 in Unit 7</span>
+          <span>·</span>
+          <span>Published 5 April 2026</span>
+        </div>
+
+        <!-- Audio player -->
+        <section class="lp-audio-section" aria-label="Lesson audio">
+          <div class="lp-audio-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            Listen to this lesson
+          </div>
+          <audio controls aria-label="Lesson audio player">
+            Your browser does not support audio playback.
+          </audio>
+        </section>
+
+        <!-- Body -->
+        <div class="na-body">
+
+          <p>Prompt engineering isn't wizardry. It's not about magic words or secret incantations that unlock hidden powers in language models. It's about being specific about what you want and structuring your request in ways the model can actually handle.</p>
+
+          <p>Most people get this wrong. They treat prompts like wishes to a genie - vague, full of unstated assumptions, expecting the model to read their mind. Then they're surprised when the output is mediocre.</p>
+
+          <h2>What prompt engineering actually is</h2>
+
+          <p>Prompt engineering is writing instructions that get you what you want from a language model. That's all.</p>
+
+          <p>When you write "Write me an article," the model has to guess. Article about what? How long? Formal or casual? For what audience? The model will make assumptions, most of them wrong.</p>
+
+          <p>When you write "Write a 400-word article about machine learning for someone who's never programmed, aimed at business executives, explaining why they should care," you've narrowed down the space of valid outputs dramatically. The model still has choices, but it knows what you're actually asking for.</p>
+
+          <p>This isn't creativity or magic. It's being specific.</p>
+
+          <h2>Techniques that actually work</h2>
+
+          <p><strong>Chain of thought.</strong> Ask the model to think step by step instead of jumping to conclusions. "What are the steps to solve this problem?" gets better results than "Solve this problem." The model writes out reasoning, which both helps it arrive at the right answer and lets you see where the thinking goes wrong.</p>
+
+          <p><strong>Few-shot examples.</strong> Show the model examples of what you want. If you need a specific format or tone, give it two or three examples and ask for a new one in the same style. Models are good at learning from examples - better than from abstract descriptions.</p>
+
+          <p><strong>Role prompting.</strong> Tell the model to adopt a perspective. "You're a senior software engineer reviewing this code" or "You're a product manager thinking about customer impact" changes how it approaches a problem. This works because the model has learned what different roles typically care about and how they communicate.</p>
+
+          <p>These aren't tricks. They work because they align with how the model processes language. When you show examples, you're giving it a pattern to follow. When you ask it to think step by step, you're asking it to generate reasoning tokens, which helps with complex problems. When you define a role, you're activating patterns associated with that perspective.</p>
+
+          <h2>What AI agents actually are</h2>
+
+          <p>An AI agent is a model that can take actions, not just generate text. It can call functions, read from databases, search the web, run code. It can plan a sequence of steps and execute them.</p>
+
+          <p>This is different from a chatbot. A chatbot generates text responses. An agent generates text that includes decisions about what to do next.</p>
+
+          <p>The mechanism is usually simple. The model outputs text that includes function calls. Something like: "I need to search for current stock prices. Let me use the search function. [SEARCH: AAPL stock price]. The result is..." The system intercepts the function call, executes it, and feeds the result back into the model's context.</p>
+
+          <p>Why this matters: an agent can correct itself. If it tries something and it doesn't work, it can try a different approach. It can break a complex task into steps and verify each one before continuing.</p>
+
+          <h2>Tool use and multi-step reasoning</h2>
+
+          <p>Tool use is the agent calling a function. But what's interesting is when and how it decides to use tools.</p>
+
+          <p>A capable agent decides "I need external information here" and calls a search function, gets results, incorporates them. It decides "This calculation requires precision" and uses a calculator tool. The agent reasons about what it doesn't know and what tools can help.</p>
+
+          <p>Multi-step reasoning is the agent planning. "To answer this question I need to: 1) Find the current exchange rate, 2) Look up the historical price, 3) Calculate the difference." Then it executes those steps, handling failures along the way.</p>
+
+          <p>Current models are reasonably good at this - not perfect, they get confused and sometimes use tools unnecessarily. But they can handle multi-step problems that would have required manual coordination between different systems.</p>
+
+          <h2>Will "prompt engineer" survive as a job title?</h2>
+
+          <p>Probably not, and that's fine.</p>
+
+          <p>Right now "prompt engineer" is a job because prompting matters and most people are bad at it. In six months or a year, that may change. Models will get better at understanding vague requests. Tools will guide people toward better prompts. The skills may become table stakes - something everyone who works with AI does, not a specialised role.</p>
+
+          <p>That doesn't mean the skills disappear. Writing clear specifications, thinking through what you actually want, breaking problems into steps - those matter more than ever. But they'll probably be part of every knowledge job rather than their own specialty.</p>
+
+          <p>There's a real chance I'm wrong about this. Maybe prompting becomes more important as models become more powerful. Maybe understanding how to shape behaviour through prompts becomes deep enough expertise that it warrants its own role. My intuition is that the craft survives but the title doesn't last. I'd bet on that, but not at long odds.</p>
+
+        </div>
+
+        <!-- Quiz -->
+        <section class="lp-quiz" aria-label="Lesson quiz">
+          <h2 class="lp-quiz-title">Check your understanding</h2>
+
+          <!-- Q1 -->
+          <div class="lp-quiz-q">
+            <p class="lp-quiz-question">What does chain-of-thought prompting do?</p>
+            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
+              <button class="lp-quiz-btn" data-q="1" data-i="0">A) Runs the same prompt multiple times and picks the most common answer</button>
+              <button class="lp-quiz-btn" data-q="1" data-i="1">B) Connects multiple AI models together in a pipeline</button>
+              <button class="lp-quiz-btn lp-quiz-correct" data-q="1" data-i="2">C) Asks the model to write out its reasoning step by step before answering</button>
+              <button class="lp-quiz-btn" data-q="1" data-i="3">D) Generates a chain of alternative responses for the user to choose from</button>
+            </div>
+            <div class="lp-quiz-feedback-correct" id="q1-correct" hidden>Correct. Chain-of-thought prompting works by getting the model to generate intermediate reasoning tokens. Writing out the reasoning helps the model work through complex problems and makes mistakes visible.</div>
+            <div class="lp-quiz-feedback-wrong" id="q1-wrong" hidden>Not quite. Chain-of-thought is about asking the model to think through its reasoning step by step before giving a final answer - not running multiple times or connecting models together.</div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="lp-quiz-q">
+            <p class="lp-quiz-question">What is the key difference between a chatbot and an AI agent?</p>
+            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
+              <button class="lp-quiz-btn" data-q="2" data-i="0">A) Agents use newer AI models while chatbots use older ones</button>
+              <button class="lp-quiz-btn" data-q="2" data-i="1">B) Agents can only work with structured data, chatbots can handle natural language</button>
+              <button class="lp-quiz-btn lp-quiz-correct" data-q="2" data-i="2">C) Agents can take actions by calling tools and executing multi-step plans, not just generate text</button>
+              <button class="lp-quiz-btn" data-q="2" data-i="3">D) Chatbots can correct their own errors but agents can't</button>
+            </div>
+            <div class="lp-quiz-feedback-correct" id="q2-correct" hidden>Correct. A chatbot generates text responses. An agent generates text that includes decisions about what to do - it can call functions, search the web, run code, and plan sequences of actions. The ability to act is what distinguishes an agent.</div>
+            <div class="lp-quiz-feedback-wrong" id="q2-wrong" hidden>Not quite. The distinction is about action: chatbots respond with text, agents can take actions. An agent intercepts its own function calls, executes them against real systems, and feeds the results back into its reasoning.</div>
+          </div>
+        </section>
+
+        <!-- Podcast -->
+        <section class="lp-podcast-section" aria-label="Podcast version">
+          <h2 class="lp-podcast-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line><line x1="2" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="22" y2="12"></line></svg>
+            Podcast version
+          </h2>
+          <p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
+          <audio controls aria-label="Podcast episode audio player">
+            Your browser does not support audio playback.
+          </audio>
+        </section>
+
+        <!-- Accordions -->
+        <details class="tool-accordion" open>
+          <summary>Frequently Asked Questions</summary>
+          <div class="tool-accordion-body">
+            <h3>What is prompt engineering?</h3>
+            <p>Prompt engineering is writing instructions that get you what you want from a language model. It's not magic - it's being specific about what you're asking for. The more precisely you describe the task, format, audience, and constraints, the more the model can narrow down to a useful output.</p>
+
+            <h3>What is chain-of-thought prompting?</h3>
+            <p>Chain-of-thought prompting asks the model to write out its reasoning step by step before giving a final answer. This works because generating reasoning tokens helps the model work through complex problems rather than jumping to a conclusion. It also makes the reasoning visible so you can see where the model goes wrong.</p>
+
+            <h3>What is an AI agent?</h3>
+            <p>An AI agent is a language model that can take actions, not just generate text. It can call functions, search the web, run code, read databases, and plan multi-step sequences. A chatbot responds; an agent acts. The mechanism is usually the model outputting structured function calls that a surrounding system intercepts and executes.</p>
+
+            <h3>Will prompt engineering survive as a job title?</h3>
+            <p>Probably not long-term. The skills matter - writing clear specifications, breaking problems into steps, understanding what you actually want - but these will likely become standard parts of working with AI rather than a standalone role. The craft survives; the job title probably doesn't.</p>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary>How It Works</summary>
+          <div class="tool-accordion-body">
+            <p><strong>Zero-shot prompting:</strong> Give the task with no examples. Works for simple, well-defined tasks where the model has strong priors from training.</p>
+            <p><strong>Few-shot prompting:</strong> Include 2-5 examples of input-output pairs before the actual query. The model learns the pattern from the examples and applies it. Most effective when the format or style is hard to describe in words.</p>
+            <p><strong>Chain-of-thought:</strong> Add "think step by step" or include examples that show intermediate reasoning. The model generates reasoning tokens before the final answer, which substantially improves accuracy on multi-step problems.</p>
+            <p><strong>System prompts:</strong> A system-level instruction that sets the context for the whole conversation - defining the model's role, constraints, and behaviour. Separate from the user prompt in most modern APIs.</p>
+            <p><strong>AI agents (tool use):</strong> The model is given a list of available functions and their schemas. When it decides a function is needed, it outputs a structured function call. The surrounding system executes the call, returns the result, and continues the conversation. This loop continues until the task is complete.</p>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary>Key Points</summary>
+          <div class="tool-accordion-body">
+            <ul>
+              <li>Prompt engineering is about specificity - vague prompts produce vague outputs</li>
+              <li>Chain-of-thought prompting improves accuracy on complex problems by generating intermediate reasoning</li>
+              <li>Few-shot examples are often more effective than detailed text descriptions of the required format</li>
+              <li>Role prompting works because models have learned how different roles communicate and reason</li>
+              <li>An AI agent differs from a chatbot by being able to take actions, not just generate text</li>
+              <li>Tool use works via function calls: the model outputs a call, the system executes it, the result feeds back in</li>
+              <li>Agents can handle multi-step tasks and correct themselves when steps fail</li>
+              <li>Prompt engineering as a job title is probably temporary; the underlying skills are not</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary>Sources</summary>
+          <div class="tool-accordion-body">
+            <ul>
+              <li>Wei, J. et al. (2022). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. <em>NeurIPS</em>.</li>
+              <li>Brown, T. et al. (2020). Language Models are Few-Shot Learners (GPT-3). <em>NeurIPS</em>.</li>
+              <li>Schick, T. et al. (2023). Toolformer: Language Models Can Teach Themselves to Use Tools. <em>arXiv</em>.</li>
+              <li>OpenAI. (2023). Function Calling Documentation. <em>platform.openai.com</em>.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Prev / Next nav -->
+        <nav class="lp-nav" aria-label="Lesson navigation">
+          <a href="/course/generative-ai-models" class="lp-nav-btn lp-nav-prev" aria-label="Previous lesson">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>
+              <em>Previous</em>
+              Generative AI Models
+            </span>
+          </a>
+          <a href="/course/rag-finetuning-enterprise-ai" class="lp-nav-btn lp-nav-next" aria-label="Next lesson">
+            <span>
+              <em>Next</em>
+              RAG, Fine-Tuning and Enterprise AI
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </nav>
+
+      </article>
+
+      <!-- ── SIDEBAR ── -->
+      <aside class="na-sidebar" aria-label="Course navigation">
+
+        <!-- Table of contents -->
+        <div class="na-toc">
+          <h2 class="na-toc-title">In this lesson</h2>
+          <ul class="na-toc-list">
+            <li><a href="#" onclick="document.querySelector('.na-body h2').scrollIntoView({behavior:'smooth'});return false;">What prompt engineering is</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[1].scrollIntoView({behavior:'smooth'});return false;">Techniques that work</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[2].scrollIntoView({behavior:'smooth'});return false;">What AI agents are</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[3].scrollIntoView({behavior:'smooth'});return false;">Tool use and multi-step reasoning</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[4].scrollIntoView({behavior:'smooth'});return false;">The prompt engineer job title</a></li>
+          </ul>
+        </div>
+
+        <!-- Course navigation -->
+        <nav class="lp-sidebar-nav" aria-label="All course lessons">
+          <h2 class="lp-sidebar-nav-title">Course contents</h2>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-1">Unit 1 · Introduction to AI</div>
+            <ul>
+              <li><a href="/course/what-is-ai">What is AI?</a></li>
+              <li><a href="/course/categories-of-ai">Categories of AI</a></li>
+              <li><a href="/course/how-ai-learns">How AI Learns</a></li>
+              <li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-2">Unit 2 · The Modern AI Landscape</div>
+            <ul>
+              <li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
+              <li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
+              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
+              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-3">Unit 3 · Ethics &amp; Governance</div>
+            <ul>
+              <li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
+              <li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
+              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-4">Unit 4 · Python for AI</div>
+            <ul>
+              <li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
+              <li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-5">Unit 5 · Machine Learning</div>
+            <ul>
+              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
+              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-6">Unit 6 · Deep Learning</div>
+            <ul>
+              <li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
+              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+              <li><a href="/course/backpropagation">Backpropagation</a></li>
+              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
+              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-7">Unit 7 · Generative AI</div>
+            <ul>
+              <li><a href="/course/generative-ai-models">Generative AI Models</a></li>
+              <li><a href="/course/prompt-engineering-ai-agents" class="lp-sidebar-current" aria-current="page">Prompt Engineering &amp; AI Agents</a></li>
+              <li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-8">Unit 8 · AI in Production</div>
+            <ul>
+              <li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
+              <li><a href="/course/model-deployment">Model Deployment</a></li>
+              <li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
+              <li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-9">Unit 9 · AI Strategy</div>
+            <ul>
+              <li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
+              <li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
+              <li><a href="/course/ai-across-industries">AI Across Industries</a></li>
+              <li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
+            </ul>
+          </div>
+
+        </nav>
+      </aside>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js"></script>
+  <script>
+    // Quiz logic
+    document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const q = this.dataset.q;
+        const group = document.querySelectorAll(`.lp-quiz-btn[data-q="${q}"]`);
+        group.forEach(b => b.disabled = true);
+        const isCorrect = this.classList.contains('lp-quiz-correct');
+        this.classList.add(isCorrect ? 'lp-quiz-selected-correct' : 'lp-quiz-selected-wrong');
+        document.getElementById(`q${q}-${isCorrect ? 'correct' : 'wrong'}`).hidden = false;
+      });
+    });
+  </script>
+</body>
+</html>

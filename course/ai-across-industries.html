@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Across Industries: Healthcare, Finance, Marketing - JohnB.io</title>
+  <meta name="description" content="How AI is actually deployed in healthcare, marketing, finance, and manufacturing - the applications that work, the ones that don't, and which industry is furthest ahead. Unit 9, Lesson 3.">
+  <meta name="keywords" content="AI in healthcare, AI in finance, AI in marketing, AI in manufacturing, industry AI applications, enterprise AI">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/course/ai-across-industries">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Across Industries: Healthcare, Finance, Marketing and Beyond">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://johnb.io/course/ai-across-industries">
+  <meta property="og:description" content="How AI is actually deployed in healthcare, marketing, finance, and manufacturing - the applications that work, the ones that don't, and which industry is furthest ahead.">
+  <meta property="og:image" content="https://johnb.io/images/course-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AI Across Industries lesson - JohnB.io AI Course">
+  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
+  <meta property="article:author" content="https://johnb.io">
+  <meta property="article:section" content="AI Strategy &amp; Business Applications">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Across Industries: Healthcare, Finance, Marketing and Beyond">
+  <meta name="twitter:description" content="How AI is actually deployed in healthcare, marketing, finance, and manufacturing - the applications that work, the ones that don't, and which industry is furthest ahead.">
+  <meta name="twitter:image" content="https://johnb.io/images/course-og.png">
+  <meta name="twitter:image:alt" content="AI Across Industries lesson - JohnB.io AI Course">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "AI Across Industries: Healthcare, Finance, Marketing and Beyond",
+        "description": "How AI is actually deployed in healthcare, marketing, finance, and manufacturing - the applications that work, the ones that don't, and which industry is furthest ahead.",
+        "image": "https://johnb.io/images/course-og.png",
+        "datePublished": "2026-04-05T00:00:00+00:00",
+        "dateModified": "2026-04-05T00:00:00+00:00",
+        "author": {
+          "@type": "Person",
+          "name": "John Bowman",
+          "url": "https://johnb.io"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "JohnB.io",
+          "url": "https://johnb.io"
+        },
+        "mainEntityOfPage": "https://johnb.io/course/ai-across-industries"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How is AI used in healthcare?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The main deployed uses are: diagnostics (detecting diseases in medical images like X-rays and mammograms, some performing at radiologist level), drug discovery (screening molecular candidates to reduce physical testing), and risk stratification (predicting which patients will need hospitalisation). AI doesn't replace doctors - it assists clinicians. Healthcare AI is limited by fragmented private data and strict regulatory validation requirements."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What AI is actually deployed in marketing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Personalisation (recommending products and content based on user behaviour - Netflix, Amazon), content generation (LLMs generating ad copy and email subjects for human editing), and attribution modelling (predicting which marketing touchpoints led to conversions). What works: AI assisting human decisions. What doesn't: fully automated campaigns with no human review - mistakes compound."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is AI most mature in financial services?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Fraud detection (clear data, clear labels, clear metric - banks have done this for years) and credit risk scoring (predicting loan default probability). AI trading is more contested - some systems work but markets adapt to exploitable patterns. Finance has invested more systematically in AI than most industries, with the infrastructure and talent to show for it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which industry is furthest ahead in AI adoption?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Finance has the most systematic AI deployment - not the flashiest use cases, but the most infrastructure, investment, and talent. Healthcare has impressive individual cases but limited broad deployment due to regulation and data fragmentation. The furthest-ahead organisations are those with good data infrastructure, clear metrics, and real problems AI can solve - that's an organisational maturity thing, not an industry thing."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://johnb.io"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI Course",
+            "item": "https://johnb.io/dashboard"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "AI Across Industries",
+            "item": "https://johnb.io/course/ai-across-industries"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/news.css">
+  <link rel="stylesheet" href="/lesson.css">
+</head>
+<body class="lp-page">
+
+  <div id="header-placeholder"></div>
+
+  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
+    <div class="na-layout">
+
+      <!-- ── MAIN CONTENT ── -->
+      <article class="na-content">
+
+        <!-- Breadcrumb -->
+        <nav class="na-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">›</span>
+          <a href="/dashboard">AI Course</a>
+          <span aria-hidden="true">›</span>
+          <span>AI Across Industries</span>
+        </nav>
+
+        <!-- Unit badge + title -->
+        <div class="lp-unit-badge lp-unit-9">Unit 9 · AI Strategy &amp; Business Applications</div>
+        <h1 class="na-title">AI Across Industries: Healthcare, Marketing, Finance and Beyond</h1>
+
+        <!-- Meta row -->
+        <div class="na-meta">
+          <span>10 min read</span>
+          <span>·</span>
+          <span>Lesson 3 of 4 in Unit 9</span>
+          <span>·</span>
+          <span>Published 5 April 2026</span>
+        </div>
+
+        <!-- Audio player -->
+        <section class="lp-audio-section" aria-label="Lesson audio">
+          <div class="lp-audio-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            Listen to this lesson
+          </div>
+          <audio controls aria-label="Lesson audio player">
+            Your browser does not support audio playback.
+          </audio>
+        </section>
+
+        <!-- Body -->
+        <div class="na-body">
+
+          <p>AI isn't an industry. It's a toolkit. Different industries use it differently because they have different constraints and different kinds of problems to solve.</p>
+
+          <p>Understanding how AI actually gets deployed in real industries helps you see the gap between "what's theoretically possible" and "what actually works."</p>
+
+          <h2>Healthcare: where AI is applied</h2>
+
+          <p>Healthcare has been an AI proving ground for years. The applications are real but more limited than the headlines suggest.</p>
+
+          <p><strong>Diagnostics.</strong> AI systems trained to detect diseases from medical images - chest X-rays, mammograms, retinal scans. Some perform as well as radiologists. This matters because radiologists are expensive and in short supply. But these systems don't replace radiologists - they assist them. A radiologist uses the AI prediction as a second opinion.</p>
+
+          <p>This works because diagnosis from images is a bounded problem. Clear data (images), clear labels (disease vs no disease), clear metric (accuracy). You can build, test, and validate the system.</p>
+
+          <p><strong>Drug discovery.</strong> AI screens potential drug candidates, predicting which molecules will have desired properties. This reduces the number that need physical testing. The predictions still require lab validation, but the process is faster.</p>
+
+          <p><strong>Risk stratification.</strong> Predicting which patients will develop certain conditions or need hospitalisation. Statistical prediction, similar to other industries. Works when you have good historical data and the future resembles the past.</p>
+
+          <p>What's not happening at scale: AI replacing doctors. Diagnosis is harder than image classification. Medicine requires reasoning about complex patient histories, trade-offs, and context. AI is better as a tool that assists clinicians.</p>
+
+          <p>Healthcare AI's success is limited by data access and regulation. Medical records are private, fragmented, and hard to access. Getting FDA approval or equivalent for a diagnostic system is a completely different challenge from building a model that works in a notebook.</p>
+
+          <h2>Marketing: AI in personalisation and content</h2>
+
+          <p>Marketing has more AI deployment than most people realise.</p>
+
+          <p><strong>Personalisation.</strong> The classic application. Collect data about what a customer likes, show them products they're likely to buy. Netflix recommending shows, Amazon recommending products - this is AI. It works because the goal is clear (maximise engagement or sales), you have lots of data (clicks, purchases), and you can A/B test to verify it's actually working.</p>
+
+          <p><strong>Content generation.</strong> Using language models to generate ad copy, email subject lines, social media posts. It reduces labour - instead of hiring a copywriter for every variation, you use an LLM and edit the output. Quality is uneven but it's fast.</p>
+
+          <p><strong>Attribution modelling.</strong> Figuring out which marketing touchpoint deserves credit for a conversion. Did the customer convert because of that email, that ad, or that search? AI doesn't solve this perfectly, but it's better than hand-waving.</p>
+
+          <p>What works: AI at the edges, helping humans decide. What doesn't work: fully automated systems nobody reviews. If your AI is running campaigns unsupervised, mistakes compound.</p>
+
+          <h2>Finance: fraud, risk and trading</h2>
+
+          <p><strong>Fraud detection.</strong> Works well. Clear transaction data, clear labels (fraud vs legitimate), clear metric (catch fraud without rejecting legitimate transactions). Banks have been building these for years.</p>
+
+          <p><strong>Credit risk.</strong> Predicting whether a loan applicant will default. Classic statistical prediction. Lenders use AI to decide who gets loans and on what terms. It works when your data is good and historical default rates are predictive of the future. A caveat: if your training data reflects historical discrimination, the model will amplify it. Credit models need careful auditing.</p>
+
+          <p><strong>Trading.</strong> More scepticism warranted here. Some AI trading systems do work. But for every successful one, others fail spectacularly. Markets adapt - if an AI system makes money exploiting a pattern, other traders notice and the pattern disappears. A human trader plus an AI system probably makes better decisions than pure AI trading with no judgment.</p>
+
+          <h2>Manufacturing and operations</h2>
+
+          <p><strong>Predictive maintenance.</strong> Use sensor data to predict when equipment will fail. Deploy maintenance before failure. This saves money by avoiding emergency repairs and downtime. Works when you have good sensor data and enough failure history to learn from.</p>
+
+          <p><strong>Quality control.</strong> Computer vision to inspect products and catch defects. Better than humans for consistency. Deployed in factories.</p>
+
+          <p><strong>Supply chain optimisation.</strong> Predict demand and optimise inventory and logistics. Complex - many variables and long delays between decisions and feedback. When it works, the savings are large.</p>
+
+          <h2>Which industry is furthest ahead</h2>
+
+          <p>Finance is furthest ahead - not because they have the best AI, but because they have the most infrastructure, the most investment, and the most talent. Finance companies deploy AI systems across their operations. It's not flashy but it's systematic.</p>
+
+          <p>Healthcare has impressive use cases but limited deployment. Stricter regulation, more fragmented data, sometimes less clear business case.</p>
+
+          <p>Tech companies are furthest ahead if you count them as an industry. Google, Meta, Microsoft - they have the data, the expertise, the infrastructure. But they're not representative of most industries.</p>
+
+          <p>The furthest-ahead organisations share a pattern: good data infrastructure, clear metrics, and real business problems that AI can solve. That's not an industry characteristic. It's an organisational maturity characteristic. Some finance companies have it. Some manufacturing companies have it. Most don't.</p>
+
+        </div>
+
+        <!-- Quiz -->
+        <section class="lp-quiz" aria-label="Lesson quiz">
+          <h2 class="lp-quiz-title">Check your understanding</h2>
+
+          <!-- Q1 -->
+          <div class="lp-quiz-q">
+            <p class="lp-quiz-question">Why is medical image diagnosis well-suited to AI compared to general clinical diagnosis?</p>
+            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
+              <button class="lp-quiz-btn" data-q="1" data-i="0">A) Medical images are publicly available for training, unlike other medical data</button>
+              <button class="lp-quiz-btn lp-quiz-correct" data-q="1" data-i="1">B) It's a bounded problem with clear inputs, clear labels, and a measurable accuracy metric</button>
+              <button class="lp-quiz-btn" data-q="1" data-i="2">C) Image-based AI doesn't require regulatory approval unlike text-based systems</button>
+              <button class="lp-quiz-btn" data-q="1" data-i="3">D) Radiologists are less accurate than other specialists so the bar is lower</button>
+            </div>
+            <div class="lp-quiz-feedback-correct" id="q1-correct" hidden>Correct. Image classification is a well-defined ML problem: the input (image) is fixed format, the label (disease present/absent) is binary, and accuracy is measurable. General clinical diagnosis requires reasoning about complex patient histories, trade-offs, and contextual judgment that's much harder to frame as an ML task.</div>
+            <div class="lp-quiz-feedback-wrong" id="q1-wrong" hidden>Not quite. Medical images are actually strictly regulated and not publicly available. The reason image diagnosis works well for AI is that it's a bounded, well-defined problem: fixed-format input, binary labels, measurable accuracy metric.</div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="lp-quiz-q">
+            <p class="lp-quiz-question">What makes fraud detection a strong AI use case in finance?</p>
+            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
+              <button class="lp-quiz-btn" data-q="2" data-i="0">A) Fraud patterns are simple and don't change over time</button>
+              <button class="lp-quiz-btn" data-q="2" data-i="1">B) Financial regulations require AI for fraud detection in most countries</button>
+              <button class="lp-quiz-btn lp-quiz-correct" data-q="2" data-i="2">C) It has clear labelled data, a clear metric, and a measurable cost to optimise against</button>
+              <button class="lp-quiz-btn" data-q="2" data-i="3">D) Fraudsters don't adapt their behaviour when detection improves</button>
+            </div>
+            <div class="lp-quiz-feedback-correct" id="q2-correct" hidden>Correct. Fraud detection has the ingredients that make ML work well: you have transaction data (inputs), fraud labels (did this transaction turn out to be fraud?), and a clear metric (catch fraud while minimising false rejections of legitimate transactions). Banks have refined these systems for years.</div>
+            <div class="lp-quiz-feedback-wrong" id="q2-wrong" hidden>Not quite. Fraud patterns do evolve, and regulation requirements vary. The reason fraud detection is a strong AI use case is the data quality and problem clarity: clear inputs, clear binary labels, and a measurable cost you're trying to minimise.</div>
+          </div>
+        </section>
+
+        <!-- Podcast -->
+        <section class="lp-podcast-section" aria-label="Podcast version">
+          <h2 class="lp-podcast-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line><line x1="2" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="22" y2="12"></line></svg>
+            Podcast version
+          </h2>
+          <p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
+          <audio controls aria-label="Podcast episode audio player">
+            Your browser does not support audio playback.
+          </audio>
+        </section>
+
+        <!-- Accordions -->
+        <details class="tool-accordion" open>
+          <summary>Frequently Asked Questions</summary>
+          <div class="tool-accordion-body">
+            <h3>How is AI used in healthcare?</h3>
+            <p>The main deployed uses are: diagnostics (detecting diseases in medical images like X-rays and mammograms, some performing at radiologist level), drug discovery (screening molecular candidates to reduce physical testing), and risk stratification (predicting which patients will need hospitalisation). AI doesn't replace doctors - it assists clinicians. Healthcare AI is limited by fragmented private data and strict regulatory validation requirements.</p>
+
+            <h3>What AI is actually deployed in marketing?</h3>
+            <p>Personalisation (recommending products and content based on user behaviour - Netflix, Amazon), content generation (LLMs generating ad copy and email subjects for human editing), and attribution modelling (predicting which marketing touchpoints led to conversions). What works: AI assisting human decisions. What doesn't: fully automated campaigns with no human review - mistakes compound.</p>
+
+            <h3>Where is AI most mature in financial services?</h3>
+            <p>Fraud detection (clear data, clear labels, clear metric - banks have done this for years) and credit risk scoring (predicting loan default probability). AI trading is more contested - some systems work but markets adapt to exploitable patterns. Finance has invested more systematically in AI than most industries, with the infrastructure and talent to show for it.</p>
+
+            <h3>Which industry is furthest ahead in AI adoption?</h3>
+            <p>Finance has the most systematic AI deployment - not the flashiest use cases, but the most infrastructure, investment, and talent. Healthcare has impressive individual cases but limited broad deployment due to regulation and data fragmentation. The furthest-ahead organisations are those with good data infrastructure, clear metrics, and real problems AI can solve - that's an organisational maturity thing, not an industry thing.</p>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary>How It Works</summary>
+          <div class="tool-accordion-body">
+            <p><strong>What makes a use case well-suited to AI:</strong> Clear, consistently formatted input data. Binary or well-defined output labels. A measurable metric you can optimise. Enough historical data to train on. A domain where the future resembles the past. The use cases that work across all industries share these properties.</p>
+            <p><strong>What makes a use case hard:</strong> Inputs that require complex contextual reasoning (general clinical diagnosis). Situations where the relationship between features and outcomes changes quickly (trading). Domains with fragmented or private data that's hard to aggregate (healthcare records). Tasks where mistakes have severe regulatory consequences.</p>
+            <p><strong>The human-in-the-loop pattern:</strong> Almost every successful real-world AI deployment follows this pattern - AI surfaces options or flags anomalies, human makes the final decision. Pure AI automation without human review is rarer and riskier than headlines suggest.</p>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary>Key Points</summary>
+          <div class="tool-accordion-body">
+            <ul>
+              <li>AI is a toolkit - how it's used depends on each industry's data, constraints, and problem types</li>
+              <li>Healthcare: diagnostics from images works; replacing doctors doesn't; limited by regulation and data access</li>
+              <li>Marketing: personalisation and content generation at scale; human review still essential</li>
+              <li>Finance: fraud detection and credit risk are mature; AI trading is contested and markets adapt</li>
+              <li>Manufacturing: predictive maintenance and quality control are strong use cases with good sensor data</li>
+              <li>Finance is furthest ahead in systematic deployment; healthcare has impressive cases but slow broad deployment</li>
+              <li>The furthest-ahead organisations have good data infrastructure and clear metrics - an organisational quality, not an industry one</li>
+              <li>Human-in-the-loop remains the dominant pattern across industries for high-stakes decisions</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary>Sources</summary>
+          <div class="tool-accordion-body">
+            <ul>
+              <li>Rajpurkar, P. et al. (2022). AI in health and medicine. <em>Nature Medicine</em>.</li>
+              <li>McKinsey Global Institute. (2023). The State of AI in 2023. <em>mckinsey.com</em>.</li>
+              <li>European Banking Authority. (2023). Discussion Paper on Machine Learning for IRB Models. <em>eba.europa.eu</em>.</li>
+              <li>World Economic Forum. (2024). The Future of Jobs Report. <em>weforum.org</em>.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Prev / Next nav -->
+        <nav class="lp-nav" aria-label="Lesson navigation">
+          <a href="/course/build-vs-buy" class="lp-nav-btn lp-nav-prev" aria-label="Previous lesson">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>
+              <em>Previous</em>
+              Build vs. Buy
+            </span>
+          </a>
+          <a href="/course/business-case-for-ai" class="lp-nav-btn lp-nav-next" aria-label="Next lesson">
+            <span>
+              <em>Next</em>
+              Making the Business Case for AI
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </nav>
+
+      </article>
+
+      <!-- ── SIDEBAR ── -->
+      <aside class="na-sidebar" aria-label="Course navigation">
+
+        <!-- Table of contents -->
+        <div class="na-toc">
+          <h2 class="na-toc-title">In this lesson</h2>
+          <ul class="na-toc-list">
+            <li><a href="#" onclick="document.querySelector('.na-body h2').scrollIntoView({behavior:'smooth'});return false;">Healthcare</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[1].scrollIntoView({behavior:'smooth'});return false;">Marketing</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[2].scrollIntoView({behavior:'smooth'});return false;">Finance</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[3].scrollIntoView({behavior:'smooth'});return false;">Manufacturing</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[4].scrollIntoView({behavior:'smooth'});return false;">Which industry leads</a></li>
+          </ul>
+        </div>
+
+        <!-- Course navigation -->
+        <nav class="lp-sidebar-nav" aria-label="All course lessons">
+          <h2 class="lp-sidebar-nav-title">Course contents</h2>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-1">Unit 1 · Introduction to AI</div>
+            <ul>
+              <li><a href="/course/what-is-ai">What is AI?</a></li>
+              <li><a href="/course/categories-of-ai">Categories of AI</a></li>
+              <li><a href="/course/how-ai-learns">How AI Learns</a></li>
+              <li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-2">Unit 2 · The Modern AI Landscape</div>
+            <ul>
+              <li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
+              <li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
+              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
+              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-3">Unit 3 · Ethics &amp; Governance</div>
+            <ul>
+              <li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
+              <li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
+              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-4">Unit 4 · Python for AI</div>
+            <ul>
+              <li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
+              <li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-5">Unit 5 · Machine Learning</div>
+            <ul>
+              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
+              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-6">Unit 6 · Deep Learning</div>
+            <ul>
+              <li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
+              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+              <li><a href="/course/backpropagation">Backpropagation</a></li>
+              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
+              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-7">Unit 7 · Generative AI</div>
+            <ul>
+              <li><a href="/course/generative-ai-models">Generative AI Models</a></li>
+              <li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
+              <li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-8">Unit 8 · AI in Production</div>
+            <ul>
+              <li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
+              <li><a href="/course/model-deployment">Model Deployment</a></li>
+              <li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
+              <li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-9">Unit 9 · AI Strategy</div>
+            <ul>
+              <li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
+              <li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
+              <li><a href="/course/ai-across-industries" class="lp-sidebar-current" aria-current="page">AI Across Industries</a></li>
+              <li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
+            </ul>
+          </div>
+
+        </nav>
+      </aside>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js"></script>
+  <script>
+    // Quiz logic
+    document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const q = this.dataset.q;
+        const group = document.querySelectorAll(`.lp-quiz-btn[data-q="${q}"]`);
+        group.forEach(b => b.disabled = true);
+        const isCorrect = this.classList.contains('lp-quiz-correct');
+        this.classList.add(isCorrect ? 'lp-quiz-selected-correct' : 'lp-quiz-selected-wrong');
+        document.getElementById(`q${q}-${isCorrect ? 'correct' : 'wrong'}`).hidden = false;
+      });
+    });
+  </script>
+</body>
+</html>
