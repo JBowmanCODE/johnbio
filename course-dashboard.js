@@ -85,7 +85,7 @@ function renderCta(progress, bestExam, hasCert) {
 
   if (nextLesson) {
     const btn = document.createElement('a');
-    btn.href = `/course?u=${nextLesson.id.split('-')[0]}&l=${nextLesson.id.split('-')[1]}`;
+    btn.href = nextLesson.slug ? `/course/${nextLesson.slug}` : `/course?u=${nextLesson.id.split('-')[0]}&l=${nextLesson.id.split('-')[1]}`;
     btn.className = 'cd-btn cd-btn-primary';
     btn.innerHTML = `<span class="material-symbols-outlined">play_arrow</span> ${nextLesson.id === '1-1' ? 'Start course' : 'Continue'}`;
     row.appendChild(btn);
@@ -136,7 +136,7 @@ function renderUnits(progress) {
       </div>
       <div class="cd-unit-lessons">
         ${unit.lessons.map(l => `
-          <a class="cd-lesson-row" href="/course?u=${l.id.split('-')[0]}&l=${l.id.split('-')[1]}">
+          <a class="cd-lesson-row" href="${l.slug ? `/course/${l.slug}` : `/course?u=${l.id.split('-')[0]}&l=${l.id.split('-')[1]}`}">
             <div class="cd-lesson-check${progress[l.id] ? ' done' : ''}">
               <span class="material-symbols-outlined">check</span>
             </div>

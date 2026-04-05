@@ -10,6 +10,7 @@ const COURSE_UNITS = [
     lessons: [
       {
         id: "1-1",
+        slug: "what-is-ai",
         title: "What is AI? — History, definitions & the Turing Test",
         duration: "8 min",
         content: `
@@ -27,6 +28,7 @@ const COURSE_UNITS = [
       },
       {
         id: "1-2",
+        slug: "categories-of-ai",
         title: "Categories of AI — Narrow, General & Super AI",
         duration: "6 min",
         content: `
@@ -44,6 +46,7 @@ const COURSE_UNITS = [
       },
       {
         id: "1-3",
+        slug: "how-ai-learns",
         title: "How AI Learns — Supervised, Unsupervised & Reinforcement Learning",
         duration: "10 min",
         content: `
@@ -61,6 +64,7 @@ const COURSE_UNITS = [
       },
       {
         id: "1-4",
+        slug: "ai-vs-augmented-intelligence",
         title: "AI vs. Augmented Intelligence",
         duration: "5 min",
         content: `
@@ -84,6 +88,7 @@ const COURSE_UNITS = [
     lessons: [
       {
         id: "2-1",
+        slug: "traditional-vs-generative-ai",
         title: "Traditional AI vs. Generative AI — Architecture differences",
         duration: "9 min",
         content: `
@@ -101,6 +106,7 @@ const COURSE_UNITS = [
       },
       {
         id: "2-2",
+        slug: "ml-deep-learning-neural-networks",
         title: "Machine Learning, Deep Learning & Neural Networks — How they relate",
         duration: "10 min",
         content: `
@@ -118,6 +124,7 @@ const COURSE_UNITS = [
       },
       {
         id: "2-3",
+        slug: "key-ai-subfields",
         title: "Key AI Subfields — NLP, Computer Vision & Edge AI",
         duration: "8 min",
         content: `
@@ -135,6 +142,7 @@ const COURSE_UNITS = [
       },
       {
         id: "2-4",
+        slug: "ai-tools-platforms-2026",
         title: "AI Tools & Platforms — LLMs, Agents, RAG & the 2026 market",
         duration: "10 min",
         content: `
@@ -158,6 +166,7 @@ const COURSE_UNITS = [
     lessons: [
       {
         id: "3-1",
+        slug: "ai-failures-ethics",
         title: "Real-World AI Failures & Why Ethics Matter",
         duration: "9 min",
         content: `
@@ -175,6 +184,7 @@ const COURSE_UNITS = [
       },
       {
         id: "3-2",
+        slug: "ai-hallucinations-bias-ip",
         title: "Hallucinations, Bias & Intellectual Property",
         duration: "8 min",
         content: `
@@ -192,6 +202,7 @@ const COURSE_UNITS = [
       },
       {
         id: "3-3",
+        slug: "ai-governance-frameworks",
         title: "AI Governance Frameworks & Enterprise Guidelines",
         duration: "10 min",
         content: `
@@ -215,6 +226,7 @@ const COURSE_UNITS = [
     lessons: [
       {
         id: "4-1",
+        slug: "python-essentials-for-ai",
         title: "Python Essentials for AI — Variables, data structures & control flow",
         duration: "12 min",
         content: `
@@ -232,6 +244,7 @@ const COURSE_UNITS = [
       },
       {
         id: "4-2",
+        slug: "numpy-pandas",
         title: "Data Analysis with NumPy & Pandas",
         duration: "12 min",
         content: `
@@ -255,6 +268,7 @@ const COURSE_UNITS = [
     lessons: [
       {
         id: "5-1",
+        slug: "linear-regression-gradient-descent",
         title: "Linear Regression & Gradient Descent",
         duration: "11 min",
         content: `
@@ -272,6 +286,7 @@ const COURSE_UNITS = [
       },
       {
         id: "5-2",
+        slug: "logistic-regression-classification",
         title: "Logistic Regression & Classification",
         duration: "10 min",
         content: `
@@ -289,6 +304,7 @@ const COURSE_UNITS = [
       },
       {
         id: "5-3",
+        slug: "model-evaluation",
         title: "Model Evaluation — Validation, Overfitting & Metrics",
         duration: "11 min",
         content: `
@@ -306,6 +322,7 @@ const COURSE_UNITS = [
       },
       {
         id: "5-4",
+        slug: "key-ml-algorithms",
         title: "Key ML Algorithms — Decision Trees, SVMs & More",
         duration: "12 min",
         content: `
@@ -329,42 +346,49 @@ const COURSE_UNITS = [
     lessons: [
       {
         id: "6-1",
+        slug: "biological-vs-artificial-neurons",
         title: "Biological vs. Artificial Neurons",
         duration: "7 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>Where the Inspiration Came From</h2><p>Artificial neural networks are loosely inspired by the structure of the human brain. This lesson examines the parallels and where they break down.</p><h2>Key topics</h2><ul><li>How biological neurons work</li><li>The perceptron model</li><li>Weights, biases and activation</li><li>The limits of the biological analogy</li></ul>`
       },
       {
         id: "6-2",
+        slug: "neural-networks-forward-propagation",
         title: "Artificial Neural Networks & Forward Propagation",
         duration: "9 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>How a Neural Network Computes</h2><p>Forward propagation is the process by which input data travels through a network to produce an output. This lesson walks through the maths and the mechanics.</p><h2>Key topics</h2><ul><li>Input, hidden and output layers</li><li>Weights and biases</li><li>Matrix multiplication in neural networks</li><li>Activation functions introduction</li></ul>`
       },
       {
         id: "6-3",
+        slug: "backpropagation",
         title: "Backpropagation & How Neural Networks Learn",
         duration: "11 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>The Algorithm That Made Deep Learning Work</h2><p>Backpropagation computes gradients and updates weights throughout the network using the chain rule of calculus. This lesson demystifies how it works.</p><h2>Key topics</h2><ul><li>Loss functions</li><li>The chain rule and gradient calculation</li><li>Weight updates</li><li>Why backpropagation is computationally expensive</li></ul>`
       },
       {
         id: "6-4",
+        slug: "activation-functions-vanishing-gradient",
         title: "Activation Functions & the Vanishing Gradient Problem",
         duration: "9 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>Non-Linearity and Its Problems</h2><p>Activation functions introduce non-linearity into neural networks, enabling them to learn complex patterns. But some choices cause training to collapse.</p><h2>Key topics</h2><ul><li>Sigmoid, Tanh and ReLU</li><li>The vanishing gradient problem</li><li>Why ReLU became the default</li><li>Leaky ReLU and other variants</li></ul>`
       },
       {
         id: "6-5",
+        slug: "tensorflow-pytorch-keras",
         title: "Deep Learning Libraries — TensorFlow, PyTorch & Keras",
         duration: "10 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>The Tools of the Trade</h2><p>TensorFlow, PyTorch and Keras are the three dominant frameworks for building deep learning models. This lesson compares them and explains when to use each.</p><h2>Key topics</h2><ul><li>TensorFlow — Google's production-ready framework</li><li>PyTorch — Meta's research-first framework</li><li>Keras — high-level API built on TensorFlow</li><li>Which to learn first</li></ul>`
       },
       {
         id: "6-6",
+        slug: "cnns-with-keras",
         title: "Convolutional Neural Networks (CNNs) with Keras",
         duration: "12 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>How AI Sees Images</h2><p>CNNs are the architecture behind image recognition, object detection and most computer vision systems. This lesson covers how they work and builds one with Keras.</p><h2>Key topics</h2><ul><li>Convolutions and feature maps</li><li>Pooling layers</li><li>Building a CNN in Keras</li><li>Transfer learning with pre-trained CNNs</li></ul>`
       },
       {
         id: "6-7",
+        slug: "rnns-transformers-autoencoders",
         title: "RNNs, Transformers & Autoencoders",
         duration: "13 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>Architectures That Changed AI</h2><p>Recurrent networks handle sequences. Transformers handle everything. Autoencoders compress and reconstruct. This lesson covers the three architectures that shaped modern AI.</p><h2>Key topics</h2><ul><li>RNNs and the problem of long-range dependencies</li><li>The Transformer and attention mechanisms</li><li>Autoencoders and latent space representations</li><li>Why Transformers replaced RNNs for most tasks</li></ul>`
@@ -377,18 +401,21 @@ const COURSE_UNITS = [
     lessons: [
       {
         id: "7-1",
+        slug: "generative-ai-models",
         title: "Generative AI Models — VAEs, GANs & Diffusion",
         duration: "11 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>Three Approaches to Generation</h2><p>Variational Autoencoders, Generative Adversarial Networks and Diffusion Models each take a different approach to generating new data. This lesson compares them.</p><h2>Key topics</h2><ul><li>How VAEs learn to generate by encoding and decoding</li><li>The GAN adversarial game — generator vs. discriminator</li><li>Diffusion models — learning to reverse noise</li><li>Which approach powers which real products</li></ul>`
       },
       {
         id: "7-2",
+        slug: "prompt-engineering-ai-agents",
         title: "Prompt Engineering & AI Agents",
         duration: "10 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>Getting the Best from LLMs</h2><p>How you communicate with an AI model dramatically affects its output. This lesson covers prompt engineering techniques and the emerging world of AI agents.</p><h2>Key topics</h2><ul><li>Zero-shot, few-shot and chain-of-thought prompting</li><li>System prompts and role definition</li><li>What AI agents are and how they work</li><li>Practical prompt engineering for real tasks</li></ul>`
       },
       {
         id: "7-3",
+        slug: "rag-finetuning-enterprise-ai",
         title: "RAG, Fine-Tuning & Enterprise AI Strategy",
         duration: "11 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>Customising AI for Your Context</h2><p>RAG and fine-tuning are the two main approaches to making a general LLM useful for a specific business context. This lesson explains both and when to use each.</p><h2>Key topics</h2><ul><li>What RAG is and how it grounds AI in real data</li><li>Fine-tuning — when it's worth the cost</li><li>Build vs. buy in enterprise AI</li><li>Deploying AI responsibly in an organisation</li></ul>`
@@ -401,24 +428,28 @@ const COURSE_UNITS = [
     lessons: [
       {
         id: "8-1",
+        slug: "intro-to-mlops",
         title: "Introduction to MLOps — From notebook to production",
         duration: "10 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>The Gap Between Research and Reality</h2><p>Most ML models never make it to production. MLOps exists to close that gap. This lesson introduces the principles and practices of machine learning operations.</p><h2>Key topics</h2><ul><li>Why notebooks aren't enough for production</li><li>The ML lifecycle</li><li>Versioning data, code and models</li><li>Key MLOps tools and platforms</li></ul>`
       },
       {
         id: "8-2",
+        slug: "model-deployment",
         title: "Model Deployment — APIs, containers & cloud services",
         duration: "11 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>Getting Your Model Into the World</h2><p>Deploying a model means making it accessible and reliable. This lesson covers REST APIs, containerisation with Docker and cloud deployment options.</p><h2>Key topics</h2><ul><li>Serving predictions via REST APIs</li><li>Docker and containerisation basics</li><li>Cloud platforms — AWS SageMaker, GCP Vertex, Azure ML</li><li>Serverless vs. always-on deployment</li></ul>`
       },
       {
         id: "8-3",
+        slug: "monitoring-drift",
         title: "Monitoring & Drift — Keeping models healthy in the real world",
         duration: "9 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>Models Degrade in Production</h2><p>Data distributions change, user behaviour shifts and the world moves on. This lesson covers how to detect and respond to model drift before it causes real problems.</p><h2>Key topics</h2><ul><li>Data drift vs. concept drift</li><li>Performance monitoring strategies</li><li>Alerting and retraining pipelines</li><li>Tools for production monitoring</li></ul>`
       },
       {
         id: "8-4",
+        slug: "cicd-for-ml",
         title: "CI/CD for ML — Automating the machine learning pipeline",
         duration: "10 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>Bringing Software Engineering Discipline to ML</h2><p>Continuous Integration and Continuous Deployment practices, adapted for the unique challenges of ML, reduce errors and speed up delivery.</p><h2>Key topics</h2><ul><li>CI/CD concepts applied to ML</li><li>Automated testing for ML pipelines</li><li>GitHub Actions for ML workflows</li><li>Feature stores and model registries</li></ul>`
@@ -431,24 +462,28 @@ const COURSE_UNITS = [
     lessons: [
       {
         id: "9-1",
+        slug: "ai-adoption-journey",
         title: "How Organisations Adopt AI — The adoption journey & ROI frameworks",
         duration: "10 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>AI Adoption in Practice</h2><p>Most organisations adopt AI gradually. This lesson maps the adoption journey from experimentation to scaled deployment and the frameworks used to measure ROI.</p><h2>Key topics</h2><ul><li>Maturity models for AI adoption</li><li>Common failure modes in AI projects</li><li>Calculating ROI for AI initiatives</li><li>Change management and culture</li></ul>`
       },
       {
         id: "9-2",
+        slug: "build-vs-buy",
         title: "Build vs. Buy — Evaluating AI tools as a business",
         duration: "8 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>The Most Important AI Decision You'll Make</h2><p>Building custom AI is expensive and slow. Buying off-the-shelf is fast but limiting. This lesson provides a practical framework for making the right call.</p><h2>Key topics</h2><ul><li>When building makes sense</li><li>Evaluating vendor solutions</li><li>Total cost of ownership</li><li>Lock-in risks and exit strategies</li></ul>`
       },
       {
         id: "9-3",
+        slug: "ai-across-industries",
         title: "AI Across Industries — Healthcare, marketing, finance & beyond",
         duration: "10 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>AI in the Real Economy</h2><p>AI is transforming industries at different speeds and in different ways. This lesson surveys practical deployments across healthcare, marketing, finance and other sectors.</p><h2>Key topics</h2><ul><li>AI in healthcare — diagnostics, drug discovery and patient care</li><li>AI in marketing — personalisation, targeting and content</li><li>AI in finance — fraud detection, risk and trading</li><li>Sector-specific regulatory considerations</li></ul>`
       },
       {
         id: "9-4",
+        slug: "business-case-for-ai",
         title: "Making the Business Case for AI",
         duration: "9 min",
         content: `<p class="lesson-placeholder-notice">Full lesson content coming soon.</p><h2>Selling AI Internally</h2><p>Even good AI projects fail without organisational buy-in. This lesson covers how to identify the right use cases, build a compelling case and get stakeholder support.</p><h2>Key topics</h2><ul><li>Identifying high-value AI use cases</li><li>Structuring a business case document</li><li>Addressing executive concerns</li><li>Piloting before scaling</li></ul>`

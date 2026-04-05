@@ -40,6 +40,64 @@
 - [Claude Code VSC: AI Coding for Beginners](https://johnb.io/news/claude-code-vsc): Beginner's guide to the Claude Code VS Code extension by Anthropic. Covers what Claude Code VSC is, how it differs from Claude.ai, installation steps, what it can do, the CLAUDE.md briefing file, pricing (Claude Max subscription vs API credits), and what to try first.
 - [AI in 2026: How Large Language Models Are Reshaping Search, Content and Work](https://johnb.io/news/test-ai): Covers how LLMs have shifted from novelty to infrastructure in 2026. Topics include Google AI Overviews and the impact on SEO, generative engine optimisation (GEO) and the llms.txt standard, AI use cases in writing, code and data analysis, AI applications and risks in iGaming across 50-plus jurisdictions, and what to watch in H2 2026 including AI agents, multimodal models and EU AI Act implementation. Includes FAQ schema, structured sources and internal links to related tools.
 
+## AI Course
+
+- [AI Course Dashboard](https://johnb.io/course-dashboard): Full AI course covering 9 units and 35 lessons — from AI fundamentals and machine learning to MLOps and business strategy.
+- [Final Exam](https://johnb.io/exam): 30-question randomised exam drawn from a 60-question bank covering all 9 units.
+
+### Unit 1 — Introduction to AI
+- [What Is AI? History, Definitions and the Turing Test](https://johnb.io/course/what-is-ai): Covers AI history from the 1950s, Alan Turing's 1950 test, AI winters, and why modern AI is pattern matching at scale.
+- [Categories of AI: Narrow, General and Super AI](https://johnb.io/course/categories-of-ai): Explains the three tiers of AI capability — narrow AI (what exists today), AGI (theoretical), and ASI (hypothetical).
+- [How AI Learns: Supervised, Unsupervised and Reinforcement Learning](https://johnb.io/course/how-ai-learns): The three core learning paradigms that power modern AI systems.
+- [AI vs Augmented Intelligence](https://johnb.io/course/ai-vs-augmented-intelligence): Explores the distinction between AI replacing humans and AI enhancing human decision-making.
+
+### Unit 2 — AI Landscape
+- [Traditional AI vs Generative AI](https://johnb.io/course/traditional-vs-generative-ai): How rules-based and statistical AI differs from modern generative models.
+- [ML, Deep Learning and Neural Networks](https://johnb.io/course/ml-deep-learning-neural-networks): The relationship between machine learning, deep learning and neural networks explained clearly.
+- [Key AI Subfields](https://johnb.io/course/key-ai-subfields): NLP, computer vision, robotics, and other major branches of AI.
+- [AI Tools and Platforms in 2026](https://johnb.io/course/ai-tools-platforms-2026): Overview of the leading AI tools and platforms available to practitioners in 2026.
+
+### Unit 3 — AI Ethics and Governance
+- [AI Failures and Ethics](https://johnb.io/course/ai-failures-ethics): Real-world AI failures and the ethical lessons they teach.
+- [Hallucinations, Bias and IP](https://johnb.io/course/ai-hallucinations-bias-ip): Why AI systems hallucinate, how bias enters models, and intellectual property considerations.
+- [AI Governance Frameworks](https://johnb.io/course/ai-governance-frameworks): How organisations and regulators are approaching AI governance, including the EU AI Act.
+
+### Unit 4 — Python for AI
+- [Python Essentials for AI](https://johnb.io/course/python-essentials-for-ai): The Python concepts and syntax you need before working with AI libraries.
+- [NumPy and Pandas](https://johnb.io/course/numpy-pandas): Core data manipulation libraries for AI and machine learning workflows.
+
+### Unit 5 — Machine Learning Fundamentals
+- [Linear Regression and Gradient Descent](https://johnb.io/course/linear-regression-gradient-descent): How linear regression works and how gradient descent optimises model parameters.
+- [Logistic Regression and Classification](https://johnb.io/course/logistic-regression-classification): Binary and multi-class classification with logistic regression.
+- [Model Evaluation](https://johnb.io/course/model-evaluation): Accuracy, precision, recall, F1, confusion matrices and ROC curves explained.
+- [Key ML Algorithms](https://johnb.io/course/key-ml-algorithms): Decision trees, random forests, SVMs, k-nearest neighbours and when to use each.
+
+### Unit 6 — Deep Learning
+- [Biological vs Artificial Neurons](https://johnb.io/course/biological-vs-artificial-neurons): How biological neurons inspired the design of artificial neural networks.
+- [Neural Networks and Forward Propagation](https://johnb.io/course/neural-networks-forward-propagation): How data flows through a neural network layer by layer.
+- [Backpropagation](https://johnb.io/course/backpropagation): How neural networks learn by propagating error signals backwards through layers.
+- [Activation Functions and the Vanishing Gradient](https://johnb.io/course/activation-functions-vanishing-gradient): ReLU, sigmoid, tanh and why the vanishing gradient problem matters.
+- [TensorFlow, PyTorch and Keras](https://johnb.io/course/tensorflow-pytorch-keras): Comparison of the major deep learning frameworks and when to use each.
+- [CNNs with Keras](https://johnb.io/course/cnns-with-keras): Convolutional neural networks explained and built with Keras.
+- [RNNs, Transformers and Autoencoders](https://johnb.io/course/rnns-transformers-autoencoders): Sequence models, the transformer architecture, and autoencoder networks.
+
+### Unit 7 — Generative AI and LLMs
+- [Generative AI Models](https://johnb.io/course/generative-ai-models): VAEs, GANs and diffusion models — how generative AI creates new content.
+- [Prompt Engineering and AI Agents](https://johnb.io/course/prompt-engineering-ai-agents): How to write effective prompts and how AI agents differ from chatbots.
+- [RAG, Fine-tuning and Enterprise AI](https://johnb.io/course/rag-finetuning-enterprise-ai): Retrieval-augmented generation vs fine-tuning for enterprise use cases.
+
+### Unit 8 — MLOps
+- [Intro to MLOps](https://johnb.io/course/intro-to-mlops): What MLOps is and why the gap between notebook experiments and production systems matters.
+- [Model Deployment](https://johnb.io/course/model-deployment): Serving ML models via APIs, batch vs real-time prediction, and Docker containers.
+- [Monitoring and Drift](https://johnb.io/course/monitoring-drift): Data drift, concept drift and how to detect when models degrade in production.
+- [CI/CD for ML](https://johnb.io/course/cicd-for-ml): Continuous integration and deployment pipelines for machine learning systems.
+
+### Unit 9 — AI in Business
+- [AI Adoption Journey](https://johnb.io/course/ai-adoption-journey): The stages organisations go through when adopting AI, from experimentation to transformation.
+- [Build vs Buy](https://johnb.io/course/build-vs-buy): When to build custom AI systems and when to buy off-the-shelf products.
+- [AI Across Industries](https://johnb.io/course/ai-across-industries): How AI is actually being deployed in healthcare, finance, marketing and manufacturing.
+- [Making the Business Case for AI](https://johnb.io/course/business-case-for-ai): How to pitch AI projects to decision makers using financial metrics and specific problem framing.
+
 ## Responsible AI
 
 - [RAI Governance Framework](https://johnb.io/rai): Interactive responsible AI governance tool covering principles, risk tiering (EU AI Act aligned), RAI checklists, system cards and an AI registry.

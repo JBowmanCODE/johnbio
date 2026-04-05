@@ -1,0 +1,230 @@
+/* ================================================
+   lesson.css — AI Course standalone lesson pages
+   Extends news.css — load after it
+   ================================================ */
+
+/* ── Lesson-specific ambient glow (indigo/pink) ── */
+.lp-ambient {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 15% 15%, rgba(99,102,241,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 35% at 85% 85%, rgba(255,0,127,0.05) 0%, transparent 70%);
+}
+
+/* ── Override news amber accent with indigo for lesson pages ── */
+.lp-page .na-breadcrumb a:hover { color: #818cf8; }
+.lp-page .na-body a { color: #818cf8; }
+.lp-page .na-toc-link:hover,
+.lp-page .na-toc-link.active { color: #818cf8; }
+.lp-page .na-toc-active-bar { background: #6366f1; }
+.lp-page .na-toc { background: linear-gradient(145deg, rgba(99,102,241,0.08) 0%, rgba(19,19,24,0.9) 50%); }
+.lp-page .na-mobile-toc-trigger,
+.lp-page .na-mobile-toc-trigger:hover { border-color: rgba(99,102,241,0.3); }
+.lp-page .na-mobile-toc-list a:hover { color: #818cf8; }
+.lp-page .na-body blockquote { border-left-color: rgba(99,102,241,0.5); }
+
+/* ── Unit badges ── */
+.lp-unit-badge {
+  display: inline-block;
+  padding: 0.2rem 0.75rem;
+  border-radius: 99px;
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.lp-unit-1  { background: rgba(255,0,127,0.12); color: #ff007f; border: 1px solid rgba(255,0,127,0.25); }
+.lp-unit-2  { background: rgba(99,102,241,0.12); color: #818cf8; border: 1px solid rgba(99,102,241,0.25); }
+.lp-unit-3  { background: rgba(245,158,11,0.12); color: #fbbf24; border: 1px solid rgba(245,158,11,0.25); }
+.lp-unit-4  { background: rgba(16,185,129,0.12); color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+.lp-unit-5  { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.25); }
+.lp-unit-6  { background: rgba(139,92,246,0.12); color: #a78bfa; border: 1px solid rgba(139,92,246,0.25); }
+.lp-unit-7  { background: rgba(236,72,153,0.12); color: #f472b6; border: 1px solid rgba(236,72,153,0.25); }
+.lp-unit-8  { background: rgba(6,182,212,0.12); color: #22d3ee; border: 1px solid rgba(6,182,212,0.25); }
+.lp-unit-9  { background: rgba(249,115,22,0.12); color: #fb923c; border: 1px solid rgba(249,115,22,0.25); }
+
+/* ── Sidebar: course nav block ── */
+.lp-sidebar-nav {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(99,102,241,0.06);
+  border: 1px solid rgba(99,102,241,0.15);
+  border-radius: 12px;
+}
+.lp-sidebar-nav-title {
+  font-size: 0.72rem; font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase; letter-spacing: 0.09em;
+  margin: 0 0 0.875rem;
+}
+.lp-sidebar-nav-link {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.5rem 0;
+  font-size: 0.82rem; color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: color 0.2s;
+}
+.lp-sidebar-nav-link:last-child { border-bottom: none; }
+.lp-sidebar-nav-link:hover { color: #818cf8; }
+.lp-sidebar-nav-link .material-symbols-outlined { font-size: 0.9rem; }
+.lp-sidebar-nav-label { font-size: 0.7rem; color: rgba(255,255,255,0.3); display: block; margin-bottom: 0.1rem; }
+
+/* ── Code blocks ── */
+.lp-page .na-body pre {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.lp-page .na-body code {
+  font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 0.85em;
+  background: rgba(99,102,241,0.12);
+  border: 1px solid rgba(99,102,241,0.2);
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  color: #a78bfa;
+}
+.lp-page .na-body pre code {
+  background: none; border: none; padding: 0; color: rgba(248,245,253,0.85);
+}
+
+/* ── Lesson body tree (for hierarchical lists in ML lessons) ── */
+.lp-page .na-body .lp-tree {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.82rem;
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  line-height: 1.8;
+  color: rgba(248,245,253,0.7);
+  border: 1px solid rgba(255,255,255,0.07);
+  margin: 1.25rem 0;
+  overflow-x: auto;
+}
+
+/* ── Quiz section ── */
+.lp-quiz {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: rgba(99,102,241,0.05);
+  border: 1px solid rgba(99,102,241,0.15);
+  border-radius: 16px;
+}
+.lp-quiz-header {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+.lp-quiz-icon {
+  width: 36px; height: 36px;
+  background: rgba(99,102,241,0.15);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.lp-quiz-icon .material-symbols-outlined { font-size: 1.1rem; color: #818cf8; }
+.lp-quiz-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem; font-weight: 700; color: #fff; margin: 0;
+}
+.lp-quiz-sub { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin: 0.1rem 0 0; }
+
+.lp-quiz-q {
+  margin-bottom: 1.75rem;
+}
+.lp-quiz-q:last-child { margin-bottom: 0; }
+
+.lp-quiz-q-num {
+  font-size: 0.72rem; font-weight: 700;
+  color: rgba(99,102,241,0.7);
+  text-transform: uppercase; letter-spacing: 0.07em;
+  margin-bottom: 0.5rem;
+}
+.lp-quiz-q-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem; font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.5; margin-bottom: 0.875rem;
+}
+.lp-quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.lp-quiz-option {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 0.65rem 0.875rem; border-radius: 8px;
+  border: 1.5px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.02);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  font-size: 0.875rem; color: rgba(255,255,255,0.7);
+  user-select: none;
+  text-align: left; width: 100%;
+}
+.lp-quiz-option:hover { border-color: rgba(99,102,241,0.4); background: rgba(99,102,241,0.06); }
+.lp-quiz-option .lp-quiz-letter {
+  width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.4);
+  transition: all 0.2s;
+}
+.lp-quiz-option.selected { border-color: rgba(99,102,241,0.5); background: rgba(99,102,241,0.08); }
+.lp-quiz-option.selected .lp-quiz-letter { background: #6366f1; border-color: #6366f1; color: #fff; }
+.lp-quiz-option.correct { border-color: rgba(74,222,128,0.5) !important; background: rgba(74,222,128,0.08) !important; }
+.lp-quiz-option.correct .lp-quiz-letter { background: #4ade80 !important; border-color: #4ade80 !important; color: #000 !important; }
+.lp-quiz-option.wrong { border-color: rgba(248,113,113,0.5) !important; background: rgba(248,113,113,0.06) !important; }
+.lp-quiz-option.wrong .lp-quiz-letter { background: #f87171 !important; border-color: #f87171 !important; color: #fff !important; }
+.lp-quiz-option[disabled] { cursor: default; }
+
+.lp-quiz-check {
+  margin-top: 0.875rem;
+  padding: 0.55rem 1.25rem; border-radius: 7px; border: none;
+  background: #6366f1; color: #fff; cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem; font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+}
+.lp-quiz-check:hover { background: #4f46e5; transform: translateY(-1px); }
+.lp-quiz-check:disabled { opacity: 0.4; cursor: default; transform: none; }
+
+.lp-quiz-feedback {
+  margin-top: 0.625rem;
+  font-size: 0.82rem; font-weight: 600; padding: 0.4rem 0.75rem;
+  border-radius: 6px; display: none;
+}
+.lp-quiz-feedback.correct { background: rgba(74,222,128,0.1); color: #4ade80; display: block; }
+.lp-quiz-feedback.wrong { background: rgba(248,113,113,0.1); color: #f87171; display: block; }
+
+/* ── Lesson prev/next navigation ── */
+.lp-nav {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; margin-top: 3rem;
+}
+.lp-nav-btn {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 1rem 1.25rem; border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  min-height: 72px;
+}
+.lp-nav-btn:hover { border-color: rgba(99,102,241,0.35); background: rgba(99,102,241,0.06); transform: translateY(-1px); }
+.lp-nav-btn.next { flex-direction: row-reverse; text-align: right; }
+.lp-nav-btn.lp-nav-exam { border-color: rgba(255,0,127,0.2); }
+.lp-nav-btn.lp-nav-exam:hover { border-color: rgba(255,0,127,0.45); background: rgba(255,0,127,0.06); }
+.lp-nav-btn .material-symbols-outlined { font-size: 1.25rem; color: rgba(255,255,255,0.3); flex-shrink: 0; }
+.lp-nav-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: rgba(255,255,255,0.3); display: block; margin-bottom: 0.2rem; }
+.lp-nav-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.88rem; font-weight: 600; color: rgba(255,255,255,0.8); line-height: 1.35; }
+.lp-nav-btn:hover .lp-nav-title { color: #818cf8; }
+.lp-nav-btn.lp-nav-exam:hover .lp-nav-title { color: #ff007f; }
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .lp-nav { grid-template-columns: 1fr; }
+  .lp-nav-btn.next { flex-direction: row; text-align: left; }
+  .lp-quiz { padding: 1.25rem; }
+}
