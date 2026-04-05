@@ -405,29 +405,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is CI/CD for machine learning?</h3>
-<p>CI/CD for ML means automating the pipeline from raw data to a deployed model. When code, data, or requirements change, the system automatically validates data, trains a model, evaluates it against the current production model, and deploys it if performance improves. This replaces manual steps that are slow and error-prone.</p>
-<h3>How does ML CI/CD differ from regular software CI/CD?</h3>
-<p>Regular software CI/CD is about code: you change code, tests run, it gets deployed. ML CI/CD covers three things: code, data, and models. You need to validate data hasn't corrupted, test that the new model is actually better than the current one, and track the lineage of every model (what data, what code, what parameters created it). This requires additional tooling beyond standard CI/CD.</p>
-<h3>What tools are used for ML CI/CD?</h3>
-<p>Common tools include GitHub Actions (for ML workflows triggered by code changes), Apache Airflow (workflow orchestration with DAGs), DVC (Data Version Control - versions code, data, and models together), and MLflow (experiment tracking - logs parameters, metrics, and model artefacts). The landscape is fragmented; different teams use different combinations depending on their infrastructure.</p>
-<h3>How mature is ML automation in 2026?</h3>
-<p>Less mature than regular software CI/CD. Good companies have automated retraining pipelines but typically built them themselves or stitched together multiple tools. Most companies still retrain manually. The tools exist and the knowledge exists, but standardisation is behind. Teams building ML systems should prioritise automation - the investment pays off immediately in reliability and speed.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is CI/CD for machine learning?</dt><dd>CI/CD for ML means automating the pipeline from raw data to a deployed model. When code, data, or requirements change, the system automatically validates data, trains a model, evaluates it against the current production model, and deploys it if performance improves. This replaces manual steps that are slow and error-prone.</dd></div><div class="faq-item"><dt>How does ML CI/CD differ from regular software CI/CD?</dt><dd>Regular software CI/CD is about code: you change code, tests run, it gets deployed. ML CI/CD covers three things: code, data, and models. You need to validate data hasn't corrupted, test that the new model is actually better than the current one, and track the lineage of every model (what data, what code, what parameters created it). This requires additional tooling beyond standard CI/CD.</dd></div><div class="faq-item"><dt>What tools are used for ML CI/CD?</dt><dd>Common tools include GitHub Actions (for ML workflows triggered by code changes), Apache Airflow (workflow orchestration with DAGs), DVC (Data Version Control - versions code, data, and models together), and MLflow (experiment tracking - logs parameters, metrics, and model artefacts). The landscape is fragmented; different teams use different combinations depending on their infrastructure.</dd></div><div class="faq-item"><dt>How mature is ML automation in 2026?</dt><dd>Less mature than regular software CI/CD. Good companies have automated retraining pipelines but typically built them themselves or stitched together multiple tools. Most companies still retrain manually. The tools exist and the knowledge exists, but standardisation is behind. Teams building ML systems should prioritise automation - the investment pays off immediately in reliability and speed.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p><strong>A typical ML CI/CD pipeline:</strong></p>
-<p>1. Trigger (new data, code commit, scheduled run). 2. Data validation: check schema, value ranges, missing values - fail loudly if data is corrupt. 3. Feature engineering: run transformation code, version the output. 4. Training: launch a training run, log to MLflow or equivalent. 5. Evaluation: compare new model vs current production model on a held-out evaluation set. 6. Gate: if new model meets performance threshold AND beats current model, proceed. Otherwise, alert a human. 7. Deployment: roll out to 10% of traffic, monitor, expand to 100% or roll back. 8. Monitor: log inputs, outputs, performance in production.</p>
-<p><strong>Lineage tracking:</strong> Every model in a registry should have: the git commit hash of the code that trained it, a pointer to the exact dataset version used, the hyperparameter configuration, and the evaluation metrics. Without this, you can't reproduce a model or debug why it behaved a certain way.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li><strong>A typical ML CI/CD pipeline:</strong></li><li>1. Trigger (new data, code commit, scheduled run). 2. Data validation: check schema, value ranges, missing values - fail loudly if data is corrupt. 3. Feature engineering: run transformation code, version the output. 4. Training: launch a training run, log to MLflow or equivalent. 5. Evaluation: compare new model vs current production model on a held-out evaluation set. 6. Gate: if new model meets performance threshold AND beats current model, proceed. Otherwise, alert a human. 7. Deployment: roll out to 10% of traffic, monitor, expand to 100% or roll back. 8. Monitor: log inputs, outputs, performance in production.</li><li><strong>Lineage tracking:</strong> Every model in a registry should have: the git commit hash of the code that trained it, a pointer to the exact dataset version used, the hyperparameter configuration, and the evaluation metrics. Without this, you can't reproduce a model or debug why it behaved a certain way.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>Most ML teams still rely on manual retraining - CI/CD is less standard in ML than in software</li>
 <li>ML CI/CD covers code, data, and models - three things to version, test, and track</li>
 <li>Data validation should fail loudly before training starts, not silently produce a broken model</li>
@@ -442,12 +429,12 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Sato, D. et al. (2019). Continuous Delivery for Machine Learning. <em>martinfowler.com</em>.</li>
 <li>DVC Documentation. (2024). <em>dvc.org</em>.</li>
 <li>MLflow Documentation. (2024). <em>mlflow.org</em>.</li>
 <li>Huyen, C. (2022). <em>Designing Machine Learning Systems</em>. O'Reilly.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

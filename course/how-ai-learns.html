@@ -1,48 +1,48 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How AI Learns: The Three Learning Paradigms - JohnB.io</title>
-  <meta name="description" content="Supervised, unsupervised and reinforcement learning explained clearly. Learn how each works, when to use each, and what goes wrong when training data doesn't match the real world.">
-  <meta name="keywords" content="how AI learns, supervised learning, unsupervised learning, reinforcement learning, machine learning paradigms, AI training">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="John Bowman">
-  <link rel="canonical" href="https://johnb.io/course/how-ai-learns">
-  <meta property="og:title" content="How AI Learns: The Three Learning Paradigms">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://johnb.io/course/how-ai-learns">
-  <meta property="og:description" content="Supervised, unsupervised and reinforcement learning explained. Learn how each works, what it's good for, and what breaks when training data doesn't match the real world.">
-  <meta property="og:image" content="https://johnb.io/images/course/how-ai-learns.webp">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="How AI Learns - The Three Learning Paradigms lesson cover">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="How AI Learns: The Three Learning Paradigms">
-  <meta name="twitter:description" content="Supervised, unsupervised and reinforcement learning explained. What each approach does, what it needs, and what breaks.">
-  <meta name="twitter:image" content="https://johnb.io/images/course/how-ai-learns.webp">
-  <meta name="twitter:image:alt" content="How AI Learns lesson cover - JohnB.io AI Course">
-  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
-  <meta property="article:author" content="John Bowman">
-  <meta property="article:section" content="AI Course">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J6PBWMRNY');</script>
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/footer.css">
-  <link rel="stylesheet" href="/news.css?v=3">
-  <link rel="stylesheet" href="/lesson.css?v=3">
-  <link rel="stylesheet" href="/news-chat.css?v=7">
-  <style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
-
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>How AI Learns: The Three Learning Paradigms - JohnB.io</title>
+<meta content="Supervised, unsupervised and reinforcement learning explained clearly. Learn how each works, when to use each, and what goes wrong when training data doesn't match the real world." name="description"/>
+<meta content="how AI learns, supervised learning, unsupervised learning, reinforcement learning, machine learning paradigms, AI training" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
+<link href="https://johnb.io/course/how-ai-learns" rel="canonical"/>
+<meta content="How AI Learns: The Three Learning Paradigms" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://johnb.io/course/how-ai-learns" property="og:url"/>
+<meta content="Supervised, unsupervised and reinforcement learning explained. Learn how each works, what it's good for, and what breaks when training data doesn't match the real world." property="og:description"/>
+<meta content="https://johnb.io/images/course/how-ai-learns.webp" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="How AI Learns - The Three Learning Paradigms lesson cover" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="How AI Learns: The Three Learning Paradigms" name="twitter:title"/>
+<meta content="Supervised, unsupervised and reinforcement learning explained. What each approach does, what it needs, and what breaks." name="twitter:description"/>
+<meta content="https://johnb.io/images/course/how-ai-learns.webp" name="twitter:image"/>
+<meta content="How AI Learns lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
+<meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
+<meta content="John Bowman" property="article:author"/>
+<meta content="AI Course" property="article:section"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J6PBWMRNY');</script>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/header.css" rel="stylesheet"/>
+<link href="/footer.css" rel="stylesheet"/>
+<link href="/news.css?v=3" rel="stylesheet"/>
+<link href="/lesson.css?v=3" rel="stylesheet"/>
+<link href="/news-chat.css?v=7" rel="stylesheet"/>
+<style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -58,7 +58,7 @@
     "articleSection": "AI Course"
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -86,7 +86,7 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -99,345 +99,286 @@
   </script>
 </head>
 <body class="lp-page">
-  <div id="header-placeholder"></div>
-  <div class="lp-ambient"></div>
-
-  <main class="na-wrap">
-  <div class="na-layout">
-  <div class="na-content">
-
-    <nav class="na-breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Home</a>
-      <span class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
-      <a href="/course-dashboard">AI Course</a>
-      <span class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
-      <span class="na-bc-current">How AI Learns</span>
-    </nav>
-
-    <article>
-      <div class="na-header">
-        <h1 class="na-title">How AI Learns: Supervised, Unsupervised and Reinforcement Learning</h1>
-        <div class="na-lede-row">
-          <p class="na-lede">AI doesn't learn the way you learned to ride a bike. It learns by finding patterns in data, and there are three distinct ways to set up that learning. Getting these straight changes everything about how you think about what AI can and can't do.</p>
-          <div class="na-lede-img">
-            <img src="/images/course/how-ai-learns.webp" alt="How AI Learns - the three learning paradigms" loading="lazy">
-          </div>
-        </div>
-        <div class="na-author">
-          <a href="/about" aria-label="About John Bowman"><img src="/images/JohnB.webp" alt="John Bowman" class="na-author-img"></a>
-          <div class="na-author-details">
-            <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a>
-            <span class="na-author-role">Owner / AI Developer</span>
-          </div>
-          <div class="na-header-meta">
-            <span class="lp-unit-badge lp-unit-1">Unit 1</span>
-            <span class="na-date">5 April 2026</span>
-            <span class="na-read">9 min read</span>
-          </div>
-        </div>
-        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-          <span class="material-symbols-outlined">auto_awesome</span>
+<div id="header-placeholder"></div>
+<div class="lp-ambient"></div>
+<main class="na-wrap">
+<div class="na-layout">
+<div class="na-content">
+<nav aria-label="Breadcrumb" class="na-breadcrumb">
+<a href="/">Home</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<a href="/course-dashboard">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span class="na-bc-current">How AI Learns</span>
+</nav>
+<article>
+<div class="na-header">
+<h1 class="na-title">How AI Learns: Supervised, Unsupervised and Reinforcement Learning</h1>
+<div class="na-lede-row">
+<p class="na-lede">AI doesn't learn the way you learned to ride a bike. It learns by finding patterns in data, and there are three distinct ways to set up that learning. Getting these straight changes everything about how you think about what AI can and can't do.</p>
+<div class="na-lede-img">
+<img alt="How AI Learns - the three learning paradigms" loading="lazy" src="/images/course/how-ai-learns.webp"/>
+</div>
+</div>
+<div class="na-author">
+<a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
+<div class="na-author-details">
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<span class="na-author-role">Owner / AI Developer</span>
+</div>
+<div class="na-header-meta">
+<span class="lp-unit-badge lp-unit-1">Unit 1</span>
+<span class="na-date">5 April 2026</span>
+<span class="na-read">9 min read</span>
+</div>
+</div>
+<button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
           Ask Newsy AI about this lesson
         </button>
-      </div>
-
-      <details class="na-mobile-toc">
-        <summary class="na-mobile-toc-trigger">
-          <span class="material-symbols-outlined">menu_book</span>
+</div>
+<details class="na-mobile-toc">
+<summary class="na-mobile-toc-trigger">
+<span class="material-symbols-outlined">menu_book</span>
           In this lesson
           <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span>
-        </summary>
-        <ol class="na-mobile-toc-list">
-          <li><a href="#supervised">Supervised learning</a></li>
-          <li><a href="#unsupervised">Unsupervised learning</a></li>
-          <li><a href="#reinforcement">Reinforcement learning</a></li>
-          <li><a href="#which-hardest">Which is hardest to understand?</a></li>
-        </ol>
-      </details>
-
-      <hr class="na-divider">
-
-      <div class="na-audio" aria-label="Listen to this lesson">
-        <span class="na-audio-icon material-symbols-outlined" aria-hidden="true">headphones</span>
-        <div class="na-audio-info">
-          <div class="na-audio-top">
-            <span class="na-audio-label">Listen to this lesson</span>
-            <div class="na-volume">
-              <button class="na-mute-btn" id="na-mute-btn" aria-label="Mute"><span class="material-symbols-outlined">volume_up</span></button>
-              <input class="na-volume-slider" id="na-volume-slider" type="range" min="0" max="1" step="0.02" value="1" aria-label="Volume">
-            </div>
-          </div>
-          <audio id="na-player" preload="none"></audio>
-          <div class="na-audio-controls">
-            <button class="na-skip-btn" id="na-skip-back" aria-label="Skip back 10 seconds"><span class="material-symbols-outlined">replay_10</span></button>
-            <button class="na-audio-btn" id="na-play-btn" aria-label="Play lesson audio"><span class="material-symbols-outlined">play_arrow</span></button>
-            <button class="na-skip-btn" id="na-skip-fwd" aria-label="Skip forward 10 seconds"><span class="material-symbols-outlined">forward_10</span></button>
-            <div class="na-speed-btns" role="group" aria-label="Playback speed">
-              <button class="na-speed-btn active" data-speed="1">1x</button>
-              <button class="na-speed-btn" data-speed="1.5">1.5x</button>
-              <button class="na-speed-btn" data-speed="2">2x</button>
-            </div>
-            <canvas id="na-waveform" class="na-waveform" width="200" height="52" aria-hidden="true"></canvas>
-          </div>
-          <div class="na-audio-progress-wrap">
-            <span class="na-audio-time" id="na-current-time">0:00</span>
-            <div class="na-progress" id="na-progress" role="slider" aria-label="Audio progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-              <div class="na-progress-fill" id="na-progress-fill"></div>
-              <div class="na-progress-thumb" id="na-progress-thumb"></div>
-            </div>
-            <span class="na-audio-time na-audio-duration" id="na-duration">0:00</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="na-body">
-
-        <h2 id="supervised">Supervised Learning: Learn From Examples You Label</h2>
-
-        <p>Supervised learning is learning from a teacher who tells you the right answer. The system gets examples with labels, finds patterns, and applies those patterns to new unlabelled examples.</p>
-
-        <p>This is the most common type of machine learning in real businesses because it's conceptually straightforward. You have data. You label what you want the system to learn. You train it. Then you test it on new data to see how well it does.</p>
-
-        <p>A hospital trains a system on thousands of X-rays where radiologists have confirmed whether cancer is present. The system learns to recognise pixel patterns associated with cancer. When a new X-ray arrives, it makes a prediction. This also happens in email spam filtering, house price prediction, and most other everyday AI applications.</p>
-
-        <p>The catch: this only works if your labels are correct and if the patterns in your training data match the real world the system will encounter. If your spam filter was trained on 2015 emails, spam that has evolved since will get through. If your medical model was trained mostly on one demographic, it will fail on others. Bad labels poison the whole thing — if 30% of your training labels were wrong, the system learns corrupted patterns.</p>
-
-        <h2 id="unsupervised">Unsupervised Learning: Find Patterns Without Being Told What To Look For</h2>
-
-        <p>Unsupervised learning is harder conceptually. You give the system data with no labels and it figures out what patterns exist on its own.</p>
-
-        <p>This sounds powerful but it's actually limited. The system can find clusters and groupings, and it can compress data. What it can't do is tell you whether what it found is meaningful — that's still your job.</p>
-
-        <p>A retail store uses it for customer segmentation: thousands of transactions, no pre-defined categories. The algorithm discovers that some customers buy cheap bulk items, others buy expensive specialties, others are inconsistent. The system found those groups without being told to look for them. <a href="https://en.wikipedia.org/wiki/Recommender_system" target="_blank" rel="noopener">Recommendation systems</a> work similarly — by finding which items have similar viewing or purchase patterns without explicit labelling.</p>
-
-        <p>The downside is evaluation. With supervised learning you count how many predictions were right. With unsupervised learning, judging whether the system found something useful is subjective. You have to assess that yourself. If you have labelled data available, supervised learning usually wins.</p>
-
-        <h2 id="reinforcement">Reinforcement Learning: Learn Through Trial, Error, and Reward</h2>
-
-        <p>Reinforcement learning is learning by interacting with an environment and getting feedback on whether your actions were good or bad. This is how <a href="https://deepmind.google/research/breakthroughs/alphago/" target="_blank" rel="noopener">AlphaGo</a> learned to beat humans at Go, how robots learn to walk, and how recommendation systems optimise for what actually gets watched.</p>
-
-        <p>You set up a system with actions it can take and a reward signal — a number that says "good" or "bad." The system tries millions of actions, learns which ones lead to rewards, and optimises for maximising future rewards.</p>
-
-        <p>YouTube's recommendation system doesn't just show videos similar to what you watched — its actual goal is "show videos that you'll watch for a long time and come back for more." That's a reward signal. The system constantly tests small changes, keeping the ones that increase watch time.</p>
-
-        <p>The catch is that the reward signal has to be designed carefully. If it incentivises the wrong thing, the system optimises for the wrong thing brilliantly. A content system that optimises purely for engagement time might recommend increasingly extreme content, because extreme content is engaging. A robot optimising for forward progress might ignore obstacles. Get the reward wrong and you get exactly what you asked for — which isn't what you wanted.</p>
-
-        <p>Reinforcement learning also needs millions of trials. That's why game-playing AI works well — you can simulate millions of rounds quickly. Real-world applications like robot learning are harder because physical experiments are slow and expensive. See the <a href="/course/ml-deep-learning-neural-networks">next unit</a> for how these learning approaches connect to neural networks.</p>
-
-        <h2 id="which-hardest">Which Is Actually Hardest To Understand?</h2>
-
-        <p>Reinforcement learning. It requires thinking in three dimensions: the current state, the action, and the delayed consequence. Most people's brains don't naturally do this kind of multi-step reasoning. Supervised learning is intuitive — show examples, system learns. Unsupervised is odd but at least simple — find patterns.</p>
-
-        <p>Reinforcement learning requires grasping that small decisions now compound into outcomes later, and the system has to learn this relationship across millions of trials. That's why these systems take so long to train and why the reward signal is so critical to get right.</p>
-
-        <p>Once you understand reinforcement learning, though, you understand how most real AI systems actually work. They're not optimising for truth or accuracy. They're optimising for a metric someone defined. That changes how you read news about AI behaving in strange ways.</p>
-
-        <!-- Quiz -->
-        <div class="lp-quiz" aria-label="Lesson quiz">
-          <div class="lp-quiz-header">
-            <div class="lp-quiz-icon"><span class="material-symbols-outlined" aria-hidden="true">quiz</span></div>
-            <div>
-              <p class="lp-quiz-title">Check your understanding</p>
-              <p class="lp-quiz-sub">2 questions — select an answer then check it</p>
-            </div>
-          </div>
-
-          <div class="lp-quiz-q" id="q1">
-            <p class="lp-quiz-q-num">Question 1 of 2</p>
-            <p class="lp-quiz-q-text">A hospital trains an AI system on thousands of X-rays, each labelled by a radiologist as showing cancer or not. Which type of learning is this?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
-              <button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>Unsupervised learning — the system discovers its own categories</button>
-              <button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>Reinforcement learning — the system receives a reward for each correct prediction</button>
-              <button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>Supervised learning — the system learns from labelled examples</button>
-              <button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>Transfer learning — the system applies knowledge from a different task</button>
-            </div>
-            <button class="lp-quiz-check" data-q="1" data-answer="C" disabled>Check answer</button>
-            <p class="lp-quiz-feedback" id="q1-fb"></p>
-          </div>
-
-          <div class="lp-quiz-q" id="q2">
-            <p class="lp-quiz-q-num">Question 2 of 2</p>
-            <p class="lp-quiz-q-text">What is the main risk when a reinforcement learning reward signal is poorly designed?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
-              <button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>The system trains too slowly to be practical</button>
-              <button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>The system requires labelled data it doesn't have</button>
-              <button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>The system optimises brilliantly for the wrong outcome</button>
-              <button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>The system can't process high-dimensional inputs</button>
-            </div>
-            <button class="lp-quiz-check" data-q="2" data-answer="C" disabled>Check answer</button>
-            <p class="lp-quiz-feedback" id="q2-fb"></p>
-          </div>
-        </div>
-
-      </div><!-- /na-body -->
-
-      <!-- Deep Dive Podcast -->
-      <div class="na-podcast" role="region" aria-label="Deep Dive Podcast">
-        <div class="na-podcast-badge"><span class="material-symbols-outlined" aria-hidden="true">podcasts</span>Deep Dive Podcast</div>
-        <div class="na-podcast-inner">
-          <div class="na-podcast-left">
-            <div class="na-podcast-icon" aria-hidden="true"><span class="material-symbols-outlined">graphic_eq</span></div>
-            <div class="na-podcast-meta">
-              <p class="na-podcast-title">How AI Learns</p>
-              <p class="na-podcast-sub">Created with <a href="https://notebooklm.google.com/" target="_blank" rel="noopener" class="na-podcast-notebooklm"><strong>Google NotebookLM</strong></a> &middot; AI-generated audio overview</p>
-            </div>
-          </div>
-          <audio id="na-podcast-audio" preload="none" aria-label="Deep Dive Podcast audio"></audio>
-          <div class="na-podcast-controls">
-            <div class="na-podcast-progress-wrap" role="group" aria-label="Playback progress">
-              <span class="na-podcast-time" id="na-pod-current">0:00</span>
-              <input type="range" class="na-podcast-progress" id="na-pod-progress" value="0" min="0" step="0.1" aria-label="Seek">
-              <span class="na-podcast-time" id="na-pod-duration">0:00</span>
-            </div>
-            <div class="na-podcast-btns">
-              <button class="na-pod-btn na-pod-btn--skip" id="na-pod-back" aria-label="Skip back 15 seconds"><span class="material-symbols-outlined">replay</span><span class="na-pod-skip-label">15s</span></button>
-              <button class="na-pod-btn na-pod-btn--play" id="na-pod-play" aria-label="Play podcast"><span class="material-symbols-outlined" id="na-pod-play-icon">play_arrow</span></button>
-              <button class="na-pod-btn na-pod-btn--skip" id="na-pod-fwd" aria-label="Skip forward 15 seconds"><span class="material-symbols-outlined">forward</span><span class="na-pod-skip-label">15s</span></button>
-              <div class="na-pod-volume">
-                <button class="na-pod-btn na-pod-mute" id="na-pod-mute" aria-label="Mute"><span class="material-symbols-outlined" id="na-pod-mute-icon">volume_up</span></button>
-                <input type="range" class="na-pod-vol-slider" id="na-pod-vol" min="0" max="1" step="0.05" value="1" aria-label="Volume">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Accordions -->
-      <!-- Lesson navigation -->
-      <nav class="lp-nav" aria-label="Lesson navigation">
-        <a class="lp-nav-btn" href="/course/categories-of-ai">
-          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-          <div>
-            <span class="lp-nav-label">Previous lesson</span>
-            <span class="lp-nav-title">Categories of AI: Narrow, General &amp; Super AI</span>
-          </div>
-        </a>
-        <a class="lp-nav-btn next" href="/course/ai-vs-augmented-intelligence">
-          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-          <div>
-            <span class="lp-nav-label">Next lesson</span>
-            <span class="lp-nav-title">AI vs Augmented Intelligence</span>
-          </div>
-        </a>
-      </nav>
-
+</summary>
+<ol class="na-mobile-toc-list">
+<li><a href="#supervised">Supervised learning</a></li>
+<li><a href="#unsupervised">Unsupervised learning</a></li>
+<li><a href="#reinforcement">Reinforcement learning</a></li>
+<li><a href="#which-hardest">Which is hardest to understand?</a></li>
+</ol>
+</details>
+<hr class="na-divider"/>
+<div aria-label="Listen to this lesson" class="na-audio">
+<span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
+<div class="na-audio-info">
+<div class="na-audio-top">
+<span class="na-audio-label">Listen to this lesson</span>
+<div class="na-volume">
+<button aria-label="Mute" class="na-mute-btn" id="na-mute-btn"><span class="material-symbols-outlined">volume_up</span></button>
+<input aria-label="Volume" class="na-volume-slider" id="na-volume-slider" max="1" min="0" step="0.02" type="range" value="1"/>
+</div>
+</div>
+<audio id="na-player" preload="none"></audio>
+<div class="na-audio-controls">
+<button aria-label="Skip back 10 seconds" class="na-skip-btn" id="na-skip-back"><span class="material-symbols-outlined">replay_10</span></button>
+<button aria-label="Play lesson audio" class="na-audio-btn" id="na-play-btn"><span class="material-symbols-outlined">play_arrow</span></button>
+<button aria-label="Skip forward 10 seconds" class="na-skip-btn" id="na-skip-fwd"><span class="material-symbols-outlined">forward_10</span></button>
+<div aria-label="Playback speed" class="na-speed-btns" role="group">
+<button class="na-speed-btn active" data-speed="1">1x</button>
+<button class="na-speed-btn" data-speed="1.5">1.5x</button>
+<button class="na-speed-btn" data-speed="2">2x</button>
+</div>
+<canvas aria-hidden="true" class="na-waveform" height="52" id="na-waveform" width="200"></canvas>
+</div>
+<div class="na-audio-progress-wrap">
+<span class="na-audio-time" id="na-current-time">0:00</span>
+<div aria-label="Audio progress" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="na-progress" id="na-progress" role="slider">
+<div class="na-progress-fill" id="na-progress-fill"></div>
+<div class="na-progress-thumb" id="na-progress-thumb"></div>
+</div>
+<span class="na-audio-time na-audio-duration" id="na-duration">0:00</span>
+</div>
+</div>
+</div>
+<div class="na-body">
+<h2 id="supervised">Supervised Learning: Learn From Examples You Label</h2>
+<p>Supervised learning is learning from a teacher who tells you the right answer. The system gets examples with labels, finds patterns, and applies those patterns to new unlabelled examples.</p>
+<p>This is the most common type of machine learning in real businesses because it's conceptually straightforward. You have data. You label what you want the system to learn. You train it. Then you test it on new data to see how well it does.</p>
+<p>A hospital trains a system on thousands of X-rays where radiologists have confirmed whether cancer is present. The system learns to recognise pixel patterns associated with cancer. When a new X-ray arrives, it makes a prediction. This also happens in email spam filtering, house price prediction, and most other everyday AI applications.</p>
+<p>The catch: this only works if your labels are correct and if the patterns in your training data match the real world the system will encounter. If your spam filter was trained on 2015 emails, spam that has evolved since will get through. If your medical model was trained mostly on one demographic, it will fail on others. Bad labels poison the whole thing — if 30% of your training labels were wrong, the system learns corrupted patterns.</p>
+<h2 id="unsupervised">Unsupervised Learning: Find Patterns Without Being Told What To Look For</h2>
+<p>Unsupervised learning is harder conceptually. You give the system data with no labels and it figures out what patterns exist on its own.</p>
+<p>This sounds powerful but it's actually limited. The system can find clusters and groupings, and it can compress data. What it can't do is tell you whether what it found is meaningful — that's still your job.</p>
+<p>A retail store uses it for customer segmentation: thousands of transactions, no pre-defined categories. The algorithm discovers that some customers buy cheap bulk items, others buy expensive specialties, others are inconsistent. The system found those groups without being told to look for them. <a href="https://en.wikipedia.org/wiki/Recommender_system" rel="noopener" target="_blank">Recommendation systems</a> work similarly — by finding which items have similar viewing or purchase patterns without explicit labelling.</p>
+<p>The downside is evaluation. With supervised learning you count how many predictions were right. With unsupervised learning, judging whether the system found something useful is subjective. You have to assess that yourself. If you have labelled data available, supervised learning usually wins.</p>
+<h2 id="reinforcement">Reinforcement Learning: Learn Through Trial, Error, and Reward</h2>
+<p>Reinforcement learning is learning by interacting with an environment and getting feedback on whether your actions were good or bad. This is how <a href="https://deepmind.google/research/breakthroughs/alphago/" rel="noopener" target="_blank">AlphaGo</a> learned to beat humans at Go, how robots learn to walk, and how recommendation systems optimise for what actually gets watched.</p>
+<p>You set up a system with actions it can take and a reward signal — a number that says "good" or "bad." The system tries millions of actions, learns which ones lead to rewards, and optimises for maximising future rewards.</p>
+<p>YouTube's recommendation system doesn't just show videos similar to what you watched — its actual goal is "show videos that you'll watch for a long time and come back for more." That's a reward signal. The system constantly tests small changes, keeping the ones that increase watch time.</p>
+<p>The catch is that the reward signal has to be designed carefully. If it incentivises the wrong thing, the system optimises for the wrong thing brilliantly. A content system that optimises purely for engagement time might recommend increasingly extreme content, because extreme content is engaging. A robot optimising for forward progress might ignore obstacles. Get the reward wrong and you get exactly what you asked for — which isn't what you wanted.</p>
+<p>Reinforcement learning also needs millions of trials. That's why game-playing AI works well — you can simulate millions of rounds quickly. Real-world applications like robot learning are harder because physical experiments are slow and expensive. See the <a href="/course/ml-deep-learning-neural-networks">next unit</a> for how these learning approaches connect to neural networks.</p>
+<h2 id="which-hardest">Which Is Actually Hardest To Understand?</h2>
+<p>Reinforcement learning. It requires thinking in three dimensions: the current state, the action, and the delayed consequence. Most people's brains don't naturally do this kind of multi-step reasoning. Supervised learning is intuitive — show examples, system learns. Unsupervised is odd but at least simple — find patterns.</p>
+<p>Reinforcement learning requires grasping that small decisions now compound into outcomes later, and the system has to learn this relationship across millions of trials. That's why these systems take so long to train and why the reward signal is so critical to get right.</p>
+<p>Once you understand reinforcement learning, though, you understand how most real AI systems actually work. They're not optimising for truth or accuracy. They're optimising for a metric someone defined. That changes how you read news about AI behaving in strange ways.</p>
+<!-- Quiz -->
+<div aria-label="Lesson quiz" class="lp-quiz">
+<div class="lp-quiz-header">
+<div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div>
+<div>
+<p class="lp-quiz-title">Check your understanding</p>
+<p class="lp-quiz-sub">2 questions — select an answer then check it</p>
+</div>
+</div>
+<div class="lp-quiz-q" id="q1">
+<p class="lp-quiz-q-num">Question 1 of 2</p>
+<p class="lp-quiz-q-text">A hospital trains an AI system on thousands of X-rays, each labelled by a radiologist as showing cancer or not. Which type of learning is this?</p>
+<div aria-label="Question 1 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>Unsupervised learning — the system discovers its own categories</button>
+<button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>Reinforcement learning — the system receives a reward for each correct prediction</button>
+<button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>Supervised learning — the system learns from labelled examples</button>
+<button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>Transfer learning — the system applies knowledge from a different task</button>
+</div>
+<button class="lp-quiz-check" data-answer="C" data-q="1" disabled="">Check answer</button>
+<p class="lp-quiz-feedback" id="q1-fb"></p>
+</div>
+<div class="lp-quiz-q" id="q2">
+<p class="lp-quiz-q-num">Question 2 of 2</p>
+<p class="lp-quiz-q-text">What is the main risk when a reinforcement learning reward signal is poorly designed?</p>
+<div aria-label="Question 2 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>The system trains too slowly to be practical</button>
+<button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>The system requires labelled data it doesn't have</button>
+<button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>The system optimises brilliantly for the wrong outcome</button>
+<button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>The system can't process high-dimensional inputs</button>
+</div>
+<button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button>
+<p class="lp-quiz-feedback" id="q2-fb"></p>
+</div>
+</div>
+</div><!-- /na-body -->
+<!-- Deep Dive Podcast -->
+<div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
+<div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>
+<div class="na-podcast-inner">
+<div class="na-podcast-left">
+<div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
+<div class="na-podcast-meta">
+<p class="na-podcast-title">How AI Learns</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+</div>
+</div>
+<audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="none"></audio>
+<div class="na-podcast-controls">
+<div aria-label="Playback progress" class="na-podcast-progress-wrap" role="group">
+<span class="na-podcast-time" id="na-pod-current">0:00</span>
+<input aria-label="Seek" class="na-podcast-progress" id="na-pod-progress" min="0" step="0.1" type="range" value="0"/>
+<span class="na-podcast-time" id="na-pod-duration">0:00</span>
+</div>
+<div class="na-podcast-btns">
+<button aria-label="Skip back 15 seconds" class="na-pod-btn na-pod-btn--skip" id="na-pod-back"><span class="material-symbols-outlined">replay</span><span class="na-pod-skip-label">15s</span></button>
+<button aria-label="Play podcast" class="na-pod-btn na-pod-btn--play" id="na-pod-play"><span class="material-symbols-outlined" id="na-pod-play-icon">play_arrow</span></button>
+<button aria-label="Skip forward 15 seconds" class="na-pod-btn na-pod-btn--skip" id="na-pod-fwd"><span class="material-symbols-outlined">forward</span><span class="na-pod-skip-label">15s</span></button>
+<div class="na-pod-volume">
+<button aria-label="Mute" class="na-pod-btn na-pod-mute" id="na-pod-mute"><span class="material-symbols-outlined" id="na-pod-mute-icon">volume_up</span></button>
+<input aria-label="Volume" class="na-pod-vol-slider" id="na-pod-vol" max="1" min="0" step="0.05" type="range" value="1"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordions -->
+<!-- Lesson navigation -->
+<nav aria-label="Lesson navigation" class="lp-nav">
+<a class="lp-nav-btn" href="/course/categories-of-ai">
+<span aria-hidden="true" class="material-symbols-outlined">arrow_back</span>
+<div>
+<span class="lp-nav-label">Previous lesson</span>
+<span class="lp-nav-title">Categories of AI: Narrow, General &amp; Super AI</span>
+</div>
+</a>
+<a class="lp-nav-btn next" href="/course/ai-vs-augmented-intelligence">
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span>
+<div>
+<span class="lp-nav-label">Next lesson</span>
+<span class="lp-nav-title">AI vs Augmented Intelligence</span>
+</div>
+</a>
+</nav>
 </article>
-  </div><!-- /na-content -->
-
-  <!-- Sidebar -->
-  <aside class="na-sidebar" aria-label="Lesson navigation sidebar">
-    <nav class="na-toc" aria-label="In this lesson">
-      <p class="na-toc-title">In this lesson</p>
-      <ol class="na-toc-list">
-        <li><a class="na-toc-link" href="#supervised">Supervised learning</a></li>
-        <li><a class="na-toc-link" href="#unsupervised">Unsupervised learning</a></li>
-        <li><a class="na-toc-link" href="#reinforcement">Reinforcement learning</a></li>
-        <li><a class="na-toc-link" href="#which-hardest">Which is hardest?</a></li>
-      </ol>
-    </nav>
-    <div class="lp-sidebar-nav">
-      <p class="lp-sidebar-nav-title">Course navigation</p>
-      <a class="lp-sidebar-nav-link" href="/course-dashboard">
-        <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>My dashboard
+</div><!-- /na-content -->
+<!-- Sidebar -->
+<aside aria-label="Lesson navigation sidebar" class="na-sidebar">
+<nav aria-label="In this lesson" class="na-toc">
+<p class="na-toc-title">In this lesson</p>
+<ol class="na-toc-list">
+<li><a class="na-toc-link" href="#supervised">Supervised learning</a></li>
+<li><a class="na-toc-link" href="#unsupervised">Unsupervised learning</a></li>
+<li><a class="na-toc-link" href="#reinforcement">Reinforcement learning</a></li>
+<li><a class="na-toc-link" href="#which-hardest">Which is hardest?</a></li>
+</ol>
+</nav>
+<div class="lp-sidebar-nav">
+<p class="lp-sidebar-nav-title">Course navigation</p>
+<a class="lp-sidebar-nav-link" href="/course-dashboard">
+<span aria-hidden="true" class="material-symbols-outlined">dashboard</span>My dashboard
       </a>
-      <a class="lp-sidebar-nav-link" href="/course/ai-vs-augmented-intelligence">
-        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-        <div><span class="lp-sidebar-nav-label">Next</span>AI vs Augmented Intelligence</div>
+<a class="lp-sidebar-nav-link" href="/course/ai-vs-augmented-intelligence">
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span>
+<div><span class="lp-sidebar-nav-label">Next</span>AI vs Augmented Intelligence</div>
+</a>
+<a class="lp-sidebar-nav-link" href="/exam">
+<span aria-hidden="true" class="material-symbols-outlined">quiz</span>Final exam
       </a>
-      <a class="lp-sidebar-nav-link" href="/exam">
-        <span class="material-symbols-outlined" aria-hidden="true">quiz</span>Final exam
-      </a>
-    </div>
-    <div id="newsy-ai"></div>
-  </aside>
-
-  </div><!-- /na-layout -->
-  </main>
-
-  <div id="share-bar-placeholder"></div>
-  <section class="tool-info" aria-label="Lesson reference">
-    <div class="tool-info-inner">
-      <div class="tool-accordions">
-
-<details class="tool-accordion" open>
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">Frequently Asked Questions</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <h3>What are the three main types of machine learning?</h3>
-          <p>The three main paradigms are supervised learning (learning from labelled examples), unsupervised learning (finding patterns in unlabelled data), and reinforcement learning (learning through trial, error and reward signals). Most practical business AI uses supervised learning because it's the most predictable and easiest to evaluate.</p>
-          <h3>What does supervised learning require?</h3>
-          <p>Supervised learning requires labelled training data — examples where the correct answer is already known. A spam filter needs emails labelled as spam or not spam. A medical diagnostic system needs X-rays labelled with confirmed diagnoses. The quality of labels directly affects the quality of what the system learns.</p>
-          <h3>Why is reinforcement learning harder to train than supervised learning?</h3>
-          <p>Reinforcement learning requires millions of trials and a carefully designed reward signal. It can't be easily run on expensive real-world interactions, which is why it tends to work well in simulated environments like games. It also requires reasoning about the relationship between immediate actions and delayed consequences, which is more complex than matching inputs to labels.</p>
-          <h3>What happens when training data doesn't match the real world?</h3>
-          <p>The model will perform poorly or fail in predictable ways. If patterns in training data don't reflect deployment conditions — due to demographic differences, changes over time, or data quality problems — predictions degrade. This is called distribution shift, and it's one of the most common reasons AI systems fail after deployment.</p>
-        </div>
-      </details>
-
-      <details class="tool-accordion">
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">How It Works</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <p>In supervised learning, a model receives paired inputs and outputs — for example, images and their correct labels. During training, it makes predictions and compares them to the correct answers. The difference (the error) is used to update the model's internal parameters so the next prediction is slightly better. This process repeats across thousands or millions of examples until the error rate is low enough to be useful.</p>
-          <p>In unsupervised learning, the model has only inputs and no labels. Clustering algorithms like k-means group similar examples together based on distance in feature space. Dimensionality reduction methods like PCA find the directions in which data varies most, allowing it to be compressed without losing the most important patterns.</p>
-          <p>Reinforcement learning works differently again. An agent interacts with an environment, takes actions, receives rewards or penalties, and updates its strategy to maximise cumulative reward over time. The key challenge is credit assignment — figuring out which past actions caused the reward received now. Methods like Q-learning and policy gradient solve this by tracking action-value estimates across many trials.</p>
-        </div>
-      </details>
-
-      <details class="tool-accordion">
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">Key Points</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <ul>
-            <li>Supervised learning trains on labelled examples and is the most common approach in business AI — it's predictable and easy to evaluate</li>
-            <li>Label quality is critical in supervised learning — incorrect or biased labels directly corrupt what the model learns</li>
-            <li>Unsupervised learning finds patterns without labels but requires humans to judge whether what it found is meaningful</li>
-            <li>Reinforcement learning optimises for a reward signal through trial and error — a poorly designed signal leads to a system that optimises for the wrong thing</li>
-            <li>All three approaches fail when the world they're deployed in doesn't match the world they were trained on</li>
-            <li>Reinforcement learning requires millions of trials — which is why it works well in simulatable environments like games but is harder in the physical world</li>
-            <li>Most AI failures in production trace back to one of these root causes: bad labels, wrong reward signal, or distribution shift</li>
-          </ul>
-        </div>
-      </details>
-
-      <details class="tool-accordion">
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">Sources</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <ul>
-            <li><a href="https://en.wikipedia.org/wiki/Supervised_learning" target="_blank" rel="noopener">Supervised Learning — Wikipedia</a> — overview of the approach and its applications</li>
-            <li><a href="https://en.wikipedia.org/wiki/Unsupervised_learning" target="_blank" rel="noopener">Unsupervised Learning — Wikipedia</a> — clustering, dimensionality reduction and related methods</li>
-            <li><a href="https://en.wikipedia.org/wiki/Reinforcement_learning" target="_blank" rel="noopener">Reinforcement Learning — Wikipedia</a> — agents, rewards, environments and the key algorithms</li>
-            <li><a href="https://deepmind.google/research/breakthroughs/alphago/" target="_blank" rel="noopener">AlphaGo — DeepMind</a> — the reinforcement learning system that beat the world's best Go players</li>
-            <li><a href="https://scikit-learn.org/stable/supervised_learning.html" target="_blank" rel="noopener">Scikit-learn Supervised Learning Documentation</a> — practical reference for common supervised algorithms</li>
-          </ul>
-        </div>
-      </details>
-
-      </div>
-    </div>
-  </section>
-
-  <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
-  </button>
-
-
-  <div id="footer-placeholder"></div>
-
-  <script src="/news-data.js"></script>
-  <script src="/scripts.js" defer></script>
-  <script src="/news-article.js" defer></script>
-  <script src="/news-chat.js" defer></script>
-  <script>
+</div>
+<div id="newsy-ai"></div>
+</aside>
+</div><!-- /na-layout -->
+</main>
+<div id="share-bar-placeholder"></div>
+<section aria-label="Lesson reference" class="tool-info">
+<div class="tool-info-inner">
+<div class="tool-accordions">
+<details class="tool-accordion" open="">
+<summary class="tool-accordion-summary">
+<span class="tool-accordion-title">Frequently Asked Questions</span>
+<span aria-hidden="true" class="tool-accordion-icon"></span>
+</summary>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What are the three main types of machine learning?</dt><dd>The three main paradigms are supervised learning (learning from labelled examples), unsupervised learning (finding patterns in unlabelled data), and reinforcement learning (learning through trial, error and reward signals). Most practical business AI uses supervised learning because it's the most predictable and easiest to evaluate.</dd></div><div class="faq-item"><dt>What does supervised learning require?</dt><dd>Supervised learning requires labelled training data — examples where the correct answer is already known. A spam filter needs emails labelled as spam or not spam. A medical diagnostic system needs X-rays labelled with confirmed diagnoses. The quality of labels directly affects the quality of what the system learns.</dd></div><div class="faq-item"><dt>Why is reinforcement learning harder to train than supervised learning?</dt><dd>Reinforcement learning requires millions of trials and a carefully designed reward signal. It can't be easily run on expensive real-world interactions, which is why it tends to work well in simulated environments like games. It also requires reasoning about the relationship between immediate actions and delayed consequences, which is more complex than matching inputs to labels.</dd></div><div class="faq-item"><dt>What happens when training data doesn't match the real world?</dt><dd>The model will perform poorly or fail in predictable ways. If patterns in training data don't reflect deployment conditions — due to demographic differences, changes over time, or data quality problems — predictions degrade. This is called distribution shift, and it's one of the most common reasons AI systems fail after deployment.</dd></div></dl></div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary">
+<span class="tool-accordion-title">How It Works</span>
+<span aria-hidden="true" class="tool-accordion-icon"></span>
+</summary>
+<div class="tool-accordion-body"><ol class="info-steps"><li>In supervised learning, a model receives paired inputs and outputs — for example, images and their correct labels. During training, it makes predictions and compares them to the correct answers. The difference (the error) is used to update the model's internal parameters so the next prediction is slightly better. This process repeats across thousands or millions of examples until the error rate is low enough to be useful.</li><li>In unsupervised learning, the model has only inputs and no labels. Clustering algorithms like k-means group similar examples together based on distance in feature space. Dimensionality reduction methods like PCA find the directions in which data varies most, allowing it to be compressed without losing the most important patterns.</li><li>Reinforcement learning works differently again. An agent interacts with an environment, takes actions, receives rewards or penalties, and updates its strategy to maximise cumulative reward over time. The key challenge is credit assignment — figuring out which past actions caused the reward received now. Methods like Q-learning and policy gradient solve this by tracking action-value estimates across many trials.</li></ol></div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary">
+<span class="tool-accordion-title">Key Points</span>
+<span aria-hidden="true" class="tool-accordion-icon"></span>
+</summary>
+<div class="tool-accordion-body">
+<ul class="info-points">
+<li>Supervised learning trains on labelled examples and is the most common approach in business AI — it's predictable and easy to evaluate</li>
+<li>Label quality is critical in supervised learning — incorrect or biased labels directly corrupt what the model learns</li>
+<li>Unsupervised learning finds patterns without labels but requires humans to judge whether what it found is meaningful</li>
+<li>Reinforcement learning optimises for a reward signal through trial and error — a poorly designed signal leads to a system that optimises for the wrong thing</li>
+<li>All three approaches fail when the world they're deployed in doesn't match the world they were trained on</li>
+<li>Reinforcement learning requires millions of trials — which is why it works well in simulatable environments like games but is harder in the physical world</li>
+<li>Most AI failures in production trace back to one of these root causes: bad labels, wrong reward signal, or distribution shift</li>
+</ul>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary">
+<span class="tool-accordion-title">Sources</span>
+<span aria-hidden="true" class="tool-accordion-icon"></span>
+</summary>
+<div class="tool-accordion-body">
+<ol class="info-sources">
+<li><a href="https://en.wikipedia.org/wiki/Supervised_learning" rel="noopener" target="_blank">Supervised Learning — Wikipedia</a> — overview of the approach and its applications</li>
+<li><a href="https://en.wikipedia.org/wiki/Unsupervised_learning" rel="noopener" target="_blank">Unsupervised Learning — Wikipedia</a> — clustering, dimensionality reduction and related methods</li>
+<li><a href="https://en.wikipedia.org/wiki/Reinforcement_learning" rel="noopener" target="_blank">Reinforcement Learning — Wikipedia</a> — agents, rewards, environments and the key algorithms</li>
+<li><a href="https://deepmind.google/research/breakthroughs/alphago/" rel="noopener" target="_blank">AlphaGo — DeepMind</a> — the reinforcement learning system that beat the world's best Go players</li>
+<li><a href="https://scikit-learn.org/stable/supervised_learning.html" rel="noopener" target="_blank">Scikit-learn Supervised Learning Documentation</a> — practical reference for common supervised algorithms</li>
+</ol>
+</div>
+</details>
+</div>
+</div>
+</section>
+<button aria-label="Back to top" id="back-to-top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div id="footer-placeholder"></div>
+<script src="/news-data.js"></script>
+<script defer="" src="/scripts.js"></script>
+<script defer="" src="/news-article.js"></script>
+<script defer="" src="/news-chat.js"></script>
+<script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
       if (trigger) trigger.click();
@@ -449,7 +390,7 @@
       });
     });
   </script>
-  <script>
+<script>
   document.querySelectorAll('.lp-quiz-option').forEach(btn => {
     btn.addEventListener('click', function() {
       const q = this.dataset.q;

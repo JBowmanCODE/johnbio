@@ -416,29 +416,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is a Recurrent Neural Network (RNN)?</h3>
-<p>An RNN is a neural network with loops that let it process sequences one element at a time, carrying a hidden state that acts as memory. This makes it useful for tasks where order matters: language, time series, speech. The problem is that gradients shrink as they backpropagate through many time steps, so RNNs struggle to remember information from more than about 20 steps back.</p>
-<h3>How does attention work in a Transformer?</h3>
-<p>Attention lets each position in a sequence compute how much it should focus on every other position. For each element, you compute a query (what am I looking for?), keys (what does each position offer?), and values (what information does each position carry?). Query-key similarity determines attention weights, which then weight the values. Each position ends up with a rich representation incorporating relevant context from the whole sequence.</p>
-<h3>What is an autoencoder used for?</h3>
-<p>An autoencoder compresses data to a smaller representation (the bottleneck) then reconstructs it. The compressed representation is useful for dimensionality reduction, anomaly detection, denoising, and in Variational Autoencoders, generating new data. They're trained without labels - the reconstruction error is the signal.</p>
-<h3>Do you need to understand RNNs before learning Transformers?</h3>
-<p>No. Transformers are conceptually simpler than RNNs in many ways. Understanding RNNs gives historical context for why Transformers were an improvement, but you can learn Transformers first. Spend most of your time on Transformers - that's where most modern AI lives.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is a Recurrent Neural Network (RNN)?</dt><dd>An RNN is a neural network with loops that let it process sequences one element at a time, carrying a hidden state that acts as memory. This makes it useful for tasks where order matters: language, time series, speech. The problem is that gradients shrink as they backpropagate through many time steps, so RNNs struggle to remember information from more than about 20 steps back.</dd></div><div class="faq-item"><dt>How does attention work in a Transformer?</dt><dd>Attention lets each position in a sequence compute how much it should focus on every other position. For each element, you compute a query (what am I looking for?), keys (what does each position offer?), and values (what information does each position carry?). Query-key similarity determines attention weights, which then weight the values. Each position ends up with a rich representation incorporating relevant context from the whole sequence.</dd></div><div class="faq-item"><dt>What is an autoencoder used for?</dt><dd>An autoencoder compresses data to a smaller representation (the bottleneck) then reconstructs it. The compressed representation is useful for dimensionality reduction, anomaly detection, denoising, and in Variational Autoencoders, generating new data. They're trained without labels - the reconstruction error is the signal.</dd></div><div class="faq-item"><dt>Do you need to understand RNNs before learning Transformers?</dt><dd>No. Transformers are conceptually simpler than RNNs in many ways. Understanding RNNs gives historical context for why Transformers were an improvement, but you can learn Transformers first. Spend most of your time on Transformers - that's where most modern AI lives.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p><strong>RNNs:</strong> At each time step, the network takes the current input and the previous hidden state, combines them, and produces a new hidden state. That state carries information forward to the next step. The catch is backpropagating through time: gradients must flow through every time step backward, and they shrink at each one.</p>
-<p><strong>Transformers:</strong> All positions in the sequence are processed in parallel. For each position, three vectors are computed (query, key, value). Attention scores between positions are calculated via query-key dot products, normalised via softmax, then used to weight the values. This produces a context-aware representation for each position. Multiple attention heads run in parallel, each learning different relevance patterns. Position encoding adds sequence order information (since there's no inherent order in parallel processing).</p>
-<p><strong>Autoencoders:</strong> An encoder compresses input to a bottleneck representation. A decoder reconstructs the input from that bottleneck. The reconstruction loss trains the network to find a useful compressed representation. VAEs add a probabilistic bottleneck, enabling generation of new samples.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li><strong>RNNs:</strong> At each time step, the network takes the current input and the previous hidden state, combines them, and produces a new hidden state. That state carries information forward to the next step. The catch is backpropagating through time: gradients must flow through every time step backward, and they shrink at each one.</li><li><strong>Transformers:</strong> All positions in the sequence are processed in parallel. For each position, three vectors are computed (query, key, value). Attention scores between positions are calculated via query-key dot products, normalised via softmax, then used to weight the values. This produces a context-aware representation for each position. Multiple attention heads run in parallel, each learning different relevance patterns. Position encoding adds sequence order information (since there's no inherent order in parallel processing).</li><li><strong>Autoencoders:</strong> An encoder compresses input to a bottleneck representation. A decoder reconstructs the input from that bottleneck. The reconstruction loss trains the network to find a useful compressed representation. VAEs add a probabilistic bottleneck, enabling generation of new samples.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>RNNs process sequences step by step, carrying a hidden state as memory</li>
 <li>The vanishing gradient problem limits RNNs to about 10-20 steps of effective memory</li>
 <li>LSTMs and GRUs partially addressed this but are still sequential and slow</li>
@@ -454,12 +441,12 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Vaswani, A. et al. (2017). Attention Is All You Need. <em>NeurIPS</em>.</li>
 <li>Hochreiter, S. &amp; Schmidhuber, J. (1997). Long Short-Term Memory. <em>Neural Computation</em>.</li>
 <li>Kingma, D. &amp; Welling, M. (2013). Auto-Encoding Variational Bayes. <em>arXiv</em>.</li>
 <li>Devlin, J. et al. (2018). BERT: Pre-training of Deep Bidirectional Transformers. <em>arXiv</em>.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

@@ -339,29 +339,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is linear regression in machine learning?</h3>
-<p>Linear regression is the simplest machine learning model. It finds a line (or plane, in multiple dimensions) that best predicts an output value from input values. It works by minimising mean squared error - the sum of squared differences between predictions and actual values. It's useful when the relationship between input and output is roughly linear, and it's the foundation for understanding how more complex models work.</p>
-<h3>What is gradient descent?</h3>
-<p>Gradient descent is an optimisation algorithm that finds the model parameters that minimise a loss function. Imagine standing in fog on a hill - you can feel the slope but can't see the bottom. If you always step in the direction that feels downhill, you'll eventually reach the lowest point. Gradient descent does this mathematically: it computes the slope of the error surface (the gradient) and adjusts parameters in the direction of decreasing error.</p>
-<h3>What is a learning rate in gradient descent?</h3>
-<p>The learning rate controls how large each step is during gradient descent. A large learning rate means faster training but risks overshooting the minimum. A small learning rate is safer but training takes longer. Finding the right learning rate is usually done experimentally. Modern deep learning frameworks have adaptive learning rate methods (like Adam) that adjust the rate automatically during training.</p>
-<h3>Why should beginners understand linear regression and gradient descent?</h3>
-<p>Because the same patterns appear in every other machine learning model: a loss function (how to measure wrong), parameters to adjust, an optimisation algorithm (usually gradient descent), and validation to check generalisation. Neural networks, random forests, and logistic regression all share this structure. Understanding linear regression gives you intuition for why those models work and how to debug them when they don't.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is linear regression in machine learning?</dt><dd>Linear regression is the simplest machine learning model. It finds a line (or plane, in multiple dimensions) that best predicts an output value from input values. It works by minimising mean squared error - the sum of squared differences between predictions and actual values. It's useful when the relationship between input and output is roughly linear, and it's the foundation for understanding how more complex models work.</dd></div><div class="faq-item"><dt>What is gradient descent?</dt><dd>Gradient descent is an optimisation algorithm that finds the model parameters that minimise a loss function. Imagine standing in fog on a hill - you can feel the slope but can't see the bottom. If you always step in the direction that feels downhill, you'll eventually reach the lowest point. Gradient descent does this mathematically: it computes the slope of the error surface (the gradient) and adjusts parameters in the direction of decreasing error.</dd></div><div class="faq-item"><dt>What is a learning rate in gradient descent?</dt><dd>The learning rate controls how large each step is during gradient descent. A large learning rate means faster training but risks overshooting the minimum. A small learning rate is safer but training takes longer. Finding the right learning rate is usually done experimentally. Modern deep learning frameworks have adaptive learning rate methods (like Adam) that adjust the rate automatically during training.</dd></div><div class="faq-item"><dt>Why should beginners understand linear regression and gradient descent?</dt><dd>Because the same patterns appear in every other machine learning model: a loss function (how to measure wrong), parameters to adjust, an optimisation algorithm (usually gradient descent), and validation to check generalisation. Neural networks, random forests, and logistic regression all share this structure. Understanding linear regression gives you intuition for why those models work and how to debug them when they don't.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p>Linear regression fits a model of the form <code>y = w1*x1 + w2*x2 + ... + b</code>, where the w values are weights (slopes) and b is the bias (intercept). Training adjusts these parameters to minimise mean squared error (MSE) across all training examples.</p>
-<p>Gradient descent computes the partial derivative of MSE with respect to each parameter. This gives the direction of steepest ascent on the error surface. Moving in the opposite direction (steepest descent) reduces error. The update rule is: <code>parameter = parameter - learning_rate * gradient</code>. This repeats until gradients are near zero (convergence).</p>
-<p>For linear regression specifically, the loss surface is convex - bowl-shaped with one global minimum. This guarantees gradient descent converges to the optimal solution (given a suitable learning rate). For non-convex models like neural networks, this guarantee doesn't hold.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li>Linear regression fits a model of the form <code>y = w1*x1 + w2*x2 + ... + b</code>, where the w values are weights (slopes) and b is the bias (intercept). Training adjusts these parameters to minimise mean squared error (MSE) across all training examples.</li><li>Gradient descent computes the partial derivative of MSE with respect to each parameter. This gives the direction of steepest ascent on the error surface. Moving in the opposite direction (steepest descent) reduces error. The update rule is: <code>parameter = parameter - learning_rate * gradient</code>. This repeats until gradients are near zero (convergence).</li><li>For linear regression specifically, the loss surface is convex - bowl-shaped with one global minimum. This guarantees gradient descent converges to the optimal solution (given a suitable learning rate). For non-convex models like neural networks, this guarantee doesn't hold.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>Linear regression finds the line that minimises mean squared error between predictions and actual values.</li>
 <li>MSE squares errors before summing to avoid positive and negative errors cancelling each other out.</li>
 <li>Gradient descent: start with random parameters, compute gradient (slope of error surface), take small steps in direction of decreasing error, repeat until convergence.</li>
@@ -375,11 +362,11 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Hastie, T., Tibshirani, R. &amp; Friedman, J. (2009). <em>The Elements of Statistical Learning</em> (2nd ed.). Springer. (Free PDF at web.stanford.edu/~hastie/ElemStatLearn/)</li>
 <li>Ruder, S. (2016). An overview of gradient descent optimisation algorithms. <em>arXiv</em>:1609.04747.</li>
 <li>Ng, A. Machine Learning course lecture notes. Stanford University / Coursera.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

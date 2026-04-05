@@ -403,29 +403,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is a generative AI model?</h3>
-<p>A generative model learns a probability distribution from training data, then samples from that distribution to create new examples. It can't memorise all possible images, so it learns the underlying structure of what makes something a valid image, piece of music, or sentence. The three main approaches are VAEs, GANs, and diffusion models.</p>
-<h3>What is the difference between a VAE and a GAN?</h3>
-<p>A VAE (Variational Autoencoder) compresses data to a latent distribution and reconstructs from it. The training is stable and the latent space is smooth, but outputs tend to be blurry. A GAN (Generative Adversarial Network) pits a generator against a discriminator in an adversarial game. GANs produce sharper images but are notoriously unstable to train and prone to mode collapse.</p>
-<h3>How does a diffusion model work?</h3>
-<p>A diffusion model learns to reverse a noise-adding process. During training, noise is added to images step by step until they're pure noise. The model learns to predict what was there before each noise step. At generation time, you start with pure noise and iteratively denoise, producing a new image. The training is stable, there's no mode collapse, and the results are high quality.</p>
-<h3>Why did diffusion models win over GANs?</h3>
-<p>Diffusion models are stable to train, produce diverse outputs, and scale well. GANs produce sharp images but suffer from mode collapse and training instability. Diffusion models' main disadvantage - slow sampling - has been largely addressed by improved sampling algorithms. For most image generation tasks today, diffusion is the default choice.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is a generative AI model?</dt><dd>A generative model learns a probability distribution from training data, then samples from that distribution to create new examples. It can't memorise all possible images, so it learns the underlying structure of what makes something a valid image, piece of music, or sentence. The three main approaches are VAEs, GANs, and diffusion models.</dd></div><div class="faq-item"><dt>What is the difference between a VAE and a GAN?</dt><dd>A VAE (Variational Autoencoder) compresses data to a latent distribution and reconstructs from it. The training is stable and the latent space is smooth, but outputs tend to be blurry. A GAN (Generative Adversarial Network) pits a generator against a discriminator in an adversarial game. GANs produce sharper images but are notoriously unstable to train and prone to mode collapse.</dd></div><div class="faq-item"><dt>How does a diffusion model work?</dt><dd>A diffusion model learns to reverse a noise-adding process. During training, noise is added to images step by step until they're pure noise. The model learns to predict what was there before each noise step. At generation time, you start with pure noise and iteratively denoise, producing a new image. The training is stable, there's no mode collapse, and the results are high quality.</dd></div><div class="faq-item"><dt>Why did diffusion models win over GANs?</dt><dd>Diffusion models are stable to train, produce diverse outputs, and scale well. GANs produce sharp images but suffer from mode collapse and training instability. Diffusion models' main disadvantage - slow sampling - has been largely addressed by improved sampling algorithms. For most image generation tasks today, diffusion is the default choice.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p><strong>VAEs:</strong> The encoder maps input data to a mean and variance in latent space. A sample is drawn from this distribution and passed to the decoder, which reconstructs the original input. The loss function combines reconstruction error with a regularisation term (KL divergence) that keeps the latent space smooth and continuous.</p>
-<p><strong>GANs:</strong> The generator takes random noise and produces a fake sample. The discriminator takes both real and fake samples and outputs a probability of being real. Both networks train simultaneously: the generator minimises its ability to be detected, the discriminator maximises its detection accuracy. The ideal result is a generator that produces samples indistinguishable from real data.</p>
-<p><strong>Diffusion:</strong> The forward process adds Gaussian noise to data over T steps until the data is pure noise. The model (typically a U-Net) is trained to predict the noise added at each step. At generation time, you sample pure noise and run T denoising steps using the model, each step subtracting the predicted noise to recover the original signal.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li><strong>VAEs:</strong> The encoder maps input data to a mean and variance in latent space. A sample is drawn from this distribution and passed to the decoder, which reconstructs the original input. The loss function combines reconstruction error with a regularisation term (KL divergence) that keeps the latent space smooth and continuous.</li><li><strong>GANs:</strong> The generator takes random noise and produces a fake sample. The discriminator takes both real and fake samples and outputs a probability of being real. Both networks train simultaneously: the generator minimises its ability to be detected, the discriminator maximises its detection accuracy. The ideal result is a generator that produces samples indistinguishable from real data.</li><li><strong>Diffusion:</strong> The forward process adds Gaussian noise to data over T steps until the data is pure noise. The model (typically a U-Net) is trained to predict the noise added at each step. At generation time, you sample pure noise and run T denoising steps using the model, each step subtracting the predicted noise to recover the original signal.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>Generative models learn probability distributions over data, not just to classify it</li>
 <li>VAEs learn smooth latent spaces but produce blurry outputs due to averaging</li>
 <li>GANs use adversarial training to produce sharp images but are unstable and prone to mode collapse</li>
@@ -440,12 +427,12 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Kingma, D. &amp; Welling, M. (2013). Auto-Encoding Variational Bayes. <em>arXiv</em>.</li>
 <li>Goodfellow, I. et al. (2014). Generative Adversarial Networks. <em>NeurIPS</em>.</li>
 <li>Ho, J. et al. (2020). Denoising Diffusion Probabilistic Models. <em>NeurIPS</em>.</li>
 <li>Rombach, R. et al. (2022). High-Resolution Image Synthesis with Latent Diffusion Models. <em>CVPR</em>.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

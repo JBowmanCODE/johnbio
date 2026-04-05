@@ -337,28 +337,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is backpropagation?</h3>
-<p>Backpropagation is the algorithm that computes gradients (the direction and amount to adjust each weight) for every weight in a neural network, in a single backward pass. It works by applying the chain rule from calculus: starting at the loss function and working backward through the network, computing how much each weight contributed to the error.</p>
-<h3>How do errors flow backward in a neural network?</h3>
-<p>After a forward pass produces a prediction, you measure the loss (how wrong it was). Then you compute the gradient of the loss with respect to the output layer weights (straightforward calculus). Using the chain rule, you work backward through each layer, computing how the loss changes with respect to that layer's weights. Each step reuses computations from the previous step, making this efficient even for large networks.</p>
-<h3>What is the chain rule in backpropagation?</h3>
-<p>The chain rule says: if you have functions stacked together, the rate of change of the final output with respect to an early input equals the product of the rates of change at each step. In a neural network, to find how changing a weight in layer 1 affects the final loss, you multiply together how that weight affects its layer's output, how that output affects the next layer, and so on up to the loss. Backpropagation applies this chain rule efficiently across all layers simultaneously.</p>
-<h3>Why was backpropagation a breakthrough?</h3>
-<p>Before backpropagation became standard practice in the 1980s, there was no efficient way to compute gradients for networks with multiple hidden layers. Without efficient gradients, training deep networks meant guessing which weights to adjust - which produced poor results. Backpropagation gave a systematic way to improve every weight correctly, making deep networks trainable for the first time.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is backpropagation?</dt><dd>Backpropagation is the algorithm that computes gradients (the direction and amount to adjust each weight) for every weight in a neural network, in a single backward pass. It works by applying the chain rule from calculus: starting at the loss function and working backward through the network, computing how much each weight contributed to the error.</dd></div><div class="faq-item"><dt>How do errors flow backward in a neural network?</dt><dd>After a forward pass produces a prediction, you measure the loss (how wrong it was). Then you compute the gradient of the loss with respect to the output layer weights (straightforward calculus). Using the chain rule, you work backward through each layer, computing how the loss changes with respect to that layer's weights. Each step reuses computations from the previous step, making this efficient even for large networks.</dd></div><div class="faq-item"><dt>What is the chain rule in backpropagation?</dt><dd>The chain rule says: if you have functions stacked together, the rate of change of the final output with respect to an early input equals the product of the rates of change at each step. In a neural network, to find how changing a weight in layer 1 affects the final loss, you multiply together how that weight affects its layer's output, how that output affects the next layer, and so on up to the loss. Backpropagation applies this chain rule efficiently across all layers simultaneously.</dd></div><div class="faq-item"><dt>Why was backpropagation a breakthrough?</dt><dd>Before backpropagation became standard practice in the 1980s, there was no efficient way to compute gradients for networks with multiple hidden layers. Without efficient gradients, training deep networks meant guessing which weights to adjust - which produced poor results. Backpropagation gave a systematic way to improve every weight correctly, making deep networks trainable for the first time.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p>For a network layer with weights W, inputs x, and outputs y = activation(Wx + b), backpropagation computes <em>dL/dW</em> (how the loss L changes with each weight in W) using: <em>dL/dW = dL/dy * dy/dW</em>. The <em>dL/dy</em> term comes from the next layer's computation (or directly from the loss if this is the output layer). The <em>dy/dW</em> term is the derivative of the activation function times the input.</p>
-<p>This is applied layer by layer moving backward. The key insight is that each layer's <em>dL/dy</em> input can be computed from the next layer's gradients - so you only need one backward pass, not a separate computation per weight. This is called dynamic programming applied to gradient computation.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li>For a network layer with weights W, inputs x, and outputs y = activation(Wx + b), backpropagation computes <em>dL/dW</em> (how the loss L changes with each weight in W) using: <em>dL/dW = dL/dy * dy/dW</em>. The <em>dL/dy</em> term comes from the next layer's computation (or directly from the loss if this is the output layer). The <em>dy/dW</em> term is the derivative of the activation function times the input.</li><li>This is applied layer by layer moving backward. The key insight is that each layer's <em>dL/dy</em> input can be computed from the next layer's gradients - so you only need one backward pass, not a separate computation per weight. This is called dynamic programming applied to gradient computation.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>Backpropagation computes gradients for every weight in the network in a single backward pass.</li>
 <li>It applies the chain rule from calculus: multiply rates of change at each step, working backward from the loss.</li>
 <li>Flow: forward pass → measure loss → compute output layer gradients → work backward layer by layer → update all weights.</li>
@@ -372,11 +360,11 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Rumelhart, D.E., Hinton, G.E. &amp; Williams, R.J. (1986). Learning representations by back-propagating errors. <em>Nature</em>, 323, 533-536.</li>
 <li>Goodfellow, I., Bengio, Y. &amp; Courville, A. (2016). <em>Deep Learning</em>. MIT Press. Chapter 6.</li>
 <li>Nielsen, M. (2015). How the backpropagation algorithm works. <em>Neural Networks and Deep Learning</em>. Chapter 2.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>

@@ -412,29 +412,16 @@
 <div class="tool-accordions">
 <details class="tool-accordion" open="">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<h3>What is Retrieval-Augmented Generation (RAG)?</h3>
-<p>RAG is a technique that connects a language model to a document database. When a user asks a question, relevant documents are retrieved first (usually via semantic similarity search), then passed to the model along with the question. The model generates an answer using those documents as context. This solves the training cutoff problem and allows models to reason over private data without retraining.</p>
-<h3>When should you use fine-tuning instead of RAG?</h3>
-<p>Fine-tuning makes sense when you have a specific style or format the model needs to match consistently, specialised terminology the base model handles poorly, or enough labelled training examples. It doesn't make sense for making a model "know" your documents - fine-tuning teaches style, not content. For content, use RAG.</p>
-<h3>What are the main ways to deploy RAG?</h3>
-<p>You can build your own RAG pipeline using open-source components (full control, full responsibility), buy a commercial RAG platform (managed infrastructure, less control), or use an API with file upload features from an LLM provider (easiest to start, can get expensive). For most businesses: use an API or buy a platform first. Build custom only when you understand your specific requirements.</p>
-<h3>What is the most common mistake businesses make with RAG?</h3>
-<p>Trying to use fine-tuning instead of retrieval to make a model "know" company data. Fine-tuning 200 documents doesn't make a model remember what's in them - it teaches the model the aggregate style of those documents. The second most common mistake is building a complex custom system before validating that a simpler approach works.</p>
-</div>
+<div class="tool-accordion-body"><dl class="info-faq"><div class="faq-item"><dt>What is Retrieval-Augmented Generation (RAG)?</dt><dd>RAG is a technique that connects a language model to a document database. When a user asks a question, relevant documents are retrieved first (usually via semantic similarity search), then passed to the model along with the question. The model generates an answer using those documents as context. This solves the training cutoff problem and allows models to reason over private data without retraining.</dd></div><div class="faq-item"><dt>When should you use fine-tuning instead of RAG?</dt><dd>Fine-tuning makes sense when you have a specific style or format the model needs to match consistently, specialised terminology the base model handles poorly, or enough labelled training examples. It doesn't make sense for making a model "know" your documents - fine-tuning teaches style, not content. For content, use RAG.</dd></div><div class="faq-item"><dt>What are the main ways to deploy RAG?</dt><dd>You can build your own RAG pipeline using open-source components (full control, full responsibility), buy a commercial RAG platform (managed infrastructure, less control), or use an API with file upload features from an LLM provider (easiest to start, can get expensive). For most businesses: use an API or buy a platform first. Build custom only when you understand your specific requirements.</dd></div><div class="faq-item"><dt>What is the most common mistake businesses make with RAG?</dt><dd>Trying to use fine-tuning instead of retrieval to make a model "know" company data. Fine-tuning 200 documents doesn't make a model remember what's in them - it teaches the model the aggregate style of those documents. The second most common mistake is building a complex custom system before validating that a simpler approach works.</dd></div></dl></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
-<div class="tool-accordion-body">
-<p><strong>RAG pipeline:</strong> 1) Index your documents by embedding them and storing the embeddings in a vector database. 2) At query time, embed the user's question. 3) Search the vector database for documents with similar embeddings. 4) Take the top k results and concatenate them with the question in the model's context. 5) The model generates an answer with those documents visible.</p>
-<p><strong>Fine-tuning:</strong> Start with a pre-trained model. Assemble a dataset of input-output pairs that demonstrate the behaviour you want. Train for additional epochs on that dataset, updating the model's weights. The result is a new model checkpoint adapted to your domain style and format.</p>
-<p><strong>When to combine them:</strong> RAG + fine-tuning can work together. Fine-tune a model to adopt your domain's tone and terminology, then use it as the generator in a RAG system. The retrieval handles factual accuracy; the fine-tuning handles style consistency.</p>
-</div>
+<div class="tool-accordion-body"><ol class="info-steps"><li><strong>RAG pipeline:</strong> 1) Index your documents by embedding them and storing the embeddings in a vector database. 2) At query time, embed the user's question. 3) Search the vector database for documents with similar embeddings. 4) Take the top k results and concatenate them with the question in the model's context. 5) The model generates an answer with those documents visible.</li><li><strong>Fine-tuning:</strong> Start with a pre-trained model. Assemble a dataset of input-output pairs that demonstrate the behaviour you want. Train for additional epochs on that dataset, updating the model's weights. The result is a new model checkpoint adapted to your domain style and format.</li><li><strong>When to combine them:</strong> RAG + fine-tuning can work together. Fine-tune a model to adopt your domain's tone and terminology, then use it as the generator in a RAG system. The retrieval handles factual accuracy; the fine-tuning handles style consistency.</li></ol></div>
 </details>
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ul class="info-points">
 <li>Language models hallucinate about post-cutoff events and private data they've never seen</li>
 <li>RAG retrieves relevant documents at query time and gives them to the model as context</li>
 <li>RAG uses semantic similarity (embeddings) rather than keyword matching for retrieval</li>
@@ -451,12 +438,12 @@
 <details class="tool-accordion">
 <summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
 <div class="tool-accordion-body">
-<ul>
+<ol class="info-sources">
 <li>Lewis, P. et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. <em>NeurIPS</em>.</li>
 <li>Hu, E. et al. (2022). LoRA: Low-Rank Adaptation of Large Language Models. <em>ICLR</em>.</li>
 <li>Gao, L. et al. (2024). Retrieval-Augmented Generation for Large Language Models: A Survey. <em>arXiv</em>.</li>
 <li>Anthropic. (2024). Building Effective Agents. <em>anthropic.com</em>.</li>
-</ul>
+</ol>
 </div>
 </details>
 </div>
