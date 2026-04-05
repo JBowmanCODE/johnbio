@@ -151,10 +151,8 @@
 <span>RNNs, Transformers and Autoencoders</span>
 </nav>
 <!-- Unit badge + title -->
-
-<h1 class="na-title">RNNs, Transformers and Autoencoders</h1>
+<h1 class="na-title">RNNs, Transformers and Autoencoders</h1><div class="na-lede-row"><p class="na-lede">These three architectures solve different problems, but they matter for different reasons. RNNs are why we got here. Transformers are where most AI is now. Autoencoders are useful if you understand when to reach for them.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/rnns-transformers-autoencoders.webp"/></div></div>
 <!-- Meta row -->
-
 <!-- Audio player -->
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
@@ -167,7 +165,7 @@
 <span class="na-date">5 April 2026</span>
 <span class="na-read">13 min read</span>
 </div>
-</div><div aria-label="Listen to this lesson" class="na-audio">
+</div><details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#recurrent-neural-networks-what-they-were-designed-for">Recurrent Neural Networks - what they were designed for</a></li><li><a href="#why-they-struggled-with-long-sequences">Why they struggled with long sequences</a></li><li><a href="#transformers-the-attention-mechanism-explained-plainly">Transformers - the attention mechanism explained plainly</a></li><li><a href="#why-transformers-changed-nlp">Why Transformers changed NLP</a></li><li><a href="#autoencoders-what-they-compress-and-why-thats-useful">Autoencoders - what they compress and why that's useful</a></li><li><a href="#why-transformers-largely-replaced-rnns">Why Transformers largely replaced RNNs</a></li><li><a href="#do-you-need-to-understand-rnns-before-transformers">Do you need to understand RNNs before Transformers?</a></li></ol></details><div aria-label="Listen to this lesson" class="na-audio">
 <span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
 <div class="na-audio-info">
 <div class="na-audio-top">
@@ -206,38 +204,38 @@
 <!-- Body -->
 <div class="na-body">
 <p>These three architectures solve different problems, but they matter for different reasons. RNNs are why we got here. Transformers are where most AI is now. Autoencoders are useful if you understand when to reach for them.</p>
-<h2>Recurrent Neural Networks - what they were designed for</h2>
+<h2 id="recurrent-neural-networks-what-they-were-designed-for">Recurrent Neural Networks - what they were designed for</h2>
 <p>An RNN is a neural network with loops. Instead of data flowing one direction from input to output, a neuron can send its output back to itself as input on the next time step.</p>
 <p>This matters for sequences. If you're predicting the next word in a sentence, the word matters, but so does context - the words before it. An RNN's hidden state acts like memory. As it processes word after word, the hidden state updates, carrying information forward.</p>
 <p>Mathematically, the hidden state at time t depends on the input at time t and the hidden state at time t-1. Process a sequence one element at a time, and the network can theoretically learn dependencies - what came before shapes what comes next.</p>
 <p>This makes RNNs useful for language models, machine translation, speech recognition, and time series prediction. Anything where order matters.</p>
-<h2>Why they struggled with long sequences</h2>
+<h2 id="why-they-struggled-with-long-sequences">Why they struggled with long sequences</h2>
 <p>RNNs have a fundamental problem: they backpropagate through time, and gradients get tiny as sequences get long. That's the vanishing gradient problem again, this time across time steps instead of layers.</p>
 <p>In practice, RNNs struggle to remember things more than about 10 to 20 time steps back. For long sentences or documents, that's a real limitation.</p>
 <p>Variants like LSTMs (Long Short-Term Memory) and GRUs (Gated Recurrent Units) tried to fix this by adding gates that control how much information flows forward. They work better than vanilla RNNs, but they're not elegant fixes - they're patches on a flawed architecture.</p>
 <p>And they're slow. RNNs process sequences one element at a time. You can't parallelise easily. Training is expensive.</p>
-<h2>Transformers - the attention mechanism explained plainly</h2>
+<h2 id="transformers-the-attention-mechanism-explained-plainly">Transformers - the attention mechanism explained plainly</h2>
 <p>A Transformer doesn't process sequences sequentially. It looks at the entire sequence at once and uses attention to figure out which parts matter to which other parts.</p>
 <p>Attention is the key idea. For each word in a sentence, compute how much that word should pay attention to every other word (including itself). Words that matter more get higher attention.</p>
 <p>Technically, attention uses queries, keys, and values. The query from one word asks: what parts of the sequence are relevant to me? The keys answer: I have this kind of information. The values say: here's that information. The attention mechanism multiplies queries and keys to measure how well they match, and uses that score to weight the values.</p>
 <p>Do this calculation for every position in the sequence, and you get a new representation where each position incorporates relevant information from the whole sequence.</p>
 <p>You don't have to understand the maths. The intuition is: each part of the sequence attends to the parts that matter and ignores the rest. In a language model, a word can learn to pay attention to subject-verb pairs, pronouns, contextual clues - whatever is relevant. It happens automatically during training.</p>
-<h2>Why Transformers changed NLP</h2>
+<h2 id="why-transformers-changed-nlp">Why Transformers changed NLP</h2>
 <p>Before Transformers, NLP relied on RNNs. They were okay but had the gradient and speed problems.</p>
 <p>Transformers, introduced in 2017, solved both. They process entire sequences in parallel, so they're fast on GPUs. Attention doesn't suffer from vanishing gradients the same way RNNs do. You can train much deeper models on much more data.</p>
 <p>The result was dramatic. Within a few years, Transformer-based models - BERT, GPT, and others - outperformed RNNs on basically every NLP task.</p>
 <p>This wasn't just an incremental improvement. RNNs are still taught in courses for historical context, but in 2026, most language AI is Transformers.</p>
-<h2>Autoencoders - what they compress and why that's useful</h2>
+<h2 id="autoencoders-what-they-compress-and-why-thats-useful">Autoencoders - what they compress and why that's useful</h2>
 <p>An autoencoder is a network that compresses data and then reconstructs it.</p>
 <p>The structure is encoder, bottleneck, decoder. The encoder takes high-dimensional input (say, an image) and compresses it to a smaller representation - the bottleneck. The decoder takes that small representation and tries to reconstruct the original image. The loss is how different the reconstruction is from the original. You train to minimise reconstruction error.</p>
 <p>Why would you do this? The compressed representation is useful. It's a learned summary of the data. You can use it for dimensionality reduction, for finding patterns, for denoising (feed in noisy data, the autoencoder forces it through the bottleneck and cleans it up).</p>
 <p>Variational Autoencoders (VAEs) add a statistical layer: the bottleneck is a probability distribution, and you can sample from it to generate new data. Denoising Autoencoders specifically train on corrupted inputs to learn robust representations.</p>
 <p>They're less flashy than Transformers, but they're practical tools. Image generation, anomaly detection, data compression - if you need learned representations without labelled data, autoencoders are still relevant.</p>
-<h2>Why Transformers largely replaced RNNs</h2>
+<h2 id="why-transformers-largely-replaced-rnns">Why Transformers largely replaced RNNs</h2>
 <p>Speed, scalability, and performance. Transformers win on all three.</p>
 <p>RNNs require sequential processing. Training is slow. Attention heads learn long-range dependencies better. Transformers scale to much larger models and datasets.</p>
 <p>For basically any sequence task, Transformers perform better than RNNs if you have the resources. The only reason to use RNNs now is if you're deploying on edge devices with limited memory, or if you have a real-time streaming requirement where you can't wait for the full sequence.</p>
-<h2>Do you need to understand RNNs before Transformers?</h2>
+<h2 id="do-you-need-to-understand-rnns-before-transformers">Do you need to understand RNNs before Transformers?</h2>
 <p>No, honestly.</p>
 <p>RNNs are interesting historically. They teach you about recurrence, about memory in networks, about the challenge of long-term dependencies. That's valuable context.</p>
 <p>But Transformers are simpler conceptually. "Each element attends to all others based on relevance" is easier to grasp than "recurrent hidden state carries information forward and sometimes forgets."</p>

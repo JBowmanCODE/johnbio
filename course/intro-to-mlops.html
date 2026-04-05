@@ -151,10 +151,8 @@
 <span>Introduction to MLOps</span>
 </nav>
 <!-- Unit badge + title -->
-
-<h1 class="na-title">Introduction to MLOps: From Notebook to Production</h1>
+<h1 class="na-title">Introduction to MLOps: From Notebook to Production</h1><div class="na-lede-row"><p class="na-lede">You build a model in a notebook. It works. You get 87% accuracy. You're happy. You deploy it to production.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/intro-to-mlops.webp"/></div></div>
 <!-- Meta row -->
-
 <!-- Audio player -->
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
@@ -167,7 +165,7 @@
 <span class="na-date">5 April 2026</span>
 <span class="na-read">10 min read</span>
 </div>
-</div><div aria-label="Listen to this lesson" class="na-audio">
+</div><details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#the-gap-between-notebook-and-production">The gap between notebook and production</a></li><li><a href="#what-mlops-is-and-why-it-exists">What MLOps is and why it exists</a></li><li><a href="#the-key-stages-data-training-deployment-monitoring">The key stages: data, training, deployment, monitoring</a></li><li><a href="#why-ml-fails-differently-in-production">Why ML fails differently in production</a></li><li><a href="#do-data-scientists-need-to-care-about-mlops">Do data scientists need to care about MLOps?</a></li></ol></details><div aria-label="Listen to this lesson" class="na-audio">
 <span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
 <div class="na-audio-info">
 <div class="na-audio-top">
@@ -208,29 +206,29 @@
 <p>You build a model in a notebook. It works. You get 87% accuracy. You're happy. You deploy it to production.</p>
 <p>Three months later it's performing at 64% accuracy. You didn't touch it. The data changed. The users changed. The world changed. And now your model is broken in ways that are hard to debug because production is messier than your notebook.</p>
 <p>That gap - between a notebook experiment and an actual working system - is where MLOps lives.</p>
-<h2>The gap between notebook and production</h2>
+<h2 id="the-gap-between-notebook-and-production">The gap between notebook and production</h2>
 <p>A notebook is a controlled environment. You have a dataset. You split it into train and test. You train once, evaluate once, iterate. When you're done, you have a model file.</p>
 <p>Production is chaos. Data arrives continuously. It's different from your training data. Your model makes predictions on it. Those predictions affect real decisions. Sometimes they're wrong and you need to understand why.</p>
 <p>Your notebook didn't have to handle: new data arriving every minute, data in different formats or with different distributions, multiple models running in parallel, needing to roll back if a new model is bad, monitoring whether the model still works, retraining when performance degrades, version control for data, models, and code, compliance and audit requirements, or budget and compute constraints.</p>
 <p>A notebook solves exactly one problem: build a model. Production needs to solve dozens more.</p>
-<h2>What MLOps is and why it exists</h2>
+<h2 id="what-mlops-is-and-why-it-exists">What MLOps is and why it exists</h2>
 <p>MLOps is the infrastructure and practices that turn a model into a system that works reliably in production.</p>
 <p>It's borrowed from DevOps - the practices that make software deployable and maintainable. But ML adds complexity because your system has three moving parts: code, data, and models. In traditional software, the code is the source of truth. In ML, the code matters less than the data and the model weights.</p>
 <p>MLOps exists because ML in production fails in different ways than regular software. A regular application can be fully tested before deployment. An ML system can never be fully tested - you'll always encounter data distributions you didn't see in training. A regular application is deterministic - the same input always produces the same output. An ML system is probabilistic - it makes mistakes, and those mistakes change over time as data changes.</p>
 <p>You need different tools and practices for this reality.</p>
-<h2>The key stages: data, training, deployment, monitoring</h2>
+<h2 id="the-key-stages-data-training-deployment-monitoring">The key stages: data, training, deployment, monitoring</h2>
 <p><strong>Data management.</strong> You need to know what data your model was trained on. You need to track data quality. You need to catch when the data distribution shifts. You need to version datasets so that when a model breaks, you can recreate the exact conditions that created it.</p>
 <p><strong>Training.</strong> You need to be able to retrain models automatically. You need to track hyperparameters and results. You need to run experiments in parallel and compare them. You need to version models and know which version is in production.</p>
 <p><strong>Deployment.</strong> You need to serve models with low latency and high availability. You need to be able to roll out new models gradually and roll back if something breaks. You need to handle multiple versions running simultaneously.</p>
 <p><strong>Monitoring.</strong> You need to track model performance on real data over time. You need to notice when performance degrades and alert the right people. You need to log predictions so you can debug failures. You need to know when to retrain.</p>
 <p>These stages feed back into each other. Monitoring tells you when to retrain. Training produces a new model. Deployment puts it in production. Monitoring checks if it works. The cycle continues.</p>
-<h2>Why ML fails differently in production</h2>
+<h2 id="why-ml-fails-differently-in-production">Why ML fails differently in production</h2>
 <p>A regular application usually fails because of bugs. The code has a flaw, you fix it, you deploy the fix. ML systems fail because the world changed.</p>
 <p>Your model learned patterns from training data. In production, the data is different. Not in format - usually the same format. But the distribution is different. Users behave differently. Products change. Campaigns succeed or fail. The patterns the model learned aren't true any more.</p>
 <p>This is called drift and it's inevitable. You can't prevent it. You can only detect it and handle it.</p>
 <p>A regular application is also deterministic - you can test every branch. An ML model is probabilistic. You can't test every possible input. You don't know in advance what mistakes it will make. You can only observe mistakes in production and try to learn from them.</p>
 <p>This is why monitoring matters so much in ML. You can't catch all errors before deployment. You have to catch them after and respond.</p>
-<h2>Do data scientists need to care about MLOps?</h2>
+<h2 id="do-data-scientists-need-to-care-about-mlops">Do data scientists need to care about MLOps?</h2>
 <p>They don't need to become MLOps engineers - that's a different skill. But they should understand the basics. How models go from notebook to production. What happens when data distribution changes. How to instrument a model so it's debuggable.</p>
 <p>The companies that are good at ML have data scientists and MLOps engineers who work together. The data scientist doesn't have to implement the monitoring system, but they should understand what needs to be monitored and why. They should think about edge cases that might not show up in training data. They should care that their model is reliable, not just accurate.</p>
 </div>

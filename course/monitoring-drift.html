@@ -151,10 +151,8 @@
 <span>Monitoring and Drift</span>
 </nav>
 <!-- Unit badge + title -->
-
-<h1 class="na-title">Monitoring and Drift: Keeping Models Healthy in Production</h1>
+<h1 class="na-title">Monitoring and Drift: Keeping Models Healthy in Production</h1><div class="na-lede-row"><p class="na-lede">You deploy a model. It's tested. It works. You put it in production on a Monday.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/monitoring-drift.webp"/></div></div>
 <!-- Meta row -->
-
 <!-- Audio player -->
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
@@ -167,7 +165,7 @@
 <span class="na-date">5 April 2026</span>
 <span class="na-read">9 min read</span>
 </div>
-</div><div aria-label="Listen to this lesson" class="na-audio">
+</div><details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#why-a-model-that-worked-at-launch-can-stop-working">Why a model that worked at launch can stop working</a></li><li><a href="#what-data-drift-is">What data drift is</a></li><li><a href="#what-concept-drift-is-and-how-it-differs">What concept drift is and how it differs</a></li><li><a href="#how-to-detect-drift">How to detect drift</a></li><li><a href="#what-to-do-when-drift-is-detected">What to do when drift is detected</a></li><li><a href="#how-seriously-most-teams-take-monitoring">How seriously most teams take monitoring</a></li></ol></details><div aria-label="Listen to this lesson" class="na-audio">
 <span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
 <div class="na-audio-info">
 <div class="na-audio-top">
@@ -207,34 +205,34 @@
 <div class="na-body">
 <p>You deploy a model. It's tested. It works. You put it in production on a Monday.</p>
 <p>By Friday it's performing badly. Not because you changed it. Because the world changed. The data your model sees in production is different from the data it trained on. This is drift and it's normal - and it's what kills most ML systems in production.</p>
-<h2>Why a model that worked at launch can stop working</h2>
+<h2 id="why-a-model-that-worked-at-launch-can-stop-working">Why a model that worked at launch can stop working</h2>
 <p>A model learns patterns from training data. Those patterns are true for that data at that time. In production, the conditions change.</p>
 <p>An example: you build a model to predict whether someone will buy a product based on their browsing behaviour. You trained it on data from 2024. You deploy it in January 2025. There's a new marketing campaign that changes browsing patterns. Suddenly your model is wrong about what user behaviour means.</p>
 <p>Or simpler: you train on historical data that includes 40% of a specific user segment. In production, that segment is 10% of your traffic. The distribution changed, and the model's predictions aren't calibrated for the new distribution.</p>
 <p>The model doesn't change. The data it's receiving changed. So performance degrades. This is inevitable - you can't train on data that doesn't exist yet. The only question is how fast you notice and how you respond.</p>
-<h2>What data drift is</h2>
+<h2 id="what-data-drift-is">What data drift is</h2>
 <p>Data drift is when the input data distribution changes. The features your model sees in production are statistically different from the features it saw in training.</p>
 <p>You trained on data where customer age ranged from 18 to 65. In production, you're seeing users from 15 to 85. That's drift. You trained on mobile and desktop users equally. In production, 80% are mobile. Drift. You trained on products in three categories. A new category launched and now 30% of your predictions are on that category. Drift.</p>
 <p>Data drift is relatively easy to detect. You log the features you see in production. You compare them to the training data distribution. If the statistics are significantly different, you have drift. Calculate means, variances, percentiles of features in a recent production window and compare to training data. Statistical tests like the Kolmogorov-Smirnov test or Wasserstein distance can quantify the difference.</p>
-<h2>What concept drift is and how it differs</h2>
+<h2 id="what-concept-drift-is-and-how-it-differs">What concept drift is and how it differs</h2>
 <p>Concept drift is different. It's when the relationship between features and the target changes. The features look the same but they mean different things.</p>
 <p>You train a model: "If a user visits a product page for 10 seconds, they're likely to buy." You deploy it. In production, people are reading reviews more carefully and time on page means something different. The relationship changed even though the feature is the same.</p>
 <p>Or: you train on data from a recession. Now the economy is different. Economic patterns that predicted buying behaviour then don't predict it now.</p>
 <p>Concept drift is harder to detect than data drift. You can see data drift immediately - the input distribution changed. With concept drift, you only notice when performance metrics degrade over time. That's slower feedback, and slower feedback means more damage before you notice.</p>
-<h2>How to detect drift</h2>
+<h2 id="how-to-detect-drift">How to detect drift</h2>
 <p>You need to monitor your model's inputs and outputs.</p>
 <p>For inputs: log the features and track their distributions. Set thresholds for how much change is acceptable. If feature distributions change significantly compared to training data, you have data drift.</p>
 <p>For outputs: log predictions and track the distribution. If the model suddenly predicts "yes" 90% of the time when it used to predict 50%, something's wrong. Crude but catches obvious issues fast.</p>
 <p>For performance: this is the hard part. You need ground truth labels to measure performance. In some domains you get them quickly - if you're predicting credit default, you know in months. In others it's slow. Identify where you can measure performance and monitor it actively.</p>
 <p>Most teams set up a monitoring dashboard: input distributions, output distributions, performance metrics if labels are available. Set alerts that fire when things deviate significantly from baseline.</p>
-<h2>What to do when drift is detected</h2>
+<h2 id="what-to-do-when-drift-is-detected">What to do when drift is detected</h2>
 <p>You have a few options.</p>
 <p><strong>Investigate first.</strong> Understand what changed. Are your assumptions about the problem still valid? Did the business change? Did user behaviour change? Did your data pipeline break? Understanding the cause matters because it determines the solution.</p>
 <p><strong>Retrain.</strong> Most commonly, you retrain on newer data. If drift is detected, gather recent data, retrain, and deploy a new model. Ideally this is automated - drift detection triggers retraining which triggers evaluation which triggers deployment if the new model is better.</p>
 <p><strong>Accept it.</strong> Sometimes drift is acceptable. If your model is degrading slowly and retraining is expensive, the cost may not be worth it. A business decision, not a technical one.</p>
 <p><strong>Change the problem.</strong> Sometimes drift signals that your original assumption is wrong. If the business has fundamentally changed, you might need a different model for a different problem.</p>
 <p><strong>Fix the pipeline.</strong> Sometimes drift happens because your data pipeline is broken. You're supposed to log customer demographics but they're not being logged correctly. Fix the pipeline and drift might disappear.</p>
-<h2>How seriously most teams take monitoring</h2>
+<h2 id="how-seriously-most-teams-take-monitoring">How seriously most teams take monitoring</h2>
 <p>Not seriously enough.</p>
 <p>Most teams log some metrics and maybe watch a dashboard occasionally. But they don't have automated alerts. They don't have processes for responding to drift. When a model starts failing, they discover it because customers complain or because a business metric tanks.</p>
 <p>Good practices: automated drift detection with alerts. Someone on-call who responds to alerts. An automated retraining pipeline that tests new models before deploying. Monitoring that covers inputs, outputs, and performance.</p>

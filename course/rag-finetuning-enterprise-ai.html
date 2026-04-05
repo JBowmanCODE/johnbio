@@ -151,10 +151,8 @@
 <span>RAG, Fine-Tuning and Enterprise AI</span>
 </nav>
 <!-- Unit badge + title -->
-
-<h1 class="na-title">RAG, Fine-Tuning and Enterprise AI Strategy</h1>
+<h1 class="na-title">RAG, Fine-Tuning and Enterprise AI Strategy</h1><div class="na-lede-row"><p class="na-lede">A language model knows stuff about the world up until its training cutoff. After that, it's making things up. Ask it about private company data and it's hallucinating. Ask it about a document it never saw, and it doesn't have the information.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/rag-finetuning-enterprise-ai.webp"/></div></div>
 <!-- Meta row -->
-
 <!-- Audio player -->
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
@@ -167,7 +165,7 @@
 <span class="na-date">5 April 2026</span>
 <span class="na-read">11 min read</span>
 </div>
-</div><div aria-label="Listen to this lesson" class="na-audio">
+</div><details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#the-problem-rag-is-solving">The problem RAG is solving</a></li><li><a href="#how-rag-works-retrieve-then-generate">How RAG works: retrieve then generate</a></li><li><a href="#what-fine-tuning-is-and-when-its-actually-needed">What fine-tuning is and when it's actually needed</a></li><li><a href="#why-most-enterprises-should-try-rag-first">Why most enterprises should try RAG first</a></li><li><a href="#the-build-buy-or-use-an-api-decision">The build, buy, or use-an-API decision</a></li><li><a href="#where-most-businesses-get-it-wrong">Where most businesses get it wrong</a></li></ol></details><div aria-label="Listen to this lesson" class="na-audio">
 <span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
 <div class="na-audio-info">
 <div class="na-audio-top">
@@ -207,34 +205,34 @@
 <div class="na-body">
 <p>A language model knows stuff about the world up until its training cutoff. After that, it's making things up. Ask it about private company data and it's hallucinating. Ask it about a document it never saw, and it doesn't have the information.</p>
 <p>Enterprises need their AI systems to work with current, private data. That means feeding context to the model beyond what it was trained on. You have two main strategies: retrieval-augmented generation and fine-tuning. They solve different problems.</p>
-<h2>The problem RAG is solving</h2>
+<h2 id="the-problem-rag-is-solving">The problem RAG is solving</h2>
 <p>A language model is like someone who read a lot in school and then never read anything new. Ask it about something after its training cutoff and it'll confidently make something up. Ask it about an internal document it never saw, and it either hasn't seen it or confabulates details.</p>
 <p>That's hallucination. It's not malice or stupidity - the model does what it was trained to do, predict plausible text. But plausible isn't the same as true.</p>
 <p>RAG solves this by giving the model access to relevant context before it answers. You ask a question, RAG finds relevant documents or database entries, and feeds those to the model along with your question. Now the model has actual facts to work with.</p>
-<h2>How RAG works: retrieve then generate</h2>
+<h2 id="how-rag-works-retrieve-then-generate">How RAG works: retrieve then generate</h2>
 <p>The process has two steps. First, retrieve. You take the user's query and search a database of documents to find relevant ones. Usually by embedding the query and finding documents with similar embeddings - semantic similarity, not keyword matching.</p>
 <p>Then generate. You take the retrieved documents and the original query and feed them both to a language model. The model generates an answer with those documents as context. If the documents contain the answer, the model can usually find it.</p>
 <p>This works well. The model doesn't have to know the answer - it has to be able to read and synthesise information from documents. That's something language models do well.</p>
 <p>The limitations are real. If retrieval gets the wrong documents, generation works from bad context. If your documents are poorly structured or low quality, retrieval won't help. If the answer requires combining information across many documents in complex ways, even a good model might struggle.</p>
-<h2>What fine-tuning is and when it's actually needed</h2>
+<h2 id="what-fine-tuning-is-and-when-its-actually-needed">What fine-tuning is and when it's actually needed</h2>
 <p>Fine-tuning means taking a pre-trained model and training it further on your specific data. You're adapting the model's weights to your domain.</p>
 <p>It's expensive. You need lots of labelled examples - usually hundreds or thousands of good training pairs. You need compute. It takes time. And you end up with a model that's different from the base model, which your tools and infrastructure need to handle.</p>
 <p>Fine-tuning makes sense when you have a very specific style or format the model needs to match, specialised terminology the base model handles poorly, consistent patterns your data follows that a model can learn, and enough labelled examples to train on.</p>
 <p>What doesn't make sense: fine-tuning to make a model "know" your private data. A model can't memorise its way to better knowledge tasks. Fine-tuning helps with style, format, and specialised language. It doesn't turn a model into a domain expert.</p>
 <p>That's where the confusion happens. People think: "I'll fine-tune on our documents so it knows our data." But models don't work that way. Fine-tuning with documents mostly teaches the model the style of your documents, not their content. For content, you need retrieval.</p>
-<h2>Why most enterprises should try RAG first</h2>
+<h2 id="why-most-enterprises-should-try-rag-first">Why most enterprises should try RAG first</h2>
 <p>RAG should be your first move. Every time.</p>
 <p>RAG is cheaper. It's faster to set up. You don't need to train anything. You don't need labelled data. You can iterate and improve retrieval without retraining. If your documents are bad, you fix the documents instead of retraining a model.</p>
 <p>RAG scales. Add new documents and the system immediately has access to them. No retraining, no waiting.</p>
 <p>The only real downside is latency. Retrieval takes time. If you need sub-100ms response times, RAG is harder. For most enterprise applications, that's not a constraint.</p>
 <p>Should you eventually fine-tune on top of RAG? Maybe. If you have specific style requirements or a lot of domain-specific terminology, fine-tuning a model to use within your RAG system could help. But that's a second step. Start with RAG. Get it working. Then instrument to see where it's failing. Then optimise based on real data about where it breaks.</p>
-<h2>The build, buy, or use-an-API decision</h2>
+<h2 id="the-build-buy-or-use-an-api-decision">The build, buy, or use-an-API decision</h2>
 <p>You can build your own RAG system using open-source components. You can buy a commercial RAG platform. You can use API-based RAG from an LLM provider.</p>
 <p>Building means you own everything and can customise everything. It also means you're responsible for everything - security, availability, monitoring. You need ML and engineering expertise in house.</p>
 <p>Buying a platform means someone else handles the infrastructure. But you're paying per query or per month, and you're locked into their choices about retrieval algorithms and embedding models.</p>
 <p>Using an API (like file upload features from OpenAI or Anthropic) is easy to start with but can get expensive and gives you less control.</p>
 <p>For most businesses: buy or use an API first. Once you understand your requirements better, then consider building something custom. Don't build the infrastructure before you understand the problem.</p>
-<h2>Where most businesses get it wrong</h2>
+<h2 id="where-most-businesses-get-it-wrong">Where most businesses get it wrong</h2>
 <p>Mistake one: trying to do everything with fine-tuning instead of retrieval. People have 200 documents and think the solution is to fine-tune a model on them. That won't work well. Fine-tuning teaches the model about those documents in aggregate, not what's in them.</p>
 <p>Mistake two: building before understanding the problem. Teams build elaborate RAG systems with custom retrieval logic and complex architectures before they've validated that RAG is even the right solution. Start simple. Retrieve with vector search, generate with an API, iterate from there.</p>
 <p>Mistake three: assuming quality data. Your RAG system is only as good as your documents. If they're outdated, poorly structured, or low quality, RAG won't fix that. Audit your data first.</p>

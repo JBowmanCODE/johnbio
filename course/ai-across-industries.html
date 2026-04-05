@@ -151,10 +151,8 @@
 <span>AI Across Industries</span>
 </nav>
 <!-- Unit badge + title -->
-
-<h1 class="na-title">AI Across Industries: Healthcare, Marketing, Finance and Beyond</h1>
+<h1 class="na-title">AI Across Industries: Healthcare, Marketing, Finance and Beyond</h1><div class="na-lede-row"><p class="na-lede">AI isn't an industry. It's a toolkit. Different industries use it differently because they have different constraints and different kinds of problems to solve.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/ai-across-industries.webp"/></div></div>
 <!-- Meta row -->
-
 <!-- Audio player -->
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
@@ -167,7 +165,7 @@
 <span class="na-date">5 April 2026</span>
 <span class="na-read">10 min read</span>
 </div>
-</div><div aria-label="Listen to this lesson" class="na-audio">
+</div><details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#healthcare-where-ai-is-applied">Healthcare: where AI is applied</a></li><li><a href="#marketing-ai-in-personalisation-and-content">Marketing: AI in personalisation and content</a></li><li><a href="#finance-fraud-risk-and-trading">Finance: fraud, risk and trading</a></li><li><a href="#manufacturing-and-operations">Manufacturing and operations</a></li><li><a href="#which-industry-is-furthest-ahead">Which industry is furthest ahead</a></li></ol></details><div aria-label="Listen to this lesson" class="na-audio">
 <span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
 <div class="na-audio-info">
 <div class="na-audio-top">
@@ -207,7 +205,7 @@
 <div class="na-body">
 <p>AI isn't an industry. It's a toolkit. Different industries use it differently because they have different constraints and different kinds of problems to solve.</p>
 <p>Understanding how AI actually gets deployed in real industries helps you see the gap between "what's theoretically possible" and "what actually works."</p>
-<h2>Healthcare: where AI is applied</h2>
+<h2 id="healthcare-where-ai-is-applied">Healthcare: where AI is applied</h2>
 <p>Healthcare has been an AI proving ground for years. The applications are real but more limited than the headlines suggest.</p>
 <p><strong>Diagnostics.</strong> AI systems trained to detect diseases from medical images - chest X-rays, mammograms, retinal scans. Some perform as well as radiologists. This matters because radiologists are expensive and in short supply. But these systems don't replace radiologists - they assist them. A radiologist uses the AI prediction as a second opinion.</p>
 <p>This works because diagnosis from images is a bounded problem. Clear data (images), clear labels (disease vs no disease), clear metric (accuracy). You can build, test, and validate the system.</p>
@@ -215,21 +213,21 @@
 <p><strong>Risk stratification.</strong> Predicting which patients will develop certain conditions or need hospitalisation. Statistical prediction, similar to other industries. Works when you have good historical data and the future resembles the past.</p>
 <p>What's not happening at scale: AI replacing doctors. Diagnosis is harder than image classification. Medicine requires reasoning about complex patient histories, trade-offs, and context. AI is better as a tool that assists clinicians.</p>
 <p>Healthcare AI's success is limited by data access and regulation. Medical records are private, fragmented, and hard to access. Getting FDA approval or equivalent for a diagnostic system is a completely different challenge from building a model that works in a notebook.</p>
-<h2>Marketing: AI in personalisation and content</h2>
+<h2 id="marketing-ai-in-personalisation-and-content">Marketing: AI in personalisation and content</h2>
 <p>Marketing has more AI deployment than most people realise.</p>
 <p><strong>Personalisation.</strong> The classic application. Collect data about what a customer likes, show them products they're likely to buy. Netflix recommending shows, Amazon recommending products - this is AI. It works because the goal is clear (maximise engagement or sales), you have lots of data (clicks, purchases), and you can A/B test to verify it's actually working.</p>
 <p><strong>Content generation.</strong> Using language models to generate ad copy, email subject lines, social media posts. It reduces labour - instead of hiring a copywriter for every variation, you use an LLM and edit the output. Quality is uneven but it's fast.</p>
 <p><strong>Attribution modelling.</strong> Figuring out which marketing touchpoint deserves credit for a conversion. Did the customer convert because of that email, that ad, or that search? AI doesn't solve this perfectly, but it's better than hand-waving.</p>
 <p>What works: AI at the edges, helping humans decide. What doesn't work: fully automated systems nobody reviews. If your AI is running campaigns unsupervised, mistakes compound.</p>
-<h2>Finance: fraud, risk and trading</h2>
+<h2 id="finance-fraud-risk-and-trading">Finance: fraud, risk and trading</h2>
 <p><strong>Fraud detection.</strong> Works well. Clear transaction data, clear labels (fraud vs legitimate), clear metric (catch fraud without rejecting legitimate transactions). Banks have been building these for years.</p>
 <p><strong>Credit risk.</strong> Predicting whether a loan applicant will default. Classic statistical prediction. Lenders use AI to decide who gets loans and on what terms. It works when your data is good and historical default rates are predictive of the future. A caveat: if your training data reflects historical discrimination, the model will amplify it. Credit models need careful auditing.</p>
 <p><strong>Trading.</strong> More scepticism warranted here. Some AI trading systems do work. But for every successful one, others fail spectacularly. Markets adapt - if an AI system makes money exploiting a pattern, other traders notice and the pattern disappears. A human trader plus an AI system probably makes better decisions than pure AI trading with no judgment.</p>
-<h2>Manufacturing and operations</h2>
+<h2 id="manufacturing-and-operations">Manufacturing and operations</h2>
 <p><strong>Predictive maintenance.</strong> Use sensor data to predict when equipment will fail. Deploy maintenance before failure. This saves money by avoiding emergency repairs and downtime. Works when you have good sensor data and enough failure history to learn from.</p>
 <p><strong>Quality control.</strong> Computer vision to inspect products and catch defects. Better than humans for consistency. Deployed in factories.</p>
 <p><strong>Supply chain optimisation.</strong> Predict demand and optimise inventory and logistics. Complex - many variables and long delays between decisions and feedback. When it works, the savings are large.</p>
-<h2>Which industry is furthest ahead</h2>
+<h2 id="which-industry-is-furthest-ahead">Which industry is furthest ahead</h2>
 <p>Finance is furthest ahead - not because they have the best AI, but because they have the most infrastructure, the most investment, and the most talent. Finance companies deploy AI systems across their operations. It's not flashy but it's systematic.</p>
 <p>Healthcare has impressive use cases but limited deployment. Stricter regulation, more fragmented data, sometimes less clear business case.</p>
 <p>Tech companies are furthest ahead if you count them as an industry. Google, Meta, Microsoft - they have the data, the expertise, the infrastructure. But they're not representative of most industries.</p>

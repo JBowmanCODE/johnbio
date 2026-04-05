@@ -151,10 +151,8 @@
 <span>Generative AI Models</span>
 </nav>
 <!-- Unit badge + title -->
-
-<h1 class="na-title">Generative AI Models: VAEs, GANs and Diffusion</h1>
+<h1 class="na-title">Generative AI Models: VAEs, GANs and Diffusion</h1><div class="na-lede-row"><p class="na-lede">Generative AI doesn't understand anything. It's learning patterns in data and playing them back in new combinations. Everything else is details about how to make that work.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/generative-ai-models.webp"/></div></div>
 <!-- Meta row -->
-
 <!-- Audio player -->
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
@@ -167,7 +165,7 @@
 <span class="na-date">5 April 2026</span>
 <span class="na-read">11 min read</span>
 </div>
-</div><div aria-label="Listen to this lesson" class="na-audio">
+</div><details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#what-generative-models-are-trying-to-do">What generative models are trying to do</a></li><li><a href="#variational-autoencoders-vaes">Variational Autoencoders (VAEs)</a></li><li><a href="#gans-the-generator-vs-discriminator-game">GANs: the generator vs discriminator game</a></li><li><a href="#diffusion-models-the-dominant-approach">Diffusion models: the dominant approach</a></li><li><a href="#why-diffusion-won">Why diffusion won</a></li></ol></details><div aria-label="Listen to this lesson" class="na-audio">
 <span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
 <div class="na-audio-info">
 <div class="na-audio-top">
@@ -207,26 +205,26 @@
 <div class="na-body">
 <p>Generative AI doesn't understand anything. It's learning patterns in data and playing them back in new combinations. Everything else is details about how to make that work.</p>
 <p>The actual problem is hard though. If you want a machine to create new images, music, or text that doesn't exist in your training data, you need a way to learn what makes those things valid - not memorise the training set.</p>
-<h2>What generative models are trying to do</h2>
+<h2 id="what-generative-models-are-trying-to-do">What generative models are trying to do</h2>
 <p>A generative model learns a probability distribution. It's learning P(x) - the probability of seeing something like x. Once it learns that distribution, you can sample from it to create new things.</p>
 <p>This matters because you can't just memorise. Your training set might have a million images, but the space of possible images is infinite. The model has to compress what it learns into something that can generate novel examples.</p>
-<h2>Variational Autoencoders (VAEs)</h2>
+<h2 id="variational-autoencoders-vaes">Variational Autoencoders (VAEs)</h2>
 <p>VAEs work in two pieces. The encoder compresses an image down to a small vector of numbers - a latent representation. The decoder reconstructs the image from that vector.</p>
 <p>The clever part is what happens in the middle. VAEs don't learn a fixed compression. They learn a distribution over possible latent codes. The encoder outputs a mean and variance, and you sample from that distribution. Then you decode the sample.</p>
 <p>This forces the model to learn a smooth latent space. Move slightly in that space, and the decoded image changes smoothly. You can interpolate between two images by interpolating in latent space.</p>
 <p>VAEs are mathematically elegant - you can write down and understand why they work. But the images they generate often look blurry. The model is averaging over possibilities rather than committing to sharp details.</p>
-<h2>GANs: the generator vs discriminator game</h2>
+<h2 id="gans-the-generator-vs-discriminator-game">GANs: the generator vs discriminator game</h2>
 <p>GANs are adversarial. Two networks fight each other. The generator creates fake images from random noise. The discriminator tries to tell which images are real and which are fake.</p>
 <p>If the discriminator gets too good, the generator has to make more convincing fakes. If the generator gets too good, the discriminator can't tell the difference. In theory they reach a Nash equilibrium where the generator produces indistinguishable samples.</p>
 <p>This was genuinely exciting when it came out. GANs could produce sharp, detailed images in ways VAEs couldn't. People built increasingly sophisticated GAN architectures and got impressive results.</p>
 <p>But GANs are hard to train. The adversarial dynamic is unstable. Mode collapse happens - the generator learns to produce a few variations really well instead of the full diversity of the training distribution. Training requires careful tuning, careful architecture choices, and often luck. Most practitioners working with images today aren't using GANs. The technology works but it's temperamental.</p>
-<h2>Diffusion models: the dominant approach</h2>
+<h2 id="diffusion-models-the-dominant-approach">Diffusion models: the dominant approach</h2>
 <p>Diffusion models solve image generation differently. They start with random noise and gradually denoise it over many steps.</p>
 <p>Take an image and add noise to it repeatedly until it's pure random noise - that's the forward process. Then train a model to reverse it: to predict what the image was before the last noise was added.</p>
 <p>If you can predict denoising at every step, you can start from pure noise and iteratively denoise. Each step removes a little noise until you have a generated image.</p>
 <p>This is simple. Elegantly simple. The training objective is clear - predict the noise that was added. It's not adversarial, so there's no mode collapse. You get as much diversity as your training data had.</p>
 <p>The trade-off is speed. Sampling requires many steps - maybe 50 to 1,000 denoising steps, versus one forward pass for a VAE or GAN. But over the last few years, researchers have developed better sampling algorithms that dramatically reduced the number of steps needed without losing quality.</p>
-<h2>Why diffusion won</h2>
+<h2 id="why-diffusion-won">Why diffusion won</h2>
 <p>Diffusion models became dominant for a simple reason: they work reliably and they scale. They're stable to train. Mode collapse isn't a problem. You get good diversity. The maths is clean.</p>
 <p>GANs can generate quickly, which matters in some applications. VAEs are mathematically elegant and have a clean probabilistic interpretation. But if you're building an image generation system today, you're probably starting with diffusion.</p>
 <p>If you're learning generative models to understand what's happening under the hood, VAEs are worth understanding - the latent space interpretation is genuinely useful. GANs are interesting historically; they opened up adversarial training as a concept that matters beyond just image generation. But diffusion is what's shipping and what's driving progress.</p>
