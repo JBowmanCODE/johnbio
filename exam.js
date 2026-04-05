@@ -48,6 +48,7 @@ function calcGrade(score) {
 function showIntro() {
   inner.innerHTML = `
     <div class="ex-intro">
+      <img src="/images/course/ai-exam.webp" alt="AI &amp; Machine Learning Course Final Exam" class="ex-intro-img" loading="lazy">
       <div class="ex-intro-icon"><span class="material-symbols-outlined">quiz</span></div>
       <h1 class="ex-title">Final Exam</h1>
       <p class="ex-sub">30 randomly selected questions from a bank of 60. Every attempt is different. You need 26/30 (85%) to pass.</p>
