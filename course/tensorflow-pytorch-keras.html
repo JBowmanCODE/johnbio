@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TensorFlow, PyTorch and Keras Explained - JohnB.io</title>
+  <meta name="description" content="TensorFlow, PyTorch and Keras compared for beginners. Learn which deep learning library to start with, how Keras fits into TensorFlow, and why PyTorch is winning with researchers.">
+  <meta name="keywords" content="TensorFlow vs PyTorch, Keras tutorial, deep learning library, PyTorch beginner, TensorFlow Keras, which library to learn first">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="John Bowman">
+  <link rel="canonical" href="https://johnb.io/course/tensorflow-pytorch-keras">
+  <meta property="og:title" content="TensorFlow, PyTorch and Keras: Which Deep Learning Library to Learn">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://johnb.io/course/tensorflow-pytorch-keras">
+  <meta property="og:description" content="TensorFlow, PyTorch and Keras compared for beginners. Learn which deep learning library to start with, how Keras fits into TensorFlow, and why PyTorch is winning.">
+  <meta property="og:image" content="https://johnb.io/images/course/tensorflow-pytorch-keras.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="TensorFlow, PyTorch and Keras lesson cover - JohnB.io AI Course">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TensorFlow, PyTorch and Keras: Which Deep Learning Library to Learn">
+  <meta name="twitter:description" content="TensorFlow, PyTorch and Keras compared for beginners. Learn which library to start with and why PyTorch is winning with researchers.">
+  <meta name="twitter:image" content="https://johnb.io/images/course/tensorflow-pytorch-keras.webp">
+  <meta name="twitter:image:alt" content="TensorFlow, PyTorch and Keras lesson cover - JohnB.io AI Course">
+  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
+  <meta property="article:author" content="John Bowman">
+  <meta property="article:section" content="AI Course">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J6PBWMRNY');</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/header.css">
+  <link rel="stylesheet" href="/footer.css">
+  <link rel="stylesheet" href="/news.css?v=3">
+  <link rel="stylesheet" href="/lesson.css">
+  <style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "TensorFlow, PyTorch and Keras: Which Deep Learning Library Should You Learn?",
+    "description": "TensorFlow, PyTorch and Keras compared for beginners. Learn which deep learning library to start with, how Keras fits into TensorFlow, and why PyTorch is winning.",
+    "url": "https://johnb.io/course/tensorflow-pytorch-keras",
+    "image": "https://johnb.io/images/course/tensorflow-pytorch-keras.webp",
+    "datePublished": "2026-04-05T00:00:00+00:00",
+    "dateModified": "2026-04-05T00:00:00+00:00",
+    "author": {"@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/"},
+    "publisher": {"@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io"},
+    "keywords": "TensorFlow, PyTorch, Keras, deep learning library, neural networks",
+    "articleSection": "AI Course"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between TensorFlow, PyTorch and Keras?",
+        "acceptedAnswer": {"@type": "Answer", "text": "TensorFlow is a deep learning framework built by Google, released in 2015. PyTorch is a competing framework built by Meta, released in 2016. Keras is not a separate library - it is the official high-level API for TensorFlow, integrated in 2019. So the real choice is between TensorFlow (using Keras as the interface) and PyTorch."}
+      },
+      {
+        "@type": "Question",
+        "name": "Should I learn PyTorch or TensorFlow first?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Learn PyTorch first. It teaches the actual mechanics better because you write more explicitly - including your own training loops. PyTorch's eager execution is easier to debug. The job market increasingly asks for PyTorch. Once you know PyTorch, TensorFlow is straightforward to pick up."}
+      },
+      {
+        "@type": "Question",
+        "name": "What is Keras and is it still worth learning?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Keras is the high-level API that ships with TensorFlow. It lets you define models with simple commands like model.add() and model.fit(). It is still widely used, especially for teaching and for standard tasks like image classification. Most beginners who use TensorFlow are actually using Keras without realising it."}
+      },
+      {
+        "@type": "Question",
+        "name": "Why has PyTorch become more popular than TensorFlow?",
+        "acceptedAnswer": {"@type": "Answer", "text": "PyTorch is more intuitive for people who think like programmers. It uses eager execution by default, meaning operations run immediately and you can print intermediate values. Research papers now cite PyTorch more than TensorFlow. As researchers build in PyTorch, production teams follow because it simplifies the research-to-deployment pipeline."}
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://johnb.io"},
+      {"@type": "ListItem", "position": 2, "name": "AI Course", "item": "https://johnb.io/course-dashboard"},
+      {"@type": "ListItem", "position": 3, "name": "TensorFlow, PyTorch and Keras", "item": "https://johnb.io/course/tensorflow-pytorch-keras"}
+    ]
+  }
+  </script>
+</head>
+<body class="lp-page">
+  <div id="header-placeholder"></div>
+  <div class="lp-ambient"></div>
+
+  <main class="na-wrap">
+  <div class="na-layout">
+  <div class="na-content">
+
+    <nav class="na-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+      <a href="/course-dashboard">AI Course</a>
+      <span class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+      <span class="na-bc-current">TensorFlow, PyTorch and Keras</span>
+    </nav>
+
+    <article>
+      <header class="na-header">
+        <h1 class="na-title">TensorFlow, PyTorch and Keras: Which Deep Learning Library Should You Learn?</h1>
+        <div class="na-lede-row">
+          <p class="na-lede">These three libraries don't compete equally. Keras isn't even a separate choice anymore - it's part of TensorFlow. And PyTorch is winning with researchers. But which one should you actually learn first? That's where it gets interesting.</p>
+          <div class="na-lede-img">
+            <img src="/images/course/tensorflow-pytorch-keras.webp" alt="TensorFlow, PyTorch and Keras - deep learning library comparison" loading="lazy">
+          </div>
+        </div>
+        <div class="na-author">
+          <a href="/about" aria-label="About John Bowman"><img src="/images/JohnB.webp" alt="John Bowman" class="na-author-img"></a>
+          <div class="na-author-details">
+            <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a>
+            <span class="na-author-role">Owner / AI Developer</span>
+          </div>
+          <div class="na-header-meta">
+            <span class="lp-unit-badge lp-unit-6">Unit 6</span>
+            <span class="na-date">5 April 2026</span>
+            <span class="na-read">7 min read</span>
+          </div>
+        </div>
+      </header>
+
+      <details class="na-mobile-toc">
+        <summary class="na-mobile-toc-trigger">
+          <span class="material-symbols-outlined">menu_book</span>
+          In this lesson
+          <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span>
+        </summary>
+        <ol class="na-mobile-toc-list">
+          <li><a href="#what-each-is">What each library is and who made it</a></li>
+          <li><a href="#keras-tensorflow">How Keras relates to TensorFlow</a></li>
+          <li><a href="#practical-differences">Practical differences for a beginner</a></li>
+          <li><a href="#landscape-shift">How the landscape has shifted</a></li>
+          <li><a href="#which-first">Which one to learn first</a></li>
+        </ol>
+      </details>
+
+      <hr class="na-divider">
+
+      <div class="na-audio" aria-label="Listen to this lesson">
+        <span class="na-audio-icon material-symbols-outlined" aria-hidden="true">headphones</span>
+        <div class="na-audio-info">
+          <div class="na-audio-top">
+            <span class="na-audio-label">Listen to this lesson</span>
+            <div class="na-volume">
+              <button class="na-mute-btn" id="na-mute-btn" aria-label="Mute"><span class="material-symbols-outlined">volume_up</span></button>
+              <input class="na-volume-slider" id="na-volume-slider" type="range" min="0" max="1" step="0.02" value="1" aria-label="Volume">
+            </div>
+          </div>
+          <audio id="na-player" preload="none"></audio>
+          <div class="na-audio-controls">
+            <button class="na-skip-btn" id="na-skip-back" aria-label="Skip back 10 seconds"><span class="material-symbols-outlined">replay_10</span></button>
+            <button class="na-audio-btn" id="na-play-btn" aria-label="Play lesson audio"><span class="material-symbols-outlined">play_arrow</span></button>
+            <button class="na-skip-btn" id="na-skip-fwd" aria-label="Skip forward 10 seconds"><span class="material-symbols-outlined">forward_10</span></button>
+            <div class="na-speed-btns" role="group" aria-label="Playback speed">
+              <button class="na-speed-btn active" data-speed="1">1x</button>
+              <button class="na-speed-btn" data-speed="1.5">1.5x</button>
+              <button class="na-speed-btn" data-speed="2">2x</button>
+            </div>
+            <canvas id="na-waveform" class="na-waveform" width="200" height="52" aria-hidden="true"></canvas>
+          </div>
+          <div class="na-audio-progress-wrap">
+            <span class="na-audio-time" id="na-current-time">0:00</span>
+            <div class="na-progress" id="na-progress" role="slider" aria-label="Audio progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="na-progress-fill" id="na-progress-fill"></div>
+              <div class="na-progress-thumb" id="na-progress-thumb"></div>
+            </div>
+            <span class="na-audio-time na-audio-duration" id="na-duration">0:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="na-body">
+
+        <p>Most deep learning courses list TensorFlow, PyTorch and Keras as if they're three separate options you need to pick between. That's not quite right. Understanding what each one actually is makes the choice much clearer.</p>
+
+        <h2 id="what-each-is">What Each Library Is and Who Made It</h2>
+
+        <p><strong>TensorFlow</strong> was built by Google and released in 2015. It's a framework for building and training neural networks. It handles the maths operations - matrix multiplication, <a href="/course/activation-functions-vanishing-gradient">backpropagation</a> and so on - efficiently, runs on CPUs or GPUs, and lets you define networks in Python.</p>
+
+        <p><strong>PyTorch</strong> was built by Meta (formerly Facebook) and released in 2016. It does the same job as TensorFlow but with a different philosophy. It's more Pythonic, more dynamic, and generally feels less clunky if you know Python.</p>
+
+        <p><strong>Keras</strong> was originally a separate library by François Chollet, built on top of TensorFlow. In 2019, Google integrated it into TensorFlow as the official high-level API. Now Keras is just "how you use TensorFlow nicely" rather than a separate library.</p>
+
+        <p>So really, you're choosing between TensorFlow (with Keras as the interface) and PyTorch.</p>
+
+        <h2 id="keras-tensorflow">How Keras Relates to TensorFlow</h2>
+
+        <p>Keras is the simple, friendly way to use TensorFlow. You write code like <code>model.add(Dense(128))</code> and <code>model.compile(optimizer='adam', loss='categorical_crossentropy')</code> and it handles the complexity underneath.</p>
+
+        <p>TensorFlow is the full framework. If you need more control, you can drop down and write custom operations, manage computational graphs directly, and do things Keras doesn't expose. Most beginners will never need that lower level.</p>
+
+        <p>So when you hear "learn TensorFlow," it mostly means "learn the Keras API that ships with TensorFlow."</p>
+
+        <h2 id="practical-differences">The Practical Differences for a Beginner</h2>
+
+        <p>PyTorch feels more like writing Python. Operations happen immediately - eager execution by default. If you write <code>x = some_tensor * 2</code>, you get a result right then. This is good for debugging because you can print intermediate values and see what's happening at each step.</p>
+
+        <p>TensorFlow with Keras is simpler for standard tasks. You define a model, compile it, and fit it to data. There's more abstraction, which means less control but also less boilerplate. For image classification or basic text tasks, Keras is faster to get working.</p>
+
+        <p>PyTorch requires more explicit thinking. You often write training loops by hand - more verbose, but it gives you more control and teaches you what's actually happening.</p>
+
+        <p>For a beginner trying to classify handwritten digits or build a basic image classifier, Keras is fine. You'll learn the core concepts faster because there's less scaffolding to write. If you want to understand what's happening at every step, PyTorch's explicit loops will teach you more.</p>
+
+        <h2 id="landscape-shift">How the Landscape Has Shifted</h2>
+
+        <p>Five years ago, TensorFlow dominated. Every serious ML job used it. Every course taught it.</p>
+
+        <p>Now PyTorch dominates in research and increasingly in production at major companies. Researchers prefer PyTorch because it's easier to prototype with. Production teams increasingly follow because, if all your researchers are building in PyTorch, it makes sense to keep that consistent.</p>
+
+        <p>TensorFlow is still widely used - it hasn't disappeared - but it's lost the assumed dominance. Last I checked, new research papers were more likely to use PyTorch than TensorFlow. This shift happened because PyTorch is genuinely nicer to use. It's not that TensorFlow is bad; PyTorch is just more intuitive for people who think like programmers rather than dataflow engineers.</p>
+
+        <h2 id="which-first">Which One to Learn First and Why</h2>
+
+        <p>Learn PyTorch.</p>
+
+        <p>PyTorch teaches you the actual mechanics better because you have to write more explicitly. You'll understand <a href="/course/activation-functions-vanishing-gradient">backpropagation</a> better if you write your own training loop instead of calling <code>model.fit()</code>. You'll understand gradients better if you compute them yourself.</p>
+
+        <p>The job market increasingly asks for PyTorch. If you learn PyTorch first, picking up TensorFlow later is just "oh, this does the same thing with more abstraction." The reverse is harder - if you've only used Keras, PyTorch's approach feels more unfamiliar.</p>
+
+        <p>PyTorch's eager execution is also better for debugging while learning. You'll get less confused by mysterious behaviour you can't inspect.</p>
+
+        <p>The downside: PyTorch is slightly more verbose. You'll write more code to accomplish the same thing. But that's actually good for learning - it forces you to think about what each step is doing.</p>
+
+        <p>If you're in a job that requires TensorFlow, or want to learn Keras's high-level API first and worry about backpropagation later, that's a valid choice. But starting from scratch and wanting to actually understand what's happening? PyTorch first, TensorFlow second.</p>
+
+        <!-- Quiz -->
+        <div class="lp-quiz" aria-label="Lesson quiz">
+          <div class="lp-quiz-header">
+            <div class="lp-quiz-icon"><span class="material-symbols-outlined" aria-hidden="true">quiz</span></div>
+            <div>
+              <p class="lp-quiz-title">Check your understanding</p>
+              <p class="lp-quiz-sub">2 questions — select an answer then check it</p>
+            </div>
+          </div>
+
+          <div class="lp-quiz-q" id="q1">
+            <p class="lp-quiz-q-num">Question 1 of 2</p>
+            <p class="lp-quiz-q-text">What happened to Keras in 2019 that changed how it relates to TensorFlow?</p>
+            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
+              <button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>Google bought Keras and shut it down as a standalone library</button>
+              <button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>Google integrated Keras into TensorFlow as its official high-level API</button>
+              <button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>Keras was rewritten from scratch to compete with PyTorch</button>
+              <button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>Keras moved to Meta and became part of PyTorch</button>
+            </div>
+            <button class="lp-quiz-check" data-q="1" data-answer="B" disabled>Check answer</button>
+            <p class="lp-quiz-feedback" id="q1-fb"></p>
+          </div>
+
+          <div class="lp-quiz-q" id="q2">
+            <p class="lp-quiz-q-num">Question 2 of 2</p>
+            <p class="lp-quiz-q-text">Why does the lesson recommend learning PyTorch before TensorFlow?</p>
+            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
+              <button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>PyTorch has more users worldwide and better documentation</button>
+              <button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>PyTorch requires writing more explicitly, which teaches the actual mechanics better</button>
+              <button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>TensorFlow is too complex for beginners to understand</button>
+              <button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>PyTorch is free while TensorFlow requires a paid licence</button>
+            </div>
+            <button class="lp-quiz-check" data-q="2" data-answer="B" disabled>Check answer</button>
+            <p class="lp-quiz-feedback" id="q2-fb"></p>
+          </div>
+        </div>
+
+      </div><!-- /na-body -->
+
+      <!-- Deep Dive Podcast -->
+      <div class="na-podcast" role="region" aria-label="Deep Dive Podcast">
+        <div class="na-podcast-badge"><span class="material-symbols-outlined" aria-hidden="true">podcasts</span>Deep Dive Podcast</div>
+        <div class="na-podcast-inner">
+          <div class="na-podcast-left">
+            <div class="na-podcast-icon" aria-hidden="true"><span class="material-symbols-outlined">graphic_eq</span></div>
+            <div class="na-podcast-meta">
+              <p class="na-podcast-title">TensorFlow, PyTorch and Keras</p>
+              <p class="na-podcast-sub">Created with <a href="https://notebooklm.google.com/" target="_blank" rel="noopener" class="na-podcast-notebooklm"><strong>Google NotebookLM</strong></a> &middot; AI-generated audio overview</p>
+            </div>
+          </div>
+          <audio id="na-podcast-audio" preload="none" aria-label="Deep Dive Podcast audio"></audio>
+          <div class="na-podcast-controls">
+            <div class="na-podcast-progress-wrap" role="group" aria-label="Playback progress">
+              <span class="na-podcast-time" id="na-pod-current">0:00</span>
+              <input type="range" class="na-podcast-progress" id="na-pod-progress" value="0" min="0" step="0.1" aria-label="Seek">
+              <span class="na-podcast-time" id="na-pod-duration">0:00</span>
+            </div>
+            <div class="na-podcast-btns">
+              <button class="na-pod-btn na-pod-btn--skip" id="na-pod-back" aria-label="Skip back 15 seconds"><span class="material-symbols-outlined">replay</span><span class="na-pod-skip-label">15s</span></button>
+              <button class="na-pod-btn na-pod-btn--play" id="na-pod-play" aria-label="Play podcast"><span class="material-symbols-outlined" id="na-pod-play-icon">play_arrow</span></button>
+              <button class="na-pod-btn na-pod-btn--skip" id="na-pod-fwd" aria-label="Skip forward 15 seconds"><span class="material-symbols-outlined">forward</span><span class="na-pod-skip-label">15s</span></button>
+              <div class="na-pod-volume">
+                <button class="na-pod-btn na-pod-mute" id="na-pod-mute" aria-label="Mute"><span class="material-symbols-outlined" id="na-pod-mute-icon">volume_up</span></button>
+                <input type="range" class="na-pod-vol-slider" id="na-pod-vol" min="0" max="1" step="0.05" value="1" aria-label="Volume">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordions -->
+      <details class="tool-accordion" open>
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Frequently Asked Questions</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <h3>What is the difference between TensorFlow, PyTorch and Keras?</h3>
+          <p>TensorFlow is a deep learning framework built by Google, released in 2015. PyTorch is a competing framework built by Meta, released in 2016. Keras is not a separate library - it is the official high-level API for TensorFlow, integrated in 2019. So the real choice is between TensorFlow (using Keras as the interface) and PyTorch.</p>
+          <h3>Should I learn PyTorch or TensorFlow first?</h3>
+          <p>Learn PyTorch first. It teaches the actual mechanics better because you write more explicitly - including your own training loops. PyTorch's eager execution is easier to debug. The job market increasingly asks for PyTorch. Once you know PyTorch, TensorFlow is straightforward to pick up.</p>
+          <h3>What is Keras and is it still worth learning?</h3>
+          <p>Keras is the high-level API that ships with TensorFlow. It lets you define models with simple commands like model.add() and model.fit(). It is still widely used, especially for teaching and for standard tasks like image classification. Most beginners who use TensorFlow are actually using Keras without realising it.</p>
+          <h3>Why has PyTorch become more popular than TensorFlow?</h3>
+          <p>PyTorch is more intuitive for people who think like programmers. It uses eager execution by default, meaning operations run immediately and you can print intermediate values. Research papers now cite PyTorch more than TensorFlow. As researchers build in PyTorch, production teams follow because it simplifies the research-to-deployment pipeline.</p>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">How It Works</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <p>Both TensorFlow and PyTorch work by defining tensors (multi-dimensional arrays) and operations on them. When you build a neural network, you're defining a sequence of mathematical operations that transform inputs into outputs. Both libraries track these operations so they can compute gradients automatically - this is called automatic differentiation or autograd.</p>
+          <p>TensorFlow originally used a static computation graph: you defined the graph first, then ran data through it. PyTorch uses dynamic graphs (eager execution) by default - the graph is built as operations execute. This makes PyTorch easier to debug and experiment with.</p>
+          <p>Keras adds a layer of abstraction. Instead of defining individual operations, you stack pre-built layers. A Dense layer, a Conv2D layer, a pooling layer - each is a reusable component. Keras handles the wiring between them and provides sensible defaults so you can get a working model quickly without writing every detail yourself.</p>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Key Points</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ul>
+            <li>Keras is not a standalone library - since 2019 it is TensorFlow's official high-level API</li>
+            <li>The real choice is between TensorFlow (with Keras) and PyTorch - both are mature, production-ready frameworks</li>
+            <li>PyTorch now dominates research; new papers are more likely to use PyTorch than TensorFlow</li>
+            <li>PyTorch uses eager execution by default, making it easier to debug intermediate values</li>
+            <li>Keras is faster to get working for standard tasks - define, compile, fit - but hides what's happening underneath</li>
+            <li>Learning PyTorch first gives you a stronger foundation; picking up TensorFlow afterwards is easier than the reverse</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="tool-accordion">
+        <summary class="tool-accordion-summary">
+          <span class="tool-accordion-title">Sources</span>
+          <span class="tool-accordion-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="tool-accordion-body">
+          <ul>
+            <li><a href="https://www.tensorflow.org/" target="_blank" rel="noopener">TensorFlow official documentation</a> - Google's deep learning framework</li>
+            <li><a href="https://pytorch.org/" target="_blank" rel="noopener">PyTorch official documentation</a> - Meta's deep learning framework</li>
+            <li><a href="https://keras.io/" target="_blank" rel="noopener">Keras official documentation</a> - TensorFlow's high-level API</li>
+            <li><a href="https://paperswithcode.com/trends" target="_blank" rel="noopener">Papers With Code - Framework Trends</a> - tracks which frameworks research papers use</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Lesson navigation -->
+      <nav class="lp-nav" aria-label="Lesson navigation">
+        <a class="lp-nav-btn" href="/course/activation-functions-vanishing-gradient">
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+          <div>
+            <span class="lp-nav-label">Previous lesson</span>
+            <span class="lp-nav-title">Activation Functions and the Vanishing Gradient</span>
+          </div>
+        </a>
+        <a class="lp-nav-btn next" href="/course/cnns-with-keras">
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          <div>
+            <span class="lp-nav-label">Next lesson</span>
+            <span class="lp-nav-title">CNNs with Keras</span>
+          </div>
+        </a>
+      </nav>
+
+    </article>
+  </div><!-- /na-content -->
+
+  <!-- Sidebar -->
+  <aside class="na-sidebar" aria-label="Lesson navigation sidebar">
+    <nav class="na-toc" aria-label="In this lesson">
+      <p class="na-toc-title">In this lesson</p>
+      <ol class="na-toc-list">
+        <li><a class="na-toc-link" href="#what-each-is">What each library is</a></li>
+        <li><a class="na-toc-link" href="#keras-tensorflow">How Keras relates to TensorFlow</a></li>
+        <li><a class="na-toc-link" href="#practical-differences">Practical differences for beginners</a></li>
+        <li><a class="na-toc-link" href="#landscape-shift">How the landscape has shifted</a></li>
+        <li><a class="na-toc-link" href="#which-first">Which one to learn first</a></li>
+      </ol>
+    </nav>
+    <div class="lp-sidebar-nav">
+      <p class="lp-sidebar-nav-title">Course navigation</p>
+      <a class="lp-sidebar-nav-link" href="/course-dashboard">
+        <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>My dashboard
+      </a>
+      <a class="lp-sidebar-nav-link" href="/course/cnns-with-keras">
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        <div><span class="lp-sidebar-nav-label">Next</span>CNNs with Keras</div>
+      </a>
+      <a class="lp-sidebar-nav-link" href="/exam">
+        <span class="material-symbols-outlined" aria-hidden="true">quiz</span>Final exam
+      </a>
+    </div>
+  </aside>
+
+  </div><!-- /na-layout -->
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js" defer></script>
+  <script src="/news-article.js" defer></script>
+  <script>
+  // Quiz interaction
+  document.querySelectorAll('.lp-quiz-option').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const q = this.dataset.q;
+      document.querySelectorAll(`.lp-quiz-option[data-q="${q}"]`).forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+      const checkBtn = document.querySelector(`.lp-quiz-check[data-q="${q}"]`);
+      if (checkBtn) checkBtn.disabled = false;
+    });
+  });
+  document.querySelectorAll('.lp-quiz-check').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const q = this.dataset.q;
+      const answer = this.dataset.answer;
+      const selected = document.querySelector(`.lp-quiz-option[data-q="${q}"].selected`);
+      if (!selected) return;
+      const fb = document.getElementById(`q${q}-fb`);
+      document.querySelectorAll(`.lp-quiz-option[data-q="${q}"]`).forEach(b => {
+        b.disabled = true;
+        if (b.dataset.v === answer) b.classList.add('correct');
+        else if (b.classList.contains('selected')) b.classList.add('wrong');
+      });
+      this.disabled = true;
+      if (selected.dataset.v === answer) {
+        fb.textContent = 'Correct!';
+        fb.className = 'lp-quiz-feedback correct';
+      } else {
+        fb.textContent = `Not quite - the correct answer is ${answer}.`;
+        fb.className = 'lp-quiz-feedback wrong';
+      }
+    });
+  });
+  </script>
+</body>
+</html>
