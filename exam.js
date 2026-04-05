@@ -220,7 +220,7 @@ function showResults(score, result) {
           <span class="material-symbols-outlined">workspace_premium</span>
           View certificate
         </a>` : ''}
-        <a href="/course-dashboard" class="ex-result-btn ex-btn-dash">
+        <a href="/course" class="ex-result-btn ex-btn-dash">
           <span class="material-symbols-outlined">dashboard</span>
           Dashboard
         </a>

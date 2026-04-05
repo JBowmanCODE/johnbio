@@ -255,5 +255,5 @@ function getRedirect() {
   const p = new URLSearchParams(location.search);
   const dest = p.get('redirect');
   if (dest && dest.startsWith('/')) return dest;
-  return '/course-dashboard';
+  return '/course';
 }

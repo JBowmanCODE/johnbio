@@ -53,7 +53,7 @@ function renderCertificate(name, result, dateStr) {
           <span class="material-symbols-outlined">print</span>
           Print / Save as PDF
         </button>
-        <a href="/course-dashboard" class="cert-btn cert-btn-dash">
+        <a href="/course" class="cert-btn cert-btn-dash">
           <span class="material-symbols-outlined">arrow_back</span>
           Dashboard
         </a>
