@@ -8,23 +8,24 @@
 <meta content="Backpropagation calculates the gradient for every weight in one backward pass. It's the chain rule applied repeatedly. Here's how errors flow backward and why it was a breakthrough." name="description"/>
 <meta content="backpropagation explained, how neural networks learn, chain rule machine learning, gradient computation, deep learning training" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/backpropagation" rel="canonical"/>
 <meta content="Backpropagation: How Neural Networks Learn" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/backpropagation" property="og:url"/>
 <meta content="Backpropagation calculates the gradient for every weight in one backward pass. It's the chain rule applied repeatedly. Here's how errors flow backward and why it was a breakthrough." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.jpg" property="og:image"/>
+<meta content="https://johnb.io/images/course/backpropagation.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Backpropagation: How Neural Networks Learn" property="og:image:alt"/>
+<meta content="Backpropagation: How Neural Networks Learn lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="John Bowman" property="article:author"/>
 <meta content="AI Course" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Backpropagation: How Neural Networks Learn" name="twitter:title"/>
 <meta content="Backpropagation calculates the gradient for every weight in one backward pass. It's the chain rule applied repeatedly. Here's how errors flow backward and why it was a breakthrough." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.jpg" name="twitter:image"/>
-<meta content="Backpropagation: How Neural Networks Learn" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/backpropagation.webp" name="twitter:image"/>
+<meta content="Backpropagation: How Neural Networks Learn lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -38,19 +39,22 @@
     "@type": "Article",
     "headline": "Backpropagation: How Neural Networks Learn",
     "description": "Backpropagation calculates the gradient for every weight in one backward pass. It's the chain rule applied repeatedly. Here's how errors flow backward and why it was a breakthrough.",
-    "image": "https://johnb.io/images/course-og.jpg",
+    "url": "https://johnb.io/course/backpropagation",
+    "image": "https://johnb.io/images/course/backpropagation.webp",
     "datePublished": "2026-04-05T00:00:00+00:00",
     "dateModified": "2026-04-05T00:00:00+00:00",
     "author": {
       "@type": "Person",
       "name": "John Bowman",
-      "url": "https://johnb.io"
+      "url": "https://www.linkedin.com/in/john-bowman/"
     },
     "publisher": {
       "@type": "Organization",
       "name": "JohnB.io",
       "url": "https://johnb.io"
-    }
+    },
+    "keywords": "backpropagation explained, how neural networks learn, chain rule machine learning, gradient computation, deep learning training",
+    "articleSection": "AI Course"
   }
   </script>
 <script type="application/ld+json">
@@ -148,7 +152,7 @@
 <article class="na-content" id="main-content">
 <div class="na-header">
 <h1 class="na-title">Backpropagation: How Neural Networks Actually Learn</h1>
-<div class="na-lede-row"><p class="na-lede">Forward propagation gets you a prediction. Backpropagation gets you from "that prediction was wrong" to "here's how to adjust every weight." It's the chain rule from calculus, applied over and over. Here's what's actually happening.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/backpropagation.webp"/></div></div>
+<div class="na-lede-row"><p class="na-lede">Forward propagation gets you a prediction. Backpropagation gets you from "that prediction was wrong" to "here's how to adjust every weight." It's the chain rule from calculus, applied over and over. Here's what's actually happening.</p><div class="na-lede-img"><img alt="Backpropagation algorithm - how neural networks learn from errors" loading="lazy" src="/images/course/backpropagation.webp"/></div></div>
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
@@ -197,7 +201,7 @@
 <div class="na-body">
 <section id="the-problem">
 <h2>The Problem Backpropagation Is Solving</h2>
-<p>After forward propagation, you have a prediction. Usually it's wrong. You measure how wrong using a loss function - a number representing how bad the mistake was.</p>
+<p>After <a href="/course/neural-networks-forward-propagation">forward propagation</a>, you have a prediction. Usually it's wrong. You measure how wrong using a <a href="https://en.wikipedia.org/wiki/Loss_function" rel="noopener" target="_blank">loss function</a> - a number representing how bad the mistake was.</p>
 <p>Now comes the hard part. You have thousands or millions of weights. Which ones caused the mistake? How much should you change each one? Moving weights in the wrong direction would make things worse.</p>
 <p>You could try random adjustments, but that's incredibly inefficient with millions of weights. You need to know: for each weight, if I increase it slightly, does the loss go up or down? By how much?</p>
 <p>Backpropagation solves this. It calculates the gradient - the direction and magnitude of change - for every single weight in the network, efficiently, in one pass backward through the network.</p>
@@ -205,7 +209,7 @@
 </section>
 <section id="chain-rule">
 <h2>The Chain Rule Without Heavy Calculus</h2>
-<p>Backpropagation is the chain rule from calculus, applied over and over.</p>
+<p>Backpropagation is the <a href="https://en.wikipedia.org/wiki/Backpropagation" rel="noopener" target="_blank">chain rule from calculus</a>, applied over and over.</p>
 <p>The chain rule says: if you have a function made up of functions stacked together, the rate of change of the output depends on the rate of change at each step, multiplied together.</p>
 <p>Simple case: the output of neuron C depends on the output of neuron B, which depends on the output of neuron A. How much does A affect C? Multiply (how much does B change when A changes) by (how much does C change when B changes). That product is your answer.</p>
 <p>In a neural network, you have hundreds of these chains. The loss depends on the output layer, which depends on the previous layer, which depends on the one before, all the way back to the inputs. Backpropagation computes all of these multiplications together, starting from the loss and working backward. At each step it asks: "How much should we blame this weight for the error?" That blame is the gradient.</p>
@@ -219,15 +223,15 @@
 <li>Compute the gradient of the loss with respect to the output layer weights - straightforward calculus, the output is right there</li>
 <li>Work backward: using the chain rule, compute how the loss changes with respect to the previous layer's weights</li>
 <li>Keep going backward, layer by layer</li>
-<li>Once you have gradients for every weight, update them: move each weight slightly in the direction opposite to its gradient (this decreases the loss)</li>
+<li>Once you have gradients for every weight, update them: move each weight slightly in the direction opposite to its gradient (this is <a href="/course/linear-regression-gradient-descent">gradient descent</a>)</li>
 </ol>
 <p>The beautiful part is that you can do this for the entire network in a single backward pass. The chain rule lets you reuse computations from each layer as you move backward, rather than computing each weight's gradient independently. This efficiency is why backpropagation works for networks with millions of weights.</p>
 </section>
 <section id="why-breakthrough">
 <h2>Why This Was a Breakthrough</h2>
-<p>Backpropagation was discovered before the 1980s, but only became widely used then. That's when people realised: with this, we can train networks with multiple hidden layers, and they work better than shallow ones.</p>
+<p>Backpropagation was discovered before the 1980s, but only became widely used then. That's when people realised: with this, we can train networks with multiple hidden layers using <a href="/course/activation-functions-vanishing-gradient">activation functions</a> like sigmoid, and they work better than shallow ones.</p>
 <p>Before it became standard, training deep networks meant guessing which weights to adjust and by how much. Results were poor. Backpropagation gave a systematic, efficient method to improve every weight in the right direction. Deep networks became trainable.</p>
-<p>In the 1980s and 1990s, this drove a period of excitement about neural networks. But computers weren't fast enough yet, and data was scarce. Deep learning went quiet again until GPUs made the computation feasible around 2012. Backpropagation plus GPUs plus large datasets: that combination is what made modern deep learning possible.</p>
+<p>In the 1980s and 1990s, this drove a period of excitement about neural networks. But computers weren't fast enough yet, and data was scarce. Deep learning went quiet again until GPUs made the computation feasible around 2012. Backpropagation plus <a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent" rel="noopener" target="_blank">stochastic gradient descent</a> plus large datasets: that combination is what made modern deep learning possible.</p>
 <p>Conceptually, what you need to understand: start from the loss. Move backward through the network. At each step, use the chain rule to figure out how much each weight is responsible for the error. Update weights to reduce that error. That's most of what you need to know to work with neural networks. The calculus gets involved when you implement it, but the concept is about blame and feedback.</p>
 </section>
 <div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What does backpropagation calculate?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>The prediction output of the neural network</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>The gradient for every weight in the network, showing which direction and by how much each weight should be adjusted to reduce the loss</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>The optimal learning rate for training</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>The number of hidden layers the network should have</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">What mathematical principle does backpropagation apply?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>The mean squared error formula</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>Bayesian probability theory</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>The chain rule from calculus, applied repeatedly across all network layers</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>Linear interpolation between training examples</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>

@@ -8,16 +8,17 @@
 <meta content="How VAEs, GANs and diffusion models generate new images and data, why diffusion became dominant, and what each approach is still good for. Unit 7, Lesson 1." name="description"/>
 <meta content="generative AI, VAE, GAN, diffusion models, image generation, variational autoencoder, deep learning" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/generative-ai-models" rel="canonical"/>
 <!-- Open Graph -->
 <meta content="Generative AI Models: VAEs, GANs and Diffusion Explained" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/generative-ai-models" property="og:url"/>
 <meta content="How VAEs, GANs and diffusion models generate new images and data, why diffusion became dominant, and what each approach is still good for." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="https://johnb.io/images/course/generative-ai-models.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Generative AI Models lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="Generative AI Models: VAEs, GANs and Diffusion Explained lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="https://johnb.io" property="article:author"/>
 <meta content="Generative AI &amp; Practical Applications" property="article:section"/>
@@ -25,8 +26,8 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Generative AI Models: VAEs, GANs and Diffusion Explained" name="twitter:title"/>
 <meta content="How VAEs, GANs and diffusion models generate new images and data, why diffusion became dominant, and what each approach is still good for." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
-<meta content="Generative AI Models lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/generative-ai-models.webp" name="twitter:image"/>
+<meta content="Generative AI Models: VAEs, GANs and Diffusion Explained lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <!-- Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
@@ -44,19 +45,22 @@
         "@type": "Article",
         "headline": "Generative AI Models: VAEs, GANs and Diffusion Explained",
         "description": "How VAEs, GANs and diffusion models generate new images and data, why diffusion became dominant, and what each approach is still good for.",
-        "image": "https://johnb.io/images/course-og.png",
+    "url": "https://johnb.io/course/generative-ai-models",
+        "image": "https://johnb.io/images/course/generative-ai-models.webp",
         "datePublished": "2026-04-05T00:00:00+00:00",
         "dateModified": "2026-04-05T00:00:00+00:00",
         "author": {
           "@type": "Person",
           "name": "John Bowman",
-          "url": "https://johnb.io"
-        },
-        "publisher": {
+          "url": "https://www.linkedin.com/in/john-bowman/"
+    },
+    "publisher": {
           "@type": "Organization",
           "name": "JohnB.io",
           "url": "https://johnb.io"
         },
+    "keywords": "generative AI, VAE, GAN, diffusion models, image generation, variational autoencoder, deep learning",
+    "articleSection": "AI Course",
         "mainEntityOfPage": "https://johnb.io/course/generative-ai-models"
       },
       {
@@ -132,7 +136,7 @@
 <link href="/styles.css" rel="stylesheet"/>
 <link href="/header.css" rel="stylesheet"/>
 <link href="/footer.css" rel="stylesheet"/>
-<link href="/news.css?v=3" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
 <link href="/lesson.css?v=4" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
@@ -151,7 +155,7 @@
 <span>Generative AI Models</span>
 </nav>
 <!-- Unit badge + title -->
-<h1 class="na-title">Generative AI Models: VAEs, GANs and Diffusion</h1><div class="na-lede-row"><p class="na-lede">Generative AI doesn't understand anything. It's learning patterns in data and playing them back in new combinations. Everything else is details about how to make that work.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/generative-ai-models.webp"/></div></div>
+<h1 class="na-title">Generative AI Models: VAEs, GANs and Diffusion</h1><div class="na-lede-row"><p class="na-lede">Generative AI doesn't understand anything. It's learning patterns in data and playing them back in new combinations. Everything else is details about how to make that work.</p><div class="na-lede-img"><img alt="Generative AI models - VAEs, GANs and diffusion models compared" loading="lazy" src="/images/course/generative-ai-models.webp"/></div></div>
 <!-- Meta row -->
 <!-- Audio player -->
 <div class="na-author">
@@ -209,17 +213,17 @@
 <p>A generative model learns a probability distribution. It's learning P(x) - the probability of seeing something like x. Once it learns that distribution, you can sample from it to create new things.</p>
 <p>This matters because you can't just memorise. Your training set might have a million images, but the space of possible images is infinite. The model has to compress what it learns into something that can generate novel examples.</p>
 <h2 id="variational-autoencoders-vaes">Variational Autoencoders (VAEs)</h2>
-<p>VAEs work in two pieces. The encoder compresses an image down to a small vector of numbers - a latent representation. The decoder reconstructs the image from that vector.</p>
+<p><a href="https://en.wikipedia.org/wiki/Variational_autoencoder" rel="noopener" target="_blank">VAEs</a> work in two pieces. The encoder compresses an image down to a small vector of numbers - a latent representation. The decoder reconstructs the image from that vector.</p>
 <p>The clever part is what happens in the middle. VAEs don't learn a fixed compression. They learn a distribution over possible latent codes. The encoder outputs a mean and variance, and you sample from that distribution. Then you decode the sample.</p>
 <p>This forces the model to learn a smooth latent space. Move slightly in that space, and the decoded image changes smoothly. You can interpolate between two images by interpolating in latent space.</p>
 <p>VAEs are mathematically elegant - you can write down and understand why they work. But the images they generate often look blurry. The model is averaging over possibilities rather than committing to sharp details.</p>
 <h2 id="gans-the-generator-vs-discriminator-game">GANs: the generator vs discriminator game</h2>
-<p>GANs are adversarial. Two networks fight each other. The generator creates fake images from random noise. The discriminator tries to tell which images are real and which are fake.</p>
+<p><a href="https://en.wikipedia.org/wiki/Generative_adversarial_network" rel="noopener" target="_blank">GANs</a> are adversarial. Two networks fight each other. The generator creates fake images from random noise. The discriminator tries to tell which images are real and which are fake.</p>
 <p>If the discriminator gets too good, the generator has to make more convincing fakes. If the generator gets too good, the discriminator can't tell the difference. In theory they reach a Nash equilibrium where the generator produces indistinguishable samples.</p>
 <p>This was genuinely exciting when it came out. GANs could produce sharp, detailed images in ways VAEs couldn't. People built increasingly sophisticated GAN architectures and got impressive results.</p>
 <p>But GANs are hard to train. The adversarial dynamic is unstable. Mode collapse happens - the generator learns to produce a few variations really well instead of the full diversity of the training distribution. Training requires careful tuning, careful architecture choices, and often luck. Most practitioners working with images today aren't using GANs. The technology works but it's temperamental.</p>
 <h2 id="diffusion-models-the-dominant-approach">Diffusion models: the dominant approach</h2>
-<p>Diffusion models solve image generation differently. They start with random noise and gradually denoise it over many steps.</p>
+<p><a href="https://en.wikipedia.org/wiki/Diffusion_model" rel="noopener" target="_blank">Diffusion models</a> solve image generation differently. They start with random noise and gradually denoise it over many steps.</p>
 <p>Take an image and add noise to it repeatedly until it's pure random noise - that's the forward process. Then train a model to reverse it: to predict what the image was before the last noise was added.</p>
 <p>If you can predict denoising at every step, you can start from pure noise and iteratively denoise. Each step removes a little noise until you have a generated image.</p>
 <p>This is simple. Elegantly simple. The training objective is clear - predict the noise that was added. It's not adversarial, so there's no mode collapse. You get as much diversity as your training data had.</p>
@@ -227,8 +231,8 @@
 <h2 id="why-diffusion-won">Why diffusion won</h2>
 <p>Diffusion models became dominant for a simple reason: they work reliably and they scale. They're stable to train. Mode collapse isn't a problem. You get good diversity. The maths is clean.</p>
 <p>GANs can generate quickly, which matters in some applications. VAEs are mathematically elegant and have a clean probabilistic interpretation. But if you're building an image generation system today, you're probably starting with diffusion.</p>
-<p>If you're learning generative models to understand what's happening under the hood, VAEs are worth understanding - the latent space interpretation is genuinely useful. GANs are interesting historically; they opened up adversarial training as a concept that matters beyond just image generation. But diffusion is what's shipping and what's driving progress.</p>
-<p>The interesting questions now aren't which model type is best. They're how to make diffusion faster and how to control what gets generated - prompting and conditioning. The foundation work is largely solved.</p>
+<p>If you're learning generative models to understand what's happening under the hood, VAEs are worth understanding - the latent space interpretation is genuinely useful. GANs are interesting historically; they opened up adversarial training as a concept that matters beyond just image generation. But diffusion is what's shipping and what's driving progress. For text generation, <a href="/course/rnns-transformers-autoencoders">transformer-based</a> models dominate - diffusion applies mainly to images, audio, and video.</p>
+<p>The interesting questions now aren't which model type is best. They're how to make diffusion faster and how to control what gets generated - <a href="/course/prompt-engineering-ai-agents">prompting</a> and conditioning. Techniques like <a href="/course/rag-finetuning-enterprise-ai">RAG and fine-tuning</a> build on top of these generative foundations. The foundation work is largely solved.</p>
 </div>
 <!-- Quiz -->
 <div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">Why do diffusion models produce sharper images than VAEs?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>They use larger training datasets by default</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>Their adversarial training forces the model to commit to sharper details</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>They predict noise removal step by step rather than averaging over all possibilities</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>They use convolutional layers that VAEs don't have</button></div><button class="lp-quiz-check" data-answer="C" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">What is the main reason GANs are less commonly used for image generation today?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>They can only generate greyscale images</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>They require large amounts of labelled training data</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>They're unstable to train and prone to mode collapse, producing limited diversity</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>They're too slow to generate images at inference time</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
