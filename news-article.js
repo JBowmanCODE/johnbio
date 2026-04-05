@@ -289,7 +289,7 @@
   // Build HTML
   let html = `
     <p class="lp-sidebar-nav-title">Course navigation</p>
-    <a class="lp-sidebar-nav-link" href="/course-dashboard">
+    <a class="lp-sidebar-nav-link" href="/course">
       <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>My dashboard
     </a>
     <hr class="lp-unit-sep">
@@ -369,7 +369,7 @@
       </div>
     </a>`;
   } else {
-    html += `<a class="lp-nav-btn" href="/course-dashboard">
+    html += `<a class="lp-nav-btn" href="/course">
       <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
       <div>
         <span class="lp-nav-label">Back to</span>

@@ -91,7 +91,7 @@ document.addEventListener('click', e => {
 function renderBreadcrumb() {
   const el = document.getElementById('clBreadcrumb');
   el.innerHTML = `
-    <a href="/course-dashboard">Dashboard</a>
+    <a href="/course">Dashboard</a>
     <span class="sep">/</span>
     <span>Unit ${unitId} — ${currentUnit.title}</span>
     <span class="sep">/</span>
