@@ -68,6 +68,40 @@
 .lp-sidebar-nav-link .material-symbols-outlined { font-size: 0.9rem; }
 .lp-sidebar-nav-label { font-size: 0.7rem; color: rgba(255,255,255,0.3); display: block; margin-bottom: 0.1rem; }
 
+/* ── Dynamic unit lesson list ── */
+.lp-unit-lessons { list-style: none; padding: 0; margin: 0.5rem 0 0.75rem; }
+.lp-unit-lessons li { border-bottom: 1px solid rgba(255,255,255,0.04); }
+.lp-unit-lessons li:last-child { border-bottom: none; }
+.lp-unit-lessons li a {
+  display: flex; align-items: baseline; gap: 0.4rem;
+  padding: 0.4rem 0.25rem;
+  font-size: 0.8rem; color: rgba(255,255,255,0.4);
+  text-decoration: none; transition: color 0.2s; line-height: 1.35;
+}
+.lp-unit-lessons li a:hover { color: #818cf8; }
+.lp-unit-lessons li.lp-lesson-current a {
+  color: rgba(255,255,255,0.9); font-weight: 600;
+}
+.lp-unit-lessons li.lp-lesson-current a::before {
+  content: ''; display: inline-block; flex-shrink: 0;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #6366f1; margin-top: 0.35em;
+}
+.lp-unit-sep {
+  border: none; border-top: 1px solid rgba(255,255,255,0.06);
+  margin: 0.75rem 0;
+}
+.lp-next-unit {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.45rem 0.5rem; border-radius: 8px;
+  font-size: 0.78rem; color: rgba(255,255,255,0.4);
+  text-decoration: none; border: 1px solid rgba(255,255,255,0.07);
+  transition: color 0.2s, border-color 0.2s; margin-top: 0.25rem;
+}
+.lp-next-unit:hover { color: #818cf8; border-color: rgba(99,102,241,0.35); }
+.lp-next-unit .material-symbols-outlined { font-size: 0.85rem; flex-shrink: 0; }
+.lp-next-unit-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.25); display: block; }
+
 /* ── Code blocks ── */
 .lp-page .na-body pre {
   background: rgba(0,0,0,0.4);
