@@ -262,30 +262,7 @@ df['age'].value_counts() # count at each age</code></pre>
 <p>Whether you're training with scikit-learn, TensorFlow, or PyTorch, you'll use both. They're not optional extras. They're part of the pipeline.</p>
 <p>The learning curve isn't steep. You need maybe 20 Pandas functions to be productive: <code>read_csv</code>, <code>head</code>, <code>info</code>, <code>describe</code>, boolean indexing, <code>groupby</code>, <code>agg</code>, <code>dropna</code>, <code>fillna</code>. Learn those and you can handle most data preparation tasks. You'll pick up others as you need them. The harder skill is learning to think systematically about what your data actually contains and what it means.</p>
 </section>
-<section class="lp-quiz-section" id="quiz">
-<h2>Lesson Quiz</h2>
-<p>Two questions to check your understanding before moving on.</p>
-<div class="lp-quiz" id="quiz-1">
-<p class="lp-quiz-q">Question 1: What is the key advantage of NumPy arrays over standard Python lists for machine learning?</p>
-<ul class="lp-quiz-options" role="list">
-<li><button class="lp-quiz-btn" data-index="0" type="button">They can store text, numbers, and images in the same structure</button></li>
-<li><button class="lp-quiz-btn" data-index="1" type="button">They are optimised for numerical operations and process entire arrays at once, making them far faster than looping through lists</button></li>
-<li><button class="lp-quiz-btn" data-index="2" type="button">They automatically detect and remove missing values</button></li>
-<li><button class="lp-quiz-btn" data-index="3" type="button">They have built-in data visualisation capabilities</button></li>
-</ul>
-<div aria-live="polite" class="lp-quiz-feedback"></div>
-</div>
-<div class="lp-quiz" id="quiz-2">
-<p class="lp-quiz-q">Question 2: What is a Pandas DataFrame?</p>
-<ul class="lp-quiz-options" role="list">
-<li><button class="lp-quiz-btn" data-index="0" type="button">A type of neural network layer used for tabular data</button></li>
-<li><button class="lp-quiz-btn" data-index="1" type="button">A database query language for filtering large datasets</button></li>
-<li><button class="lp-quiz-btn" data-index="2" type="button">A Python library for creating charts and visualisations</button></li>
-<li><button class="lp-quiz-btn" data-index="3" type="button">A table-like data structure with named columns and rows, similar to a spreadsheet</button></li>
-</ul>
-<div aria-live="polite" class="lp-quiz-feedback"></div>
-</div>
-</section>
+<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What is the key advantage of NumPy arrays over standard Python lists for machine learning?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>They can store text, numbers, and images in the same structure</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>They are optimised for numerical operations and process entire arrays at once, making them far faster than looping through lists</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>They automatically detect and remove missing values</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>They have built-in data visualisation capabilities</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">What is a Pandas DataFrame?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>A type of neural network layer used for tabular data</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>A database query language for filtering large datasets</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>A Python library for creating charts and visualisations</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>A table-like data structure with named columns and rows, similar to a spreadsheet</button></div><button class="lp-quiz-check" data-answer="D" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 </div>
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
 <div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>
@@ -419,39 +396,6 @@ df['age'].value_counts() # count at each age</code></pre>
       });
     });
   </script>
-<script>
-    (function() {
-      var quizzes = [
-        { correct: 1, explanation: "Correct. NumPy processes entire arrays at once (vectorisation) using compiled C code, rather than looping through items in Python. This makes it hundreds of times faster for large numerical datasets - which is why it's the foundation of nearly every machine learning pipeline." },
-        { correct: 3, explanation: "Correct. A Pandas DataFrame is a table-like data structure with named columns and rows - essentially a spreadsheet in code. It lets you load data from files, inspect it, filter by conditions, group by categories, and handle missing values before sending it to a machine learning model." }
-      ];
 
-      quizzes.forEach(function(quiz, qi) {
-        var container = document.getElementById('quiz-' + (qi + 1));
-        if (!container) return;
-        var buttons = container.querySelectorAll('.lp-quiz-btn');
-        var feedback = container.querySelector('.lp-quiz-feedback');
-        var answered = false;
-
-        buttons.forEach(function(btn) {
-          btn.addEventListener('click', function() {
-            if (answered) return;
-            answered = true;
-            var idx = parseInt(btn.getAttribute('data-index'), 10);
-            var isCorrect = idx === quiz.correct;
-
-            buttons.forEach(function(b, bi) {
-              b.disabled = true;
-              if (bi === quiz.correct) b.classList.add('lp-quiz-correct');
-              else if (bi === idx && !isCorrect) b.classList.add('lp-quiz-wrong');
-            });
-
-            feedback.textContent = quiz.explanation;
-            feedback.className = 'lp-quiz-feedback ' + (isCorrect ? 'lp-quiz-feedback-correct' : 'lp-quiz-feedback-wrong');
-          });
-        });
-      });
-    })();
-  </script>
 </body>
 </html>

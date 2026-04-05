@@ -220,30 +220,7 @@
 <p>Deploying an AI system that affects people's opportunities, health, or freedom without rigorous bias testing should be treated the same way as using an untested drug on patients. It isn't. Companies get years of market advantage before anyone holds them accountable. By then, the biased decisions have affected thousands of people and become normalised.</p>
 <p>Real ethics in AI means building slower, testing harder, and accepting that sometimes you don't deploy because the risk is too high. It means admitting when you don't know if something works fairly. I'm sceptical that happens on its own without external pressure - regulatory or otherwise.</p>
 </section>
-<section class="lp-quiz-section" id="quiz">
-<h2>Lesson Quiz</h2>
-<p>Two questions to check your understanding before moving on.</p>
-<div class="lp-quiz" id="quiz-1">
-<p class="lp-quiz-q">Question 1: Why did Amazon's hiring algorithm downrank female applicants?</p>
-<ul class="lp-quiz-options" role="list">
-<li><button class="lp-quiz-btn" data-index="0" type="button">It was deliberately programmed to favour male candidates</button></li>
-<li><button class="lp-quiz-btn" data-index="1" type="button">It learned patterns from historically male-dominated hiring data and replicated them</button></li>
-<li><button class="lp-quiz-btn" data-index="2" type="button">Female applicants had fewer technical qualifications on average</button></li>
-<li><button class="lp-quiz-btn" data-index="3" type="button">The algorithm only processed resumes that matched a male name format</button></li>
-</ul>
-<div aria-live="polite" class="lp-quiz-feedback"></div>
-</div>
-<div class="lp-quiz" id="quiz-2">
-<p class="lp-quiz-q">Question 2: What does the "accountability gap" in AI mean?</p>
-<ul class="lp-quiz-options" role="list">
-<li><button class="lp-quiz-btn" data-index="0" type="button">AI companies don't keep records of how their systems perform</button></li>
-<li><button class="lp-quiz-btn" data-index="1" type="button">AI systems cost too much for small companies to afford</button></li>
-<li><button class="lp-quiz-btn" data-index="2" type="button">When AI causes harm, organisations can deflect responsibility by pointing to the algorithm rather than the human decisions behind it</button></li>
-<li><button class="lp-quiz-btn" data-index="3" type="button">AI cannot explain decisions because models are too simple</button></li>
-</ul>
-<div aria-live="polite" class="lp-quiz-feedback"></div>
-</div>
-</section>
+<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">Why did Amazon's hiring algorithm downrank female applicants?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>It was deliberately programmed to favour male candidates</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>It learned patterns from historically male-dominated hiring data and replicated them</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>Female applicants had fewer technical qualifications on average</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>The algorithm only processed resumes that matched a male name format</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">What does the "accountability gap" in AI mean?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>AI companies don't keep records of how their systems perform</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>AI systems cost too much for small companies to afford</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>When AI causes harm, organisations can deflect responsibility by pointing to the algorithm rather than the human decisions behind it</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>AI cannot explain decisions because models are too simple</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 </div>
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
 <div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>
@@ -377,39 +354,6 @@
       });
     });
   </script>
-<script>
-    (function() {
-      var quizzes = [
-        { correct: 1, explanation: "Correct. Amazon's algorithm wasn't deliberately biased - it learned from training data that reflected a male-dominated industry. It found that 'being male' correlated with getting hired in its training set and replicated that pattern. The discrimination was learned, not programmed." },
-        { correct: 2, explanation: "Correct. The accountability gap means organisations can deflect responsibility when AI causes harm by pointing to the algorithm as the decision-maker. The people who chose the training data, decided not to audit for bias, and chose to deploy anyway made decisions - but that chain of responsibility gets obscured." }
-      ];
 
-      quizzes.forEach(function(quiz, qi) {
-        var container = document.getElementById('quiz-' + (qi + 1));
-        if (!container) return;
-        var buttons = container.querySelectorAll('.lp-quiz-btn');
-        var feedback = container.querySelector('.lp-quiz-feedback');
-        var answered = false;
-
-        buttons.forEach(function(btn) {
-          btn.addEventListener('click', function() {
-            if (answered) return;
-            answered = true;
-            var idx = parseInt(btn.getAttribute('data-index'), 10);
-            var isCorrect = idx === quiz.correct;
-
-            buttons.forEach(function(b, bi) {
-              b.disabled = true;
-              if (bi === quiz.correct) b.classList.add('lp-quiz-correct');
-              else if (bi === idx && !isCorrect) b.classList.add('lp-quiz-wrong');
-            });
-
-            feedback.textContent = quiz.explanation;
-            feedback.className = 'lp-quiz-feedback ' + (isCorrect ? 'lp-quiz-feedback-correct' : 'lp-quiz-feedback-wrong');
-          });
-        });
-      });
-    })();
-  </script>
 </body>
 </html>

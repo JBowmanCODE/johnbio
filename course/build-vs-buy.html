@@ -230,33 +230,7 @@
 <p>This is controversial in engineering circles. Engineers think buying is "not invented here" syndrome. I think building first is "we're smarter than everyone else" syndrome. A company that focused on this specific problem for years probably solved it better than you will in six months. Most organisations that reverse this - build first, buy later - end up spending more.</p>
 </div>
 <!-- Quiz -->
-<section aria-label="Lesson quiz" class="lp-quiz">
-<h2 class="lp-quiz-title">Check your understanding</h2>
-<!-- Q1 -->
-<div class="lp-quiz-q">
-<p class="lp-quiz-question">When does building an AI system make the most sense?</p>
-<div aria-label="Question 1 options" class="lp-quiz-options" role="group">
-<button class="lp-quiz-btn" data-i="0" data-q="1">A) Whenever the team has engineers who enjoy ML projects</button>
-<button class="lp-quiz-btn lp-quiz-correct" data-i="1" data-q="1">B) When you have proprietary data or methods that give competitive advantage no generic product can capture</button>
-<button class="lp-quiz-btn" data-i="2" data-q="1">C) When the problem is common and many vendors have already solved it</button>
-<button class="lp-quiz-btn" data-i="3" data-q="1">D) When you need to move quickly and can't wait for vendor integration</button>
-</div>
-<div class="lp-quiz-feedback-correct" hidden="" id="q1-correct">Correct. The strongest justification for building is when your advantage comes from something proprietary - your data, your methods, your domain-specific requirements. If the problem is generic and products exist, building is almost always the wrong first move.</div>
-<div class="lp-quiz-feedback-wrong" hidden="" id="q1-wrong">Not quite. Engineers enjoying ML is not a business reason to build. When you need speed, buying is actually better - you get something working in weeks, not months. Build when your specific situation can't be served by any available product.</div>
-</div>
-<!-- Q2 -->
-<div class="lp-quiz-q">
-<p class="lp-quiz-question">Why is "buy first" recommended as the default approach?</p>
-<div aria-label="Question 2 options" class="lp-quiz-options" role="group">
-<button class="lp-quiz-btn" data-i="0" data-q="2">A) Bought products always perform better than custom-built systems</button>
-<button class="lp-quiz-btn" data-i="1" data-q="2">B) Building in-house requires regulatory approval in most industries</button>
-<button class="lp-quiz-btn lp-quiz-correct" data-i="2" data-q="2">C) It's faster and cheaper, and even if it fails you learn what you actually need before building</button>
-<button class="lp-quiz-btn" data-i="3" data-q="2">D) Cloud vendor products are always more secure than internal builds</button>
-</div>
-<div class="lp-quiz-feedback-correct" hidden="" id="q2-correct">Correct. Buying gives you something working quickly and at lower cost. If the product works, great. If it doesn't, you've now discovered your specific requirements through real experience - which makes any subsequent build much more targeted and less likely to miss the mark.</div>
-<div class="lp-quiz-feedback-wrong" hidden="" id="q2-wrong">Not quite. Bought products don't always perform better, and regulatory requirements vary. The reason to buy first is speed and learning: you get faster ROI if it works, and you learn your actual requirements if it doesn't - making any future build far more targeted.</div>
-</div>
-</section>
+<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">When does building an AI system make the most sense?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>Whenever the team has engineers who enjoy ML projects</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>When you have proprietary data or methods that give competitive advantage no generic product can capture</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>When the problem is common and many vendors have already solved it</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>When you need to move quickly and can't wait for vendor integration</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">Why is "buy first" recommended as the default approach?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>Bought products always perform better than custom-built systems</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>Building in-house requires regulatory approval in most industries</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>It's faster and cheaper, and even if it fails you learn what you actually need before building</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>Cloud vendor products are always more secure than internal builds</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 <!-- Podcast -->
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
 <div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>
@@ -460,18 +434,6 @@
       });
     });
   </script>
-<script>
-    // Quiz logic
-    document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const q = this.dataset.q;
-        const group = document.querySelectorAll(`.lp-quiz-btn[data-q="${q}"]`);
-        group.forEach(b => b.disabled = true);
-        const isCorrect = this.classList.contains('lp-quiz-correct');
-        this.classList.add(isCorrect ? 'lp-quiz-selected-correct' : 'lp-quiz-selected-wrong');
-        document.getElementById(`q${q}-${isCorrect ? 'correct' : 'wrong'}`).hidden = false;
-      });
-    });
-  </script>
+
 </body>
 </html>

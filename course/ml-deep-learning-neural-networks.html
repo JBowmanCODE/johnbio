@@ -471,39 +471,6 @@
       });
     });
   </script>
-<script>
-  // Quiz interaction
-  document.querySelectorAll('.lp-quiz-option').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const q = this.dataset.q;
-      document.querySelectorAll(`.lp-quiz-option[data-q="${q}"]`).forEach(b => b.classList.remove('selected'));
-      this.classList.add('selected');
-      const checkBtn = document.querySelector(`.lp-quiz-check[data-q="${q}"]`);
-      if (checkBtn) checkBtn.disabled = false;
-    });
-  });
-  document.querySelectorAll('.lp-quiz-check').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const q = this.dataset.q;
-      const answer = this.dataset.answer;
-      const selected = document.querySelector(`.lp-quiz-option[data-q="${q}"].selected`);
-      if (!selected) return;
-      const fb = document.getElementById(`q${q}-fb`);
-      document.querySelectorAll(`.lp-quiz-option[data-q="${q}"]`).forEach(b => {
-        b.disabled = true;
-        if (b.dataset.v === answer) b.classList.add('correct');
-        else if (b.classList.contains('selected')) b.classList.add('wrong');
-      });
-      this.disabled = true;
-      if (selected.dataset.v === answer) {
-        fb.textContent = 'Correct! "Deep" refers to the number of layers. More layers let the network learn hierarchical, abstract patterns.';
-        fb.className = 'lp-quiz-feedback correct';
-      } else {
-        fb.textContent = `Not quite - the correct answer is ${answer}. "Deep" refers to the number of layers in the network.`;
-        fb.className = 'lp-quiz-feedback wrong';
-      }
-    });
-  });
-  </script>
+
 </body>
 </html>
