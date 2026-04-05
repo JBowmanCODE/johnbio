@@ -1,3 +1,6 @@
+# Custom error pages
+ErrorDocument 404 /404.html
+
 # Serve HTML content for the root
 DirectoryIndex index.html index.htm
 
