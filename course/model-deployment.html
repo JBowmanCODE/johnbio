@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model Deployment: APIs, Containers and Cloud - JohnB.io</title>
+  <meta name="description" content="How to serve ML models via REST APIs, what Docker containers do for deployment, cloud deployment options, and the five mistakes beginners make. Unit 8, Lesson 2.">
+  <meta name="keywords" content="model deployment, REST API, Docker, containers, SageMaker, cloud ML, FastAPI, serving ML models">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/course/model-deployment">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Model Deployment: APIs, Containers and Cloud Services">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://johnb.io/course/model-deployment">
+  <meta property="og:description" content="How to serve ML models via REST APIs, what Docker containers do for deployment, cloud deployment options, and the five mistakes beginners make.">
+  <meta property="og:image" content="https://johnb.io/images/course-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Model Deployment lesson - JohnB.io AI Course">
+  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
+  <meta property="article:author" content="https://johnb.io">
+  <meta property="article:section" content="AI in Production">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Model Deployment: APIs, Containers and Cloud Services">
+  <meta name="twitter:description" content="How to serve ML models via REST APIs, what Docker containers do for deployment, cloud deployment options, and the five mistakes beginners make.">
+  <meta name="twitter:image" content="https://johnb.io/images/course-og.png">
+  <meta name="twitter:image:alt" content="Model Deployment lesson - JohnB.io AI Course">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Model Deployment: APIs, Containers and Cloud Services",
+        "description": "How to serve ML models via REST APIs, what Docker containers do for deployment, cloud deployment options, and the five mistakes beginners make.",
+        "image": "https://johnb.io/images/course-og.png",
+        "datePublished": "2026-04-05T00:00:00+00:00",
+        "dateModified": "2026-04-05T00:00:00+00:00",
+        "author": {
+          "@type": "Person",
+          "name": "John Bowman",
+          "url": "https://johnb.io"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "JohnB.io",
+          "url": "https://johnb.io"
+        },
+        "mainEntityOfPage": "https://johnb.io/course/model-deployment"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does it mean to deploy an ML model?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Deploying a model means making it accessible to applications that need predictions. Your model runs on a server, listens for HTTP requests containing input data, runs inference, and returns a prediction. A deployed model is not a one-time job - it's infrastructure that keeps running and needs monitoring, updates, and maintenance."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a Docker container and why is it used for ML deployment?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A Docker container packages your code, model, and dependencies into a single image that runs identically anywhere. For ML this solves reproducibility: you develop and test in a container locally, then deploy the exact same container to production with no dependency version mismatches or 'works on my machine' problems."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which cloud services can host ML models?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AWS SageMaker, GCP Vertex AI, and Azure Machine Learning all provide managed model serving. You upload your model and they handle serving, scaling, and monitoring. For more control you can deploy containers directly to Kubernetes or serverless container platforms. Beginners should start with managed services and move to custom infrastructure only when they hit specific limitations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the most common mistake when deploying ML models?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Treating deployment as a one-time step. A deployed model is a running service that needs monitoring, updates, and a strategy for rolling out new versions without downtime. Other common mistakes: not planning for failure, storing model weights in Git instead of a model registry, and not logging predictions."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://johnb.io"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI Course",
+            "item": "https://johnb.io/dashboard"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Model Deployment",
+            "item": "https://johnb.io/course/model-deployment"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/news.css">
+  <link rel="stylesheet" href="/lesson.css">
+</head>
+<body class="lp-page">
+
+  <div id="header-placeholder"></div>
+
+  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
+    <div class="na-layout">
+
+      <!-- ── MAIN CONTENT ── -->
+      <article class="na-content">
+
+        <!-- Breadcrumb -->
+        <nav class="na-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">›</span>
+          <a href="/dashboard">AI Course</a>
+          <span aria-hidden="true">›</span>
+          <span>Model Deployment</span>
+        </nav>
+
+        <!-- Unit badge + title -->
+        <div class="lp-unit-badge lp-unit-8">Unit 8 · AI in Production</div>
+        <h1 class="na-title">Model Deployment: APIs, Containers and Cloud Services</h1>
+
+        <!-- Meta row -->
+        <div class="na-meta">
+          <span>11 min read</span>
+          <span>·</span>
+          <span>Lesson 2 of 4 in Unit 8</span>
+          <span>·</span>
+          <span>Published 5 April 2026</span>
+        </div>
+
+        <!-- Audio player -->
+        <section class="lp-audio-section" aria-label="Lesson audio">
+          <div class="lp-audio-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            Listen to this lesson
+          </div>
+          <audio controls aria-label="Lesson audio player">
+            Your browser does not support audio playback.
+          </audio>
+        </section>
+
+        <!-- Body -->
+        <div class="na-body">
+
+          <p>You've got a trained model sitting on your laptop. Now what? You can't tell millions of users "download this Python file and run it locally." You need to serve the model so that applications can request predictions.</p>
+
+          <p>That's deployment: taking a model and making it available to the applications that need it.</p>
+
+          <h2>What deployment means in the ML context</h2>
+
+          <p>Deployment is making your model accessible. Someone sends data to your system, your system runs the model on that data, and returns a prediction.</p>
+
+          <p>In practice: your model is running on a server somewhere. That server is listening for requests. When a request arrives, the server loads the model (or keeps it in memory), runs inference, and returns the result. The server is available 24/7, handles failures gracefully, and doesn't lose data.</p>
+
+          <p>A deployed model is not a one-time prediction job. It's infrastructure that keeps running.</p>
+
+          <h2>Serving a model via an API</h2>
+
+          <p>The standard way to serve a model is through an API - an Application Programming Interface. Another piece of software sends a request to your API, and your API returns a prediction.</p>
+
+          <p>The basic flow: 1) Client sends an HTTP request with features - "Here are the customer features, predict if they'll churn." 2) Your server receives the request. 3) Your server loads the model (or uses one already in memory). 4) Your server runs inference on the features. 5) Your server returns the prediction in the response.</p>
+
+          <p>Simple in concept. You write a small web service - usually in Flask or FastAPI - that loads your model and accepts requests. When it gets a request, it preprocesses the features, runs the model, postprocesses the output, and returns it.</p>
+
+          <p>Why this works: any application that can make HTTP requests can use your model. You don't have to ship the model to different applications. You maintain one serving infrastructure.</p>
+
+          <p>The trade-off: your model is now a network service, so there's latency. Every request goes over the network. If you need sub-millisecond response times, an API might be too slow. For most use cases, the latency is fine.</p>
+
+          <h2>What Docker containers are and why they matter</h2>
+
+          <p>A container is a packaged application environment. You take your code, your dependencies, your model, and package them into a container image. That image can run anywhere - on your laptop, on a server, in the cloud.</p>
+
+          <p>Why this matters for ML: reproducibility and portability.</p>
+
+          <p>You develop and test your serving code in a container locally. Then you deploy the exact same container to production. No "but it works on my machine" problems. No dependency version mismatches. No confusion about what Python version or system libraries are needed.</p>
+
+          <p>Docker is the container technology that became standard. You write a Dockerfile that describes your environment, Docker builds an image, and that image runs on any system with Docker installed. A minimal Dockerfile for model serving looks like:</p>
+
+          <pre class="lp-code-block"><code>FROM python:3.10
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY model.pkl .
+COPY app.py .
+CMD ["python", "app.py"]</code></pre>
+
+          <p>You put your model, your serving code, and your dependencies in the container. Then you run it anywhere.</p>
+
+          <p>The benefits compound. You can run multiple containers on the same server. You can update a container image and deploy the new one without downtime. You can scale - run ten copies of the same container to handle more traffic. Containers made deploying ML models dramatically easier. Before them, setting up servers and managing conflicting dependency versions was a serious operational burden.</p>
+
+          <h2>Cloud deployment options</h2>
+
+          <p>Cloud providers offer services specifically for deploying models.</p>
+
+          <p>AWS SageMaker lets you upload a model and it handles serving, scaling, and monitoring. GCP has Vertex AI, Azure has Machine Learning - all similar ideas. You provide the model, they provide the serving infrastructure.</p>
+
+          <p>These services handle a lot: scaling, load balancing, monitoring, logging. If you have spiky traffic, they scale up. If traffic drops, they scale down. You pay for what you use.</p>
+
+          <p>The trade-off: less control. You're constrained by what the service supports. If your model needs custom preprocessing or special hardware, you might not be able to do it.</p>
+
+          <p>You can also deploy containers directly to cloud infrastructure - Kubernetes on AWS, Cloud Run on GCP, Container Instances on Azure. You manage the infrastructure but you get more control.</p>
+
+          <p>For beginners: start with a managed service. Upload your model, get a serving endpoint, call it. When you hit limitations, move to containers and infrastructure management.</p>
+
+          <h2>Where beginners go wrong with deployment</h2>
+
+          <p><strong>They don't think about latency.</strong> A model that takes 5 seconds to run works fine in batch processing. It doesn't work as an API serving real-time predictions. Measure inference time early.</p>
+
+          <p><strong>They don't plan for failure.</strong> What happens when the model service crashes? What happens during a cloud outage? You need redundancy and monitoring. A model that occasionally returns errors is worse than no model at all for some applications.</p>
+
+          <p><strong>They put the model weights in Git.</strong> Models are large binary files. Git is for code. You need a separate system - a model registry - for versioning, storing, and loading models. Don't put a 500MB model file in your repository.</p>
+
+          <p><strong>They forget about monitoring.</strong> A deployed model that's not monitored is a black box. Is it still working? Is the data different from training? How are predictions performing? You need to log predictions and monitor performance.</p>
+
+          <p><strong>They don't think about updates.</strong> What happens when you want to deploy a new model? Can you do it without downtime? Can you roll back if the new model is worse? Rolling out to 10% of traffic first, measuring performance, then expanding is standard practice.</p>
+
+          <p>Deployment is running a service. Services need monitoring, updates, and maintenance.</p>
+
+        </div>
+
+        <!-- Quiz -->
+        <section class="lp-quiz" aria-label="Lesson quiz">
+          <h2 class="lp-quiz-title">Check your understanding</h2>
+
+          <!-- Q1 -->
+          <div class="lp-quiz-q">
+            <p class="lp-quiz-question">What problem does packaging a model in a Docker container solve?</p>
+            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
+              <button class="lp-quiz-btn" data-q="1" data-i="0">A) It automatically optimises model inference speed</button>
+              <button class="lp-quiz-btn lp-quiz-correct" data-q="1" data-i="1">B) It ensures the model runs identically across local development and production environments</button>
+              <button class="lp-quiz-btn" data-q="1" data-i="2">C) It stores model weights more efficiently than saving a .pkl file</button>
+              <button class="lp-quiz-btn" data-q="1" data-i="3">D) It provides built-in monitoring for drift detection</button>
+            </div>
+            <div class="lp-quiz-feedback-correct" id="q1-correct" hidden>Correct. Docker containers package the code, model, and all dependencies together so the image runs identically everywhere. This eliminates "works on my machine" problems and dependency version mismatches between development and production.</div>
+            <div class="lp-quiz-feedback-wrong" id="q1-wrong" hidden>Not quite. Containers solve the reproducibility and portability problem - the same image runs the same way everywhere. They don't directly optimise inference speed or handle drift monitoring.</div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="lp-quiz-q">
+            <p class="lp-quiz-question">Why should ML model weights NOT be stored in a Git repository?</p>
+            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
+              <button class="lp-quiz-btn" data-q="2" data-i="0">A) Git doesn't support binary files at all</button>
+              <button class="lp-quiz-btn" data-q="2" data-i="1">B) Model weights can contain sensitive training data that shouldn't be versioned</button>
+              <button class="lp-quiz-btn lp-quiz-correct" data-q="2" data-i="2">C) Models are large binary files that bloat repositories and need dedicated versioning systems</button>
+              <button class="lp-quiz-btn" data-q="2" data-i="3">D) Git compression corrupts neural network weight formats</button>
+            </div>
+            <div class="lp-quiz-feedback-correct" id="q2-correct" hidden>Correct. Model files can be hundreds of megabytes or gigabytes. Storing them in Git bloats the repository and Git's diff-based versioning doesn't work well with binary files. Model registries (MLflow, S3 with versioning, etc.) are designed for this purpose.</div>
+            <div class="lp-quiz-feedback-wrong" id="q2-wrong" hidden>Not quite. Git does support binary files technically, but model weights can be hundreds of megabytes or more. This makes repositories unmanageable. Dedicated model registries are the right tool for versioning and storing model artefacts.</div>
+          </div>
+        </section>
+
+        <!-- Podcast -->
+        <section class="lp-podcast-section" aria-label="Podcast version">
+          <h2 class="lp-podcast-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line><line x1="2" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="22" y2="12"></line></svg>
+            Podcast version
+          </h2>
+          <p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
+          <audio controls aria-label="Podcast episode audio player">
+            Your browser does not support audio playback.
+          </audio>
+        </section>
+
+        <!-- Accordions -->
+        <details class="tool-accordion" open>
+          <summary>Frequently Asked Questions</summary>
+          <div class="tool-accordion-body">
+            <h3>What does it mean to deploy an ML model?</h3>
+            <p>Deploying a model means making it accessible to applications that need predictions. Your model runs on a server, listens for HTTP requests containing input data, runs inference, and returns a prediction. A deployed model is not a one-time job - it's infrastructure that keeps running and needs monitoring, updates, and maintenance.</p>
+
+            <h3>What is a Docker container and why is it used for ML deployment?</h3>
+            <p>A Docker container packages your code, model, and dependencies into a single image that runs identically anywhere. For ML this solves reproducibility: you develop and test in a container locally, then deploy the exact same container to production with no dependency version mismatches or "works on my machine" problems.</p>
+
+            <h3>Which cloud services can host ML models?</h3>
+            <p>AWS SageMaker, GCP Vertex AI, and Azure Machine Learning all provide managed model serving. You upload your model and they handle serving, scaling, and monitoring. For more control you can deploy containers directly to Kubernetes or serverless container platforms. Beginners should start with managed services and move to custom infrastructure only when they hit specific limitations.</p>
+
+            <h3>What is the most common mistake when deploying ML models?</h3>
+            <p>Treating deployment as a one-time step. A deployed model is a running service that needs monitoring, updates, and a strategy for rolling out new versions without downtime. Other common mistakes: not planning for failure, storing model weights in Git instead of a model registry, and not logging predictions.</p>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary>How It Works</summary>
+          <div class="tool-accordion-body">
+            <p><strong>REST API serving:</strong> A web framework (Flask, FastAPI) loads the model on startup and keeps it in memory. Incoming POST requests carry the input features as JSON. The handler deserialises the request, runs preprocessing, calls model.predict(), postprocesses the output, and returns JSON. FastAPI is preferred for new projects because of automatic OpenAPI documentation and async support.</p>
+            <p><strong>Containers:</strong> Docker builds an image from a Dockerfile. The image contains OS, Python runtime, installed packages, model file, and serving code. Running the image creates a container - an isolated process with its own filesystem. Kubernetes orchestrates multiple containers across servers, handling load balancing, scaling, and restarts.</p>
+            <p><strong>Gradual rollouts:</strong> Don't deploy a new model to 100% of traffic immediately. Roll out to 10%, monitor performance vs the old model, expand if metrics improve, roll back if they don't. This pattern (A/B testing or canary deployment) limits the blast radius of a bad model update.</p>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary>Key Points</summary>
+          <div class="tool-accordion-body">
+            <ul>
+              <li>Deployment means making a model accessible via a network interface, not just running it locally</li>
+              <li>REST APIs are the standard serving mechanism: HTTP request in, prediction response out</li>
+              <li>Flask and FastAPI are the most common Python frameworks for model serving</li>
+              <li>Docker containers package code, model, and dependencies for reproducible deployment anywhere</li>
+              <li>Managed cloud services (SageMaker, Vertex AI, Azure ML) handle infrastructure but limit flexibility</li>
+              <li>Kubernetes gives more control for container orchestration at scale</li>
+              <li>Model weights belong in a model registry, not in Git</li>
+              <li>Gradual rollouts (canary, A/B) reduce risk when deploying new model versions</li>
+              <li>Deployment is an ongoing operational responsibility, not a one-time step</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary>Sources</summary>
+          <div class="tool-accordion-body">
+            <ul>
+              <li>FastAPI Documentation. (2024). <em>fastapi.tiangolo.com</em>.</li>
+              <li>Docker Documentation. (2024). <em>docs.docker.com</em>.</li>
+              <li>AWS. (2024). Amazon SageMaker Model Deployment. <em>docs.aws.amazon.com</em>.</li>
+              <li>Sato, D. et al. (2019). Continuous Delivery for Machine Learning. <em>martinfowler.com</em>.</li>
+            </ul>
+          </div>
+        </details>
+
+        <!-- Prev / Next nav -->
+        <nav class="lp-nav" aria-label="Lesson navigation">
+          <a href="/course/intro-to-mlops" class="lp-nav-btn lp-nav-prev" aria-label="Previous lesson">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>
+              <em>Previous</em>
+              Introduction to MLOps
+            </span>
+          </a>
+          <a href="/course/monitoring-drift" class="lp-nav-btn lp-nav-next" aria-label="Next lesson">
+            <span>
+              <em>Next</em>
+              Monitoring and Drift
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </nav>
+
+      </article>
+
+      <!-- ── SIDEBAR ── -->
+      <aside class="na-sidebar" aria-label="Course navigation">
+
+        <!-- Table of contents -->
+        <div class="na-toc">
+          <h2 class="na-toc-title">In this lesson</h2>
+          <ul class="na-toc-list">
+            <li><a href="#" onclick="document.querySelector('.na-body h2').scrollIntoView({behavior:'smooth'});return false;">What deployment means</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[1].scrollIntoView({behavior:'smooth'});return false;">Serving via an API</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[2].scrollIntoView({behavior:'smooth'});return false;">Docker containers</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[3].scrollIntoView({behavior:'smooth'});return false;">Cloud deployment options</a></li>
+            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[4].scrollIntoView({behavior:'smooth'});return false;">Common beginner mistakes</a></li>
+          </ul>
+        </div>
+
+        <!-- Course navigation -->
+        <nav class="lp-sidebar-nav" aria-label="All course lessons">
+          <h2 class="lp-sidebar-nav-title">Course contents</h2>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-1">Unit 1 · Introduction to AI</div>
+            <ul>
+              <li><a href="/course/what-is-ai">What is AI?</a></li>
+              <li><a href="/course/categories-of-ai">Categories of AI</a></li>
+              <li><a href="/course/how-ai-learns">How AI Learns</a></li>
+              <li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-2">Unit 2 · The Modern AI Landscape</div>
+            <ul>
+              <li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
+              <li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
+              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
+              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-3">Unit 3 · Ethics &amp; Governance</div>
+            <ul>
+              <li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
+              <li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
+              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-4">Unit 4 · Python for AI</div>
+            <ul>
+              <li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
+              <li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-5">Unit 5 · Machine Learning</div>
+            <ul>
+              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
+              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-6">Unit 6 · Deep Learning</div>
+            <ul>
+              <li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
+              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+              <li><a href="/course/backpropagation">Backpropagation</a></li>
+              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
+              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-7">Unit 7 · Generative AI</div>
+            <ul>
+              <li><a href="/course/generative-ai-models">Generative AI Models</a></li>
+              <li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
+              <li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-8">Unit 8 · AI in Production</div>
+            <ul>
+              <li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
+              <li><a href="/course/model-deployment" class="lp-sidebar-current" aria-current="page">Model Deployment</a></li>
+              <li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
+              <li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
+            </ul>
+          </div>
+
+          <div class="lp-sidebar-unit">
+            <div class="lp-sidebar-unit-label lp-unit-9">Unit 9 · AI Strategy</div>
+            <ul>
+              <li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
+              <li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
+              <li><a href="/course/ai-across-industries">AI Across Industries</a></li>
+              <li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
+            </ul>
+          </div>
+
+        </nav>
+      </aside>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js"></script>
+  <script>
+    // Quiz logic
+    document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const q = this.dataset.q;
+        const group = document.querySelectorAll(`.lp-quiz-btn[data-q="${q}"]`);
+        group.forEach(b => b.disabled = true);
+        const isCorrect = this.classList.contains('lp-quiz-correct');
+        this.classList.add(isCorrect ? 'lp-quiz-selected-correct' : 'lp-quiz-selected-wrong');
+        document.getElementById(`q${q}-${isCorrect ? 'correct' : 'wrong'}`).hidden = false;
+      });
+    });
+  </script>
+</body>
+</html>
