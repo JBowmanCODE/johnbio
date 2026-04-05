@@ -8,23 +8,24 @@
 <meta content="Linear regression draws the best line through data. Gradient descent finds that line by walking downhill on an error surface. These ideas underpin every ML model." name="description"/>
 <meta content="linear regression explained, gradient descent tutorial, machine learning basics, loss function, learning rate" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/linear-regression-gradient-descent" rel="canonical"/>
 <meta content="Linear Regression and Gradient Descent Explained" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/linear-regression-gradient-descent" property="og:url"/>
 <meta content="Linear regression draws the best line through data. Gradient descent finds that line by walking downhill on an error surface. These ideas underpin every ML model." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.jpg" property="og:image"/>
+<meta content="https://johnb.io/images/course/linear-regression-gradient-descent.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Linear Regression and Gradient Descent Explained" property="og:image:alt"/>
+<meta content="Linear Regression and Gradient Descent Explained lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="John Bowman" property="article:author"/>
 <meta content="AI Course" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Linear Regression and Gradient Descent Explained" name="twitter:title"/>
 <meta content="Linear regression draws the best line through data. Gradient descent finds that line by walking downhill on an error surface. These ideas underpin every ML model." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.jpg" name="twitter:image"/>
-<meta content="Linear Regression and Gradient Descent Explained" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/linear-regression-gradient-descent.webp" name="twitter:image"/>
+<meta content="Linear Regression and Gradient Descent Explained lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -38,19 +39,22 @@
     "@type": "Article",
     "headline": "Linear Regression and Gradient Descent Explained",
     "description": "Linear regression draws the best line through data. Gradient descent finds that line by walking downhill on an error surface. These ideas underpin every ML model.",
-    "image": "https://johnb.io/images/course-og.jpg",
+    "url": "https://johnb.io/course/linear-regression-gradient-descent",
+    "image": "https://johnb.io/images/course/linear-regression-gradient-descent.webp",
     "datePublished": "2026-04-05T00:00:00+00:00",
     "dateModified": "2026-04-05T00:00:00+00:00",
     "author": {
       "@type": "Person",
       "name": "John Bowman",
-      "url": "https://johnb.io"
+      "url": "https://www.linkedin.com/in/john-bowman/"
     },
     "publisher": {
       "@type": "Organization",
       "name": "JohnB.io",
       "url": "https://johnb.io"
-    }
+    },
+    "keywords": "linear regression explained, gradient descent tutorial, machine learning basics, loss function, learning rate",
+    "articleSection": "AI Course"
   }
   </script>
 <script type="application/ld+json">
@@ -148,7 +152,7 @@
 <article class="na-content" id="main-content">
 <div class="na-header">
 <h1 class="na-title">Linear Regression and Gradient Descent: The Foundation of Machine Learning Explained</h1>
-<div class="na-lede-row"><p class="na-lede">Linear regression is the simplest machine learning model. But the ideas behind it - loss functions, gradient descent, convergence - are the same ideas behind every other model. Getting this right makes everything else easier.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/linear-regression-gradient-descent.webp"/></div></div>
+<div class="na-lede-row"><p class="na-lede">Linear regression is the simplest machine learning model. But the ideas behind it - loss functions, gradient descent, convergence - are the same ideas behind every other model. Getting this right makes everything else easier.</p><div class="na-lede-img"><img alt="Linear regression and gradient descent - the foundations of machine learning" loading="lazy" src="/images/course/linear-regression-gradient-descent.webp"/></div></div>
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
@@ -234,7 +238,7 @@
 <p>Understanding linear regression gives you intuition for why those models work. And it's often the right tool. When you have a big complicated dataset with fancy models available, sometimes the simplest thing that works is a linear regression. It's interpretable, fast, and deployable. If a deep learning model gets 2% higher accuracy but you can't explain its predictions, the linear regression might be the better choice.</p>
 <p>You don't need to derive gradient formulas by hand. But you should understand what a loss function is, why you minimise it, how gradient descent navigates the error surface, and what convergence means. That understanding is the difference between calling <code>fit()</code> as magic and actually being able to debug when training goes wrong.</p>
 </section>
-<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What does gradient descent do during model training?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>It loads training data from a CSV file into the model</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>It iteratively adjusts model parameters in the direction that reduces error, like walking downhill on a loss surface</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>It selects the best features from the training dataset automatically</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>It splits data into training and test sets</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">Why is the learning rate important in gradient descent?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>It determines how many features the model can learn from</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>It sets the number of training examples used per batch</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>It controls step size: too large and you overshoot the minimum, too small and training is very slow</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>It controls how many layers the neural network has</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
+<div aria-label="Lesson quiz" class="lp-quiz" id="quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What does gradient descent do during model training?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>It loads training data from a CSV file into the model</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>It iteratively adjusts model parameters in the direction that reduces error, like walking downhill on a loss surface</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>It selects the best features from the training dataset automatically</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>It splits data into training and test sets</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">Why is the learning rate important in gradient descent?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>It determines how many features the model can learn from</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>It sets the number of training examples used per batch</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>It controls step size: too large and you overshoot the minimum, too small and training is very slow</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>It controls how many layers the neural network has</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 </div>
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
 <div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>

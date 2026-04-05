@@ -8,23 +8,24 @@
 <meta content="Neural networks are multiply, add, apply a function, repeat. Here's what actually happens inside: layers, weights, biases, and forward propagation explained plainly." name="description"/>
 <meta content="neural network explained, forward propagation, weights and biases, hidden layers, artificial neuron" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/neural-networks-forward-propagation" rel="canonical"/>
 <meta content="Neural Networks and Forward Propagation Explained" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/neural-networks-forward-propagation" property="og:url"/>
 <meta content="Neural networks are multiply, add, apply a function, repeat. Here's what actually happens inside: layers, weights, biases, and forward propagation explained plainly." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.jpg" property="og:image"/>
+<meta content="https://johnb.io/images/course/neural-networks-forward-propagation.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Neural Networks and Forward Propagation Explained" property="og:image:alt"/>
+<meta content="Neural Networks and Forward Propagation Explained lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="John Bowman" property="article:author"/>
 <meta content="AI Course" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Neural Networks and Forward Propagation Explained" name="twitter:title"/>
 <meta content="Neural networks are multiply, add, apply a function, repeat. Here's what actually happens inside: layers, weights, biases, and forward propagation explained plainly." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.jpg" name="twitter:image"/>
-<meta content="Neural Networks and Forward Propagation Explained" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/neural-networks-forward-propagation.webp" name="twitter:image"/>
+<meta content="Neural Networks and Forward Propagation Explained lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -38,19 +39,22 @@
     "@type": "Article",
     "headline": "Neural Networks and Forward Propagation Explained",
     "description": "Neural networks are multiply, add, apply a function, repeat. Here's what actually happens inside: layers, weights, biases, and forward propagation explained plainly.",
-    "image": "https://johnb.io/images/course-og.jpg",
+    "url": "https://johnb.io/course/neural-networks-forward-propagation",
+    "image": "https://johnb.io/images/course/neural-networks-forward-propagation.webp",
     "datePublished": "2026-04-05T00:00:00+00:00",
     "dateModified": "2026-04-05T00:00:00+00:00",
     "author": {
       "@type": "Person",
       "name": "John Bowman",
-      "url": "https://johnb.io"
+      "url": "https://www.linkedin.com/in/john-bowman/"
     },
     "publisher": {
       "@type": "Organization",
       "name": "JohnB.io",
       "url": "https://johnb.io"
-    }
+    },
+    "keywords": "neural network explained, forward propagation, weights and biases, hidden layers, artificial neuron",
+    "articleSection": "AI Course"
   }
   </script>
 <script type="application/ld+json">
@@ -148,7 +152,7 @@
 <article class="na-content" id="main-content">
 <div class="na-header">
 <h1 class="na-title">Artificial Neural Networks and Forward Propagation: What's Actually Happening Inside</h1>
-<div class="na-lede-row"><p class="na-lede">Neural networks look mysterious until you realise they're just a chain of arithmetic operations. Multiply. Add. Apply a function. Repeat. The mechanism is boring. The result is interesting. Here's what's actually happening.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/neural-networks-forward-propagation.webp"/></div></div>
+<div class="na-lede-row"><p class="na-lede">Neural networks look mysterious until you realise they're just a chain of arithmetic operations. Multiply. Add. Apply a function. Repeat. The mechanism is boring. The result is interesting. Here's what's actually happening.</p><div class="na-lede-img"><img alt="Artificial neural networks and forward propagation explained" loading="lazy" src="/images/course/neural-networks-forward-propagation.webp"/></div></div>
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
@@ -233,7 +237,7 @@
 <p>The mechanism isn't the magic. The result is.</p>
 <p>People build it up as mysterious because mystery sells. Once you understand a neural network as a massive chain of arithmetic - one you can write in a hundred lines of Python - most of deep learning becomes comprehensible. Hard sometimes, but comprehensible.</p>
 </section>
-<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What does a single artificial neuron compute?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>It selects the most important input and passes it through unchanged</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>It multiplies each input by a weight, sums everything up, adds a bias, then applies an activation function</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>It stores a copy of the training data and retrieves the closest match</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>It takes the average of all its inputs and outputs that value</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">What changes during neural network training?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>The number of layers and neurons in the network</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>The weights and biases, adjusted to make predictions closer to correct answers</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>The training data itself, which is modified to be easier to learn from</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>The activation functions, which are selected automatically based on the data</button></div><button class="lp-quiz-check" data-answer="B" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
+<div aria-label="Lesson quiz" class="lp-quiz" id="quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What does a single artificial neuron compute?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>It selects the most important input and passes it through unchanged</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>It multiplies each input by a weight, sums everything up, adds a bias, then applies an activation function</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>It stores a copy of the training data and retrieves the closest match</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>It takes the average of all its inputs and outputs that value</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">What changes during neural network training?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>The number of layers and neurons in the network</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>The weights and biases, adjusted to make predictions closer to correct answers</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>The training data itself, which is modified to be easier to learn from</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>The activation functions, which are selected automatically based on the data</button></div><button class="lp-quiz-check" data-answer="B" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 </div>
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
 <div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>

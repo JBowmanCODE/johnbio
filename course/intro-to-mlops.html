@@ -8,16 +8,17 @@
 <meta content="What MLOps is, why notebook models fail in production, the four key stages of the ML lifecycle, and why data scientists should understand all of it. Unit 8, Lesson 1." name="description"/>
 <meta content="MLOps, machine learning operations, model deployment, production ML, drift, ML lifecycle" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/intro-to-mlops" rel="canonical"/>
 <!-- Open Graph -->
 <meta content="Introduction to MLOps: From Notebook to Production" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/intro-to-mlops" property="og:url"/>
 <meta content="What MLOps is, why notebook models fail in production, the four key stages of the ML lifecycle, and why data scientists should understand all of it." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="https://johnb.io/images/course/intro-to-mlops.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Introduction to MLOps lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="Introduction to MLOps: From Notebook to Production lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="https://johnb.io" property="article:author"/>
 <meta content="AI in Production" property="article:section"/>
@@ -25,8 +26,8 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Introduction to MLOps: From Notebook to Production" name="twitter:title"/>
 <meta content="What MLOps is, why notebook models fail in production, the four key stages of the ML lifecycle, and why data scientists should understand all of it." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
-<meta content="Introduction to MLOps lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/intro-to-mlops.webp" name="twitter:image"/>
+<meta content="Introduction to MLOps: From Notebook to Production lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <!-- Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
@@ -44,19 +45,22 @@
         "@type": "Article",
         "headline": "Introduction to MLOps: From Notebook to Production",
         "description": "What MLOps is, why notebook models fail in production, the four key stages of the ML lifecycle, and why data scientists should understand all of it.",
-        "image": "https://johnb.io/images/course-og.png",
+    "url": "https://johnb.io/course/intro-to-mlops",
+        "image": "https://johnb.io/images/course/intro-to-mlops.webp",
         "datePublished": "2026-04-05T00:00:00+00:00",
         "dateModified": "2026-04-05T00:00:00+00:00",
         "author": {
           "@type": "Person",
           "name": "John Bowman",
-          "url": "https://johnb.io"
-        },
-        "publisher": {
+          "url": "https://www.linkedin.com/in/john-bowman/"
+    },
+    "publisher": {
           "@type": "Organization",
           "name": "JohnB.io",
           "url": "https://johnb.io"
         },
+    "keywords": "MLOps, machine learning operations, model deployment, production ML, drift, ML lifecycle",
+    "articleSection": "AI Course",
         "mainEntityOfPage": "https://johnb.io/course/intro-to-mlops"
       },
       {
@@ -132,7 +136,7 @@
 <link href="/styles.css" rel="stylesheet"/>
 <link href="/header.css" rel="stylesheet"/>
 <link href="/footer.css" rel="stylesheet"/>
-<link href="/news.css?v=3" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
 <link href="/lesson.css?v=4" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
@@ -151,7 +155,7 @@
 <span>Introduction to MLOps</span>
 </nav>
 <!-- Unit badge + title -->
-<h1 class="na-title">Introduction to MLOps: From Notebook to Production</h1><div class="na-lede-row"><p class="na-lede">You build a model in a notebook. It works. You get 87% accuracy. You're happy. You deploy it to production.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/intro-to-mlops.webp"/></div></div>
+<h1 class="na-title">Introduction to MLOps: From Notebook to Production</h1><div class="na-lede-row"><p class="na-lede">You build a model in a notebook. It works. You get 87% accuracy. You're happy. You deploy it to production.</p><div class="na-lede-img"><img alt="Introduction to MLOps - from notebook to production deployment" loading="lazy" src="/images/course/intro-to-mlops.webp"/></div></div>
 <!-- Meta row -->
 <!-- Audio player -->
 <div class="na-author">
@@ -274,11 +278,11 @@
 <nav aria-label="In this lesson" class="na-toc">
 <p class="na-toc-title">In this lesson</p>
 <ol class="na-toc-list">
-<li><a class="na-toc-link" href="#">Notebook vs production gap</a></li>
-<li><a class="na-toc-link" href="#">What MLOps is</a></li>
-<li><a class="na-toc-link" href="#">The four stages</a></li>
-<li><a class="na-toc-link" href="#">Why ML fails differently</a></li>
-<li><a class="na-toc-link" href="#">Do data scientists need MLOps?</a></li>
+<li><a class="na-toc-link" href="#the-gap-between-notebook-and-production">Notebook vs production gap</a></li>
+<li><a class="na-toc-link" href="#what-mlops-is-and-why-it-exists">What MLOps is</a></li>
+<li><a class="na-toc-link" href="#the-key-stages-data-training-deployment-monitoring">The four stages</a></li>
+<li><a class="na-toc-link" href="#why-ml-fails-differently-in-production">Why ML fails differently</a></li>
+<li><a class="na-toc-link" href="#do-data-scientists-need-to-care-about-mlops">Do data scientists need MLOps?</a></li>
 </ol>
 </nav>
 <!-- Course navigation -->

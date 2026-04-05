@@ -8,16 +8,17 @@
 <meta content="How RNNs handle sequences, why they struggled with long-range dependencies, how Transformers and attention solved it, and what autoencoders are for. Unit 6, Lesson 7." name="description"/>
 <meta content="RNN, transformer, autoencoder, attention mechanism, LSTM, deep learning, NLP, sequence models" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/rnns-transformers-autoencoders" rel="canonical"/>
 <!-- Open Graph -->
 <meta content="RNNs, Transformers and Autoencoders Explained" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/rnns-transformers-autoencoders" property="og:url"/>
 <meta content="How RNNs handle sequences, why they struggled with long-range dependencies, how Transformers and attention solved it, and what autoencoders are for." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="https://johnb.io/images/course/rnns-transformers-autoencoders.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="RNNs, Transformers and Autoencoders lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="RNNs, Transformers and Autoencoders Explained lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="https://johnb.io" property="article:author"/>
 <meta content="Deep Learning &amp; Neural Networks" property="article:section"/>
@@ -25,8 +26,8 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="RNNs, Transformers and Autoencoders Explained" name="twitter:title"/>
 <meta content="How RNNs handle sequences, why they struggled with long-range dependencies, how Transformers and attention solved it, and what autoencoders are for." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
-<meta content="RNNs, Transformers and Autoencoders lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/rnns-transformers-autoencoders.webp" name="twitter:image"/>
+<meta content="RNNs, Transformers and Autoencoders Explained lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <!-- Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
@@ -44,19 +45,22 @@
         "@type": "Article",
         "headline": "RNNs, Transformers and Autoencoders Explained",
         "description": "How RNNs handle sequences, why they struggled with long-range dependencies, how Transformers and attention solved it, and what autoencoders are for.",
-        "image": "https://johnb.io/images/course-og.png",
+    "url": "https://johnb.io/course/rnns-transformers-autoencoders",
+        "image": "https://johnb.io/images/course/rnns-transformers-autoencoders.webp",
         "datePublished": "2026-04-05T00:00:00+00:00",
         "dateModified": "2026-04-05T00:00:00+00:00",
         "author": {
           "@type": "Person",
           "name": "John Bowman",
-          "url": "https://johnb.io"
-        },
-        "publisher": {
+          "url": "https://www.linkedin.com/in/john-bowman/"
+    },
+    "publisher": {
           "@type": "Organization",
           "name": "JohnB.io",
           "url": "https://johnb.io"
         },
+    "keywords": "RNN, transformer, autoencoder, attention mechanism, LSTM, deep learning, NLP, sequence models",
+    "articleSection": "AI Course",
         "mainEntityOfPage": "https://johnb.io/course/rnns-transformers-autoencoders"
       },
       {
@@ -132,7 +136,7 @@
 <link href="/styles.css" rel="stylesheet"/>
 <link href="/header.css" rel="stylesheet"/>
 <link href="/footer.css" rel="stylesheet"/>
-<link href="/news.css?v=3" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
 <link href="/lesson.css?v=4" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
@@ -151,7 +155,7 @@
 <span>RNNs, Transformers and Autoencoders</span>
 </nav>
 <!-- Unit badge + title -->
-<h1 class="na-title">RNNs, Transformers and Autoencoders</h1><div class="na-lede-row"><p class="na-lede">These three architectures solve different problems, but they matter for different reasons. RNNs are why we got here. Transformers are where most AI is now. Autoencoders are useful if you understand when to reach for them.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/rnns-transformers-autoencoders.webp"/></div></div>
+<h1 class="na-title">RNNs, Transformers and Autoencoders</h1><div class="na-lede-row"><p class="na-lede">These three architectures solve different problems, but they matter for different reasons. RNNs are why we got here. Transformers are where most AI is now. Autoencoders are useful if you understand when to reach for them.</p><div class="na-lede-img"><img alt="RNNs, transformers and autoencoders - key deep learning architectures" loading="lazy" src="/images/course/rnns-transformers-autoencoders.webp"/></div></div>
 <!-- Meta row -->
 <!-- Audio player -->
 <div class="na-author">
@@ -284,12 +288,12 @@
 <nav aria-label="In this lesson" class="na-toc">
 <p class="na-toc-title">In this lesson</p>
 <ol class="na-toc-list">
-<li><a class="na-toc-link" href="#">RNNs and sequences</a></li>
-<li><a class="na-toc-link" href="#">Why they struggled</a></li>
-<li><a class="na-toc-link" href="#">Transformers and attention</a></li>
-<li><a class="na-toc-link" href="#">Why Transformers changed NLP</a></li>
-<li><a class="na-toc-link" href="#">Autoencoders</a></li>
-<li><a class="na-toc-link" href="#">Why Transformers won</a></li>
+<li><a class="na-toc-link" href="#recurrent-neural-networks-what-they-were-designed-for">RNNs and sequences</a></li>
+<li><a class="na-toc-link" href="#why-they-struggled-with-long-sequences">Why they struggled</a></li>
+<li><a class="na-toc-link" href="#transformers-the-attention-mechanism-explained-plainly">Transformers and attention</a></li>
+<li><a class="na-toc-link" href="#why-transformers-changed-nlp">Why Transformers changed NLP</a></li>
+<li><a class="na-toc-link" href="#autoencoders-what-they-compress-and-why-thats-useful">Autoencoders</a></li>
+<li><a class="na-toc-link" href="#why-transformers-largely-replaced-rnns">Why Transformers won</a></li>
 </ol>
 </nav>
 <!-- Course navigation -->

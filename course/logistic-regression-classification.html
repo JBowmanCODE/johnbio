@@ -8,23 +8,24 @@
 <meta content="Logistic regression predicts probabilities, not numbers. The sigmoid function maps any value to 0-1. It's fast, interpretable, and underrated. Here's how it works." name="description"/>
 <meta content="logistic regression explained, classification machine learning, sigmoid function, binary classification, decision boundary" name="keywords"/>
 <meta content="index, follow" name="robots"/>
+<meta content="John Bowman" name="author"/>
 <link href="https://johnb.io/course/logistic-regression-classification" rel="canonical"/>
 <meta content="Logistic Regression and Classification Explained" property="og:title"/>
 <meta content="article" property="og:type"/>
 <meta content="https://johnb.io/course/logistic-regression-classification" property="og:url"/>
 <meta content="Logistic regression predicts probabilities, not numbers. The sigmoid function maps any value to 0-1. It's fast, interpretable, and underrated. Here's how it works." property="og:description"/>
-<meta content="https://johnb.io/images/course-og.jpg" property="og:image"/>
+<meta content="https://johnb.io/images/course/logistic-regression-classification.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Logistic Regression and Classification Explained" property="og:image:alt"/>
+<meta content="Logistic Regression and Classification Explained lesson cover" property="og:image:alt"/>
 <meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
 <meta content="John Bowman" property="article:author"/>
 <meta content="AI Course" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Logistic Regression and Classification Explained" name="twitter:title"/>
 <meta content="Logistic regression predicts probabilities, not numbers. The sigmoid function maps any value to 0-1. It's fast, interpretable, and underrated. Here's how it works." name="twitter:description"/>
-<meta content="https://johnb.io/images/course-og.jpg" name="twitter:image"/>
-<meta content="Logistic Regression and Classification Explained" name="twitter:image:alt"/>
+<meta content="https://johnb.io/images/course/logistic-regression-classification.webp" name="twitter:image"/>
+<meta content="Logistic Regression and Classification Explained lesson cover - JohnB.io AI Course" name="twitter:image:alt"/>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -38,19 +39,22 @@
     "@type": "Article",
     "headline": "Logistic Regression and Classification Explained",
     "description": "Logistic regression predicts probabilities, not numbers. The sigmoid function maps any value to 0-1. It's fast, interpretable, and underrated. Here's how it works.",
-    "image": "https://johnb.io/images/course-og.jpg",
+    "url": "https://johnb.io/course/logistic-regression-classification",
+    "image": "https://johnb.io/images/course/logistic-regression-classification.webp",
     "datePublished": "2026-04-05T00:00:00+00:00",
     "dateModified": "2026-04-05T00:00:00+00:00",
     "author": {
       "@type": "Person",
       "name": "John Bowman",
-      "url": "https://johnb.io"
+      "url": "https://www.linkedin.com/in/john-bowman/"
     },
     "publisher": {
       "@type": "Organization",
       "name": "JohnB.io",
       "url": "https://johnb.io"
-    }
+    },
+    "keywords": "logistic regression explained, classification machine learning, sigmoid function, binary classification, decision boundary",
+    "articleSection": "AI Course"
   }
   </script>
 <script type="application/ld+json">
@@ -148,7 +152,7 @@
 <article class="na-content" id="main-content">
 <div class="na-header">
 <h1 class="na-title">Logistic Regression and Classification: How Machines Learn to Make Decisions</h1>
-<div class="na-lede-row"><p class="na-lede">Logistic regression isn't regression - it's classification. The name is a historical accident. It predicts probabilities rather than numbers, and it's faster and more interpretable than almost anything else. It's also chronically underused.</p><div class="na-lede-img"><img alt="" loading="lazy" src="/images/course/logistic-regression-classification.webp"/></div></div>
+<div class="na-lede-row"><p class="na-lede">Logistic regression isn't regression - it's classification. The name is a historical accident. It predicts probabilities rather than numbers, and it's faster and more interpretable than almost anything else. It's also chronically underused.</p><div class="na-lede-img"><img alt="Logistic regression and classification in machine learning" loading="lazy" src="/images/course/logistic-regression-classification.webp"/></div></div>
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
@@ -231,7 +235,7 @@
 <p>When does it lose? When the decision boundary is complicated - curves in ways a linear boundary can't capture. Random forests and neural networks model those curves. Logistic regression can't.</p>
 <p>My advice: always try logistic regression first. It's your baseline. If it solves the problem, use it. If not, understand why - is it accuracy, speed, or something else? Then choose the next model based on that gap, not based on what sounds impressive.</p>
 </section>
-<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What does logistic regression output, and why is that useful?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>A continuous number like price or salary</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>A probability between 0 and 1, which lets you adjust the decision threshold based on the cost of different errors</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>The raw feature weights learned during training</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>A ranking of input features by importance</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">In which situations does logistic regression typically beat more complex models like neural networks?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>When the dataset has millions of examples and the decision boundary is very complex</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>When image or audio data is involved</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>When you need explainability, have limited data, need fast predictions, or the problem is approximately linearly separable</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>When the output needs to be a multi-dimensional vector</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
+<div aria-label="Lesson quiz" class="lp-quiz" id="quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What does logistic regression output, and why is that useful?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>A continuous number like price or salary</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>A probability between 0 and 1, which lets you adjust the decision threshold based on the cost of different errors</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>The raw feature weights learned during training</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>A ranking of input features by importance</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">In which situations does logistic regression typically beat more complex models like neural networks?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>When the dataset has millions of examples and the decision boundary is very complex</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>When image or audio data is involved</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>When you need explainability, have limited data, need fast predictions, or the problem is approximately linearly separable</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>When the output needs to be a multi-dimensional vector</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 </div>
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
 <div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>
