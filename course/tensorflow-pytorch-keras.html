@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="/footer.css">
   <link rel="stylesheet" href="/news.css?v=3">
   <link rel="stylesheet" href="/lesson.css">
+  <link rel="stylesheet" href="/news-chat.css?v=7">
   <style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 
   <script type="application/ld+json">
@@ -114,7 +115,7 @@
     </nav>
 
     <article>
-      <header class="na-header">
+      <div class="na-header">
         <h1 class="na-title">TensorFlow, PyTorch and Keras: Which Deep Learning Library Should You Learn?</h1>
         <div class="na-lede-row">
           <p class="na-lede">These three libraries don't compete equally. Keras isn't even a separate choice anymore - it's part of TensorFlow. And PyTorch is winning with researchers. But which one should you actually learn first? That's where it gets interesting.</p>
@@ -134,7 +135,11 @@
             <span class="na-read">7 min read</span>
           </div>
         </div>
-      </header>
+        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
+          <span class="material-symbols-outlined">auto_awesome</span>
+          Ask Newsy AI about this lesson
+        </button>
+      </div>
 
       <details class="na-mobile-toc">
         <summary class="na-mobile-toc-trigger">
@@ -311,7 +316,64 @@
       </div>
 
       <!-- Accordions -->
-      <details class="tool-accordion" open>
+      <!-- Lesson navigation -->
+      <nav class="lp-nav" aria-label="Lesson navigation">
+        <a class="lp-nav-btn" href="/course/activation-functions-vanishing-gradient">
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+          <div>
+            <span class="lp-nav-label">Previous lesson</span>
+            <span class="lp-nav-title">Activation Functions and the Vanishing Gradient</span>
+          </div>
+        </a>
+        <a class="lp-nav-btn next" href="/course/cnns-with-keras">
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          <div>
+            <span class="lp-nav-label">Next lesson</span>
+            <span class="lp-nav-title">CNNs with Keras</span>
+          </div>
+        </a>
+      </nav>
+
+</article>
+  </div><!-- /na-content -->
+
+  <!-- Sidebar -->
+  <aside class="na-sidebar" aria-label="Lesson navigation sidebar">
+    <nav class="na-toc" aria-label="In this lesson">
+      <p class="na-toc-title">In this lesson</p>
+      <ol class="na-toc-list">
+        <li><a class="na-toc-link" href="#what-each-is">What each library is</a></li>
+        <li><a class="na-toc-link" href="#keras-tensorflow">How Keras relates to TensorFlow</a></li>
+        <li><a class="na-toc-link" href="#practical-differences">Practical differences for beginners</a></li>
+        <li><a class="na-toc-link" href="#landscape-shift">How the landscape has shifted</a></li>
+        <li><a class="na-toc-link" href="#which-first">Which one to learn first</a></li>
+      </ol>
+    </nav>
+    <div class="lp-sidebar-nav">
+      <p class="lp-sidebar-nav-title">Course navigation</p>
+      <a class="lp-sidebar-nav-link" href="/course-dashboard">
+        <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>My dashboard
+      </a>
+      <a class="lp-sidebar-nav-link" href="/course/cnns-with-keras">
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        <div><span class="lp-sidebar-nav-label">Next</span>CNNs with Keras</div>
+      </a>
+      <a class="lp-sidebar-nav-link" href="/exam">
+        <span class="material-symbols-outlined" aria-hidden="true">quiz</span>Final exam
+      </a>
+    </div>
+    <div id="newsy-ai"></div>
+  </aside>
+
+  </div><!-- /na-layout -->
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+  <section class="tool-info" aria-label="Lesson reference">
+    <div class="tool-info-inner">
+      <div class="tool-accordions">
+
+<details class="tool-accordion" open>
         <summary class="tool-accordion-summary">
           <span class="tool-accordion-title">Frequently Asked Questions</span>
           <span class="tool-accordion-icon" aria-hidden="true"></span>
@@ -372,61 +434,33 @@
         </div>
       </details>
 
-      <!-- Lesson navigation -->
-      <nav class="lp-nav" aria-label="Lesson navigation">
-        <a class="lp-nav-btn" href="/course/activation-functions-vanishing-gradient">
-          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-          <div>
-            <span class="lp-nav-label">Previous lesson</span>
-            <span class="lp-nav-title">Activation Functions and the Vanishing Gradient</span>
-          </div>
-        </a>
-        <a class="lp-nav-btn next" href="/course/cnns-with-keras">
-          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-          <div>
-            <span class="lp-nav-label">Next lesson</span>
-            <span class="lp-nav-title">CNNs with Keras</span>
-          </div>
-        </a>
-      </nav>
-
-    </article>
-  </div><!-- /na-content -->
-
-  <!-- Sidebar -->
-  <aside class="na-sidebar" aria-label="Lesson navigation sidebar">
-    <nav class="na-toc" aria-label="In this lesson">
-      <p class="na-toc-title">In this lesson</p>
-      <ol class="na-toc-list">
-        <li><a class="na-toc-link" href="#what-each-is">What each library is</a></li>
-        <li><a class="na-toc-link" href="#keras-tensorflow">How Keras relates to TensorFlow</a></li>
-        <li><a class="na-toc-link" href="#practical-differences">Practical differences for beginners</a></li>
-        <li><a class="na-toc-link" href="#landscape-shift">How the landscape has shifted</a></li>
-        <li><a class="na-toc-link" href="#which-first">Which one to learn first</a></li>
-      </ol>
-    </nav>
-    <div class="lp-sidebar-nav">
-      <p class="lp-sidebar-nav-title">Course navigation</p>
-      <a class="lp-sidebar-nav-link" href="/course-dashboard">
-        <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>My dashboard
-      </a>
-      <a class="lp-sidebar-nav-link" href="/course/cnns-with-keras">
-        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-        <div><span class="lp-sidebar-nav-label">Next</span>CNNs with Keras</div>
-      </a>
-      <a class="lp-sidebar-nav-link" href="/exam">
-        <span class="material-symbols-outlined" aria-hidden="true">quiz</span>Final exam
-      </a>
+      </div>
     </div>
-  </aside>
+  </section>
 
-  </div><!-- /na-layout -->
-  </main>
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
 
   <div id="footer-placeholder"></div>
 
+  <script src="/news-data.js"></script>
   <script src="/scripts.js" defer></script>
   <script src="/news-article.js" defer></script>
+  <script src="/news-chat.js" defer></script>
+  <script>
+    document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
+      const trigger = document.querySelector('.nc-trigger');
+      if (trigger) trigger.click();
+    });
+    document.querySelectorAll('.na-mobile-toc-list a').forEach(a => {
+      a.addEventListener('click', () => {
+        const toc = document.querySelector('.na-mobile-toc');
+        if (toc) toc.removeAttribute('open');
+      });
+    });
+  </script>
   <script>
   // Quiz interaction
   document.querySelectorAll('.lp-quiz-option').forEach(btn => {

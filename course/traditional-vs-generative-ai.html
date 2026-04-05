@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="/footer.css">
   <link rel="stylesheet" href="/news.css?v=3">
   <link rel="stylesheet" href="/lesson.css">
+  <link rel="stylesheet" href="/news-chat.css?v=7">
   <style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 
   <script type="application/ld+json">
@@ -114,7 +115,7 @@
     </nav>
 
     <article>
-      <header class="na-header">
+      <div class="na-header">
         <h1 class="na-title">Traditional AI vs Generative AI: How They Work Differently Under the Hood</h1>
         <div class="na-lede-row">
           <p class="na-lede">Before 2022, most AI systems did one thing: classify or predict. Generative AI changed the conversation entirely by asking a different question — can the system create something new? The distinction is architectural, not just marketing.</p>
@@ -134,7 +135,11 @@
             <span class="na-read">8 min read</span>
           </div>
         </div>
-      </header>
+        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
+          <span class="material-symbols-outlined">auto_awesome</span>
+          Ask Newsy AI about this lesson
+        </button>
+      </div>
 
       <details class="na-mobile-toc">
         <summary class="na-mobile-toc-trigger">
@@ -299,7 +304,62 @@
         </div>
       </div>
 
-      <details class="tool-accordion" open>
+      <nav class="lp-nav" aria-label="Lesson navigation">
+        <a class="lp-nav-btn" href="/course/ai-vs-augmented-intelligence">
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+          <div>
+            <span class="lp-nav-label">Previous lesson</span>
+            <span class="lp-nav-title">AI vs Augmented Intelligence</span>
+          </div>
+        </a>
+        <a class="lp-nav-btn next" href="/course/ml-deep-learning-neural-networks">
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          <div>
+            <span class="lp-nav-label">Next lesson</span>
+            <span class="lp-nav-title">ML, Deep Learning and Neural Networks</span>
+          </div>
+        </a>
+      </nav>
+
+</article>
+  </div><!-- /na-content -->
+
+  <aside class="na-sidebar" aria-label="Lesson navigation sidebar">
+    <nav class="na-toc" aria-label="In this lesson">
+      <p class="na-toc-title">In this lesson</p>
+      <ol class="na-toc-list">
+        <li><a class="na-toc-link" href="#traditional">Traditional AI: classification and prediction</a></li>
+        <li><a class="na-toc-link" href="#generative">Generative AI: creating something new</a></li>
+        <li><a class="na-toc-link" href="#why-changed">Why generative AI changed everything</a></li>
+        <li><a class="na-toc-link" href="#architecture">The architectural difference</a></li>
+        <li><a class="na-toc-link" href="#traditional-wins">When traditional AI still wins</a></li>
+      </ol>
+    </nav>
+    <div class="lp-sidebar-nav">
+      <p class="lp-sidebar-nav-title">Course navigation</p>
+      <a class="lp-sidebar-nav-link" href="/course-dashboard">
+        <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>My dashboard
+      </a>
+      <a class="lp-sidebar-nav-link" href="/course/ml-deep-learning-neural-networks">
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        <div><span class="lp-sidebar-nav-label">Next</span>ML, Deep Learning and Neural Networks</div>
+      </a>
+      <a class="lp-sidebar-nav-link" href="/exam">
+        <span class="material-symbols-outlined" aria-hidden="true">quiz</span>Final exam
+      </a>
+    </div>
+    <div id="newsy-ai"></div>
+  </aside>
+
+  </div><!-- /na-layout -->
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+  <section class="tool-info" aria-label="Lesson reference">
+    <div class="tool-info-inner">
+      <div class="tool-accordions">
+
+<details class="tool-accordion" open>
         <summary class="tool-accordion-summary">
           <span class="tool-accordion-title">Frequently Asked Questions</span>
           <span class="tool-accordion-icon" aria-hidden="true"></span>
@@ -361,58 +421,32 @@
         </div>
       </details>
 
-      <nav class="lp-nav" aria-label="Lesson navigation">
-        <a class="lp-nav-btn" href="/course/ai-vs-augmented-intelligence">
-          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-          <div>
-            <span class="lp-nav-label">Previous lesson</span>
-            <span class="lp-nav-title">AI vs Augmented Intelligence</span>
-          </div>
-        </a>
-        <a class="lp-nav-btn next" href="/course/ml-deep-learning-neural-networks">
-          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-          <div>
-            <span class="lp-nav-label">Next lesson</span>
-            <span class="lp-nav-title">ML, Deep Learning and Neural Networks</span>
-          </div>
-        </a>
-      </nav>
-
-    </article>
-  </div><!-- /na-content -->
-
-  <aside class="na-sidebar" aria-label="Lesson navigation sidebar">
-    <nav class="na-toc" aria-label="In this lesson">
-      <p class="na-toc-title">In this lesson</p>
-      <ol class="na-toc-list">
-        <li><a class="na-toc-link" href="#traditional">Traditional AI: classification and prediction</a></li>
-        <li><a class="na-toc-link" href="#generative">Generative AI: creating something new</a></li>
-        <li><a class="na-toc-link" href="#why-changed">Why generative AI changed everything</a></li>
-        <li><a class="na-toc-link" href="#architecture">The architectural difference</a></li>
-        <li><a class="na-toc-link" href="#traditional-wins">When traditional AI still wins</a></li>
-      </ol>
-    </nav>
-    <div class="lp-sidebar-nav">
-      <p class="lp-sidebar-nav-title">Course navigation</p>
-      <a class="lp-sidebar-nav-link" href="/course-dashboard">
-        <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>My dashboard
-      </a>
-      <a class="lp-sidebar-nav-link" href="/course/ml-deep-learning-neural-networks">
-        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-        <div><span class="lp-sidebar-nav-label">Next</span>ML, Deep Learning and Neural Networks</div>
-      </a>
-      <a class="lp-sidebar-nav-link" href="/exam">
-        <span class="material-symbols-outlined" aria-hidden="true">quiz</span>Final exam
-      </a>
+      </div>
     </div>
-  </aside>
+  </section>
 
-  </div><!-- /na-layout -->
-  </main>
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
 
   <div id="footer-placeholder"></div>
+  <script src="/news-data.js"></script>
   <script src="/scripts.js" defer></script>
   <script src="/news-article.js" defer></script>
+  <script src="/news-chat.js" defer></script>
+  <script>
+    document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
+      const trigger = document.querySelector('.nc-trigger');
+      if (trigger) trigger.click();
+    });
+    document.querySelectorAll('.na-mobile-toc-list a').forEach(a => {
+      a.addEventListener('click', () => {
+        const toc = document.querySelector('.na-mobile-toc');
+        if (toc) toc.removeAttribute('open');
+      });
+    });
+  </script>
   <script>
   document.querySelectorAll('.lp-quiz-option').forEach(btn => {
     btn.addEventListener('click', function() {
