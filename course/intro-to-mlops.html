@@ -230,33 +230,7 @@
 <p>The companies that are good at ML have data scientists and MLOps engineers who work together. The data scientist doesn't have to implement the monitoring system, but they should understand what needs to be monitored and why. They should think about edge cases that might not show up in training data. They should care that their model is reliable, not just accurate.</p>
 </div>
 <!-- Quiz -->
-<section aria-label="Lesson quiz" class="lp-quiz">
-<h2 class="lp-quiz-title">Check your understanding</h2>
-<!-- Q1 -->
-<div class="lp-quiz-q">
-<p class="lp-quiz-question">Why does an ML model's performance degrade over time even if the code hasn't changed?</p>
-<div aria-label="Question 1 options" class="lp-quiz-options" role="group">
-<button class="lp-quiz-btn" data-i="0" data-q="1">A) The model's weights change automatically when exposed to new data</button>
-<button class="lp-quiz-btn lp-quiz-correct" data-i="1" data-q="1">B) The data distribution in production shifts away from what the model trained on</button>
-<button class="lp-quiz-btn" data-i="2" data-q="1">C) Server hardware gets slower over time, reducing inference accuracy</button>
-<button class="lp-quiz-btn" data-i="3" data-q="1">D) Python package updates change how models run their predictions</button>
-</div>
-<div class="lp-quiz-feedback-correct" hidden="" id="q1-correct">Correct. This is drift. The model learned patterns from training data, but in production the data distribution changes - user behaviour shifts, new products appear, market conditions change. The model's patterns become less accurate as the world diverges from what it trained on.</div>
-<div class="lp-quiz-feedback-wrong" hidden="" id="q1-wrong">Not quite. ML models don't update their own weights in production. The performance degrades because the data distribution shifts - the world changes but the model's learned patterns don't.</div>
-</div>
-<!-- Q2 -->
-<div class="lp-quiz-q">
-<p class="lp-quiz-question">What makes ML systems harder to fully test before deployment compared to regular software?</p>
-<div aria-label="Question 2 options" class="lp-quiz-options" role="group">
-<button class="lp-quiz-btn" data-i="0" data-q="2">A) ML models are written in Python, which doesn't support unit testing</button>
-<button class="lp-quiz-btn" data-i="1" data-q="2">B) ML testing requires cloud infrastructure not available locally</button>
-<button class="lp-quiz-btn lp-quiz-correct" data-i="2" data-q="2">C) ML models are probabilistic and will encounter data distributions in production that weren't in training</button>
-<button class="lp-quiz-btn" data-i="3" data-q="2">D) ML models can only be tested after deployment since they need real user data</button>
-</div>
-<div class="lp-quiz-feedback-correct" hidden="" id="q2-correct">Correct. Regular software is deterministic - you can enumerate the branches and test them all. ML models are probabilistic and the input space is infinite. You'll always encounter distributions in production that didn't appear in training.</div>
-<div class="lp-quiz-feedback-wrong" hidden="" id="q2-wrong">Not quite. The issue is that ML models are probabilistic, not deterministic. The input space is infinite and production data always contains distributions you didn't see in training.</div>
-</div>
-</section>
+<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">Why does an ML model's performance degrade over time even if the code hasn't changed?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>The model's weights change automatically when exposed to new data</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>The data distribution in production shifts away from what the model trained on</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>Server hardware gets slower over time, reducing inference accuracy</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>Python package updates change how models run their predictions</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">What makes ML systems harder to fully test before deployment compared to regular software?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>ML models are written in Python, which doesn't support unit testing</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>ML testing requires cloud infrastructure not available locally</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>ML models are probabilistic and will encounter data distributions in production that weren't in training</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>ML models can only be tested after deployment since they need real user data</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 <!-- Podcast -->
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
 <div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>
@@ -460,18 +434,6 @@
       });
     });
   </script>
-<script>
-    // Quiz logic
-    document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const q = this.dataset.q;
-        const group = document.querySelectorAll(`.lp-quiz-btn[data-q="${q}"]`);
-        group.forEach(b => b.disabled = true);
-        const isCorrect = this.classList.contains('lp-quiz-correct');
-        this.classList.add(isCorrect ? 'lp-quiz-selected-correct' : 'lp-quiz-selected-wrong');
-        document.getElementById(`q${q}-${isCorrect ? 'correct' : 'wrong'}`).hidden = false;
-      });
-    });
-  </script>
+
 </body>
 </html>

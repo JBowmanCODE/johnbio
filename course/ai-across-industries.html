@@ -231,33 +231,7 @@
 <p>The furthest-ahead organisations share a pattern: good data infrastructure, clear metrics, and real business problems that AI can solve. That's not an industry characteristic. It's an organisational maturity characteristic. Some finance companies have it. Some manufacturing companies have it. Most don't.</p>
 </div>
 <!-- Quiz -->
-<section aria-label="Lesson quiz" class="lp-quiz">
-<h2 class="lp-quiz-title">Check your understanding</h2>
-<!-- Q1 -->
-<div class="lp-quiz-q">
-<p class="lp-quiz-question">Why is medical image diagnosis well-suited to AI compared to general clinical diagnosis?</p>
-<div aria-label="Question 1 options" class="lp-quiz-options" role="group">
-<button class="lp-quiz-btn" data-i="0" data-q="1">A) Medical images are publicly available for training, unlike other medical data</button>
-<button class="lp-quiz-btn lp-quiz-correct" data-i="1" data-q="1">B) It's a bounded problem with clear inputs, clear labels, and a measurable accuracy metric</button>
-<button class="lp-quiz-btn" data-i="2" data-q="1">C) Image-based AI doesn't require regulatory approval unlike text-based systems</button>
-<button class="lp-quiz-btn" data-i="3" data-q="1">D) Radiologists are less accurate than other specialists so the bar is lower</button>
-</div>
-<div class="lp-quiz-feedback-correct" hidden="" id="q1-correct">Correct. Image classification is a well-defined ML problem: the input (image) is fixed format, the label (disease present/absent) is binary, and accuracy is measurable. General clinical diagnosis requires reasoning about complex patient histories, trade-offs, and contextual judgment that's much harder to frame as an ML task.</div>
-<div class="lp-quiz-feedback-wrong" hidden="" id="q1-wrong">Not quite. Medical images are actually strictly regulated and not publicly available. The reason image diagnosis works well for AI is that it's a bounded, well-defined problem: fixed-format input, binary labels, measurable accuracy metric.</div>
-</div>
-<!-- Q2 -->
-<div class="lp-quiz-q">
-<p class="lp-quiz-question">What makes fraud detection a strong AI use case in finance?</p>
-<div aria-label="Question 2 options" class="lp-quiz-options" role="group">
-<button class="lp-quiz-btn" data-i="0" data-q="2">A) Fraud patterns are simple and don't change over time</button>
-<button class="lp-quiz-btn" data-i="1" data-q="2">B) Financial regulations require AI for fraud detection in most countries</button>
-<button class="lp-quiz-btn lp-quiz-correct" data-i="2" data-q="2">C) It has clear labelled data, a clear metric, and a measurable cost to optimise against</button>
-<button class="lp-quiz-btn" data-i="3" data-q="2">D) Fraudsters don't adapt their behaviour when detection improves</button>
-</div>
-<div class="lp-quiz-feedback-correct" hidden="" id="q2-correct">Correct. Fraud detection has the ingredients that make ML work well: you have transaction data (inputs), fraud labels (did this transaction turn out to be fraud?), and a clear metric (catch fraud while minimising false rejections of legitimate transactions). Banks have refined these systems for years.</div>
-<div class="lp-quiz-feedback-wrong" hidden="" id="q2-wrong">Not quite. Fraud patterns do evolve, and regulation requirements vary. The reason fraud detection is a strong AI use case is the data quality and problem clarity: clear inputs, clear binary labels, and a measurable cost you're trying to minimise.</div>
-</div>
-</section>
+<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">Why is medical image diagnosis well-suited to AI compared to general clinical diagnosis?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>Medical images are publicly available for training, unlike other medical data</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>It's a bounded problem with clear inputs, clear labels, and a measurable accuracy metric</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>Image-based AI doesn't require regulatory approval unlike text-based systems</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>Radiologists are less accurate than other specialists so the bar is lower</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">What makes fraud detection a strong AI use case in finance?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>Fraud patterns are simple and don't change over time</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>Financial regulations require AI for fraud detection in most countries</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>It has clear labelled data, a clear metric, and a measurable cost to optimise against</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>Fraudsters don't adapt their behaviour when detection improves</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 <!-- Podcast -->
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
 <div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>
@@ -461,18 +435,6 @@
       });
     });
   </script>
-<script>
-    // Quiz logic
-    document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const q = this.dataset.q;
-        const group = document.querySelectorAll(`.lp-quiz-btn[data-q="${q}"]`);
-        group.forEach(b => b.disabled = true);
-        const isCorrect = this.classList.contains('lp-quiz-correct');
-        this.classList.add(isCorrect ? 'lp-quiz-selected-correct' : 'lp-quiz-selected-wrong');
-        document.getElementById(`q${q}-${isCorrect ? 'correct' : 'wrong'}`).hidden = false;
-      });
-    });
-  </script>
+
 </body>
 </html>

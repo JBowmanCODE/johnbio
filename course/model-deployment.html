@@ -242,33 +242,7 @@ CMD ["python", "app.py"]</code></pre>
 <p>Deployment is running a service. Services need monitoring, updates, and maintenance.</p>
 </div>
 <!-- Quiz -->
-<section aria-label="Lesson quiz" class="lp-quiz">
-<h2 class="lp-quiz-title">Check your understanding</h2>
-<!-- Q1 -->
-<div class="lp-quiz-q">
-<p class="lp-quiz-question">What problem does packaging a model in a Docker container solve?</p>
-<div aria-label="Question 1 options" class="lp-quiz-options" role="group">
-<button class="lp-quiz-btn" data-i="0" data-q="1">A) It automatically optimises model inference speed</button>
-<button class="lp-quiz-btn lp-quiz-correct" data-i="1" data-q="1">B) It ensures the model runs identically across local development and production environments</button>
-<button class="lp-quiz-btn" data-i="2" data-q="1">C) It stores model weights more efficiently than saving a .pkl file</button>
-<button class="lp-quiz-btn" data-i="3" data-q="1">D) It provides built-in monitoring for drift detection</button>
-</div>
-<div class="lp-quiz-feedback-correct" hidden="" id="q1-correct">Correct. Docker containers package the code, model, and all dependencies together so the image runs identically everywhere. This eliminates "works on my machine" problems and dependency version mismatches between development and production.</div>
-<div class="lp-quiz-feedback-wrong" hidden="" id="q1-wrong">Not quite. Containers solve the reproducibility and portability problem - the same image runs the same way everywhere. They don't directly optimise inference speed or handle drift monitoring.</div>
-</div>
-<!-- Q2 -->
-<div class="lp-quiz-q">
-<p class="lp-quiz-question">Why should ML model weights NOT be stored in a Git repository?</p>
-<div aria-label="Question 2 options" class="lp-quiz-options" role="group">
-<button class="lp-quiz-btn" data-i="0" data-q="2">A) Git doesn't support binary files at all</button>
-<button class="lp-quiz-btn" data-i="1" data-q="2">B) Model weights can contain sensitive training data that shouldn't be versioned</button>
-<button class="lp-quiz-btn lp-quiz-correct" data-i="2" data-q="2">C) Models are large binary files that bloat repositories and need dedicated versioning systems</button>
-<button class="lp-quiz-btn" data-i="3" data-q="2">D) Git compression corrupts neural network weight formats</button>
-</div>
-<div class="lp-quiz-feedback-correct" hidden="" id="q2-correct">Correct. Model files can be hundreds of megabytes or gigabytes. Storing them in Git bloats the repository and Git's diff-based versioning doesn't work well with binary files. Model registries (MLflow, S3 with versioning, etc.) are designed for this purpose.</div>
-<div class="lp-quiz-feedback-wrong" hidden="" id="q2-wrong">Not quite. Git does support binary files technically, but model weights can be hundreds of megabytes or more. This makes repositories unmanageable. Dedicated model registries are the right tool for versioning and storing model artefacts.</div>
-</div>
-</section>
+<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What problem does packaging a model in a Docker container solve?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>It automatically optimises model inference speed</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>It ensures the model runs identically across local development and production environments</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>It stores model weights more efficiently than saving a .pkl file</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>It provides built-in monitoring for drift detection</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">Why should ML model weights NOT be stored in a Git repository?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>Git doesn't support binary files at all</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>Model weights can contain sensitive training data that shouldn't be versioned</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>Models are large binary files that bloat repositories and need dedicated versioning systems</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>Git compression corrupts neural network weight formats</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 <!-- Podcast -->
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
 <div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>
@@ -473,18 +447,6 @@ CMD ["python", "app.py"]</code></pre>
       });
     });
   </script>
-<script>
-    // Quiz logic
-    document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const q = this.dataset.q;
-        const group = document.querySelectorAll(`.lp-quiz-btn[data-q="${q}"]`);
-        group.forEach(b => b.disabled = true);
-        const isCorrect = this.classList.contains('lp-quiz-correct');
-        this.classList.add(isCorrect ? 'lp-quiz-selected-correct' : 'lp-quiz-selected-wrong');
-        document.getElementById(`q${q}-${isCorrect ? 'correct' : 'wrong'}`).hidden = false;
-      });
-    });
-  </script>
+
 </body>
 </html>

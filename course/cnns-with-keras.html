@@ -236,33 +236,7 @@
 <p>If you're building something with massive training data and unlimited compute, maybe reach for a Vision Transformer. If you're learning, or if you have reasonable data and want to train fast, CNNs are still the right choice. They're not obsolete. They've just been supplemented by approaches that sometimes work better.</p>
 </div>
 <!-- Quiz -->
-<section aria-label="Lesson quiz" class="lp-quiz">
-<h2 class="lp-quiz-title">Check your understanding</h2>
-<!-- Q1 -->
-<div class="lp-quiz-q">
-<p class="lp-quiz-question">What does max pooling do in a CNN?</p>
-<div aria-label="Question 1 options" class="lp-quiz-options" role="group">
-<button class="lp-quiz-btn" data-i="0" data-q="1">A) Detects edges in the image by applying filters</button>
-<button class="lp-quiz-btn lp-quiz-correct" data-i="1" data-q="1">B) Reduces feature map size and provides tolerance to small positional shifts</button>
-<button class="lp-quiz-btn" data-i="2" data-q="1">C) Applies the activation function to every pixel individually</button>
-<button class="lp-quiz-btn" data-i="3" data-q="1">D) Increases the number of filters in the next layer</button>
-</div>
-<div class="lp-quiz-feedback-correct" hidden="" id="q1-correct">Correct. Max pooling takes the maximum value from small regions, shrinking the feature map while preserving which patterns were detected. The position tolerance is key: a feature that shifted by one pixel still gets caught.</div>
-<div class="lp-quiz-feedback-wrong" hidden="" id="q1-wrong">Not quite. Max pooling doesn't detect features - that's the convolutional layer's job. Pooling takes the output of convolutions and reduces it, also making the result less sensitive to exact position.</div>
-</div>
-<!-- Q2 -->
-<div class="lp-quiz-q">
-<p class="lp-quiz-question">Why are CNNs still worth learning when Vision Transformers exist?</p>
-<div aria-label="Question 2 options" class="lp-quiz-options" role="group">
-<button class="lp-quiz-btn" data-i="0" data-q="2">A) CNNs always outperform Vision Transformers on every task</button>
-<button class="lp-quiz-btn" data-i="1" data-q="2">B) Vision Transformers can't process colour images</button>
-<button class="lp-quiz-btn lp-quiz-correct" data-i="2" data-q="2">C) CNNs are more efficient on smaller datasets and the convolution intuition helps you understand all vision models</button>
-<button class="lp-quiz-btn" data-i="3" data-q="2">D) Keras doesn't support Vision Transformers yet</button>
-</div>
-<div class="lp-quiz-feedback-correct" hidden="" id="q2-correct">Correct. CNNs need less data to train well and are computationally cheaper. Understanding how convolutions build up pattern detection is also foundational for understanding newer architectures.</div>
-<div class="lp-quiz-feedback-wrong" hidden="" id="q2-wrong">Not quite. CNNs don't always win - Vision Transformers outperform them with large datasets. The real reason CNNs remain worth learning is their efficiency on smaller datasets and the conceptual value of the convolution intuition.</div>
-</div>
-</section>
+<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What does max pooling do in a CNN?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>Detects edges in the image by applying filters</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>Reduces feature map size and provides tolerance to small positional shifts</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>Applies the activation function to every pixel individually</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>Increases the number of filters in the next layer</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">Why are CNNs still worth learning when Vision Transformers exist?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>CNNs always outperform Vision Transformers on every task</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>Vision Transformers can't process colour images</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>CNNs are more efficient on smaller datasets and the convolution intuition helps you understand all vision models</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>Keras doesn't support Vision Transformers yet</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 <!-- Podcast -->
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
 <div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>
@@ -465,18 +439,6 @@
       });
     });
   </script>
-<script>
-    // Quiz logic
-    document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const q = this.dataset.q;
-        const group = document.querySelectorAll(`.lp-quiz-btn[data-q="${q}"]`);
-        group.forEach(b => b.disabled = true);
-        const isCorrect = this.classList.contains('lp-quiz-correct');
-        this.classList.add(isCorrect ? 'lp-quiz-selected-correct' : 'lp-quiz-selected-wrong');
-        document.getElementById(`q${q}-${isCorrect ? 'correct' : 'wrong'}`).hidden = false;
-      });
-    });
-  </script>
+
 </body>
 </html>
