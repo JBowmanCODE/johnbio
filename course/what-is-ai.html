@@ -38,6 +38,7 @@
   <link rel="stylesheet" href="/header.css">
   <link rel="stylesheet" href="/footer.css">
   <link rel="stylesheet" href="/news.css?v=3">
+  <link rel="stylesheet" href="/news-chat.css?v=7">
   <link rel="stylesheet" href="/lesson.css">
   <style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 
@@ -134,6 +135,10 @@
             <span class="na-read">8 min read</span>
           </div>
         </div>
+        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
+          <span class="material-symbols-outlined">auto_awesome</span>
+          Ask Newsy AI about this lesson
+        </button>
       </header>
 
       <details class="na-mobile-toc">
@@ -308,69 +313,6 @@
         </div>
       </div>
 
-      <!-- Accordions -->
-      <details class="tool-accordion" open>
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">Frequently Asked Questions</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <h3>What is the simplest definition of artificial intelligence?</h3>
-          <p>AI is software designed to handle tasks that typically require human judgment or pattern recognition. It learns from data rather than following step-by-step instructions written by a programmer. Most AI today is narrow - it solves one specific problem at a time and does not generalise across domains.</p>
-          <h3>When was artificial intelligence invented?</h3>
-          <p>The field was formally founded at the Dartmouth Conference in 1956, though the underlying ideas predate this. Alan Turing proposed his test for machine intelligence in 1950, and researchers were attempting to build thinking machines from the 1930s onwards. The field went through several AI winters before the current deep learning era began around 2012.</p>
-          <h3>What is the Turing Test and has any AI passed it?</h3>
-          <p>The Turing Test, proposed by Alan Turing in 1950, checks whether a machine can convince a human judge it is human through written conversation. In 2014, a chatbot called Eugene Goostman claimed to pass a version of the test, though this is disputed. Modern large language models perform well on conversational tasks, but the test is now widely considered a flawed measure of intelligence because it tests deception rather than genuine understanding.</p>
-          <h3>Why do AI systems produce false information confidently?</h3>
-          <p>AI systems, particularly large language models, predict the next likely word or token based on patterns in training data. There is no internal fact-checking mechanism running in parallel. When a system generates text about a topic, it produces what is statistically plausible given its training, not what is verified as true. This is why AI can confidently state things that are completely false.</p>
-        </div>
-      </details>
-
-      <details class="tool-accordion">
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">How It Works</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <p>Artificial intelligence systems learn by processing large amounts of training data. A supervised learning model, for example, sees thousands of labelled examples - emails marked as spam or not spam, images labelled as cats or dogs - and adjusts its internal parameters to minimise prediction errors.</p>
-          <p>During training, an optimisation algorithm called <a href="/course/linear-regression-gradient-descent">gradient descent</a> repeatedly checks how wrong the model's predictions are and adjusts internal weights to reduce that error. Once trained, the model applies the patterns it learned to new, unseen examples.</p>
-          <p>The difference from traditional programming is that no explicit rules are written. The system infers rules from data. This is both the strength of AI (it can find patterns humans wouldn't think to code) and its weakness (it can find patterns that are spurious or harmful).</p>
-        </div>
-      </details>
-
-      <details class="tool-accordion">
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">Key Points</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <ul>
-            <li>AI is pattern matching at scale, trained on examples, applied to new situations - not human-like reasoning or consciousness</li>
-            <li>Every AI system in existence today is narrow AI - good at one task, unable to generalise</li>
-            <li>The Turing Test measures deception rather than intelligence and is now widely regarded as an inadequate benchmark</li>
-            <li>AI confidently produces false information because it has no internal fact-checker - it predicts statistically likely outputs</li>
-            <li>The field went through multiple AI winters when promises outpaced capability, most recently in the 1980s-1990s</li>
-            <li>Modern AI became practical around 2012 with the availability of GPU computing power and large labelled datasets</li>
-          </ul>
-        </div>
-      </details>
-
-      <details class="tool-accordion">
-        <summary class="tool-accordion-summary">
-          <span class="tool-accordion-title">Sources</span>
-          <span class="tool-accordion-icon" aria-hidden="true"></span>
-        </summary>
-        <div class="tool-accordion-body">
-          <ul>
-            <li><a href="https://www.cs.ox.ac.uk/activities/ieg/e-library/sources/t_article.pdf" target="_blank" rel="noopener">Alan Turing, "Computing Machinery and Intelligence" (1950)</a> - the original Turing Test paper</li>
-            <li><a href="https://en.wikipedia.org/wiki/Dartmouth_workshop" target="_blank" rel="noopener">The Dartmouth Workshop (1956)</a> - where AI was formally named as a field</li>
-            <li><a href="https://en.wikipedia.org/wiki/AI_winter" target="_blank" rel="noopener">AI Winters</a> - Wikipedia overview of funding collapses in AI research</li>
-            <li><a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude by Anthropic</a> - an example of a modern large language model</li>
-            <li><a href="https://openai.com/chatgpt" target="_blank" rel="noopener">ChatGPT by OpenAI</a> - the most widely used LLM application</li>
-          </ul>
-        </div>
-      </details>
-
       <!-- Lesson navigation -->
       <nav class="lp-nav" aria-label="Lesson navigation">
         <a class="lp-nav-btn" href="/course-dashboard">
@@ -417,15 +359,117 @@
         <span class="material-symbols-outlined" aria-hidden="true">quiz</span>Final exam
       </a>
     </div>
+    <div id="newsy-ai"></div>
   </aside>
 
   </div><!-- /na-layout -->
   </main>
 
+  <div id="share-bar-placeholder"></div>
+
+  <section class="tool-info" aria-label="Lesson reference">
+    <div class="tool-info-inner">
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>What is the simplest definition of artificial intelligence?</dt>
+                <dd>AI is software designed to handle tasks that typically require human judgment or pattern recognition. It learns from data rather than following step-by-step instructions written by a programmer. Most AI today is narrow - it solves one specific problem at a time and does not generalise across domains.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>When was artificial intelligence invented?</dt>
+                <dd>The field was formally founded at the Dartmouth Conference in 1956, though the underlying ideas predate this. Alan Turing proposed his test for machine intelligence in 1950, and researchers were attempting to build thinking machines from the 1930s onwards. The field went through several AI winters before the current deep learning era began around 2012.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What is the Turing Test and has any AI passed it?</dt>
+                <dd>The Turing Test, proposed by Alan Turing in 1950, checks whether a machine can convince a human judge it is human through written conversation. In 2014, a chatbot called Eugene Goostman claimed to pass a version of the test, though this is disputed. Modern large language models perform well on conversational tasks, but the test is now widely considered a flawed measure of intelligence because it tests deception rather than genuine understanding.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Why do AI systems produce false information confidently?</dt>
+                <dd>AI systems, particularly large language models, predict the next likely word or token based on patterns in training data. There is no internal fact-checking mechanism running in parallel. When a system generates text about a topic, it produces what is statistically plausible given its training, not what is verified as true. This is why AI can confidently state things that are completely false.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>AI systems learn by processing large amounts of training data.</strong> A supervised learning model sees thousands of labelled examples - emails marked as spam or not spam, images labelled as cats or dogs - and adjusts its internal parameters to minimise prediction errors.</li>
+              <li><strong>During training, gradient descent reduces errors.</strong> An optimisation algorithm called <a href="/course/linear-regression-gradient-descent">gradient descent</a> repeatedly checks how wrong the model's predictions are and adjusts internal weights to reduce that error. Once trained, the model applies the patterns it learned to new, unseen examples.</li>
+              <li><strong>No explicit rules are written - they are inferred from data.</strong> This is both the strength of AI (it can find patterns humans wouldn't think to code) and its weakness (it can find patterns that are spurious or harmful).</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>AI is pattern matching at scale</strong> - trained on examples, applied to new situations. Not human-like reasoning or consciousness.</li>
+              <li><strong>Every AI system today is narrow AI</strong> - good at one task, unable to generalise across domains.</li>
+              <li><strong>The Turing Test measures deception</strong>, not intelligence, and is now widely regarded as an inadequate benchmark.</li>
+              <li><strong>AI confidently produces false information</strong> because it has no internal fact-checker - it predicts statistically likely outputs.</li>
+              <li><strong>The field went through multiple AI winters</strong> when promises outpaced capability, most recently in the 1980s-1990s.</li>
+              <li><strong>Modern AI became practical around 2012</strong> with the availability of GPU computing power and large labelled datasets.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://www.cs.ox.ac.uk/activities/ieg/e-library/sources/t_article.pdf" target="_blank" rel="noopener">Alan Turing, "Computing Machinery and Intelligence" (1950)</a> - the original Turing Test paper</li>
+              <li><a href="https://en.wikipedia.org/wiki/Dartmouth_workshop" target="_blank" rel="noopener">The Dartmouth Workshop (1956)</a> - where AI was formally named as a field</li>
+              <li><a href="https://en.wikipedia.org/wiki/AI_winter" target="_blank" rel="noopener">AI Winters</a> - Wikipedia overview of funding collapses in AI research</li>
+              <li><a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude by Anthropic</a> - an example of a modern large language model</li>
+              <li><a href="https://openai.com/chatgpt" target="_blank" rel="noopener">ChatGPT by OpenAI</a> - the most widely used LLM application</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
   <div id="footer-placeholder"></div>
 
+  <script src="/news-data.js"></script>
   <script src="/scripts.js" defer></script>
   <script src="/news-article.js" defer></script>
+  <script src="/news-chat.js" defer></script>
+  <script>
+    document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
+      const trigger = document.querySelector('.nc-trigger');
+      if (trigger) trigger.click();
+    });
+    document.querySelectorAll('.na-mobile-toc-list a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.querySelector('.na-mobile-toc').removeAttribute('open');
+      });
+    });
+  </script>
   <script>
   // Quiz interaction
   document.querySelectorAll('.lp-quiz-option').forEach(btn => {
