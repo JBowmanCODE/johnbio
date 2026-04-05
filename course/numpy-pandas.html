@@ -1,41 +1,38 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NumPy and Pandas for AI: A Beginner's Guide - JohnB.io</title>
-  <meta name="description" content="NumPy handles numerical operations at scale. Pandas handles messy, real-world data. Every AI project uses both. Here's what they do and how to get started.">
-  <meta name="keywords" content="NumPy tutorial, Pandas for machine learning, Python data analysis, DataFrame explained, AI data preparation">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://johnb.io/course/numpy-pandas">
-
-  <meta property="og:title" content="NumPy and Pandas for AI: A Beginner's Guide">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://johnb.io/course/numpy-pandas">
-  <meta property="og:description" content="NumPy handles numerical operations at scale. Pandas handles messy, real-world data. Every AI project uses both. Here's what they do and how to get started.">
-  <meta property="og:image" content="https://johnb.io/images/course-og.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="NumPy and Pandas for AI: A Beginner's Guide">
-  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
-  <meta property="article:author" content="John Bowman">
-  <meta property="article:section" content="AI Course">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="NumPy and Pandas for AI: A Beginner's Guide">
-  <meta name="twitter:description" content="NumPy handles numerical operations at scale. Pandas handles messy, real-world data. Every AI project uses both. Here's what they do and how to get started.">
-  <meta name="twitter:image" content="https://johnb.io/images/course-og.jpg">
-  <meta name="twitter:image:alt" content="NumPy and Pandas for AI: A Beginner's Guide">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NumPy and Pandas for AI: A Beginner's Guide - JohnB.io</title>
+<meta content="NumPy handles numerical operations at scale. Pandas handles messy, real-world data. Every AI project uses both. Here's what they do and how to get started." name="description"/>
+<meta content="NumPy tutorial, Pandas for machine learning, Python data analysis, DataFrame explained, AI data preparation" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://johnb.io/course/numpy-pandas" rel="canonical"/>
+<meta content="NumPy and Pandas for AI: A Beginner's Guide" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://johnb.io/course/numpy-pandas" property="og:url"/>
+<meta content="NumPy handles numerical operations at scale. Pandas handles messy, real-world data. Every AI project uses both. Here's what they do and how to get started." property="og:description"/>
+<meta content="https://johnb.io/images/course-og.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="NumPy and Pandas for AI: A Beginner's Guide" property="og:image:alt"/>
+<meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
+<meta content="John Bowman" property="article:author"/>
+<meta content="AI Course" property="article:section"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="NumPy and Pandas for AI: A Beginner's Guide" name="twitter:title"/>
+<meta content="NumPy handles numerical operations at scale. Pandas handles messy, real-world data. Every AI project uses both. Here's what they do and how to get started." name="twitter:description"/>
+<meta content="https://johnb.io/images/course-og.jpg" name="twitter:image"/>
+<meta content="NumPy and Pandas for AI: A Beginner's Guide" name="twitter:image:alt"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-0J6PBWMRNY');
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -56,8 +53,7 @@
     }
   }
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -97,8 +93,7 @@
     ]
   }
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -124,93 +119,58 @@
     ]
   }
   </script>
-
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/footer.css">
-  <link rel="stylesheet" href="/news.css?v=4">
-  <link rel="stylesheet" href="/news-chat.css?v=7">
-  <link rel="stylesheet" href="/lesson.css?v=3">
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/header.css" rel="stylesheet"/>
+<link href="/footer.css" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
+<link href="/news-chat.css?v=7" rel="stylesheet"/>
+<link href="/lesson.css?v=3" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
 <body class="lp-page">
-
-  <div id="header-placeholder"></div>
-
-  <div class="lp-ambient" aria-hidden="true"></div>
-
-  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
-
-    <nav class="na-breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Home</a>
-      <span aria-hidden="true">›</span>
-      <a href="/course-dashboard">AI Course</a>
-      <span aria-hidden="true">›</span>
-      <span>NumPy and Pandas</span>
-    </nav>
-
-    <div class="na-layout">
-
-      <article class="na-content" id="main-content">
-
-        <div class="na-header">
-          <div class="na-meta">
-            <span class="lp-unit-badge lp-unit-4">Unit 4</span>
-            <span class="na-category">Python for AI</span>
-            <span class="na-read-time">9 min read</span>
-          </div>
-          <h1 class="na-title">Data Analysis with NumPy and Pandas: A Beginner's Introduction</h1>
-          <p class="na-lede">NumPy and Pandas aren't AI libraries - they're data libraries. But every AI project loads, cleans, and prepares data before training a model. That means NumPy and Pandas are part of every AI pipeline whether you think about them or not.</p>
-          <div class="na-author">
-            <img src="/images/john-avatar.jpg" alt="John Bowman" class="na-author-img" width="36" height="36">
-            <div class="na-author-info">
-              <span class="na-author-name">John Bowman</span>
-              <time class="na-author-date" datetime="2026-04-05">5 April 2026</time>
-            </div>
-          </div>
-          <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-            <span class="material-symbols-outlined">auto_awesome</span>
+<div id="header-placeholder"></div>
+<div aria-hidden="true" class="lp-ambient"></div>
+<main class="na-wrap">
+<nav aria-label="Breadcrumb" class="na-breadcrumb">
+<a href="/">Home</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<a href="/course-dashboard">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span>NumPy and Pandas</span>
+</nav>
+<div class="na-layout">
+<article class="na-content" id="main-content">
+<div class="na-header">
+<h1 class="na-title">Data Analysis with NumPy and Pandas: A Beginner's Introduction</h1>
+<p class="na-lede">NumPy and Pandas aren't AI libraries - they're data libraries. But every AI project loads, cleans, and prepares data before training a model. That means NumPy and Pandas are part of every AI pipeline whether you think about them or not.</p>
+<div class="na-author">
+<a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
+<div class="na-author-details">
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<span class="na-author-role">Owner / AI Developer</span>
+</div>
+<div class="na-header-meta"><span class="lp-unit-badge lp-unit-4">Unit 4</span><span class="na-date">5 April 2026</span><span class="na-read">9 min read</span></div></div>
+<button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
             Ask Newsy AI about this lesson
           </button>
-        </div>
-
-        <nav class="na-toc-mobile" aria-label="On this page">
-          <details>
-            <summary>On this page</summary>
-            <ol>
-              <li><a href="#numpy">What NumPy Is</a></li>
-              <li><a href="#pandas">What Pandas Is</a></li>
-              <li><a href="#loading-inspecting">Loading and Inspecting Data</a></li>
-              <li><a href="#operations">Filtering, Grouping, Summarising</a></li>
-              <li><a href="#why-they-matter">Why Both Appear in Every AI Project</a></li>
-              <li><a href="#quiz">Lesson Quiz</a></li>
-            </ol>
-          </details>
-        </nav>
-
-        <div class="na-audio-player">
-          <div class="na-audio-label">
-            <span class="material-symbols-outlined" aria-hidden="true">headphones</span>
-            Listen to this lesson
-          </div>
-          <audio controls preload="none" aria-label="Audio version of this lesson">
+</div>
+<details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#numpy">What NumPy Is</a></li><li><a href="#pandas">What Pandas Is</a></li><li><a href="#loading-inspecting">Loading and Inspecting Data</a></li><li><a href="#operations">Filtering, Grouping, Summarising</a></li><li><a href="#why-they-matter">Why Both Appear in Every AI Project</a></li><li><a href="#quiz">Lesson Quiz</a></li></ol></details><hr class="na-divider"/>
+<div aria-label="Listen to this lesson" class="na-audio"><span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span><div class="na-audio-info"><div class="na-audio-top"><span class="na-audio-label">Listen to this lesson</span></div><audio aria-label="Audio version of this lesson" controls="True" preload="none" style="width:100%;margin-top:0.5rem;">
             Your browser does not support the audio element.
-          </audio>
-        </div>
-
-        <div class="na-body">
-
-          <section id="numpy">
-            <h2>What NumPy Is and Why Arrays Matter</h2>
-            <p>NumPy stands for "Numerical Python." It's a library for working with arrays - ordered collections of numbers organised in a grid.</p>
-            <p>Why not just use Python lists? Lists work fine for ten numbers. For a million, they get slow. NumPy arrays are fast because they're optimised for numerical operations. Every element is the same type, so the computer can process them efficiently.</p>
-            <pre class="lp-code-block"><code>import numpy as np
+          </audio></div></div>
+<div class="na-body">
+<section id="numpy">
+<h2>What NumPy Is and Why Arrays Matter</h2>
+<p>NumPy stands for "Numerical Python." It's a library for working with arrays - ordered collections of numbers organised in a grid.</p>
+<p>Why not just use Python lists? Lists work fine for ten numbers. For a million, they get slow. NumPy arrays are fast because they're optimised for numerical operations. Every element is the same type, so the computer can process them efficiently.</p>
+<pre class="lp-code-block"><code>import numpy as np
 
 scores = np.array([85, 92, 78, 88, 95])
 
@@ -218,15 +178,14 @@ scores + 10        # adds 10 to every score
 scores &gt; 85        # returns [False, True, False, True, True]
 scores.mean()      # returns 87.6
 scores.std()       # returns standard deviation</code></pre>
-            <p>With a Python list, you'd loop through each item. With NumPy, you write the operation once and it applies to all items simultaneously - faster and cleaner.</p>
-            <p>In machine learning, your data arrives as arrays. A dataset with 10,000 rows and 50 columns is a 10,000 by 50 array. A trained model is mostly arrays of numbers (weights and biases). NumPy is how you manipulate all of that.</p>
-          </section>
-
-          <section id="pandas">
-            <h2>What Pandas Is and What a DataFrame Is</h2>
-            <p>Pandas builds on NumPy. While NumPy is great for numbers, it doesn't understand that one column represents ages and another represents postcodes. Pandas does.</p>
-            <p>A DataFrame is like a spreadsheet. It has rows and columns. Each column has a name. Each row represents one record.</p>
-            <pre class="lp-code-block"><code>import pandas as pd
+<p>With a Python list, you'd loop through each item. With NumPy, you write the operation once and it applies to all items simultaneously - faster and cleaner.</p>
+<p>In machine learning, your data arrives as arrays. A dataset with 10,000 rows and 50 columns is a 10,000 by 50 array. A trained model is mostly arrays of numbers (weights and biases). NumPy is how you manipulate all of that.</p>
+</section>
+<section id="pandas">
+<h2>What Pandas Is and What a DataFrame Is</h2>
+<p>Pandas builds on NumPy. While NumPy is great for numbers, it doesn't understand that one column represents ages and another represents postcodes. Pandas does.</p>
+<p>A DataFrame is like a spreadsheet. It has rows and columns. Each column has a name. Each row represents one record.</p>
+<pre class="lp-code-block"><code>import pandas as pd
 
 df = pd.read_csv('employees.csv')
 
@@ -234,225 +193,178 @@ df['age']           # gives you just the age column
 df['salary'] * 1.1  # salary with a 10% increase
 df[df['age'] &gt; 30]  # only rows where age &gt; 30
 df.groupby('department')['salary'].mean()  # avg salary per dept</code></pre>
-            <p>This is the actual work of machine learning. You load messy data, explore it, clean it, and prepare it for a model. Most of that work is pandas.</p>
-          </section>
-
-          <section id="loading-inspecting">
-            <h2>Loading and Inspecting Data with Pandas</h2>
-            <p>When you get a dataset, the first thing you do is look at it.</p>
-            <pre class="lp-code-block"><code>df = pd.read_csv('data.csv')
+<p>This is the actual work of machine learning. You load messy data, explore it, clean it, and prepare it for a model. Most of that work is pandas.</p>
+</section>
+<section id="loading-inspecting">
+<h2>Loading and Inspecting Data with Pandas</h2>
+<p>When you get a dataset, the first thing you do is look at it.</p>
+<pre class="lp-code-block"><code>df = pd.read_csv('data.csv')
 df.head()          # shows first 5 rows
 df.shape           # shows (10000, 50) - 10000 rows, 50 columns
 df.info()          # shows column names and data types
 df.describe()      # shows statistics for each numeric column</code></pre>
-            <p>This takes two minutes and teaches you a lot. How many rows? What types are the columns? Are there missing values? What's the range of each number?</p>
-            <p><code>head()</code> is your first move when exploring. It shows actual data, not just statistics. You can spot obvious problems: dates formatted oddly, numbers stored as text, text that should be numbers.</p>
-            <p>Missing values are common. <code>info()</code> shows which columns have missing entries. Then you decide: drop those rows, or fill them with something reasonable?</p>
-            <pre class="lp-code-block"><code>df.isnull().sum()  # how many missing values per column
+<p>This takes two minutes and teaches you a lot. How many rows? What types are the columns? Are there missing values? What's the range of each number?</p>
+<p><code>head()</code> is your first move when exploring. It shows actual data, not just statistics. You can spot obvious problems: dates formatted oddly, numbers stored as text, text that should be numbers.</p>
+<p>Missing values are common. <code>info()</code> shows which columns have missing entries. Then you decide: drop those rows, or fill them with something reasonable?</p>
+<pre class="lp-code-block"><code>df.isnull().sum()  # how many missing values per column
 df.dropna()        # remove rows with any missing values
 df.fillna(0)       # replace missing values with 0</code></pre>
-            <p>Simple operations, but these are the foundation of real work.</p>
-          </section>
-
-          <section id="operations">
-            <h2>Basic Operations: Filtering, Grouping, Summarising</h2>
-            <p><strong>Filtering</strong> selects a subset of rows based on conditions:</p>
-            <pre class="lp-code-block"><code>df[df['age'] &gt; 30]
+<p>Simple operations, but these are the foundation of real work.</p>
+</section>
+<section id="operations">
+<h2>Basic Operations: Filtering, Grouping, Summarising</h2>
+<p><strong>Filtering</strong> selects a subset of rows based on conditions:</p>
+<pre class="lp-code-block"><code>df[df['age'] &gt; 30]
 df[df['country'] == 'UK']
 df[(df['age'] &gt; 25) &amp; (df['salary'] &gt; 50000)]</code></pre>
-            <p><strong>Grouping</strong> organises rows by category and aggregates them:</p>
-            <pre class="lp-code-block"><code>df.groupby('department')['salary'].mean()  # avg salary per dept
+<p><strong>Grouping</strong> organises rows by category and aggregates them:</p>
+<pre class="lp-code-block"><code>df.groupby('department')['salary'].mean()  # avg salary per dept
 df.groupby('country').size()               # headcount per country</code></pre>
-            <p><strong>Summarising</strong> condenses data into key statistics:</p>
-            <pre class="lp-code-block"><code>df['age'].mean()         # average age
+<p><strong>Summarising</strong> condenses data into key statistics:</p>
+<pre class="lp-code-block"><code>df['age'].mean()         # average age
 df['salary'].max()       # highest salary
 df['age'].value_counts() # count at each age</code></pre>
-            <p>These look simple but they're powerful. What's the average salary per department? Which products have the highest defect rate? How many customers bought something last month? Real machine learning work is mostly these operations: load, filter, group, summarise, clean, prepare, train. That's the loop.</p>
-          </section>
-
-          <section id="why-they-matter">
-            <h2>Why Both Libraries Appear in Every AI Project</h2>
-            <p>NumPy handles numerical operations at scale. When a model trains, it's doing millions of NumPy operations underneath. When you evaluate performance, you use NumPy to compute accuracy, loss, and other metrics.</p>
-            <p>Pandas handles the human side. Real data is messy - CSVs with missing values, wrong column types, duplicates. Pandas lets you explore, clean, and prepare before anything goes near a model.</p>
-            <p>Whether you're training with scikit-learn, TensorFlow, or PyTorch, you'll use both. They're not optional extras. They're part of the pipeline.</p>
-            <p>The learning curve isn't steep. You need maybe 20 Pandas functions to be productive: <code>read_csv</code>, <code>head</code>, <code>info</code>, <code>describe</code>, boolean indexing, <code>groupby</code>, <code>agg</code>, <code>dropna</code>, <code>fillna</code>. Learn those and you can handle most data preparation tasks. You'll pick up others as you need them. The harder skill is learning to think systematically about what your data actually contains and what it means.</p>
-          </section>
-
-          <section id="quiz" class="lp-quiz-section">
-            <h2>Lesson Quiz</h2>
-            <p>Two questions to check your understanding before moving on.</p>
-
-            <div class="lp-quiz" id="quiz-1">
-              <p class="lp-quiz-q">Question 1: What is the key advantage of NumPy arrays over standard Python lists for machine learning?</p>
-              <ul class="lp-quiz-options" role="list">
-                <li><button class="lp-quiz-btn" data-index="0" type="button">They can store text, numbers, and images in the same structure</button></li>
-                <li><button class="lp-quiz-btn" data-index="1" type="button">They are optimised for numerical operations and process entire arrays at once, making them far faster than looping through lists</button></li>
-                <li><button class="lp-quiz-btn" data-index="2" type="button">They automatically detect and remove missing values</button></li>
-                <li><button class="lp-quiz-btn" data-index="3" type="button">They have built-in data visualisation capabilities</button></li>
-              </ul>
-              <div class="lp-quiz-feedback" aria-live="polite"></div>
-            </div>
-
-            <div class="lp-quiz" id="quiz-2">
-              <p class="lp-quiz-q">Question 2: What is a Pandas DataFrame?</p>
-              <ul class="lp-quiz-options" role="list">
-                <li><button class="lp-quiz-btn" data-index="0" type="button">A type of neural network layer used for tabular data</button></li>
-                <li><button class="lp-quiz-btn" data-index="1" type="button">A database query language for filtering large datasets</button></li>
-                <li><button class="lp-quiz-btn" data-index="2" type="button">A Python library for creating charts and visualisations</button></li>
-                <li><button class="lp-quiz-btn" data-index="3" type="button">A table-like data structure with named columns and rows, similar to a spreadsheet</button></li>
-              </ul>
-              <div class="lp-quiz-feedback" aria-live="polite"></div>
-            </div>
-
-          </section>
-
-        </div>
-
-        <section class="na-podcast">
-          <h2 class="na-podcast-title">
-            <span class="material-symbols-outlined" aria-hidden="true">podcast</span>
-            Podcast Version
-          </h2>
-          <p class="na-podcast-desc">Prefer to listen? The full lesson is available as a podcast episode.</p>
-          <audio controls preload="none" aria-label="Podcast version of this lesson">
-            Your browser does not support the audio element.
-          </audio>
-        </section>
-
-        <div id="share-bar-placeholder"></div>
-
-        <div class="na-accordions">
-
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/python-essentials-for-ai" class="lp-nav-btn lp-nav-prev">
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Previous lesson</span>
-              <span class="lp-nav-title">Python Essentials for AI</span>
-            </span>
-          </a>
-          <a href="/course/linear-regression-gradient-descent" class="lp-nav-btn lp-nav-next">
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Next lesson</span>
-              <span class="lp-nav-title">Linear Regression and Gradient Descent</span>
-            </span>
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-          </a>
-        </nav>
-
+<p>These look simple but they're powerful. What's the average salary per department? Which products have the highest defect rate? How many customers bought something last month? Real machine learning work is mostly these operations: load, filter, group, summarise, clean, prepare, train. That's the loop.</p>
+</section>
+<section id="why-they-matter">
+<h2>Why Both Libraries Appear in Every AI Project</h2>
+<p>NumPy handles numerical operations at scale. When a model trains, it's doing millions of NumPy operations underneath. When you evaluate performance, you use NumPy to compute accuracy, loss, and other metrics.</p>
+<p>Pandas handles the human side. Real data is messy - CSVs with missing values, wrong column types, duplicates. Pandas lets you explore, clean, and prepare before anything goes near a model.</p>
+<p>Whether you're training with scikit-learn, TensorFlow, or PyTorch, you'll use both. They're not optional extras. They're part of the pipeline.</p>
+<p>The learning curve isn't steep. You need maybe 20 Pandas functions to be productive: <code>read_csv</code>, <code>head</code>, <code>info</code>, <code>describe</code>, boolean indexing, <code>groupby</code>, <code>agg</code>, <code>dropna</code>, <code>fillna</code>. Learn those and you can handle most data preparation tasks. You'll pick up others as you need them. The harder skill is learning to think systematically about what your data actually contains and what it means.</p>
+</section>
+<section class="lp-quiz-section" id="quiz">
+<h2>Lesson Quiz</h2>
+<p>Two questions to check your understanding before moving on.</p>
+<div class="lp-quiz" id="quiz-1">
+<p class="lp-quiz-q">Question 1: What is the key advantage of NumPy arrays over standard Python lists for machine learning?</p>
+<ul class="lp-quiz-options" role="list">
+<li><button class="lp-quiz-btn" data-index="0" type="button">They can store text, numbers, and images in the same structure</button></li>
+<li><button class="lp-quiz-btn" data-index="1" type="button">They are optimised for numerical operations and process entire arrays at once, making them far faster than looping through lists</button></li>
+<li><button class="lp-quiz-btn" data-index="2" type="button">They automatically detect and remove missing values</button></li>
+<li><button class="lp-quiz-btn" data-index="3" type="button">They have built-in data visualisation capabilities</button></li>
+</ul>
+<div aria-live="polite" class="lp-quiz-feedback"></div>
 </div>
-
-      </article>
-
-      <aside class="na-sidebar" aria-label="Lesson sidebar">
-
-        <nav class="na-toc" aria-label="Table of contents">
-          <h2 class="na-toc-title">On this page</h2>
-          <ol class="na-toc-list">
-            <li><a href="#numpy">What NumPy Is</a></li>
-            <li><a href="#pandas">What Pandas Is</a></li>
-            <li><a href="#loading-inspecting">Loading and Inspecting Data</a></li>
-            <li><a href="#operations">Filtering, Grouping, Summarising</a></li>
-            <li><a href="#why-they-matter">Why Both Appear in Every AI Project</a></li>
-            <li><a href="#quiz">Lesson Quiz</a></li>
-          </ol>
-        </nav>
-
-        <nav class="lp-sidebar-nav" aria-label="Course navigation">
-          <h2 class="lp-sidebar-nav-title">
-            <a href="/course-dashboard">AI Course</a>
-          </h2>
-          <div class="lp-sidebar-unit">
-            <span class="lp-sidebar-unit-label lp-unit-4">Unit 4 - Python for AI</span>
-            <ul>
-              <li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
-              <li class="lp-sidebar-current"><a href="/course/numpy-pandas" aria-current="page">NumPy and Pandas</a></li>
-            </ul>
-          </div>
-        </nav>
-
-        <div id="newsy-sidebar-mount"></div>
-
-        <div id="newsy-ai"></div>
-      </aside>
-
-    </div>
-
-  </main>
-
-  <div id="share-bar-placeholder"></div>
-  <section class="tool-info" aria-label="Lesson reference">
-    <div class="tool-info-inner">
-      <div class="tool-accordions">
-
-<details class="tool-accordion" open>
-            <summary>Frequently Asked Questions</summary>
-            <div class="tool-accordion-body">
-              <h3>What is NumPy and why is it used in AI?</h3>
-              <p>NumPy (Numerical Python) is a library for working with arrays of numbers. It's used in AI because it performs numerical operations much faster than standard Python lists - it processes entire arrays at once rather than looping through items. Machine learning datasets and model weights are arrays of numbers, so NumPy is the foundation of nearly every AI pipeline.</p>
-
-              <h3>What is a Pandas DataFrame?</h3>
-              <p>A Pandas DataFrame is a table-like data structure with named columns and rows, similar to a spreadsheet. Each column can hold a different type of data (numbers, text, dates). DataFrames make it easy to load, inspect, filter, group, and clean data before passing it to a machine learning model.</p>
-
-              <h3>What is the difference between NumPy and Pandas?</h3>
-              <p>NumPy is optimised for pure numerical operations on arrays. Pandas builds on NumPy and adds structure for working with labelled, mixed-type data. NumPy is what happens inside models during training. Pandas is what you use to load, explore, and clean your data before it goes anywhere near a model.</p>
-
-              <h3>Is NumPy and Pandas hard to learn?</h3>
-              <p>Not particularly. Pandas has many functions but you only need around 20 to be productive: how to load data (read_csv), inspect it (head, info, describe), filter it (boolean indexing), group and summarise it (groupby, agg), and handle missing values (dropna, fillna). NumPy basics are straightforward for array creation and arithmetic. The harder skill is thinking systematically about your data.</p>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>How It Works</summary>
-            <div class="tool-accordion-body">
-              <p>NumPy achieves its speed through vectorisation. Instead of executing a Python loop (which has interpreter overhead per iteration), NumPy operations are compiled C code that applies to the entire array in a single call. A NumPy operation on a million-element array can be hundreds of times faster than an equivalent Python loop.</p>
-              <p>Pandas DataFrames are built on top of NumPy arrays. Each column is stored as a typed NumPy array under the hood. The DataFrame layer adds the column names, index, and the higher-level API for grouping, merging, and reshaping. When you call <code>groupby().mean()</code>, Pandas is ultimately delegating to NumPy operations on the underlying arrays.</p>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>Key Points</summary>
-            <div class="tool-accordion-body">
-              <ul>
-                <li>NumPy arrays are optimised for numerical operations - faster than Python lists for large datasets.</li>
-                <li>Operations like <code>array + 10</code> or <code>array.mean()</code> apply to the entire array at once (vectorisation).</li>
-                <li>Machine learning datasets and model weights are stored as NumPy arrays.</li>
-                <li>Pandas DataFrames are spreadsheet-like tables with named columns, built on top of NumPy.</li>
-                <li>Key Pandas operations: load (<code>read_csv</code>), inspect (<code>head</code>, <code>info</code>, <code>describe</code>), filter, group, summarise, handle missing values.</li>
-                <li>Real ML work is mostly data preparation: load, explore, clean, and prepare before training.</li>
-                <li>Both libraries are part of every ML pipeline regardless of the framework used (scikit-learn, TensorFlow, PyTorch).</li>
-                <li>Learn ~20 Pandas functions and you're productive for most data prep tasks.</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>Sources</summary>
-            <div class="tool-accordion-body">
-              <ul>
-                <li>Harris, C.R. et al. (2020). Array programming with NumPy. <em>Nature</em>, 585, 357-362.</li>
-                <li>McKinney, W. (2010). Data Structures for Statistical Computing in Python. <em>Proceedings of the 9th Python in Science Conference</em>.</li>
-                <li>VanderPlas, J. (2016). <em>Python Data Science Handbook</em>. O'Reilly Media. (Open access at jakevdp.github.io)</li>
-              </ul>
-            </div>
-          </details>
-
-      </div>
-    </div>
-  </section>
-
-  <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
-  </button>
-
-
-  <div id="footer-placeholder"></div>
-
-  <script src="/news-data.js"></script>
-  <script src="/scripts.js" defer></script>
-  <script src="/news-article.js" defer></script>
-  <script src="/news-chat.js" defer></script>
-  <script>
+<div class="lp-quiz" id="quiz-2">
+<p class="lp-quiz-q">Question 2: What is a Pandas DataFrame?</p>
+<ul class="lp-quiz-options" role="list">
+<li><button class="lp-quiz-btn" data-index="0" type="button">A type of neural network layer used for tabular data</button></li>
+<li><button class="lp-quiz-btn" data-index="1" type="button">A database query language for filtering large datasets</button></li>
+<li><button class="lp-quiz-btn" data-index="2" type="button">A Python library for creating charts and visualisations</button></li>
+<li><button class="lp-quiz-btn" data-index="3" type="button">A table-like data structure with named columns and rows, similar to a spreadsheet</button></li>
+</ul>
+<div aria-live="polite" class="lp-quiz-feedback"></div>
+</div>
+</section>
+</div>
+<div aria-label="Deep Dive Podcast" class="na-podcast" role="region"><div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div><div class="na-podcast-inner"><div class="na-podcast-left"><div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div><div class="na-podcast-meta"><p class="na-podcast-title">Podcast Version</p><p class="na-podcast-sub">AI-generated audio overview of this lesson</p></div></div><audio aria-label="Podcast version of this lesson" controls="True" preload="none" style="width:100%;margin-top:0.75rem;">
+            Your browser does not support the audio element.
+          </audio></div></div>
+<div id="share-bar-placeholder"></div>
+<div class="na-accordions">
+<nav aria-label="Lesson navigation" class="lp-nav">
+<a class="lp-nav-btn" href="/course/python-essentials-for-ai">
+<span aria-hidden="true" class="material-symbols-outlined">arrow_back</span>
+<div><span class="lp-nav-label">Previous lesson</span><span class="lp-nav-title">Python Essentials for AI</span></div>
+</a>
+<a class="lp-nav-btn" href="/course/linear-regression-gradient-descent">
+<div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">Linear Regression and Gradient Descent</span></div>
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span>
+</a>
+</nav>
+</div>
+</article>
+<aside aria-label="Lesson sidebar" class="na-sidebar">
+<nav aria-label="Table of contents" class="na-toc">
+<h2 class="na-toc-title">On this page</h2>
+<ol class="na-toc-list">
+<li><a class="na-toc-link" href="#numpy">What NumPy Is</a></li>
+<li><a class="na-toc-link" href="#pandas">What Pandas Is</a></li>
+<li><a class="na-toc-link" href="#loading-inspecting">Loading and Inspecting Data</a></li>
+<li><a class="na-toc-link" href="#operations">Filtering, Grouping, Summarising</a></li>
+<li><a class="na-toc-link" href="#why-they-matter">Why Both Appear in Every AI Project</a></li>
+<li><a class="na-toc-link" href="#quiz">Lesson Quiz</a></li>
+</ol>
+</nav>
+<nav aria-label="Course navigation" class="lp-sidebar-nav">
+<h2 class="lp-sidebar-nav-title">
+<a href="/course-dashboard">AI Course</a>
+</h2>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-4">Unit 4 - Python for AI</span>
+<ul>
+<li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
+<li class="lp-sidebar-current"><a aria-current="page" href="/course/numpy-pandas">NumPy and Pandas</a></li>
+</ul>
+</div>
+</nav>
+<div id="newsy-sidebar-mount"></div>
+<div id="newsy-ai"></div>
+</aside>
+</div>
+</main>
+<div id="share-bar-placeholder"></div>
+<section aria-label="Lesson reference" class="tool-info">
+<div class="tool-info-inner">
+<div class="tool-accordions">
+<details class="tool-accordion" open="">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<h3>What is NumPy and why is it used in AI?</h3>
+<p>NumPy (Numerical Python) is a library for working with arrays of numbers. It's used in AI because it performs numerical operations much faster than standard Python lists - it processes entire arrays at once rather than looping through items. Machine learning datasets and model weights are arrays of numbers, so NumPy is the foundation of nearly every AI pipeline.</p>
+<h3>What is a Pandas DataFrame?</h3>
+<p>A Pandas DataFrame is a table-like data structure with named columns and rows, similar to a spreadsheet. Each column can hold a different type of data (numbers, text, dates). DataFrames make it easy to load, inspect, filter, group, and clean data before passing it to a machine learning model.</p>
+<h3>What is the difference between NumPy and Pandas?</h3>
+<p>NumPy is optimised for pure numerical operations on arrays. Pandas builds on NumPy and adds structure for working with labelled, mixed-type data. NumPy is what happens inside models during training. Pandas is what you use to load, explore, and clean your data before it goes anywhere near a model.</p>
+<h3>Is NumPy and Pandas hard to learn?</h3>
+<p>Not particularly. Pandas has many functions but you only need around 20 to be productive: how to load data (read_csv), inspect it (head, info, describe), filter it (boolean indexing), group and summarise it (groupby, agg), and handle missing values (dropna, fillna). NumPy basics are straightforward for array creation and arithmetic. The harder skill is thinking systematically about your data.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<p>NumPy achieves its speed through vectorisation. Instead of executing a Python loop (which has interpreter overhead per iteration), NumPy operations are compiled C code that applies to the entire array in a single call. A NumPy operation on a million-element array can be hundreds of times faster than an equivalent Python loop.</p>
+<p>Pandas DataFrames are built on top of NumPy arrays. Each column is stored as a typed NumPy array under the hood. The DataFrame layer adds the column names, index, and the higher-level API for grouping, merging, and reshaping. When you call <code>groupby().mean()</code>, Pandas is ultimately delegating to NumPy operations on the underlying arrays.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>NumPy arrays are optimised for numerical operations - faster than Python lists for large datasets.</li>
+<li>Operations like <code>array + 10</code> or <code>array.mean()</code> apply to the entire array at once (vectorisation).</li>
+<li>Machine learning datasets and model weights are stored as NumPy arrays.</li>
+<li>Pandas DataFrames are spreadsheet-like tables with named columns, built on top of NumPy.</li>
+<li>Key Pandas operations: load (<code>read_csv</code>), inspect (<code>head</code>, <code>info</code>, <code>describe</code>), filter, group, summarise, handle missing values.</li>
+<li>Real ML work is mostly data preparation: load, explore, clean, and prepare before training.</li>
+<li>Both libraries are part of every ML pipeline regardless of the framework used (scikit-learn, TensorFlow, PyTorch).</li>
+<li>Learn ~20 Pandas functions and you're productive for most data prep tasks.</li>
+</ul>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Harris, C.R. et al. (2020). Array programming with NumPy. <em>Nature</em>, 585, 357-362.</li>
+<li>McKinney, W. (2010). Data Structures for Statistical Computing in Python. <em>Proceedings of the 9th Python in Science Conference</em>.</li>
+<li>VanderPlas, J. (2016). <em>Python Data Science Handbook</em>. O'Reilly Media. (Open access at jakevdp.github.io)</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</section>
+<button aria-label="Back to top" id="back-to-top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div id="footer-placeholder"></div>
+<script src="/news-data.js"></script>
+<script defer="" src="/scripts.js"></script>
+<script defer="" src="/news-article.js"></script>
+<script defer="" src="/news-chat.js"></script>
+<script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
       if (trigger) trigger.click();
@@ -464,8 +376,7 @@ df['age'].value_counts() # count at each age</code></pre>
       });
     });
   </script>
-
-  <script>
+<script>
     (function() {
       var quizzes = [
         { correct: 1, explanation: "Correct. NumPy processes entire arrays at once (vectorisation) using compiled C code, rather than looping through items in Python. This makes it hundreds of times faster for large numerical datasets - which is why it's the foundation of nearly every machine learning pipeline." },
@@ -499,6 +410,5 @@ df['age'].value_counts() # count at each age</code></pre>
       });
     })();
   </script>
-
 </body>
 </html>

@@ -1,45 +1,42 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RNNs, Transformers and Autoencoders Explained - JohnB.io</title>
-  <meta name="description" content="How RNNs handle sequences, why they struggled with long-range dependencies, how Transformers and attention solved it, and what autoencoders are for. Unit 6, Lesson 7.">
-  <meta name="keywords" content="RNN, transformer, autoencoder, attention mechanism, LSTM, deep learning, NLP, sequence models">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://johnb.io/course/rnns-transformers-autoencoders">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="RNNs, Transformers and Autoencoders Explained">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://johnb.io/course/rnns-transformers-autoencoders">
-  <meta property="og:description" content="How RNNs handle sequences, why they struggled with long-range dependencies, how Transformers and attention solved it, and what autoencoders are for.">
-  <meta property="og:image" content="https://johnb.io/images/course-og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="RNNs, Transformers and Autoencoders lesson - JohnB.io AI Course">
-  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
-  <meta property="article:author" content="https://johnb.io">
-  <meta property="article:section" content="Deep Learning &amp; Neural Networks">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="RNNs, Transformers and Autoencoders Explained">
-  <meta name="twitter:description" content="How RNNs handle sequences, why they struggled with long-range dependencies, how Transformers and attention solved it, and what autoencoders are for.">
-  <meta name="twitter:image" content="https://johnb.io/images/course-og.png">
-  <meta name="twitter:image:alt" content="RNNs, Transformers and Autoencoders lesson - JohnB.io AI Course">
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RNNs, Transformers and Autoencoders Explained - JohnB.io</title>
+<meta content="How RNNs handle sequences, why they struggled with long-range dependencies, how Transformers and attention solved it, and what autoencoders are for. Unit 6, Lesson 7." name="description"/>
+<meta content="RNN, transformer, autoencoder, attention mechanism, LSTM, deep learning, NLP, sequence models" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://johnb.io/course/rnns-transformers-autoencoders" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="RNNs, Transformers and Autoencoders Explained" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://johnb.io/course/rnns-transformers-autoencoders" property="og:url"/>
+<meta content="How RNNs handle sequences, why they struggled with long-range dependencies, how Transformers and attention solved it, and what autoencoders are for." property="og:description"/>
+<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="RNNs, Transformers and Autoencoders lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
+<meta content="https://johnb.io" property="article:author"/>
+<meta content="Deep Learning &amp; Neural Networks" property="article:section"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="RNNs, Transformers and Autoencoders Explained" name="twitter:title"/>
+<meta content="How RNNs handle sequences, why they struggled with long-range dependencies, how Transformers and attention solved it, and what autoencoders are for." name="twitter:description"/>
+<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
+<meta content="RNNs, Transformers and Autoencoders lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-0J6PBWMRNY');
   </script>
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -125,406 +122,316 @@
     ]
   }
   </script>
-
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/footer.css">
-  <link rel="stylesheet" href="/news.css">
-  <link rel="stylesheet" href="/lesson.css?v=3">
-  <link rel="stylesheet" href="/news-chat.css?v=7">
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/header.css" rel="stylesheet"/>
+<link href="/footer.css" rel="stylesheet"/>
+<link href="/news.css" rel="stylesheet"/>
+<link href="/lesson.css?v=3" rel="stylesheet"/>
+<link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
 <body class="lp-page">
-
-  <div id="header-placeholder"></div>
-
-  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
-    <div class="na-layout">
-
-      <!-- â”€â”€ MAIN CONTENT â”€â”€ -->
-      <article class="na-content">
-
-        <!-- Breadcrumb -->
-        <nav class="na-breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span aria-hidden="true">â€º</span>
-          <a href="/course-dashboard">AI Course</a>
-          <span aria-hidden="true">â€º</span>
-          <span>RNNs, Transformers and Autoencoders</span>
-        </nav>
-
-        <!-- Unit badge + title -->
-        <div class="lp-unit-badge lp-unit-6">Unit 6 Â· Deep Learning &amp; Neural Networks</div>
-        <h1 class="na-title">RNNs, Transformers and Autoencoders</h1>
-
-        <!-- Meta row -->
-        <div class="na-meta">
-          <span>13 min read</span>
-          <span>Â·</span>
-          <span>Lesson 7 of 7 in Unit 6</span>
-          <span>Â·</span>
-          <span>Published 5 April 2026</span>
-        </div>
-
-        <!-- Audio player -->
-        <section class="lp-audio-section" aria-label="Lesson audio">
-          <div class="lp-audio-label">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+<div id="header-placeholder"></div><div aria-hidden="true" class="lp-ambient"></div>
+<main class="na-wrap">
+<div class="na-layout">
+<!-- â”€â”€ MAIN CONTENT â”€â”€ -->
+<article class="na-content">
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="na-breadcrumb">
+<a href="/">Home</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<a href="/course-dashboard">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span>RNNs, Transformers and Autoencoders</span>
+</nav>
+<!-- Unit badge + title -->
+<div class="lp-unit-badge lp-unit-6">Unit 6 · Deep Learning &amp; Neural Networks</div>
+<h1 class="na-title">RNNs, Transformers and Autoencoders</h1>
+<!-- Meta row -->
+<div class="na-meta">
+<span>13 min read</span>
+<span>·</span>
+<span>Lesson 7 of 7 in Unit 6</span>
+<span>·</span>
+<span>Published 5 April 2026</span>
+</div>
+<!-- Audio player -->
+<section aria-label="Lesson audio" class="lp-audio-section">
+<div class="lp-audio-label">
+<svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
             Listen to this lesson
           </div>
-          <audio controls aria-label="Lesson audio player">
+<audio aria-label="Lesson audio player" controls="">
             Your browser does not support audio playback.
           </audio>
-        </section>
-
-        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-          <span class="material-symbols-outlined">auto_awesome</span>
+</section>
+<button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
           Ask Newsy AI about this lesson
         </button>
-
-        <!-- Body -->
-        <div class="na-body">
-
-          <p>These three architectures solve different problems, but they matter for different reasons. RNNs are why we got here. Transformers are where most AI is now. Autoencoders are useful if you understand when to reach for them.</p>
-
-          <h2>Recurrent Neural Networks - what they were designed for</h2>
-
-          <p>An RNN is a neural network with loops. Instead of data flowing one direction from input to output, a neuron can send its output back to itself as input on the next time step.</p>
-
-          <p>This matters for sequences. If you're predicting the next word in a sentence, the word matters, but so does context - the words before it. An RNN's hidden state acts like memory. As it processes word after word, the hidden state updates, carrying information forward.</p>
-
-          <p>Mathematically, the hidden state at time t depends on the input at time t and the hidden state at time t-1. Process a sequence one element at a time, and the network can theoretically learn dependencies - what came before shapes what comes next.</p>
-
-          <p>This makes RNNs useful for language models, machine translation, speech recognition, and time series prediction. Anything where order matters.</p>
-
-          <h2>Why they struggled with long sequences</h2>
-
-          <p>RNNs have a fundamental problem: they backpropagate through time, and gradients get tiny as sequences get long. That's the vanishing gradient problem again, this time across time steps instead of layers.</p>
-
-          <p>In practice, RNNs struggle to remember things more than about 10 to 20 time steps back. For long sentences or documents, that's a real limitation.</p>
-
-          <p>Variants like LSTMs (Long Short-Term Memory) and GRUs (Gated Recurrent Units) tried to fix this by adding gates that control how much information flows forward. They work better than vanilla RNNs, but they're not elegant fixes - they're patches on a flawed architecture.</p>
-
-          <p>And they're slow. RNNs process sequences one element at a time. You can't parallelise easily. Training is expensive.</p>
-
-          <h2>Transformers - the attention mechanism explained plainly</h2>
-
-          <p>A Transformer doesn't process sequences sequentially. It looks at the entire sequence at once and uses attention to figure out which parts matter to which other parts.</p>
-
-          <p>Attention is the key idea. For each word in a sentence, compute how much that word should pay attention to every other word (including itself). Words that matter more get higher attention.</p>
-
-          <p>Technically, attention uses queries, keys, and values. The query from one word asks: what parts of the sequence are relevant to me? The keys answer: I have this kind of information. The values say: here's that information. The attention mechanism multiplies queries and keys to measure how well they match, and uses that score to weight the values.</p>
-
-          <p>Do this calculation for every position in the sequence, and you get a new representation where each position incorporates relevant information from the whole sequence.</p>
-
-          <p>You don't have to understand the maths. The intuition is: each part of the sequence attends to the parts that matter and ignores the rest. In a language model, a word can learn to pay attention to subject-verb pairs, pronouns, contextual clues - whatever is relevant. It happens automatically during training.</p>
-
-          <h2>Why Transformers changed NLP</h2>
-
-          <p>Before Transformers, NLP relied on RNNs. They were okay but had the gradient and speed problems.</p>
-
-          <p>Transformers, introduced in 2017, solved both. They process entire sequences in parallel, so they're fast on GPUs. Attention doesn't suffer from vanishing gradients the same way RNNs do. You can train much deeper models on much more data.</p>
-
-          <p>The result was dramatic. Within a few years, Transformer-based models - BERT, GPT, and others - outperformed RNNs on basically every NLP task.</p>
-
-          <p>This wasn't just an incremental improvement. RNNs are still taught in courses for historical context, but in 2026, most language AI is Transformers.</p>
-
-          <h2>Autoencoders - what they compress and why that's useful</h2>
-
-          <p>An autoencoder is a network that compresses data and then reconstructs it.</p>
-
-          <p>The structure is encoder, bottleneck, decoder. The encoder takes high-dimensional input (say, an image) and compresses it to a smaller representation - the bottleneck. The decoder takes that small representation and tries to reconstruct the original image. The loss is how different the reconstruction is from the original. You train to minimise reconstruction error.</p>
-
-          <p>Why would you do this? The compressed representation is useful. It's a learned summary of the data. You can use it for dimensionality reduction, for finding patterns, for denoising (feed in noisy data, the autoencoder forces it through the bottleneck and cleans it up).</p>
-
-          <p>Variational Autoencoders (VAEs) add a statistical layer: the bottleneck is a probability distribution, and you can sample from it to generate new data. Denoising Autoencoders specifically train on corrupted inputs to learn robust representations.</p>
-
-          <p>They're less flashy than Transformers, but they're practical tools. Image generation, anomaly detection, data compression - if you need learned representations without labelled data, autoencoders are still relevant.</p>
-
-          <h2>Why Transformers largely replaced RNNs</h2>
-
-          <p>Speed, scalability, and performance. Transformers win on all three.</p>
-
-          <p>RNNs require sequential processing. Training is slow. Attention heads learn long-range dependencies better. Transformers scale to much larger models and datasets.</p>
-
-          <p>For basically any sequence task, Transformers perform better than RNNs if you have the resources. The only reason to use RNNs now is if you're deploying on edge devices with limited memory, or if you have a real-time streaming requirement where you can't wait for the full sequence.</p>
-
-          <h2>Do you need to understand RNNs before Transformers?</h2>
-
-          <p>No, honestly.</p>
-
-          <p>RNNs are interesting historically. They teach you about recurrence, about memory in networks, about the challenge of long-term dependencies. That's valuable context.</p>
-
-          <p>But Transformers are simpler conceptually. "Each element attends to all others based on relevance" is easier to grasp than "recurrent hidden state carries information forward and sometimes forgets."</p>
-
-          <p>Understanding what RNNs tried to do and why they failed is useful - you see why the architectural innovation matters. But you don't need to become fluent in LSTM implementations. You need to know they exist, what they were for, and that Transformers superseded them.</p>
-
-          <p>Spend your mental energy on Transformers. That's where the field is now.</p>
-
-        </div>
-
-        <!-- Quiz -->
-        <section class="lp-quiz" aria-label="Lesson quiz">
-          <h2 class="lp-quiz-title">Check your understanding</h2>
-
-          <!-- Q1 -->
-          <div class="lp-quiz-q">
-            <p class="lp-quiz-question">Why do RNNs struggle with long sequences?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
-              <button class="lp-quiz-btn" data-q="1" data-i="0">A) They use too many filters and run out of memory</button>
-              <button class="lp-quiz-btn" data-q="1" data-i="1">B) They can only process images, not text</button>
-              <button class="lp-quiz-btn lp-quiz-correct" data-q="1" data-i="2">C) Gradients shrink as they backpropagate through many time steps, so early context is lost</button>
-              <button class="lp-quiz-btn" data-q="1" data-i="3">D) They lack an activation function to handle non-linearity</button>
-            </div>
-            <div class="lp-quiz-feedback-correct" id="q1-correct" hidden>Correct. The vanishing gradient problem applies across time steps in RNNs just as it applies across layers in deep networks. Gradients get tiny after about 10-20 steps, so the network loses track of early context.</div>
-            <div class="lp-quiz-feedback-wrong" id="q1-wrong" hidden>Not quite. The core problem is the vanishing gradient across time steps. As gradients backpropagate through each time step, they shrink, so the network can't learn from context more than about 10-20 steps back.</div>
-          </div>
-
-          <!-- Q2 -->
-          <div class="lp-quiz-q">
-            <p class="lp-quiz-question">What is the key innovation in the Transformer architecture?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
-              <button class="lp-quiz-btn" data-q="2" data-i="0">A) Recurrent loops that carry memory across time steps</button>
-              <button class="lp-quiz-btn" data-q="2" data-i="1">B) Pooling layers that reduce the length of long sequences</button>
-              <button class="lp-quiz-btn lp-quiz-correct" data-q="2" data-i="2">C) Attention - each position in the sequence can attend to all other positions based on relevance</button>
-              <button class="lp-quiz-btn" data-q="2" data-i="3">D) Convolutional filters applied across the token sequence</button>
-            </div>
-            <div class="lp-quiz-feedback-correct" id="q2-correct" hidden>Correct. Attention is the core idea. Instead of processing sequentially like an RNN, a Transformer looks at the whole sequence at once and learns which positions matter to which other positions. This enables parallelism and removes the vanishing gradient problem across time.</div>
-            <div class="lp-quiz-feedback-wrong" id="q2-wrong" hidden>Not quite. Recurrent loops are the RNN approach - the one Transformers replaced. The Transformer's innovation is attention: every position in the sequence can directly attend to every other position, with no sequential bottleneck.</div>
-          </div>
-        </section>
-
-        <!-- Podcast -->
-        <section class="lp-podcast-section" aria-label="Podcast version">
-          <h2 class="lp-podcast-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line><line x1="2" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="22" y2="12"></line></svg>
+<!-- Body -->
+<div class="na-body">
+<p>These three architectures solve different problems, but they matter for different reasons. RNNs are why we got here. Transformers are where most AI is now. Autoencoders are useful if you understand when to reach for them.</p>
+<h2>Recurrent Neural Networks - what they were designed for</h2>
+<p>An RNN is a neural network with loops. Instead of data flowing one direction from input to output, a neuron can send its output back to itself as input on the next time step.</p>
+<p>This matters for sequences. If you're predicting the next word in a sentence, the word matters, but so does context - the words before it. An RNN's hidden state acts like memory. As it processes word after word, the hidden state updates, carrying information forward.</p>
+<p>Mathematically, the hidden state at time t depends on the input at time t and the hidden state at time t-1. Process a sequence one element at a time, and the network can theoretically learn dependencies - what came before shapes what comes next.</p>
+<p>This makes RNNs useful for language models, machine translation, speech recognition, and time series prediction. Anything where order matters.</p>
+<h2>Why they struggled with long sequences</h2>
+<p>RNNs have a fundamental problem: they backpropagate through time, and gradients get tiny as sequences get long. That's the vanishing gradient problem again, this time across time steps instead of layers.</p>
+<p>In practice, RNNs struggle to remember things more than about 10 to 20 time steps back. For long sentences or documents, that's a real limitation.</p>
+<p>Variants like LSTMs (Long Short-Term Memory) and GRUs (Gated Recurrent Units) tried to fix this by adding gates that control how much information flows forward. They work better than vanilla RNNs, but they're not elegant fixes - they're patches on a flawed architecture.</p>
+<p>And they're slow. RNNs process sequences one element at a time. You can't parallelise easily. Training is expensive.</p>
+<h2>Transformers - the attention mechanism explained plainly</h2>
+<p>A Transformer doesn't process sequences sequentially. It looks at the entire sequence at once and uses attention to figure out which parts matter to which other parts.</p>
+<p>Attention is the key idea. For each word in a sentence, compute how much that word should pay attention to every other word (including itself). Words that matter more get higher attention.</p>
+<p>Technically, attention uses queries, keys, and values. The query from one word asks: what parts of the sequence are relevant to me? The keys answer: I have this kind of information. The values say: here's that information. The attention mechanism multiplies queries and keys to measure how well they match, and uses that score to weight the values.</p>
+<p>Do this calculation for every position in the sequence, and you get a new representation where each position incorporates relevant information from the whole sequence.</p>
+<p>You don't have to understand the maths. The intuition is: each part of the sequence attends to the parts that matter and ignores the rest. In a language model, a word can learn to pay attention to subject-verb pairs, pronouns, contextual clues - whatever is relevant. It happens automatically during training.</p>
+<h2>Why Transformers changed NLP</h2>
+<p>Before Transformers, NLP relied on RNNs. They were okay but had the gradient and speed problems.</p>
+<p>Transformers, introduced in 2017, solved both. They process entire sequences in parallel, so they're fast on GPUs. Attention doesn't suffer from vanishing gradients the same way RNNs do. You can train much deeper models on much more data.</p>
+<p>The result was dramatic. Within a few years, Transformer-based models - BERT, GPT, and others - outperformed RNNs on basically every NLP task.</p>
+<p>This wasn't just an incremental improvement. RNNs are still taught in courses for historical context, but in 2026, most language AI is Transformers.</p>
+<h2>Autoencoders - what they compress and why that's useful</h2>
+<p>An autoencoder is a network that compresses data and then reconstructs it.</p>
+<p>The structure is encoder, bottleneck, decoder. The encoder takes high-dimensional input (say, an image) and compresses it to a smaller representation - the bottleneck. The decoder takes that small representation and tries to reconstruct the original image. The loss is how different the reconstruction is from the original. You train to minimise reconstruction error.</p>
+<p>Why would you do this? The compressed representation is useful. It's a learned summary of the data. You can use it for dimensionality reduction, for finding patterns, for denoising (feed in noisy data, the autoencoder forces it through the bottleneck and cleans it up).</p>
+<p>Variational Autoencoders (VAEs) add a statistical layer: the bottleneck is a probability distribution, and you can sample from it to generate new data. Denoising Autoencoders specifically train on corrupted inputs to learn robust representations.</p>
+<p>They're less flashy than Transformers, but they're practical tools. Image generation, anomaly detection, data compression - if you need learned representations without labelled data, autoencoders are still relevant.</p>
+<h2>Why Transformers largely replaced RNNs</h2>
+<p>Speed, scalability, and performance. Transformers win on all three.</p>
+<p>RNNs require sequential processing. Training is slow. Attention heads learn long-range dependencies better. Transformers scale to much larger models and datasets.</p>
+<p>For basically any sequence task, Transformers perform better than RNNs if you have the resources. The only reason to use RNNs now is if you're deploying on edge devices with limited memory, or if you have a real-time streaming requirement where you can't wait for the full sequence.</p>
+<h2>Do you need to understand RNNs before Transformers?</h2>
+<p>No, honestly.</p>
+<p>RNNs are interesting historically. They teach you about recurrence, about memory in networks, about the challenge of long-term dependencies. That's valuable context.</p>
+<p>But Transformers are simpler conceptually. "Each element attends to all others based on relevance" is easier to grasp than "recurrent hidden state carries information forward and sometimes forgets."</p>
+<p>Understanding what RNNs tried to do and why they failed is useful - you see why the architectural innovation matters. But you don't need to become fluent in LSTM implementations. You need to know they exist, what they were for, and that Transformers superseded them.</p>
+<p>Spend your mental energy on Transformers. That's where the field is now.</p>
+</div>
+<!-- Quiz -->
+<section aria-label="Lesson quiz" class="lp-quiz">
+<h2 class="lp-quiz-title">Check your understanding</h2>
+<!-- Q1 -->
+<div class="lp-quiz-q">
+<p class="lp-quiz-question">Why do RNNs struggle with long sequences?</p>
+<div aria-label="Question 1 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-btn" data-i="0" data-q="1">A) They use too many filters and run out of memory</button>
+<button class="lp-quiz-btn" data-i="1" data-q="1">B) They can only process images, not text</button>
+<button class="lp-quiz-btn lp-quiz-correct" data-i="2" data-q="1">C) Gradients shrink as they backpropagate through many time steps, so early context is lost</button>
+<button class="lp-quiz-btn" data-i="3" data-q="1">D) They lack an activation function to handle non-linearity</button>
+</div>
+<div class="lp-quiz-feedback-correct" hidden="" id="q1-correct">Correct. The vanishing gradient problem applies across time steps in RNNs just as it applies across layers in deep networks. Gradients get tiny after about 10-20 steps, so the network loses track of early context.</div>
+<div class="lp-quiz-feedback-wrong" hidden="" id="q1-wrong">Not quite. The core problem is the vanishing gradient across time steps. As gradients backpropagate through each time step, they shrink, so the network can't learn from context more than about 10-20 steps back.</div>
+</div>
+<!-- Q2 -->
+<div class="lp-quiz-q">
+<p class="lp-quiz-question">What is the key innovation in the Transformer architecture?</p>
+<div aria-label="Question 2 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-btn" data-i="0" data-q="2">A) Recurrent loops that carry memory across time steps</button>
+<button class="lp-quiz-btn" data-i="1" data-q="2">B) Pooling layers that reduce the length of long sequences</button>
+<button class="lp-quiz-btn lp-quiz-correct" data-i="2" data-q="2">C) Attention - each position in the sequence can attend to all other positions based on relevance</button>
+<button class="lp-quiz-btn" data-i="3" data-q="2">D) Convolutional filters applied across the token sequence</button>
+</div>
+<div class="lp-quiz-feedback-correct" hidden="" id="q2-correct">Correct. Attention is the core idea. Instead of processing sequentially like an RNN, a Transformer looks at the whole sequence at once and learns which positions matter to which other positions. This enables parallelism and removes the vanishing gradient problem across time.</div>
+<div class="lp-quiz-feedback-wrong" hidden="" id="q2-wrong">Not quite. Recurrent loops are the RNN approach - the one Transformers replaced. The Transformer's innovation is attention: every position in the sequence can directly attend to every other position, with no sequential bottleneck.</div>
+</div>
+</section>
+<!-- Podcast -->
+<section aria-label="Podcast version" class="lp-podcast-section">
+<h2 class="lp-podcast-title">
+<svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" x2="12" y1="2" y2="5"></line><line x1="12" x2="12" y1="19" y2="22"></line><line x1="2" x2="5" y1="12" y2="12"></line><line x1="19" x2="22" y1="12" y2="12"></line></svg>
             Podcast version
           </h2>
-          <p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
-          <audio controls aria-label="Podcast episode audio player">
+<p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
+<audio aria-label="Podcast episode audio player" controls="">
             Your browser does not support audio playback.
           </audio>
-        </section>
-
-        <!-- Accordions -->
-        <!-- Prev / Next nav -->
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/cnns-with-keras" class="lp-nav-btn lp-nav-prev" aria-label="Previous lesson">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            <span>
-              <em>Previous</em>
-              CNNs with Keras
-            </span>
-          </a>
-          <a href="/course/generative-ai-models" class="lp-nav-btn lp-nav-next" aria-label="Next lesson">
-            <span>
-              <em>Next</em>
-              Generative AI Models
-            </span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
-        </nav>
-
+</section>
+<!-- Accordions -->
+<!-- Prev / Next nav -->
+<nav aria-label="Lesson navigation" class="lp-nav">
+<a aria-label="Previous lesson" class="lp-nav-btn" href="/course/cnns-with-keras"><span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_forward</span></div><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_back</span></div>
+<div><span class="lp-nav-label">Previous lesson</span><span class="lp-nav-title">CNNs with Keras</span></div>
+</a>
+<a aria-label="Next lesson" class="lp-nav-btn" href="/course/generative-ai-models"><span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_forward</span></div>
+<div><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">Next lesson</span></div><span class="lp-nav-title">Generative AI Models</span></div>
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span></a>
+</nav>
 </article>
-
-      <!-- â”€â”€ SIDEBAR â”€â”€ -->
-      <aside class="na-sidebar" aria-label="Course navigation">
-
-        <!-- Table of contents -->
-        <div class="na-toc">
-          <h2 class="na-toc-title">In this lesson</h2>
-          <ul class="na-toc-list">
-            <li><a href="#" onclick="document.querySelector('.na-body h2').scrollIntoView({behavior:'smooth'});return false;">RNNs and sequences</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[1].scrollIntoView({behavior:'smooth'});return false;">Why they struggled</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[2].scrollIntoView({behavior:'smooth'});return false;">Transformers and attention</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[3].scrollIntoView({behavior:'smooth'});return false;">Why Transformers changed NLP</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[4].scrollIntoView({behavior:'smooth'});return false;">Autoencoders</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[5].scrollIntoView({behavior:'smooth'});return false;">Why Transformers won</a></li>
-          </ul>
-        </div>
-
-        <!-- Course navigation -->
-        <nav class="lp-sidebar-nav" aria-label="All course lessons">
-          <h2 class="lp-sidebar-nav-title">Course contents</h2>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-1">Unit 1 Â· Introduction to AI</div>
-            <ul>
-              <li><a href="/course/what-is-ai">What is AI?</a></li>
-              <li><a href="/course/categories-of-ai">Categories of AI</a></li>
-              <li><a href="/course/how-ai-learns">How AI Learns</a></li>
-              <li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-2">Unit 2 Â· The Modern AI Landscape</div>
-            <ul>
-              <li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
-              <li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
-              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
-              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-3">Unit 3 Â· Ethics &amp; Governance</div>
-            <ul>
-              <li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
-              <li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
-              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-4">Unit 4 Â· Python for AI</div>
-            <ul>
-              <li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
-              <li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-5">Unit 5 Â· Machine Learning</div>
-            <ul>
-              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
-              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
-              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
-              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-6">Unit 6 Â· Deep Learning</div>
-            <ul>
-              <li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
-              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
-              <li><a href="/course/backpropagation">Backpropagation</a></li>
-              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
-              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
-              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
-              <li><a href="/course/rnns-transformers-autoencoders" class="lp-sidebar-current" aria-current="page">RNNs, Transformers &amp; Autoencoders</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-7">Unit 7 Â· Generative AI</div>
-            <ul>
-              <li><a href="/course/generative-ai-models">Generative AI Models</a></li>
-              <li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
-              <li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-8">Unit 8 Â· AI in Production</div>
-            <ul>
-              <li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
-              <li><a href="/course/model-deployment">Model Deployment</a></li>
-              <li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
-              <li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-9">Unit 9 Â· AI Strategy</div>
-            <ul>
-              <li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
-              <li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
-              <li><a href="/course/ai-across-industries">AI Across Industries</a></li>
-              <li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
-            </ul>
-          </div>
-
-        </nav>
-        <div id="newsy-ai"></div>
-      </aside>
-
-    </div>
-  </main>
-
-  <div id="share-bar-placeholder"></div>
-  <section class="tool-info" aria-label="Lesson reference">
-    <div class="tool-info-inner">
-      <div class="tool-accordions">
-
-<details class="tool-accordion" open>
-          <summary>Frequently Asked Questions</summary>
-          <div class="tool-accordion-body">
-            <h3>What is a Recurrent Neural Network (RNN)?</h3>
-            <p>An RNN is a neural network with loops that let it process sequences one element at a time, carrying a hidden state that acts as memory. This makes it useful for tasks where order matters: language, time series, speech. The problem is that gradients shrink as they backpropagate through many time steps, so RNNs struggle to remember information from more than about 20 steps back.</p>
-
-            <h3>How does attention work in a Transformer?</h3>
-            <p>Attention lets each position in a sequence compute how much it should focus on every other position. For each element, you compute a query (what am I looking for?), keys (what does each position offer?), and values (what information does each position carry?). Query-key similarity determines attention weights, which then weight the values. Each position ends up with a rich representation incorporating relevant context from the whole sequence.</p>
-
-            <h3>What is an autoencoder used for?</h3>
-            <p>An autoencoder compresses data to a smaller representation (the bottleneck) then reconstructs it. The compressed representation is useful for dimensionality reduction, anomaly detection, denoising, and in Variational Autoencoders, generating new data. They're trained without labels - the reconstruction error is the signal.</p>
-
-            <h3>Do you need to understand RNNs before learning Transformers?</h3>
-            <p>No. Transformers are conceptually simpler than RNNs in many ways. Understanding RNNs gives historical context for why Transformers were an improvement, but you can learn Transformers first. Spend most of your time on Transformers - that's where most modern AI lives.</p>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>How It Works</summary>
-          <div class="tool-accordion-body">
-            <p><strong>RNNs:</strong> At each time step, the network takes the current input and the previous hidden state, combines them, and produces a new hidden state. That state carries information forward to the next step. The catch is backpropagating through time: gradients must flow through every time step backward, and they shrink at each one.</p>
-            <p><strong>Transformers:</strong> All positions in the sequence are processed in parallel. For each position, three vectors are computed (query, key, value). Attention scores between positions are calculated via query-key dot products, normalised via softmax, then used to weight the values. This produces a context-aware representation for each position. Multiple attention heads run in parallel, each learning different relevance patterns. Position encoding adds sequence order information (since there's no inherent order in parallel processing).</p>
-            <p><strong>Autoencoders:</strong> An encoder compresses input to a bottleneck representation. A decoder reconstructs the input from that bottleneck. The reconstruction loss trains the network to find a useful compressed representation. VAEs add a probabilistic bottleneck, enabling generation of new samples.</p>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>Key Points</summary>
-          <div class="tool-accordion-body">
-            <ul>
-              <li>RNNs process sequences step by step, carrying a hidden state as memory</li>
-              <li>The vanishing gradient problem limits RNNs to about 10-20 steps of effective memory</li>
-              <li>LSTMs and GRUs partially addressed this but are still sequential and slow</li>
-              <li>Transformers process entire sequences in parallel using attention</li>
-              <li>Attention computes relevance between every pair of positions, enabling long-range dependency learning</li>
-              <li>Transformers introduced in 2017 quickly outperformed RNNs on almost all NLP tasks</li>
-              <li>Autoencoders compress then reconstruct data; the bottleneck representation is what's valuable</li>
-              <li>Variational Autoencoders extend this to data generation by making the bottleneck a probability distribution</li>
-              <li>For most sequence tasks in 2026, Transformers are the correct starting point</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>Sources</summary>
-          <div class="tool-accordion-body">
-            <ul>
-              <li>Vaswani, A. et al. (2017). Attention Is All You Need. <em>NeurIPS</em>.</li>
-              <li>Hochreiter, S. &amp; Schmidhuber, J. (1997). Long Short-Term Memory. <em>Neural Computation</em>.</li>
-              <li>Kingma, D. &amp; Welling, M. (2013). Auto-Encoding Variational Bayes. <em>arXiv</em>.</li>
-              <li>Devlin, J. et al. (2018). BERT: Pre-training of Deep Bidirectional Transformers. <em>arXiv</em>.</li>
-            </ul>
-          </div>
-        </details>
-
-      </div>
-    </div>
-  </section>
-
-  <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
-  </button>
-
-
-  <div id="footer-placeholder"></div>
-
-  <script src="/news-data.js"></script>
-  <script src="/scripts.js" defer></script>
-  <script src="/news-article.js" defer></script>
-  <script src="/news-chat.js" defer></script>
-  <script>
+<!-- â”€â”€ SIDEBAR â”€â”€ -->
+<aside aria-label="Course navigation" class="na-sidebar">
+<!-- Table of contents -->
+<nav aria-label="In this lesson" class="na-toc">
+<p class="na-toc-title">In this lesson</p>
+<ol class="na-toc-list">
+<li><a class="na-toc-link" href="#">RNNs and sequences</a></li>
+<li><a class="na-toc-link" href="#">Why they struggled</a></li>
+<li><a class="na-toc-link" href="#">Transformers and attention</a></li>
+<li><a class="na-toc-link" href="#">Why Transformers changed NLP</a></li>
+<li><a class="na-toc-link" href="#">Autoencoders</a></li>
+<li><a class="na-toc-link" href="#">Why Transformers won</a></li>
+</ol>
+</nav>
+<!-- Course navigation -->
+<nav aria-label="All course lessons" class="lp-sidebar-nav">
+<p class="lp-sidebar-nav-title">Course contents</p>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-1">Unit 1 · Introduction to AI</span>
+<ul>
+<li><a href="/course/what-is-ai">What is AI?</a></li>
+<li><a href="/course/categories-of-ai">Categories of AI</a></li>
+<li><a href="/course/how-ai-learns">How AI Learns</a></li>
+<li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-2">Unit 2 · The Modern AI Landscape</span>
+<ul>
+<li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
+<li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
+<li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
+<li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-3">Unit 3 · Ethics &amp; Governance</span>
+<ul>
+<li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
+<li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
+<li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-4">Unit 4 · Python for AI</span>
+<ul>
+<li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
+<li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-5">Unit 5 · Machine Learning</span>
+<ul>
+<li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+<li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+<li><a href="/course/model-evaluation">Model Evaluation</a></li>
+<li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-6">Unit 6 · Deep Learning</span>
+<ul>
+<li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
+<li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+<li><a href="/course/backpropagation">Backpropagation</a></li>
+<li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+<li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+<li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
+<li><a aria-current="page" class="lp-sidebar-current" href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-7">Unit 7 · Generative AI</span>
+<ul>
+<li><a href="/course/generative-ai-models">Generative AI Models</a></li>
+<li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
+<li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-8">Unit 8 · AI in Production</span>
+<ul>
+<li><a href="/course/intro-to-mlops">Introduction to MLOps</a></li>
+<li><a href="/course/model-deployment">Model Deployment</a></li>
+<li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
+<li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-9">Unit 9 · AI Strategy</span>
+<ul>
+<li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
+<li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
+<li><a href="/course/ai-across-industries">AI Across Industries</a></li>
+<li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
+</ul>
+</div>
+</nav>
+<div id="newsy-ai"></div>
+</aside>
+</div>
+</main>
+<div id="share-bar-placeholder"></div>
+<section aria-label="Lesson reference" class="tool-info">
+<div class="tool-info-inner">
+<div class="tool-accordions">
+<details class="tool-accordion" open="">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<h3>What is a Recurrent Neural Network (RNN)?</h3>
+<p>An RNN is a neural network with loops that let it process sequences one element at a time, carrying a hidden state that acts as memory. This makes it useful for tasks where order matters: language, time series, speech. The problem is that gradients shrink as they backpropagate through many time steps, so RNNs struggle to remember information from more than about 20 steps back.</p>
+<h3>How does attention work in a Transformer?</h3>
+<p>Attention lets each position in a sequence compute how much it should focus on every other position. For each element, you compute a query (what am I looking for?), keys (what does each position offer?), and values (what information does each position carry?). Query-key similarity determines attention weights, which then weight the values. Each position ends up with a rich representation incorporating relevant context from the whole sequence.</p>
+<h3>What is an autoencoder used for?</h3>
+<p>An autoencoder compresses data to a smaller representation (the bottleneck) then reconstructs it. The compressed representation is useful for dimensionality reduction, anomaly detection, denoising, and in Variational Autoencoders, generating new data. They're trained without labels - the reconstruction error is the signal.</p>
+<h3>Do you need to understand RNNs before learning Transformers?</h3>
+<p>No. Transformers are conceptually simpler than RNNs in many ways. Understanding RNNs gives historical context for why Transformers were an improvement, but you can learn Transformers first. Spend most of your time on Transformers - that's where most modern AI lives.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<p><strong>RNNs:</strong> At each time step, the network takes the current input and the previous hidden state, combines them, and produces a new hidden state. That state carries information forward to the next step. The catch is backpropagating through time: gradients must flow through every time step backward, and they shrink at each one.</p>
+<p><strong>Transformers:</strong> All positions in the sequence are processed in parallel. For each position, three vectors are computed (query, key, value). Attention scores between positions are calculated via query-key dot products, normalised via softmax, then used to weight the values. This produces a context-aware representation for each position. Multiple attention heads run in parallel, each learning different relevance patterns. Position encoding adds sequence order information (since there's no inherent order in parallel processing).</p>
+<p><strong>Autoencoders:</strong> An encoder compresses input to a bottleneck representation. A decoder reconstructs the input from that bottleneck. The reconstruction loss trains the network to find a useful compressed representation. VAEs add a probabilistic bottleneck, enabling generation of new samples.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>RNNs process sequences step by step, carrying a hidden state as memory</li>
+<li>The vanishing gradient problem limits RNNs to about 10-20 steps of effective memory</li>
+<li>LSTMs and GRUs partially addressed this but are still sequential and slow</li>
+<li>Transformers process entire sequences in parallel using attention</li>
+<li>Attention computes relevance between every pair of positions, enabling long-range dependency learning</li>
+<li>Transformers introduced in 2017 quickly outperformed RNNs on almost all NLP tasks</li>
+<li>Autoencoders compress then reconstruct data; the bottleneck representation is what's valuable</li>
+<li>Variational Autoencoders extend this to data generation by making the bottleneck a probability distribution</li>
+<li>For most sequence tasks in 2026, Transformers are the correct starting point</li>
+</ul>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Vaswani, A. et al. (2017). Attention Is All You Need. <em>NeurIPS</em>.</li>
+<li>Hochreiter, S. &amp; Schmidhuber, J. (1997). Long Short-Term Memory. <em>Neural Computation</em>.</li>
+<li>Kingma, D. &amp; Welling, M. (2013). Auto-Encoding Variational Bayes. <em>arXiv</em>.</li>
+<li>Devlin, J. et al. (2018). BERT: Pre-training of Deep Bidirectional Transformers. <em>arXiv</em>.</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</section>
+<button aria-label="Back to top" id="back-to-top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div id="footer-placeholder"></div>
+<script src="/news-data.js"></script>
+<script defer="" src="/scripts.js"></script>
+<script defer="" src="/news-article.js"></script>
+<script defer="" src="/news-chat.js"></script>
+<script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
       if (trigger) trigger.click();
@@ -536,7 +443,7 @@
       });
     });
   </script>
-  <script>
+<script>
     // Quiz logic
     document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
       btn.addEventListener('click', function() {

@@ -1,41 +1,38 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Activation Functions and Vanishing Gradient - JohnB.io</title>
-  <meta name="description" content="Without activation functions, neural networks can only learn linear patterns. ReLU solved the vanishing gradient problem. Here's what activation functions do and why ReLU won.">
-  <meta name="keywords" content="activation functions explained, ReLU neural network, vanishing gradient problem, sigmoid vs ReLU, deep learning activation">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://johnb.io/course/activation-functions-vanishing-gradient">
-
-  <meta property="og:title" content="Activation Functions and Vanishing Gradient">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://johnb.io/course/activation-functions-vanishing-gradient">
-  <meta property="og:description" content="Without activation functions, neural networks can only learn linear patterns. ReLU solved the vanishing gradient problem. Here's what activation functions do and why ReLU won.">
-  <meta property="og:image" content="https://johnb.io/images/course-og.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Activation Functions and Vanishing Gradient">
-  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
-  <meta property="article:author" content="John Bowman">
-  <meta property="article:section" content="AI Course">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Activation Functions and Vanishing Gradient">
-  <meta name="twitter:description" content="Without activation functions, neural networks can only learn linear patterns. ReLU solved the vanishing gradient problem. Here's what activation functions do and why ReLU won.">
-  <meta name="twitter:image" content="https://johnb.io/images/course-og.jpg">
-  <meta name="twitter:image:alt" content="Activation Functions and Vanishing Gradient">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Activation Functions and Vanishing Gradient - JohnB.io</title>
+<meta content="Without activation functions, neural networks can only learn linear patterns. ReLU solved the vanishing gradient problem. Here's what activation functions do and why ReLU won." name="description"/>
+<meta content="activation functions explained, ReLU neural network, vanishing gradient problem, sigmoid vs ReLU, deep learning activation" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://johnb.io/course/activation-functions-vanishing-gradient" rel="canonical"/>
+<meta content="Activation Functions and Vanishing Gradient" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://johnb.io/course/activation-functions-vanishing-gradient" property="og:url"/>
+<meta content="Without activation functions, neural networks can only learn linear patterns. ReLU solved the vanishing gradient problem. Here's what activation functions do and why ReLU won." property="og:description"/>
+<meta content="https://johnb.io/images/course-og.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Activation Functions and Vanishing Gradient" property="og:image:alt"/>
+<meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
+<meta content="John Bowman" property="article:author"/>
+<meta content="AI Course" property="article:section"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Activation Functions and Vanishing Gradient" name="twitter:title"/>
+<meta content="Without activation functions, neural networks can only learn linear patterns. ReLU solved the vanishing gradient problem. Here's what activation functions do and why ReLU won." name="twitter:description"/>
+<meta content="https://johnb.io/images/course-og.jpg" name="twitter:image"/>
+<meta content="Activation Functions and Vanishing Gradient" name="twitter:image:alt"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-0J6PBWMRNY');
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -56,8 +53,7 @@
     }
   }
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -97,8 +93,7 @@
     ]
   }
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -124,300 +119,219 @@
     ]
   }
   </script>
-
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/footer.css">
-  <link rel="stylesheet" href="/news.css?v=4">
-  <link rel="stylesheet" href="/news-chat.css?v=7">
-  <link rel="stylesheet" href="/lesson.css?v=3">
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/header.css" rel="stylesheet"/>
+<link href="/footer.css" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
+<link href="/news-chat.css?v=7" rel="stylesheet"/>
+<link href="/lesson.css?v=3" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
 <body class="lp-page">
-
-  <div id="header-placeholder"></div>
-
-  <div class="lp-ambient" aria-hidden="true"></div>
-
-  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
-
-    <nav class="na-breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Home</a>
-      <span aria-hidden="true">›</span>
-      <a href="/course-dashboard">AI Course</a>
-      <span aria-hidden="true">›</span>
-      <span>Activation Functions and Vanishing Gradient</span>
-    </nav>
-
-    <div class="na-layout">
-
-      <article class="na-content" id="main-content">
-
-        <div class="na-header">
-          <div class="na-meta">
-            <span class="lp-unit-badge lp-unit-6">Unit 6</span>
-            <span class="na-category">Deep Learning</span>
-            <span class="na-read-time">7 min read</span>
-          </div>
-          <h1 class="na-title">Activation Functions and the Vanishing Gradient Problem Explained for Beginners</h1>
-          <p class="na-lede">A neuron that just multiplies and adds is useless. Activation functions are what make neural networks actually work. And the choice of activation function once made training deep networks practically impossible - until ReLU changed everything.</p>
-          <div class="na-author">
-            <img src="/images/john-avatar.jpg" alt="John Bowman" class="na-author-img" width="36" height="36">
-            <div class="na-author-info">
-              <span class="na-author-name">John Bowman</span>
-              <time class="na-author-date" datetime="2026-04-05">5 April 2026</time>
-            </div>
-          </div>
-          <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-            <span class="material-symbols-outlined">auto_awesome</span>
+<div id="header-placeholder"></div>
+<div aria-hidden="true" class="lp-ambient"></div>
+<main class="na-wrap">
+<nav aria-label="Breadcrumb" class="na-breadcrumb">
+<a href="/">Home</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<a href="/course-dashboard">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span>Activation Functions and Vanishing Gradient</span>
+</nav>
+<div class="na-layout">
+<article class="na-content" id="main-content">
+<div class="na-header">
+<h1 class="na-title">Activation Functions and the Vanishing Gradient Problem Explained for Beginners</h1>
+<p class="na-lede">A neuron that just multiplies and adds is useless. Activation functions are what make neural networks actually work. And the choice of activation function once made training deep networks practically impossible - until ReLU changed everything.</p>
+<div class="na-author">
+<a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
+<div class="na-author-details">
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<span class="na-author-role">Owner / AI Developer</span>
+</div>
+<div class="na-header-meta"><span class="lp-unit-badge lp-unit-6">Unit 6</span><span class="na-date">5 April 2026</span><span class="na-read">7 min read</span></div></div>
+<button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
             Ask Newsy AI about this lesson
           </button>
-        </div>
-
-        <nav class="na-toc-mobile" aria-label="On this page">
-          <details>
-            <summary>On this page</summary>
-            <ol>
-              <li><a href="#why-needed">Why Activation Functions Are Needed</a></li>
-              <li><a href="#main-functions">The Main Activation Functions</a></li>
-              <li><a href="#vanishing-gradient">The Vanishing Gradient Problem</a></li>
-              <li><a href="#relu-helped">How ReLU Helped</a></li>
-              <li><a href="#quiz">Lesson Quiz</a></li>
-            </ol>
-          </details>
-        </nav>
-
-        <div class="na-audio-player">
-          <div class="na-audio-label">
-            <span class="material-symbols-outlined" aria-hidden="true">headphones</span>
-            Listen to this lesson
-          </div>
-          <audio controls preload="none" aria-label="Audio version of this lesson">
-            Your browser does not support the audio element.
-          </audio>
-        </div>
-
-        <div class="na-body">
-
-          <section id="why-needed">
-            <h2>What Activation Functions Do and Why They're Needed</h2>
-            <p>Without an activation function, a neural network is just a very complicated way to do linear maths. Layer one does linear operations. Layer two combines those with more linear operations. Layer three combines those. But linear combined with linear is still linear - regardless of how many layers you stack.</p>
-            <p>Linear operations can't learn interesting patterns. They can't recognise faces in photos, understand language, or find non-obvious relationships in data. You need non-linearity.</p>
-            <p>An activation function adds non-linearity. It's a simple function applied after each neuron's multiply-and-add step. It squashes, transforms, or filters the output.</p>
-            <p>So the neuron operation becomes: apply the activation function to (weights times inputs plus bias). This non-linearity lets the network learn complex, curved relationships between inputs and outputs instead of just straight lines.</p>
-          </section>
-
-          <section id="main-functions">
-            <h2>The Main Activation Functions</h2>
-            <p><strong>Sigmoid</strong> was the classic. It takes any number and squashes it to a value between 0 and 1. Smooth, with useful mathematical properties. The problem: it's almost flat at the extremes. Very high or very low inputs produce near-zero gradients. This is what causes the vanishing gradient problem.</p>
-            <p><strong>Tanh</strong> is similar but squashes to between -1 and 1. It's centred at zero, which helps training slightly compared to sigmoid. But it has the same vanishing gradient problem at the extremes.</p>
-            <p><strong>ReLU</strong> (rectified linear unit) is simple: if the input is positive, output it unchanged. If it's negative, output zero. Not smooth, but extremely effective. It doesn't flatten at the extremes - it's either zero or linear. No vanishing gradient.</p>
-            <p>ReLU became the standard for hidden layers because it's computationally cheap and it works. Sigmoid is still used for output layers in binary classification because its 0-1 range gives a probability. There are ReLU variants - Leaky ReLU, ELU, GELU - but they're refinements. ReLU was the breakthrough that mattered.</p>
-          </section>
-
-          <section id="vanishing-gradient">
-            <h2>The Vanishing Gradient Problem</h2>
-            <p>When you backpropagate through sigmoid or tanh, you multiply gradients at each layer. The gradient of sigmoid in its flat regions is very small - close to zero. Multiply many small numbers together and you get something extremely small.</p>
-            <p>Multiply 0.1 by itself ten times: you get 0.0000000001. That's the size of the gradient signal reaching the early layers. The update to each weight is proportional to its gradient, so weights in early layers barely change. Those layers essentially stop learning.</p>
-            <p>This is the vanishing gradient problem. Deep networks with sigmoid activations couldn't train effectively because the first layers received negligible gradient signals. The network would train fine near the output but be nearly random near the input.</p>
-            <p>This was a fundamental barrier to deep learning. Networks with more than a few layers couldn't be trained reliably.</p>
-          </section>
-
-          <section id="relu-helped">
-            <h2>How ReLU Solved It</h2>
-            <p>ReLU's gradient is either 0 (for negative inputs) or 1 (for positive inputs). You don't get multiplying tiny fractions. Gradients pass through ReLU unchanged (for positive activations) or are blocked entirely. No vanishing.</p>
-            <p>This meant you could train networks with 50, 100, or more layers. Gradients reached the early layers strongly enough to actually update those weights. The early layers learned. Deep networks became trainable.</p>
-            <p>ReLU also helped on speed. Computing sigmoid requires an exponential function. Computing ReLU is a comparison: is this number greater than zero? That's one of the cheapest operations a processor can do. Large networks with many neurons suddenly became much more computationally feasible.</p>
-            <p>When deep learning took off around 2012, ReLU was standard. Most of the architectures that followed - ResNets, transformers, the models behind ChatGPT and image generation - use ReLU or one of its variants as the hidden layer activation.</p>
-            <p>The practical takeaway is simple: use ReLU for hidden layers. It works, it's fast, and the reasons it's better than sigmoid are now historical. You'll encounter sigmoid in output layers for binary classification problems, and softmax for multi-class outputs. But for hidden layers, ReLU is the default.</p>
-          </section>
-
-          <section id="quiz" class="lp-quiz-section">
-            <h2>Lesson Quiz</h2>
-            <p>Two questions to check your understanding before moving on.</p>
-
-            <div class="lp-quiz" id="quiz-1">
-              <p class="lp-quiz-q">Question 1: Why do neural networks need activation functions?</p>
-              <ul class="lp-quiz-options" role="list">
-                <li><button class="lp-quiz-btn" data-index="0" type="button">To speed up the forward pass computation</button></li>
-                <li><button class="lp-quiz-btn" data-index="1" type="button">To add non-linearity - without them, stacking layers still only computes linear functions and can't learn complex patterns</button></li>
-                <li><button class="lp-quiz-btn" data-index="2" type="button">To normalise the inputs so they're all the same scale</button></li>
-                <li><button class="lp-quiz-btn" data-index="3" type="button">To reduce the number of weights the network needs to learn</button></li>
-              </ul>
-              <div class="lp-quiz-feedback" aria-live="polite"></div>
-            </div>
-
-            <div class="lp-quiz" id="quiz-2">
-              <p class="lp-quiz-q">Question 2: Why did ReLU solve the vanishing gradient problem?</p>
-              <ul class="lp-quiz-options" role="list">
-                <li><button class="lp-quiz-btn" data-index="0" type="button">ReLU uses more memory than sigmoid, which allows larger gradients to be stored</button></li>
-                <li><button class="lp-quiz-btn" data-index="1" type="button">ReLU's gradient is either 0 or 1 - never a tiny fraction - so gradients don't shrink as they pass through many layers</button></li>
-                <li><button class="lp-quiz-btn" data-index="2" type="button">ReLU computes gradients analytically rather than numerically</button></li>
-                <li><button class="lp-quiz-btn" data-index="3" type="button">ReLU prevents weights from becoming too large during training</button></li>
-              </ul>
-              <div class="lp-quiz-feedback" aria-live="polite"></div>
-            </div>
-
-          </section>
-
-        </div>
-
-        <section class="na-podcast">
-          <h2 class="na-podcast-title">
-            <span class="material-symbols-outlined" aria-hidden="true">podcast</span>
-            Podcast Version
-          </h2>
-          <p class="na-podcast-desc">Prefer to listen? The full lesson is available as a podcast episode.</p>
-          <audio controls preload="none" aria-label="Podcast version of this lesson">
-            Your browser does not support the audio element.
-          </audio>
-        </section>
-
-        <div id="share-bar-placeholder"></div>
-
-        <div class="na-accordions">
-
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/backpropagation" class="lp-nav-btn lp-nav-prev">
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Previous lesson</span>
-              <span class="lp-nav-title">Backpropagation</span>
-            </span>
-          </a>
-          <a href="/course/tensorflow-pytorch-keras" class="lp-nav-btn lp-nav-next">
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Next lesson</span>
-              <span class="lp-nav-title">TensorFlow, PyTorch and Keras</span>
-            </span>
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-          </a>
-        </nav>
-
 </div>
-
-      </article>
-
-      <aside class="na-sidebar" aria-label="Lesson sidebar">
-
-        <nav class="na-toc" aria-label="Table of contents">
-          <h2 class="na-toc-title">On this page</h2>
-          <ol class="na-toc-list">
-            <li><a href="#why-needed">Why Activation Functions Are Needed</a></li>
-            <li><a href="#main-functions">The Main Activation Functions</a></li>
-            <li><a href="#vanishing-gradient">The Vanishing Gradient Problem</a></li>
-            <li><a href="#relu-helped">How ReLU Solved It</a></li>
-            <li><a href="#quiz">Lesson Quiz</a></li>
-          </ol>
-        </nav>
-
-        <nav class="lp-sidebar-nav" aria-label="Course navigation">
-          <h2 class="lp-sidebar-nav-title">
-            <a href="/course-dashboard">AI Course</a>
-          </h2>
-          <div class="lp-sidebar-unit">
-            <span class="lp-sidebar-unit-label lp-unit-6">Unit 6 - Deep Learning</span>
-            <ul>
-              <li><a href="/course/biological-vs-artificial-neurons">Biological vs Artificial Neurons</a></li>
-              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
-              <li><a href="/course/backpropagation">Backpropagation</a></li>
-              <li class="lp-sidebar-current"><a href="/course/activation-functions-vanishing-gradient" aria-current="page">Activation Functions &amp; Vanishing Gradient</a></li>
-              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
-              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
-              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
-            </ul>
-          </div>
-        </nav>
-
-        <div id="newsy-sidebar-mount"></div>
-
-        <div id="newsy-ai"></div>
-      </aside>
-
-    </div>
-
-  </main>
-
-  <div id="share-bar-placeholder"></div>
-  <section class="tool-info" aria-label="Lesson reference">
-    <div class="tool-info-inner">
-      <div class="tool-accordions">
-
-<details class="tool-accordion" open>
-            <summary>Frequently Asked Questions</summary>
-            <div class="tool-accordion-body">
-              <h3>What do activation functions do in neural networks?</h3>
-              <p>Activation functions add non-linearity to neural networks. Without them, stacking layers of multiply-and-add operations would still only compute linear functions - regardless of how many layers you add. Non-linearity allows networks to learn complex, curved relationships between inputs and outputs: recognising faces, understanding language, detecting patterns in arbitrary data.</p>
-
-              <h3>What is the vanishing gradient problem?</h3>
-              <p>The vanishing gradient problem occurs when gradients become extremely small as they're propagated backward through many layers. With sigmoid and tanh activation functions, gradients in the flat regions are very small. Multiply many small numbers together and you get something near zero. Early layers of the network receive such tiny gradient signals that they barely learn anything. This made training deep networks with sigmoid/tanh effectively impossible.</p>
-
-              <h3>What is ReLU and why is it the standard activation function?</h3>
-              <p>ReLU (rectified linear unit) outputs the input unchanged if it's positive, or zero if it's negative. That's it. Its gradient is either 0 or 1 - never a tiny fraction. This solved the vanishing gradient problem: gradients don't shrink as they pass through ReLU. It's also computationally cheap (just a comparison, no transcendental functions). These properties made training deep networks practical, and ReLU became the default for hidden layers.</p>
-
-              <h3>When should you use sigmoid vs ReLU?</h3>
-              <p>Use ReLU (or its variants like Leaky ReLU, GELU) for hidden layers. Use sigmoid for binary classification output layers (where you need a probability between 0 and 1) or similar outputs that need to be constrained to a range. For multi-class classification output, use softmax instead of sigmoid.</p>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>How It Works</summary>
-            <div class="tool-accordion-body">
-              <p><strong>Sigmoid</strong>: <code>σ(x) = 1 / (1 + e^(-x))</code>. Output range: (0, 1). Gradient: <code>σ(x) * (1 - σ(x))</code>, which approaches 0 for very large or very small x. This is the source of the vanishing gradient problem.</p>
-              <p><strong>Tanh</strong>: <code>tanh(x) = (e^x - e^(-x)) / (e^x + e^(-x))</code>. Output range: (-1, 1). Gradient: <code>1 - tanh(x)^2</code>, also approaches 0 at extremes.</p>
-              <p><strong>ReLU</strong>: <code>relu(x) = max(0, x)</code>. Output range: [0, ∞). Gradient: 1 for x &gt; 0, 0 for x &lt; 0, undefined at x = 0 (treated as 0 in practice). No vanishing gradient for positive activations.</p>
-              <p><strong>Leaky ReLU</strong>: <code>max(0.01x, x)</code>. Like ReLU but allows a small negative output, preventing "dead neurons" where a ReLU is permanently zero.</p>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>Key Points</summary>
-            <div class="tool-accordion-body">
-              <ul>
-                <li>Activation functions add non-linearity - without them, deep networks can only compute linear functions.</li>
-                <li>Sigmoid: squashes output to (0,1). Historically popular, now mostly used for binary output layers.</li>
-                <li>Tanh: squashes output to (-1,1). Same vanishing gradient problem as sigmoid.</li>
-                <li>ReLU: output is max(0, x). Gradient is 0 or 1. Solved vanishing gradient, computationally cheap.</li>
-                <li>Vanishing gradient: when gradients shrink to near-zero across many layers, early layers stop learning.</li>
-                <li>ReLU solved this because its gradient doesn't diminish - it's either blocked (0) or passed through (1).</li>
-                <li>Practical rule: use ReLU for hidden layers, sigmoid for binary outputs, softmax for multi-class outputs.</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>Sources</summary>
-            <div class="tool-accordion-body">
-              <ul>
-                <li>Nair, V. &amp; Hinton, G. (2010). Rectified Linear Units Improve Restricted Boltzmann Machines. <em>ICML 2010</em>.</li>
-                <li>Glorot, X., Bordes, A. &amp; Bengio, Y. (2011). Deep Sparse Rectifier Neural Networks. <em>AISTATS 2011</em>.</li>
-                <li>Hochreiter, S. (1991). Untersuchungen zu dynamischen neuronalen Netzen. (The original vanishing gradient paper, diploma thesis, TU Munich.)</li>
-              </ul>
-            </div>
-          </details>
-
-      </div>
-    </div>
-  </section>
-
-  <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
-  </button>
-
-
-  <div id="footer-placeholder"></div>
-
-  <script src="/news-data.js"></script>
-  <script src="/scripts.js" defer></script>
-  <script src="/news-article.js" defer></script>
-  <script src="/news-chat.js" defer></script>
-  <script>
+<details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#why-needed">Why Activation Functions Are Needed</a></li><li><a href="#main-functions">The Main Activation Functions</a></li><li><a href="#vanishing-gradient">The Vanishing Gradient Problem</a></li><li><a href="#relu-helped">How ReLU Helped</a></li><li><a href="#quiz">Lesson Quiz</a></li></ol></details><hr class="na-divider"/>
+<div aria-label="Listen to this lesson" class="na-audio"><span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span><div class="na-audio-info"><div class="na-audio-top"><span class="na-audio-label">Listen to this lesson</span></div><audio aria-label="Audio version of this lesson" controls="True" preload="none" style="width:100%;margin-top:0.5rem;">
+            Your browser does not support the audio element.
+          </audio></div></div>
+<div class="na-body">
+<section id="why-needed">
+<h2>What Activation Functions Do and Why They're Needed</h2>
+<p>Without an activation function, a neural network is just a very complicated way to do linear maths. Layer one does linear operations. Layer two combines those with more linear operations. Layer three combines those. But linear combined with linear is still linear - regardless of how many layers you stack.</p>
+<p>Linear operations can't learn interesting patterns. They can't recognise faces in photos, understand language, or find non-obvious relationships in data. You need non-linearity.</p>
+<p>An activation function adds non-linearity. It's a simple function applied after each neuron's multiply-and-add step. It squashes, transforms, or filters the output.</p>
+<p>So the neuron operation becomes: apply the activation function to (weights times inputs plus bias). This non-linearity lets the network learn complex, curved relationships between inputs and outputs instead of just straight lines.</p>
+</section>
+<section id="main-functions">
+<h2>The Main Activation Functions</h2>
+<p><strong>Sigmoid</strong> was the classic. It takes any number and squashes it to a value between 0 and 1. Smooth, with useful mathematical properties. The problem: it's almost flat at the extremes. Very high or very low inputs produce near-zero gradients. This is what causes the vanishing gradient problem.</p>
+<p><strong>Tanh</strong> is similar but squashes to between -1 and 1. It's centred at zero, which helps training slightly compared to sigmoid. But it has the same vanishing gradient problem at the extremes.</p>
+<p><strong>ReLU</strong> (rectified linear unit) is simple: if the input is positive, output it unchanged. If it's negative, output zero. Not smooth, but extremely effective. It doesn't flatten at the extremes - it's either zero or linear. No vanishing gradient.</p>
+<p>ReLU became the standard for hidden layers because it's computationally cheap and it works. Sigmoid is still used for output layers in binary classification because its 0-1 range gives a probability. There are ReLU variants - Leaky ReLU, ELU, GELU - but they're refinements. ReLU was the breakthrough that mattered.</p>
+</section>
+<section id="vanishing-gradient">
+<h2>The Vanishing Gradient Problem</h2>
+<p>When you backpropagate through sigmoid or tanh, you multiply gradients at each layer. The gradient of sigmoid in its flat regions is very small - close to zero. Multiply many small numbers together and you get something extremely small.</p>
+<p>Multiply 0.1 by itself ten times: you get 0.0000000001. That's the size of the gradient signal reaching the early layers. The update to each weight is proportional to its gradient, so weights in early layers barely change. Those layers essentially stop learning.</p>
+<p>This is the vanishing gradient problem. Deep networks with sigmoid activations couldn't train effectively because the first layers received negligible gradient signals. The network would train fine near the output but be nearly random near the input.</p>
+<p>This was a fundamental barrier to deep learning. Networks with more than a few layers couldn't be trained reliably.</p>
+</section>
+<section id="relu-helped">
+<h2>How ReLU Solved It</h2>
+<p>ReLU's gradient is either 0 (for negative inputs) or 1 (for positive inputs). You don't get multiplying tiny fractions. Gradients pass through ReLU unchanged (for positive activations) or are blocked entirely. No vanishing.</p>
+<p>This meant you could train networks with 50, 100, or more layers. Gradients reached the early layers strongly enough to actually update those weights. The early layers learned. Deep networks became trainable.</p>
+<p>ReLU also helped on speed. Computing sigmoid requires an exponential function. Computing ReLU is a comparison: is this number greater than zero? That's one of the cheapest operations a processor can do. Large networks with many neurons suddenly became much more computationally feasible.</p>
+<p>When deep learning took off around 2012, ReLU was standard. Most of the architectures that followed - ResNets, transformers, the models behind ChatGPT and image generation - use ReLU or one of its variants as the hidden layer activation.</p>
+<p>The practical takeaway is simple: use ReLU for hidden layers. It works, it's fast, and the reasons it's better than sigmoid are now historical. You'll encounter sigmoid in output layers for binary classification problems, and softmax for multi-class outputs. But for hidden layers, ReLU is the default.</p>
+</section>
+<section class="lp-quiz-section" id="quiz">
+<h2>Lesson Quiz</h2>
+<p>Two questions to check your understanding before moving on.</p>
+<div class="lp-quiz" id="quiz-1">
+<p class="lp-quiz-q">Question 1: Why do neural networks need activation functions?</p>
+<ul class="lp-quiz-options" role="list">
+<li><button class="lp-quiz-btn" data-index="0" type="button">To speed up the forward pass computation</button></li>
+<li><button class="lp-quiz-btn" data-index="1" type="button">To add non-linearity - without them, stacking layers still only computes linear functions and can't learn complex patterns</button></li>
+<li><button class="lp-quiz-btn" data-index="2" type="button">To normalise the inputs so they're all the same scale</button></li>
+<li><button class="lp-quiz-btn" data-index="3" type="button">To reduce the number of weights the network needs to learn</button></li>
+</ul>
+<div aria-live="polite" class="lp-quiz-feedback"></div>
+</div>
+<div class="lp-quiz" id="quiz-2">
+<p class="lp-quiz-q">Question 2: Why did ReLU solve the vanishing gradient problem?</p>
+<ul class="lp-quiz-options" role="list">
+<li><button class="lp-quiz-btn" data-index="0" type="button">ReLU uses more memory than sigmoid, which allows larger gradients to be stored</button></li>
+<li><button class="lp-quiz-btn" data-index="1" type="button">ReLU's gradient is either 0 or 1 - never a tiny fraction - so gradients don't shrink as they pass through many layers</button></li>
+<li><button class="lp-quiz-btn" data-index="2" type="button">ReLU computes gradients analytically rather than numerically</button></li>
+<li><button class="lp-quiz-btn" data-index="3" type="button">ReLU prevents weights from becoming too large during training</button></li>
+</ul>
+<div aria-live="polite" class="lp-quiz-feedback"></div>
+</div>
+</section>
+</div>
+<div aria-label="Deep Dive Podcast" class="na-podcast" role="region"><div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div><div class="na-podcast-inner"><div class="na-podcast-left"><div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div><div class="na-podcast-meta"><p class="na-podcast-title">Podcast Version</p><p class="na-podcast-sub">AI-generated audio overview of this lesson</p></div></div><audio aria-label="Podcast version of this lesson" controls="True" preload="none" style="width:100%;margin-top:0.75rem;">
+            Your browser does not support the audio element.
+          </audio></div></div>
+<div id="share-bar-placeholder"></div>
+<div class="na-accordions">
+<nav aria-label="Lesson navigation" class="lp-nav">
+<a class="lp-nav-btn" href="/course/backpropagation">
+<span aria-hidden="true" class="material-symbols-outlined">arrow_back</span>
+<div><span class="lp-nav-label">Previous lesson</span><span class="lp-nav-title">Backpropagation</span></div>
+</a>
+<a class="lp-nav-btn" href="/course/tensorflow-pytorch-keras">
+<div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">TensorFlow, PyTorch and Keras</span></div>
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span>
+</a>
+</nav>
+</div>
+</article>
+<aside aria-label="Lesson sidebar" class="na-sidebar">
+<nav aria-label="Table of contents" class="na-toc">
+<h2 class="na-toc-title">On this page</h2>
+<ol class="na-toc-list">
+<li><a class="na-toc-link" href="#why-needed">Why Activation Functions Are Needed</a></li>
+<li><a class="na-toc-link" href="#main-functions">The Main Activation Functions</a></li>
+<li><a class="na-toc-link" href="#vanishing-gradient">The Vanishing Gradient Problem</a></li>
+<li><a class="na-toc-link" href="#relu-helped">How ReLU Solved It</a></li>
+<li><a class="na-toc-link" href="#quiz">Lesson Quiz</a></li>
+</ol>
+</nav>
+<nav aria-label="Course navigation" class="lp-sidebar-nav">
+<h2 class="lp-sidebar-nav-title">
+<a href="/course-dashboard">AI Course</a>
+</h2>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-6">Unit 6 - Deep Learning</span>
+<ul>
+<li><a href="/course/biological-vs-artificial-neurons">Biological vs Artificial Neurons</a></li>
+<li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+<li><a href="/course/backpropagation">Backpropagation</a></li>
+<li class="lp-sidebar-current"><a aria-current="page" href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+<li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+<li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
+<li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+</ul>
+</div>
+</nav>
+<div id="newsy-sidebar-mount"></div>
+<div id="newsy-ai"></div>
+</aside>
+</div>
+</main>
+<div id="share-bar-placeholder"></div>
+<section aria-label="Lesson reference" class="tool-info">
+<div class="tool-info-inner">
+<div class="tool-accordions">
+<details class="tool-accordion" open="">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<h3>What do activation functions do in neural networks?</h3>
+<p>Activation functions add non-linearity to neural networks. Without them, stacking layers of multiply-and-add operations would still only compute linear functions - regardless of how many layers you add. Non-linearity allows networks to learn complex, curved relationships between inputs and outputs: recognising faces, understanding language, detecting patterns in arbitrary data.</p>
+<h3>What is the vanishing gradient problem?</h3>
+<p>The vanishing gradient problem occurs when gradients become extremely small as they're propagated backward through many layers. With sigmoid and tanh activation functions, gradients in the flat regions are very small. Multiply many small numbers together and you get something near zero. Early layers of the network receive such tiny gradient signals that they barely learn anything. This made training deep networks with sigmoid/tanh effectively impossible.</p>
+<h3>What is ReLU and why is it the standard activation function?</h3>
+<p>ReLU (rectified linear unit) outputs the input unchanged if it's positive, or zero if it's negative. That's it. Its gradient is either 0 or 1 - never a tiny fraction. This solved the vanishing gradient problem: gradients don't shrink as they pass through ReLU. It's also computationally cheap (just a comparison, no transcendental functions). These properties made training deep networks practical, and ReLU became the default for hidden layers.</p>
+<h3>When should you use sigmoid vs ReLU?</h3>
+<p>Use ReLU (or its variants like Leaky ReLU, GELU) for hidden layers. Use sigmoid for binary classification output layers (where you need a probability between 0 and 1) or similar outputs that need to be constrained to a range. For multi-class classification output, use softmax instead of sigmoid.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<p><strong>Sigmoid</strong>: <code>σ(x) = 1 / (1 + e^(-x))</code>. Output range: (0, 1). Gradient: <code>σ(x) * (1 - σ(x))</code>, which approaches 0 for very large or very small x. This is the source of the vanishing gradient problem.</p>
+<p><strong>Tanh</strong>: <code>tanh(x) = (e^x - e^(-x)) / (e^x + e^(-x))</code>. Output range: (-1, 1). Gradient: <code>1 - tanh(x)^2</code>, also approaches 0 at extremes.</p>
+<p><strong>ReLU</strong>: <code>relu(x) = max(0, x)</code>. Output range: [0, ∞). Gradient: 1 for x &gt; 0, 0 for x &lt; 0, undefined at x = 0 (treated as 0 in practice). No vanishing gradient for positive activations.</p>
+<p><strong>Leaky ReLU</strong>: <code>max(0.01x, x)</code>. Like ReLU but allows a small negative output, preventing "dead neurons" where a ReLU is permanently zero.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Activation functions add non-linearity - without them, deep networks can only compute linear functions.</li>
+<li>Sigmoid: squashes output to (0,1). Historically popular, now mostly used for binary output layers.</li>
+<li>Tanh: squashes output to (-1,1). Same vanishing gradient problem as sigmoid.</li>
+<li>ReLU: output is max(0, x). Gradient is 0 or 1. Solved vanishing gradient, computationally cheap.</li>
+<li>Vanishing gradient: when gradients shrink to near-zero across many layers, early layers stop learning.</li>
+<li>ReLU solved this because its gradient doesn't diminish - it's either blocked (0) or passed through (1).</li>
+<li>Practical rule: use ReLU for hidden layers, sigmoid for binary outputs, softmax for multi-class outputs.</li>
+</ul>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Nair, V. &amp; Hinton, G. (2010). Rectified Linear Units Improve Restricted Boltzmann Machines. <em>ICML 2010</em>.</li>
+<li>Glorot, X., Bordes, A. &amp; Bengio, Y. (2011). Deep Sparse Rectifier Neural Networks. <em>AISTATS 2011</em>.</li>
+<li>Hochreiter, S. (1991). Untersuchungen zu dynamischen neuronalen Netzen. (The original vanishing gradient paper, diploma thesis, TU Munich.)</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</section>
+<button aria-label="Back to top" id="back-to-top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div id="footer-placeholder"></div>
+<script src="/news-data.js"></script>
+<script defer="" src="/scripts.js"></script>
+<script defer="" src="/news-article.js"></script>
+<script defer="" src="/news-chat.js"></script>
+<script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
       if (trigger) trigger.click();
@@ -429,8 +343,7 @@
       });
     });
   </script>
-
-  <script>
+<script>
     (function() {
       var quizzes = [
         { correct: 1, explanation: "Correct. Activation functions add non-linearity. Without them, no matter how many layers you stack, the network computes the same as one linear transformation. Non-linearity is what allows networks to learn complex patterns rather than just straight-line relationships." },
@@ -464,6 +377,5 @@
       });
     })();
   </script>
-
 </body>
 </html>

@@ -1,45 +1,42 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Introduction to MLOps: Notebook to Production - JohnB.io</title>
-  <meta name="description" content="What MLOps is, why notebook models fail in production, the four key stages of the ML lifecycle, and why data scientists should understand all of it. Unit 8, Lesson 1.">
-  <meta name="keywords" content="MLOps, machine learning operations, model deployment, production ML, drift, ML lifecycle">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://johnb.io/course/intro-to-mlops">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Introduction to MLOps: From Notebook to Production">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://johnb.io/course/intro-to-mlops">
-  <meta property="og:description" content="What MLOps is, why notebook models fail in production, the four key stages of the ML lifecycle, and why data scientists should understand all of it.">
-  <meta property="og:image" content="https://johnb.io/images/course-og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Introduction to MLOps lesson - JohnB.io AI Course">
-  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
-  <meta property="article:author" content="https://johnb.io">
-  <meta property="article:section" content="AI in Production">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Introduction to MLOps: From Notebook to Production">
-  <meta name="twitter:description" content="What MLOps is, why notebook models fail in production, the four key stages of the ML lifecycle, and why data scientists should understand all of it.">
-  <meta name="twitter:image" content="https://johnb.io/images/course-og.png">
-  <meta name="twitter:image:alt" content="Introduction to MLOps lesson - JohnB.io AI Course">
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Introduction to MLOps: Notebook to Production - JohnB.io</title>
+<meta content="What MLOps is, why notebook models fail in production, the four key stages of the ML lifecycle, and why data scientists should understand all of it. Unit 8, Lesson 1." name="description"/>
+<meta content="MLOps, machine learning operations, model deployment, production ML, drift, ML lifecycle" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://johnb.io/course/intro-to-mlops" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="Introduction to MLOps: From Notebook to Production" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://johnb.io/course/intro-to-mlops" property="og:url"/>
+<meta content="What MLOps is, why notebook models fail in production, the four key stages of the ML lifecycle, and why data scientists should understand all of it." property="og:description"/>
+<meta content="https://johnb.io/images/course-og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Introduction to MLOps lesson - JohnB.io AI Course" property="og:image:alt"/>
+<meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
+<meta content="https://johnb.io" property="article:author"/>
+<meta content="AI in Production" property="article:section"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Introduction to MLOps: From Notebook to Production" name="twitter:title"/>
+<meta content="What MLOps is, why notebook models fail in production, the four key stages of the ML lifecycle, and why data scientists should understand all of it." name="twitter:description"/>
+<meta content="https://johnb.io/images/course-og.png" name="twitter:image"/>
+<meta content="Introduction to MLOps lesson - JohnB.io AI Course" name="twitter:image:alt"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-0J6PBWMRNY');
   </script>
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -125,384 +122,304 @@
     ]
   }
   </script>
-
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/footer.css">
-  <link rel="stylesheet" href="/news.css">
-  <link rel="stylesheet" href="/lesson.css?v=3">
-  <link rel="stylesheet" href="/news-chat.css?v=7">
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/header.css" rel="stylesheet"/>
+<link href="/footer.css" rel="stylesheet"/>
+<link href="/news.css" rel="stylesheet"/>
+<link href="/lesson.css?v=3" rel="stylesheet"/>
+<link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
 <body class="lp-page">
-
-  <div id="header-placeholder"></div>
-
-  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
-    <div class="na-layout">
-
-      <!-- â”€â”€ MAIN CONTENT â”€â”€ -->
-      <article class="na-content">
-
-        <!-- Breadcrumb -->
-        <nav class="na-breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span aria-hidden="true">â€º</span>
-          <a href="/course-dashboard">AI Course</a>
-          <span aria-hidden="true">â€º</span>
-          <span>Introduction to MLOps</span>
-        </nav>
-
-        <!-- Unit badge + title -->
-        <div class="lp-unit-badge lp-unit-8">Unit 8 Â· AI in Production</div>
-        <h1 class="na-title">Introduction to MLOps: From Notebook to Production</h1>
-
-        <!-- Meta row -->
-        <div class="na-meta">
-          <span>10 min read</span>
-          <span>Â·</span>
-          <span>Lesson 1 of 4 in Unit 8</span>
-          <span>Â·</span>
-          <span>Published 5 April 2026</span>
-        </div>
-
-        <!-- Audio player -->
-        <section class="lp-audio-section" aria-label="Lesson audio">
-          <div class="lp-audio-label">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+<div id="header-placeholder"></div><div aria-hidden="true" class="lp-ambient"></div>
+<main class="na-wrap">
+<div class="na-layout">
+<!-- â”€â”€ MAIN CONTENT â”€â”€ -->
+<article class="na-content">
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="na-breadcrumb">
+<a href="/">Home</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<a href="/course-dashboard">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span>Introduction to MLOps</span>
+</nav>
+<!-- Unit badge + title -->
+<div class="lp-unit-badge lp-unit-8">Unit 8 · AI in Production</div>
+<h1 class="na-title">Introduction to MLOps: From Notebook to Production</h1>
+<!-- Meta row -->
+<div class="na-meta">
+<span>10 min read</span>
+<span>·</span>
+<span>Lesson 1 of 4 in Unit 8</span>
+<span>·</span>
+<span>Published 5 April 2026</span>
+</div>
+<!-- Audio player -->
+<section aria-label="Lesson audio" class="lp-audio-section">
+<div class="lp-audio-label">
+<svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
             Listen to this lesson
           </div>
-          <audio controls aria-label="Lesson audio player">
+<audio aria-label="Lesson audio player" controls="">
             Your browser does not support audio playback.
           </audio>
-        </section>
-
-        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-          <span class="material-symbols-outlined">auto_awesome</span>
+</section>
+<button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
           Ask Newsy AI about this lesson
         </button>
-
-        <!-- Body -->
-        <div class="na-body">
-
-          <p>You build a model in a notebook. It works. You get 87% accuracy. You're happy. You deploy it to production.</p>
-
-          <p>Three months later it's performing at 64% accuracy. You didn't touch it. The data changed. The users changed. The world changed. And now your model is broken in ways that are hard to debug because production is messier than your notebook.</p>
-
-          <p>That gap - between a notebook experiment and an actual working system - is where MLOps lives.</p>
-
-          <h2>The gap between notebook and production</h2>
-
-          <p>A notebook is a controlled environment. You have a dataset. You split it into train and test. You train once, evaluate once, iterate. When you're done, you have a model file.</p>
-
-          <p>Production is chaos. Data arrives continuously. It's different from your training data. Your model makes predictions on it. Those predictions affect real decisions. Sometimes they're wrong and you need to understand why.</p>
-
-          <p>Your notebook didn't have to handle: new data arriving every minute, data in different formats or with different distributions, multiple models running in parallel, needing to roll back if a new model is bad, monitoring whether the model still works, retraining when performance degrades, version control for data, models, and code, compliance and audit requirements, or budget and compute constraints.</p>
-
-          <p>A notebook solves exactly one problem: build a model. Production needs to solve dozens more.</p>
-
-          <h2>What MLOps is and why it exists</h2>
-
-          <p>MLOps is the infrastructure and practices that turn a model into a system that works reliably in production.</p>
-
-          <p>It's borrowed from DevOps - the practices that make software deployable and maintainable. But ML adds complexity because your system has three moving parts: code, data, and models. In traditional software, the code is the source of truth. In ML, the code matters less than the data and the model weights.</p>
-
-          <p>MLOps exists because ML in production fails in different ways than regular software. A regular application can be fully tested before deployment. An ML system can never be fully tested - you'll always encounter data distributions you didn't see in training. A regular application is deterministic - the same input always produces the same output. An ML system is probabilistic - it makes mistakes, and those mistakes change over time as data changes.</p>
-
-          <p>You need different tools and practices for this reality.</p>
-
-          <h2>The key stages: data, training, deployment, monitoring</h2>
-
-          <p><strong>Data management.</strong> You need to know what data your model was trained on. You need to track data quality. You need to catch when the data distribution shifts. You need to version datasets so that when a model breaks, you can recreate the exact conditions that created it.</p>
-
-          <p><strong>Training.</strong> You need to be able to retrain models automatically. You need to track hyperparameters and results. You need to run experiments in parallel and compare them. You need to version models and know which version is in production.</p>
-
-          <p><strong>Deployment.</strong> You need to serve models with low latency and high availability. You need to be able to roll out new models gradually and roll back if something breaks. You need to handle multiple versions running simultaneously.</p>
-
-          <p><strong>Monitoring.</strong> You need to track model performance on real data over time. You need to notice when performance degrades and alert the right people. You need to log predictions so you can debug failures. You need to know when to retrain.</p>
-
-          <p>These stages feed back into each other. Monitoring tells you when to retrain. Training produces a new model. Deployment puts it in production. Monitoring checks if it works. The cycle continues.</p>
-
-          <h2>Why ML fails differently in production</h2>
-
-          <p>A regular application usually fails because of bugs. The code has a flaw, you fix it, you deploy the fix. ML systems fail because the world changed.</p>
-
-          <p>Your model learned patterns from training data. In production, the data is different. Not in format - usually the same format. But the distribution is different. Users behave differently. Products change. Campaigns succeed or fail. The patterns the model learned aren't true any more.</p>
-
-          <p>This is called drift and it's inevitable. You can't prevent it. You can only detect it and handle it.</p>
-
-          <p>A regular application is also deterministic - you can test every branch. An ML model is probabilistic. You can't test every possible input. You don't know in advance what mistakes it will make. You can only observe mistakes in production and try to learn from them.</p>
-
-          <p>This is why monitoring matters so much in ML. You can't catch all errors before deployment. You have to catch them after and respond.</p>
-
-          <h2>Do data scientists need to care about MLOps?</h2>
-
-          <p>They don't need to become MLOps engineers - that's a different skill. But they should understand the basics. How models go from notebook to production. What happens when data distribution changes. How to instrument a model so it's debuggable.</p>
-
-          <p>The companies that are good at ML have data scientists and MLOps engineers who work together. The data scientist doesn't have to implement the monitoring system, but they should understand what needs to be monitored and why. They should think about edge cases that might not show up in training data. They should care that their model is reliable, not just accurate.</p>
-
-        </div>
-
-        <!-- Quiz -->
-        <section class="lp-quiz" aria-label="Lesson quiz">
-          <h2 class="lp-quiz-title">Check your understanding</h2>
-
-          <!-- Q1 -->
-          <div class="lp-quiz-q">
-            <p class="lp-quiz-question">Why does an ML model's performance degrade over time even if the code hasn't changed?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
-              <button class="lp-quiz-btn" data-q="1" data-i="0">A) The model's weights change automatically when exposed to new data</button>
-              <button class="lp-quiz-btn lp-quiz-correct" data-q="1" data-i="1">B) The data distribution in production shifts away from what the model trained on</button>
-              <button class="lp-quiz-btn" data-q="1" data-i="2">C) Server hardware gets slower over time, reducing inference accuracy</button>
-              <button class="lp-quiz-btn" data-q="1" data-i="3">D) Python package updates change how models run their predictions</button>
-            </div>
-            <div class="lp-quiz-feedback-correct" id="q1-correct" hidden>Correct. This is drift. The model learned patterns from training data, but in production the data distribution changes - user behaviour shifts, new products appear, market conditions change. The model's patterns become less accurate as the world diverges from what it trained on.</div>
-            <div class="lp-quiz-feedback-wrong" id="q1-wrong" hidden>Not quite. ML models don't update their own weights in production. The performance degrades because the data distribution shifts - the world changes but the model's learned patterns don't.</div>
-          </div>
-
-          <!-- Q2 -->
-          <div class="lp-quiz-q">
-            <p class="lp-quiz-question">What makes ML systems harder to fully test before deployment compared to regular software?</p>
-            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
-              <button class="lp-quiz-btn" data-q="2" data-i="0">A) ML models are written in Python, which doesn't support unit testing</button>
-              <button class="lp-quiz-btn" data-q="2" data-i="1">B) ML testing requires cloud infrastructure not available locally</button>
-              <button class="lp-quiz-btn lp-quiz-correct" data-q="2" data-i="2">C) ML models are probabilistic and will encounter data distributions in production that weren't in training</button>
-              <button class="lp-quiz-btn" data-q="2" data-i="3">D) ML models can only be tested after deployment since they need real user data</button>
-            </div>
-            <div class="lp-quiz-feedback-correct" id="q2-correct" hidden>Correct. Regular software is deterministic - you can enumerate the branches and test them all. ML models are probabilistic and the input space is infinite. You'll always encounter distributions in production that didn't appear in training.</div>
-            <div class="lp-quiz-feedback-wrong" id="q2-wrong" hidden>Not quite. The issue is that ML models are probabilistic, not deterministic. The input space is infinite and production data always contains distributions you didn't see in training.</div>
-          </div>
-        </section>
-
-        <!-- Podcast -->
-        <section class="lp-podcast-section" aria-label="Podcast version">
-          <h2 class="lp-podcast-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line><line x1="2" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="22" y2="12"></line></svg>
+<!-- Body -->
+<div class="na-body">
+<p>You build a model in a notebook. It works. You get 87% accuracy. You're happy. You deploy it to production.</p>
+<p>Three months later it's performing at 64% accuracy. You didn't touch it. The data changed. The users changed. The world changed. And now your model is broken in ways that are hard to debug because production is messier than your notebook.</p>
+<p>That gap - between a notebook experiment and an actual working system - is where MLOps lives.</p>
+<h2>The gap between notebook and production</h2>
+<p>A notebook is a controlled environment. You have a dataset. You split it into train and test. You train once, evaluate once, iterate. When you're done, you have a model file.</p>
+<p>Production is chaos. Data arrives continuously. It's different from your training data. Your model makes predictions on it. Those predictions affect real decisions. Sometimes they're wrong and you need to understand why.</p>
+<p>Your notebook didn't have to handle: new data arriving every minute, data in different formats or with different distributions, multiple models running in parallel, needing to roll back if a new model is bad, monitoring whether the model still works, retraining when performance degrades, version control for data, models, and code, compliance and audit requirements, or budget and compute constraints.</p>
+<p>A notebook solves exactly one problem: build a model. Production needs to solve dozens more.</p>
+<h2>What MLOps is and why it exists</h2>
+<p>MLOps is the infrastructure and practices that turn a model into a system that works reliably in production.</p>
+<p>It's borrowed from DevOps - the practices that make software deployable and maintainable. But ML adds complexity because your system has three moving parts: code, data, and models. In traditional software, the code is the source of truth. In ML, the code matters less than the data and the model weights.</p>
+<p>MLOps exists because ML in production fails in different ways than regular software. A regular application can be fully tested before deployment. An ML system can never be fully tested - you'll always encounter data distributions you didn't see in training. A regular application is deterministic - the same input always produces the same output. An ML system is probabilistic - it makes mistakes, and those mistakes change over time as data changes.</p>
+<p>You need different tools and practices for this reality.</p>
+<h2>The key stages: data, training, deployment, monitoring</h2>
+<p><strong>Data management.</strong> You need to know what data your model was trained on. You need to track data quality. You need to catch when the data distribution shifts. You need to version datasets so that when a model breaks, you can recreate the exact conditions that created it.</p>
+<p><strong>Training.</strong> You need to be able to retrain models automatically. You need to track hyperparameters and results. You need to run experiments in parallel and compare them. You need to version models and know which version is in production.</p>
+<p><strong>Deployment.</strong> You need to serve models with low latency and high availability. You need to be able to roll out new models gradually and roll back if something breaks. You need to handle multiple versions running simultaneously.</p>
+<p><strong>Monitoring.</strong> You need to track model performance on real data over time. You need to notice when performance degrades and alert the right people. You need to log predictions so you can debug failures. You need to know when to retrain.</p>
+<p>These stages feed back into each other. Monitoring tells you when to retrain. Training produces a new model. Deployment puts it in production. Monitoring checks if it works. The cycle continues.</p>
+<h2>Why ML fails differently in production</h2>
+<p>A regular application usually fails because of bugs. The code has a flaw, you fix it, you deploy the fix. ML systems fail because the world changed.</p>
+<p>Your model learned patterns from training data. In production, the data is different. Not in format - usually the same format. But the distribution is different. Users behave differently. Products change. Campaigns succeed or fail. The patterns the model learned aren't true any more.</p>
+<p>This is called drift and it's inevitable. You can't prevent it. You can only detect it and handle it.</p>
+<p>A regular application is also deterministic - you can test every branch. An ML model is probabilistic. You can't test every possible input. You don't know in advance what mistakes it will make. You can only observe mistakes in production and try to learn from them.</p>
+<p>This is why monitoring matters so much in ML. You can't catch all errors before deployment. You have to catch them after and respond.</p>
+<h2>Do data scientists need to care about MLOps?</h2>
+<p>They don't need to become MLOps engineers - that's a different skill. But they should understand the basics. How models go from notebook to production. What happens when data distribution changes. How to instrument a model so it's debuggable.</p>
+<p>The companies that are good at ML have data scientists and MLOps engineers who work together. The data scientist doesn't have to implement the monitoring system, but they should understand what needs to be monitored and why. They should think about edge cases that might not show up in training data. They should care that their model is reliable, not just accurate.</p>
+</div>
+<!-- Quiz -->
+<section aria-label="Lesson quiz" class="lp-quiz">
+<h2 class="lp-quiz-title">Check your understanding</h2>
+<!-- Q1 -->
+<div class="lp-quiz-q">
+<p class="lp-quiz-question">Why does an ML model's performance degrade over time even if the code hasn't changed?</p>
+<div aria-label="Question 1 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-btn" data-i="0" data-q="1">A) The model's weights change automatically when exposed to new data</button>
+<button class="lp-quiz-btn lp-quiz-correct" data-i="1" data-q="1">B) The data distribution in production shifts away from what the model trained on</button>
+<button class="lp-quiz-btn" data-i="2" data-q="1">C) Server hardware gets slower over time, reducing inference accuracy</button>
+<button class="lp-quiz-btn" data-i="3" data-q="1">D) Python package updates change how models run their predictions</button>
+</div>
+<div class="lp-quiz-feedback-correct" hidden="" id="q1-correct">Correct. This is drift. The model learned patterns from training data, but in production the data distribution changes - user behaviour shifts, new products appear, market conditions change. The model's patterns become less accurate as the world diverges from what it trained on.</div>
+<div class="lp-quiz-feedback-wrong" hidden="" id="q1-wrong">Not quite. ML models don't update their own weights in production. The performance degrades because the data distribution shifts - the world changes but the model's learned patterns don't.</div>
+</div>
+<!-- Q2 -->
+<div class="lp-quiz-q">
+<p class="lp-quiz-question">What makes ML systems harder to fully test before deployment compared to regular software?</p>
+<div aria-label="Question 2 options" class="lp-quiz-options" role="group">
+<button class="lp-quiz-btn" data-i="0" data-q="2">A) ML models are written in Python, which doesn't support unit testing</button>
+<button class="lp-quiz-btn" data-i="1" data-q="2">B) ML testing requires cloud infrastructure not available locally</button>
+<button class="lp-quiz-btn lp-quiz-correct" data-i="2" data-q="2">C) ML models are probabilistic and will encounter data distributions in production that weren't in training</button>
+<button class="lp-quiz-btn" data-i="3" data-q="2">D) ML models can only be tested after deployment since they need real user data</button>
+</div>
+<div class="lp-quiz-feedback-correct" hidden="" id="q2-correct">Correct. Regular software is deterministic - you can enumerate the branches and test them all. ML models are probabilistic and the input space is infinite. You'll always encounter distributions in production that didn't appear in training.</div>
+<div class="lp-quiz-feedback-wrong" hidden="" id="q2-wrong">Not quite. The issue is that ML models are probabilistic, not deterministic. The input space is infinite and production data always contains distributions you didn't see in training.</div>
+</div>
+</section>
+<!-- Podcast -->
+<section aria-label="Podcast version" class="lp-podcast-section">
+<h2 class="lp-podcast-title">
+<svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" x2="12" y1="2" y2="5"></line><line x1="12" x2="12" y1="19" y2="22"></line><line x1="2" x2="5" y1="12" y2="12"></line><line x1="19" x2="22" y1="12" y2="12"></line></svg>
             Podcast version
           </h2>
-          <p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
-          <audio controls aria-label="Podcast episode audio player">
+<p class="lp-podcast-desc">Prefer to listen on the go? The podcast episode for this lesson covers the same material in a conversational format.</p>
+<audio aria-label="Podcast episode audio player" controls="">
             Your browser does not support audio playback.
           </audio>
-        </section>
-
-        <!-- Accordions -->
-        <!-- Prev / Next nav -->
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/rag-finetuning-enterprise-ai" class="lp-nav-btn lp-nav-prev" aria-label="Previous lesson">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            <span>
-              <em>Previous</em>
-              RAG, Fine-Tuning and Enterprise AI
-            </span>
-          </a>
-          <a href="/course/model-deployment" class="lp-nav-btn lp-nav-next" aria-label="Next lesson">
-            <span>
-              <em>Next</em>
-              Model Deployment
-            </span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
-        </nav>
-
+</section>
+<!-- Accordions -->
+<!-- Prev / Next nav -->
+<nav aria-label="Lesson navigation" class="lp-nav">
+<a aria-label="Previous lesson" class="lp-nav-btn" href="/course/rag-finetuning-enterprise-ai"><span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_forward</span></div><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_back</span></div>
+<div><span class="lp-nav-label">Previous lesson</span><span class="lp-nav-title">RAG, Fine-Tuning and Enterprise AI</span></div>
+</a>
+<a aria-label="Next lesson" class="lp-nav-btn" href="/course/model-deployment"><span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">arrow_forward</span></div>
+<div><div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">Next lesson</span></div><span class="lp-nav-title">Model Deployment</span></div>
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span></a>
+</nav>
 </article>
-
-      <!-- â”€â”€ SIDEBAR â”€â”€ -->
-      <aside class="na-sidebar" aria-label="Course navigation">
-
-        <!-- Table of contents -->
-        <div class="na-toc">
-          <h2 class="na-toc-title">In this lesson</h2>
-          <ul class="na-toc-list">
-            <li><a href="#" onclick="document.querySelector('.na-body h2').scrollIntoView({behavior:'smooth'});return false;">Notebook vs production gap</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[1].scrollIntoView({behavior:'smooth'});return false;">What MLOps is</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[2].scrollIntoView({behavior:'smooth'});return false;">The four stages</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[3].scrollIntoView({behavior:'smooth'});return false;">Why ML fails differently</a></li>
-            <li><a href="#" onclick="document.querySelectorAll('.na-body h2')[4].scrollIntoView({behavior:'smooth'});return false;">Do data scientists need MLOps?</a></li>
-          </ul>
-        </div>
-
-        <!-- Course navigation -->
-        <nav class="lp-sidebar-nav" aria-label="All course lessons">
-          <h2 class="lp-sidebar-nav-title">Course contents</h2>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-1">Unit 1 Â· Introduction to AI</div>
-            <ul>
-              <li><a href="/course/what-is-ai">What is AI?</a></li>
-              <li><a href="/course/categories-of-ai">Categories of AI</a></li>
-              <li><a href="/course/how-ai-learns">How AI Learns</a></li>
-              <li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-2">Unit 2 Â· The Modern AI Landscape</div>
-            <ul>
-              <li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
-              <li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
-              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
-              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-3">Unit 3 Â· Ethics &amp; Governance</div>
-            <ul>
-              <li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
-              <li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
-              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-4">Unit 4 Â· Python for AI</div>
-            <ul>
-              <li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
-              <li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-5">Unit 5 Â· Machine Learning</div>
-            <ul>
-              <li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
-              <li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
-              <li><a href="/course/model-evaluation">Model Evaluation</a></li>
-              <li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-6">Unit 6 Â· Deep Learning</div>
-            <ul>
-              <li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
-              <li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
-              <li><a href="/course/backpropagation">Backpropagation</a></li>
-              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
-              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
-              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
-              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-7">Unit 7 Â· Generative AI</div>
-            <ul>
-              <li><a href="/course/generative-ai-models">Generative AI Models</a></li>
-              <li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
-              <li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-8">Unit 8 Â· AI in Production</div>
-            <ul>
-              <li><a href="/course/intro-to-mlops" class="lp-sidebar-current" aria-current="page">Introduction to MLOps</a></li>
-              <li><a href="/course/model-deployment">Model Deployment</a></li>
-              <li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
-              <li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
-            </ul>
-          </div>
-
-          <div class="lp-sidebar-unit">
-            <div class="lp-sidebar-unit-label lp-unit-9">Unit 9 Â· AI Strategy</div>
-            <ul>
-              <li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
-              <li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
-              <li><a href="/course/ai-across-industries">AI Across Industries</a></li>
-              <li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
-            </ul>
-          </div>
-
-        </nav>
-        <div id="newsy-ai"></div>
-      </aside>
-
-    </div>
-  </main>
-
-  <div id="share-bar-placeholder"></div>
-  <section class="tool-info" aria-label="Lesson reference">
-    <div class="tool-info-inner">
-      <div class="tool-accordions">
-
-<details class="tool-accordion" open>
-          <summary>Frequently Asked Questions</summary>
-          <div class="tool-accordion-body">
-            <h3>What is MLOps?</h3>
-            <p>MLOps is the infrastructure and practices that turn a trained model into a system that works reliably in production. It borrows from DevOps but adds complexity because ML systems have three moving parts: code, data, and model weights. A regular application's source of truth is the code; an ML system's source of truth is the data and model.</p>
-
-            <h3>Why do ML models fail in production?</h3>
-            <p>ML models fail in production primarily because the world changes. The model learned patterns from training data, but in production the data distribution shifts - users behave differently, products change, markets move. This is called drift and it's inevitable. Unlike regular software bugs that you fix once, drift is ongoing and requires continuous monitoring and retraining.</p>
-
-            <h3>What are the four stages of the ML lifecycle?</h3>
-            <p>Data management (versioning, quality, distribution tracking), training (reproducible experiments, hyperparameter tracking, model versioning), deployment (serving with low latency and high availability, gradual rollouts), and monitoring (tracking performance on real data, detecting drift, alerting on degradation). These stages feed back into each other in a continuous cycle.</p>
-
-            <h3>Do data scientists need to learn MLOps?</h3>
-            <p>They don't need to become MLOps engineers, but they should understand the basics. How models go from notebook to production. What happens when data distribution changes. How to instrument a model so it's debuggable. The companies that are good at ML have data scientists who care that their models work reliably, not just that they score well on a held-out test set.</p>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>How It Works</summary>
-          <div class="tool-accordion-body">
-            <p>MLOps combines three areas: infrastructure for running ML workloads, processes for managing the ML lifecycle, and monitoring for keeping models healthy in production.</p>
-            <p>A mature MLOps setup has: a feature store (centralised, versioned features for training and serving), an experiment tracker (MLflow, Weights &amp; Biases - logs params, metrics, and model artefacts), a model registry (stores model versions with their lineage), a serving infrastructure (APIs, containers, or managed services), and a monitoring system (tracks input distributions, output distributions, and performance metrics).</p>
-            <p>When things work well: new data triggers a pipeline, models retrain automatically, evaluation gates compare new vs old, deployment is gradual (A/B or canary), and alerts fire before customers notice problems.</p>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>Key Points</summary>
-          <div class="tool-accordion-body">
-            <ul>
-              <li>The gap between notebook experiment and production system is where most ML projects fail</li>
-              <li>Production requirements notebooks don't handle: continuous data, version control, rollback, monitoring, retraining</li>
-              <li>MLOps is DevOps adapted for ML's three moving parts: code, data, and models</li>
-              <li>ML fails in production because data distributions drift, not just because of code bugs</li>
-              <li>The four MLOps stages: data management, training, deployment, monitoring - forming a cycle</li>
-              <li>ML systems can't be fully tested before deployment - some errors only emerge with real data</li>
-              <li>Monitoring is not optional - it's how you detect drift before it causes visible business damage</li>
-              <li>Data scientists don't need to build the infrastructure but should understand what it does and why</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="tool-accordion">
-          <summary>Sources</summary>
-          <div class="tool-accordion-body">
-            <ul>
-              <li>Sculley, D. et al. (2015). Hidden Technical Debt in Machine Learning Systems. <em>NeurIPS</em>.</li>
-              <li>Shankar, S. et al. (2022). Operationalizing Machine Learning: An Interview Study. <em>arXiv</em>.</li>
-              <li>Google. (2022). MLOps: Continuous delivery and automation pipelines in machine learning. <em>cloud.google.com</em>.</li>
-              <li>Kleppmann, M. (2017). <em>Designing Data-Intensive Applications</em>. O'Reilly.</li>
-            </ul>
-          </div>
-        </details>
-
-      </div>
-    </div>
-  </section>
-
-  <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
-  </button>
-
-
-  <div id="footer-placeholder"></div>
-
-  <script src="/news-data.js"></script>
-  <script src="/scripts.js" defer></script>
-  <script src="/news-article.js" defer></script>
-  <script src="/news-chat.js" defer></script>
-  <script>
+<!-- â”€â”€ SIDEBAR â”€â”€ -->
+<aside aria-label="Course navigation" class="na-sidebar">
+<!-- Table of contents -->
+<nav aria-label="In this lesson" class="na-toc">
+<p class="na-toc-title">In this lesson</p>
+<ol class="na-toc-list">
+<li><a class="na-toc-link" href="#">Notebook vs production gap</a></li>
+<li><a class="na-toc-link" href="#">What MLOps is</a></li>
+<li><a class="na-toc-link" href="#">The four stages</a></li>
+<li><a class="na-toc-link" href="#">Why ML fails differently</a></li>
+<li><a class="na-toc-link" href="#">Do data scientists need MLOps?</a></li>
+</ol>
+</nav>
+<!-- Course navigation -->
+<nav aria-label="All course lessons" class="lp-sidebar-nav">
+<p class="lp-sidebar-nav-title">Course contents</p>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-1">Unit 1 · Introduction to AI</span>
+<ul>
+<li><a href="/course/what-is-ai">What is AI?</a></li>
+<li><a href="/course/categories-of-ai">Categories of AI</a></li>
+<li><a href="/course/how-ai-learns">How AI Learns</a></li>
+<li><a href="/course/ai-vs-augmented-intelligence">AI vs. Augmented Intelligence</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-2">Unit 2 · The Modern AI Landscape</span>
+<ul>
+<li><a href="/course/traditional-vs-generative-ai">Traditional vs. Generative AI</a></li>
+<li><a href="/course/ml-deep-learning-neural-networks">ML, Deep Learning &amp; Neural Networks</a></li>
+<li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
+<li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-3">Unit 3 · Ethics &amp; Governance</span>
+<ul>
+<li><a href="/course/ai-failures-ethics">Real-World AI Failures</a></li>
+<li><a href="/course/ai-hallucinations-bias-ip">Hallucinations, Bias &amp; IP</a></li>
+<li><a href="/course/ai-governance-frameworks">AI Governance Frameworks</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-4">Unit 4 · Python for AI</span>
+<ul>
+<li><a href="/course/python-essentials-for-ai">Python Essentials for AI</a></li>
+<li><a href="/course/numpy-pandas">NumPy &amp; Pandas</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-5">Unit 5 · Machine Learning</span>
+<ul>
+<li><a href="/course/linear-regression-gradient-descent">Linear Regression &amp; Gradient Descent</a></li>
+<li><a href="/course/logistic-regression-classification">Logistic Regression &amp; Classification</a></li>
+<li><a href="/course/model-evaluation">Model Evaluation</a></li>
+<li><a href="/course/key-ml-algorithms">Key ML Algorithms</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-6">Unit 6 · Deep Learning</span>
+<ul>
+<li><a href="/course/biological-vs-artificial-neurons">Biological vs. Artificial Neurons</a></li>
+<li><a href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+<li><a href="/course/backpropagation">Backpropagation</a></li>
+<li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+<li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+<li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
+<li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-7">Unit 7 · Generative AI</span>
+<ul>
+<li><a href="/course/generative-ai-models">Generative AI Models</a></li>
+<li><a href="/course/prompt-engineering-ai-agents">Prompt Engineering &amp; AI Agents</a></li>
+<li><a href="/course/rag-finetuning-enterprise-ai">RAG, Fine-Tuning &amp; Enterprise AI</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-8">Unit 8 · AI in Production</span>
+<ul>
+<li><a aria-current="page" class="lp-sidebar-current" href="/course/intro-to-mlops">Introduction to MLOps</a></li>
+<li><a href="/course/model-deployment">Model Deployment</a></li>
+<li><a href="/course/monitoring-drift">Monitoring &amp; Drift</a></li>
+<li><a href="/course/cicd-for-ml">CI/CD for ML</a></li>
+</ul>
+</div>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-9">Unit 9 · AI Strategy</span>
+<ul>
+<li><a href="/course/ai-adoption-journey">How Organisations Adopt AI</a></li>
+<li><a href="/course/build-vs-buy">Build vs. Buy</a></li>
+<li><a href="/course/ai-across-industries">AI Across Industries</a></li>
+<li><a href="/course/business-case-for-ai">Making the Business Case for AI</a></li>
+</ul>
+</div>
+</nav>
+<div id="newsy-ai"></div>
+</aside>
+</div>
+</main>
+<div id="share-bar-placeholder"></div>
+<section aria-label="Lesson reference" class="tool-info">
+<div class="tool-info-inner">
+<div class="tool-accordions">
+<details class="tool-accordion" open="">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<h3>What is MLOps?</h3>
+<p>MLOps is the infrastructure and practices that turn a trained model into a system that works reliably in production. It borrows from DevOps but adds complexity because ML systems have three moving parts: code, data, and model weights. A regular application's source of truth is the code; an ML system's source of truth is the data and model.</p>
+<h3>Why do ML models fail in production?</h3>
+<p>ML models fail in production primarily because the world changes. The model learned patterns from training data, but in production the data distribution shifts - users behave differently, products change, markets move. This is called drift and it's inevitable. Unlike regular software bugs that you fix once, drift is ongoing and requires continuous monitoring and retraining.</p>
+<h3>What are the four stages of the ML lifecycle?</h3>
+<p>Data management (versioning, quality, distribution tracking), training (reproducible experiments, hyperparameter tracking, model versioning), deployment (serving with low latency and high availability, gradual rollouts), and monitoring (tracking performance on real data, detecting drift, alerting on degradation). These stages feed back into each other in a continuous cycle.</p>
+<h3>Do data scientists need to learn MLOps?</h3>
+<p>They don't need to become MLOps engineers, but they should understand the basics. How models go from notebook to production. What happens when data distribution changes. How to instrument a model so it's debuggable. The companies that are good at ML have data scientists who care that their models work reliably, not just that they score well on a held-out test set.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<p>MLOps combines three areas: infrastructure for running ML workloads, processes for managing the ML lifecycle, and monitoring for keeping models healthy in production.</p>
+<p>A mature MLOps setup has: a feature store (centralised, versioned features for training and serving), an experiment tracker (MLflow, Weights &amp; Biases - logs params, metrics, and model artefacts), a model registry (stores model versions with their lineage), a serving infrastructure (APIs, containers, or managed services), and a monitoring system (tracks input distributions, output distributions, and performance metrics).</p>
+<p>When things work well: new data triggers a pipeline, models retrain automatically, evaluation gates compare new vs old, deployment is gradual (A/B or canary), and alerts fire before customers notice problems.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>The gap between notebook experiment and production system is where most ML projects fail</li>
+<li>Production requirements notebooks don't handle: continuous data, version control, rollback, monitoring, retraining</li>
+<li>MLOps is DevOps adapted for ML's three moving parts: code, data, and models</li>
+<li>ML fails in production because data distributions drift, not just because of code bugs</li>
+<li>The four MLOps stages: data management, training, deployment, monitoring - forming a cycle</li>
+<li>ML systems can't be fully tested before deployment - some errors only emerge with real data</li>
+<li>Monitoring is not optional - it's how you detect drift before it causes visible business damage</li>
+<li>Data scientists don't need to build the infrastructure but should understand what it does and why</li>
+</ul>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Sculley, D. et al. (2015). Hidden Technical Debt in Machine Learning Systems. <em>NeurIPS</em>.</li>
+<li>Shankar, S. et al. (2022). Operationalizing Machine Learning: An Interview Study. <em>arXiv</em>.</li>
+<li>Google. (2022). MLOps: Continuous delivery and automation pipelines in machine learning. <em>cloud.google.com</em>.</li>
+<li>Kleppmann, M. (2017). <em>Designing Data-Intensive Applications</em>. O'Reilly.</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</section>
+<button aria-label="Back to top" id="back-to-top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div id="footer-placeholder"></div>
+<script src="/news-data.js"></script>
+<script defer="" src="/scripts.js"></script>
+<script defer="" src="/news-article.js"></script>
+<script defer="" src="/news-chat.js"></script>
+<script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
       if (trigger) trigger.click();
@@ -514,7 +431,7 @@
       });
     });
   </script>
-  <script>
+<script>
     // Quiz logic
     document.querySelectorAll('.lp-quiz-btn').forEach(btn => {
       btn.addEventListener('click', function() {

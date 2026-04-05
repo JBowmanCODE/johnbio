@@ -28,12 +28,7 @@
   <meta name="twitter:image:alt" content="ML, Deep Learning and Neural Networks Explained">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0J6PBWMRNY');
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J6PBWMRNY');</script>
 
   <script type="application/ld+json">
   {
@@ -138,81 +133,86 @@
   <link rel="stylesheet" href="/news.css?v=4">
   <link rel="stylesheet" href="/news-chat.css?v=7">
   <link rel="stylesheet" href="/lesson.css?v=3">
+  <style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
 <body class="lp-page">
 
   <div id="header-placeholder"></div>
-
   <div class="lp-ambient" aria-hidden="true"></div>
 
-  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
+  <main class="na-wrap">
+  <div class="na-layout">
+  <div class="na-content">
 
     <nav class="na-breadcrumb" aria-label="Breadcrumb">
       <a href="/">Home</a>
-      <span aria-hidden="true">›</span>
+      <span class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
       <a href="/course-dashboard">AI Course</a>
-      <span aria-hidden="true">›</span>
-      <span>ML, Deep Learning and Neural Networks</span>
+      <span class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+      <span class="na-bc-current">ML, Deep Learning &amp; Neural Networks</span>
     </nav>
 
-    <div class="na-layout">
-
-      <article class="na-content" id="main-content">
-
-        <div class="na-header">
-          <div class="na-meta">
+    <article>
+      <div class="na-header">
+        <h1 class="na-title">Machine Learning, Deep Learning and Neural Networks: How They Actually Relate</h1>
+        <p class="na-lede">These three terms get thrown around as if they mean the same thing. They don't. They're nested categories - like vehicles, cars, and sedans. Getting this straight changes how you read everything else about AI.</p>
+        <div class="na-author">
+          <a href="/about" aria-label="About John Bowman"><img src="/images/JohnB.webp" alt="John Bowman" class="na-author-img"></a>
+          <div class="na-author-details">
+            <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a>
+            <span class="na-author-role">Owner / AI Developer</span>
+          </div>
+          <div class="na-header-meta">
             <span class="lp-unit-badge lp-unit-2">Unit 2</span>
-            <span class="na-category">AI Fundamentals</span>
-            <span class="na-read-time">8 min read</span>
+            <span class="na-date">5 April 2026</span>
+            <span class="na-read">8 min read</span>
           </div>
-          <h1 class="na-title">Machine Learning, Deep Learning and Neural Networks: How They Actually Relate</h1>
-          <p class="na-lede">These three terms get thrown around as if they mean the same thing. They don't. They're nested categories - like vehicles, cars, and sedans. Getting this straight changes how you read everything else about AI.</p>
-          <div class="na-author">
-            <img src="/images/john-avatar.jpg" alt="John Bowman" class="na-author-img" width="36" height="36">
-            <div class="na-author-info">
-              <span class="na-author-name">John Bowman</span>
-              <time class="na-author-date" datetime="2026-04-05">5 April 2026</time>
-            </div>
-          </div>
-          <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-            <span class="material-symbols-outlined">auto_awesome</span>
-            Ask Newsy AI about this lesson
-          </button>
         </div>
+        <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
+          <span class="material-symbols-outlined">auto_awesome</span>
+          Ask Newsy AI about this lesson
+        </button>
+      </div>
 
-        <nav class="na-toc-mobile" aria-label="On this page">
-          <details>
-            <summary>On this page</summary>
-            <ol>
-              <li><a href="#the-hierarchy">The Hierarchy</a></li>
-              <li><a href="#why-confusion">Why the Confusion Exists</a></li>
-              <li><a href="#why-layers-matter">Why Layers Matter</a></li>
-              <li><a href="#modern-ai">How This Maps to Modern AI</a></li>
-              <li><a href="#quiz">Lesson Quiz</a></li>
-            </ol>
-          </details>
-        </nav>
+      <details class="na-mobile-toc">
+        <summary class="na-mobile-toc-trigger">
+          <span class="material-symbols-outlined">menu_book</span>
+          In this lesson
+          <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span>
+        </summary>
+        <ol class="na-mobile-toc-list">
+          <li><a href="#the-hierarchy">The Hierarchy</a></li>
+          <li><a href="#why-confusion">Why the Confusion Exists</a></li>
+          <li><a href="#why-layers-matter">Why Layers Matter</a></li>
+          <li><a href="#modern-ai">How This Maps to Modern AI</a></li>
+          <li><a href="#quiz">Lesson Quiz</a></li>
+        </ol>
+      </details>
 
-        <div class="na-audio-player">
-          <div class="na-audio-label">
-            <span class="material-symbols-outlined" aria-hidden="true">headphones</span>
-            Listen to this lesson
+      <hr class="na-divider">
+
+      <div class="na-audio" aria-label="Listen to this lesson">
+        <span class="na-audio-icon material-symbols-outlined" aria-hidden="true">headphones</span>
+        <div class="na-audio-info">
+          <div class="na-audio-top">
+            <span class="na-audio-label">Listen to this lesson</span>
           </div>
-          <audio controls preload="none" aria-label="Audio version of this lesson">
+          <audio preload="none" controls aria-label="Audio version of this lesson" style="width:100%;margin-top:0.5rem;">
             Your browser does not support the audio element.
           </audio>
         </div>
+      </div>
 
-        <div class="na-body">
+      <div class="na-body">
 
-          <section id="the-hierarchy">
-            <h2>The Hierarchy: ML, Neural Networks, Deep Learning</h2>
-            <p><strong>Machine learning</strong> is the broadest term. It means any system that learns patterns from data instead of following explicit rules written by a developer.</p>
-            <p>If someone writes code that says "if email contains 'free money' flag as spam," that's a rule - not machine learning. If you feed the system thousands of emails and it learns what spam looks like, that's machine learning. Machine learning includes decision trees, random forests, linear regression, support vector machines, and neural networks.</p>
-            <p><strong>Neural networks</strong> are a subset of machine learning. Loosely inspired by how brains work (and only loosely), they consist of interconnected layers of simple processing units that learn to recognise patterns. Every neural network is machine learning. Not all machine learning uses neural networks.</p>
-            <p><strong>Deep learning</strong> is neural networks with many layers. The word "deep" refers to depth - how many layers the network has. An older neural network might have 2-3 layers. A deep learning network might have 50, 100, or over 1,000. ChatGPT, image generation, self-driving cars - all deep learning.</p>
-            <p>Visually, the relationship looks like this:</p>
-            <pre class="lp-code-block"><code>MACHINE LEARNING (everything that learns from data)
+        <section id="the-hierarchy">
+          <h2>The Hierarchy: ML, Neural Networks, Deep Learning</h2>
+          <p><strong>Machine learning</strong> is the broadest term. It means any system that learns patterns from data instead of following explicit rules written by a developer.</p>
+          <p>If someone writes code that says "if email contains 'free money' flag as spam," that's a rule - not machine learning. If you feed the system thousands of emails and it learns what spam looks like, that's machine learning. Machine learning includes decision trees, random forests, linear regression, support vector machines, and neural networks.</p>
+          <p><strong>Neural networks</strong> are a subset of machine learning. Loosely inspired by how brains work (and only loosely), they consist of interconnected layers of simple processing units that learn to recognise patterns. Every neural network is machine learning. Not all machine learning uses neural networks.</p>
+          <p><strong>Deep learning</strong> is neural networks with many layers. The word "deep" refers to depth - how many layers the network has. An older neural network might have 2-3 layers. A deep learning network might have 50, 100, or over 1,000. ChatGPT, image generation, self-driving cars - all deep learning.</p>
+          <p>Visually, the relationship looks like this:</p>
+          <pre class="lp-code-block"><code>MACHINE LEARNING (everything that learns from data)
 ├── Decision Trees
 ├── Random Forests
 ├── Support Vector Machines
@@ -224,196 +224,228 @@
         ├── Recurrent Neural Networks (sequences)
         ├── Transformers (language models)
         └── Diffusion Models (image generation)</code></pre>
-          </section>
-
-          <section id="why-confusion">
-            <h2>Why the Confusion Exists</h2>
-            <p>The terminology evolved historically, and some of the vagueness is deliberate.</p>
-            <p>In the 1980s, neural networks were a niche research area. When they came back in the 2010s - with more computing power and bigger datasets - people marketing these systems realised "neural networks" sounded better to investors than "machine learning." So they rebranded the same core idea as "deep learning" and made it sound revolutionary.</p>
-            <p>It's not wrong to say deep learning is a subset of neural networks, which is a subset of machine learning. But the terminology explosion - "artificial neural networks," "connectionist systems," "representation learning" - obscures the fact that it's the same fundamental idea with different marketing around it.</p>
-            <p>This matters in practice. When someone tells you they've built an "AI-powered" product, the useful question is: what's actually under the hood? A simple decision tree? A shallow neural network? A full deep learning system? All three get called "AI" or "machine learning." The labels don't help you understand what you're dealing with.</p>
-          </section>
-
-          <section id="why-layers-matter">
-            <h2>Why Layers Matter</h2>
-            <p>A shallow neural network (2-3 layers) can learn simple patterns. It can draw curved lines between categories. Decent, not impressive.</p>
-            <p>A deep neural network learns hierarchical patterns. Earlier layers learn basic features. Later layers combine those into more complex ones. Higher layers work with increasingly abstract concepts.</p>
-            <p>In image recognition, the first layer might detect edges. The next detects corners and curves. The one after that detects shapes. Higher layers detect textures and patterns. The final layer says "this is a dog."</p>
-            <p>More layers mean more complexity can be learned. They also mean more parameters to tune, which means more data and computing power needed.</p>
-            <p>The breakthrough that made deep learning practical was finding that with the right techniques - specifically backpropagation and a function called ReLU activation - you could train networks with 50+ layers. Before that, training deep networks was effectively impossible. The maths didn't work: errors would shrink to nothing as they passed back through many layers, so early layers never learned. ReLU fixed this.</p>
-          </section>
-
-          <section id="modern-ai">
-            <h2>How This Maps to Modern AI</h2>
-            <p>Everything impressive in AI right now is deep learning - specifically deep neural networks with specialised architectures.</p>
-            <p><strong>Transformers</strong> power language models like ChatGPT and Claude. They're deep neural networks built for sequence data, using an attention mechanism that lets them weigh the relevance of different parts of an input when generating each output token.</p>
-            <p><strong>Convolutional neural networks (CNNs)</strong> power image recognition. They're deep networks with filters that scan across an image, picking up spatial patterns regardless of where they appear.</p>
-            <p><strong>Diffusion models</strong> power image generation tools like DALL-E and Midjourney. They're deep networks trained to reverse a noise process - starting from random pixels and gradually refining them into a coherent image.</p>
-            <p>When someone says "AI" in 2026, they almost always mean deep learning. When they say "machine learning," they might mean the broader category - which includes traditional techniques like random forests that still work well for many business problems - or they might mean deep learning specifically. Industry doesn't use these terms consistently.</p>
-            <p>My view: the confusion serves people selling AI services. Blurring the line between "we built a well-tuned decision tree" and "we have cutting-edge deep learning" is commercially useful if most of your customers won't notice the difference. If you're evaluating an AI system, push for specifics. Not all problems need deep learning. Sometimes a simpler approach is faster, cheaper, and more reliable.</p>
-          </section>
-
-          <section id="quiz" class="lp-quiz-section">
-            <h2>Lesson Quiz</h2>
-            <p>Two questions to check your understanding before moving on.</p>
-
-            <div class="lp-quiz" id="quiz-1">
-              <p class="lp-quiz-q">Question 1: What does "deep" refer to in "deep learning"?</p>
-              <ul class="lp-quiz-options" role="list">
-                <li><button class="lp-quiz-btn" data-index="0" type="button">The complexity of the training data</button></li>
-                <li><button class="lp-quiz-btn" data-index="1" type="button">The number of layers in the neural network</button></li>
-                <li><button class="lp-quiz-btn" data-index="2" type="button">How long the model takes to train</button></li>
-                <li><button class="lp-quiz-btn" data-index="3" type="button">The size of the dataset used</button></li>
-              </ul>
-              <div class="lp-quiz-feedback" aria-live="polite"></div>
-            </div>
-
-            <div class="lp-quiz" id="quiz-2">
-              <p class="lp-quiz-q">Question 2: Which combination of techniques made training deep neural networks (50+ layers) practical?</p>
-              <ul class="lp-quiz-options" role="list">
-                <li><button class="lp-quiz-btn" data-index="0" type="button">Support vector machines and decision trees</button></li>
-                <li><button class="lp-quiz-btn" data-index="1" type="button">Linear regression and random forests</button></li>
-                <li><button class="lp-quiz-btn" data-index="2" type="button">Backpropagation and ReLU activation</button></li>
-                <li><button class="lp-quiz-btn" data-index="3" type="button">Gradient boosting and dropout regularisation</button></li>
-              </ul>
-              <div class="lp-quiz-feedback" aria-live="polite"></div>
-            </div>
-
-          </section>
-
-        </div>
-
-        <section class="na-podcast">
-          <h2 class="na-podcast-title">
-            <span class="material-symbols-outlined" aria-hidden="true">podcast</span>
-            Podcast Version
-          </h2>
-          <p class="na-podcast-desc">Prefer to listen? The full lesson is available as a podcast episode.</p>
-          <audio controls preload="none" aria-label="Podcast version of this lesson">
-            Your browser does not support the audio element.
-          </audio>
         </section>
 
-        <div id="share-bar-placeholder"></div>
+        <section id="why-confusion">
+          <h2>Why the Confusion Exists</h2>
+          <p>The terminology evolved historically, and some of the vagueness is deliberate.</p>
+          <p>In the 1980s, neural networks were a niche research area. When they came back in the 2010s - with more computing power and bigger datasets - people marketing these systems realised "neural networks" sounded better to investors than "machine learning." So they rebranded the same core idea as "deep learning" and made it sound revolutionary.</p>
+          <p>It's not wrong to say deep learning is a subset of neural networks, which is a subset of machine learning. But the terminology explosion - "artificial neural networks," "connectionist systems," "representation learning" - obscures the fact that it's the same fundamental idea with different marketing around it.</p>
+          <p>This matters in practice. When someone tells you they've built an "AI-powered" product, the useful question is: what's actually under the hood? A simple decision tree? A shallow neural network? A full deep learning system? All three get called "AI" or "machine learning." The labels don't help you understand what you're dealing with.</p>
+        </section>
 
-        <div class="na-accordions">
+        <section id="why-layers-matter">
+          <h2>Why Layers Matter</h2>
+          <p>A shallow neural network (2-3 layers) can learn simple patterns. It can draw curved lines between categories. Decent, not impressive.</p>
+          <p>A deep neural network learns hierarchical patterns. Earlier layers learn basic features. Later layers combine those into more complex ones. Higher layers work with increasingly abstract concepts.</p>
+          <p>In image recognition, the first layer might detect edges. The next detects corners and curves. The one after that detects shapes. Higher layers detect textures and patterns. The final layer says "this is a dog."</p>
+          <p>More layers mean more complexity can be learned. They also mean more parameters to tune, which means more data and computing power needed.</p>
+          <p>The breakthrough that made deep learning practical was finding that with the right techniques - specifically backpropagation and a function called ReLU activation - you could train networks with 50+ layers. Before that, training deep networks was effectively impossible. The maths didn't work: errors would shrink to nothing as they passed back through many layers, so early layers never learned. ReLU fixed this.</p>
+        </section>
 
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/traditional-vs-generative-ai" class="lp-nav-btn lp-nav-prev">
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Previous lesson</span>
-              <span class="lp-nav-title">Traditional vs Generative AI</span>
-            </span>
-          </a>
-          <a href="/course/key-ai-subfields" class="lp-nav-btn lp-nav-next">
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Next lesson</span>
-              <span class="lp-nav-title">Key AI Subfields</span>
-            </span>
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-          </a>
-        </nav>
+        <section id="modern-ai">
+          <h2>How This Maps to Modern AI</h2>
+          <p>Everything impressive in AI right now is deep learning - specifically deep neural networks with specialised architectures.</p>
+          <p><strong>Transformers</strong> power language models like ChatGPT and Claude. They're deep neural networks built for sequence data, using an attention mechanism that lets them weigh the relevance of different parts of an input when generating each output token.</p>
+          <p><strong>Convolutional neural networks (CNNs)</strong> power image recognition. They're deep networks with filters that scan across an image, picking up spatial patterns regardless of where they appear.</p>
+          <p><strong>Diffusion models</strong> power image generation tools like DALL-E and Midjourney. They're deep networks trained to reverse a noise process - starting from random pixels and gradually refining them into a coherent image.</p>
+          <p>When someone says "AI" in 2026, they almost always mean deep learning. When they say "machine learning," they might mean the broader category - which includes traditional techniques like random forests that still work well for many business problems - or they might mean deep learning specifically. Industry doesn't use these terms consistently.</p>
+          <p>My view: the confusion serves people selling AI services. Blurring the line between "we built a well-tuned decision tree" and "we have cutting-edge deep learning" is commercially useful if most of your customers won't notice the difference. If you're evaluating an AI system, push for specifics. Not all problems need deep learning. Sometimes a simpler approach is faster, cheaper, and more reliable.</p>
+        </section>
 
-</div>
-
-      </article>
-
-      <aside class="na-sidebar" aria-label="Lesson sidebar">
-
-        <nav class="na-toc" aria-label="Table of contents">
-          <h2 class="na-toc-title">On this page</h2>
-          <ol class="na-toc-list">
-            <li><a href="#the-hierarchy">The Hierarchy</a></li>
-            <li><a href="#why-confusion">Why the Confusion Exists</a></li>
-            <li><a href="#why-layers-matter">Why Layers Matter</a></li>
-            <li><a href="#modern-ai">How This Maps to Modern AI</a></li>
-            <li><a href="#quiz">Lesson Quiz</a></li>
-          </ol>
-        </nav>
-
-        <nav class="lp-sidebar-nav" aria-label="Course navigation">
-          <h2 class="lp-sidebar-nav-title">
-            <a href="/course-dashboard">AI Course</a>
-          </h2>
-          <div class="lp-sidebar-unit">
-            <span class="lp-sidebar-unit-label lp-unit-2">Unit 2 - How AI Works</span>
-            <ul>
-              <li><a href="/course/traditional-vs-generative-ai">Traditional vs Generative AI</a></li>
-              <li class="lp-sidebar-current"><a href="/course/ml-deep-learning-neural-networks" aria-current="page">ML, Deep Learning &amp; Neural Networks</a></li>
-              <li><a href="/course/key-ai-subfields">Key AI Subfields</a></li>
-              <li><a href="/course/ai-tools-platforms-2026">AI Tools &amp; Platforms 2026</a></li>
-            </ul>
+        <div class="lp-quiz" aria-label="Lesson quiz" id="quiz">
+          <div class="lp-quiz-header">
+            <div class="lp-quiz-icon"><span class="material-symbols-outlined" aria-hidden="true">quiz</span></div>
+            <div>
+              <p class="lp-quiz-title">Check your understanding</p>
+              <p class="lp-quiz-sub">2 questions - select an answer then check it</p>
+            </div>
           </div>
-        </nav>
 
-        <div id="newsy-sidebar-mount"></div>
+          <div class="lp-quiz-q" id="q1">
+            <p class="lp-quiz-q-num">Question 1 of 2</p>
+            <p class="lp-quiz-q-text">What does "deep" refer to in "deep learning"?</p>
+            <div class="lp-quiz-options" role="group" aria-label="Question 1 options">
+              <button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>The complexity of the training data</button>
+              <button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>The number of layers in the neural network</button>
+              <button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>How long the model takes to train</button>
+              <button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>The size of the dataset used</button>
+            </div>
+            <button class="lp-quiz-check" data-q="1" data-answer="B" disabled>Check answer</button>
+            <p class="lp-quiz-feedback" id="q1-fb"></p>
+          </div>
 
-        <div id="newsy-ai"></div>
-      </aside>
+          <div class="lp-quiz-q" id="q2">
+            <p class="lp-quiz-q-num">Question 2 of 2</p>
+            <p class="lp-quiz-q-text">Which combination of techniques made training deep neural networks (50+ layers) practical?</p>
+            <div class="lp-quiz-options" role="group" aria-label="Question 2 options">
+              <button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>Support vector machines and decision trees</button>
+              <button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>Linear regression and random forests</button>
+              <button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>Backpropagation and ReLU activation</button>
+              <button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>Gradient boosting and dropout regularisation</button>
+            </div>
+            <button class="lp-quiz-check" data-q="2" data-answer="C" disabled>Check answer</button>
+            <p class="lp-quiz-feedback" id="q2-fb"></p>
+          </div>
+        </div>
 
+      </div><!-- /na-body -->
+
+      <!-- Deep Dive Podcast -->
+      <div class="na-podcast" role="region" aria-label="Deep Dive Podcast">
+        <div class="na-podcast-badge"><span class="material-symbols-outlined" aria-hidden="true">podcasts</span>Deep Dive Podcast</div>
+        <div class="na-podcast-inner">
+          <div class="na-podcast-left">
+            <div class="na-podcast-icon" aria-hidden="true"><span class="material-symbols-outlined">graphic_eq</span></div>
+            <div class="na-podcast-meta">
+              <p class="na-podcast-title">ML, Deep Learning and Neural Networks</p>
+              <p class="na-podcast-sub">AI-generated audio overview of this lesson</p>
+            </div>
+          </div>
+          <audio preload="none" controls aria-label="Deep Dive Podcast audio" style="width:100%;margin-top:0.75rem;">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      </div>
+
+      <!-- Lesson navigation -->
+      <nav class="lp-nav" aria-label="Lesson navigation">
+        <a class="lp-nav-btn" href="/course/traditional-vs-generative-ai">
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+          <div>
+            <span class="lp-nav-label">Previous lesson</span>
+            <span class="lp-nav-title">Traditional vs Generative AI</span>
+          </div>
+        </a>
+        <a class="lp-nav-btn next" href="/course/key-ai-subfields">
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          <div>
+            <span class="lp-nav-label">Next lesson</span>
+            <span class="lp-nav-title">Key AI Subfields</span>
+          </div>
+        </a>
+      </nav>
+
+    </article>
+  </div><!-- /na-content -->
+
+  <!-- Sidebar -->
+  <aside class="na-sidebar" aria-label="Lesson navigation sidebar">
+    <nav class="na-toc" aria-label="In this lesson">
+      <p class="na-toc-title">In this lesson</p>
+      <ol class="na-toc-list">
+        <li><a class="na-toc-link" href="#the-hierarchy">The Hierarchy</a></li>
+        <li><a class="na-toc-link" href="#why-confusion">Why the Confusion Exists</a></li>
+        <li><a class="na-toc-link" href="#why-layers-matter">Why Layers Matter</a></li>
+        <li><a class="na-toc-link" href="#modern-ai">How This Maps to Modern AI</a></li>
+        <li><a class="na-toc-link" href="#quiz">Lesson Quiz</a></li>
+      </ol>
+    </nav>
+    <div class="lp-sidebar-nav">
+      <p class="lp-sidebar-nav-title">Unit 2 - How AI Works</p>
+      <a class="lp-sidebar-nav-link" href="/course/traditional-vs-generative-ai">
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        <div><span class="lp-sidebar-nav-label">Lesson 1</span>Traditional vs Generative AI</div>
+      </a>
+      <a class="lp-sidebar-nav-link" href="/course/ml-deep-learning-neural-networks" aria-current="page" style="color:rgba(255,255,255,0.85);font-weight:600;">
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        <div><span class="lp-sidebar-nav-label">Lesson 2</span>ML, Deep Learning &amp; Neural Networks</div>
+      </a>
+      <a class="lp-sidebar-nav-link" href="/course/key-ai-subfields">
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        <div><span class="lp-sidebar-nav-label">Lesson 3</span>Key AI Subfields</div>
+      </a>
+      <a class="lp-sidebar-nav-link" href="/course/ai-tools-platforms-2026">
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        <div><span class="lp-sidebar-nav-label">Lesson 4</span>AI Tools &amp; Platforms 2026</div>
+      </a>
     </div>
+    <div id="newsy-ai"></div>
+  </aside>
 
+  </div><!-- /na-layout -->
   </main>
 
   <div id="share-bar-placeholder"></div>
+
   <section class="tool-info" aria-label="Lesson reference">
     <div class="tool-info-inner">
       <div class="tool-accordions">
 
-<details class="tool-accordion" open>
-            <summary>Frequently Asked Questions</summary>
-            <div class="tool-accordion-body">
-              <h3>What is the difference between machine learning and deep learning?</h3>
-              <p>Machine learning is the broad category - any system that learns patterns from data. Deep learning is a specific subset: neural networks with many layers (typically 10 or more). All deep learning is machine learning, but not all machine learning is deep learning.</p>
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>What is the difference between machine learning and deep learning?</dt>
+                <dd>Machine learning is the broad category - any system that learns patterns from data. Deep learning is a specific subset: neural networks with many layers (typically 10 or more). All deep learning is machine learning, but not all machine learning is deep learning.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What makes deep learning "deep"?</dt>
+                <dd>The word "deep" refers to the number of layers in the network. A shallow neural network might have 2-3 layers. A deep learning network has many more - sometimes 50, 100, or over 1,000 layers. More layers allow the network to learn increasingly abstract, hierarchical patterns from data.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Why did deep learning take off in the 2010s?</dt>
+                <dd>Two things made it practical: backpropagation (an efficient way to train deep networks by passing error signals backwards through layers) and ReLU activation functions (which solved a training instability problem called the vanishing gradient). Combined with more computing power and bigger datasets, these unlocked networks with 50+ layers.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What is a neural network in simple terms?</dt>
+                <dd>A neural network is a machine learning system made up of interconnected layers of simple processing units. Each unit takes inputs, applies a mathematical operation, and passes a result forward. The network learns by adjusting the strength of those connections until its outputs match the expected answers on training data.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
 
-              <h3>What makes deep learning "deep"?</h3>
-              <p>The word "deep" refers to the number of layers in the network. A shallow neural network might have 2-3 layers. A deep learning network has many more - sometimes 50, 100, or over 1,000 layers. More layers allow the network to learn increasingly abstract, hierarchical patterns from data.</p>
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>A neural network is organised into layers.</strong> The input layer receives raw data (pixels, word tokens, numbers). Hidden layers transform that data through learned weights and activation functions. The output layer produces a prediction or decision.</li>
+              <li><strong>During training, backpropagation adjusts the weights.</strong> The network makes a prediction, compares it to the correct answer, and measures the error. That error signal is passed backwards through the layers, adjusting each connection's weight slightly to reduce the mistake. Repeat millions of times across a training dataset.</li>
+              <li><strong>Deep networks learn hierarchical representations.</strong> Early layers learn raw features. Later layers combine them into higher-level concepts. This hierarchical learning is what makes deep learning effective at tasks like image recognition and language understanding.</li>
+            </ol>
+          </div>
+        </details>
 
-              <h3>Why did deep learning take off in the 2010s?</h3>
-              <p>Two things made it practical: backpropagation (an efficient way to train deep networks by passing error signals backwards through layers) and ReLU activation functions (which solved a training instability problem called the vanishing gradient). Combined with more computing power and bigger datasets, these unlocked networks with 50+ layers.</p>
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>Machine learning, neural networks, and deep learning are nested categories</strong> - not separate things.</li>
+              <li><strong>Machine learning</strong> = any system that learns from data (includes decision trees, random forests, neural networks).</li>
+              <li><strong>Neural networks</strong> = a subset of machine learning using interconnected layers of processing units.</li>
+              <li><strong>Deep learning</strong> = neural networks with many layers (10+), enabling hierarchical pattern learning.</li>
+              <li><strong>Backpropagation + ReLU activation</strong> made training deep networks practical in the 2010s.</li>
+              <li><strong>All current headline AI</strong> (ChatGPT, image generation, self-driving) uses deep learning.</li>
+              <li><strong>Transformers, CNNs, and diffusion models</strong> are all deep learning architectures for different data types.</li>
+              <li><strong>The terminology is genuinely confused in industry</strong> - always ask what's actually under the hood.</li>
+            </ul>
+          </div>
+        </details>
 
-              <h3>What is a neural network in simple terms?</h3>
-              <p>A neural network is a machine learning system made up of interconnected layers of simple processing units. Each unit takes inputs, applies a mathematical operation, and passes a result forward. The network learns by adjusting the strength of those connections until its outputs match the expected answers on training data.</p>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>How It Works</summary>
-            <div class="tool-accordion-body">
-              <p>A neural network is organised into layers. The input layer receives raw data (pixels, word tokens, numbers). Hidden layers transform that data through learned weights and activation functions. The output layer produces a prediction or decision.</p>
-              <p>During training, the network makes a prediction, compares it to the correct answer, and measures the error. Backpropagation sends that error signal backwards through the layers, adjusting each connection's weight slightly to reduce the mistake. Repeat this millions of times across a training dataset and the network gradually improves.</p>
-              <p>"Deep" networks have many hidden layers. Each layer learns to represent the data at a different level of abstraction - from raw features in early layers to high-level concepts in later ones. This hierarchical representation is what makes deep learning so effective at tasks like image recognition and language understanding.</p>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>Key Points</summary>
-            <div class="tool-accordion-body">
-              <ul>
-                <li>Machine learning, neural networks, and deep learning are nested categories - not separate things.</li>
-                <li>Machine learning = any system that learns from data (includes decision trees, random forests, neural networks).</li>
-                <li>Neural networks = a subset of machine learning using interconnected layers of processing units.</li>
-                <li>Deep learning = neural networks with many layers (10+), enabling hierarchical pattern learning.</li>
-                <li>Backpropagation + ReLU activation made training deep networks practical in the 2010s.</li>
-                <li>All current headline AI (ChatGPT, image generation, self-driving) uses deep learning.</li>
-                <li>Transformers, CNNs, and diffusion models are all deep learning architectures for different data types.</li>
-                <li>The terminology is genuinely confused in industry - always ask what's actually under the hood.</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>Sources</summary>
-            <div class="tool-accordion-body">
-              <ul>
-                <li>LeCun, Y., Bengio, Y. &amp; Hinton, G. (2015). Deep learning. <em>Nature</em>, 521, 436-444.</li>
-                <li>Goodfellow, I., Bengio, Y. &amp; Courville, A. (2016). <em>Deep Learning</em>. MIT Press.</li>
-                <li>Rumelhart, D.E., Hinton, G.E. &amp; Williams, R.J. (1986). Learning representations by back-propagating errors. <em>Nature</em>, 323, 533-536.</li>
-                <li>He, K. et al. (2015). Deep Residual Learning for Image Recognition. <em>arXiv</em>:1512.03385.</li>
-              </ul>
-            </div>
-          </details>
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li>LeCun, Y., Bengio, Y. &amp; Hinton, G. (2015). Deep learning. <em>Nature</em>, 521, 436-444.</li>
+              <li>Goodfellow, I., Bengio, Y. &amp; Courville, A. (2016). <em>Deep Learning</em>. MIT Press.</li>
+              <li>Rumelhart, D.E., Hinton, G.E. &amp; Williams, R.J. (1986). Learning representations by back-propagating errors. <em>Nature</em>, 323, 533-536.</li>
+              <li>He, K. et al. (2015). Deep Residual Learning for Image Recognition. <em>arXiv</em>:1512.03385.</li>
+            </ol>
+          </div>
+        </details>
 
       </div>
     </div>
@@ -422,7 +454,6 @@
   <button id="back-to-top" aria-label="Back to top">
     <span class="material-symbols-outlined">arrow_upward</span>
   </button>
-
 
   <div id="footer-placeholder"></div>
 
@@ -442,41 +473,39 @@
       });
     });
   </script>
-
   <script>
-    // Quiz logic
-    (function() {
-      var quizzes = [
-        { correct: 1, explanation: "Correct. 'Deep' refers to the number of layers. More layers let the network learn hierarchical, abstract patterns - which is why deep learning outperforms shallow networks on complex tasks." },
-        { correct: 2, explanation: "Correct. Backpropagation efficiently trains networks by passing error signals backwards through layers. ReLU activation solved the vanishing gradient problem that made deep networks untrainable before." }
-      ];
-
-      quizzes.forEach(function(quiz, qi) {
-        var container = document.getElementById('quiz-' + (qi + 1));
-        if (!container) return;
-        var buttons = container.querySelectorAll('.lp-quiz-btn');
-        var feedback = container.querySelector('.lp-quiz-feedback');
-        var answered = false;
-
-        buttons.forEach(function(btn) {
-          btn.addEventListener('click', function() {
-            if (answered) return;
-            answered = true;
-            var idx = parseInt(btn.getAttribute('data-index'), 10);
-            var isCorrect = idx === quiz.correct;
-
-            buttons.forEach(function(b, bi) {
-              b.disabled = true;
-              if (bi === quiz.correct) b.classList.add('lp-quiz-correct');
-              else if (bi === idx && !isCorrect) b.classList.add('lp-quiz-wrong');
-            });
-
-            feedback.textContent = quiz.explanation;
-            feedback.className = 'lp-quiz-feedback ' + (isCorrect ? 'lp-quiz-feedback-correct' : 'lp-quiz-feedback-wrong');
-          });
-        });
+  // Quiz interaction
+  document.querySelectorAll('.lp-quiz-option').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const q = this.dataset.q;
+      document.querySelectorAll(`.lp-quiz-option[data-q="${q}"]`).forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+      const checkBtn = document.querySelector(`.lp-quiz-check[data-q="${q}"]`);
+      if (checkBtn) checkBtn.disabled = false;
+    });
+  });
+  document.querySelectorAll('.lp-quiz-check').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const q = this.dataset.q;
+      const answer = this.dataset.answer;
+      const selected = document.querySelector(`.lp-quiz-option[data-q="${q}"].selected`);
+      if (!selected) return;
+      const fb = document.getElementById(`q${q}-fb`);
+      document.querySelectorAll(`.lp-quiz-option[data-q="${q}"]`).forEach(b => {
+        b.disabled = true;
+        if (b.dataset.v === answer) b.classList.add('correct');
+        else if (b.classList.contains('selected')) b.classList.add('wrong');
       });
-    })();
+      this.disabled = true;
+      if (selected.dataset.v === answer) {
+        fb.textContent = 'Correct! "Deep" refers to the number of layers. More layers let the network learn hierarchical, abstract patterns.';
+        fb.className = 'lp-quiz-feedback correct';
+      } else {
+        fb.textContent = `Not quite - the correct answer is ${answer}. "Deep" refers to the number of layers in the network.`;
+        fb.className = 'lp-quiz-feedback wrong';
+      }
+    });
+  });
   </script>
 
 </body>

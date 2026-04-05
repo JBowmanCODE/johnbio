@@ -1,41 +1,38 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neural Networks and Forward Propagation Explained - JohnB.io</title>
-  <meta name="description" content="Neural networks are multiply, add, apply a function, repeat. Here's what actually happens inside: layers, weights, biases, and forward propagation explained plainly.">
-  <meta name="keywords" content="neural network explained, forward propagation, weights and biases, hidden layers, artificial neuron">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://johnb.io/course/neural-networks-forward-propagation">
-
-  <meta property="og:title" content="Neural Networks and Forward Propagation Explained">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://johnb.io/course/neural-networks-forward-propagation">
-  <meta property="og:description" content="Neural networks are multiply, add, apply a function, repeat. Here's what actually happens inside: layers, weights, biases, and forward propagation explained plainly.">
-  <meta property="og:image" content="https://johnb.io/images/course-og.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Neural Networks and Forward Propagation Explained">
-  <meta property="article:published_time" content="2026-04-05T00:00:00+00:00">
-  <meta property="article:author" content="John Bowman">
-  <meta property="article:section" content="AI Course">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Neural Networks and Forward Propagation Explained">
-  <meta name="twitter:description" content="Neural networks are multiply, add, apply a function, repeat. Here's what actually happens inside: layers, weights, biases, and forward propagation explained plainly.">
-  <meta name="twitter:image" content="https://johnb.io/images/course-og.jpg">
-  <meta name="twitter:image:alt" content="Neural Networks and Forward Propagation Explained">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neural Networks and Forward Propagation Explained - JohnB.io</title>
+<meta content="Neural networks are multiply, add, apply a function, repeat. Here's what actually happens inside: layers, weights, biases, and forward propagation explained plainly." name="description"/>
+<meta content="neural network explained, forward propagation, weights and biases, hidden layers, artificial neuron" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://johnb.io/course/neural-networks-forward-propagation" rel="canonical"/>
+<meta content="Neural Networks and Forward Propagation Explained" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://johnb.io/course/neural-networks-forward-propagation" property="og:url"/>
+<meta content="Neural networks are multiply, add, apply a function, repeat. Here's what actually happens inside: layers, weights, biases, and forward propagation explained plainly." property="og:description"/>
+<meta content="https://johnb.io/images/course-og.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Neural Networks and Forward Propagation Explained" property="og:image:alt"/>
+<meta content="2026-04-05T00:00:00+00:00" property="article:published_time"/>
+<meta content="John Bowman" property="article:author"/>
+<meta content="AI Course" property="article:section"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Neural Networks and Forward Propagation Explained" name="twitter:title"/>
+<meta content="Neural networks are multiply, add, apply a function, repeat. Here's what actually happens inside: layers, weights, biases, and forward propagation explained plainly." name="twitter:description"/>
+<meta content="https://johnb.io/images/course-og.jpg" name="twitter:image"/>
+<meta content="Neural Networks and Forward Propagation Explained" name="twitter:image:alt"/>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-0J6PBWMRNY');
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -56,8 +53,7 @@
     }
   }
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -97,8 +93,7 @@
     ]
   }
   </script>
-
-  <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -124,310 +119,227 @@
     ]
   }
   </script>
-
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/footer.css">
-  <link rel="stylesheet" href="/news.css?v=4">
-  <link rel="stylesheet" href="/news-chat.css?v=7">
-  <link rel="stylesheet" href="/lesson.css?v=3">
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.png" rel="icon" type="image/png"/>
+<link href="/favicon.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/header.css" rel="stylesheet"/>
+<link href="/footer.css" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
+<link href="/news-chat.css?v=7" rel="stylesheet"/>
+<link href="/lesson.css?v=3" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
 </head>
 <body class="lp-page">
-
-  <div id="header-placeholder"></div>
-
-  <div class="lp-ambient" aria-hidden="true"></div>
-
-  <main class="na-wrap" style="max-width:1120px;margin:0 auto;padding-top:120px;">
-
-    <nav class="na-breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Home</a>
-      <span aria-hidden="true">›</span>
-      <a href="/course-dashboard">AI Course</a>
-      <span aria-hidden="true">›</span>
-      <span>Neural Networks and Forward Propagation</span>
-    </nav>
-
-    <div class="na-layout">
-
-      <article class="na-content" id="main-content">
-
-        <div class="na-header">
-          <div class="na-meta">
-            <span class="lp-unit-badge lp-unit-6">Unit 6</span>
-            <span class="na-category">Deep Learning</span>
-            <span class="na-read-time">7 min read</span>
-          </div>
-          <h1 class="na-title">Artificial Neural Networks and Forward Propagation: What's Actually Happening Inside</h1>
-          <p class="na-lede">Neural networks look mysterious until you realise they're just a chain of arithmetic operations. Multiply. Add. Apply a function. Repeat. The mechanism is boring. The result is interesting. Here's what's actually happening.</p>
-          <div class="na-author">
-            <img src="/images/john-avatar.jpg" alt="John Bowman" class="na-author-img" width="36" height="36">
-            <div class="na-author-info">
-              <span class="na-author-name">John Bowman</span>
-              <time class="na-author-date" datetime="2026-04-05">5 April 2026</time>
-            </div>
-          </div>
-          <button class="na-mobile-newsy-btn" id="na-mobile-newsy-btn" aria-label="Open Newsy AI">
-            <span class="material-symbols-outlined">auto_awesome</span>
+<div id="header-placeholder"></div>
+<div aria-hidden="true" class="lp-ambient"></div>
+<main class="na-wrap">
+<nav aria-label="Breadcrumb" class="na-breadcrumb">
+<a href="/">Home</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<a href="/course-dashboard">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span>Neural Networks and Forward Propagation</span>
+</nav>
+<div class="na-layout">
+<article class="na-content" id="main-content">
+<div class="na-header">
+<h1 class="na-title">Artificial Neural Networks and Forward Propagation: What's Actually Happening Inside</h1>
+<p class="na-lede">Neural networks look mysterious until you realise they're just a chain of arithmetic operations. Multiply. Add. Apply a function. Repeat. The mechanism is boring. The result is interesting. Here's what's actually happening.</p>
+<div class="na-author">
+<a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
+<div class="na-author-details">
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<span class="na-author-role">Owner / AI Developer</span>
+</div>
+<div class="na-header-meta"><span class="lp-unit-badge lp-unit-6">Unit 6</span><span class="na-date">5 April 2026</span><span class="na-read">7 min read</span></div></div>
+<button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
+<span class="material-symbols-outlined">auto_awesome</span>
             Ask Newsy AI about this lesson
           </button>
-        </div>
-
-        <nav class="na-toc-mobile" aria-label="On this page">
-          <details>
-            <summary>On this page</summary>
-            <ol>
-              <li><a href="#structure">Basic Network Structure</a></li>
-              <li><a href="#what-neuron-does">What a Neuron Does</a></li>
-              <li><a href="#forward-propagation">What Forward Propagation Means</a></li>
-              <li><a href="#weights-biases">Weights and Biases Explained</a></li>
-              <li><a href="#not-mysterious">Why They're Not Mysterious</a></li>
-              <li><a href="#quiz">Lesson Quiz</a></li>
-            </ol>
-          </details>
-        </nav>
-
-        <div class="na-audio-player">
-          <div class="na-audio-label">
-            <span class="material-symbols-outlined" aria-hidden="true">headphones</span>
-            Listen to this lesson
-          </div>
-          <audio controls preload="none" aria-label="Audio version of this lesson">
-            Your browser does not support the audio element.
-          </audio>
-        </div>
-
-        <div class="na-body">
-
-          <section id="structure">
-            <h2>The Basic Structure of a Neural Network</h2>
-            <p>A neural network has three types of layers: input, hidden, and output.</p>
-            <p>The input layer isn't really a layer of neurons - it's your data. If you're feeding in a 28x28 pixel image of a handwritten digit, that's 784 input values.</p>
-            <p>Hidden layers do the actual computation. Each neuron in a hidden layer takes all inputs from the previous layer, multiplies each by a weight, adds them up, adds a bias, and produces a number. That number goes through an activation function. The result is what that neuron outputs.</p>
-            <p>If you have three hidden layers with 128 neurons each, you get 128 numbers flowing out of the first hidden layer, which become inputs to the second hidden layer. Same operation repeats.</p>
-            <p>The output layer is the final prediction. For recognising handwritten digits, you'd have 10 output neurons - one for each digit (0-9). Each produces a number. Usually the highest number is your prediction.</p>
-          </section>
-
-          <section id="what-neuron-does">
-            <h2>What a Neuron Does Computationally</h2>
-            <p>Say a neuron has three inputs: x1, x2, x3. It has three weights: w1, w2, w3. And one bias: b.</p>
-            <p>The neuron computes:</p>
-            <pre class="lp-code-block"><code>output = activation_function((w1 * x1) + (w2 * x2) + (w3 * x3) + b)</code></pre>
-            <p>That's it. Multiply, add, apply a function. Nothing magic.</p>
-            <p>Before training, weights and biases are random. Training adjusts them so that the network's outputs match correct answers. The weights and biases are the only things that change during training - everything else (the network architecture, the number of layers and neurons) is fixed.</p>
-          </section>
-
-          <section id="forward-propagation">
-            <h2>What Forward Propagation Means</h2>
-            <p>Forward propagation is moving data through the network from input to output.</p>
-            <p>You have some data. The input layer passes it to the first hidden layer. Each neuron in the first hidden layer does its multiply-and-add. The results flow to the second hidden layer. Same operation. Then to the third. Then to the output.</p>
-            <p>The name "forward propagation" distinguishes it from "backward propagation," where errors flow backward to adjust the weights. Forward propagation is just the straightforward path: data in, prediction out.</p>
-            <p>When you give a trained network an image, you're doing forward propagation. The network outputs numbers representing the probability of each class. Pick the biggest one. That's your prediction.</p>
-          </section>
-
-          <section id="weights-biases">
-            <h2>Weights and Biases Explained Plainly</h2>
-            <p>Weights control how much each input matters to a neuron's output.</p>
-            <p>If a weight is close to zero, that input barely influences the neuron. If it's a large positive number, the input has a big positive effect. If it's negative, that input pushes the output down.</p>
-            <p>The bias is a constant added before the activation function. It's useful because sometimes you want a neuron to have a baseline - to always fire at least a little bit, or to require a threshold before activating.</p>
-            <p>Weights let you turn inputs up or down. Bias lets you shift everything up or down. Together, they give the network enough flexibility to map any input pattern to any output.</p>
-            <p>When training is complete, the weights encode what the network has learned. Each weight is just a number, but collectively, millions of weights encode the difference between an untrained network that produces random outputs and a trained one that can recognise dogs in photos or translate between languages.</p>
-          </section>
-
-          <section id="not-mysterious">
-            <h2>Why Neural Networks Aren't Mysterious</h2>
-            <p>Neural networks sound complicated because they're described as if something sophisticated is happening. "Deep learning." "Neural architecture." "Non-linear function approximation." The jargon makes it sound profound.</p>
-            <p>But it's not. It's multiply, add, apply a function, repeat. The profound part is that stacking these boring operations correctly and training them on enough data somehow produces systems that recognise faces, translate languages, and generate text. That's the interesting bit.</p>
-            <p>The mechanism isn't the magic. The result is.</p>
-            <p>People build it up as mysterious because mystery sells. Once you understand a neural network as a massive chain of arithmetic - one you can write in a hundred lines of Python - most of deep learning becomes comprehensible. Hard sometimes, but comprehensible.</p>
-          </section>
-
-          <section id="quiz" class="lp-quiz-section">
-            <h2>Lesson Quiz</h2>
-            <p>Two questions to check your understanding before moving on.</p>
-
-            <div class="lp-quiz" id="quiz-1">
-              <p class="lp-quiz-q">Question 1: What does a single artificial neuron compute?</p>
-              <ul class="lp-quiz-options" role="list">
-                <li><button class="lp-quiz-btn" data-index="0" type="button">It selects the most important input and passes it through unchanged</button></li>
-                <li><button class="lp-quiz-btn" data-index="1" type="button">It multiplies each input by a weight, sums everything up, adds a bias, then applies an activation function</button></li>
-                <li><button class="lp-quiz-btn" data-index="2" type="button">It stores a copy of the training data and retrieves the closest match</button></li>
-                <li><button class="lp-quiz-btn" data-index="3" type="button">It takes the average of all its inputs and outputs that value</button></li>
-              </ul>
-              <div class="lp-quiz-feedback" aria-live="polite"></div>
-            </div>
-
-            <div class="lp-quiz" id="quiz-2">
-              <p class="lp-quiz-q">Question 2: What changes during neural network training?</p>
-              <ul class="lp-quiz-options" role="list">
-                <li><button class="lp-quiz-btn" data-index="0" type="button">The number of layers and neurons in the network</button></li>
-                <li><button class="lp-quiz-btn" data-index="1" type="button">The weights and biases, adjusted to make predictions closer to correct answers</button></li>
-                <li><button class="lp-quiz-btn" data-index="2" type="button">The training data itself, which is modified to be easier to learn from</button></li>
-                <li><button class="lp-quiz-btn" data-index="3" type="button">The activation functions, which are selected automatically based on the data</button></li>
-              </ul>
-              <div class="lp-quiz-feedback" aria-live="polite"></div>
-            </div>
-
-          </section>
-
-        </div>
-
-        <section class="na-podcast">
-          <h2 class="na-podcast-title">
-            <span class="material-symbols-outlined" aria-hidden="true">podcast</span>
-            Podcast Version
-          </h2>
-          <p class="na-podcast-desc">Prefer to listen? The full lesson is available as a podcast episode.</p>
-          <audio controls preload="none" aria-label="Podcast version of this lesson">
-            Your browser does not support the audio element.
-          </audio>
-        </section>
-
-        <div id="share-bar-placeholder"></div>
-
-        <div class="na-accordions">
-
-        <nav class="lp-nav" aria-label="Lesson navigation">
-          <a href="/course/biological-vs-artificial-neurons" class="lp-nav-btn lp-nav-prev">
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Previous lesson</span>
-              <span class="lp-nav-title">Biological vs Artificial Neurons</span>
-            </span>
-          </a>
-          <a href="/course/backpropagation" class="lp-nav-btn lp-nav-next">
-            <span class="lp-nav-label">
-              <span class="lp-nav-hint">Next lesson</span>
-              <span class="lp-nav-title">Backpropagation</span>
-            </span>
-            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-          </a>
-        </nav>
-
 </div>
-
-      </article>
-
-      <aside class="na-sidebar" aria-label="Lesson sidebar">
-
-        <nav class="na-toc" aria-label="Table of contents">
-          <h2 class="na-toc-title">On this page</h2>
-          <ol class="na-toc-list">
-            <li><a href="#structure">Basic Network Structure</a></li>
-            <li><a href="#what-neuron-does">What a Neuron Does</a></li>
-            <li><a href="#forward-propagation">What Forward Propagation Means</a></li>
-            <li><a href="#weights-biases">Weights and Biases Explained</a></li>
-            <li><a href="#not-mysterious">Why They're Not Mysterious</a></li>
-            <li><a href="#quiz">Lesson Quiz</a></li>
-          </ol>
-        </nav>
-
-        <nav class="lp-sidebar-nav" aria-label="Course navigation">
-          <h2 class="lp-sidebar-nav-title">
-            <a href="/course-dashboard">AI Course</a>
-          </h2>
-          <div class="lp-sidebar-unit">
-            <span class="lp-sidebar-unit-label lp-unit-6">Unit 6 - Deep Learning</span>
-            <ul>
-              <li><a href="/course/biological-vs-artificial-neurons">Biological vs Artificial Neurons</a></li>
-              <li class="lp-sidebar-current"><a href="/course/neural-networks-forward-propagation" aria-current="page">Neural Networks &amp; Forward Propagation</a></li>
-              <li><a href="/course/backpropagation">Backpropagation</a></li>
-              <li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
-              <li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
-              <li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
-              <li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
-            </ul>
-          </div>
-        </nav>
-
-        <div id="newsy-sidebar-mount"></div>
-
-        <div id="newsy-ai"></div>
-      </aside>
-
-    </div>
-
-  </main>
-
-  <div id="share-bar-placeholder"></div>
-  <section class="tool-info" aria-label="Lesson reference">
-    <div class="tool-info-inner">
-      <div class="tool-accordions">
-
-<details class="tool-accordion" open>
-            <summary>Frequently Asked Questions</summary>
-            <div class="tool-accordion-body">
-              <h3>What is the basic structure of a neural network?</h3>
-              <p>A neural network has three types of layers: input (your raw data), hidden layers (where the actual computation happens), and output (the final prediction). Each hidden layer contains neurons that take all values from the previous layer, multiply each by a weight, add them up, add a bias, and pass the result through an activation function.</p>
-
-              <h3>What does a single artificial neuron do?</h3>
-              <p>A single neuron takes multiple inputs, multiplies each by its corresponding weight, adds all those products together, adds a bias value, and passes the result through an activation function. That's it: multiply, add, apply a function. The weights and bias are what the network learns during training.</p>
-
-              <h3>What is forward propagation in a neural network?</h3>
-              <p>Forward propagation is passing data through the network from input to output. Data enters the input layer, flows through each hidden layer (where neurons apply their multiply-add-activate operations), and reaches the output layer which produces a prediction. It's called "forward" to distinguish it from backpropagation, where errors flow backward to update the weights.</p>
-
-              <h3>What are weights and biases in a neural network?</h3>
-              <p>Weights control how much each input influences a neuron's output. A large positive weight means that input has a big positive effect; near-zero means it barely matters; negative means it pushes the output down. Bias is a constant that shifts the neuron's baseline output. Together, weights and biases are what the network adjusts during training to improve its predictions.</p>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>How It Works</summary>
-            <div class="tool-accordion-body">
-              <p>In matrix form, a full hidden layer can be computed as: <code>output = activation(W * x + b)</code>, where W is the weight matrix, x is the input vector, and b is the bias vector. This matrix multiplication computes all neuron outputs simultaneously, which is why GPUs (optimised for matrix maths) make neural networks so much faster to train.</p>
-              <p>For a network with multiple layers, the output of one layer becomes the input to the next: <code>h1 = activation(W1 * x + b1)</code>, <code>h2 = activation(W2 * h1 + b2)</code>, and so on. The final output layer often uses a different activation (softmax for classification, linear for regression) suited to the prediction task.</p>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>Key Points</summary>
-            <div class="tool-accordion-body">
-              <ul>
-                <li>Neural networks have input, hidden, and output layers.</li>
-                <li>Each neuron: multiply each input by its weight, sum everything, add bias, apply activation function.</li>
-                <li>Weights and biases are the only things that change during training - architecture stays fixed.</li>
-                <li>Forward propagation: data flows from input layer through hidden layers to output - one pass, one prediction.</li>
-                <li>Weights encode learned knowledge: what patterns in inputs predict which outputs.</li>
-                <li>Bias lets a neuron have a baseline activation independent of input values.</li>
-                <li>The mechanism (multiply, add, repeat) is simple. The magic is in what trained weights can represent.</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="tool-accordion">
-            <summary>Sources</summary>
-            <div class="tool-accordion-body">
-              <ul>
-                <li>LeCun, Y., Bengio, Y. &amp; Hinton, G. (2015). Deep learning. <em>Nature</em>, 521, 436-444.</li>
-                <li>Goodfellow, I., Bengio, Y. &amp; Courville, A. (2016). <em>Deep Learning</em>. MIT Press. (Free at deeplearningbook.org)</li>
-                <li>Nielsen, M. (2015). <em>Neural Networks and Deep Learning</em>. (Free at neuralnetworksanddeeplearning.com)</li>
-              </ul>
-            </div>
-          </details>
-
-      </div>
-    </div>
-  </section>
-
-  <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
-  </button>
-
-
-  <div id="footer-placeholder"></div>
-
-  <script src="/news-data.js"></script>
-  <script src="/scripts.js" defer></script>
-  <script src="/news-article.js" defer></script>
-  <script src="/news-chat.js" defer></script>
-  <script>
+<details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#structure">Basic Network Structure</a></li><li><a href="#what-neuron-does">What a Neuron Does</a></li><li><a href="#forward-propagation">What Forward Propagation Means</a></li><li><a href="#weights-biases">Weights and Biases Explained</a></li><li><a href="#not-mysterious">Why They're Not Mysterious</a></li><li><a href="#quiz">Lesson Quiz</a></li></ol></details><hr class="na-divider"/>
+<div aria-label="Listen to this lesson" class="na-audio"><span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span><div class="na-audio-info"><div class="na-audio-top"><span class="na-audio-label">Listen to this lesson</span></div><audio aria-label="Audio version of this lesson" controls="True" preload="none" style="width:100%;margin-top:0.5rem;">
+            Your browser does not support the audio element.
+          </audio></div></div>
+<div class="na-body">
+<section id="structure">
+<h2>The Basic Structure of a Neural Network</h2>
+<p>A neural network has three types of layers: input, hidden, and output.</p>
+<p>The input layer isn't really a layer of neurons - it's your data. If you're feeding in a 28x28 pixel image of a handwritten digit, that's 784 input values.</p>
+<p>Hidden layers do the actual computation. Each neuron in a hidden layer takes all inputs from the previous layer, multiplies each by a weight, adds them up, adds a bias, and produces a number. That number goes through an activation function. The result is what that neuron outputs.</p>
+<p>If you have three hidden layers with 128 neurons each, you get 128 numbers flowing out of the first hidden layer, which become inputs to the second hidden layer. Same operation repeats.</p>
+<p>The output layer is the final prediction. For recognising handwritten digits, you'd have 10 output neurons - one for each digit (0-9). Each produces a number. Usually the highest number is your prediction.</p>
+</section>
+<section id="what-neuron-does">
+<h2>What a Neuron Does Computationally</h2>
+<p>Say a neuron has three inputs: x1, x2, x3. It has three weights: w1, w2, w3. And one bias: b.</p>
+<p>The neuron computes:</p>
+<pre class="lp-code-block"><code>output = activation_function((w1 * x1) + (w2 * x2) + (w3 * x3) + b)</code></pre>
+<p>That's it. Multiply, add, apply a function. Nothing magic.</p>
+<p>Before training, weights and biases are random. Training adjusts them so that the network's outputs match correct answers. The weights and biases are the only things that change during training - everything else (the network architecture, the number of layers and neurons) is fixed.</p>
+</section>
+<section id="forward-propagation">
+<h2>What Forward Propagation Means</h2>
+<p>Forward propagation is moving data through the network from input to output.</p>
+<p>You have some data. The input layer passes it to the first hidden layer. Each neuron in the first hidden layer does its multiply-and-add. The results flow to the second hidden layer. Same operation. Then to the third. Then to the output.</p>
+<p>The name "forward propagation" distinguishes it from "backward propagation," where errors flow backward to adjust the weights. Forward propagation is just the straightforward path: data in, prediction out.</p>
+<p>When you give a trained network an image, you're doing forward propagation. The network outputs numbers representing the probability of each class. Pick the biggest one. That's your prediction.</p>
+</section>
+<section id="weights-biases">
+<h2>Weights and Biases Explained Plainly</h2>
+<p>Weights control how much each input matters to a neuron's output.</p>
+<p>If a weight is close to zero, that input barely influences the neuron. If it's a large positive number, the input has a big positive effect. If it's negative, that input pushes the output down.</p>
+<p>The bias is a constant added before the activation function. It's useful because sometimes you want a neuron to have a baseline - to always fire at least a little bit, or to require a threshold before activating.</p>
+<p>Weights let you turn inputs up or down. Bias lets you shift everything up or down. Together, they give the network enough flexibility to map any input pattern to any output.</p>
+<p>When training is complete, the weights encode what the network has learned. Each weight is just a number, but collectively, millions of weights encode the difference between an untrained network that produces random outputs and a trained one that can recognise dogs in photos or translate between languages.</p>
+</section>
+<section id="not-mysterious">
+<h2>Why Neural Networks Aren't Mysterious</h2>
+<p>Neural networks sound complicated because they're described as if something sophisticated is happening. "Deep learning." "Neural architecture." "Non-linear function approximation." The jargon makes it sound profound.</p>
+<p>But it's not. It's multiply, add, apply a function, repeat. The profound part is that stacking these boring operations correctly and training them on enough data somehow produces systems that recognise faces, translate languages, and generate text. That's the interesting bit.</p>
+<p>The mechanism isn't the magic. The result is.</p>
+<p>People build it up as mysterious because mystery sells. Once you understand a neural network as a massive chain of arithmetic - one you can write in a hundred lines of Python - most of deep learning becomes comprehensible. Hard sometimes, but comprehensible.</p>
+</section>
+<section class="lp-quiz-section" id="quiz">
+<h2>Lesson Quiz</h2>
+<p>Two questions to check your understanding before moving on.</p>
+<div class="lp-quiz" id="quiz-1">
+<p class="lp-quiz-q">Question 1: What does a single artificial neuron compute?</p>
+<ul class="lp-quiz-options" role="list">
+<li><button class="lp-quiz-btn" data-index="0" type="button">It selects the most important input and passes it through unchanged</button></li>
+<li><button class="lp-quiz-btn" data-index="1" type="button">It multiplies each input by a weight, sums everything up, adds a bias, then applies an activation function</button></li>
+<li><button class="lp-quiz-btn" data-index="2" type="button">It stores a copy of the training data and retrieves the closest match</button></li>
+<li><button class="lp-quiz-btn" data-index="3" type="button">It takes the average of all its inputs and outputs that value</button></li>
+</ul>
+<div aria-live="polite" class="lp-quiz-feedback"></div>
+</div>
+<div class="lp-quiz" id="quiz-2">
+<p class="lp-quiz-q">Question 2: What changes during neural network training?</p>
+<ul class="lp-quiz-options" role="list">
+<li><button class="lp-quiz-btn" data-index="0" type="button">The number of layers and neurons in the network</button></li>
+<li><button class="lp-quiz-btn" data-index="1" type="button">The weights and biases, adjusted to make predictions closer to correct answers</button></li>
+<li><button class="lp-quiz-btn" data-index="2" type="button">The training data itself, which is modified to be easier to learn from</button></li>
+<li><button class="lp-quiz-btn" data-index="3" type="button">The activation functions, which are selected automatically based on the data</button></li>
+</ul>
+<div aria-live="polite" class="lp-quiz-feedback"></div>
+</div>
+</section>
+</div>
+<div aria-label="Deep Dive Podcast" class="na-podcast" role="region"><div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div><div class="na-podcast-inner"><div class="na-podcast-left"><div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div><div class="na-podcast-meta"><p class="na-podcast-title">Podcast Version</p><p class="na-podcast-sub">AI-generated audio overview of this lesson</p></div></div><audio aria-label="Podcast version of this lesson" controls="True" preload="none" style="width:100%;margin-top:0.75rem;">
+            Your browser does not support the audio element.
+          </audio></div></div>
+<div id="share-bar-placeholder"></div>
+<div class="na-accordions">
+<nav aria-label="Lesson navigation" class="lp-nav">
+<a class="lp-nav-btn" href="/course/biological-vs-artificial-neurons">
+<span aria-hidden="true" class="material-symbols-outlined">arrow_back</span>
+<div><span class="lp-nav-label">Previous lesson</span><span class="lp-nav-title">Biological vs Artificial Neurons</span></div>
+</a>
+<a class="lp-nav-btn" href="/course/backpropagation">
+<div><span class="lp-nav-label">Next lesson</span><span class="lp-nav-title">Backpropagation</span></div>
+<span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span>
+</a>
+</nav>
+</div>
+</article>
+<aside aria-label="Lesson sidebar" class="na-sidebar">
+<nav aria-label="Table of contents" class="na-toc">
+<h2 class="na-toc-title">On this page</h2>
+<ol class="na-toc-list">
+<li><a class="na-toc-link" href="#structure">Basic Network Structure</a></li>
+<li><a class="na-toc-link" href="#what-neuron-does">What a Neuron Does</a></li>
+<li><a class="na-toc-link" href="#forward-propagation">What Forward Propagation Means</a></li>
+<li><a class="na-toc-link" href="#weights-biases">Weights and Biases Explained</a></li>
+<li><a class="na-toc-link" href="#not-mysterious">Why They're Not Mysterious</a></li>
+<li><a class="na-toc-link" href="#quiz">Lesson Quiz</a></li>
+</ol>
+</nav>
+<nav aria-label="Course navigation" class="lp-sidebar-nav">
+<h2 class="lp-sidebar-nav-title">
+<a href="/course-dashboard">AI Course</a>
+</h2>
+<div class="lp-sidebar-unit">
+<span class="lp-sidebar-unit-label lp-unit-6">Unit 6 - Deep Learning</span>
+<ul>
+<li><a href="/course/biological-vs-artificial-neurons">Biological vs Artificial Neurons</a></li>
+<li class="lp-sidebar-current"><a aria-current="page" href="/course/neural-networks-forward-propagation">Neural Networks &amp; Forward Propagation</a></li>
+<li><a href="/course/backpropagation">Backpropagation</a></li>
+<li><a href="/course/activation-functions-vanishing-gradient">Activation Functions &amp; Vanishing Gradient</a></li>
+<li><a href="/course/tensorflow-pytorch-keras">TensorFlow, PyTorch &amp; Keras</a></li>
+<li><a href="/course/cnns-with-keras">CNNs with Keras</a></li>
+<li><a href="/course/rnns-transformers-autoencoders">RNNs, Transformers &amp; Autoencoders</a></li>
+</ul>
+</div>
+</nav>
+<div id="newsy-sidebar-mount"></div>
+<div id="newsy-ai"></div>
+</aside>
+</div>
+</main>
+<div id="share-bar-placeholder"></div>
+<section aria-label="Lesson reference" class="tool-info">
+<div class="tool-info-inner">
+<div class="tool-accordions">
+<details class="tool-accordion" open="">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Frequently Asked Questions</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<h3>What is the basic structure of a neural network?</h3>
+<p>A neural network has three types of layers: input (your raw data), hidden layers (where the actual computation happens), and output (the final prediction). Each hidden layer contains neurons that take all values from the previous layer, multiply each by a weight, add them up, add a bias, and pass the result through an activation function.</p>
+<h3>What does a single artificial neuron do?</h3>
+<p>A single neuron takes multiple inputs, multiplies each by its corresponding weight, adds all those products together, adds a bias value, and passes the result through an activation function. That's it: multiply, add, apply a function. The weights and bias are what the network learns during training.</p>
+<h3>What is forward propagation in a neural network?</h3>
+<p>Forward propagation is passing data through the network from input to output. Data enters the input layer, flows through each hidden layer (where neurons apply their multiply-add-activate operations), and reaches the output layer which produces a prediction. It's called "forward" to distinguish it from backpropagation, where errors flow backward to update the weights.</p>
+<h3>What are weights and biases in a neural network?</h3>
+<p>Weights control how much each input influences a neuron's output. A large positive weight means that input has a big positive effect; near-zero means it barely matters; negative means it pushes the output down. Bias is a constant that shifts the neuron's baseline output. Together, weights and biases are what the network adjusts during training to improve its predictions.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">How It Works</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<p>In matrix form, a full hidden layer can be computed as: <code>output = activation(W * x + b)</code>, where W is the weight matrix, x is the input vector, and b is the bias vector. This matrix multiplication computes all neuron outputs simultaneously, which is why GPUs (optimised for matrix maths) make neural networks so much faster to train.</p>
+<p>For a network with multiple layers, the output of one layer becomes the input to the next: <code>h1 = activation(W1 * x + b1)</code>, <code>h2 = activation(W2 * h1 + b2)</code>, and so on. The final output layer often uses a different activation (softmax for classification, linear for regression) suited to the prediction task.</p>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Key Points</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>Neural networks have input, hidden, and output layers.</li>
+<li>Each neuron: multiply each input by its weight, sum everything, add bias, apply activation function.</li>
+<li>Weights and biases are the only things that change during training - architecture stays fixed.</li>
+<li>Forward propagation: data flows from input layer through hidden layers to output - one pass, one prediction.</li>
+<li>Weights encode learned knowledge: what patterns in inputs predict which outputs.</li>
+<li>Bias lets a neuron have a baseline activation independent of input values.</li>
+<li>The mechanism (multiply, add, repeat) is simple. The magic is in what trained weights can represent.</li>
+</ul>
+</div>
+</details>
+<details class="tool-accordion">
+<summary class="tool-accordion-summary"><span class="tool-accordion-title">Sources</span><span aria-hidden="true" class="tool-accordion-icon"></span></summary>
+<div class="tool-accordion-body">
+<ul>
+<li>LeCun, Y., Bengio, Y. &amp; Hinton, G. (2015). Deep learning. <em>Nature</em>, 521, 436-444.</li>
+<li>Goodfellow, I., Bengio, Y. &amp; Courville, A. (2016). <em>Deep Learning</em>. MIT Press. (Free at deeplearningbook.org)</li>
+<li>Nielsen, M. (2015). <em>Neural Networks and Deep Learning</em>. (Free at neuralnetworksanddeeplearning.com)</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</section>
+<button aria-label="Back to top" id="back-to-top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div id="footer-placeholder"></div>
+<script src="/news-data.js"></script>
+<script defer="" src="/scripts.js"></script>
+<script defer="" src="/news-article.js"></script>
+<script defer="" src="/news-chat.js"></script>
+<script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
       if (trigger) trigger.click();
@@ -439,8 +351,7 @@
       });
     });
   </script>
-
-  <script>
+<script>
     (function() {
       var quizzes = [
         { correct: 1, explanation: "Correct. A single neuron multiplies each input by its weight, sums all those products, adds a bias, then applies an activation function. That's the complete operation: weighted sum plus bias through an activation function." },
@@ -474,6 +385,5 @@
       });
     })();
   </script>
-
 </body>
 </html>
