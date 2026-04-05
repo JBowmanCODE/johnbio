@@ -38,6 +38,12 @@
 .ex-intro {
   text-align: center; padding: 1rem 0;
 }
+.ex-intro-img {
+  width: 100%; max-width: 560px; height: auto;
+  border-radius: 12px; margin: 0 auto 2rem;
+  display: block; object-fit: cover;
+  border: 1px solid rgba(99,102,241,0.15);
+}
 .ex-intro-icon {
   font-size: 3rem; margin-bottom: 1rem;
   background: rgba(99,102,241,0.12);
