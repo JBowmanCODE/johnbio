@@ -10,11 +10,65 @@ const TOTAL_LESSONS = getTotalLessons(); // from course-data.js
 
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
-    window.location.href = '/test-login';
+    showGuestView();
     return;
   }
   await loadDashboard(user);
 });
+
+function showGuestView() {
+  document.getElementById('cdLoading').classList.add('hidden');
+  document.getElementById('cdGuest').classList.remove('hidden');
+  document.getElementById('cdGuestSticky').classList.remove('hidden');
+  renderGuestCurriculum();
+}
+
+function renderGuestCurriculum() {
+  const container = document.getElementById('cdGuestUnits');
+
+  COURSE_UNITS.forEach((unit, idx) => {
+    const el = document.createElement('div');
+    el.className = 'cd-unit';
+
+    el.innerHTML = `
+      <div class="cd-unit-header" role="button" aria-expanded="false" tabindex="0">
+        <div class="cd-unit-num">${unit.id}</div>
+        <div class="cd-unit-info">
+          <div class="cd-unit-title">Unit ${unit.id} — ${unit.title}</div>
+          <div class="cd-unit-meta">${unit.lessons.length} lessons</div>
+        </div>
+        <span class="material-symbols-outlined cd-unit-chevron">expand_more</span>
+      </div>
+      <div class="cd-unit-lessons">
+        ${unit.lessons.map(l => `
+          <a class="cd-lesson-row" href="${l.slug ? `/course/${l.slug}` : `/course?u=${l.id.split('-')[0]}&l=${l.id.split('-')[1]}`}">
+            <div class="cd-lesson-check">
+              <span class="material-symbols-outlined">check</span>
+            </div>
+            <span class="cd-lesson-title">${l.title}</span>
+            <span class="cd-lesson-duration">${l.duration}</span>
+          </a>
+        `).join('')}
+      </div>
+    `;
+
+    const header = el.querySelector('.cd-unit-header');
+    const toggle = () => {
+      el.classList.toggle('open');
+      header.setAttribute('aria-expanded', el.classList.contains('open'));
+    };
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') toggle(); });
+
+    // Auto-open first unit
+    if (idx === 0) {
+      el.classList.add('open');
+      header.setAttribute('aria-expanded', 'true');
+    }
+
+    container.appendChild(el);
+  });
+}
 
 async function loadDashboard(user) {
   // Fetch user doc from Firestore
@@ -94,7 +148,7 @@ function renderCta(progress, bestExam, hasCert) {
   if (allDone || Object.keys(progress).length > 0) {
     const examBtn = document.createElement('a');
     examBtn.href = '/exam';
-    examBtn.className = `cd-btn ${bestExam && bestExam.passed ? 'cd-btn-secondary' : 'cd-btn-secondary'}`;
+    examBtn.className = 'cd-btn cd-btn-secondary';
     examBtn.innerHTML = `<span class="material-symbols-outlined">quiz</span> ${bestExam ? 'Retake exam' : 'Take exam'}`;
     row.appendChild(examBtn);
   }
@@ -110,7 +164,6 @@ function renderCta(progress, bestExam, hasCert) {
 
 function renderUnits(progress) {
   const container = document.getElementById('cdUnits');
-  const title = container.querySelector('.cd-section-title');
 
   COURSE_UNITS.forEach((unit, idx) => {
     const unitDone = unit.lessons.filter(l => progress[l.id]).length;

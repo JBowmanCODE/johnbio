@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Dashboard - AI Course - JohnB.io</title>
+  <title>AI &amp; Machine Learning Course - JohnB.io</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -13,7 +13,41 @@
   </script>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" href="favicon.png">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Free AI and machine learning course with certificate. 35 lessons across 9 units covering AI fundamentals, deep learning, NLP, MLOps and more.">
+  <meta name="keywords" content="AI course, machine learning course, free AI course, AI for beginners, deep learning course, NLP course, MLOps">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/course-dashboard">
+  <meta property="og:title" content="AI &amp; Machine Learning Course - JohnB.io">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/course-dashboard">
+  <meta property="og:description" content="Free AI and machine learning course with certificate. 35 lessons across 9 units covering AI fundamentals, deep learning, NLP, MLOps and more.">
+  <meta property="og:image" content="https://johnb.io/images/course-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AI &amp; Machine Learning Course on JohnB.io">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI &amp; Machine Learning Course - JohnB.io">
+  <meta name="twitter:description" content="Free AI and machine learning course with certificate. 35 lessons across 9 units covering AI fundamentals, deep learning, NLP, MLOps and more.">
+  <meta name="twitter:image" content="https://johnb.io/images/course-default.jpg">
+  <meta name="twitter:image:alt" content="AI &amp; Machine Learning Course on JohnB.io">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "AI & Machine Learning Course",
+    "description": "Free AI and machine learning course with certificate. 35 lessons across 9 units covering AI fundamentals, deep learning, NLP, MLOps and more.",
+    "url": "https://johnb.io/course-dashboard",
+    "provider": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    },
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "online"
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,7 +68,48 @@
       <div class="cd-spinner"></div>
     </div>
 
-    <!-- Dashboard content (hidden until auth confirmed) -->
+    <!-- Guest view (shown when not signed in) -->
+    <div class="cd-guest hidden" id="cdGuest">
+
+      <div class="cd-guest-hero">
+        <h1 class="cd-guest-title">AI &amp; Machine Learning Course</h1>
+        <p class="cd-guest-tagline">Learn AI from the ground up — free, structured, and built for beginners.</p>
+        <div class="cd-guest-pills">
+          <span class="cd-pill"><span class="material-symbols-outlined">menu_book</span> 35 lessons</span>
+          <span class="cd-pill"><span class="material-symbols-outlined">layers</span> 9 units</span>
+          <span class="cd-pill"><span class="material-symbols-outlined">workspace_premium</span> Free certificate</span>
+        </div>
+      </div>
+
+      <div class="cd-guest-cta">
+        <a href="/test-login?mode=signup" class="cd-btn cd-btn-primary">
+          <span class="material-symbols-outlined">person_add</span> Create free account
+        </a>
+        <a href="/test-login" class="cd-btn cd-btn-secondary">
+          <span class="material-symbols-outlined">login</span> Log in
+        </a>
+      </div>
+
+      <div class="cd-guest-outcomes">
+        <h2 class="cd-section-title">What you'll learn</h2>
+        <ul class="cd-outcomes-list">
+          <li><span class="material-symbols-outlined">check_circle</span> What AI and machine learning actually are — and how they differ</li>
+          <li><span class="material-symbols-outlined">check_circle</span> How deep learning, neural networks, and transformers work</li>
+          <li><span class="material-symbols-outlined">check_circle</span> Python, NumPy, Pandas, TensorFlow, and PyTorch basics</li>
+          <li><span class="material-symbols-outlined">check_circle</span> How to build, evaluate, and deploy ML models</li>
+          <li><span class="material-symbols-outlined">check_circle</span> Generative AI, prompt engineering, RAG, and fine-tuning</li>
+          <li><span class="material-symbols-outlined">check_circle</span> AI ethics, governance, and real-world business applications</li>
+        </ul>
+      </div>
+
+      <section class="cd-guest-curriculum" id="cdGuestUnits">
+        <h2 class="cd-section-title">Course curriculum</h2>
+        <!-- Injected by JS -->
+      </section>
+
+    </div>
+
+    <!-- Authenticated dashboard (hidden until auth confirmed) -->
     <div class="cd-content hidden" id="cdContent">
 
       <!-- Welcome header -->
@@ -42,7 +117,7 @@
         <div class="cd-header-left">
           <p class="cd-greeting" id="cdGreeting">Welcome back</p>
           <h1 class="cd-name" id="cdName">Loading...</h1>
-          <p class="cd-tagline">AI Course — Track your progress below</p>
+          <p class="cd-tagline">AI &amp; Machine Learning Course — Track your progress below</p>
         </div>
         <div class="cd-progress-ring-wrap">
           <svg class="cd-ring" viewBox="0 0 80 80" aria-hidden="true">
@@ -101,6 +176,14 @@
   </main>
 
   <div id="footer-placeholder"></div>
+
+  <!-- Mobile sticky sign-up banner (guest only) -->
+  <div class="cd-guest-sticky hidden" id="cdGuestSticky">
+    <a href="/test-login?mode=signup" class="cd-guest-sticky-link">
+      Sign up free to track your progress
+      <span class="material-symbols-outlined">arrow_forward</span>
+    </a>
+  </div>
 
   <script src="/scripts.js" defer></script>
   <script src="/course-data.js"></script>
