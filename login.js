@@ -1,5 +1,5 @@
 /* ================================================
-   test-login.js — Firebase Auth (Email + Google)
+   login.js — Firebase Auth (Email + Google)
    ================================================ */
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
@@ -49,7 +49,9 @@ async function ensureUserDoc(user, extraData = {}) {
       email: user.email,
       createdAt: serverTimestamp(),
       courseProgress: {},
-      certificateIssued: false
+      certificateIssued: false,
+      newsletterConsent: extraData.newsletterConsent || false,
+      newsletterConsentAt: extraData.newsletterConsent ? serverTimestamp() : null
     });
   }
 }
@@ -186,11 +188,13 @@ signupForm && signupForm.addEventListener('submit', async (e) => {
   if (!email) return showError('signupError', 'Please enter your email.');
   if (!pw || pw.length < 8) return showError('signupError', 'Password must be at least 8 characters.');
 
+  const consent = document.getElementById('newsletterConsent')?.checked || false;
+
   setLoading(signupSubmit, true);
   try {
     const cred = await createUserWithEmailAndPassword(auth, email, pw);
     await updateProfile(cred.user, { displayName: name });
-    await ensureUserDoc(cred.user, { name });
+    await ensureUserDoc(cred.user, { name, newsletterConsent: consent });
     showSuccess(`Welcome, ${name}! Your account is ready. Redirecting...`);
     setTimeout(() => { window.location.href = getRedirect(); }, 1200);
   } catch (err) {
@@ -201,10 +205,11 @@ signupForm && signupForm.addEventListener('submit', async (e) => {
 });
 
 /* ----- Google sign-in ----- */
-async function handleGoogle(errorElId) {
+async function handleGoogle(errorElId, isSignup) {
+  const consent = isSignup ? (document.getElementById('newsletterConsent')?.checked || false) : false;
   try {
     const cred = await signInWithPopup(auth, googleProvider);
-    await ensureUserDoc(cred.user);
+    await ensureUserDoc(cred.user, { newsletterConsent: consent });
     showSuccess(`Welcome! Redirecting to your dashboard...`);
     setTimeout(() => { window.location.href = getRedirect(); }, 1200);
   } catch (err) {
@@ -213,14 +218,15 @@ async function handleGoogle(errorElId) {
   }
 }
 
-document.getElementById('googleSignIn')?.addEventListener('click', () => handleGoogle('signinError'));
-document.getElementById('googleSignUp')?.addEventListener('click', () => handleGoogle('signupError'));
+document.getElementById('googleSignIn')?.addEventListener('click', () => handleGoogle('signinError', false));
+document.getElementById('googleSignUp')?.addEventListener('click', () => handleGoogle('signupError', true));
 
 /* ----- GitHub sign-in (needs GitHub OAuth app configured in Firebase console) ----- */
-async function handleGitHub(errorElId) {
+async function handleGitHub(errorElId, isSignup) {
+  const consent = isSignup ? (document.getElementById('newsletterConsent')?.checked || false) : false;
   try {
     const cred = await signInWithPopup(auth, githubProvider);
-    await ensureUserDoc(cred.user);
+    await ensureUserDoc(cred.user, { newsletterConsent: consent });
     showSuccess(`Welcome! Redirecting to your dashboard...`);
     setTimeout(() => { window.location.href = getRedirect(); }, 1200);
   } catch (err) {
@@ -229,8 +235,8 @@ async function handleGitHub(errorElId) {
   }
 }
 
-document.getElementById('githubSignIn')?.addEventListener('click', () => handleGitHub('signinError'));
-document.getElementById('githubSignUp')?.addEventListener('click', () => handleGitHub('signupError'));
+document.getElementById('githubSignIn')?.addEventListener('click', () => handleGitHub('signinError', false));
+document.getElementById('githubSignUp')?.addEventListener('click', () => handleGitHub('signupError', true));
 
 /* ----- Forgot password ----- */
 const forgotLink = document.getElementById('forgotLink');

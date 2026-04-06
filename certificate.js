@@ -8,7 +8,7 @@ import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase
 
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
-    window.location.href = '/test-login?redirect=/certificate';
+    window.location.href = '/login?redirect=/certificate';
     return;
   }
 
