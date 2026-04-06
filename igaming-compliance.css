@@ -79,6 +79,14 @@ body {
   margin: 0;
 }
 
+.igc-last-updated {
+  display: flex; align-items: center; gap: 0.3rem;
+  font-size: 0.78rem; color: rgba(255,255,255,0.35);
+  margin: 0.5rem 0 0;
+}
+.igc-last-updated .material-symbols-outlined { font-size: 0.95rem; }
+.igc-last-updated time { color: rgba(255,255,255,0.5); }
+
 /* ── STATS BAR ── */
 .igc-stats {
   display: flex;

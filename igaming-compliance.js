@@ -105,6 +105,24 @@ const REGULATIONS = [
     notes: '0.1–1.1% of GGR levy replacing voluntary contributions, effective April 2025.'
   },
   {
+    id: 'uk-online-slots-stake-limits-2024',
+    name: 'UKGC Online Slots Stake Limits 2024',
+    url: 'https://www.gamblingcommission.gov.uk/licensees-and-businesses/lccp',
+    countries: ['GB'],
+    category: 'gambling',
+    region: 'europe',
+    notes: 'Maximum £5 per spin for players aged 25+; £2 for ages 18–24. Applies to all online slots from October 2024.'
+  },
+  {
+    id: 'uk-affordability-checks-2026',
+    name: 'UKGC Financial Vulnerability and Affordability Checks 2026',
+    url: 'https://www.gamblingcommission.gov.uk/licensees-and-businesses/lccp/upcoming-changes',
+    countries: ['GB'],
+    category: 'gambling',
+    region: 'europe',
+    notes: 'Frictionless affordability checks triggered at £150 net deposits within 30 days. Full rollout to all online casino operators required by Q3 2026. Enhanced checks at higher thresholds.'
+  },
+  {
     id: 'malta-gaming-act-2018',
     name: 'Gaming Act 2018 (Cap. 583)',
     url: 'https://legislation.mt/eli/cap/583/eng',
@@ -112,6 +130,15 @@ const REGULATIONS = [
     category: 'gambling',
     region: 'europe',
     notes: 'Consolidated Maltese gaming legislation underpinning the MGA licensing framework.'
+  },
+  {
+    id: 'mga-capital-requirements-2025',
+    name: 'MGA Minimum Capital Requirements Policy 2025',
+    url: 'https://www.mga.org.mt/our-work/regulatory-framework/',
+    countries: ['MT'],
+    category: 'gambling',
+    region: 'europe',
+    notes: 'Effective 2025: €40,000 minimum for B2B licensees; €100,000 for B2C Types 1–2; cumulative cap €240,000. Operators with negative equity must restore it within 6 months or under a supervised 5-year plan. New Interim Financial Reporting (IFR) requirements alongside revised AFR standards.'
   },
   {
     id: 'mga-player-protection-directive',
@@ -133,12 +160,21 @@ const REGULATIONS = [
   },
   {
     id: 'gibraltar-gambling-act-2005',
-    name: 'Gambling Act 2005 (Gibraltar)',
+    name: 'Gambling Act 2005 (Gibraltar) — superseded',
     url: 'https://www.gibraltarlaws.gov.gi/legislations/gambling-act-2005-1344',
     countries: ['GI'],
     category: 'gambling',
     region: 'europe',
-    notes: 'Primary Gibraltar gambling legislation.'
+    notes: 'Superseded by the Gibraltar Gambling Act 2025 (in force 1 October 2025).'
+  },
+  {
+    id: 'gibraltar-gambling-act-2025',
+    name: 'Gambling Act 2025 (Gibraltar)',
+    url: 'https://www.gibraltarlaws.gov.gi/',
+    countries: ['GI'],
+    category: 'gambling',
+    region: 'europe',
+    notes: 'In force 1 October 2025. Replaced the 2005 Act entirely. Six new licence categories (£10,000 application fee each). Marketing affiliates now require a licence. Sweepstakes and B2B operators newly in scope. New independent Gambling Appeals Tribunal. Personal accountability requirements for senior staff (similar to UK Senior Managers Regime). Expanded Gambling Commissioner powers: fines, inspections, licence suspension. 6-month transition period ended approximately April 2026.'
   },
   {
     id: 'iom-ogra-2001',
@@ -147,7 +183,7 @@ const REGULATIONS = [
     countries: ['IM'],
     category: 'gambling',
     region: 'europe',
-    notes: 'Isle of Man online gambling licensing framework.'
+    notes: 'Isle of Man online gambling licensing framework. The GSC is consolidating seven existing gambling acts into a single Gambling Supervision Commission Bill expected to be enacted in 2026. New personal accountability rules allow civil penalties for key persons, controllers, and senior managers for AML/CFT contraventions. New Fitness and Propriety Framework expected summer 2026.'
   },
   {
     id: 'alderney-egambling-ordinance-2009',
@@ -166,6 +202,15 @@ const REGULATIONS = [
     category: 'gambling',
     region: 'europe',
     notes: 'Swedish re-regulation framework effective 2019, introducing channelling model.'
+  },
+  {
+    id: 'sweden-credit-card-ban-2026',
+    name: 'Sweden — Complete Credit Card Gambling Ban (April 2026)',
+    url: 'https://www.spelinspektionen.se/',
+    countries: ['SE'],
+    category: 'gambling',
+    region: 'europe',
+    notes: 'From 1 April 2026, Sweden enacted a complete ban on gambling with credit cards, overdrafts, personal loans, and buy-now-pay-later services. Sweden is the first EU member state to implement a total prohibition of credit-funded gambling.'
   },
   {
     id: 'denmark-spilleloven',
@@ -894,7 +939,7 @@ const REGULATIONS = [
     countries: EU,
     category: 'financial',
     region: 'eu-wide',
-    notes: 'Fully applicable December 2024. Governs crypto-asset payments including those accepted by gambling operators.'
+    notes: 'Fully applicable December 2024. Governs crypto-asset payments including those accepted by gambling operators. iGaming operators accepting cryptocurrencies or stablecoins from EU players now face additional licensing, KYC, and AML obligations including blockchain transaction analysis, Source of Funds checks, and potential MiCA-specific licensing depending on the assets used.'
   },
   {
     id: 'eu-dora-2022',
@@ -1303,9 +1348,9 @@ const EMERGING = [
     body: 'Enacted August 2025. Replaced 1966-era law. First formal online gambling regulation. New GRA regulator. 30% Kenyan ownership mandate. KSh 1 billion minimum capital.'
   },
   {
-    title: "UK Gambling Act Review — Ongoing",
+    title: "UK Gambling Act Review — 2025/2026 Changes",
     jurisdiction: 'United Kingdom',
-    body: 'Financial vulnerability checks at £150 net deposits (August 2024). Statutory Gambling Levy (April 2025). Mandatory deposit limits (October 2025). Wagering requirements cap 10× (January 2026).'
+    body: 'Statutory Gambling Levy in force April 2025 (replaces voluntary system). Online slot stake limits: £5 max for 25+, £2 for 18–24 (October 2024). Affordability checks rolling out to all online casino operators — full compliance required Q3 2026 (triggered at £150 net deposits within 30 days). LCCP Licence Condition 7.1.1 updated 6 April 2026: Consumer Protection from Unfair Trading Regulations 2008 replaced by Digital Markets, Competition and Consumers Act 2024. UKGC enforcement up sharply: 9,700 compliance actions in 2024/25 vs 4,200 the prior year.'
   },
   {
     title: 'EU AI Act — Phased Application',
@@ -1321,6 +1366,31 @@ const EMERGING = [
     title: "Philippines POGO Ban",
     jurisdiction: 'Philippines',
     body: 'Executive Order No. 74 (November 2024) banned all Philippine Offshore Gaming Operators (POGOs) and Integrated Gaming Licensees. Operators given wind-down period.'
+  },
+  {
+    title: "Gibraltar Gambling Act 2025",
+    jurisdiction: 'Gibraltar',
+    body: 'In force 1 October 2025, replacing the 2005 Act entirely. Six new licence categories (£10,000 application fee each). Marketing affiliates now require a licence. Sweepstakes and B2B operators newly in scope. New independent Gambling Appeals Tribunal. Personal accountability requirements for senior staff (similar to UK Senior Managers Regime). Expanded Commissioner powers: fines, inspections, licence suspension. 6-month transition period ended approximately April 2026.'
+  },
+  {
+    title: "Isle of Man GSC Legislative Consolidation",
+    jurisdiction: 'Isle of Man',
+    body: 'The GSC is consolidating seven existing gambling acts into a single Gambling Supervision Commission Bill, expected to be enacted in 2026. New personal accountability rules allow civil penalties for key persons, controllers, and senior managers for AML/CFT contraventions. New Fitness and Propriety Framework expected summer 2026. Reforms aligned with Moneyval inspection preparation.'
+  },
+  {
+    title: "Sweden — Complete Credit Card Gambling Ban",
+    jurisdiction: 'Sweden',
+    body: 'From 1 April 2026, Sweden enacted a complete ban on gambling with credit cards, overdrafts, personal loans, and buy-now-pay-later services. Sweden is the first EU member state to implement a total prohibition of credit-funded gambling, going further than earlier restrictions under the Spellagen.'
+  },
+  {
+    title: "Malta MGA — 2025 Capital & Supervisory Reforms",
+    jurisdiction: 'Malta',
+    body: 'New Minimum Capital Requirements effective 2025: €40,000 for B2B licensees; €100,000 for B2C Types 1–2; cumulative cap €240,000. Operators with negative equity must restore it within 6 months (or up to 5 years under a supervised plan). New Interim Financial Reporting (IFR) requirements. MGA has shifted to a risk-based, evidence-driven regulatory model focused on game fairness, AML enforcement, sports betting integrity, and data analytics for detecting irregular activity.'
+  },
+  {
+    title: "Finland — iGaming Market Liberalisation",
+    jurisdiction: 'Finland',
+    body: 'Finland is in the process of ending the Veikkaus state monopoly and opening its iGaming market to competitive licensing. The transition is being formalised in 2026. Operators targeting Finnish players should monitor the forthcoming licensing framework. Finland is an EU member state — once licensed, operators would benefit from EU mutual recognition frameworks.'
   },
 ];
 
