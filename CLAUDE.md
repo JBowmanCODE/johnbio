@@ -8,6 +8,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Always commit and push after making changes unless told otherwise.
 
+**After every push:** Check `https://github.com/JBowmanCODE/johnbio/actions` to confirm the latest workflow run succeeded before telling John the site is ready to test. If the run failed, diagnose and fix before reporting back.
+
+**m4a podcast files:** Never commit `.m4a` files to git — they are 39-42MB and will timeout the FTP deploy, breaking all subsequent deploys. Always remind John to upload m4a files directly via Namecheap cPanel File Manager to `public_html/course/` or `public_html/news/`. They are excluded from the FTP deploy workflow (`**/*.m4a` in exclude list).
+
 ## Architecture
 
 Static HTML/CSS/JS site. No framework, no bundler, no package manager.
