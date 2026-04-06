@@ -51,6 +51,20 @@
   font-size: 0.875rem; color: rgba(255,255,255,0.4); margin: 0;
 }
 
+/* Header right */
+.cd-header-right {
+  display: flex; flex-direction: column; align-items: center; gap: 0.75rem; flex-shrink: 0;
+}
+.cd-signout-btn {
+  display: flex; align-items: center; gap: 0.35rem;
+  background: none; border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.45); border-radius: 6px;
+  padding: 0.35rem 0.75rem; font-size: 0.75rem; cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.cd-signout-btn:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+.cd-signout-btn .material-symbols-outlined { font-size: 0.95rem; }
+
 /* Progress ring */
 .cd-progress-ring-wrap {
   position: relative; width: 80px; height: 80px; flex-shrink: 0;

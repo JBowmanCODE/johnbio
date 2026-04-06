@@ -3,7 +3,7 @@
    ================================================ */
 
 import { auth, db } from '/firebase-init.js';
-import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+import { onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
 import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 
 const TOTAL_LESSONS = getTotalLessons(); // from course-data.js
@@ -119,6 +119,12 @@ async function loadDashboard(user) {
 
   // Units
   renderUnits(progress);
+
+  // Sign out button
+  const signOutBtn = document.getElementById('cdSignOut');
+  if (signOutBtn) {
+    signOutBtn.addEventListener('click', () => signOut(auth).then(() => window.location.href = '/test-login'));
+  }
 
   // Show content
   document.getElementById('cdLoading').classList.add('hidden');
