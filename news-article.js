@@ -211,13 +211,14 @@
     const muteIco  = document.getElementById('na-pod-mute-icon');
     const volSldr  = document.getElementById('na-pod-vol');
 
-    let podLoaded = false;
+    // Set src immediately so preload="metadata" fetches the header on page load
+    if (podSrc) {
+      podAudio.src = podSrc;
+    }
 
     function loadPodAudio() {
-      if (!podLoaded && podSrc) {
-        podAudio.src = podSrc;
+      if (podAudio.readyState === 0 && podSrc) {
         podAudio.load();
-        podLoaded = true;
       }
     }
 
