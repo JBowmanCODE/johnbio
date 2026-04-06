@@ -28,3 +28,4 @@ jobs:
             .github/**
             README.md
             **/*.m4a
+            **/*.mp3
