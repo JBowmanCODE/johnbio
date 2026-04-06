@@ -211,6 +211,62 @@
     const muteIco  = document.getElementById('na-pod-mute-icon');
     const volSldr  = document.getElementById('na-pod-vol');
 
+    // Create waveform canvas and inject into .na-podcast-left
+    let podWaveCanvas = null;
+    const podLeft = document.querySelector('.na-podcast-left');
+    if (podLeft) {
+      podWaveCanvas = document.createElement('canvas');
+      podWaveCanvas.setAttribute('aria-hidden', 'true');
+      podWaveCanvas.className = 'na-pod-wave';
+      podWaveCanvas.height = 44;
+      podLeft.appendChild(podWaveCanvas);
+    }
+
+    let podAudioCtx, podAnalyser, podWaveRaf;
+
+    function initPodWave() {
+      if (podAudioCtx) return;
+      podAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      podAnalyser = podAudioCtx.createAnalyser();
+      podAnalyser.fftSize = 256;
+      const podSource = podAudioCtx.createMediaElementSource(podAudio);
+      podSource.connect(podAnalyser);
+      podAnalyser.connect(podAudioCtx.destination);
+    }
+
+    function drawPodWave() {
+      if (!podWaveCanvas) return;
+      podWaveRaf = requestAnimationFrame(drawPodWave);
+      const ctx = podWaveCanvas.getContext('2d');
+      const w = podWaveCanvas.offsetWidth;
+      if (podWaveCanvas.width !== w) podWaveCanvas.width = w;
+      const h = podWaveCanvas.height;
+      const buf = new Uint8Array(podAnalyser.frequencyBinCount);
+      podAnalyser.getByteFrequencyData(buf);
+      ctx.clearRect(0, 0, w, h);
+      const barW = 3, gap = 2, total = barW + gap;
+      const bars = Math.floor(w / total);
+      const usableBins = Math.floor(buf.length * 0.6);
+      for (let i = 0; i < bars; i++) {
+        const binIdx = Math.floor((i / bars) * usableBins);
+        const val = buf[binIdx] / 255;
+        const barH = Math.max(3, val * h);
+        const x = i * total;
+        const y = (h - barH) / 2;
+        ctx.fillStyle = `rgba(255,0,127,${0.5 + val * 0.5})`;
+        ctx.beginPath();
+        ctx.roundRect(x, y, barW, barH, 1.5);
+        ctx.fill();
+      }
+    }
+
+    function stopPodWave() {
+      if (podWaveRaf) cancelAnimationFrame(podWaveRaf);
+      if (podWaveCanvas) {
+        podWaveCanvas.getContext('2d').clearRect(0, 0, podWaveCanvas.width, podWaveCanvas.height);
+      }
+    }
+
     // Set src immediately so preload="metadata" fetches the header on page load
     if (podSrc) {
       podAudio.src = podSrc;
@@ -238,6 +294,7 @@
     });
     podAudio.addEventListener('ended', () => {
       if (playIco) playIco.textContent = 'play_arrow';
+      stopPodWave();
     });
 
     if (playBtn) {
@@ -245,14 +302,18 @@
         if (!podSrc) return;
         loadPodAudio();
         if (podAudio.paused) {
+          initPodWave();
+          if (podAudioCtx.state === 'suspended') podAudioCtx.resume();
           podAudio.play().then(() => {
             if (playIco) playIco.textContent = 'pause';
+            drawPodWave();
           }).catch(() => {
             if (playIco) playIco.textContent = 'play_arrow';
           });
         } else {
           podAudio.pause();
           if (playIco) playIco.textContent = 'play_arrow';
+          stopPodWave();
         }
       });
     }
