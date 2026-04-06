@@ -185,7 +185,7 @@
 </div>
 </div>
 <div class="na-body">
-<p>Most deep learning courses list TensorFlow, PyTorch and Keras as if they're three separate options you need to pick between. That's not quite right. Understanding what each one actually is makes the choice much clearer.</p>
+<p>Most deep learning courses list TensorFlow, PyTorch and Keras as if they're three separate options you need to pick between. That's not quite right. Understanding what each one actually is makes the choice much clearer. This lesson assumes you've covered <a href="/course/numpy-pandas">NumPy and Pandas</a> already, since those underpin every ML project.</p>
 <h2 id="what-each-is">What Each Library Is and Who Made It</h2>
 <p><strong>TensorFlow</strong> was built by Google and released in 2015. It's a framework for building and training neural networks. It handles the maths operations - matrix multiplication, <a href="/course/activation-functions-vanishing-gradient">backpropagation</a> and so on - efficiently, runs on CPUs or GPUs, and lets you define networks in Python.</p>
 <p><strong>PyTorch</strong> was built by Meta (formerly Facebook) and released in 2016. It does the same job as TensorFlow but with a different philosophy. It's more Pythonic, more dynamic, and generally feels less clunky if you know Python.</p>
@@ -193,24 +193,24 @@
 <p>So really, you're choosing between TensorFlow (with Keras as the interface) and PyTorch.</p>
 <h2 id="keras-tensorflow">How Keras Relates to TensorFlow</h2>
 <p>Keras is the simple, friendly way to use TensorFlow. You write code like <code>model.add(Dense(128))</code> and <code>model.compile(optimizer='adam', loss='categorical_crossentropy')</code> and it handles the complexity underneath.</p>
-<p>TensorFlow is the full framework. If you need more control, you can drop down and write custom operations, manage computational graphs directly, and do things Keras doesn't expose. Most beginners will never need that lower level.</p>
+<p>TensorFlow is the full framework. If you need more control, you can drop down and write custom operations, manage computational graphs directly, and do things Keras doesn't expose. Most beginners will never need that lower level. The <a href="https://www.tensorflow.org/api_docs" target="_blank" rel="noopener">TensorFlow API documentation</a> is the reference for when you do.</p>
 <p>So when you hear "learn TensorFlow," it mostly means "learn the Keras API that ships with TensorFlow."</p>
 <h2 id="practical-differences">The Practical Differences for a Beginner</h2>
 <p>PyTorch feels more like writing Python. Operations happen immediately - eager execution by default. If you write <code>x = some_tensor * 2</code>, you get a result right then. This is good for debugging because you can print intermediate values and see what's happening at each step.</p>
 <p>TensorFlow with Keras is simpler for standard tasks. You define a model, compile it, and fit it to data. There's more abstraction, which means less control but also less boilerplate. For image classification or basic text tasks, Keras is faster to get working.</p>
 <p>PyTorch requires more explicit thinking. You often write training loops by hand - more verbose, but it gives you more control and teaches you what's actually happening.</p>
-<p>For a beginner trying to classify handwritten digits or build a basic image classifier, Keras is fine. You'll learn the core concepts faster because there's less scaffolding to write. If you want to understand what's happening at every step, PyTorch's explicit loops will teach you more.</p>
+<p>For a beginner trying to classify handwritten digits or build a basic image classifier, <a href="https://keras.io/api/" target="_blank" rel="noopener">Keras</a> is fine. You'll learn the core concepts faster because there's less scaffolding to write. If you want to understand what's happening at every step, PyTorch's explicit loops will teach you more.</p>
 <h2 id="landscape-shift">How the Landscape Has Shifted</h2>
 <p>Five years ago, TensorFlow dominated. Every serious ML job used it. Every course taught it.</p>
-<p>Now PyTorch dominates in research and increasingly in production at major companies. Researchers prefer PyTorch because it's easier to prototype with. Production teams increasingly follow because, if all your researchers are building in PyTorch, it makes sense to keep that consistent.</p>
+<p>Now <a href="https://pytorch.org/docs/stable/index.html" target="_blank" rel="noopener">PyTorch</a> dominates in research and increasingly in production at major companies. Researchers prefer PyTorch because it's easier to prototype with. Production teams increasingly follow because, if all your researchers are building in PyTorch, it makes sense to keep that consistent.</p>
 <p>TensorFlow is still widely used - it hasn't disappeared - but it's lost the assumed dominance. Last I checked, new research papers were more likely to use PyTorch than TensorFlow. This shift happened because PyTorch is genuinely nicer to use. It's not that TensorFlow is bad; PyTorch is just more intuitive for people who think like programmers rather than dataflow engineers.</p>
 <h2 id="which-first">Which One to Learn First and Why</h2>
 <p>Learn PyTorch.</p>
 <p>PyTorch teaches you the actual mechanics better because you have to write more explicitly. You'll understand <a href="/course/activation-functions-vanishing-gradient">backpropagation</a> better if you write your own training loop instead of calling <code>model.fit()</code>. You'll understand gradients better if you compute them yourself.</p>
-<p>The job market increasingly asks for PyTorch. If you learn PyTorch first, picking up TensorFlow later is just "oh, this does the same thing with more abstraction." The reverse is harder - if you've only used Keras, PyTorch's approach feels more unfamiliar.</p>
+<p>The job market increasingly asks for PyTorch. If you learn PyTorch first, picking up TensorFlow later is just "oh, this does the same thing with more abstraction." The reverse is harder - if you've only used Keras, PyTorch's approach feels more unfamiliar. After this lesson, <a href="/course/cnns-with-keras">CNNs with Keras</a> puts these frameworks to work on a real image classification problem.</p>
 <p>PyTorch's eager execution is also better for debugging while learning. You'll get less confused by mysterious behaviour you can't inspect.</p>
 <p>The downside: PyTorch is slightly more verbose. You'll write more code to accomplish the same thing. But that's actually good for learning - it forces you to think about what each step is doing.</p>
-<p>If you're in a job that requires TensorFlow, or want to learn Keras's high-level API first and worry about backpropagation later, that's a valid choice. But starting from scratch and wanting to actually understand what's happening? PyTorch first, TensorFlow second.</p>
+<p>If you're in a job that requires TensorFlow, or want to learn Keras's high-level API first and worry about backpropagation later, that's a valid choice. But starting from scratch and wanting to actually understand what's happening? PyTorch first, TensorFlow second. Then take what you learn into <a href="/course/model-deployment">model deployment</a> - getting these trained models into production.</p>
 <!-- Quiz -->
 <div aria-label="Lesson quiz" class="lp-quiz">
 <div class="lp-quiz-header">

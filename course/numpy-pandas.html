@@ -201,7 +201,7 @@
 <div class="na-body">
 <section id="numpy">
 <h2>What NumPy Is and Why Arrays Matter</h2>
-<p>NumPy stands for "Numerical Python." It's a library for working with arrays - ordered collections of numbers organised in a grid.</p>
+<p>NumPy stands for "Numerical Python." It's a library for working with arrays - ordered collections of numbers organised in a grid. The <a href="https://numpy.org/doc/stable/" target="_blank" rel="noopener">NumPy documentation</a> is thorough and worth bookmarking.</p>
 <p>Why not just use Python lists? Lists work fine for ten numbers. For a million, they get slow. NumPy arrays are fast because they're optimised for numerical operations. Every element is the same type, so the computer can process them efficiently.</p>
 <pre class="lp-code-block"><code>import numpy as np
 
@@ -212,11 +212,11 @@ scores &gt; 85        # returns [False, True, False, True, True]
 scores.mean()      # returns 87.6
 scores.std()       # returns standard deviation</code></pre>
 <p>With a Python list, you'd loop through each item. With NumPy, you write the operation once and it applies to all items simultaneously - faster and cleaner.</p>
-<p>In machine learning, your data arrives as arrays. A dataset with 10,000 rows and 50 columns is a 10,000 by 50 array. A trained model is mostly arrays of numbers (weights and biases). NumPy is how you manipulate all of that.</p>
+<p>In machine learning, your data arrives as arrays. A dataset with 10,000 rows and 50 columns is a 10,000 by 50 array. A trained model is mostly arrays of numbers (weights and biases). NumPy is how you manipulate all of that. These arrays feed directly into <a href="/course/linear-regression-gradient-descent">gradient descent</a> during training.</p>
 </section>
 <section id="pandas">
 <h2>What Pandas Is and What a DataFrame Is</h2>
-<p>Pandas builds on NumPy. While NumPy is great for numbers, it doesn't understand that one column represents ages and another represents postcodes. Pandas does.</p>
+<p>Pandas builds on NumPy. While NumPy is great for numbers, it doesn't understand that one column represents ages and another represents postcodes. Pandas does. The <a href="https://pandas.pydata.org/docs/" target="_blank" rel="noopener">Pandas documentation</a> covers every method in detail.</p>
 <p>A DataFrame is like a spreadsheet. It has rows and columns. Each column has a name. Each row represents one record.</p>
 <pre class="lp-code-block"><code>import pandas as pd
 
@@ -261,10 +261,10 @@ df['age'].value_counts() # count at each age</code></pre>
 </section>
 <section id="why-they-matter">
 <h2>Why Both Libraries Appear in Every AI Project</h2>
-<p>NumPy handles numerical operations at scale. When a model trains, it's doing millions of NumPy operations underneath. When you evaluate performance, you use NumPy to compute accuracy, loss, and other metrics.</p>
+<p>NumPy handles numerical operations at scale. When a model trains, it's doing millions of NumPy operations underneath. When you evaluate performance, you use NumPy to compute accuracy, loss, and other metrics - the ones explained in the <a href="/course/model-evaluation">model evaluation</a> lesson.</p>
 <p>Pandas handles the human side. Real data is messy - CSVs with missing values, wrong column types, duplicates. Pandas lets you explore, clean, and prepare before anything goes near a model.</p>
-<p>Whether you're training with scikit-learn, TensorFlow, or PyTorch, you'll use both. They're not optional extras. They're part of the pipeline.</p>
-<p>The learning curve isn't steep. You need maybe 20 Pandas functions to be productive: <code>read_csv</code>, <code>head</code>, <code>info</code>, <code>describe</code>, boolean indexing, <code>groupby</code>, <code>agg</code>, <code>dropna</code>, <code>fillna</code>. Learn those and you can handle most data preparation tasks. You'll pick up others as you need them. The harder skill is learning to think systematically about what your data actually contains and what it means.</p>
+<p>Whether you're training with scikit-learn, <a href="/course/tensorflow-pytorch-keras">TensorFlow, or PyTorch</a>, you'll use both. They're not optional extras. They're part of the pipeline.</p>
+<p>The learning curve isn't steep. You need maybe 20 Pandas functions to be productive: <code>read_csv</code>, <code>head</code>, <code>info</code>, <code>describe</code>, boolean indexing, <code>groupby</code>, <code>agg</code>, <code>dropna</code>, <code>fillna</code>. Learn those and you can handle most data preparation tasks. You'll pick up others as you need them. The harder skill is learning to think systematically about what your data actually contains and what it means. That thinking is also what separates good from mediocre work in <a href="/course/python-essentials-for-ai">Python for AI</a>.</p>
 </section>
 <div aria-label="Lesson quiz" class="lp-quiz" id="quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions — select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What is the key advantage of NumPy arrays over standard Python lists for machine learning?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>They can store text, numbers, and images in the same structure</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>They are optimised for numerical operations and process entire arrays at once, making them far faster than looping through lists</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>They automatically detect and remove missing values</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>They have built-in data visualisation capabilities</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">What is a Pandas DataFrame?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>A type of neural network layer used for tabular data</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>A database query language for filtering large datasets</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>A Python library for creating charts and visualisations</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>A table-like data structure with named columns and rows, similar to a spreadsheet</button></div><button class="lp-quiz-check" data-answer="D" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 </div>

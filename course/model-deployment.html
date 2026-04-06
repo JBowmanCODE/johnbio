@@ -208,7 +208,7 @@
 <!-- Body -->
 <div class="na-body">
 <p>You've got a trained model sitting on your laptop. Now what? You can't tell millions of users "download this Python file and run it locally." You need to serve the model so that applications can request predictions.</p>
-<p>That's deployment: taking a model and making it available to the applications that need it.</p>
+<p>That's deployment: taking a model and making it available to the applications that need it. Before deployment, you should have validated it properly using the <a href="/course/model-evaluation">model evaluation</a> techniques from earlier in the course.</p>
 <h2 id="what-deployment-means-in-the-ml-context">What deployment means in the ML context</h2>
 <p>Deployment is making your model accessible. Someone sends data to your system, your system runs the model on that data, and returns a prediction.</p>
 <p>In practice: your model is running on a server somewhere. That server is listening for requests. When a request arrives, the server loads the model (or keeps it in memory), runs inference, and returns the result. The server is available 24/7, handles failures gracefully, and doesn't lose data.</p>
@@ -216,11 +216,11 @@
 <h2 id="serving-a-model-via-an-api">Serving a model via an API</h2>
 <p>The standard way to serve a model is through an API - an Application Programming Interface. Another piece of software sends a request to your API, and your API returns a prediction.</p>
 <p>The basic flow: 1) Client sends an HTTP request with features - "Here are the customer features, predict if they'll churn." 2) Your server receives the request. 3) Your server loads the model (or uses one already in memory). 4) Your server runs inference on the features. 5) Your server returns the prediction in the response.</p>
-<p>Simple in concept. You write a small web service - usually in Flask or FastAPI - that loads your model and accepts requests. When it gets a request, it preprocesses the features, runs the model, postprocesses the output, and returns it.</p>
+<p>Simple in concept. You write a small web service - usually in Flask or <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI</a> - that loads your model and accepts requests. When it gets a request, it preprocesses the features, runs the model, postprocesses the output, and returns it.</p>
 <p>Why this works: any application that can make HTTP requests can use your model. You don't have to ship the model to different applications. You maintain one serving infrastructure.</p>
 <p>The trade-off: your model is now a network service, so there's latency. Every request goes over the network. If you need sub-millisecond response times, an API might be too slow. For most use cases, the latency is fine.</p>
 <h2 id="what-docker-containers-are-and-why-they-matter">What Docker containers are and why they matter</h2>
-<p>A container is a packaged application environment. You take your code, your dependencies, your model, and package them into a container image. That image can run anywhere - on your laptop, on a server, in the cloud.</p>
+<p>A container is a packaged application environment. You take your code, your dependencies, your model, and package them into a container image. That image can run anywhere - on your laptop, on a server, in the cloud. <a href="https://docs.docker.com/" target="_blank" rel="noopener">Docker's documentation</a> is the standard reference for getting started.</p>
 <p>Why this matters for ML: reproducibility and portability.</p>
 <p>You develop and test your serving code in a container locally. Then you deploy the exact same container to production. No "but it works on my machine" problems. No dependency version mismatches. No confusion about what Python version or system libraries are needed.</p>
 <p>Docker is the container technology that became standard. You write a Dockerfile that describes your environment, Docker builds an image, and that image runs on any system with Docker installed. A minimal Dockerfile for model serving looks like:</p>
@@ -239,13 +239,13 @@ CMD ["python", "app.py"]</code></pre>
 <p>These services handle a lot: scaling, load balancing, monitoring, logging. If you have spiky traffic, they scale up. If traffic drops, they scale down. You pay for what you use.</p>
 <p>The trade-off: less control. You're constrained by what the service supports. If your model needs custom preprocessing or special hardware, you might not be able to do it.</p>
 <p>You can also deploy containers directly to cloud infrastructure - Kubernetes on AWS, Cloud Run on GCP, Container Instances on Azure. You manage the infrastructure but you get more control.</p>
-<p>For beginners: start with a managed service. Upload your model, get a serving endpoint, call it. When you hit limitations, move to containers and infrastructure management.</p>
+<p>For beginners: start with a managed service. Upload your model, get a serving endpoint, call it. When you hit limitations, move to containers and infrastructure management. The broader picture of managing models in production is <a href="/course/intro-to-mlops">MLOps</a>.</p>
 <h2 id="where-beginners-go-wrong-with-deployment">Where beginners go wrong with deployment</h2>
 <p><strong>They don't think about latency.</strong> A model that takes 5 seconds to run works fine in batch processing. It doesn't work as an API serving real-time predictions. Measure inference time early.</p>
 <p><strong>They don't plan for failure.</strong> What happens when the model service crashes? What happens during a cloud outage? You need redundancy and monitoring. A model that occasionally returns errors is worse than no model at all for some applications.</p>
 <p><strong>They put the model weights in Git.</strong> Models are large binary files. Git is for code. You need a separate system - a model registry - for versioning, storing, and loading models. Don't put a 500MB model file in your repository.</p>
-<p><strong>They forget about monitoring.</strong> A deployed model that's not monitored is a black box. Is it still working? Is the data different from training? How are predictions performing? You need to log predictions and monitor performance.</p>
-<p><strong>They don't think about updates.</strong> What happens when you want to deploy a new model? Can you do it without downtime? Can you roll back if the new model is worse? Rolling out to 10% of traffic first, measuring performance, then expanding is standard practice.</p>
+<p><strong>They forget about monitoring.</strong> A deployed model that's not monitored is a black box. Is it still working? Is the data different from training? How are predictions performing? You need to log predictions and monitor performance. The <a href="/course/monitoring-drift">monitoring and drift</a> lesson covers this properly.</p>
+<p><strong>They don't think about updates.</strong> What happens when you want to deploy a new model? Can you do it without downtime? Can you roll back if the new model is worse? Rolling out to 10% of traffic first, measuring performance, then expanding is standard practice. <a href="/course/cicd-for-ml">CI/CD for ML</a> automates this rollout process.</p>
 <p>Deployment is running a service. Services need monitoring, updates, and maintenance.</p>
 </div>
 <!-- Quiz -->
