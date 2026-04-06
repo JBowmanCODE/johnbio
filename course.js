@@ -127,7 +127,7 @@ function updateCompleteButton() {
         <span class="material-symbols-outlined">check_circle</span>
         Mark as complete
       </button>
-      <p class="cl-login-nudge"><a href="/test-login">Sign in</a> to track your progress</p>
+      <p class="cl-login-nudge"><a href="/login">Sign in</a> to track your progress</p>
     `;
     return;
   }

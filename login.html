@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Login - JohnB.io</title>
+  <title>Login - JohnB.io</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/styles.css?v=2">
   <link rel="stylesheet" href="/header.css?v=2">
   <link rel="stylesheet" href="/footer.css?v=2">
-  <link rel="stylesheet" href="/test-login.css">
+  <link rel="stylesheet" href="/login.css">
 </head>
 <body>
   <div id="header-placeholder"></div>
@@ -144,6 +144,12 @@
             </div>
             <div class="pw-strength" id="pwStrength" aria-live="polite"></div>
           </div>
+          <div class="auth-check-field">
+            <label class="auth-checkbox-label">
+              <input type="checkbox" id="newsletterConsent" name="newsletterConsent">
+              <span>Send me occasional updates about new lessons and content</span>
+            </label>
+          </div>
           <div class="auth-error" id="signupError" role="alert" aria-live="polite"></div>
           <button type="submit" class="auth-submit" id="signupSubmit">
             <span class="submit-label">Create account</span>
@@ -204,6 +210,6 @@
   <div id="footer-placeholder"></div>
 
   <script src="/scripts.js?v=2" defer></script>
-  <script type="module" src="/test-login.js"></script>
+  <script type="module" src="/login.js"></script>
 </body>
 </html>

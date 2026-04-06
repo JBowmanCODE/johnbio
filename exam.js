@@ -19,7 +19,7 @@ let answers = {};        // { questionIndex: selectedOptionIndex }
 
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
-    window.location.href = '/test-login?redirect=/exam';
+    window.location.href = '/login?redirect=/exam';
     return;
   }
   currentUser = user;

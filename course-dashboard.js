@@ -123,7 +123,7 @@ async function loadDashboard(user) {
   // Sign out button
   const signOutBtn = document.getElementById('cdSignOut');
   if (signOutBtn) {
-    signOutBtn.addEventListener('click', () => signOut(auth).then(() => window.location.href = '/test-login'));
+    signOutBtn.addEventListener('click', () => signOut(auth).then(() => window.location.href = '/login'));
   }
 
   // Show content
