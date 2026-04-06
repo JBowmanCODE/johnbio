@@ -72,22 +72,15 @@
     <div class="cd-guest hidden" id="cdGuest">
 
       <div class="cd-guest-hero">
+        <p class="cd-guest-level"><span class="material-symbols-outlined">signal_cellular_alt</span> Beginner friendly &middot; No prior knowledge needed</p>
         <h1 class="cd-guest-title">AI &amp; Machine Learning Course</h1>
         <p class="cd-guest-tagline">Learn AI from the ground up — free, structured, and built for beginners.</p>
         <div class="cd-guest-pills">
           <span class="cd-pill"><span class="material-symbols-outlined">menu_book</span> 35 lessons</span>
           <span class="cd-pill"><span class="material-symbols-outlined">layers</span> 9 units</span>
+          <span class="cd-pill"><span class="material-symbols-outlined">schedule</span> ~8 hrs</span>
           <span class="cd-pill"><span class="material-symbols-outlined">workspace_premium</span> Free certificate</span>
         </div>
-      </div>
-
-      <div class="cd-guest-cta">
-        <a href="/login?mode=signup" class="cd-btn cd-btn-primary">
-          <span class="material-symbols-outlined">person_add</span> Create free account
-        </a>
-        <a href="/login" class="cd-btn cd-btn-secondary">
-          <span class="material-symbols-outlined">login</span> Log in
-        </a>
       </div>
 
       <div class="cd-guest-outcomes">
@@ -100,6 +93,26 @@
           <li><span class="material-symbols-outlined">check_circle</span> Generative AI, prompt engineering, RAG, and fine-tuning</li>
           <li><span class="material-symbols-outlined">check_circle</span> AI ethics, governance, and real-world business applications</li>
         </ul>
+      </div>
+
+      <div class="cd-guest-cta">
+        <a href="/login?mode=signup" class="cd-btn cd-btn-primary">
+          <span class="material-symbols-outlined">person_add</span> Create free account
+        </a>
+        <a href="/login" class="cd-btn cd-btn-secondary">
+          <span class="material-symbols-outlined">login</span> Log in
+        </a>
+      </div>
+
+      <div class="cd-instructor">
+        <div class="cd-instructor-inner">
+          <div class="cd-instructor-avatar" aria-hidden="true">JB</div>
+          <div class="cd-instructor-body">
+            <p class="cd-instructor-label">Your instructor</p>
+            <p class="cd-instructor-name">John Bowman</p>
+            <p class="cd-instructor-bio">I built JohnB.io to share what I've learned about AI and machine learning in a way that actually makes sense. This course covers everything from first principles to deployment — the path I wish had existed when I started.</p>
+          </div>
+        </div>
       </div>
 
       <section class="cd-guest-curriculum" id="cdGuestUnits">
@@ -118,6 +131,7 @@
           <p class="cd-greeting" id="cdGreeting">Welcome back</p>
           <h1 class="cd-name" id="cdName">Loading...</h1>
           <p class="cd-tagline">AI &amp; Machine Learning Course — Track your progress below</p>
+          <p class="cd-motivate" id="cdMotivate"></p>
         </div>
         <div class="cd-header-right">
           <div class="cd-progress-ring-wrap">
@@ -159,11 +173,11 @@
             <span>Final exam</span>
           </div>
         </div>
-        <div class="cd-stat">
-          <span class="material-symbols-outlined">workspace_premium</span>
+        <div class="cd-stat cd-stat--motivate" id="cdMotiveStat">
+          <span class="material-symbols-outlined">emoji_objects</span>
           <div>
-            <strong id="statCert">Locked</strong>
-            <span>Certificate</span>
+            <strong id="statCert">—</strong>
+            <span id="statCertLabel">Certificate</span>
           </div>
         </div>
       </div>
@@ -281,7 +295,7 @@
   <!-- Mobile sticky sign-up banner (guest only) -->
   <div class="cd-guest-sticky hidden" id="cdGuestSticky">
     <a href="/login?mode=signup" class="cd-guest-sticky-link">
-      Sign up free to track your progress
+      Join free — earn your certificate
       <span class="material-symbols-outlined">arrow_forward</span>
     </a>
   </div>

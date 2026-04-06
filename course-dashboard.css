@@ -50,6 +50,11 @@
 .cd-tagline {
   font-size: 0.875rem; color: rgba(255,255,255,0.4); margin: 0;
 }
+.cd-motivate {
+  font-size: 0.8125rem; color: rgba(255,0,127,0.75);
+  font-style: italic; margin: 0.4rem 0 0;
+  min-height: 1.2em;
+}
 
 /* Header right */
 .cd-header-right {
@@ -67,10 +72,10 @@
 
 /* Progress ring */
 .cd-progress-ring-wrap {
-  position: relative; width: 80px; height: 80px; flex-shrink: 0;
+  position: relative; width: 100px; height: 100px; flex-shrink: 0;
 }
 .cd-ring {
-  width: 80px; height: 80px; transform: rotate(-90deg);
+  width: 100px; height: 100px; transform: rotate(-90deg);
 }
 .cd-ring-bg {
   fill: none; stroke: rgba(255,255,255,0.07); stroke-width: 6;
@@ -151,6 +156,14 @@
 }
 .cd-btn-success:hover { background: rgba(74,222,128,0.2); }
 .cd-btn .material-symbols-outlined { font-size: 1.1rem; }
+.cd-btn-continue { align-items: center; }
+.cd-btn-continue-inner { display: flex; flex-direction: column; text-align: left; }
+.cd-btn-continue-label { line-height: 1.1; }
+.cd-btn-continue-sub {
+  font-size: 0.72rem; font-weight: 400;
+  opacity: 0.75; line-height: 1.2; margin-top: 1px;
+  max-width: 180px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 
 /* Units */
 .cd-section-title {
@@ -165,10 +178,15 @@
 .cd-unit {
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.07);
+  border-left: 3px solid rgba(255,255,255,0.07);
   border-radius: 12px; overflow: hidden;
   transition: border-color 0.2s;
 }
-.cd-unit.complete { border-color: rgba(74,222,128,0.2); }
+.cd-unit.complete {
+  border-color: rgba(74,222,128,0.25);
+  border-left-color: rgba(74,222,128,0.6);
+  background: rgba(74,222,128,0.03);
+}
 
 .cd-unit-header {
   display: flex; align-items: center; gap: 1rem;
@@ -267,6 +285,14 @@
 /* ── Guest view ── */
 .cd-guest-hero { margin-bottom: 2rem; }
 
+.cd-guest-level {
+  display: flex; align-items: center; gap: 0.35rem;
+  font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; color: rgba(255,0,127,0.8);
+  margin: 0 0 0.6rem;
+}
+.cd-guest-level .material-symbols-outlined { font-size: 0.95rem; }
+
 .cd-guest-title {
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(1.75rem, 5vw, 2.75rem);
@@ -296,10 +322,11 @@
   margin-bottom: 2.5rem;
 }
 
-.cd-guest-outcomes { margin-bottom: 2.5rem; }
+.cd-guest-outcomes { margin-bottom: 1.75rem; }
 .cd-outcomes-list {
   list-style: none; margin: 0; padding: 0;
-  display: flex; flex-direction: column; gap: 0.625rem;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0.625rem 1.5rem;
 }
 .cd-outcomes-list li {
   display: flex; align-items: flex-start; gap: 0.625rem;
@@ -307,6 +334,41 @@
 }
 .cd-outcomes-list .material-symbols-outlined {
   font-size: 1.05rem; color: #4ade80; margin-top: 2px; flex-shrink: 0;
+}
+
+/* Instructor section */
+.cd-instructor {
+  margin-bottom: 2.5rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+}
+.cd-instructor-inner {
+  display: flex; align-items: flex-start; gap: 1.25rem;
+}
+.cd-instructor-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, #ff007f 0%, #cc0066 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(255,0,127,0.3);
+}
+.cd-instructor-label {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: rgba(255,0,127,0.7);
+  margin: 0 0 0.2rem;
+}
+.cd-instructor-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem; font-weight: 700; color: #fff;
+  margin: 0 0 0.4rem;
+}
+.cd-instructor-bio {
+  font-size: 0.875rem; color: rgba(255,255,255,0.5);
+  line-height: 1.5; margin: 0;
 }
 
 .cd-guest-curriculum {
@@ -329,11 +391,26 @@
 }
 .cd-guest-sticky-link .material-symbols-outlined { font-size: 1.1rem; }
 
+/* Motivate stat card */
+.cd-stat--motivate strong {
+  font-size: 0.78rem; font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  white-space: normal; line-height: 1.35;
+}
+.cd-stat--motivate.cert-available strong {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9375rem; font-weight: 600; color: #fff;
+  white-space: nowrap;
+}
+.cd-stat--motivate .material-symbols-outlined { color: rgba(255,0,127,0.7); }
+.cd-stat--motivate.cert-available .material-symbols-outlined { color: rgba(74,222,128,0.8); }
+
 /* Responsive */
 @media (max-width: 640px) {
   .cd-stats { grid-template-columns: 1fr 1fr; }
   .cd-header { flex-direction: row; }
   .cd-unit-bar-wrap { display: none; }
+  .cd-outcomes-list { grid-template-columns: 1fr; }
 }
 @media (max-width: 420px) {
   .cd-stats { grid-template-columns: 1fr; }
