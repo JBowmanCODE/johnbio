@@ -243,8 +243,16 @@
       playBtn.addEventListener('click', () => {
         if (!podSrc) return;
         loadPodAudio();
-        if (podAudio.paused) { podAudio.play(); if (playIco) playIco.textContent = 'pause'; }
-        else { podAudio.pause(); if (playIco) playIco.textContent = 'play_arrow'; }
+        if (podAudio.paused) {
+          podAudio.play().then(() => {
+            if (playIco) playIco.textContent = 'pause';
+          }).catch(() => {
+            if (playIco) playIco.textContent = 'play_arrow';
+          });
+        } else {
+          podAudio.pause();
+          if (playIco) playIco.textContent = 'play_arrow';
+        }
       });
     }
 
