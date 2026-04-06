@@ -202,22 +202,22 @@
 <section id="nlp">
 <h2>Natural Language Processing (NLP)</h2>
 <p>NLP is the field that handles human language - text, speech, conversation. Everything that involves words.</p>
-<p>It produced ChatGPT, Copilot, and every text-based AI tool you've used. Translation, question answering, summarisation, text generation, spam filtering, information extraction - all NLP.</p>
+<p>It produced ChatGPT, Copilot, and every text-based AI tool you've used. Translation, question answering, summarisation, text generation, spam filtering, information extraction - all NLP. The <a href="https://en.wikipedia.org/wiki/Natural_language_processing" target="_blank" rel="noopener">Wikipedia article on natural language processing</a> gives a good overview of the field's history.</p>
 <p>Some real examples. Gmail's Smart Reply suggests email responses by predicting what most people say in reply to common email types. Search engines understand awkward phrasing because NLP parses intent, not just keywords. Medical systems scan research papers and extract relevant findings at scale. Voice assistants work because speech recognition converts audio to text, then NLP understands it.</p>
-<p>The important limit: NLP systems are good at pattern matching in language but poor at understanding meaning or truth. ChatGPT can write essays about topics it doesn't comprehend. It confidently produces false information. It can't tell accurate sources from fiction if both appeared in its training data. That's not a bug waiting to be fixed - it's a consequence of how these systems work.</p>
+<p>The important limit: NLP systems are good at pattern matching in language but poor at understanding meaning or truth. ChatGPT can write essays about topics it doesn't comprehend. The <a href="/course/rnns-transformers-autoencoders">transformers lesson</a> explains the architecture behind these systems. It confidently produces false information. It can't tell accurate sources from fiction if both appeared in its training data. That's not a bug waiting to be fixed - it's a consequence of how these systems work.</p>
 <p>NLP also skews heavily towards English. Systems for other languages exist but are generally less capable because they were trained on less data.</p>
 </section>
 <section id="computer-vision">
 <h2>Computer Vision</h2>
 <p>Computer vision is the field that handles images and video - the systems that let AI see.</p>
 <p>In some ways it's the more mathematically mature field. An image is just a grid of numbers. You can apply operations to those numbers to find patterns, and the mathematics for doing so are well established.</p>
-<p>Computer vision systems can identify objects in images, detect and analyse faces, extract text from photos, segment images into regions, estimate 3D structure from 2D images, and track movement in video.</p>
+<p>Computer vision systems can identify objects in images, detect and analyse faces, extract text from photos, segment images into regions, estimate 3D structure from 2D images, and track movement in video. The main architecture behind this is <a href="/course/cnns-with-keras">convolutional neural networks</a>.</p>
 <p>Where it shows up: autonomous vehicles use it to see roads, pedestrians, and other cars under varying light and weather. Medical imaging systems flag abnormalities in X-rays and MRI scans for doctors to review. Retailers monitor empty shelves. Amazon's cashier-less stores track what customers pick up. Manufacturing plants inspect products for defects faster and more consistently than humans.</p>
-<p>The limits matter. Computer vision is reliable for images that resemble its training data. Unusual angles, poor lighting, or object types it hasn't seen cause failures. It's computationally expensive. And it's brittle in a specific way: adversarial examples - images with tiny deliberate modifications invisible to humans - can completely fool these systems while appearing unchanged to us.</p>
+<p>The limits matter. Computer vision is reliable for images that resemble its training data. Unusual angles, poor lighting, or object types it hasn't seen cause failures. It's computationally expensive. And it's brittle in a specific way: adversarial examples - images with tiny deliberate modifications invisible to humans - can completely fool these systems while appearing unchanged to us. This is one of several limitations explored in <a href="/course/ml-deep-learning-neural-networks">ML and deep learning</a>.</p>
 </section>
 <section id="edge-ai">
 <h2>Edge AI</h2>
-<p>Edge AI means running AI on devices rather than in the cloud. Instead of sending data to a server, the device handles processing locally.</p>
+<p>Edge AI means running AI on devices rather than in the cloud. Instead of sending data to a server, the device handles processing locally. Getting AI onto devices efficiently requires understanding <a href="/course/prompt-engineering-ai-agents">agent architectures</a> as well as model compression.</p>
 <p>It gets less attention than NLP or computer vision but it's increasingly relevant for real applications.</p>
 <p>Cloud processing has real costs and risks. You have to transmit data somewhere. You're dependent on connectivity. You pay for bandwidth. If the internet goes down, the system stops. Edge AI cuts these dependencies.</p>
 <p>The face recognition that unlocks your phone is edge AI - your face isn't sent to Apple's servers. Fitness watches that detect walking or running analyse motion data on the device itself. Industrial sensors spot equipment faults locally without uploading all sensor data to the cloud. Hearing aids filter background noise in real-time using on-board processing.</p>
@@ -225,7 +225,7 @@
 </section>
 <section id="impact">
 <h2>Which Subfield Will Have the Most Impact?</h2>
-<p>NLP gets the most attention. Computer vision is already embedded in real systems at scale. But edge AI is the one worth watching.</p>
+<p>NLP gets the most attention. Computer vision is already embedded in real systems at scale. But edge AI is the one worth watching. For a broader picture of what's available today, the <a href="/course/ai-tools-platforms-2026">AI tools and platforms</a> lesson covers the major players across all subfields.</p>
 <p>NLP's primary impact so far is cultural - writing, chatbots, search. Computer vision is industrial and deployed in healthcare, manufacturing, and retail. Edge AI, once the hardware and efficiency problems are solved, puts AI capabilities into every phone, watch, car, and industrial sensor on earth - without cloud dependency.</p>
 <p>That's a different order of magnitude. Right now, edge AI is the bottleneck. The models are improving but still too large for most devices. Once that's cracked, you get persistent, local intelligence everywhere. That matters more than whether the latest chatbot can hold a better conversation.</p>
 </section>
