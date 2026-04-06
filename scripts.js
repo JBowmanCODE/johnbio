@@ -13,7 +13,7 @@ function loadHeaderAndFooter() {
         headerPlaceholder.innerHTML = cachedHeader;
         initializeHeader();
     } else {
-        fetch('/header.html')
+        fetch('/header.html?v=2')
             .then(response => {
                 if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
                 return response.text();
@@ -34,7 +34,7 @@ function loadHeaderAndFooter() {
         footerPlaceholder.innerHTML = cachedFooter;
         initializeFooter();
     } else {
-        fetch('/footer.html')
+        fetch('/footer.html?v=2')
             .then(response => {
                 if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
                 return response.text();
