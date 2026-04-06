@@ -21,7 +21,7 @@ jobs:
           port: 21
           local-dir: ./
           server-dir: /
-          state-name: sync-3
+          state-name: sync-4
           exclude: |
             **/.git*
             **/.git*/**
