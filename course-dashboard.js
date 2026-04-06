@@ -112,7 +112,45 @@ async function loadDashboard(user) {
   }
 
   const hasCert = data.certificateIssued || (bestExam && bestExam.passed);
-  document.getElementById('statCert').textContent = hasCert ? 'Available' : 'Locked';
+
+  // 4th stat card: cert if earned, otherwise a rotating motivational nudge
+  const motiveStat = document.getElementById('cdMotiveStat');
+  const statCertEl = document.getElementById('statCert');
+  const statCertLabel = document.getElementById('statCertLabel');
+  if (hasCert) {
+    if (motiveStat) {
+      motiveStat.classList.add('cert-available');
+      motiveStat.querySelector('.material-symbols-outlined').textContent = 'workspace_premium';
+    }
+    if (statCertEl) statCertEl.textContent = 'Available';
+    if (statCertLabel) statCertLabel.textContent = 'Certificate';
+  } else {
+    const nudges = [
+      'Stay consistent — even one lesson a day adds up.',
+      'Knowledge builds on itself. Every lesson counts.',
+      'Consistent beats fast — keep showing up.',
+      'You\'re building a skill most people only talk about.',
+      'One lesson closer than yesterday.',
+      'AI isn\'t magic — and you\'re proving that by learning it.',
+      'Progress is progress, however small.',
+    ];
+    const nudge = nudges[Math.floor(Math.random() * nudges.length)];
+    if (statCertEl) statCertEl.textContent = nudge;
+    if (statCertLabel) statCertLabel.textContent = '';
+  }
+
+  // Dynamic motivational copy based on progress
+  const motivateEl = document.getElementById('cdMotivate');
+  if (motivateEl) {
+    let msg = '';
+    if (pct === 0)       msg = 'Pick a lesson below to get started.';
+    else if (pct < 25)   msg = 'Good start — keep the momentum going.';
+    else if (pct < 50)   msg = 'Solid progress — you\'re building real foundations.';
+    else if (pct < 75)   msg = 'You\'re halfway there — the advanced content is next.';
+    else if (pct < 100)  msg = 'Almost done — the final exam is within reach.';
+    else                 msg = 'Course complete — time to take the final exam.';
+    motivateEl.textContent = msg;
+  }
 
   // CTA row
   renderCta(progress, bestExam, hasCert);
@@ -146,8 +184,15 @@ function renderCta(progress, bestExam, hasCert) {
   if (nextLesson) {
     const btn = document.createElement('a');
     btn.href = nextLesson.slug ? `/course/${nextLesson.slug}` : `/course?u=${nextLesson.id.split('-')[0]}&l=${nextLesson.id.split('-')[1]}`;
-    btn.className = 'cd-btn cd-btn-primary';
-    btn.innerHTML = `<span class="material-symbols-outlined">play_arrow</span> ${nextLesson.id === '1-1' ? 'Start course' : 'Continue'}`;
+    btn.className = 'cd-btn cd-btn-primary cd-btn-continue';
+    const isFirst = nextLesson.id === '1-1';
+    const shortTitle = nextLesson.title.replace(/\s+[—–]\s+.*$/, '');
+    btn.innerHTML = `
+      <span class="material-symbols-outlined">play_arrow</span>
+      <span class="cd-btn-continue-inner">
+        <span class="cd-btn-continue-label">${isFirst ? 'Start course' : 'Continue'}</span>
+        <span class="cd-btn-continue-sub">${shortTitle}</span>
+      </span>`;
     row.appendChild(btn);
   }
 
