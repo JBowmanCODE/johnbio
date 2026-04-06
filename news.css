@@ -929,6 +929,18 @@ main.na-wrap {
 
 .na-podcast-controls { display: flex; flex-direction: column; gap: 0.75rem; }
 
+.na-pod-wave {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  display: block;
+  opacity: 0.85;
+}
+
+@media (max-width: 480px) {
+  .na-pod-wave { display: none; }
+}
+
 .na-podcast-progress-wrap {
   display: flex;
   align-items: center;
