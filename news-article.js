@@ -198,14 +198,7 @@
   // ── Podcast player ──────────────────────────────────────────────
   const podAudio = document.getElementById('na-podcast-audio');
   if (podAudio) {
-    // data-src: deferred load (avoids blocking page load for large audio files)
     const podSrc = podAudio.getAttribute('data-src');
-    if (podSrc) {
-      setTimeout(() => {
-        podAudio.src = podSrc;
-        podAudio.load();
-      }, 2000);
-    }
 
     const playBtn  = document.getElementById('na-pod-play');
     const playIco  = document.getElementById('na-pod-play-icon');
@@ -217,6 +210,16 @@
     const muteBtn  = document.getElementById('na-pod-mute');
     const muteIco  = document.getElementById('na-pod-mute-icon');
     const volSldr  = document.getElementById('na-pod-vol');
+
+    let podLoaded = false;
+
+    function loadPodAudio() {
+      if (!podLoaded && podSrc) {
+        podAudio.src = podSrc;
+        podAudio.load();
+        podLoaded = true;
+      }
+    }
 
     function fmt(s) {
       const m = Math.floor(s / 60);
@@ -238,7 +241,8 @@
 
     if (playBtn) {
       playBtn.addEventListener('click', () => {
-        if (!podAudio.src) return;
+        if (!podSrc) return;
+        loadPodAudio();
         if (podAudio.paused) { podAudio.play(); if (playIco) playIco.textContent = 'pause'; }
         else { podAudio.pause(); if (playIco) playIco.textContent = 'play_arrow'; }
       });
