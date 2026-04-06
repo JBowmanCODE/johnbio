@@ -8,8 +8,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Always commit and push after making changes unless told otherwise.
 
-**After every push:** Check `https://github.com/JBowmanCODE/johnbio/actions` to confirm the latest workflow run succeeded before telling John the site is ready to test. If the run failed, diagnose and fix before reporting back.
-
 **Audio files (mp3/m4a):** Both `.mp3` and `.m4a` files are excluded from FTP deploy (`**/*.mp3` and `**/*.m4a` in exclude list). Always remind John to upload audio files directly via Namecheap cPanel File Manager to the correct folder (`public_html/course/` or `public_html/news/`). Never commit large audio files expecting them to auto-deploy — they will timeout the FTP connection and break all subsequent deploys.
 
 ## Architecture

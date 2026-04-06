@@ -30,6 +30,13 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ $1.html [L]
 
+# Enable range requests for audio files (allows browser to stream/seek)
+<IfModule mod_headers.c>
+    <FilesMatch "\.(mp3|m4a|mp4|ogg|wav)$">
+        Header set Accept-Ranges bytes
+    </FilesMatch>
+</IfModule>
+
 # Handle font files caching
 <IfModule mod_headers.c>
     <FilesMatch "\.(ttf|otf|eot|woff|woff2)$">
