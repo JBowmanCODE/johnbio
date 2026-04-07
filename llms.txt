@@ -44,6 +44,7 @@
 
 - [AI & Machine Learning Course](https://johnb.io/course): Free AI and machine learning course with certificate. 9 units and 35 lessons covering AI fundamentals, deep learning, NLP, MLOps and business strategy. No login required to browse.
 - [Final Exam](https://johnb.io/exam): 30-question randomised exam drawn from a 60-question bank covering all 9 units.
+- [Certificate Verification](https://johnb.io/verify): Public page to verify AI & Machine Learning Course certificates issued by JohnB.io. URL format: johnb.io/verify/JB-2026-XXXXXX
 
 ### Unit 1 — Introduction to AI
 - [What Is AI? History, Definitions and the Turing Test](https://johnb.io/course/what-is-ai): Covers AI history from the 1950s, Alan Turing's 1950 test, AI winters, and why modern AI is pattern matching at scale.
