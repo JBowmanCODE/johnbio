@@ -58,6 +58,16 @@ onAuthStateChanged(auth, async (user) => {
   renderCertificate(name, dateStr, scoreStr, certId);
 });
 
+/* ----- Generate a random unguessable cert ID ----- */
+function generateCertId() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no O/0/I/1 to avoid confusion
+  let suffix = '';
+  const array = new Uint8Array(6);
+  crypto.getRandomValues(array);
+  array.forEach(b => suffix += chars[b % chars.length]);
+  return `JB-2026-${suffix}`;
+}
+
 /* ----- Assign a unique cert ID via Firestore transaction ----- */
 async function assignCertId(uid, name, result) {
   const counterRef = doc(db, 'meta', 'certCounter');
@@ -66,10 +76,9 @@ async function assignCertId(uid, name, result) {
 
   await runTransaction(db, async (tx) => {
     const counterSnap = await tx.get(counterRef);
-    // Default to 373 so first cert issued is JB-2026-000374
-    const count = counterSnap.exists() ? counterSnap.data().count : 373;
+    const count = counterSnap.exists() ? counterSnap.data().count : 374;
     const next = count + 1;
-    certId = `JB-2026-${String(next).padStart(6, '0')}`;
+    certId = generateCertId(); // random, unguessable
 
     tx.set(counterRef, { count: next }, { merge: true });
     tx.set(userRef, { certId }, { merge: true });
