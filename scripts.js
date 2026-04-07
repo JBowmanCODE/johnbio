@@ -16,7 +16,7 @@ function loadHeaderAndFooter() {
         headerPlaceholder.innerHTML = cachedHeader;
         initializeHeader();
     } else {
-        fetch('/header.html?v=4')
+        fetch('/header.html', { cache: 'no-store' })
             .then(response => {
                 if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
                 return response.text();
@@ -37,7 +37,7 @@ function loadHeaderAndFooter() {
         footerPlaceholder.innerHTML = cachedFooter;
         initializeFooter();
     } else {
-        fetch('/footer.html?v=3')
+        fetch('/footer.html', { cache: 'no-store' })
             .then(response => {
                 if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
                 return response.text();
