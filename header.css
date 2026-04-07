@@ -56,6 +56,17 @@ header nav {
 .icon-btn:hover { color: var(--primary); }
 a.icon-btn { text-decoration: none; }
 
+.nav-course-link {
+  display: flex; align-items: center; gap: 0.35rem;
+  color: rgba(248,245,253,0.8); text-decoration: none;
+  font-size: 0.875rem; font-weight: 500;
+  padding: 0.4rem 0.75rem; border-radius: 0.5rem;
+  border: 1px solid rgba(255,0,127,0.35);
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-course-link .material-symbols-outlined { font-size: 1.1rem; }
+.nav-course-link:hover { color: var(--primary); border-color: var(--primary); }
+
 .btn-primary {
   background: linear-gradient(135deg, var(--primary), var(--primary-container));
   color: var(--on-primary); border: none; cursor: pointer;
@@ -185,7 +196,8 @@ a.icon-btn { text-decoration: none; }
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-right .icon-btn,
-  .nav-right .btn-primary { display: none; }
+  .nav-right .btn-primary,
+  .nav-right .nav-course-link { display: none; }
   .hamburger-btn { display: flex; }
 }
 
