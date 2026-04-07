@@ -3,7 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Certificate - AI &amp; Machine Learning Course - JohnB.io</title>
+  <title>Verify Certificate - AI &amp; Machine Learning Course - JohnB.io</title>
+  <meta name="description" content="Verify an AI & Machine Learning Course certificate issued by JohnB.io.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/verify">
+  <meta property="og:title" content="Verify Certificate - JohnB.io">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/verify">
+  <meta property="og:description" content="Verify an AI & Machine Learning Course certificate issued by JohnB.io.">
+  <meta property="og:image" content="https://johnb.io/images/og-image.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Verify Certificate - JohnB.io">
+  <meta name="twitter:description" content="Verify an AI & Machine Learning Course certificate issued by JohnB.io.">
+  <meta name="twitter:image" content="https://johnb.io/images/og-image.webp">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -13,7 +25,6 @@
   </script>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" href="/favicon.png">
-  <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@300;400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
@@ -22,7 +33,6 @@
   <link rel="stylesheet" href="/header.css?v=2">
   <link rel="stylesheet" href="/footer.css?v=2">
   <link rel="stylesheet" href="/certificate.css?v=2">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
 </head>
 <body>
   <div id="header-placeholder"></div>
@@ -31,18 +41,16 @@
     <div class="cert-loading" id="certLoading">
       <div class="cert-spinner"></div>
     </div>
-    <div class="cert-locked hidden" id="certLocked">
-      <span class="material-symbols-outlined">lock</span>
-      <h2>Certificate not yet available</h2>
-      <p>Complete all 35 lessons and pass the final exam to unlock your certificate.</p>
-      <a href="/exam" class="cert-action-btn">Take the exam</a>
+    <div class="cert-not-found hidden" id="certNotFound">
+      <span class="material-symbols-outlined">search_off</span>
+      <h2>Certificate not found</h2>
+      <p>This certificate ID does not exist or has been removed.</p>
     </div>
   </main>
 
   <div id="footer-placeholder"></div>
 
   <script src="/scripts.js?v=2" defer></script>
-  <script src="/course-data.js"></script>
-  <script type="module" src="/certificate.js?v=2"></script>
+  <script type="module" src="/verify.js?v=1"></script>
 </body>
 </html>

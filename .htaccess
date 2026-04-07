@@ -25,6 +25,9 @@ RewriteRule ^news/?$ news/index.html [L]
 # Serve course directory index directly (bypass Passenger)
 RewriteRule ^course/?$ course/index.html [L]
 
+# Route /verify/{certId} to verify.html (public certificate verification)
+RewriteRule ^verify/[A-Z0-9-]+$ /verify.html [L]
+
 # Handle HTML file extensions
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

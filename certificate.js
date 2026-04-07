@@ -1,10 +1,14 @@
 /* ================================================
    certificate.js — Certificate page logic
+   Assigns unique cert IDs (JB-2026-XXXXXX) via Firestore transaction
+   Renders dark certificate matching PDF template
    ================================================ */
 
 import { auth, db } from '/firebase-init.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
-import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+import {
+  doc, getDoc, runTransaction, setDoc
+} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
@@ -24,97 +28,213 @@ onAuthStateChanged(auth, async (user) => {
     return;
   }
 
-  // Best result
+  // Use best passing score
   const best = passed.reduce((b, r) => r.score > b.score ? r : b, passed[0]);
   const name = data.name || user.displayName || user.email.split('@')[0];
-  const date = new Date(best.date);
-  const dateStr = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 
-  renderCertificate(name, best, dateStr);
+  // Get or assign cert ID
+  let certId = data.certId;
+  if (!certId) {
+    certId = await assignCertId(user.uid, name, best);
+  }
+
+  const date = new Date(best.date);
+  const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  const scoreStr = Math.round(best.score / 30 * 100) + '%';
+
+  renderCertificate(name, dateStr, scoreStr, certId);
 });
 
-function gradeStyle(grade) {
-  const map = {
-    'A': { bg: 'rgba(74,222,128,0.12)', border: 'rgba(74,222,128,0.3)', color: '#4ade80', label: 'Grade A — Distinction' },
-    'B': { bg: 'rgba(96,165,250,0.12)', border: 'rgba(96,165,250,0.3)', color: '#60a5fa', label: 'Grade B — Merit' },
-    'C': { bg: 'rgba(250,204,21,0.12)', border: 'rgba(250,204,21,0.3)', color: '#ca8a04', label: 'Grade C — Pass' }
-  };
-  return map[grade] || map['C'];
+/* ----- Assign a unique cert ID via Firestore transaction ----- */
+async function assignCertId(uid, name, result) {
+  const counterRef = doc(db, 'meta', 'certCounter');
+  const userRef = doc(db, 'users', uid);
+  let certId;
+
+  await runTransaction(db, async (tx) => {
+    const counterSnap = await tx.get(counterRef);
+    // Default to 373 so first cert issued is JB-2026-000374
+    const count = counterSnap.exists() ? counterSnap.data().count : 373;
+    const next = count + 1;
+    certId = `JB-2026-${String(next).padStart(6, '0')}`;
+
+    tx.set(counterRef, { count: next }, { merge: true });
+    tx.set(userRef, { certId }, { merge: true });
+    // Public certificate document (readable without auth)
+    tx.set(doc(db, 'certificates', certId), {
+      name,
+      score: result.score,
+      grade: result.grade,
+      date: result.date,
+      certId,
+      issuedAt: new Date().toISOString()
+    });
+  });
+
+  return certId;
 }
 
-function renderCertificate(name, result, dateStr) {
-  const gs = gradeStyle(result.grade);
+/* ----- Render the certificate ----- */
+function renderCertificate(name, dateStr, scoreStr, certId) {
   const wrap = document.getElementById('certWrap');
+  const verifyUrl = `johnb.io/verify/${certId}`;
 
-  const certHTML = `
+  wrap.innerHTML = `
     <div class="cert-actions">
       <div class="cert-actions-left">
-        <button class="cert-btn cert-btn-print" onclick="window.print()">
-          <span class="material-symbols-outlined">print</span>
-          Print / Save as PDF
+        <button class="cert-btn cert-btn-download" id="certDownload">
+          <span class="material-symbols-outlined">download</span>
+          Download image
         </button>
         <a href="/course" class="cert-btn cert-btn-dash">
           <span class="material-symbols-outlined">arrow_back</span>
           Dashboard
         </a>
       </div>
+      <div>
+        <button class="cert-btn cert-btn-share" id="certShare">
+          <span class="material-symbols-outlined">share</span>
+          Share
+        </button>
+      </div>
     </div>
 
+    ${buildCertDoc(name, dateStr, scoreStr, certId, verifyUrl)}
+  `;
+
+  document.getElementById('certDownload').addEventListener('click', downloadCert);
+  document.getElementById('certShare').addEventListener('click', () => shareCert(certId));
+}
+
+/* ----- Certificate HTML (shared with verify page) ----- */
+function buildCertDoc(name, dateStr, scoreStr, certId, verifyUrl) {
+  return `
     <div class="cert-doc" id="certDoc">
-      <div class="cert-corner tl"></div>
-      <div class="cert-corner tr"></div>
-      <div class="cert-corner bl"></div>
-      <div class="cert-corner br"></div>
+      <div class="cert-glow"></div>
+      <div class="cert-border-left"></div>
+      <div class="cert-border-right"></div>
 
       <div class="cert-doc-inner">
-        <div class="cert-logo">
-          <span class="cert-logo-dot"></span>
-          JohnB.io
+
+        <div class="cert-top">
+          <div class="cert-logo-mark">JOHNB.IO</div>
+          <div class="cert-site-sub">AI &amp; Machine Learning Education</div>
         </div>
 
-        <p class="cert-heading">Certificate of Completion</p>
-        <div class="cert-divider"></div>
+        <div class="cert-rule cert-top-rule"></div>
 
-        <p class="cert-presents">This certifies that</p>
-
-        <h1 class="cert-name">${escapeHtml(name)}</h1>
-
-        <p class="cert-has-completed">has successfully completed</p>
-
-        <h2 class="cert-course-title">Introduction to Artificial Intelligence</h2>
-
-        <div class="cert-grade-badge" style="background:${gs.bg};border:1px solid ${gs.border};color:${gs.color}">
-          <span class="material-symbols-outlined" style="font-size:1rem">workspace_premium</span>
-          ${gs.label}
+        <div class="cert-heading-row">
+          <div class="cert-dash"></div>
+          <div class="cert-heading-text">CERTIFICATE OF COMPLETION</div>
+          <div class="cert-dash"></div>
         </div>
 
-        <div class="cert-meta">
-          <div class="cert-meta-item">
-            <span class="cert-meta-label">Score</span>
-            <span class="cert-meta-value">${result.score}/30 (${Math.round(result.score/30*100)}%)</span>
+        <p class="cert-certifies">This certifies that</p>
+
+        <div class="cert-name-wrap">
+          <h1 class="cert-name">${escapeHtml(name)}</h1>
+        </div>
+
+        <p class="cert-completed-text">has successfully completed all 35 lessons and passed the final exam of</p>
+
+        <h2 class="cert-course-title">AI &amp; MACHINE LEARNING COURSE</h2>
+
+        <p class="cert-course-meta">35 lessons &middot; 9 units &middot; AI fundamentals through to deployment &amp; ethics &middot; 15+ Hours of AI</p>
+
+        <div class="cert-rule-dot">
+          <div class="cert-rule"></div>
+          <div class="cert-dot"></div>
+          <div class="cert-rule"></div>
+        </div>
+
+        <div class="cert-stats">
+          <div class="cert-stat-box">
+            <div class="cert-stat-label">Date of Completion</div>
+            <div class="cert-stat-value">${dateStr}</div>
           </div>
-          <div class="cert-meta-item">
-            <span class="cert-meta-label">Date issued</span>
-            <span class="cert-meta-value">${dateStr}</span>
+          <div class="cert-stat-box">
+            <div class="cert-stat-label">Hours Completed</div>
+            <div class="cert-stat-value">15 Hours</div>
           </div>
-          <div class="cert-meta-item">
-            <span class="cert-meta-label">Issued by</span>
-            <span class="cert-meta-value">JohnB.io</span>
+          <div class="cert-stat-box">
+            <div class="cert-stat-label">Exam Score</div>
+            <div class="cert-stat-value">${scoreStr}</div>
+          </div>
+          <div class="cert-stat-box">
+            <div class="cert-stat-label">Certificate ID</div>
+            <div class="cert-stat-value">${certId}</div>
           </div>
         </div>
 
-        <div class="cert-seal">
-          <span class="material-symbols-outlined">verified</span>
+        <div class="cert-rule-dot">
+          <div class="cert-rule"></div>
+          <div class="cert-dot"></div>
+          <div class="cert-rule"></div>
         </div>
 
-        <p class="cert-footer-text">johnb.io — AI Course</p>
+        <div class="cert-footer">
+          <div class="cert-sig-block">
+            <div class="cert-signature">J Bowman</div>
+            <div class="cert-sig-label">J Bowman &middot; <strong>Instructor, JohnB.io</strong></div>
+          </div>
+          <div class="cert-verify-block">
+            <a class="cert-verify-btn" href="/verify/${certId}" target="_blank">${verifyUrl}</a>
+            <div class="cert-verify-sub">Verify certificate at johnb.io</div>
+          </div>
+        </div>
+
       </div>
     </div>
   `;
+}
 
-  wrap.innerHTML = certHTML;
+/* ----- Download as PNG ----- */
+async function downloadCert() {
+  const btn = document.getElementById('certDownload');
+  btn.innerHTML = '<span class="material-symbols-outlined">hourglass_empty</span> Generating...';
+  btn.disabled = true;
+
+  try {
+    const el = document.getElementById('certDoc');
+    const canvas = await html2canvas(el, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#0c0c14',
+      logging: false
+    });
+    const link = document.createElement('a');
+    link.download = 'johnb-io-certificate.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  } catch (e) {
+    console.error('Certificate download failed:', e);
+    alert('Download failed - try using Print / Save as PDF instead.');
+  }
+
+  btn.innerHTML = '<span class="material-symbols-outlined">download</span> Download image';
+  btn.disabled = false;
+}
+
+/* ----- Share / copy link ----- */
+function shareCert(certId) {
+  const url = `https://johnb.io/verify/${certId}`;
+  if (navigator.share) {
+    navigator.share({
+      title: 'My AI & Machine Learning Certificate - JohnB.io',
+      text: 'I completed the AI & Machine Learning Course at JohnB.io.',
+      url
+    });
+  } else {
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.getElementById('certShare');
+      btn.innerHTML = '<span class="material-symbols-outlined">check</span> Link copied!';
+      setTimeout(() => {
+        btn.innerHTML = '<span class="material-symbols-outlined">share</span> Share';
+      }, 2500);
+    });
+  }
 }
 
 function escapeHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
