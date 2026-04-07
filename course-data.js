@@ -7,7 +7,7 @@ const COURSE_UNITS = [
   {
     id: 1,
     title: "Introduction to Artificial Intelligence",
-    desc: "Cover the fundamental concepts behind modern AI — from the Turing Test to narrow, general, and super-intelligent systems.",
+    desc: "Cover the fundamental concepts behind modern AI, from the Turing Test to narrow, general, and super-intelligent systems.",
     img: "what-is-ai.webp",
     lessons: [
       {

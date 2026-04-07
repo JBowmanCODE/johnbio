@@ -144,7 +144,7 @@ async function loadDashboard(user) {
   if (motivateEl) {
     let msg = '';
     if (pct === 0)       msg = 'Pick a lesson below to get started.';
-    else if (pct < 25)   msg = 'Good start — keep the momentum going.';
+    else if (pct < 25)   msg = 'Good start, keep the momentum going.';
     else if (pct < 50)   msg = 'Solid progress — you\'re building real foundations.';
     else if (pct < 75)   msg = 'You\'re halfway there — the advanced content is next.';
     else if (pct < 100)  msg = 'Almost done — the final exam is within reach.';

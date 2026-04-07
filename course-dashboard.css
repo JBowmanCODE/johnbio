@@ -192,7 +192,8 @@
 }
 .cd-right-label {
   font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.1em; color: #ff007f; margin: 0;
+  letter-spacing: 0.1em; color: #ff007f; margin: 0 0 0.25rem;
+  align-self: flex-start;
 }
 
 /* Progress ring card */
@@ -666,7 +667,6 @@
     gap: 0.875rem;
     align-items: start;
   }
-  .cd-right-label { grid-column: 1 / -1; }
   .cd-right-ring-card { flex-direction: row; text-align: left; }
 }
 @media (max-width: 768px) {
