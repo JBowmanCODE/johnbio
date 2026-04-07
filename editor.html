@@ -39,7 +39,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" integrity="sha512-Qlv6VSKh1gDKGoJbnyA5RMXYcvnpIqhO++MhIM2fStMcGT9i2T//tSwYFlcyoRRDcDZ+TYHpH8azBBCyhpSeqw==" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/styles.css?v=2">
-    <link rel="stylesheet" href="/header.css?v=3">
+    <link rel="stylesheet" href="/header.css?v=4">
     <link rel="stylesheet" href="/footer.css?v=2">
     <link rel="stylesheet" href="/editor.css">
   <script type="application/ld+json">
@@ -55,6 +55,39 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
     "author": { "@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/" },
     "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does the AI Copyeditor actually change in my text?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It corrects grammar and spelling, improves sentence clarity, adjusts tone to match your chosen writing style, and restructures awkward phrasing. It does not fact-check or add new information. The output is your article improved, not rewritten from scratch." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which AI model does this tool use?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The tool uses Claude Haiku by Anthropic - specifically the claude-haiku-4-5 model. Anthropic is an AI safety company and Claude is their primary language model family, designed to follow detailed instructions reliably." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my text stored or used to train the AI?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Your text is sent to Anthropic's API to process your request and is not retained or used for training. JohnB.io does not log or store the content you submit." }
+      },
+      {
+        "@type": "Question",
+        "name": "What file types can I upload?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The tool accepts .txt, .doc and .docx files. Word documents (.docx) are recommended for best formatting fidelity. The text content of your document is extracted on upload - embedded images and tables are not processed." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will the edited article pass AI detection tools?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Not reliably. If the AI rewrites significant portions of your text, those sections may be flagged by detectors such as GPTZero or Originality.ai. Review the output and rewrite anything that does not sound like you before publishing." }
+      }
+    ]
   }
   </script>
 </head>
