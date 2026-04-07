@@ -294,6 +294,83 @@
 }
 .cert-not-found p { font-size: 0.9rem; color: rgba(255,255,255,0.35); margin: 0; }
 
+/* ---- LinkedIn guide ---- */
+.cert-linkedin {
+  margin-top: 2.5rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.cert-linkedin-inner {
+  padding: 1.75rem 2rem;
+}
+.cert-linkedin-header {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.cert-linkedin-icon { width: 24px; height: 24px; flex-shrink: 0; }
+.cert-linkedin-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0;
+}
+.cert-linkedin-sub {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.875rem; color: rgba(255,255,255,0.5);
+  margin: 0 0 1.5rem; line-height: 1.5;
+}
+.cert-linkedin-sub strong { color: rgba(255,255,255,0.75); }
+
+.cert-li-steps {
+  list-style: none; margin: 0; padding: 0;
+  counter-reset: li-counter;
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.cert-li-steps li {
+  counter-increment: li-counter;
+  display: grid; grid-template-columns: 180px 1fr;
+  align-items: center; gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+}
+.cert-li-steps li::before {
+  display: none;
+}
+.cert-li-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #ff007f;
+}
+.cert-li-value-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.cert-li-value {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.875rem; color: rgba(255,255,255,0.85);
+  font-weight: 500; word-break: break-all;
+}
+.cert-li-copy {
+  flex-shrink: 0;
+  padding: 0.25rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255,0,127,0.4);
+  background: rgba(255,0,127,0.08);
+  color: #ff007f;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem; font-weight: 600; cursor: pointer;
+  transition: background 0.15s;
+}
+.cert-li-copy:hover { background: rgba(255,0,127,0.18); }
+
+@media (max-width: 600px) {
+  .cert-linkedin-inner { padding: 1.25rem; }
+  .cert-li-steps li { grid-template-columns: 1fr; gap: 0.4rem; }
+  .cert-li-value-row { flex-wrap: wrap; }
+}
+
 /* ---- Print styles ---- */
 @media print {
   body > *:not(main) { display: none !important; }
