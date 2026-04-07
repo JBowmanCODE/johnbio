@@ -121,6 +121,7 @@ a.btn-primary:focus-visible,
 
 .nav-dropdown-toggle {
   display: flex; align-items: center; gap: 0.2rem;
+  background: none; border: none;
   color: rgba(248,245,253,0.6);
   text-decoration: none; padding: 0.4rem 0.75rem;
   border-radius: 0.5rem; cursor: pointer;
