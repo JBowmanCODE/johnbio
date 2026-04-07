@@ -171,12 +171,12 @@
 /* Motivate text */
 .cd-motivate {
   font-size: 0.8125rem; color: rgba(255,0,127,0.75);
-  font-style: italic; margin: 0 0 1.25rem;
-  min-height: 1.2em;
+  font-style: italic; margin: 0;
+  min-height: 1.2em; text-align: right; align-self: center;
 }
 
 /* Modules header */
-.cd-modules-header { margin-bottom: 1rem; }
+.cd-modules-header { margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .cd-modules-title {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1.0625rem; font-weight: 700; color: #fff; margin: 0 0 0.2rem;
