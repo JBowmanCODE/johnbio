@@ -1,3 +1,21 @@
+/* ── Skip navigation ── */
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  background: var(--primary);
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.15s;
+}
+.skip-nav:focus { top: 0; outline: none; }
+
 header {
   position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
   background: rgba(14,14,19,0.7);
@@ -79,6 +97,24 @@ a.icon-btn { text-decoration: none; }
 }
 .btn-primary:hover { transform: scale(1.03); box-shadow: 0 0 30px rgba(255,0,127,0.4); }
 .btn-primary:active { transform: scale(0.97); }
+a.btn-primary { display: inline-flex; align-items: center; text-decoration: none; }
+
+/* ── Focus visible styles (keyboard navigation) ── */
+.logo:focus-visible,
+.nav-dropdown-toggle:focus-visible,
+.nav-dropdown-menu li a:focus-visible,
+.icon-btn:focus-visible,
+.nav-course-link:focus-visible,
+.btn-primary:focus-visible,
+a.btn-primary:focus-visible,
+.hamburger-btn:focus-visible,
+.mobile-drawer-link:focus-visible,
+.mobile-drawer-item:focus-visible,
+.mobile-drawer-close:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+*:focus:not(:focus-visible) { outline: none; }
 
 /* ── DROPDOWNS ── */
 .nav-dropdown { position: relative; }
@@ -95,22 +131,26 @@ a.icon-btn { text-decoration: none; }
   user-select: none;
 }
 .nav-dropdown-toggle .material-symbols-outlined { font-size: 1rem; transition: transform 0.25s; }
-.nav-dropdown:hover .nav-dropdown-toggle .material-symbols-outlined { transform: rotate(180deg); }
+.nav-dropdown:hover .nav-dropdown-toggle .material-symbols-outlined,
+.nav-dropdown:focus-within .nav-dropdown-toggle .material-symbols-outlined { transform: rotate(180deg); }
 
 /* Cyan — AI Tools */
-.nav-dropdown--cyan:hover .nav-dropdown-toggle { color: var(--secondary); background: rgba(0,238,252,0.08); }
+.nav-dropdown--cyan:hover .nav-dropdown-toggle,
+.nav-dropdown--cyan:focus-within .nav-dropdown-toggle { color: var(--secondary); background: rgba(0,238,252,0.08); }
 .nav-dropdown--cyan .nav-dropdown-menu { border-top-color: var(--secondary); border-color: rgba(0,238,252,0.25); box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 0 18px rgba(0,238,252,0.12); }
 .nav-dropdown--cyan .nav-dropdown-menu li a:hover { background: rgba(0,238,252,0.07); color: var(--secondary); border-left-color: var(--secondary); }
 .nav-dropdown--cyan .nav-dropdown-menu li a:hover .material-symbols-outlined { color: var(--secondary); }
 
 /* Pink — Python / JS */
-.nav-dropdown--pink:hover .nav-dropdown-toggle { color: var(--primary); background: rgba(255,0,127,0.08); }
+.nav-dropdown--pink:hover .nav-dropdown-toggle,
+.nav-dropdown--pink:focus-within .nav-dropdown-toggle { color: var(--primary); background: rgba(255,0,127,0.08); }
 .nav-dropdown--pink .nav-dropdown-menu { border-top-color: var(--primary); border-color: rgba(255,0,127,0.25); box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 0 18px rgba(255,0,127,0.12); }
 .nav-dropdown--pink .nav-dropdown-menu li a:hover { background: rgba(255,0,127,0.07); color: var(--primary); border-left-color: var(--primary); }
 .nav-dropdown--pink .nav-dropdown-menu li a:hover .material-symbols-outlined { color: var(--primary); }
 
 /* Green — Digital AI Tools */
-.nav-dropdown--green:hover .nav-dropdown-toggle { color: #22c55e; background: rgba(34,197,94,0.08); }
+.nav-dropdown--green:hover .nav-dropdown-toggle,
+.nav-dropdown--green:focus-within .nav-dropdown-toggle { color: #22c55e; background: rgba(34,197,94,0.08); }
 .nav-dropdown--green .nav-dropdown-menu { border-top-color: #22c55e; border-color: rgba(34,197,94,0.25); box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 0 18px rgba(34,197,94,0.12); }
 .nav-dropdown--green .nav-dropdown-menu li a:hover { background: rgba(34,197,94,0.07); color: #22c55e; border-left-color: #22c55e; }
 .nav-dropdown--green .nav-dropdown-menu li a:hover .material-symbols-outlined { color: #22c55e; }
@@ -135,7 +175,8 @@ a.icon-btn { text-decoration: none; }
   z-index: 200;
   box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 0 18px rgba(0,238,252,0.12);
 }
-.nav-dropdown:hover .nav-dropdown-menu {
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
   visibility: visible;
   opacity: 1;
   pointer-events: all;

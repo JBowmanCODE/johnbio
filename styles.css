@@ -19,6 +19,10 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Global focus visible — keyboard users only */
+:focus-visible { outline: 2px solid #FF007F; outline-offset: 2px; }
+:focus:not(:focus-visible) { outline: none; }
+
 body {
   background-color: var(--background);
   color: var(--on-surface);
