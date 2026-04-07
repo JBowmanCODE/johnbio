@@ -267,7 +267,7 @@ function renderLinkedInGuide(dateStr, certId) {
         <li>
           <span class="cert-li-label">Credential URL</span>
           <div class="cert-li-value-row">
-            <span class="cert-li-value">${verifyUrl}</span>
+            <a class="cert-li-value cert-li-link" href="${verifyUrl}" target="_blank" rel="noopener">${verifyUrl}</a>
             <button class="cert-li-copy" data-copy="${verifyUrl}">Copy</button>
           </div>
         </li>
@@ -279,6 +279,21 @@ function renderLinkedInGuide(dateStr, certId) {
           </div>
         </li>
       </ol>
+
+      <div class="cert-li-skills">
+        <div class="cert-li-skills-label">Suggested skills to add</div>
+        <div class="cert-li-skills-sub">Add these to the Skills section of the certification on LinkedIn</div>
+        <div class="cert-li-skills-grid">
+          ${[
+            'Artificial Intelligence', 'Machine Learning', 'Deep Learning',
+            'Natural Language Processing', 'Neural Networks', 'Python',
+            'TensorFlow', 'PyTorch', 'Scikit-learn', 'NumPy',
+            'Pandas', 'Prompt Engineering', 'MLOps', 'Generative AI',
+            'AI Ethics', 'Model Deployment', 'Reinforcement Learning',
+            'Computer Vision', 'Large Language Models', 'RAG'
+          ].map(s => `<span class="cert-li-skill">${s}</span>`).join('')}
+        </div>
+      </div>
     </div>
   `;
 
