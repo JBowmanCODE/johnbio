@@ -11,12 +11,12 @@ function loadHeaderAndFooter() {
     const footerPlaceholder = document.getElementById('footer-placeholder');
 
     // Load header (use sessionStorage cache to avoid flash on navigation)
-    const cachedHeader = sessionStorage.getItem('site-header-v3');
+    const cachedHeader = sessionStorage.getItem('site-header-v4');
     if (cachedHeader && headerPlaceholder) {
         headerPlaceholder.innerHTML = cachedHeader;
         initializeHeader();
     } else {
-        fetch('/header.html?v=3')
+        fetch('/header.html?v=4')
             .then(response => {
                 if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
                 return response.text();
@@ -24,7 +24,7 @@ function loadHeaderAndFooter() {
             .then(data => {
                 if (headerPlaceholder) {
                     headerPlaceholder.innerHTML = data;
-                    sessionStorage.setItem('site-header-v3', data);
+                    sessionStorage.setItem('site-header-v4', data);
                     initializeHeader();
                 }
             })

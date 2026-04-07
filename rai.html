@@ -23,7 +23,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
 <link rel="stylesheet" href="/styles.css?v=2">
-<link rel="stylesheet" href="/header.css?v=3">
+<link rel="stylesheet" href="/header.css?v=4">
 <link rel="stylesheet" href="/footer.css?v=2">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -860,6 +860,39 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
     "author": { "@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/" },
     "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does this tool use AI to generate the governance outputs?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. All outputs - risk tier classifications, system cards, checklists and registry entries - are generated directly from the information you enter. There is no AI model involved. This is a structured documentation tool, not a generative AI tool." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my data stored anywhere?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. The tool runs entirely in your browser. Nothing is stored on any server, and nothing persists after you close the tab. If you want to keep your work, export it using the download options in each panel before closing." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which regulatory frameworks does the tool reference?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The risk classification aligns with the EU AI Act. The framework also references the UK government's AI Safety Institute principles, the ICO's AI and data protection guidance, and the NIST AI Risk Management Framework. It is intended as a practical starting point - always verify compliance requirements with qualified legal or regulatory counsel." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a system card?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A system card (sometimes called a model card) is a structured document that records key facts about an AI system - its purpose, data sources, known risks, mitigations and human oversight arrangements. System cards are increasingly expected by regulators and enterprise procurement teams as part of responsible AI deployment." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this suitable for regulated industries?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The framework provides a solid foundation for AI governance in regulated industries including financial services, healthcare and the public sector. However, sector-specific requirements may go beyond what this tool covers. Use it as a starting point and engage your compliance or legal team for sector-specific obligations." }
+      }
+    ]
   }
   </script>
 </head>

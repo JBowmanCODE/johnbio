@@ -25,7 +25,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
   <link rel="stylesheet" href="/styles.css?v=2">
-  <link rel="stylesheet" href="/header.css?v=3">
+  <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
   <link rel="stylesheet" href="/lm-chat.css">
   <script type="application/ld+json">
@@ -41,6 +41,39 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
     "author": { "@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/" },
     "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which AI models are used?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The tool connects to three models: claude-sonnet-4 by Anthropic, gpt-4o-mini by OpenAI, and gemini-2.5-flash-lite by Google DeepMind. These are current production models as of March 2026." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are my messages stored?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Conversation history exists only in your browser for the current session and is cleared when you close the tab. Prompts are forwarded to each provider's API and are subject to their respective privacy policies. JohnB.io does not log or retain your messages." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why use GPT-4o-mini rather than GPT-4o?",
+        "acceptedAnswer": { "@type": "Answer", "text": "GPT-4o-mini is a cost-efficient model that performs well for most conversational and reasoning tasks, making it a practical choice for a free comparison tool. For tasks requiring maximum capability from OpenAI, GPT-4o or GPT-o1 would be more appropriate." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this to decide which model to use for my project?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes - this is one of the best use cases. Run your specific prompts through all three models and compare quality, speed and tone. Model performance varies by task type: coding, creative writing, factual Q&A and structured reasoning can produce noticeably different results across providers." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a usage limit?",
+        "acceptedAnswer": { "@type": "Answer", "text": "There is no hard limit on the tool itself, but the underlying APIs have rate limits managed at the Cloudflare Worker level. If you hit a limit, wait a moment and try again." }
+      }
+    ]
   }
   </script>
 </head>
