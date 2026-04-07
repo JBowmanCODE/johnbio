@@ -228,7 +228,7 @@ function renderLinkedInGuide(dateStr, certId) {
         </svg>
         <h3 class="cert-linkedin-title">Add to LinkedIn</h3>
       </div>
-      <p class="cert-linkedin-sub">Go to your LinkedIn profile, click <strong>Add profile section</strong> then <strong>Licenses &amp; certifications</strong>, and fill in:</p>
+      <p class="cert-linkedin-sub">Go to your <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener" class="cert-li-link">LinkedIn</a> profile, click <strong>Add profile section</strong> then <strong>Licenses &amp; certifications</strong>, and fill in:</p>
 
       <ol class="cert-li-steps">
         <li>
