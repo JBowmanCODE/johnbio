@@ -7,6 +7,8 @@ const COURSE_UNITS = [
   {
     id: 1,
     title: "Introduction to Artificial Intelligence",
+    desc: "Cover the fundamental concepts behind modern AI — from the Turing Test to narrow, general, and super-intelligent systems.",
+    img: "what-is-ai.webp",
     lessons: [
       {
         id: "1-1",
@@ -85,6 +87,8 @@ const COURSE_UNITS = [
   {
     id: 2,
     title: "The Modern AI Landscape",
+    desc: "Understand where AI stands today — generative models, LLMs, NLP, computer vision, and the 2026 AI market.",
+    img: "traditional-vs-generative-ai.webp",
     lessons: [
       {
         id: "2-1",
@@ -163,6 +167,8 @@ const COURSE_UNITS = [
   {
     id: 3,
     title: "Ethics, Governance & Responsible AI",
+    desc: "Explore the risks, failures, and governance frameworks shaping responsible AI development.",
+    img: "ai-failures-ethics.webp",
     lessons: [
       {
         id: "3-1",
@@ -223,6 +229,8 @@ const COURSE_UNITS = [
   {
     id: 4,
     title: "Python for AI",
+    desc: "Get up to speed with Python — the language, data structures, NumPy, and Pandas for AI work.",
+    img: "python-essentials-for-ai.webp",
     lessons: [
       {
         id: "4-1",
@@ -265,6 +273,8 @@ const COURSE_UNITS = [
   {
     id: 5,
     title: "Machine Learning",
+    desc: "Build your ML toolkit — regression, classification, model evaluation, and the key algorithms in use today.",
+    img: "linear-regression-gradient-descent.webp",
     lessons: [
       {
         id: "5-1",
@@ -343,6 +353,8 @@ const COURSE_UNITS = [
   {
     id: 6,
     title: "Deep Learning & Neural Networks",
+    desc: "Go deep — from biological neurons to CNNs, RNNs, and the transformer architecture powering modern LLMs.",
+    img: "biological-vs-artificial-neurons.webp",
     lessons: [
       {
         id: "6-1",
@@ -398,6 +410,8 @@ const COURSE_UNITS = [
   {
     id: 7,
     title: "Generative AI & Practical Applications",
+    desc: "Master generative AI — GANs, diffusion models, prompt engineering, RAG, and fine-tuning in practice.",
+    img: "generative-ai-models.webp",
     lessons: [
       {
         id: "7-1",
@@ -425,6 +439,8 @@ const COURSE_UNITS = [
   {
     id: 8,
     title: "AI in Production",
+    desc: "Take models to production — MLOps, deployment, monitoring, and CI/CD for machine learning pipelines.",
+    img: "intro-to-mlops.webp",
     lessons: [
       {
         id: "8-1",
@@ -459,6 +475,8 @@ const COURSE_UNITS = [
   {
     id: 9,
     title: "AI Strategy & Business Applications",
+    desc: "Apply AI at scale — adoption strategy, build vs. buy decisions, and cross-industry applications.",
+    img: "ai-adoption-journey.webp",
     lessons: [
       {
         id: "9-1",

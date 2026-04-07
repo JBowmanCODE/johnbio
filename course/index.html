@@ -11,8 +11,8 @@
     gtag('js', new Date());
     gtag('config', 'G-0J6PBWMRNY');
   </script>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon.png">
   <meta name="description" content="Free AI and machine learning course with certificate. 35 lessons across 9 units covering AI fundamentals, deep learning, NLP, MLOps and more.">
   <meta name="keywords" content="AI course, machine learning course, free AI course, AI for beginners, deep learning course, NLP course, MLOps">
   <meta name="robots" content="index, follow">
@@ -124,73 +124,105 @@
 
     <!-- Authenticated dashboard (hidden until auth confirmed) -->
     <div class="cd-content hidden" id="cdContent">
+      <div class="cd-layout">
 
-      <!-- Welcome header -->
-      <div class="cd-header">
-        <div class="cd-header-left">
-          <p class="cd-greeting" id="cdGreeting">Welcome back</p>
-          <h1 class="cd-name" id="cdName">Loading...</h1>
-          <p class="cd-tagline">AI &amp; Machine Learning Course — Track your progress below</p>
-          <p class="cd-motivate" id="cdMotivate"></p>
-        </div>
-        <div class="cd-header-right">
-          <div class="cd-progress-ring-wrap">
-            <svg class="cd-ring" viewBox="0 0 80 80" aria-hidden="true">
-              <circle class="cd-ring-bg" cx="40" cy="40" r="34"/>
-              <circle class="cd-ring-fill" id="cdRingFill" cx="40" cy="40" r="34"/>
-            </svg>
-            <div class="cd-ring-label">
-              <span class="cd-ring-pct" id="cdRingPct">0%</span>
-              <span class="cd-ring-sub">complete</span>
+        <!-- Left sidebar -->
+        <aside class="cd-sidebar">
+          <div class="cd-sidebar-top">
+            <p class="cd-sidebar-brand">AI &amp; Machine Learning</p>
+            <nav class="cd-sidebar-nav" aria-label="Course navigation">
+              <a class="cd-nav-item cd-nav-active" href="/course">
+                <span class="material-symbols-outlined">dashboard</span> Dashboard
+              </a>
+              <a class="cd-nav-item" href="#cdUnits">
+                <span class="material-symbols-outlined">menu_book</span> Curriculum
+              </a>
+              <a class="cd-nav-item" href="/exam">
+                <span class="material-symbols-outlined">quiz</span> Final Exam
+              </a>
+              <button class="cd-nav-item cd-nav-signout" id="cdSignOut">
+                <span class="material-symbols-outlined">logout</span> Logout
+              </button>
+            </nav>
+          </div>
+          <div class="cd-sidebar-user">
+            <div class="cd-sidebar-avatar" aria-hidden="true">JB</div>
+            <div class="cd-sidebar-userinfo">
+              <p class="cd-sidebar-name" id="cdName">Loading...</p>
+              <p class="cd-sidebar-greeting" id="cdGreeting">Welcome back</p>
             </div>
           </div>
-          <button class="cd-signout-btn" id="cdSignOut" aria-label="Sign out">
-            <span class="material-symbols-outlined">logout</span> Sign out
-          </button>
+        </aside>
+
+        <!-- Main content -->
+        <div class="cd-main">
+
+          <!-- Current unit hero card -->
+          <div class="cd-hero-card" id="cdHeroCard">
+            <!-- Populated by JS -->
+          </div>
+
+          <p class="cd-motivate" id="cdMotivate"></p>
+
+          <!-- Course modules -->
+          <section>
+            <div class="cd-modules-header">
+              <h2 class="cd-modules-title">Course Modules</h2>
+              <p class="cd-modules-sub">Navigate through 9 units of intensive learning</p>
+            </div>
+            <div class="cd-units" id="cdUnits">
+              <!-- Injected by JS -->
+            </div>
+          </section>
+
         </div>
+
+        <!-- Right sidebar -->
+        <aside class="cd-right">
+          <p class="cd-right-label">Course Stats</p>
+
+          <!-- Progress ring card -->
+          <div class="cd-right-ring-card">
+            <div class="cd-progress-ring-wrap">
+              <svg class="cd-ring" viewBox="0 0 80 80" aria-hidden="true">
+                <circle class="cd-ring-bg" cx="40" cy="40" r="34"/>
+                <circle class="cd-ring-fill" id="cdRingFill" cx="40" cy="40" r="34"/>
+              </svg>
+              <div class="cd-ring-label">
+                <span class="cd-ring-pct" id="cdRingPct">0%</span>
+                <span class="cd-ring-sub">overall</span>
+              </div>
+            </div>
+            <p class="cd-right-ring-title">Overall Progress</p>
+            <p class="cd-right-ring-sub" id="statLessons">0 / 35 lessons completed</p>
+          </div>
+
+          <!-- Mini stats -->
+          <div class="cd-right-mini-stats">
+            <div class="cd-right-mini-stat">
+              <strong id="statUnits">0 / 9</strong>
+              <span>Units</span>
+            </div>
+            <div class="cd-right-mini-stat">
+              <strong id="statExam">—</strong>
+              <span>Exam score</span>
+            </div>
+          </div>
+
+          <!-- CTA buttons -->
+          <div class="cd-cta-row" id="cdCtaRow"></div>
+
+          <!-- Cert / motivational nudge -->
+          <div class="cd-stat cd-stat--motivate" id="cdMotiveStat">
+            <span class="material-symbols-outlined">emoji_objects</span>
+            <div>
+              <strong id="statCert">—</strong>
+              <span id="statCertLabel"></span>
+            </div>
+          </div>
+        </aside>
+
       </div>
-
-      <!-- Stats bar -->
-      <div class="cd-stats">
-        <div class="cd-stat">
-          <span class="material-symbols-outlined">check_circle</span>
-          <div>
-            <strong id="statLessons">0 / 35</strong>
-            <span>Lessons done</span>
-          </div>
-        </div>
-        <div class="cd-stat">
-          <span class="material-symbols-outlined">layers</span>
-          <div>
-            <strong id="statUnits">0 / 9</strong>
-            <span>Units complete</span>
-          </div>
-        </div>
-        <div class="cd-stat">
-          <span class="material-symbols-outlined">quiz</span>
-          <div>
-            <strong id="statExam">Not attempted</strong>
-            <span>Final exam</span>
-          </div>
-        </div>
-        <div class="cd-stat cd-stat--motivate" id="cdMotiveStat">
-          <span class="material-symbols-outlined">emoji_objects</span>
-          <div>
-            <strong id="statCert">—</strong>
-            <span id="statCertLabel">Certificate</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Resume / Exam CTA -->
-      <div class="cd-cta-row" id="cdCtaRow"></div>
-
-      <!-- Units list -->
-      <section class="cd-units" id="cdUnits">
-        <h2 class="cd-section-title">Course modules</h2>
-        <!-- Injected by JS -->
-      </section>
-
     </div>
   </main>
 
