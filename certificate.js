@@ -274,7 +274,8 @@ function renderLinkedInGuide(dateStr, certId) {
         <li>
           <span class="cert-li-label">Media (optional)</span>
           <div class="cert-li-value-row">
-            <span class="cert-li-value">Download your certificate image and upload it here</span>
+            <span class="cert-li-value">Download your certificate image and upload to your LinkedIn Licenses &amp; certifications section</span>
+            <button class="cert-li-copy cert-li-download-btn" id="certLiDownload">Download</button>
           </div>
         </li>
       </ol>
@@ -284,7 +285,7 @@ function renderLinkedInGuide(dateStr, certId) {
   wrap.appendChild(guide);
 
   // Copy buttons
-  guide.querySelectorAll('.cert-li-copy').forEach(btn => {
+  guide.querySelectorAll('.cert-li-copy[data-copy]').forEach(btn => {
     btn.addEventListener('click', () => {
       navigator.clipboard.writeText(btn.dataset.copy).then(() => {
         btn.textContent = 'Copied!';
@@ -292,6 +293,9 @@ function renderLinkedInGuide(dateStr, certId) {
       });
     });
   });
+
+  // Download button in LinkedIn guide
+  document.getElementById('certLiDownload').addEventListener('click', downloadCert);
 }
 
 /* ----- Download as PNG ----- */
