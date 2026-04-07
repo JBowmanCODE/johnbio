@@ -504,9 +504,18 @@ function initializeFooter() {
         cookieBanner.classList.add('cookie-banner-hidden');
     }
 
+    function grantAnalyticsConsent() {
+        if (typeof gtag !== 'undefined') {
+            gtag('consent', 'update', { analytics_storage: 'granted' });
+        }
+    }
+
     function handleCookieAcceptance(accepted) {
         setConsent(accepted.toString());
         hideCookieBanner();
+        if (accepted) {
+            grantAnalyticsConsent();
+        }
     }
 
     if (acceptButton) {
@@ -522,6 +531,9 @@ function initializeFooter() {
         showCookieBanner();
     } else {
         hideCookieBanner();
+        if (consent === 'true') {
+            grantAnalyticsConsent();
+        }
     }
 }
 

@@ -349,3 +349,30 @@ body {
   background: rgba(255, 0, 127, 0.35);
   color: #fff;
 }
+
+
+/* 18+ industry notice — iGaming tool pages */
+.age-notice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255,0,127,0.08);
+  border: 1px solid rgba(255,0,127,0.22);
+  font-size: 0.78rem;
+  color: #aaa;
+  line-height: 1.4;
+}
+.age-notice::before {
+  content: '18+';
+  display: inline-block;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  background: rgba(255,0,127,0.18);
+  color: #ff007f;
+  font-weight: 700;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
