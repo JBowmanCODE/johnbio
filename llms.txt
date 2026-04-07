@@ -6,6 +6,7 @@
 
 - [Home](https://johnb.io/): Projects gallery — browse all tools and projects on the site.
 - [About](https://johnb.io/about): Background, skills, and interests of John Bowman.
+- [Contact](https://johnb.io/contact): Get in touch via email or LinkedIn. Also handles GDPR data privacy requests.
 
 ## AI Tools
 

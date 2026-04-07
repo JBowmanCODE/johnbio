@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - JohnB.io</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/header.css?v=4">
+  <link rel="stylesheet" href="/footer.css?v=2">
+  <link rel="stylesheet" href="/contact.css">
+
+  <meta name="description" content="Get in touch with John Bowman - AI developer and Head of Digital Strategy. Contact via email or LinkedIn for collaborations, privacy requests, or general enquiries.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/contact">
+  <meta name="author" content="John Bowman">
+
+  <meta property="og:title" content="Contact - JohnB.io">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/contact">
+  <meta property="og:description" content="Get in touch with John Bowman - AI developer and Head of Digital Strategy. Contact via email or LinkedIn.">
+  <meta property="og:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact - JohnB.io">
+  <meta name="twitter:description" content="Get in touch with John Bowman - AI developer and Head of Digital Strategy.">
+  <meta name="twitter:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+  <meta name="twitter:image:alt" content="JohnB.io contact page">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact JohnB.io",
+    "url": "https://johnb.io/contact",
+    "description": "Contact John Bowman via email or LinkedIn for collaborations, privacy requests, or general enquiries.",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://johnb.io" },
+        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://johnb.io/contact" }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <div class="ambient"></div>
+
+  <div id="header-placeholder"></div>
+
+  <main class="contact-wrap">
+
+    <section class="contact-hero">
+      <h1>
+        <span class="word-1">Get in</span>
+        <span class="word-2">Touch</span>
+      </h1>
+      <p class="contact-intro">Questions, collaborations, or data privacy requests — use any of the methods below.</p>
+    </section>
+
+    <div class="contact-grid">
+
+      <a href="mailto:hello@johnb.io" class="contact-card" aria-label="Send an email to hello@johnb.io">
+        <span class="contact-card-icon material-symbols-outlined">mail</span>
+        <div>
+          <p class="contact-card-label">Email</p>
+          <p class="contact-card-value">hello@johnb.io</p>
+        </div>
+        <span class="contact-card-arrow material-symbols-outlined">arrow_forward</span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" class="contact-card contact-card--secondary" aria-label="Connect with John Bowman on LinkedIn">
+        <span class="contact-card-icon material-symbols-outlined">person</span>
+        <div>
+          <p class="contact-card-label">LinkedIn</p>
+          <p class="contact-card-value">linkedin.com/in/john-bowman</p>
+        </div>
+        <span class="contact-card-arrow material-symbols-outlined">arrow_forward</span>
+      </a>
+
+    </div>
+
+    <div class="contact-gdpr">
+      <span class="material-symbols-outlined contact-gdpr-icon">shield</span>
+      <div>
+        <p class="contact-gdpr-title">Data &amp; Privacy Requests</p>
+        <p class="contact-gdpr-text">To exercise your rights under UK GDPR — access, correction, deletion, or portability of your personal data — email <a href="mailto:hello@johnb.io">hello@johnb.io</a>. Requests are handled within 30 days. See the <a href="/privacy">Privacy Policy</a> for full details.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js?v=3" defer></script>
+
+  <script>
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+
+</body>
+</html>
