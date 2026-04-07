@@ -82,7 +82,7 @@ async function loadDashboard(user) {
     ? examResults.reduce((best, r) => r.score > best.score ? r : best, examResults[0])
     : null;
 
-  // Name
+  // Name / greeting (now in sidebar)
   const name = data.name || user.displayName || user.email.split('@')[0];
   const hour = new Date().getHours();
   const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
@@ -100,7 +100,7 @@ async function loadDashboard(user) {
   document.getElementById('cdRingPct').textContent = pct + '%';
 
   // Stats
-  document.getElementById('statLessons').textContent = `${doneLessons} / ${TOTAL_LESSONS}`;
+  document.getElementById('statLessons').textContent = `${doneLessons} / ${TOTAL_LESSONS} lessons completed`;
 
   const completeUnits = COURSE_UNITS.filter(u =>
     u.lessons.every(l => progress[l.id])
@@ -152,13 +152,16 @@ async function loadDashboard(user) {
     motivateEl.textContent = msg;
   }
 
+  // Hero card
+  renderHeroCard(progress);
+
   // CTA row
   renderCta(progress, bestExam, hasCert);
 
   // Units
   renderUnits(progress);
 
-  // Sign out button
+  // Sign out button (now a <button> in the left sidebar)
   const signOutBtn = document.getElementById('cdSignOut');
   if (signOutBtn) {
     signOutBtn.addEventListener('click', () => signOut(auth).then(() => window.location.href = '/login'));
@@ -169,9 +172,47 @@ async function loadDashboard(user) {
   document.getElementById('cdContent').classList.remove('hidden');
 }
 
+function renderHeroCard(progress) {
+  const card = document.getElementById('cdHeroCard');
+  if (!card) return;
+
+  // Find current unit: first with progress but not complete, or first unit if none started
+  let currentUnit = COURSE_UNITS.find(u =>
+    u.lessons.some(l => progress[l.id]) && !u.lessons.every(l => progress[l.id])
+  ) || COURSE_UNITS.find(u => !u.lessons.every(l => progress[l.id])) || COURSE_UNITS[0];
+
+  // Find next lesson in that unit
+  const nextLesson = currentUnit.lessons.find(l => !progress[l.id]) || currentUnit.lessons[0];
+  const href = nextLesson.slug
+    ? `/course/${nextLesson.slug}`
+    : `/course?u=${nextLesson.id.split('-')[0]}&l=${nextLesson.id.split('-')[1]}`;
+
+  const doneLessons = currentUnit.lessons.filter(l => progress[l.id]).length;
+  const allDone = doneLessons === currentUnit.lessons.length;
+
+  card.innerHTML = `
+    ${currentUnit.img ? `<img class="cd-hero-img" src="/images/course/${currentUnit.img}" alt="" aria-hidden="true">` : ''}
+    <div class="cd-hero-inner">
+      <div class="cd-hero-body">
+        <span class="cd-hero-badge">${allDone ? 'Complete' : 'Current module'}</span>
+        <p class="cd-hero-unit-label">Unit ${currentUnit.id} &middot; ${doneLessons}/${currentUnit.lessons.length} lessons</p>
+        <h2 class="cd-hero-title">${currentUnit.title}</h2>
+        <p class="cd-hero-desc">${currentUnit.desc || ''}</p>
+      </div>
+      ${!allDone ? `
+        <a class="cd-hero-btn" href="${href}">
+          <span class="material-symbols-outlined">play_arrow</span> Continue
+        </a>` : `
+        <a class="cd-hero-btn" href="/exam">
+          <span class="material-symbols-outlined">quiz</span> Take exam
+        </a>`}
+    </div>
+  `;
+}
+
 function renderCta(progress, bestExam, hasCert) {
   const row = document.getElementById('cdCtaRow');
-  const allDone = Object.values(progress).filter(Boolean).length >= TOTAL_LESSONS;
+  const doneLessons = Object.values(progress).filter(Boolean).length;
 
   // Find next incomplete lesson
   let nextLesson = null;
@@ -181,6 +222,7 @@ function renderCta(progress, bestExam, hasCert) {
     }
   }
 
+  // Continue button (quick access in right panel)
   if (nextLesson) {
     const btn = document.createElement('a');
     btn.href = nextLesson.slug ? `/course/${nextLesson.slug}` : `/course?u=${nextLesson.id.split('-')[0]}&l=${nextLesson.id.split('-')[1]}`;
@@ -196,7 +238,7 @@ function renderCta(progress, bestExam, hasCert) {
     row.appendChild(btn);
   }
 
-  if (allDone || Object.keys(progress).length > 0) {
+  if (doneLessons > 0) {
     const examBtn = document.createElement('a');
     examBtn.href = '/exam';
     examBtn.className = 'cd-btn cd-btn-secondary';
