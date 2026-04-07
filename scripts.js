@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     loadHeaderAndFooter();
     initShareBar();
+    // Set skip-nav target on the page's main element
+    const mainEl = document.querySelector('main');
+    if (mainEl && !mainEl.id) mainEl.id = 'main-content';
 });
 
 function loadHeaderAndFooter() {
@@ -8,12 +11,12 @@ function loadHeaderAndFooter() {
     const footerPlaceholder = document.getElementById('footer-placeholder');
 
     // Load header (use sessionStorage cache to avoid flash on navigation)
-    const cachedHeader = sessionStorage.getItem('site-header');
+    const cachedHeader = sessionStorage.getItem('site-header-v3');
     if (cachedHeader && headerPlaceholder) {
         headerPlaceholder.innerHTML = cachedHeader;
         initializeHeader();
     } else {
-        fetch('/header.html?v=2')
+        fetch('/header.html?v=3')
             .then(response => {
                 if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
                 return response.text();
@@ -21,7 +24,7 @@ function loadHeaderAndFooter() {
             .then(data => {
                 if (headerPlaceholder) {
                     headerPlaceholder.innerHTML = data;
-                    sessionStorage.setItem('site-header', data);
+                    sessionStorage.setItem('site-header-v3', data);
                     initializeHeader();
                 }
             })
