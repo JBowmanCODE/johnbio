@@ -71,18 +71,44 @@
     <!-- Guest view (shown when not signed in) -->
     <div class="cd-guest hidden" id="cdGuest">
 
+      <!-- Hero: 2-col on desktop -->
       <div class="cd-guest-hero">
-        <p class="cd-guest-level"><span class="material-symbols-outlined">signal_cellular_alt</span> Beginner friendly &middot; No prior knowledge needed</p>
-        <h1 class="cd-guest-title">AI &amp; Machine Learning Course</h1>
-        <p class="cd-guest-tagline">Learn AI from the ground up — free, structured, and built for beginners.</p>
-        <div class="cd-guest-pills">
-          <span class="cd-pill"><span class="material-symbols-outlined">menu_book</span> 35 lessons</span>
-          <span class="cd-pill"><span class="material-symbols-outlined">layers</span> 9 units</span>
-          <span class="cd-pill"><span class="material-symbols-outlined">schedule</span> ~8 hrs</span>
-          <span class="cd-pill"><span class="material-symbols-outlined">workspace_premium</span> Free certificate</span>
+        <div class="cd-guest-hero-left">
+          <p class="cd-guest-level"><span class="material-symbols-outlined">signal_cellular_alt</span> Beginner friendly &middot; No prior knowledge needed</p>
+          <h1 class="cd-guest-title">AI &amp; Machine Learning <em class="cd-title-em">Course</em></h1>
+          <p class="cd-guest-tagline">Learn AI from the ground up — free, structured, and built for beginners. Master the tools that are reshaping how we work.</p>
+          <div class="cd-guest-cta">
+            <a href="/login?mode=signup" class="cd-guest-btn-primary">
+              Create free account <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+            <a href="/login" class="cd-guest-btn-ghost">Log in</a>
+          </div>
+          <div class="cd-guest-pills">
+            <span class="cd-pill"><span class="material-symbols-outlined">menu_book</span> 35 lessons</span>
+            <span class="cd-pill"><span class="material-symbols-outlined">layers</span> 9 units</span>
+            <span class="cd-pill"><span class="material-symbols-outlined">schedule</span> ~8 hrs</span>
+            <span class="cd-pill"><span class="material-symbols-outlined">workspace_premium</span> Free certificate</span>
+          </div>
+        </div>
+        <div class="cd-guest-hero-right" aria-hidden="true">
+          <div class="cd-guest-preview-card">
+            <img src="/images/course/ai-machine-learning-course.webp" alt="" class="cd-guest-preview-img">
+            <div class="cd-guest-preview-body">
+              <p class="cd-guest-preview-label">Included in this course</p>
+              <ul class="cd-guest-preview-list">
+                <li><span class="material-symbols-outlined">check_circle</span> 35 structured lessons</li>
+                <li><span class="material-symbols-outlined">check_circle</span> 9 progressive units</li>
+                <li><span class="material-symbols-outlined">check_circle</span> Audio summaries &amp; quizzes</li>
+                <li><span class="material-symbols-outlined">check_circle</span> Deep-dive podcasts</li>
+                <li><span class="material-symbols-outlined">check_circle</span> Final exam &amp; certificate</li>
+              </ul>
+              <a href="/login?mode=signup" class="cd-guest-preview-cta">Start learning free</a>
+            </div>
+          </div>
         </div>
       </div>
 
+      <!-- What you'll learn -->
       <div class="cd-guest-outcomes">
         <h2 class="cd-section-title">What you'll learn</h2>
         <ul class="cd-outcomes-list">
@@ -95,15 +121,7 @@
         </ul>
       </div>
 
-      <div class="cd-guest-cta">
-        <a href="/login?mode=signup" class="cd-btn cd-btn-primary">
-          <span class="material-symbols-outlined">person_add</span> Create free account
-        </a>
-        <a href="/login" class="cd-btn cd-btn-secondary">
-          <span class="material-symbols-outlined">login</span> Log in
-        </a>
-      </div>
-
+      <!-- Instructor -->
       <div class="cd-instructor">
         <div class="cd-instructor-inner">
           <div class="cd-instructor-avatar" aria-hidden="true">JB</div>
@@ -115,6 +133,7 @@
         </div>
       </div>
 
+      <!-- Curriculum -->
       <section class="cd-guest-curriculum" id="cdGuestUnits">
         <h2 class="cd-section-title">Course curriculum</h2>
         <!-- Injected by JS -->
