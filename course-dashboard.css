@@ -582,12 +582,10 @@
 }
 .cd-instructor-avatar {
   width: 52px; height: 52px; border-radius: 50%;
-  background: linear-gradient(135deg, #ff007f 0%, #cc0066 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1rem; font-weight: 700; color: #fff;
+  object-fit: cover;
   flex-shrink: 0;
   box-shadow: 0 4px 14px rgba(255,0,127,0.3);
+  border: 2px solid rgba(255,0,127,0.4);
 }
 .cd-instructor-label {
   font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
