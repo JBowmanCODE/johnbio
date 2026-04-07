@@ -239,5 +239,25 @@ function showResults(score, result) {
     if (fill) fill.style.strokeDashoffset = offset;
   }, 100);
 
+  // Confetti on pass
+  if (result.passed && typeof confetti === 'function') {
+    if (score === 30) {
+      // Perfect score — big sustained burst
+      const end = Date.now() + 3500;
+      const colors = ['#ff007f', '#ffffff', '#7c3aed', '#4ade80'];
+      (function burst() {
+        confetti({ particleCount: 6, angle: 60, spread: 55, origin: { x: 0 }, colors });
+        confetti({ particleCount: 6, angle: 120, spread: 55, origin: { x: 1 }, colors });
+        if (Date.now() < end) requestAnimationFrame(burst);
+      })();
+      setTimeout(() => {
+        confetti({ particleCount: 180, spread: 100, origin: { y: 0.55 }, colors, scalar: 1.2 });
+      }, 400);
+    } else {
+      // Regular pass — single burst
+      confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 }, colors: ['#ff007f', '#ffffff', '#7c3aed'] });
+    }
+  }
+
   document.getElementById('exRetry')?.addEventListener('click', startExam);
 }

@@ -35,7 +35,20 @@ onAuthStateChanged(auth, async (user) => {
   // Get or assign cert ID
   let certId = data.certId;
   if (!certId) {
-    certId = await assignCertId(user.uid, name, best);
+    try {
+      certId = await assignCertId(user.uid, name, best);
+    } catch (err) {
+      console.error('Cert ID generation failed:', err);
+      document.getElementById('certWrap').innerHTML = `
+        <div class="cert-locked" style="display:block">
+          <span class="material-symbols-outlined">error</span>
+          <h2>Something went wrong</h2>
+          <p>Could not generate your certificate. Please try refreshing the page.<br>
+          If this keeps happening, the Firestore rules may need updating.</p>
+          <a href="/certificate" class="cert-action-btn">Try again</a>
+        </div>`;
+      return;
+    }
   }
 
   const date = new Date(best.date);
