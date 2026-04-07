@@ -138,19 +138,6 @@
   </url>
 
   <!-- Other -->
-  <url>
-    <loc>https://johnb.io/recipes</loc>
-    <lastmod>2026-03-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://johnb.io/wo</loc>
-    <lastmod>2026-03-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
   <!-- AI Course -->
   <url>
     <loc>https://johnb.io/course</loc>
