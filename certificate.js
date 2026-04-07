@@ -117,6 +117,8 @@ function renderCertificate(name, dateStr, scoreStr, certId) {
 
   document.getElementById('certDownload').addEventListener('click', downloadCert);
   document.getElementById('certShare').addEventListener('click', () => shareCert(certId));
+
+  renderLinkedInGuide(dateStr, certId);
 }
 
 /* ----- Certificate HTML (shared with verify page) ----- */
@@ -199,6 +201,88 @@ function buildCertDoc(name, dateStr, scoreStr, certId, verifyUrl) {
       </div>
     </div>
   `;
+}
+
+/* ----- LinkedIn instructions ----- */
+function renderLinkedInGuide(dateStr, certId) {
+  const wrap = document.getElementById('certWrap');
+  const verifyUrl = `https://johnb.io/verify/${certId}`;
+  const [month, , year] = dateStr.split(' ');
+
+  const guide = document.createElement('div');
+  guide.className = 'cert-linkedin';
+  guide.innerHTML = `
+    <div class="cert-linkedin-inner">
+      <div class="cert-linkedin-header">
+        <svg class="cert-linkedin-icon" viewBox="0 0 24 24" fill="#0a66c2" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+        <h3 class="cert-linkedin-title">Add to LinkedIn</h3>
+      </div>
+      <p class="cert-linkedin-sub">Go to your LinkedIn profile, click <strong>Add profile section</strong> then <strong>Licenses &amp; certifications</strong>, and fill in:</p>
+
+      <ol class="cert-li-steps">
+        <li>
+          <span class="cert-li-label">Name</span>
+          <div class="cert-li-value-row">
+            <span class="cert-li-value">AI &amp; Machine Learning Course</span>
+            <button class="cert-li-copy" data-copy="AI & Machine Learning Course">Copy</button>
+          </div>
+        </li>
+        <li>
+          <span class="cert-li-label">Issuing organisation</span>
+          <div class="cert-li-value-row">
+            <span class="cert-li-value">JohnB.io</span>
+            <button class="cert-li-copy" data-copy="JohnB.io">Copy</button>
+          </div>
+        </li>
+        <li>
+          <span class="cert-li-label">Issue date</span>
+          <div class="cert-li-value-row">
+            <span class="cert-li-value">${month} ${year}</span>
+          </div>
+        </li>
+        <li>
+          <span class="cert-li-label">Expiration date</span>
+          <div class="cert-li-value-row">
+            <span class="cert-li-value">No expiration date</span>
+          </div>
+        </li>
+        <li>
+          <span class="cert-li-label">Credential ID</span>
+          <div class="cert-li-value-row">
+            <span class="cert-li-value">${certId}</span>
+            <button class="cert-li-copy" data-copy="${certId}">Copy</button>
+          </div>
+        </li>
+        <li>
+          <span class="cert-li-label">Credential URL</span>
+          <div class="cert-li-value-row">
+            <span class="cert-li-value">${verifyUrl}</span>
+            <button class="cert-li-copy" data-copy="${verifyUrl}">Copy</button>
+          </div>
+        </li>
+        <li>
+          <span class="cert-li-label">Media (optional)</span>
+          <div class="cert-li-value-row">
+            <span class="cert-li-value">Download your certificate image and upload it here</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+  `;
+
+  wrap.appendChild(guide);
+
+  // Copy buttons
+  guide.querySelectorAll('.cert-li-copy').forEach(btn => {
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(btn.dataset.copy).then(() => {
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 2000);
+      });
+    });
+  });
 }
 
 /* ----- Download as PNG ----- */
