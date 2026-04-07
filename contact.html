@@ -26,9 +26,9 @@
   <link rel="stylesheet" href="/styles.css?v=2">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
-  <link rel="stylesheet" href="/contact.css">
+  <link rel="stylesheet" href="/contact.css?v=2">
 
-  <meta name="description" content="Get in touch with John Bowman - AI developer and Head of Digital Strategy. Contact via email or LinkedIn for collaborations, privacy requests, or general enquiries.">
+  <meta name="description" content="Get in touch with John Bowman - AI developer and Head of Digital Strategy. Send a message, submit a data privacy request, or connect on LinkedIn.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://johnb.io/contact">
   <meta name="author" content="John Bowman">
@@ -36,7 +36,7 @@
   <meta property="og:title" content="Contact - JohnB.io">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://johnb.io/contact">
-  <meta property="og:description" content="Get in touch with John Bowman - AI developer and Head of Digital Strategy. Contact via email or LinkedIn.">
+  <meta property="og:description" content="Get in touch with John Bowman - AI developer and Head of Digital Strategy.">
   <meta property="og:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact - JohnB.io">
@@ -50,7 +50,7 @@
     "@type": "ContactPage",
     "name": "Contact JohnB.io",
     "url": "https://johnb.io/contact",
-    "description": "Contact John Bowman via email or LinkedIn for collaborations, privacy requests, or general enquiries.",
+    "description": "Contact John Bowman via the contact form or LinkedIn for collaborations, privacy requests, or general enquiries.",
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -74,36 +74,72 @@
         <span class="word-1">Get in</span>
         <span class="word-2">Touch</span>
       </h1>
-      <p class="contact-intro">Questions, collaborations, or data privacy requests — use any of the methods below.</p>
+      <p class="contact-intro">Questions, collaborations, or data privacy requests — fill in the form below.</p>
     </section>
 
-    <div class="contact-grid">
+    <!-- Contact form -->
+    <div class="contact-form-card">
+      <form id="contact-form" novalidate>
 
-      <a href="mailto:hello@johnb.io" class="contact-card" aria-label="Send an email to hello@johnb.io">
-        <span class="contact-card-icon material-symbols-outlined">mail</span>
-        <div>
-          <p class="contact-card-label">Email</p>
-          <p class="contact-card-value">hello@johnb.io</p>
+        <!-- Honeypot — hidden from humans, filled by bots -->
+        <div class="cf-honeypot" aria-hidden="true">
+          <label for="cf-website">Website</label>
+          <input type="text" id="cf-website" name="website" tabindex="-1" autocomplete="off">
         </div>
-        <span class="contact-card-arrow material-symbols-outlined">arrow_forward</span>
-      </a>
 
-      <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" class="contact-card contact-card--secondary" aria-label="Connect with John Bowman on LinkedIn">
-        <span class="contact-card-icon material-symbols-outlined">person</span>
-        <div>
-          <p class="contact-card-label">LinkedIn</p>
-          <p class="contact-card-value">linkedin.com/in/john-bowman</p>
+        <div class="cf-row cf-row--half">
+          <div class="cf-field">
+            <label for="cf-name" class="cf-label">Name <span class="cf-required">*</span></label>
+            <input type="text" id="cf-name" name="name" class="cf-input" placeholder="John Smith" required autocomplete="name">
+          </div>
+          <div class="cf-field">
+            <label for="cf-email" class="cf-label">Email <span class="cf-required">*</span></label>
+            <input type="email" id="cf-email" name="email" class="cf-input" placeholder="you@example.com" required autocomplete="email">
+          </div>
         </div>
-        <span class="contact-card-arrow material-symbols-outlined">arrow_forward</span>
-      </a>
 
+        <div class="cf-field">
+          <label for="cf-subject" class="cf-label">Subject</label>
+          <select id="cf-subject" name="subject" class="cf-input cf-select">
+            <option value="General enquiry">General enquiry</option>
+            <option value="Collaboration">Collaboration</option>
+            <option value="Data / privacy request">Data / privacy request</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="cf-field">
+          <label for="cf-message" class="cf-label">Message <span class="cf-required">*</span></label>
+          <textarea id="cf-message" name="message" class="cf-input cf-textarea" placeholder="Your message..." required rows="6"></textarea>
+        </div>
+
+        <p id="contact-error" class="cf-error" hidden></p>
+        <p id="contact-success" class="cf-success" hidden>Message sent — I'll get back to you within a few days.</p>
+
+        <button type="submit" id="contact-submit" class="cf-submit">
+          <span class="material-symbols-outlined">send</span>
+          Send message
+        </button>
+
+      </form>
     </div>
 
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener" class="contact-card" aria-label="Connect with John Bowman on LinkedIn">
+      <span class="contact-card-icon material-symbols-outlined">person</span>
+      <div>
+        <p class="contact-card-label">Prefer LinkedIn?</p>
+        <p class="contact-card-value">linkedin.com/in/john-bowman</p>
+      </div>
+      <span class="contact-card-arrow material-symbols-outlined">arrow_forward</span>
+    </a>
+
+    <!-- GDPR notice -->
     <div class="contact-gdpr">
       <span class="material-symbols-outlined contact-gdpr-icon">shield</span>
       <div>
         <p class="contact-gdpr-title">Data &amp; Privacy Requests</p>
-        <p class="contact-gdpr-text">To exercise your rights under UK GDPR — access, correction, deletion, or portability of your personal data — email <a href="mailto:hello@johnb.io">hello@johnb.io</a>. Requests are handled within 30 days. See the <a href="/privacy">Privacy Policy</a> for full details.</p>
+        <p class="contact-gdpr-text">To exercise your rights under UK GDPR — access, correction, deletion, or portability of your personal data — use the form above and select "Data / privacy request" as the subject. Requests are handled within 30 days. See the <a href="/privacy">Privacy Policy</a> for full details.</p>
       </div>
     </div>
 
@@ -116,6 +152,7 @@
   <div id="footer-placeholder"></div>
 
   <script src="/scripts.js?v=3" defer></script>
+  <script src="/contact.js" defer></script>
 
   <script>
     const btt = document.getElementById('back-to-top');
