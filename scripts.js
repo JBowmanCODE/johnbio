@@ -37,7 +37,7 @@ function loadHeaderAndFooter() {
         footerPlaceholder.innerHTML = cachedFooter;
         initializeFooter();
     } else {
-        fetch('/footer.html?v=2')
+        fetch('/footer.html?v=3')
             .then(response => {
                 if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
                 return response.text();
