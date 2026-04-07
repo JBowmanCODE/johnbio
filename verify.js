@@ -35,6 +35,7 @@ async function init() {
   document.title = `${data.name} - AI Certificate - JohnB.io`;
 
   renderVerify(data.name, dateStr, scoreStr, certId, verifyUrl);
+  document.getElementById('certDownload').addEventListener('click', downloadCert);
 }
 
 function renderVerify(name, dateStr, scoreStr, certId, verifyUrl) {
@@ -48,6 +49,10 @@ function renderVerify(name, dateStr, scoreStr, certId, verifyUrl) {
 
     <div class="cert-actions">
       <div class="cert-actions-left">
+        <button class="cert-btn cert-btn-download" id="certDownload">
+          <span class="material-symbols-outlined">download</span>
+          Download image
+        </button>
         <a href="/course" class="cert-btn cert-btn-share">
           <span class="material-symbols-outlined">school</span>
           View course
@@ -132,6 +137,30 @@ function renderVerify(name, dateStr, scoreStr, certId, verifyUrl) {
       </div>
     </div>
   `;
+}
+
+async function downloadCert() {
+  const btn = document.getElementById('certDownload');
+  btn.innerHTML = '<span class="material-symbols-outlined">hourglass_empty</span> Generating...';
+  btn.disabled = true;
+
+  try {
+    const el = document.getElementById('certDoc');
+    const canvas = await html2canvas(el, {
+      scale: 2, useCORS: true,
+      backgroundColor: '#0c0c14', logging: false
+    });
+    const link = document.createElement('a');
+    link.download = 'johnb-io-certificate.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  } catch (e) {
+    console.error('Download failed:', e);
+    alert('Download failed - try using your browser print function instead.');
+  }
+
+  btn.innerHTML = '<span class="material-symbols-outlined">download</span> Download image';
+  btn.disabled = false;
 }
 
 function showNotFound() {
