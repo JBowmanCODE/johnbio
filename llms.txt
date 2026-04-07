@@ -117,6 +117,6 @@
 ## Site Info
 
 - Owner: John Bowman
-- Contact: ukjbowman@gmail.com
+- Contact: https://johnb.io/contact
 - Built with: Vanilla HTML, CSS and JavaScript. AI features powered by Claude (Anthropic) API.
 - Purpose: Personal test site for AI tools and development projects.
