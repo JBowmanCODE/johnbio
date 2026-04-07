@@ -243,3 +243,21 @@ export default {
 ```
 
 All workers follow this exact pattern. See `workers/editor-worker.js` as the canonical reference.
+
+## Content Security Policy (CSP)
+
+The CSP is set in `.htaccess` (line ~99) as a single `Header set Content-Security-Policy` directive. It tells browsers which external domains are allowed to load resources. Anything not listed is silently blocked — no visible page error, just broken functionality and console errors saying `"violates Content-Security-Policy"`.
+
+**Whenever you add a new external resource, update the CSP in `.htaccess`:**
+
+| Resource type | Directive |
+|---|---|
+| `<script src="https://...">` | `script-src` |
+| `<link rel="stylesheet" href="https://...">` | `style-src` |
+| External font files | `font-src` |
+| `<iframe src="https://...">` | `frame-src` |
+| `fetch()` / `XMLHttpRequest` in JS | `connect-src` |
+
+**Note:** Cloudflare Worker API calls (Anthropic, OpenAI, Gemini) are server-side — they don't need to be in the CSP. Only what the *browser* loads directly matters. `img-src` is currently `https:` which covers all HTTPS images globally so never needs updating.
+
+If something stops working, check the browser console first — CSP violations are always logged there with the exact blocked domain.
