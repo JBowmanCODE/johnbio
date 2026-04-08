@@ -111,7 +111,7 @@
 
 ## Other
 
-- [Recipe Collection](https://johnb.io/recipes): A personal recipe collection.
+
 - [12-Week Cholesterol Protocol](https://johnb.io/wo): A 12-week exercise and nutrition protocol aimed at improving cholesterol levels.
 
 ## Site Info
