@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Improver - Turn Weak AI Prompts Into Strong Ones | JohnB.io</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/header.css?v=4">
+  <link rel="stylesheet" href="/footer.css?v=2">
+  <link rel="stylesheet" href="/prompt-improver.css">
+
+  <!-- SEO -->
+  <meta name="description" content="Free prompt improver tool. Paste a weak AI prompt and get a stronger version with explanations of what changed and why. Works for ChatGPT, Claude, Gemini and any LLM.">
+  <meta name="keywords" content="prompt improver, AI prompt generator, prompt engineering, ChatGPT prompts, Claude prompts, prompt library, prompt rewriter">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/prompt-improver">
+  <meta name="author" content="John Bowman">
+  <meta property="og:title" content="Prompt Improver - Turn Weak AI Prompts Into Strong Ones">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/prompt-improver">
+  <meta property="og:description" content="Paste a weak prompt and get a stronger version with a short explanation of what changed. Works for ChatGPT, Claude, Gemini and any LLM.">
+  <meta property="og:image" content="https://johnb.io/og_images/prompt_improver_og.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Prompt Improver - JohnB.io">
+  <meta name="twitter:description" content="Free tool. Rewrites weak AI prompts into stronger versions and tells you why.">
+  <meta name="twitter:image" content="https://johnb.io/og_images/prompt_improver_og.webp">
+  <meta name="twitter:image:alt" content="Prompt Improver tool by JohnB.io">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Prompt Improver",
+    "url": "https://johnb.io/prompt-improver",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "description": "Free AI tool that rewrites weak prompts into stronger versions with a short explanation of what changed. Includes a small library of ready-to-use starter prompts for common tasks.",
+    "image": "https://johnb.io/og_images/prompt_improver_og.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://www.linkedin.com/in/john-bowman/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does the Prompt Improver do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It takes a weak or vague prompt and rewrites it into a stronger version. The output includes the rewritten prompt and a short list of what changed, so you can understand the reasoning and apply the same pattern next time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which AI models does the improved prompt work with?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The output is model-agnostic. It works for ChatGPT, Claude, Gemini, Perplexity and any other large language model. You can pick a target model in the settings if you want the rewrite tuned for a specific platform."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What makes a prompt strong?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A strong prompt has a clear role for the model, a specific task, any relevant context or constraints, and an explicit output format. Weak prompts miss one or more of these. The tool fills in the gaps based on what you pasted."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a library of example prompts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The Library tab includes starter prompts for common tasks like summarising an article, writing cold outreach emails, code review, SEO content briefs and meeting notes. Click any card to load it into the improver."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the tool store my prompts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Prompts are sent to a Cloudflare Worker that forwards them to an AI model and returns the rewrite. Nothing is logged beyond standard rate limit counters."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="pi-ambient"></div>
+
+  <main class="pi-wrap">
+
+    <div class="pi-hero">
+      <h1 class="pi-title">Prompt <span class="pi-gradient">Improver</span></h1>
+      <p class="pi-desc">Paste a weak prompt and get a stronger version, with a short note on what changed and why. Works for ChatGPT, Claude, Gemini and any LLM.</p>
+    </div>
+
+    <!-- Tool card -->
+    <div class="pi-card">
+      <div class="pi-tabs" role="tablist" aria-label="Input mode">
+        <button class="pi-tab active" data-tab="improve" role="tab" aria-selected="true" aria-controls="panel-improve" id="tab-improve">
+          <span class="material-symbols-outlined" aria-hidden="true" style="font-size:0.9rem;vertical-align:middle;margin-right:0.3em;">auto_fix</span>
+          Improve
+        </button>
+        <button class="pi-tab" data-tab="library" role="tab" aria-selected="false" aria-controls="panel-library" id="tab-library">
+          <span class="material-symbols-outlined" aria-hidden="true" style="font-size:0.9rem;vertical-align:middle;margin-right:0.3em;">collections_bookmark</span>
+          Library
+        </button>
+      </div>
+
+      <!-- Improve panel -->
+      <div class="pi-panel" id="panel-improve" role="tabpanel" aria-labelledby="tab-improve">
+        <label for="pi-input" class="sr-only">Your prompt</label>
+        <textarea
+          id="pi-input"
+          class="pi-textarea"
+          placeholder="Paste or type your prompt here. Example: 'write me a blog post about SEO'"
+          aria-label="Your prompt"
+        ></textarea>
+
+        <div class="pi-options">
+          <label class="pi-option">
+            <span class="pi-option-label">Target model</span>
+            <select id="pi-model" class="pi-select">
+              <option value="any">Any LLM</option>
+              <option value="chatgpt">ChatGPT</option>
+              <option value="claude">Claude</option>
+              <option value="gemini">Gemini</option>
+              <option value="perplexity">Perplexity</option>
+            </select>
+          </label>
+          <label class="pi-option">
+            <span class="pi-option-label">Style</span>
+            <select id="pi-style" class="pi-select">
+              <option value="balanced">Balanced</option>
+              <option value="concise">Concise</option>
+              <option value="detailed">Detailed</option>
+              <option value="creative">Creative</option>
+            </select>
+          </label>
+        </div>
+
+        <button class="pi-generate-btn" id="pi-generate" aria-label="Improve prompt">
+          <span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span>
+          Improve Prompt
+        </button>
+
+        <p id="pi-status" class="pi-status" role="status" aria-live="polite"></p>
+      </div>
+
+      <!-- Library panel -->
+      <div class="pi-panel" id="panel-library" role="tabpanel" aria-labelledby="tab-library" style="display:none;">
+        <div class="pi-library" id="pi-library"></div>
+      </div>
+    </div>
+
+    <!-- Output -->
+    <div class="pi-output-card" id="pi-output" style="display:none;" aria-label="Improved prompt">
+      <div class="pi-output-header">
+        <h2>Improved Prompt</h2>
+        <div class="pi-output-actions">
+          <button class="pi-action-btn" id="pi-copy" aria-label="Copy improved prompt">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span> Copy
+          </button>
+        </div>
+      </div>
+      <div class="pi-output-body">
+        <pre class="pi-pre" id="pi-improved"></pre>
+        <div class="pi-changes">
+          <h3 class="pi-changes-title">What changed</h3>
+          <ul id="pi-changes-list" class="pi-changes-list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explainer -->
+    <div class="pi-explainer" role="note">
+      <span class="material-symbols-outlined" aria-hidden="true">info</span>
+      <div class="pi-explainer-text">
+        <p style="margin:0 0 0.6rem;"><strong>Why rewrite prompts?</strong> The same model will give you wildly different answers depending on how you ask. A prompt that specifies a role, a task, the context and the output format will beat a one-liner every time.</p>
+        <p style="margin:0;"><strong>Not sure what to paste?</strong> Open the Library tab for starter prompts covering summarising, cold email, code review, SEO briefs and more.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <!-- Tool info / SEO article -->
+  <section class="tool-info" aria-label="About this tool">
+    <div class="tool-info-inner">
+
+      <div class="tool-info-meta">
+        <span>Last updated: April 2026</span>
+        <span class="tool-info-sep">·</span>
+        <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      </div>
+
+      <div class="tool-info-body">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">What Makes a Good AI Prompt</h2>
+        <p>Most bad outputs from ChatGPT, Claude or Gemini trace back to a bad prompt. The model can only work with what you give it. Four elements do most of the heavy lifting: a clear role, a specific task, relevant context, and an output format. Miss any one of them and the model has to guess.</p>
+        <p>This tool looks at what you pasted, fills in the missing pieces, and returns a rewrite you can use directly. It also tells you what changed so you learn the pattern rather than just copying output.</p>
+      </div>
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>What does the Prompt Improver do?</dt>
+                <dd>It takes a weak or vague prompt and rewrites it into a stronger version. The output includes the rewritten prompt and a short list of what changed, so you can understand the reasoning and apply the same pattern next time.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Which AI models does the improved prompt work with?</dt>
+                <dd>The output is model-agnostic. It works for ChatGPT, Claude, Gemini, Perplexity and any other large language model. You can pick a target model in the settings if you want the rewrite tuned for a specific platform.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What makes a prompt strong?</dt>
+                <dd>A strong prompt has a clear role for the model, a specific task, any relevant context or constraints, and an explicit output format. Weak prompts miss one or more of these. The tool fills in the gaps based on what you pasted.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Is there a library of example prompts?</dt>
+                <dd>Yes. The Library tab includes starter prompts for common tasks like summarising an article, writing cold outreach emails, code review, SEO content briefs and meeting notes. Click any card to load it into the improver.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Does the tool store my prompts?</dt>
+                <dd>No. Prompts are sent to a Cloudflare Worker that forwards them to an AI model and returns the rewrite. Nothing is logged beyond standard rate limit counters.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Paste your prompt.</strong> Drop in whatever you are currently using. It can be a one-liner or a full paragraph.</li>
+              <li><strong>Pick a target model.</strong> Leave it on Any LLM for a model-agnostic rewrite, or pick a specific one for tuned output.</li>
+              <li><strong>Choose a style.</strong> Balanced, Concise, Detailed or Creative. This controls how much structure the rewrite adds.</li>
+              <li><strong>Click Improve.</strong> The tool rewrites the prompt and returns a change log so you can see why each edit was made.</li>
+              <li><strong>Copy and use it.</strong> Paste the improved prompt into your AI tool of choice and compare the output to what you were getting before.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points - Prompt Engineering</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>Role.</strong> Tell the model who it should act as. "You are an experienced SEO copywriter" gives a different answer to "You are a technical reviewer".</li>
+              <li><strong>Task.</strong> State the job plainly. Not "help me with this" but "rewrite this product page to target the keyword X".</li>
+              <li><strong>Context.</strong> Give the model the information it needs to do the job. Audience, tone, constraints, examples.</li>
+              <li><strong>Format.</strong> Specify the output shape. Bullet points, JSON, a table, word count. If you do not, you get whatever the model defaults to.</li>
+              <li><strong>Examples beat instructions.</strong> One good example of the output you want is worth more than three paragraphs of guidance.</li>
+              <li><strong>Iterate.</strong> Treat prompts as drafts. Run the output, note what is wrong, edit the prompt, run it again.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources &amp; Further Reading</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Anthropic - Prompt Engineering Overview</a>.</li>
+              <li><a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener">OpenAI - Prompt Engineering Guide</a>.</li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/prompting-intro" target="_blank" rel="noopener">Google - Gemini Prompting Guide</a>.</li>
+              <li><a href="https://www.promptingguide.ai" target="_blank" rel="noopener">Prompt Engineering Guide</a> - community maintained reference.</li>
+              <li><a href="https://johnb.io/lm-chat" target="_blank" rel="noopener">LLM Chat</a> - run the same prompt across Claude, ChatGPT and Gemini.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js?v=4" defer></script>
+  <script src="/prompt-improver.js" defer></script>
+  <script>
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>

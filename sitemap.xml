@@ -91,6 +91,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://johnb.io/tcs-simplifier</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://johnb.io/faq-schema</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://johnb.io/prompt-improver</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://johnb.io/text-to-speech</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
