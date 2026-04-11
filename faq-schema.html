@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ Schema Generator - Free JSON-LD FAQPage Tool | JohnB.io</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/header.css?v=4">
+  <link rel="stylesheet" href="/footer.css?v=2">
+  <link rel="stylesheet" href="/faq-schema.css">
+
+  <!-- SEO -->
+  <meta name="description" content="Free FAQ schema generator. Enter questions and answers and get valid JSON-LD FAQPage markup ready to drop into your site. Or let AI draft the FAQ for you from any topic.">
+  <meta name="keywords" content="FAQ schema generator, FAQPage JSON-LD, structured data, rich results, SEO schema tool, FAQ markup">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/faq-schema">
+  <meta name="author" content="John Bowman">
+  <meta property="og:title" content="FAQ Schema Generator - Free JSON-LD FAQPage Tool">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/faq-schema">
+  <meta property="og:description" content="Generate valid FAQPage JSON-LD in seconds. Type the Q&As or let AI draft them from any topic.">
+  <meta property="og:image" content="https://johnb.io/og_images/faq_schema_og.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FAQ Schema Generator - JohnB.io">
+  <meta name="twitter:description" content="Free tool. Turn questions and answers into valid FAQPage JSON-LD you can paste into your site head.">
+  <meta name="twitter:image" content="https://johnb.io/og_images/faq_schema_og.webp">
+  <meta name="twitter:image:alt" content="FAQ Schema Generator tool by JohnB.io">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FAQ Schema Generator",
+    "url": "https://johnb.io/faq-schema",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "description": "Free tool that turns question and answer pairs into valid FAQPage JSON-LD structured data. Includes an AI draft mode that generates FAQs from a topic.",
+    "image": "https://johnb.io/og_images/faq_schema_og.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://www.linkedin.com/in/john-bowman/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is FAQPage schema?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FAQPage is a Schema.org type that marks up a page containing a list of questions and answers. Search engines use it to understand the content structure, and in some cases display rich results that show the questions directly in search listings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Google still show FAQ rich results?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Since August 2023 Google has limited FAQ rich results to a small set of well-known government and health sites. The schema is still worth adding because it helps AI assistants and other search engines understand the page, and it costs nothing to include."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do I paste the generated code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Paste it inside a script tag with type application/ld plus json in the head section of the page. The questions and answers in the schema must match the visible content on the page, otherwise Google treats it as a violation of its structured data guidelines."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I generate FAQs from a topic?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The Draft with AI tab takes a topic or a URL and returns five to eight relevant questions and answers. Review the output before publishing to make sure it is accurate and matches the page content."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the output valid JSON-LD?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tool outputs FAQPage JSON-LD that follows Schema.org and Google structured data guidelines. You can validate the result in Google Rich Results Test or Schema.org Validator before publishing."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="fsg-ambient"></div>
+
+  <main class="fsg-wrap">
+
+    <div class="fsg-hero">
+      <h1 class="fsg-title">FAQ Schema <span class="fsg-gradient">Generator</span></h1>
+      <p class="fsg-desc">Turn questions and answers into valid FAQPage JSON-LD you can paste into your page head. Write them yourself or let AI draft them from a topic.</p>
+    </div>
+
+    <!-- Tool card -->
+    <div class="fsg-card">
+      <div class="fsg-tabs" role="tablist" aria-label="Input mode">
+        <button class="fsg-tab active" data-tab="manual" role="tab" aria-selected="true" aria-controls="panel-manual" id="tab-manual">
+          <span class="material-symbols-outlined" aria-hidden="true" style="font-size:0.9rem;vertical-align:middle;margin-right:0.3em;">edit</span>
+          Write Manually
+        </button>
+        <button class="fsg-tab" data-tab="ai" role="tab" aria-selected="false" aria-controls="panel-ai" id="tab-ai">
+          <span class="material-symbols-outlined" aria-hidden="true" style="font-size:0.9rem;vertical-align:middle;margin-right:0.3em;">auto_awesome</span>
+          Draft with AI
+        </button>
+      </div>
+
+      <!-- Manual panel -->
+      <div class="fsg-panel" id="panel-manual" role="tabpanel" aria-labelledby="tab-manual">
+        <div id="fsg-qa-list" class="fsg-qa-list"></div>
+        <button class="fsg-add-btn" id="fsg-add" aria-label="Add another question">
+          <span class="material-symbols-outlined" aria-hidden="true">add</span>
+          Add Question
+        </button>
+      </div>
+
+      <!-- AI draft panel -->
+      <div class="fsg-panel" id="panel-ai" role="tabpanel" aria-labelledby="tab-ai" style="display:none;">
+        <label for="fsg-topic" class="sr-only">Topic or URL</label>
+        <input
+          type="text"
+          id="fsg-topic"
+          class="fsg-topic-input"
+          placeholder="e.g. 'retrieval augmented generation' or a page URL"
+          autocomplete="off"
+        >
+        <p style="font-size:0.72rem;color:var(--on-surface-variant);margin:0.6rem 0 0;opacity:0.7;">AI generates 5–8 questions and answers for the topic. Review before publishing.</p>
+      </div>
+
+      <button class="fsg-generate-btn" id="fsg-generate" aria-label="Generate FAQ schema">
+        <span class="material-symbols-outlined" aria-hidden="true">code</span>
+        Generate Schema
+      </button>
+
+      <p id="fsg-status" class="fsg-status" role="status" aria-live="polite"></p>
+    </div>
+
+    <!-- Output -->
+    <div class="fsg-output-card" id="fsg-output" style="display:none;" aria-label="Generated FAQ schema">
+      <div class="fsg-output-header">
+        <h2>FAQPage JSON-LD</h2>
+        <div class="fsg-output-actions">
+          <button class="fsg-action-btn" id="fsg-copy" aria-label="Copy JSON-LD to clipboard">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span> Copy
+          </button>
+          <button class="fsg-action-btn" id="fsg-validate" aria-label="Open Google Rich Results Test">
+            <span class="material-symbols-outlined" aria-hidden="true">verified</span> Validate
+          </button>
+        </div>
+      </div>
+      <pre class="fsg-pre" id="fsg-content" aria-label="Generated JSON-LD"></pre>
+    </div>
+
+    <!-- Explainer -->
+    <div class="fsg-explainer" role="note">
+      <span class="material-symbols-outlined" aria-hidden="true">info</span>
+      <div class="fsg-explainer-text">
+        <p style="margin:0 0 0.6rem;"><strong>How to use the output.</strong> Wrap it in <code style="background:rgba(34,197,94,0.1);padding:0.1em 0.4em;border-radius:0.25em;font-size:0.9em;">&lt;script type="application/ld+json"&gt;...&lt;/script&gt;</code> and paste inside the <code style="background:rgba(34,197,94,0.1);padding:0.1em 0.4em;border-radius:0.25em;font-size:0.9em;">&lt;head&gt;</code> of your page.</p>
+        <p style="margin:0;"><strong>Important.</strong> The Q&As in the schema must match the visible content on the page. Do not add questions to the schema that are not on the page itself — Google treats that as a structured data violation.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <!-- Tool info / SEO article -->
+  <section class="tool-info" aria-label="About this tool">
+    <div class="tool-info-inner">
+
+      <div class="tool-info-meta">
+        <span>Last updated: April 2026</span>
+        <span class="tool-info-sep">·</span>
+        <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      </div>
+
+      <div class="tool-info-body">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Why FAQ Schema Still Matters in 2026</h2>
+        <p>Google pulled FAQ rich results for most sites in August 2023. The schema itself did not go anywhere. It still helps AI assistants like ChatGPT, Claude and Perplexity parse your page, it still feeds knowledge graphs, and Bing still renders FAQ rich results in a way that Google no longer does. Adding it costs nothing.</p>
+        <p>The rule that trips most people up is simple: the questions and answers in the schema must match the visible text on the page. If they do not, you get a manual action warning in Search Console. This tool pairs a manual builder with an AI draft mode, but both produce schema you can paste directly into the page head.</p>
+      </div>
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>What is FAQPage schema?</dt>
+                <dd>FAQPage is a Schema.org type that marks up a page containing a list of questions and answers. Search engines use it to understand the content structure, and in some cases display rich results that show the questions directly in search listings.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Does Google still show FAQ rich results?</dt>
+                <dd>Since August 2023 Google has limited FAQ rich results to a small set of well-known government and health sites. The schema is still worth adding because it helps AI assistants and other search engines understand the page, and it costs nothing to include.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Where do I paste the generated code?</dt>
+                <dd>Paste it inside a script tag with type application/ld+json in the head section of the page. The questions and answers in the schema must match the visible content on the page, otherwise Google treats it as a violation of its structured data guidelines.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Can I generate FAQs from a topic?</dt>
+                <dd>Yes. The Draft with AI tab takes a topic or a URL and returns five to eight relevant questions and answers. Review the output before publishing to make sure it is accurate and matches the page content.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Is the output valid JSON-LD?</dt>
+                <dd>The tool outputs FAQPage JSON-LD that follows Schema.org and Google structured data guidelines. You can validate the result in Google Rich Results Test or Schema.org Validator before publishing.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Pick your mode.</strong> Write Manually if you already have the questions. Draft with AI if you want a first pass from a topic.</li>
+              <li><strong>Fill in Q&amp;As.</strong> Add as many question and answer pairs as you need. You can remove any row.</li>
+              <li><strong>Click Generate.</strong> The tool outputs a complete FAQPage JSON-LD block following Schema.org guidelines.</li>
+              <li><strong>Copy the output.</strong> Use the Copy button to grab the full script tag, ready to paste.</li>
+              <li><strong>Paste into your head.</strong> Drop it inside the <code>&lt;head&gt;</code> of your page. Make sure the visible page content has the same questions and answers.</li>
+              <li><strong>Validate.</strong> Run the page through Google Rich Results Test to confirm the schema parses cleanly.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points - FAQ Schema</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>Schema must match visible content.</strong> If the answers in your JSON-LD differ from what a user sees on the page, Google considers it misleading.</li>
+              <li><strong>Plain text answers.</strong> Answer fields can contain HTML but most sites keep them as plain text to avoid character escaping issues.</li>
+              <li><strong>One FAQPage per page.</strong> Do not add multiple FAQPage blocks to the same URL. If you need more questions, extend the existing block.</li>
+              <li><strong>Still useful for AI search.</strong> Perplexity, ChatGPT and Claude all parse structured data when they cite pages. FAQ schema gives them a clean structure to extract.</li>
+              <li><strong>Use on pages with real Q&amp;As.</strong> FAQPage is not for product pages or category pages. It is for pages where the content is genuinely a list of questions and answers.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources &amp; Further Reading</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://schema.org/FAQPage" target="_blank" rel="noopener">Schema.org - FAQPage type definition</a>.</li>
+              <li><a href="https://developers.google.com/search/docs/appearance/structured-data/faqpage" target="_blank" rel="noopener">Google Search Central - FAQ Structured Data</a>.</li>
+              <li><a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener">Google Rich Results Test</a>.</li>
+              <li><a href="https://validator.schema.org" target="_blank" rel="noopener">Schema.org Validator</a>.</li>
+              <li><a href="https://developers.google.com/search/blog/2023/08/howto-faq-changes" target="_blank" rel="noopener">Google - Changes to HowTo and FAQ rich results</a>. August 2023.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js?v=4" defer></script>
+  <script src="/faq-schema.js" defer></script>
+  <script>
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>

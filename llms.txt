@@ -34,6 +34,9 @@
 - [iGaming Promo Copy Generator](https://johnb.io/promo-copy): Generate compliant iGaming promotional copy for 10 regulated markets including UK (UKGC), Malta (MGA), Ontario, Netherlands, Germany and more. Describe a promotion, select jurisdiction, channel and tone, and receive AI-generated headlines, body copy, call-to-action text, T&C summaries and market-specific required disclaimers.
 - [LLMs.txt Generator](https://johnb.io/llms-generator): AI-powered tool that generates a structured llms.txt file from a URL or pasted content. Helps websites become more discoverable and accurately cited by AI assistants including ChatGPT, Claude, Gemini and Perplexity. Follows the llmstxt.org specification.
 - [Text to Speech Converter](https://johnb.io/text-to-speech): Convert text to natural-sounding speech and download as MP3. Powered by OpenAI TTS (tts-1 model) with six voice options (Alloy, Echo, Fable, Onyx, Nova, Shimmer) and adjustable playback speed. Up to 4,000 characters per conversion.
+- [T&Cs Simplifier](https://johnb.io/tcs-simplifier): Paste casino bonus terms and conditions and get a plain English summary, red flag list and key numbers block (wagering, expiry, max bet, max win). Built for players, affiliates and compliance teams. Not legal advice.
+- [FAQ Schema Generator](https://johnb.io/faq-schema): Free tool that turns question and answer pairs into valid FAQPage JSON-LD structured data. Includes a manual builder and an AI draft mode that generates 5–8 FAQs from a topic. Output is ready to paste into the page head.
+- [Prompt Improver](https://johnb.io/prompt-improver): Rewrites weak AI prompts into stronger versions with a short change log. Includes a library of starter prompts for common tasks (summarising, cold email, code review, SEO briefs, meeting notes). Works for ChatGPT, Claude, Gemini and any LLM.
 
 ## News and Insights
 
