@@ -1152,184 +1152,220 @@ function generateShareImage() {
   canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext('2d');
 
-  // helpers
+  // ── layout constants ──
+  const HEADER_H = 68, FOOTER_H = 42;
+  const LABEL_H = 22;
+  const TOP_Y = HEADER_H + LABEL_H + 2;   // bracket matches start y
+  const BOT_Y = H - FOOTER_H - 4;
+  const CH = BOT_Y - TOP_Y;               // ~494px
+  const SLOT = Math.floor(CH / 8);        // 61px → use 60 for clean math
+  const BH = 17;                          // team box height
+  const INNER = 4;                        // gap between 2 teams in a match
+
+  // Column x / width (verified: sum = 1200)
+  const R32A_X = 14,  R32A_W = 94;
+  const R32B_X = 112, R32B_W = 94;        // 14+94+4 = 112
+  const R16_X  = 222, R16_W  = 150;       // 112+94+16 = 222
+  const QF_X   = 384, QF_W   = 150;       // 222+150+12 = 384
+  const SF_X   = 546, SF_W   = 150;       // 384+150+12 = 546
+  const FIN_X  = 708, FIN_W  = 150;       // 546+150+12 = 708
+  const CHP_X  = 874, CHP_W  = 312;       // 708+150+16 = 874; 874+312+14 = 1200
+
+  // match top y: roundIdx < 0 = sequential (R32), 0=R16, 1=QF, 2=SF, 3=Final
+  function matchTopY(ri, mi) {
+    if (ri < 0) return TOP_Y + mi * SLOT;
+    const m = Math.pow(2, ri);
+    return TOP_Y + mi * m * SLOT + (m - 1) * SLOT / 2;
+  }
+
+  // ── helpers ──
   function rr(x, y, w, h, r) {
     ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-    ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-    ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-    ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
-    ctx.closePath();
+    ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y); ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+    ctx.lineTo(x+w,y+h-r); ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+    ctx.lineTo(x+r,y+h); ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+    ctx.lineTo(x,y+r); ctx.quadraticCurveTo(x,y,x+r,y); ctx.closePath();
   }
-  function abbr(name) { return (name || '?').substring(0, 3).toUpperCase(); }
-  function clip(name, max) { if (!name) return '?'; return name.length > max ? name.substring(0, max - 1) + '…' : name; }
+  function clip(name, chars) {
+    if (!name) return '?';
+    return name.length > chars ? name.substring(0, chars-1) + '\u2026' : name;
+  }
+  function abbr(n) { return (n || '?').substring(0, 3).toUpperCase(); }
+
+  // draw one team row box
+  function teamRow(x, w, y, name, win) {
+    rr(x, y, w, BH, 3);
+    ctx.fillStyle = win ? 'rgba(0,238,252,0.16)' : 'rgba(255,255,255,0.04)';
+    ctx.fill();
+    if (win) { ctx.strokeStyle='rgba(0,238,252,0.4)'; ctx.lineWidth=1; rr(x,y,w,BH,3); ctx.stroke(); }
+    ctx.fillStyle = win ? '#00EEFC' : 'rgba(248,245,253,0.42)';
+    ctx.font = win ? 'bold 10px Arial,sans-serif' : '10px Arial,sans-serif';
+    ctx.fillText(clip(name, Math.floor(w / 7)), x+5, y+BH-4);
+  }
+
+  // draw a full 2-team match block
+  function drawMatch(x, w, topY, t1, t2, winner) {
+    teamRow(x, w, topY, t1, winner===t1);
+    teamRow(x, w, topY+BH+INNER, t2, winner===t2);
+  }
+
+  // draw an elbow connector from source y on right of srcX → dest y on left of dstX
+  function elbow(srcRightX, srcCY, dstLeftX, dstCY, alpha) {
+    const spX = srcRightX + 5;
+    ctx.strokeStyle = `rgba(0,238,252,${alpha})`; ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(srcRightX, srcCY);
+    ctx.lineTo(spX, srcCY);
+    ctx.lineTo(spX, dstCY);
+    ctx.lineTo(dstLeftX, dstCY);
+    ctx.stroke();
+  }
 
   // ── background ──
-  ctx.fillStyle = '#0a0a14';
+  ctx.fillStyle = '#080810';
   ctx.fillRect(0, 0, W, H);
-  ctx.strokeStyle = 'rgba(0,238,252,0.04)';
-  ctx.lineWidth = 1;
-  for (let x = 0; x <= W; x += 60) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
-  for (let y = 0; y <= H; y += 60) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
-  // top accent line
-  const ag = ctx.createLinearGradient(0,0,W,0);
-  ag.addColorStop(0,'rgba(0,238,252,0)'); ag.addColorStop(0.15,'#00EEFC');
-  ag.addColorStop(0.85,'#00EEFC'); ag.addColorStop(1,'rgba(0,238,252,0)');
-  ctx.fillStyle = ag; ctx.fillRect(0, 0, W, 2);
+  ctx.strokeStyle = 'rgba(0,238,252,0.03)'; ctx.lineWidth = 1;
+  for (let gx=0; gx<=W; gx+=60) { ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
+  for (let gy=0; gy<=H; gy+=60) { ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke(); }
 
   // ── header ──
-  ctx.fillStyle = 'rgba(0,238,252,0.05)';
-  ctx.fillRect(0, 0, W, 74);
-  ctx.fillStyle = 'rgba(0,238,252,0.55)';
-  ctx.font = 'bold 10px Arial, sans-serif';
-  ctx.fillText('MY 2026 FOOTBALL TOURNAMENT PREDICTIONS', 40, 26);
-  ctx.fillStyle = 'rgba(248,245,253,0.88)';
-  ctx.font = 'bold 26px Arial, sans-serif';
-  ctx.fillText('AI-Simulated Bracket', 40, 58);
+  ctx.fillStyle = 'rgba(0,238,252,0.05)'; ctx.fillRect(0, 0, W, HEADER_H);
+  const ag = ctx.createLinearGradient(0,0,W,0);
+  ag.addColorStop(0,'rgba(0,238,252,0)'); ag.addColorStop(0.2,'#00EEFC');
+  ag.addColorStop(0.8,'#00EEFC'); ag.addColorStop(1,'rgba(0,238,252,0)');
+  ctx.fillStyle = ag; ctx.fillRect(0, 0, W, 2);
+  ctx.fillStyle = 'rgba(0,238,252,0.5)'; ctx.font = 'bold 9px Arial,sans-serif';
+  ctx.fillText('MY 2026 FOOTBALL TOURNAMENT PREDICTIONS', 18, 20);
+  ctx.fillStyle = '#ffffff'; ctx.font = 'bold 22px Arial,sans-serif';
+  ctx.fillText('AI-Simulated Bracket', 18, 50);
   ctx.textAlign = 'right';
-  ctx.fillStyle = '#00EEFC';
-  ctx.font = 'bold 15px Arial, sans-serif';
-  ctx.fillText('johnb.io', W - 40, 38);
-  ctx.fillStyle = 'rgba(248,245,253,0.3)';
-  ctx.font = '12px Arial, sans-serif';
-  ctx.fillText('/football-2026', W - 40, 58);
+  ctx.fillStyle = '#00EEFC'; ctx.font = 'bold 13px Arial,sans-serif';
+  ctx.fillText('johnb.io', W-18, 32);
+  ctx.fillStyle = 'rgba(248,245,253,0.25)'; ctx.font = '11px Arial,sans-serif';
+  ctx.fillText('/football-2026', W-18, 50);
   ctx.textAlign = 'left';
 
   // ── footer ──
-  ctx.fillStyle = 'rgba(0,0,0,0.35)';
-  ctx.fillRect(0, H - 42, W, 42);
-  ctx.fillStyle = 'rgba(0,238,252,0.12)';
-  ctx.fillRect(0, H - 42, W, 1);
-  ctx.fillStyle = 'rgba(0,238,252,0.5)';
-  ctx.font = '12px Arial, sans-serif';
-  ctx.fillText('johnb.io/football-2026', 40, H - 14);
+  ctx.fillStyle = 'rgba(0,0,0,0.4)'; ctx.fillRect(0, H-FOOTER_H, W, FOOTER_H);
+  ctx.fillStyle = 'rgba(0,238,252,0.1)'; ctx.fillRect(0, H-FOOTER_H, W, 1);
+  ctx.fillStyle = 'rgba(0,238,252,0.45)'; ctx.font = 'bold 11px Arial,sans-serif';
+  ctx.fillText('johnb.io/football-2026', 18, H-13);
   ctx.textAlign = 'right';
-  ctx.fillStyle = 'rgba(248,245,253,0.2)';
-  ctx.fillText('AI predictions only \u2022 Not betting advice', W - 40, H - 14);
+  ctx.fillStyle = 'rgba(248,245,253,0.2)'; ctx.font = '10px Arial,sans-serif';
+  ctx.fillText('AI predictions only \u2022 Not betting advice', W-18, H-13);
   ctx.textAlign = 'left';
 
-  // ── bracket layout math ──
-  const TOP = 82, BOT = H - 50, CH = BOT - TOP; // CH ≈ 498
-  const BW = 155, BH = 24, GAP = 20; // GAP = half-distance between 2 teams in a match
-  const QX = 40, SX = QX + BW + 36, FX = SX + BW + 36, CX = FX + BW + 52;
-  const CW = W - CX - 40; // champion card width
-
-  const qfSlot = CH / 4;
-  const qfCY = [0,1,2,3].map(i => TOP + qfSlot * i + qfSlot / 2);
-  const sfCY = [(qfCY[0]+qfCY[1])/2, (qfCY[2]+qfCY[3])/2];
-  const fnCY = (sfCY[0]+sfCY[1])/2;
-
   // ── round labels ──
-  ctx.font = 'bold 8px Arial, sans-serif';
+  const LY = HEADER_H + 14;
+  ctx.font = 'bold 8px Arial,sans-serif';
   ctx.fillStyle = 'rgba(0,238,252,0.35)';
-  [[QX,'QUARTER-FINALS'],[SX,'SEMI-FINALS'],[FX,'THE FINAL'],[CX,'CHAMPION']].forEach(([x, lbl]) => {
-    ctx.fillText(lbl, x, TOP - 10);
-  });
+  ctx.fillText('R32 (1-8)',   R32A_X, LY);
+  ctx.fillText('R32 (9-16)',  R32B_X, LY);
+  ctx.fillText('ROUND OF 16', R16_X, LY);
+  ctx.fillText('QTR-FINALS',  QF_X,  LY);
+  ctx.fillText('SEMI-FINALS', SF_X,  LY);
+  ctx.fillText('THE FINAL',   FIN_X, LY);
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#00EEFC'; ctx.font = 'bold 8px Arial,sans-serif';
+  ctx.fillText('CHAMPION', CHP_X + CHP_W/2, LY);
+  ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(0,238,252,0.35)';
 
-  // ── draw team box ──
-  function teamBox(x, cy, name, isWinner) {
-    const ty = cy - BH/2;
-    rr(x, ty, BW, BH, 4);
-    ctx.fillStyle = isWinner ? 'rgba(0,238,252,0.14)' : 'rgba(248,245,253,0.04)';
-    ctx.fill();
-    if (isWinner) {
-      ctx.strokeStyle = 'rgba(0,238,252,0.4)'; ctx.lineWidth = 1;
-      rr(x, ty, BW, BH, 4); ctx.stroke();
-    }
-    ctx.fillStyle = isWinner ? '#00EEFC' : 'rgba(248,245,253,0.42)';
-    ctx.font = isWinner ? 'bold 11px Arial,sans-serif' : '11px Arial,sans-serif';
-    ctx.fillText(clip(name, 17), x + 8, cy + 4);
+  // dashed separator between R32 and R16
+  const sepX = R32B_X + R32B_W + 8;
+  ctx.strokeStyle = 'rgba(0,238,252,0.07)'; ctx.lineWidth = 1;
+  ctx.setLineDash([3,4]);
+  ctx.beginPath(); ctx.moveTo(sepX, HEADER_H); ctx.lineTo(sepX, H-FOOTER_H); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // ── R32 sub-cols (no connectors — sequential display) ──
+  for (let i = 0; i < 8; i++) {
+    const m = bracket.r32[i];
+    drawMatch(R32A_X, R32A_W, matchTopY(-1, i), m[0], m[1], m[2]);
+  }
+  for (let i = 0; i < 8; i++) {
+    const m = bracket.r32[i+8];
+    drawMatch(R32B_X, R32B_W, matchTopY(-1, i), m[0], m[1], m[2]);
   }
 
-  // ── draw bracket spine + elbow connector ──
-  // spine: vertical line on right joining two team boxes in a match
-  // elbow: from spine midpoint → target y in next column
-  function matchConnector(rightX, cy1, cy2, nextX, nextY) {
-    const spX = rightX + 6;
-    ctx.strokeStyle = 'rgba(0,238,252,0.14)'; ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(rightX, cy1); ctx.lineTo(spX, cy1);
-    ctx.lineTo(spX, cy2);
-    ctx.moveTo(rightX, cy2); ctx.lineTo(spX, cy2);
-    ctx.stroke();
-    // horizontal to next column
-    ctx.beginPath();
-    ctx.moveTo(spX, (cy1+cy2)/2);
-    ctx.lineTo(nextX - 4, (cy1+cy2)/2);
-    ctx.stroke();
-    // vertical to target row in next column (if they differ)
-    if (Math.abs((cy1+cy2)/2 - nextY) > 2) {
-      ctx.beginPath();
-      ctx.moveTo(nextX - 4, (cy1+cy2)/2);
-      ctx.lineTo(nextX - 4, nextY);
-      ctx.lineTo(nextX, nextY);
-      ctx.stroke();
-    }
+  // ── R16 + connectors to QF ──
+  for (let i = 0; i < 8; i++) {
+    const m = bracket.r16[i];
+    const topY = matchTopY(0, i);
+    drawMatch(R16_X, R16_W, topY, m[0], m[1], m[2]);
+
+    const winTopY = topY + (m[2] === m[0] ? 0 : BH + INNER);
+    const srcCY   = winTopY + BH/2;
+    const qfIdx   = Math.floor(i/2);
+    const dstTopY = matchTopY(1, qfIdx) + (i%2 === 0 ? 0 : BH + INNER);
+    const dstCY   = dstTopY + BH/2;
+    elbow(R16_X + R16_W, srcCY, QF_X, dstCY, 0.11);
   }
 
-  // ── QF round ──
-  const qf = bracket.qf;
-  qf.forEach((m, i) => {
-    const y1 = qfCY[i] - GAP, y2 = qfCY[i] + GAP;
-    teamBox(QX, y1, m[0], m[2] === m[0]);
-    teamBox(QX, y2, m[1], m[2] === m[1]);
-    const sfIdx = i < 2 ? 0 : 1;
-    const sfTeamY = sfCY[sfIdx] + (i % 2 === 0 ? -GAP : GAP);
-    matchConnector(QX + BW, y1, y2, SX, sfTeamY);
-  });
+  // ── QF + connectors to SF ──
+  for (let i = 0; i < 4; i++) {
+    const m = bracket.qf[i];
+    const topY = matchTopY(1, i);
+    drawMatch(QF_X, QF_W, topY, m[0], m[1], m[2]);
 
-  // ── SF round ──
-  const sf = bracket.sf;
-  sf.forEach((m, i) => {
-    const y1 = sfCY[i] - GAP, y2 = sfCY[i] + GAP;
-    teamBox(SX, y1, m[0], m[2] === m[0]);
-    teamBox(SX, y2, m[1], m[2] === m[1]);
-    const fnTeamY = fnCY + (i === 0 ? -GAP : GAP);
-    matchConnector(SX + BW, y1, y2, FX, fnTeamY);
-  });
+    const winTopY = topY + (m[2] === m[0] ? 0 : BH + INNER);
+    const srcCY   = winTopY + BH/2;
+    const sfIdx   = Math.floor(i/2);
+    const dstTopY = matchTopY(2, sfIdx) + (i%2 === 0 ? 0 : BH + INNER);
+    const dstCY   = dstTopY + BH/2;
+    elbow(QF_X + QF_W, srcCY, SF_X, dstCY, 0.14);
+  }
 
-  // ── Final round ──
+  // ── SF + connectors to Final ──
+  for (let i = 0; i < 2; i++) {
+    const m = bracket.sf[i];
+    const topY = matchTopY(2, i);
+    drawMatch(SF_X, SF_W, topY, m[0], m[1], m[2]);
+
+    const winTopY = topY + (m[2] === m[0] ? 0 : BH + INNER);
+    const srcCY   = winTopY + BH/2;
+    const dstTopY = matchTopY(3, 0) + (i === 0 ? 0 : BH + INNER);
+    const dstCY   = dstTopY + BH/2;
+    elbow(SF_X + SF_W, srcCY, FIN_X, dstCY, 0.18);
+  }
+
+  // ── Final + connector to Champion ──
   const fn = bracket.final;
-  const fn1y = fnCY - GAP, fn2y = fnCY + GAP;
-  teamBox(FX, fn1y, fn[0], fn[2] === fn[0]);
-  teamBox(FX, fn2y, fn[1], fn[2] === fn[1]);
-  // connector to champion card
-  const winY = fn[2] === fn[0] ? fn1y : fn2y;
-  const champMidY = fnCY;
-  ctx.strokeStyle = 'rgba(0,238,252,0.25)'; ctx.lineWidth = 1.5;
+  const finTopY = matchTopY(3, 0);
+  drawMatch(FIN_X, FIN_W, finTopY, fn[0], fn[1], fn[2]);
+
+  const champion = fn[2] || '?';
+  const champCY  = TOP_Y + CH / 2;
+  const finWinY  = finTopY + (fn[2] === fn[0] ? 0 : BH + INNER);
+  const finSrcCY = finWinY + BH/2;
+  ctx.strokeStyle = 'rgba(0,238,252,0.28)'; ctx.lineWidth = 1.5;
   ctx.beginPath();
-  ctx.moveTo(FX + BW, winY);
-  ctx.lineTo(FX + BW + 20, winY);
-  ctx.lineTo(FX + BW + 20, champMidY);
-  ctx.lineTo(CX - 2, champMidY);
+  ctx.moveTo(FIN_X + FIN_W, finSrcCY);
+  ctx.lineTo(FIN_X + FIN_W + 8, finSrcCY);
+  ctx.lineTo(FIN_X + FIN_W + 8, champCY);
+  ctx.lineTo(CHP_X - 2, champCY);
   ctx.stroke();
 
   // ── Champion card ──
-  const champion = fn[2] || '?';
-  const CH2 = 130, champY = fnCY - CH2/2;
-  ctx.shadowColor = '#00EEFC'; ctx.shadowBlur = 24;
-  rr(CX, champY, CW, CH2, 12);
-  ctx.fillStyle = 'rgba(0,238,252,0.09)'; ctx.fill();
+  const CARD_H = 138, cardY = champCY - CARD_H/2;
+  ctx.shadowColor = '#00EEFC'; ctx.shadowBlur = 22;
+  rr(CHP_X, cardY, CHP_W, CARD_H, 12);
+  ctx.fillStyle = 'rgba(0,238,252,0.07)'; ctx.fill();
   ctx.shadowBlur = 0;
-  ctx.strokeStyle = 'rgba(0,238,252,0.55)'; ctx.lineWidth = 1.5;
-  rr(CX, champY, CW, CH2, 12); ctx.stroke();
+  ctx.strokeStyle = 'rgba(0,238,252,0.5)'; ctx.lineWidth = 1.5;
+  rr(CHP_X, cardY, CHP_W, CARD_H, 12); ctx.stroke();
 
-  const cx = CX + CW/2;
-  // circle crest
-  ctx.strokeStyle = 'rgba(0,238,252,0.4)'; ctx.lineWidth = 1.5;
-  ctx.beginPath(); ctx.arc(cx, champY + 36, 22, 0, Math.PI*2); ctx.stroke();
-  ctx.fillStyle = 'rgba(0,238,252,0.1)';
-  ctx.beginPath(); ctx.arc(cx, champY + 36, 22, 0, Math.PI*2); ctx.fill();
+  const cx = CHP_X + CHP_W/2;
   ctx.textAlign = 'center';
-  ctx.font = 'bold 13px Arial,sans-serif'; ctx.fillStyle = '#00EEFC';
-  ctx.fillText(abbr(champion), cx, champY + 41);
-  // team name
-  ctx.font = 'bold 24px Arial,sans-serif'; ctx.fillStyle = '#ffffff';
-  ctx.fillText(champion.toUpperCase(), cx, champY + 84);
-  // label
-  ctx.font = '9px Arial,sans-serif'; ctx.fillStyle = 'rgba(0,238,252,0.45)';
-  ctx.fillText('AI PREDICTED CHAMPION', cx, champY + 108);
+  ctx.strokeStyle = 'rgba(0,238,252,0.38)'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(cx, cardY+36, 22, 0, Math.PI*2); ctx.stroke();
+  ctx.fillStyle = 'rgba(0,238,252,0.08)';
+  ctx.beginPath(); ctx.arc(cx, cardY+36, 22, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = '#00EEFC'; ctx.font = 'bold 12px Arial,sans-serif';
+  ctx.fillText(abbr(champion), cx, cardY+41);
+  ctx.fillStyle = '#ffffff'; ctx.font = 'bold 22px Arial,sans-serif';
+  ctx.fillText(champion.toUpperCase(), cx, cardY+83);
+  ctx.fillStyle = 'rgba(0,238,252,0.4)'; ctx.font = 'bold 8px Arial,sans-serif';
+  ctx.fillText('AI PREDICTED CHAMPION', cx, cardY+108);
   ctx.textAlign = 'left';
 
   // ── download ──
