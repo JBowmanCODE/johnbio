@@ -84,6 +84,31 @@
   max-width: 600px;
 }
 
+/* ── DISCLAIMER ── */
+.f26-disclaimer {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  background: rgba(248,113,113,0.07);
+  border: 1px solid rgba(248,113,113,0.35);
+  border-radius: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+.f26-disclaimer-icon {
+  font-size: 1.1rem;
+  color: #f87171;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+.f26-disclaimer p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: rgba(248,245,253,0.7);
+  margin: 0;
+}
+.f26-disclaimer strong {
+  color: #f87171;
+}
+
 /* ── SECTION HEADINGS ── */
 .f26-section-head {
   display: flex; align-items: center; justify-content: space-between;
