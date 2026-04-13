@@ -290,12 +290,13 @@
         <span class="material-symbols-outlined" aria-hidden="true">share</span>
         Generate My Predictions
       </button>
+      <p class="f26-share-hint">Press to generate your prediction image to share on Social Media / WhatsApp / Download.</p>
     </div>
 
     <!-- Share panel (shown after image is generated) -->
     <div class="f26-share-panel" id="f26-share-panel" hidden>
-      <img alt="Your 2026 bracket predictions" class="f26-share-preview" id="f26-share-preview"/>
-      <div class="f26-share-actions">
+      <img alt="Your 2026 bracket predictions" class="f26-share-preview" id="f26-share-preview" hidden/>
+      <div class="f26-share-actions" id="f26-share-actions" hidden>
         <button class="f26-share-dl" id="f26-share-dl" aria-label="Download image">
           <span class="material-symbols-outlined" aria-hidden="true">download</span>
           Download
@@ -438,6 +439,6 @@
   </div>
 
   <script src="/scripts.js?v=4"></script>
-  <script src="/football-2026.js?v=16"></script>
+  <script src="/football-2026.js?v=17"></script>
 </body>
 </html>
