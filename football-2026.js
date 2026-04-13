@@ -1391,23 +1391,6 @@ function generateShareImage() {
     a.href = dataURL; a.download = 'my-2026-predictions.png'; a.click();
   };
 
-  // Social share links
-  const pageURL = encodeURIComponent('https://johnb.io/football-2026');
-  const shareText = encodeURIComponent('I used AI to predict the 2026 Football World Cup \uD83C\uDFC6 Make your own predictions at johnb.io/football-2026');
-  const shareTitle = encodeURIComponent('My AI-predicted 2026 Football World Cup bracket');
-  document.getElementById('f26-soc-x').href =
-    `https://twitter.com/intent/tweet?text=${shareText}&url=${pageURL}`;
-  document.getElementById('f26-soc-li').href =
-    `https://www.linkedin.com/sharing/share-offsite/?url=${pageURL}`;
-  document.getElementById('f26-soc-fb').href =
-    `https://www.facebook.com/sharer/sharer.php?u=${pageURL}`;
-  document.getElementById('f26-soc-wa').href =
-    `https://wa.me/?text=${shareText}%20${pageURL}`;
-  document.getElementById('f26-soc-rd').href =
-    `https://www.reddit.com/submit?url=${pageURL}&title=${shareTitle}`;
-
-  document.getElementById('f26-share-note').textContent =
-    'Download the image to attach to Instagram or Facebook posts. Social buttons share the page link.';
 
   // Show panel immediately
   const panel = document.getElementById('f26-share-panel');
