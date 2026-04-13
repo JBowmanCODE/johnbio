@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="/styles.css?v=2">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
-  <link rel="stylesheet" href="/football-2026.css?v=1">
+  <link rel="stylesheet" href="/football-2026.css?v=2">
 
   <!-- SEO -->
   <meta name="description" content="AI-powered Summer 2026 football tournament simulator. See AI predictions for all 48 teams, group stage results, and the full knockout bracket. Click to change winners.">
@@ -148,7 +148,33 @@
 
     <!-- Hero -->
     <div class="f26-hero">
-      <h1 class="f26-title">Football <span class="f26-gradient">2026</span></h1>
+      <div class="f26-hero-top">
+        <div>
+          <span class="f26-hero-eyebrow">AI Tournament Simulator</span>
+          <h1 class="f26-title">Football <span class="f26-gradient">2026</span></h1>
+        </div>
+        <div class="f26-hero-meta">
+          <div class="f26-meta-stat">
+            <span class="f26-meta-val">48</span>
+            <span class="f26-meta-lab">Teams</span>
+          </div>
+          <div class="f26-meta-sep" aria-hidden="true"></div>
+          <div class="f26-meta-stat">
+            <span class="f26-meta-val">12</span>
+            <span class="f26-meta-lab">Groups</span>
+          </div>
+          <div class="f26-meta-sep" aria-hidden="true"></div>
+          <div class="f26-meta-stat">
+            <span class="f26-meta-val">64</span>
+            <span class="f26-meta-lab">Matches</span>
+          </div>
+          <div class="f26-meta-sep" aria-hidden="true"></div>
+          <div class="f26-meta-stat">
+            <span class="f26-meta-val">18%</span>
+            <span class="f26-meta-lab">Argentina Win%</span>
+          </div>
+        </div>
+      </div>
       <p class="f26-desc">AI predictions for the Summer 2026 football tournament. Group stage results, knockout bracket, and squad data for all 48 teams. Click any team in the bracket to change the winner.</p>
     </div>
 
@@ -156,7 +182,7 @@
     <div class="f26-section-head">
       <h2 class="f26-section-title">AI Win Probability</h2>
     </div>
-    <div class="f26-card">
+    <div class="f26-odds-wrap">
       <div id="f26-odds-body"></div>
     </div>
 
@@ -177,22 +203,34 @@
 
     <p class="f26-bracket-note"><strong>Click any team</strong> to pick them as the winner of that match. Changes cascade forward through the bracket automatically.</p>
 
-    <div class="f26-card f26-bracket-section">
-      <div class="f26-bracket-rounds">
+    <div class="f26-bracket-scroll">
+      <div class="f26-bracket-inner">
         <div class="f26-round-col">
-          <div class="f26-round-label">Round of 32</div>
+          <div class="f26-round-head">
+            <div class="f26-round-label">Round of 32</div>
+            <div class="f26-round-count">16 matches</div>
+          </div>
           <div class="f26-round-matches" id="f26-r32"></div>
         </div>
         <div class="f26-round-col">
-          <div class="f26-round-label">Round of 16</div>
+          <div class="f26-round-head">
+            <div class="f26-round-label">Round of 16</div>
+            <div class="f26-round-count">8 matches</div>
+          </div>
           <div class="f26-round-matches" id="f26-r16"></div>
         </div>
         <div class="f26-round-col">
-          <div class="f26-round-label">Quarter-finals</div>
+          <div class="f26-round-head">
+            <div class="f26-round-label">Quarter-finals</div>
+            <div class="f26-round-count">4 matches</div>
+          </div>
           <div class="f26-round-matches" id="f26-qf"></div>
         </div>
         <div class="f26-round-col">
-          <div class="f26-round-label">Semi-finals</div>
+          <div class="f26-round-head">
+            <div class="f26-round-label">Semi-finals</div>
+            <div class="f26-round-count">2 matches</div>
+          </div>
           <div class="f26-round-matches" id="f26-sf"></div>
         </div>
       </div>
@@ -311,6 +349,6 @@
   </div>
 
   <script src="/scripts.js?v=4"></script>
-  <script src="/football-2026.js?v=1"></script>
+  <script src="/football-2026.js?v=2"></script>
 </body>
 </html>
