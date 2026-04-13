@@ -268,6 +268,37 @@
 .f26-advance .f26-team-btn { font-weight: 800; color: var(--on-surface); }
 .f26-team-btn:hover { color: #00EEFC; }
 
+/* Promote button */
+.f26-promote-btn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.57rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.07em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.2rem;
+  background: rgba(0,238,252,0.06);
+  color: rgba(0,238,252,0.45);
+  border: 1px solid rgba(0,238,252,0.15);
+  cursor: pointer; white-space: nowrap;
+  transition: all 0.18s;
+}
+.f26-promote-btn:hover {
+  background: rgba(0,238,252,0.14);
+  color: #00EEFC;
+  border-color: rgba(0,238,252,0.35);
+}
+
+/* Edited group badge */
+.f26-group-modified {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.55rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 0.12rem 0.4rem;
+  border-radius: 0.2rem;
+  background: rgba(250,204,21,0.1);
+  color: #facc15;
+  border: 1px solid rgba(250,204,21,0.25);
+}
+
 /* Status badges */
 .f26-status-badge {
   display: inline-block;
