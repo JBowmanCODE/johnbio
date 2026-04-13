@@ -1240,7 +1240,7 @@ function generateShareImage() {
   ctx.fillStyle = 'rgba(0,238,252,0.5)'; ctx.font = 'bold 9px Arial,sans-serif';
   ctx.fillText('MY 2026 FOOTBALL TOURNAMENT PREDICTIONS', 18, 20);
   ctx.fillStyle = '#ffffff'; ctx.font = 'bold 22px Arial,sans-serif';
-  ctx.fillText('AI-Simulated Bracket', 18, 50);
+  ctx.fillText('My 2026 Bracket', 18, 50);
   ctx.textAlign = 'right';
   ctx.fillStyle = '#00EEFC'; ctx.font = 'bold 13px Arial,sans-serif';
   ctx.fillText('johnb.io', W-18, 32);
@@ -1253,9 +1253,22 @@ function generateShareImage() {
   ctx.fillStyle = 'rgba(0,238,252,0.1)'; ctx.fillRect(0, H-FOOTER_H, W, 1);
   ctx.fillStyle = 'rgba(0,238,252,0.45)'; ctx.font = 'bold 11px Arial,sans-serif';
   ctx.fillText('johnb.io/football-2026', 18, H-13);
-  ctx.textAlign = 'center';
-  ctx.fillStyle = 'rgba(248,245,253,0.18)'; ctx.font = '9px Arial,sans-serif';
-  ctx.fillText('(sharing idea by igamingroundtable.com)', W/2, H-13);
+  // footer centre: split text so domain name is clearly readable
+  ctx.font = '11px Arial,sans-serif';
+  const fp1 = '(sharing idea by ';
+  const fpd = 'igamingroundtable.com';
+  const fp2 = ')';
+  const fp1w = ctx.measureText(fp1).width;
+  const fpdw = ctx.measureText(fpd).width;
+  const fp2w = ctx.measureText(fp2).width;
+  const fpStartX = W / 2 - (fp1w + fpdw + fp2w) / 2;
+  ctx.textAlign = 'left';
+  ctx.fillStyle = 'rgba(248,245,253,0.4)';
+  ctx.fillText(fp1, fpStartX, H - 13);
+  ctx.fillStyle = 'rgba(0,238,252,0.85)';
+  ctx.fillText(fpd, fpStartX + fp1w, H - 13);
+  ctx.fillStyle = 'rgba(248,245,253,0.4)';
+  ctx.fillText(fp2, fpStartX + fp1w + fpdw, H - 13);
   ctx.textAlign = 'right';
   ctx.fillStyle = 'rgba(248,245,253,0.2)'; ctx.font = '10px Arial,sans-serif';
   ctx.fillText('AI predictions only \u2022 Not betting advice', W-18, H-13);
@@ -1375,7 +1388,7 @@ function generateShareImage() {
   ctx.fillStyle = '#ffffff'; ctx.font = 'bold 22px Arial,sans-serif';
   ctx.fillText(champion.toUpperCase(), cx, cardY+83);
   ctx.fillStyle = 'rgba(0,238,252,0.4)'; ctx.font = 'bold 8px Arial,sans-serif';
-  ctx.fillText(userModifiedBracket ? 'MY PREDICTED CHAMPION' : 'AI PREDICTED CHAMPION', cx, cardY+108);
+  ctx.fillText('MY PREDICTED CHAMPION', cx, cardY+108);
   ctx.textAlign = 'left';
 
   // ── show share panel ──
