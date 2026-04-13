@@ -265,18 +265,6 @@ const projects = [
     img: '/images/faq_schema_og.webp',
     thumbIcon: 'data_object',
   },
-  {
-    id: 'youtube-analyzer',
-    title: 'YouTube Analyzer',
-    desc: 'Analyse YouTube channels by keyword — surface top creators, view counts and growth data.',
-    category: 'dev',
-    badge: 'DEV TOOL',
-    color: 'pink',
-    icons: ['youtube_searched_for', 'query_stats'],
-    href: 'https://johnb.io/youtube-analyzer',
-    img: '/images/youtube-analyzer.webp',
-    thumbIcon: 'youtube_searched_for',
-  },
 ];
 
 // ── HERO NEWS PANEL ──────────────────────────────────────────────────────

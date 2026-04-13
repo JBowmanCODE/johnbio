@@ -25,7 +25,6 @@
 - [eBay & Vinted Profit Calculator](https://johnb.io/ebay): Calculate profit from eBay and Vinted sales, accounting for platform fees, postage and purchase costs.
 - [Bill Calculator](https://johnb.io/calculator): Split bills and calculate tips. Built with Python via Pyodide.
 - [Poker Bankroll Planner](https://johnb.io/bankroll): Evaluate poker experience level and plan bankroll strategy.
-- [YouTube Channel Analyzer](https://johnb.io/youtube-analyzer): Analyse YouTube channels by keyword — surface top creators, view counts and growth data.
 - [Text to Voice](https://johnb.io/text-to-voice): Browser-based text-to-speech with voice selection, speed control and word-by-word subtitle highlighting.
 
 ## Digital AI Tools
