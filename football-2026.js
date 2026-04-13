@@ -704,10 +704,55 @@ const PREDICTED_BRACKET = {
 
 // Live state (user modifications)
 let bracket;
+let groupState = {}; // groupName → Set of advancing team names
+
+function initGroupState() {
+  GROUPS.forEach(g => {
+    groupState[g.name] = new Set(g.teams.filter(t => t.advance).map(t => t.team));
+  });
+}
+
 function resetBracket() {
   bracket = JSON.parse(JSON.stringify(PREDICTED_BRACKET));
+  initGroupState();
 }
 resetBracket();
+
+// ── Group Promote Logic ───────────────────────────────────────────────────────
+function clearTeamFromLaterRounds(oldTeam, newTeam) {
+  bracket.r16.forEach(match => { if (match[1] === oldTeam) match[1] = newTeam; });
+  bracket.qf.forEach(match => { if (match[1] === oldTeam) match[1] = newTeam; });
+  bracket.sf.forEach(match => { if (match[1] === oldTeam) match[1] = newTeam; });
+  if (bracket.final[2] === oldTeam) bracket.final[2] = newTeam;
+}
+
+function promoteTeam(groupName, teamToPromote) {
+  const group = GROUPS.find(g => g.name === groupName);
+  const state = groupState[groupName];
+  if (state.has(teamToPromote)) return;
+
+  // Auto-demote the current 2nd-place advancing team
+  const advancingInOrder = group.teams.filter(t => state.has(t.team));
+  const teamToDemote = advancingInOrder[advancingInOrder.length - 1].team;
+
+  state.delete(teamToDemote);
+  state.add(teamToPromote);
+
+  // Swap demoted team out of r32 bracket
+  bracket.r32.forEach((match, idx) => {
+    if (match[0] === teamToDemote) {
+      bracket.r32[idx][0] = teamToPromote;
+      if (bracket.r32[idx][2] === teamToDemote) bracket.r32[idx][2] = teamToPromote;
+    } else if (match[1] === teamToDemote) {
+      bracket.r32[idx][1] = teamToPromote;
+      if (bracket.r32[idx][2] === teamToDemote) bracket.r32[idx][2] = teamToPromote;
+    }
+  });
+
+  clearTeamFromLaterRounds(teamToDemote, teamToPromote);
+  renderGroups();
+  renderBracket();
+}
 
 // ── Bracket Logic ─────────────────────────────────────────────────────────────
 function getR16Teams(i) {
@@ -837,11 +882,18 @@ function renderGroups() {
   const el = document.getElementById('f26-groups');
   if (!el) return;
   el.innerHTML = GROUPS.map(g => {
-    const advanceLine = g.teams.filter(t => t.advance).length;
+    const state = groupState[g.name];
+    const originalAdvancing = new Set(g.teams.filter(t => t.advance).map(t => t.team));
+    const isModified = [...state].some(t => !originalAdvancing.has(t));
+
+    let lastAdvanceIdx = -1;
+    g.teams.forEach((t, idx) => { if (state.has(t.team)) lastAdvanceIdx = idx; });
+
     return `
     <div class="f26-group-card">
       <div class="f26-group-header">
         <span class="f26-group-letter">Group ${g.name}</span>
+        ${isModified ? '<span class="f26-group-modified">Edited</span>' : ''}
         <span class="f26-group-hint">Click team name for squad</span>
       </div>
       <table class="f26-group-table">
@@ -850,15 +902,15 @@ function renderGroups() {
         </thead>
         <tbody>
           ${g.teams.map((t, idx) => {
-            const tier = !t.advance && TEAMS[t.team] ? teamTier(TEAMS[t.team].rating) : null;
-            const dividerClass = idx === advanceLine - 1 ? 'f26-last-advance' : '';
-            return `<tr class="${t.advance ? 'f26-advance' : 'f26-eliminated'} ${dividerClass}">
+            const isAdvancing = state.has(t.team);
+            const dividerClass = idx === lastAdvanceIdx ? 'f26-last-advance' : '';
+            return `<tr class="${isAdvancing ? 'f26-advance' : 'f26-eliminated'} ${dividerClass}">
               <td class="f26-pos-num">${String(idx + 1).padStart(2, '0')}</td>
               <td><button class="f26-team-btn" data-team="${t.team}">${t.team}</button></td>
               <td class="f26-th-center f26-pts">${t.pts}</td>
-              <td class="f26-th-right">${t.advance
+              <td class="f26-th-right">${isAdvancing
                 ? '<span class="f26-status-badge f26-status-badge--advance">ADV</span>'
-                : tier ? `<span class="f26-status-badge f26-status-badge--${tier.cls}">${tier.label}</span>` : ''
+                : `<button class="f26-promote-btn" data-team="${t.team}" data-group="${g.name}" aria-label="Promote ${t.team}">&#8593; Promote</button>`
               }</td>
             </tr>`;
           }).join('')}
@@ -885,6 +937,9 @@ function renderGroups() {
 
   el.querySelectorAll('.f26-team-btn').forEach(btn => {
     btn.addEventListener('click', () => openTeamModal(btn.dataset.team));
+  });
+  el.querySelectorAll('.f26-promote-btn').forEach(btn => {
+    btn.addEventListener('click', () => promoteTeam(btn.dataset.group, btn.dataset.team));
   });
 }
 
@@ -1069,6 +1124,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('f26-reset-btn').addEventListener('click', () => {
     resetBracket();
+    renderGroups();
     renderBracket();
   });
 });
