@@ -1250,6 +1250,9 @@ function generateShareImage() {
   ctx.fillStyle = 'rgba(0,238,252,0.1)'; ctx.fillRect(0, H-FOOTER_H, W, 1);
   ctx.fillStyle = 'rgba(0,238,252,0.45)'; ctx.font = 'bold 11px Arial,sans-serif';
   ctx.fillText('johnb.io/football-2026', 18, H-13);
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'rgba(248,245,253,0.18)'; ctx.font = '9px Arial,sans-serif';
+  ctx.fillText('(sharing idea by igamingroundtable.com)', W/2, H-13);
   ctx.textAlign = 'right';
   ctx.fillStyle = 'rgba(248,245,253,0.2)'; ctx.font = '10px Arial,sans-serif';
   ctx.fillText('AI predictions only \u2022 Not betting advice', W-18, H-13);
@@ -1290,10 +1293,11 @@ function generateShareImage() {
   // ── R16 + connectors to QF ──
   for (let i = 0; i < 8; i++) {
     const m = bracket.r16[i];
+    const [t1, t2] = getR16Teams(i);
     const topY = matchTopY(0, i);
-    drawMatch(R16_X, R16_W, topY, m[0], m[1], m[2]);
+    drawMatch(R16_X, R16_W, topY, t1, t2, m[1]);
 
-    const winTopY = topY + (m[2] === m[0] ? 0 : BH + INNER);
+    const winTopY = topY + (m[1] === t1 ? 0 : BH + INNER);
     const srcCY   = winTopY + BH/2;
     const qfIdx   = Math.floor(i/2);
     const dstTopY = matchTopY(1, qfIdx) + (i%2 === 0 ? 0 : BH + INNER);
@@ -1304,10 +1308,11 @@ function generateShareImage() {
   // ── QF + connectors to SF ──
   for (let i = 0; i < 4; i++) {
     const m = bracket.qf[i];
+    const [t1, t2] = getQFTeams(i);
     const topY = matchTopY(1, i);
-    drawMatch(QF_X, QF_W, topY, m[0], m[1], m[2]);
+    drawMatch(QF_X, QF_W, topY, t1, t2, m[1]);
 
-    const winTopY = topY + (m[2] === m[0] ? 0 : BH + INNER);
+    const winTopY = topY + (m[1] === t1 ? 0 : BH + INNER);
     const srcCY   = winTopY + BH/2;
     const sfIdx   = Math.floor(i/2);
     const dstTopY = matchTopY(2, sfIdx) + (i%2 === 0 ? 0 : BH + INNER);
@@ -1318,10 +1323,11 @@ function generateShareImage() {
   // ── SF + connectors to Final ──
   for (let i = 0; i < 2; i++) {
     const m = bracket.sf[i];
+    const [t1, t2] = getSFTeams(i);
     const topY = matchTopY(2, i);
-    drawMatch(SF_X, SF_W, topY, m[0], m[1], m[2]);
+    drawMatch(SF_X, SF_W, topY, t1, t2, m[1]);
 
-    const winTopY = topY + (m[2] === m[0] ? 0 : BH + INNER);
+    const winTopY = topY + (m[1] === t1 ? 0 : BH + INNER);
     const srcCY   = winTopY + BH/2;
     const dstTopY = matchTopY(3, 0) + (i === 0 ? 0 : BH + INNER);
     const dstCY   = dstTopY + BH/2;
@@ -1330,12 +1336,13 @@ function generateShareImage() {
 
   // ── Final + connector to Champion ──
   const fn = bracket.final;
+  const [ft1, ft2] = getFinalTeams();
   const finTopY = matchTopY(3, 0);
-  drawMatch(FIN_X, FIN_W, finTopY, fn[0], fn[1], fn[2]);
+  drawMatch(FIN_X, FIN_W, finTopY, ft1, ft2, fn[2]);
 
   const champion = fn[2] || '?';
   const champCY  = TOP_Y + CH / 2;
-  const finWinY  = finTopY + (fn[2] === fn[0] ? 0 : BH + INNER);
+  const finWinY  = finTopY + (fn[2] === ft1 ? 0 : BH + INNER);
   const finSrcCY = finWinY + BH/2;
   ctx.strokeStyle = 'rgba(0,238,252,0.28)'; ctx.lineWidth = 1.5;
   ctx.beginPath();
