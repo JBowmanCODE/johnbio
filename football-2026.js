@@ -808,18 +808,27 @@ function ratingClass(r) {
   return 'squad';
 }
 
+function teamTier(rating) {
+  if (rating >= 80) return { cls: 'elite', label: 'ELITE' };
+  if (rating >= 65) return { cls: 'good', label: 'GOOD' };
+  return { cls: 'squad', label: 'SQUAD' };
+}
+
 function renderOdds() {
   const el = document.getElementById('f26-odds-body');
   if (!el) return;
+  const maxProb = ODDS[0].prob;
   el.innerHTML = ODDS.map((o, i) => `
     <div class="f26-odds-row">
-      <span class="f26-odds-rank">${i + 1 <= 10 ? i + 1 : '-'}</span>
-      <span class="f26-odds-team">${o.team}</span>
-      <span class="f26-odds-prob">
-        <span class="f26-odds-bar-wrap"><span class="f26-odds-bar" style="width:${o.prob * 5}%"></span></span>
-        <strong>${o.prob}%</strong>
-      </span>
-      <span class="f26-odds-analysis">${o.analysis}</span>
+      <span class="f26-odds-rank">${String(i + 1).padStart(2, '0')}</span>
+      <div class="f26-odds-info">
+        <span class="f26-odds-team">${o.team}</span>
+        <span class="f26-odds-analysis">${o.analysis}</span>
+      </div>
+      <div class="f26-odds-right">
+        <div class="f26-odds-bar-wrap"><div class="f26-odds-bar" style="width:${Math.round((o.prob / maxProb) * 100)}%"></div></div>
+        <strong class="f26-odds-pct">${o.prob}%</strong>
+      </div>
     </div>
   `).join('');
 }
@@ -827,36 +836,45 @@ function renderOdds() {
 function renderGroups() {
   const el = document.getElementById('f26-groups');
   if (!el) return;
-  el.innerHTML = GROUPS.map(g => `
+  el.innerHTML = GROUPS.map(g => {
+    const advanceLine = g.teams.filter(t => t.advance).length;
+    return `
     <div class="f26-group-card">
-      <div class="f26-group-header">Group ${g.name}</div>
+      <div class="f26-group-header">
+        <span class="f26-group-letter">Group ${g.name}</span>
+      </div>
       <table class="f26-group-table">
-        <thead><tr><th>Team</th><th>Pts</th><th></th></tr></thead>
+        <thead>
+          <tr><th>Pos</th><th>Team</th><th class="f26-th-center">Pts</th><th class="f26-th-right">Status</th></tr>
+        </thead>
         <tbody>
-          ${g.teams.map(t => `
-            <tr class="${t.advance ? 'f26-advance' : ''}">
+          ${g.teams.map((t, idx) => {
+            const tier = !t.advance && TEAMS[t.team] ? teamTier(TEAMS[t.team].rating) : null;
+            const dividerClass = idx === advanceLine - 1 ? 'f26-last-advance' : '';
+            return `<tr class="${t.advance ? 'f26-advance' : 'f26-eliminated'} ${dividerClass}">
+              <td class="f26-pos-num">${String(idx + 1).padStart(2, '0')}</td>
               <td><button class="f26-team-btn" data-team="${t.team}">${t.team}</button></td>
-              <td>${t.pts}</td>
-              <td>${t.advance ? '<span class="f26-adv-badge">ADV</span>' : ''}</td>
-            </tr>
-          `).join('')}
+              <td class="f26-th-center f26-pts">${t.pts}</td>
+              <td class="f26-th-right">${t.advance
+                ? '<span class="f26-status-badge f26-status-badge--advance">ADV</span>'
+                : tier ? `<span class="f26-status-badge f26-status-badge--${tier.cls}">${tier.label}</span>` : ''
+              }</td>
+            </tr>`;
+          }).join('')}
         </tbody>
       </table>
-      <details class="f26-fixtures-details">
-        <summary>Fixtures</summary>
-        <div class="f26-fixtures">
-          ${g.fixtures.map(f => `
-            <div class="f26-fixture">
-              <span class="f26-fx-home">${f.home}</span>
-              <span class="f26-fx-score">${f.score}</span>
-              <span class="f26-fx-away">${f.away}</span>
-              <span class="f26-fx-date">${f.date}</span>
-            </div>
-          `).join('')}
-        </div>
-      </details>
-    </div>
-  `).join('');
+      <div class="f26-results-head">Results</div>
+      <div class="f26-fixtures">
+        ${g.fixtures.map(f => `
+          <div class="f26-fixture">
+            <span class="f26-fx-home">${f.home}</span>
+            <span class="f26-fx-score">${f.score}</span>
+            <span class="f26-fx-away">${f.away}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  }).join('');
 
   el.querySelectorAll('.f26-team-btn').forEach(btn => {
     btn.addEventListener('click', () => openTeamModal(btn.dataset.team));
@@ -891,18 +909,34 @@ function renderBracket() {
   const finalEl = document.getElementById('f26-final');
   if (finalEl) {
     finalEl.innerHTML = `
-      <div class="f26-final-label">The Final — Jul 19, MetLife Stadium</div>
-      <div class="f26-match f26-match--final">
-        <button class="f26-team-pick ${bracket.final[2] === ft1 ? 'f26-winner' : ''}" data-round="final" data-idx="0" data-team="${ft1}">${ft1}</button>
-        <span class="f26-vs">vs</span>
-        <button class="f26-team-pick ${bracket.final[2] === ft2 ? 'f26-winner' : ''}" data-round="final" data-idx="0" data-team="${ft2}">${ft2}</button>
-      </div>
-      <div class="f26-champion-wrap">
-        <div class="f26-champion-label">AI Predicted Champion</div>
-        <div class="f26-champion">${bracket.final[2]}</div>
+      <div class="f26-final-card">
+        <div class="f26-final-meta">
+          <span class="f26-final-tag">The Final</span>
+          <span class="f26-final-date">Jul 19, 2026 &middot; MetLife Stadium, New Jersey</span>
+        </div>
+        <div class="f26-final-matchup">
+          <button class="f26-final-team ${bracket.final[2] === ft1 ? 'f26-winner' : ''}" data-round="final" data-idx="0" data-team="${ft1}">
+            <span class="f26-final-crest">${ft1.substring(0,3).toUpperCase()}</span>
+            <span class="f26-final-teamname">${ft1}</span>
+            ${bracket.final[2] === ft1 ? '<span class="f26-final-pick-label">AI Pick</span>' : ''}
+          </button>
+          <div class="f26-final-center">
+            <span class="f26-final-vs">VS</span>
+            <span class="f26-final-instruction">Click to pick winner</span>
+          </div>
+          <button class="f26-final-team ${bracket.final[2] === ft2 ? 'f26-winner' : ''}" data-round="final" data-idx="0" data-team="${ft2}">
+            <span class="f26-final-crest">${ft2.substring(0,3).toUpperCase()}</span>
+            <span class="f26-final-teamname">${ft2}</span>
+            ${bracket.final[2] === ft2 ? '<span class="f26-final-pick-label">AI Pick</span>' : ''}
+          </button>
+        </div>
+        <div class="f26-champion-wrap">
+          <div class="f26-champion-label">AI Predicted Champion</div>
+          <div class="f26-champion">${bracket.final[2]}</div>
+        </div>
       </div>
     `;
-    finalEl.querySelectorAll('.f26-team-pick').forEach(btn => {
+    finalEl.querySelectorAll('.f26-final-team').forEach(btn => {
       btn.addEventListener('click', () => {
         bracket.final[2] = btn.dataset.team;
         renderBracket();
