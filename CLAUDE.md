@@ -220,9 +220,24 @@ Replace with plain direct alternatives. If you can't think of one, cut the sente
 - Add URL to `sitemap.xml` with `lastmod`, `changefreq="weekly"`, `priority="0.7"`
 - Add URL to `llms.txt` under the News/Blog section
 
-## CSS cache busting
+## Cache strategy
 
-Shared CSS files loaded in multiple pages (e.g. `news-chat.css`) use `?v=N` query strings. Increment `N` whenever the file changes so browsers pick up the update.
+The site uses a standard long-cache + version-busting approach:
+
+| File type | Cache | How busted |
+|---|---|---|
+| HTML | No cache / must-revalidate | Always fresh — no action needed |
+| CSS / JS | 1 year | Increment `?v=N` on the `<link>` or `<script>` tag when the file changes |
+| Images | 1 year | Use a new filename when replacing an image |
+| Fonts | 1 year | Never change |
+
+**Rule: whenever you edit a `.css` or `.js` file, increment its `?v=N` version string in the HTML page(s) that load it.**
+
+- `styles.css` is currently at `?v=2` — bump to `?v=3` when changed
+- `scripts.js` is currently at `?v=4` — bump to `?v=5` when changed
+- All tool-specific CSS/JS files (e.g. `tcs-simplifier.css`, `index.js`) start at `?v=1` — bump when changed
+
+This applies to every `<link rel="stylesheet">` and `<script src="">` that references a local file. External CDN URLs do not need version strings.
 
 ## Canonical URL
 
