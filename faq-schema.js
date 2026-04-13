@@ -1,4 +1,4 @@
-const WORKER_URL = 'https://faq-schema.ukjbowman.workers.dev';
+const WORKER_URL = 'https://faq-schema-worker.ukjbowman.workers.dev';
 
 const tabManual = document.getElementById('tab-manual');
 const tabAi     = document.getElementById('tab-ai');

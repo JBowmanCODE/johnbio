@@ -1,4 +1,4 @@
-const WORKER_URL = 'https://tcs-simplifier.ukjbowman.workers.dev';
+const WORKER_URL = 'https://tcs-simplifier-worker.ukjbowman.workers.dev';
 const MAX_CHARS = 12000;
 const WARN_CHARS = 11000;
 

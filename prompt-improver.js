@@ -1,4 +1,4 @@
-const WORKER_URL = 'https://prompt-improver.ukjbowman.workers.dev';
+const WORKER_URL = 'https://prompt-improver-worker.ukjbowman.workers.dev';
 
 const tabImprove = document.getElementById('tab-improve');
 const tabLibrary = document.getElementById('tab-library');
