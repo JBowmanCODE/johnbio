@@ -237,7 +237,7 @@ const REGULATIONS = [
     countries: ['NL'],
     category: 'gambling',
     region: 'europe',
-    notes: 'Dutch online gambling market opened October 2021 under KSA oversight.'
+    notes: 'Dutch online gambling market opened October 2021 under KSA oversight. Gambling tax increased to 34.2% (January 2025); new KSA licensing framework with mandatory exit plans effective 1 January 2026.'
   },
   {
     id: 'belgium-gaming-act-1999',
@@ -332,7 +332,7 @@ const REGULATIONS = [
     countries: ['IE'],
     category: 'gambling',
     region: 'europe',
-    notes: 'GRAI launched March 2025. B2C licenses open December 2025. Credit card ban, 5:30am–9pm TV/radio ad blackout.'
+    notes: 'GRAI launched 5 March 2025. B2C betting licence applications opened 9 February 2026; remote operators eligible from 1 July 2026; in-person operator transition from 1 December 2026. Credit card ban, 5:30am–9pm TV/radio ad blackout.'
   },
   {
     id: 'romania-geo-77-2009',
@@ -536,7 +536,7 @@ const REGULATIONS = [
     countries: ['BR'],
     category: 'gambling',
     region: 'americas',
-    notes: 'Brazil sports betting and online gaming fully operational from January 2025. 78 licensed operators holding 138 brands. .bet.br domains required.'
+    notes: 'Brazil sports betting and online gaming fully operational from January 2025. Grace period ended 1 January 2026; SPA moved to strict enforcement of Ordinance 722. 78 licensed operators holding 138 brands. .bet.br domains required. Credit cards and crypto-anonymity banned; payments must originate from CPF-verified accounts.'
   },
   {
     id: 'brazil-spa-561-2024',
@@ -554,7 +554,7 @@ const REGULATIONS = [
     countries: ['CW'],
     category: 'gambling',
     region: 'americas',
-    notes: 'Replaced master/sublicense system with direct CGA licensing. All operators face 12-month transition. Physical presence in Curaçao required.'
+    notes: 'Replaced master/sublicense system with direct CGA licensing. Green seal mandatory; orange seal expired 15 October 2025. Physical presence in Curaçao required. Mandatory ADR and tightened T&C requirements in force 2026.'
   },
   {
     id: 'antigua-igiwr',
@@ -1132,13 +1132,13 @@ const REGULATIONS = [
     notes: 'Mandatory responsible gambling messaging in all advertising. Ad ban during live sports under ongoing discussion.'
   },
   {
-    id: 'kenya-bclb-celebrity-ban-2025',
-    name: 'Kenya BCLB celebrity/influencer advertising ban (May 2025)',
+    id: 'kenya-gra-celebrity-ban-2025',
+    name: 'Kenya GRA celebrity/influencer advertising ban (May 2025)',
     url: 'https://bclb.go.ke/',
     countries: ['KE'],
     category: 'advertising',
     region: 'africa',
-    notes: 'Kenya banned celebrity and influencer gambling advertising from May 2025.'
+    notes: 'Kenya banned celebrity and influencer gambling advertising from May 2025. BCLB replaced by Gambling Regulatory Authority (GRA) under the Gambling Control Act 2025.'
   },
   {
     id: 'india-mib-advisories',
@@ -1213,6 +1213,7 @@ const REGULATIONS = [
   { id: 'us-ri-igaming', name: 'Rhode Island iGaming Act (2023)', url: 'https://www.rilot.com', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Rhode Island online casino legislation.' },
   { id: 'us-nv-igaming', name: 'Nevada AB 114 (2013, online poker) / NRS 463', url: 'https://gaming.nv.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Nevada online poker only (no full casino games); first US online poker market.' },
   { id: 'us-me-igaming', name: 'Maine LD 1164 (Jan 2026, tribal-exclusive iGaming)', url: 'https://www.maine.gov/dps/gamb-control', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Maine tribal-exclusive online casino framework, effective January 2026.' },
+  { id: 'us-il-igaming-2026', name: 'Illinois HB 1167 (iGaming, 2026 — pending)', url: 'https://www.ilga.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Illinois iGaming bill passed committee late January 2026; most likely next US state to legalise full online casino gaming.' },
 
   // US States — sports betting only
   { id: 'us-az-sports', name: 'Arizona HB 2772 (2021)', url: 'https://gaming.az.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Arizona sports betting.' },
@@ -1320,7 +1321,7 @@ const EMERGING = [
   {
     title: "Ireland's Gambling Regulation Act 2024",
     jurisdiction: 'Ireland',
-    body: 'GRAI launched 5 March 2025. B2C betting license applications open December 2025, remote gaming licenses Q1 2026. Credit card ban, 5:30am–9pm TV/radio ad blackout, under-18 team sponsorship ban, National Gambling Exclusion Register.'
+    body: 'GRAI launched 5 March 2025. B2C betting licence applications opened 9 February 2026; remote operators eligible from 1 July 2026; in-person operator transition from 1 December 2026. Credit card ban, 5:30am–9pm TV/radio ad blackout, under-18 team sponsorship ban, National Gambling Exclusion Register.'
   },
   {
     title: 'EU AML Package 2024',
