@@ -1151,9 +1151,11 @@ function closeTeamModal() {
 // ── Share Image ───────────────────────────────────────────────────────────────
 function generateShareImage() {
   const W = 1200, H = 630;
+  const SCALE = 2; // 2× for HD output (2400×1260px)
   const canvas = document.createElement('canvas');
-  canvas.width = W; canvas.height = H;
+  canvas.width = W * SCALE; canvas.height = H * SCALE;
   const ctx = canvas.getContext('2d');
+  ctx.scale(SCALE, SCALE);
 
   // ── layout constants ──
   const HEADER_H = 68, FOOTER_H = 42;
