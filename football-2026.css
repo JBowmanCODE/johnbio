@@ -225,7 +225,7 @@
 }
 .f26-group-table {
   width: 100%; border-collapse: collapse;
-  font-size: 0.8rem;
+  font-size: 0.8rem; table-layout: fixed;
 }
 .f26-group-table th {
   padding: 0.45rem 0.75rem;
@@ -234,13 +234,16 @@
   text-transform: uppercase; letter-spacing: 0.1em;
   color: var(--on-surface-variant); opacity: 0.5;
 }
+.f26-group-table th:nth-child(1) { width: 2.5rem; }
+.f26-group-table th:nth-child(3) { width: 2.8rem; }
+.f26-group-table th:nth-child(4) { width: 6.2rem; }
 .f26-group-table td {
   padding: 0.5rem 0.75rem;
   border-bottom: 1px solid rgba(248,245,253,0.04);
 }
 .f26-group-table tr:last-child td { border-bottom: none; }
 .f26-th-center { text-align: center; }
-.f26-th-right { text-align: right; }
+.f26-th-right { text-align: right; white-space: nowrap; }
 .f26-pos-num {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.7rem; font-weight: 800;
@@ -248,15 +251,16 @@
   width: 1.8rem;
 }
 .f26-advance .f26-pos-num { color: #00EEFC; }
+.f26-advance td { background: rgba(0,238,252,0.04); }
 .f26-pts {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700; text-align: center;
   color: var(--on-surface);
 }
 .f26-advance .f26-pts { color: #00EEFC; }
-.f26-eliminated { opacity: 0.6; }
+.f26-eliminated { opacity: 0.55; }
 .f26-last-advance td {
-  border-bottom: 1px solid rgba(0,238,252,0.2) !important;
+  border-bottom: 2px solid rgba(0,238,252,0.25) !important;
 }
 .f26-team-btn {
   background: none; border: none; padding: 0;
@@ -268,7 +272,7 @@
 .f26-advance .f26-team-btn { font-weight: 800; color: var(--on-surface); }
 .f26-team-btn:hover { color: #00EEFC; }
 
-/* Promote button */
+/* Promote / demote buttons */
 .f26-promote-btn {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.57rem; font-weight: 700;
@@ -285,6 +289,21 @@
   background: rgba(0,238,252,0.14);
   color: #00EEFC;
   border-color: rgba(0,238,252,0.35);
+}
+.f26-adv-cell {
+  display: flex; align-items: center; justify-content: flex-end; gap: 0.3rem;
+}
+.f26-demote-btn {
+  font-size: 0.75rem; font-weight: 700;
+  background: none; border: none;
+  color: rgba(248,113,113,0.35);
+  cursor: pointer; padding: 0.1rem 0.2rem;
+  border-radius: 0.2rem; line-height: 1;
+  transition: color 0.15s, background 0.15s;
+}
+.f26-demote-btn:hover {
+  color: #f87171;
+  background: rgba(248,113,113,0.1);
 }
 
 /* Edited group badge */
