@@ -1376,60 +1376,60 @@ function generateShareImage() {
   ctx.textAlign = 'left';
 
   // ── show share panel ──
-  canvas.toBlob(blob => {
-    const objectURL = URL.createObjectURL(blob);
-    const file = new File([blob], 'my-2026-predictions.png', { type: 'image/png' });
+  // Use dataURL for preview + download (synchronous, universally supported as img src)
+  const dataURL = canvas.toDataURL('image/png');
 
-    // Preview
-    const preview = document.getElementById('f26-share-preview');
-    if (preview.src) URL.revokeObjectURL(preview.src);
-    preview.src = objectURL;
+  const preview = document.getElementById('f26-share-preview');
+  preview.src = dataURL;
 
-    // Download button
-    document.getElementById('f26-share-dl').onclick = () => {
-      const a = document.createElement('a');
-      a.href = objectURL; a.download = 'my-2026-predictions.png'; a.click();
-    };
+  // Download button
+  document.getElementById('f26-share-dl').onclick = () => {
+    const a = document.createElement('a');
+    a.href = dataURL; a.download = 'my-2026-predictions.png'; a.click();
+  };
 
-    // Native share (mobile)
-    const nativeBtn = document.getElementById('f26-share-native');
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      nativeBtn.hidden = false;
-      nativeBtn.onclick = () => {
-        navigator.share({
-          files: [file],
-          title: 'My 2026 Football Tournament Predictions',
-          text: 'I used AI to predict the 2026 Football World Cup \uD83C\uDFC6 Make your own predictions at johnb.io/football-2026',
-        }).catch(() => {});
-      };
-    }
+  // Social share links
+  const pageURL = encodeURIComponent('https://johnb.io/football-2026');
+  const shareText = encodeURIComponent('I used AI to predict the 2026 Football World Cup \uD83C\uDFC6 Make your own predictions at johnb.io/football-2026');
+  const shareTitle = encodeURIComponent('My AI-predicted 2026 Football World Cup bracket');
+  document.getElementById('f26-soc-x').href =
+    `https://twitter.com/intent/tweet?text=${shareText}&url=${pageURL}`;
+  document.getElementById('f26-soc-li').href =
+    `https://www.linkedin.com/sharing/share-offsite/?url=${pageURL}`;
+  document.getElementById('f26-soc-fb').href =
+    `https://www.facebook.com/sharer/sharer.php?u=${pageURL}`;
+  document.getElementById('f26-soc-wa').href =
+    `https://wa.me/?text=${shareText}%20${pageURL}`;
+  document.getElementById('f26-soc-rd').href =
+    `https://www.reddit.com/submit?url=${pageURL}&title=${shareTitle}`;
 
-    // Social share links
-    const pageURL = encodeURIComponent('https://johnb.io/football-2026');
-    const shareText = encodeURIComponent('I used AI to predict the 2026 Football World Cup \uD83C\uDFC6 Make your own predictions at johnb.io/football-2026');
-    const shareTitle = encodeURIComponent('My AI-predicted 2026 Football World Cup bracket');
-    document.getElementById('f26-soc-x').href =
-      `https://twitter.com/intent/tweet?text=${shareText}&url=${pageURL}`;
-    document.getElementById('f26-soc-li').href =
-      `https://www.linkedin.com/sharing/share-offsite/?url=${pageURL}`;
-    document.getElementById('f26-soc-fb').href =
-      `https://www.facebook.com/sharer/sharer.php?u=${pageURL}`;
-    document.getElementById('f26-soc-wa').href =
-      `https://wa.me/?text=${shareText}%20${pageURL}`;
-    document.getElementById('f26-soc-rd').href =
-      `https://www.reddit.com/submit?url=${pageURL}&title=${shareTitle}`;
+  document.getElementById('f26-share-note').textContent =
+    'Download the image to attach to Instagram or Facebook posts. Social buttons share the page link.';
 
-    // Note
-    const canShareFile = navigator.canShare && navigator.canShare({ files: [file] });
-    document.getElementById('f26-share-note').textContent = canShareFile
-      ? 'Tip: use Share to send the image directly. Social buttons share the page link.'
-      : 'Download the image to attach it to posts on Instagram or Facebook. Social buttons share the page link.';
+  // Show panel immediately
+  const panel = document.getElementById('f26-share-panel');
+  panel.hidden = false;
+  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-    // Show panel
-    const panel = document.getElementById('f26-share-panel');
-    panel.hidden = false;
-    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }, 'image/png');
+  // Native share (mobile) — needs blob, load async after panel is visible
+  const nativeBtn = document.getElementById('f26-share-native');
+  nativeBtn.hidden = true;
+  if (navigator.canShare) {
+    canvas.toBlob(blob => {
+      if (!blob) return;
+      const file = new File([blob], 'my-2026-predictions.png', { type: 'image/png' });
+      if (navigator.canShare({ files: [file] })) {
+        nativeBtn.hidden = false;
+        nativeBtn.onclick = () => {
+          navigator.share({
+            files: [file],
+            title: 'My 2026 Football Tournament Predictions',
+            text: 'I used AI to predict the 2026 Football World Cup \uD83C\uDFC6 Make your own predictions at johnb.io/football-2026',
+          }).catch(() => {});
+        };
+      }
+    }, 'image/png');
+  }
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────────
