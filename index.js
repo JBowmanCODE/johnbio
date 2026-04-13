@@ -1,6 +1,18 @@
 const projects = [
   // ── TOP 6 (visible by default) ──────────────────────────────────────────
   {
+    id: 'tcs-simplifier',
+    title: 'T&Cs Simplifier',
+    desc: 'Paste casino bonus terms and get a plain English summary, red flag list and key numbers — wagering, expiry, max bet, max win. Built for players, affiliates and compliance teams.',
+    category: 'digital',
+    badge: 'DIGITAL AI',
+    color: 'green',
+    icons: ['summarize', 'policy'],
+    href: 'https://johnb.io/tcs-simplifier',
+    img: '/images/tcs-simplifier.webp',
+    thumbIcon: 'summarize',
+  },
+  {
     id: 'igaming-compliance',
     title: 'iGaming Compliance Map',
     desc: 'Interactive world map of 203 iGaming regulations across 60+ jurisdictions. Browse gambling laws, AML directives, data protection rules and advertising codes by country.',
