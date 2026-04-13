@@ -336,8 +336,14 @@
             <span class="tool-accordion-icon" aria-hidden="true"></span>
           </summary>
           <div class="tool-accordion-body">
-            <p>Each of the 48 teams has a squad rating (0-100), a form score (out of 10 based on last 5 matches), and 8 key players each with individual ratings and recent form. The group stage simulates all 6 matches per group using head-to-head probability weighting from these inputs. The top 2 from each group advance.</p>
-            <p>The knockout bracket then pairs teams by seeding and simulates each match. Win probability at each stage is recalculated using the same model. The final bracket shows the AI's most likely path for each team to win. Click any team to override a result and the cascade logic updates all later rounds automatically.</p>
+            <ol class="info-steps">
+              <li><strong>Squad data built for all 48 teams.</strong> Each team has a squad rating (0-100), a form score based on their last 5 matches, a coach rating, and 8 key players — each rated individually for overall quality and current form.</li>
+              <li><strong>Group stage simulated.</strong> All 6 fixtures per group are run using head-to-head probability weighting from the squad and form data. The top 2 from each group advance to the knockout rounds.</li>
+              <li><strong>Knockout bracket generated.</strong> Teams are seeded by group finish and paired into the Round of 32. Each subsequent round simulates match probabilities using the same model — winner advances, loser exits.</li>
+              <li><strong>Win probability calculated.</strong> The AI runs the full bracket and assigns each team a tournament win percentage based on their likely path, squad strength, and form at each stage. Argentina's 18% reflects their depth across all three phases.</li>
+              <li><strong>Click to change any result.</strong> Click any team in the knockout bracket to make them the winner of that match. The bracket updates automatically from that point forward through all later rounds.</li>
+              <li><strong>Reset at any time.</strong> The reset button restores the original AI prediction across all rounds instantly.</li>
+            </ol>
           </div>
         </details>
 
@@ -347,14 +353,13 @@
             <span class="tool-accordion-icon" aria-hidden="true"></span>
           </summary>
           <div class="tool-accordion-body">
-            <ul>
-              <li>All 48 teams rated with 8-player squads each</li>
-              <li>AI win probability shown for top 10 contenders</li>
-              <li>Group stage fixtures and results for all 12 groups</li>
-              <li>Full knockout bracket from Round of 32 to the Final</li>
-              <li>Click any team in the bracket to change the winner - cascades forward automatically</li>
-              <li>Squad modal shows full player ratings by clicking any team name in the group tables</li>
-              <li>Reset button restores the original AI prediction at any point</li>
+            <ul class="info-points">
+              <li><strong>Full squad data for all 48 teams.</strong> Every team has a squad rating, form score, coach quality rating, and 8 individually rated players — covering GKs, defenders, midfielders and forwards.</li>
+              <li><strong>AI win probability leaderboard.</strong> The top 10 contenders are ranked by tournament win percentage, with a short analysis of each team's strengths and risk factors.</li>
+              <li><strong>All 12 group stages with fixtures.</strong> Every group shows the standings, points, qualifying status, and all 6 predicted match scores — expandable and collapsible per group.</li>
+              <li><strong>Interactive knockout bracket.</strong> The full bracket from Round of 32 to the Final is shown in one scrollable view. Click any team to override a result — changes cascade forward automatically.</li>
+              <li><strong>Squad modal on every team.</strong> Click any team name in the group tables to open a detailed panel showing all 8 players, positions, clubs, ratings and form scores.</li>
+              <li><strong>Not betting advice.</strong> All predictions are AI-generated simulations based on squad data and form. They are not official odds or financial advice of any kind.</li>
             </ul>
           </div>
         </details>
@@ -365,7 +370,13 @@
             <span class="tool-accordion-icon" aria-hidden="true"></span>
           </summary>
           <div class="tool-accordion-body">
-            <p>Team ratings and squad data are based on a deep analysis of international football performance up to April 2026, covering qualifying campaigns, recent friendlies, and current club form for all 48 qualified nations. Player ratings reflect the 2025-26 club season output alongside international caps and tournament history. Bracket predictions are AI-generated simulations and are not official odds or betting lines.</p>
+            <ol class="info-sources">
+              <li><strong>FIFA World Rankings.</strong> FIFA.com. Accessed April 2026.</li>
+              <li><strong>Qualifying campaign results.</strong> Official records from UEFA, CONMEBOL, CAF, AFC, CONCACAF and OFC confederations. Accessed April 2026.</li>
+              <li><strong>Club season performance data.</strong> Based on the 2025-26 European and domestic league seasons across the Premier League, La Liga, Bundesliga, Serie A, Ligue 1 and major global leagues.</li>
+              <li><strong>Player ratings methodology.</strong> Individual ratings (0-100) reflect current club form, international caps, and tournament history. World Class = 88+, Elite = 80-87, Good = 72-79, Squad = below 72.</li>
+              <li><strong>Historical tournament data.</strong> Previous World Cups and continental championships used to weight coach experience and team tournament pedigree.</li>
+            </ol>
           </div>
         </details>
 
