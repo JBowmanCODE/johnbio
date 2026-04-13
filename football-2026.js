@@ -1145,6 +1145,202 @@ function closeTeamModal() {
   document.body.style.overflow = '';
 }
 
+// ── Share Image ───────────────────────────────────────────────────────────────
+function generateShareImage() {
+  const W = 1200, H = 630;
+  const canvas = document.createElement('canvas');
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+
+  // helpers
+  function rr(x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  }
+  function abbr(name) { return (name || '?').substring(0, 3).toUpperCase(); }
+  function clip(name, max) { if (!name) return '?'; return name.length > max ? name.substring(0, max - 1) + '…' : name; }
+
+  // ── background ──
+  ctx.fillStyle = '#0a0a14';
+  ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = 'rgba(0,238,252,0.04)';
+  ctx.lineWidth = 1;
+  for (let x = 0; x <= W; x += 60) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+  for (let y = 0; y <= H; y += 60) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+  // top accent line
+  const ag = ctx.createLinearGradient(0,0,W,0);
+  ag.addColorStop(0,'rgba(0,238,252,0)'); ag.addColorStop(0.15,'#00EEFC');
+  ag.addColorStop(0.85,'#00EEFC'); ag.addColorStop(1,'rgba(0,238,252,0)');
+  ctx.fillStyle = ag; ctx.fillRect(0, 0, W, 2);
+
+  // ── header ──
+  ctx.fillStyle = 'rgba(0,238,252,0.05)';
+  ctx.fillRect(0, 0, W, 74);
+  ctx.fillStyle = 'rgba(0,238,252,0.55)';
+  ctx.font = 'bold 10px Arial, sans-serif';
+  ctx.fillText('MY 2026 FOOTBALL TOURNAMENT PREDICTIONS', 40, 26);
+  ctx.fillStyle = 'rgba(248,245,253,0.88)';
+  ctx.font = 'bold 26px Arial, sans-serif';
+  ctx.fillText('AI-Simulated Bracket', 40, 58);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = '#00EEFC';
+  ctx.font = 'bold 15px Arial, sans-serif';
+  ctx.fillText('johnb.io', W - 40, 38);
+  ctx.fillStyle = 'rgba(248,245,253,0.3)';
+  ctx.font = '12px Arial, sans-serif';
+  ctx.fillText('/football-2026', W - 40, 58);
+  ctx.textAlign = 'left';
+
+  // ── footer ──
+  ctx.fillStyle = 'rgba(0,0,0,0.35)';
+  ctx.fillRect(0, H - 42, W, 42);
+  ctx.fillStyle = 'rgba(0,238,252,0.12)';
+  ctx.fillRect(0, H - 42, W, 1);
+  ctx.fillStyle = 'rgba(0,238,252,0.5)';
+  ctx.font = '12px Arial, sans-serif';
+  ctx.fillText('johnb.io/football-2026', 40, H - 14);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = 'rgba(248,245,253,0.2)';
+  ctx.fillText('AI predictions only \u2022 Not betting advice', W - 40, H - 14);
+  ctx.textAlign = 'left';
+
+  // ── bracket layout math ──
+  const TOP = 82, BOT = H - 50, CH = BOT - TOP; // CH ≈ 498
+  const BW = 155, BH = 24, GAP = 20; // GAP = half-distance between 2 teams in a match
+  const QX = 40, SX = QX + BW + 36, FX = SX + BW + 36, CX = FX + BW + 52;
+  const CW = W - CX - 40; // champion card width
+
+  const qfSlot = CH / 4;
+  const qfCY = [0,1,2,3].map(i => TOP + qfSlot * i + qfSlot / 2);
+  const sfCY = [(qfCY[0]+qfCY[1])/2, (qfCY[2]+qfCY[3])/2];
+  const fnCY = (sfCY[0]+sfCY[1])/2;
+
+  // ── round labels ──
+  ctx.font = 'bold 8px Arial, sans-serif';
+  ctx.fillStyle = 'rgba(0,238,252,0.35)';
+  [[QX,'QUARTER-FINALS'],[SX,'SEMI-FINALS'],[FX,'THE FINAL'],[CX,'CHAMPION']].forEach(([x, lbl]) => {
+    ctx.fillText(lbl, x, TOP - 10);
+  });
+
+  // ── draw team box ──
+  function teamBox(x, cy, name, isWinner) {
+    const ty = cy - BH/2;
+    rr(x, ty, BW, BH, 4);
+    ctx.fillStyle = isWinner ? 'rgba(0,238,252,0.14)' : 'rgba(248,245,253,0.04)';
+    ctx.fill();
+    if (isWinner) {
+      ctx.strokeStyle = 'rgba(0,238,252,0.4)'; ctx.lineWidth = 1;
+      rr(x, ty, BW, BH, 4); ctx.stroke();
+    }
+    ctx.fillStyle = isWinner ? '#00EEFC' : 'rgba(248,245,253,0.42)';
+    ctx.font = isWinner ? 'bold 11px Arial,sans-serif' : '11px Arial,sans-serif';
+    ctx.fillText(clip(name, 17), x + 8, cy + 4);
+  }
+
+  // ── draw bracket spine + elbow connector ──
+  // spine: vertical line on right joining two team boxes in a match
+  // elbow: from spine midpoint → target y in next column
+  function matchConnector(rightX, cy1, cy2, nextX, nextY) {
+    const spX = rightX + 6;
+    ctx.strokeStyle = 'rgba(0,238,252,0.14)'; ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(rightX, cy1); ctx.lineTo(spX, cy1);
+    ctx.lineTo(spX, cy2);
+    ctx.moveTo(rightX, cy2); ctx.lineTo(spX, cy2);
+    ctx.stroke();
+    // horizontal to next column
+    ctx.beginPath();
+    ctx.moveTo(spX, (cy1+cy2)/2);
+    ctx.lineTo(nextX - 4, (cy1+cy2)/2);
+    ctx.stroke();
+    // vertical to target row in next column (if they differ)
+    if (Math.abs((cy1+cy2)/2 - nextY) > 2) {
+      ctx.beginPath();
+      ctx.moveTo(nextX - 4, (cy1+cy2)/2);
+      ctx.lineTo(nextX - 4, nextY);
+      ctx.lineTo(nextX, nextY);
+      ctx.stroke();
+    }
+  }
+
+  // ── QF round ──
+  const qf = bracket.qf;
+  qf.forEach((m, i) => {
+    const y1 = qfCY[i] - GAP, y2 = qfCY[i] + GAP;
+    teamBox(QX, y1, m[0], m[2] === m[0]);
+    teamBox(QX, y2, m[1], m[2] === m[1]);
+    const sfIdx = i < 2 ? 0 : 1;
+    const sfTeamY = sfCY[sfIdx] + (i % 2 === 0 ? -GAP : GAP);
+    matchConnector(QX + BW, y1, y2, SX, sfTeamY);
+  });
+
+  // ── SF round ──
+  const sf = bracket.sf;
+  sf.forEach((m, i) => {
+    const y1 = sfCY[i] - GAP, y2 = sfCY[i] + GAP;
+    teamBox(SX, y1, m[0], m[2] === m[0]);
+    teamBox(SX, y2, m[1], m[2] === m[1]);
+    const fnTeamY = fnCY + (i === 0 ? -GAP : GAP);
+    matchConnector(SX + BW, y1, y2, FX, fnTeamY);
+  });
+
+  // ── Final round ──
+  const fn = bracket.final;
+  const fn1y = fnCY - GAP, fn2y = fnCY + GAP;
+  teamBox(FX, fn1y, fn[0], fn[2] === fn[0]);
+  teamBox(FX, fn2y, fn[1], fn[2] === fn[1]);
+  // connector to champion card
+  const winY = fn[2] === fn[0] ? fn1y : fn2y;
+  const champMidY = fnCY;
+  ctx.strokeStyle = 'rgba(0,238,252,0.25)'; ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(FX + BW, winY);
+  ctx.lineTo(FX + BW + 20, winY);
+  ctx.lineTo(FX + BW + 20, champMidY);
+  ctx.lineTo(CX - 2, champMidY);
+  ctx.stroke();
+
+  // ── Champion card ──
+  const champion = fn[2] || '?';
+  const CH2 = 130, champY = fnCY - CH2/2;
+  ctx.shadowColor = '#00EEFC'; ctx.shadowBlur = 24;
+  rr(CX, champY, CW, CH2, 12);
+  ctx.fillStyle = 'rgba(0,238,252,0.09)'; ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = 'rgba(0,238,252,0.55)'; ctx.lineWidth = 1.5;
+  rr(CX, champY, CW, CH2, 12); ctx.stroke();
+
+  const cx = CX + CW/2;
+  // circle crest
+  ctx.strokeStyle = 'rgba(0,238,252,0.4)'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(cx, champY + 36, 22, 0, Math.PI*2); ctx.stroke();
+  ctx.fillStyle = 'rgba(0,238,252,0.1)';
+  ctx.beginPath(); ctx.arc(cx, champY + 36, 22, 0, Math.PI*2); ctx.fill();
+  ctx.textAlign = 'center';
+  ctx.font = 'bold 13px Arial,sans-serif'; ctx.fillStyle = '#00EEFC';
+  ctx.fillText(abbr(champion), cx, champY + 41);
+  // team name
+  ctx.font = 'bold 24px Arial,sans-serif'; ctx.fillStyle = '#ffffff';
+  ctx.fillText(champion.toUpperCase(), cx, champY + 84);
+  // label
+  ctx.font = '9px Arial,sans-serif'; ctx.fillStyle = 'rgba(0,238,252,0.45)';
+  ctx.fillText('AI PREDICTED CHAMPION', cx, champY + 108);
+  ctx.textAlign = 'left';
+
+  // ── download ──
+  canvas.toBlob(blob => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'my-2026-predictions.png'; a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }, 'image/png');
+}
+
 // ── Init ──────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   renderOdds();
@@ -1160,4 +1356,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderGroups();
     renderBracket();
   });
+
+  document.getElementById('f26-share-btn').addEventListener('click', generateShareImage);
 });
