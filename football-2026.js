@@ -888,36 +888,45 @@ function renderGroups() {
   });
 }
 
-// Bracket slot sizing — keep in sync with CSS variable --f26-slot
-const SLOT = 60;  // px per R32 slot
+// Bracket slot sizing
+// R32 sub-cols: 8 matches each, sequential at SLOT spacing
+// R16 onward: compact bracket where R16 is base round (roundIdx=0)
+const SLOT = 56;  // px per slot
+const COL_H = 8 * SLOT;  // 448px — height for all columns
 
 function matchTop(roundIdx, matchIdx) {
+  // roundIdx = -1 → R32 sub-col (sequential, no centering offset)
+  // roundIdx = 0  → R16 (base round of compact bracket)
+  // roundIdx = 1  → QF, roundIdx = 2 → SF
+  if (roundIdx < 0) return matchIdx * SLOT;
   const mult = Math.pow(2, roundIdx);
   return matchIdx * mult * SLOT + (mult - 1) * SLOT / 2;
 }
 
 function renderBracket() {
-  renderRound('f26-r32', bracket.r32, 'r32', 0, (i) => {
-    return { t1: bracket.r32[i][0], t2: bracket.r32[i][1], winner: bracket.r32[i][2] };
-  });
+  // R32: split into two sub-columns of 8
+  renderRound('f26-r32a', bracket.r32.slice(0, 8), 'r32', -1,
+    (i) => ({ t1: bracket.r32[i][0], t2: bracket.r32[i][1], winner: bracket.r32[i][2] }), 0);
+  renderRound('f26-r32b', bracket.r32.slice(8, 16), 'r32', -1,
+    (i) => ({ t1: bracket.r32[i + 8][0], t2: bracket.r32[i + 8][1], winner: bracket.r32[i + 8][2] }), 8);
 
   const r16Data = bracket.r16.map((m, i) => {
     const [t1, t2] = getR16Teams(i);
     return { t1, t2, winner: m[1] };
   });
-  renderRound('f26-r16', r16Data, 'r16', 1, (i) => r16Data[i]);
+  renderRound('f26-r16', r16Data, 'r16', 0, (i) => r16Data[i]);
 
   const qfData = bracket.qf.map((m, i) => {
     const [t1, t2] = getQFTeams(i);
     return { t1, t2, winner: m[1] };
   });
-  renderRound('f26-qf', qfData, 'qf', 2, (i) => qfData[i]);
+  renderRound('f26-qf', qfData, 'qf', 1, (i) => qfData[i]);
 
   const sfData = bracket.sf.map((m, i) => {
     const [t1, t2] = getSFTeams(i);
     return { t1, t2, winner: m[1] };
   });
-  renderRound('f26-sf', sfData, 'sf', 3, (i) => sfData[i]);
+  renderRound('f26-sf', sfData, 'sf', 2, (i) => sfData[i]);
 
   // Final
   const [ft1, ft2] = getFinalTeams();
@@ -960,18 +969,18 @@ function renderBracket() {
   }
 }
 
-function renderRound(elId, data, round, roundIdx, getData) {
+function renderRound(elId, data, round, roundIdx, getData, indexOffset = 0) {
   const el = document.getElementById(elId);
   if (!el) return;
-  // Set column height to fit all R32 slots
-  el.style.height = (16 * SLOT) + 'px';
+  el.style.height = COL_H + 'px';
   el.innerHTML = data.map((_, i) => {
     const { t1, t2, winner } = getData(i);
     const top = matchTop(roundIdx, i);
+    const idx = i + indexOffset;
     return `
       <div class="f26-match" style="top:${top}px">
-        <button class="f26-team-pick ${winner === t1 ? 'f26-winner' : ''}" data-round="${round}" data-idx="${i}" data-team="${t1}">${t1 || '?'}</button>
-        <button class="f26-team-pick ${winner === t2 ? 'f26-winner' : ''}" data-round="${round}" data-idx="${i}" data-team="${t2}">${t2 || '?'}</button>
+        <button class="f26-team-pick ${winner === t1 ? 'f26-winner' : ''}" data-round="${round}" data-idx="${idx}" data-team="${t1}">${t1 || '?'}</button>
+        <button class="f26-team-pick ${winner === t2 ? 'f26-winner' : ''}" data-round="${round}" data-idx="${idx}" data-team="${t2}">${t2 || '?'}</button>
       </div>
     `;
   }).join('');
