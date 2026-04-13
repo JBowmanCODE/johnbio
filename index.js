@@ -1,6 +1,18 @@
 const projects = [
   // ── TOP 6 (visible by default) ──────────────────────────────────────────
   {
+    id: 'football-2026',
+    title: 'Football 2026',
+    desc: 'AI predictions for the Summer 2026 football tournament. Group stage results, full knockout bracket, squad ratings for all 48 teams. Click to change bracket winners.',
+    category: 'ai',
+    badge: 'AI TOOL',
+    color: 'cyan',
+    icons: ['sports_soccer', 'emoji_events'],
+    href: 'https://johnb.io/football-2026',
+    img: '/images/football2026_og.webp',
+    thumbIcon: 'sports_soccer',
+  },
+  {
     id: 'tcs-simplifier',
     title: 'T&Cs Simplifier',
     desc: 'Paste casino bonus terms and get a plain English summary, red flag list and key numbers — wagering, expiry, max bet, max win. Built for players, affiliates and compliance teams.',

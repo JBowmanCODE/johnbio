@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football 2026 - AI Tournament Simulator | JohnB.io</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/header.css?v=4">
+  <link rel="stylesheet" href="/footer.css?v=2">
+  <link rel="stylesheet" href="/football-2026.css?v=1">
+
+  <!-- SEO -->
+  <meta name="description" content="AI-powered Summer 2026 football tournament simulator. See AI predictions for all 48 teams, group stage results, and the full knockout bracket. Click to change winners.">
+  <meta name="keywords" content="football 2026 simulator, summer 2026 football, football tournament bracket, AI football predictions, 2026 football groups">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/football-2026">
+  <meta name="author" content="John Bowman">
+  <meta property="og:title" content="Football 2026 - AI Tournament Simulator">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/football-2026">
+  <meta property="og:description" content="AI predictions for the Summer 2026 football tournament. Group stage, knockout bracket, squad ratings and win probabilities for all 48 teams.">
+  <meta property="og:image" content="https://johnb.io/images/football2026_og.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Football 2026 AI Tournament Simulator by JohnB.io">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Football 2026 - AI Simulator - JohnB.io">
+  <meta name="twitter:description" content="AI predictions for the Summer 2026 football tournament. Click to change bracket winners and see who your AI picks.">
+  <meta name="twitter:image" content="https://johnb.io/images/football2026_og.webp">
+  <meta name="twitter:image:alt" content="Football 2026 AI Tournament Simulator">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Football 2026 AI Simulator",
+    "url": "https://johnb.io/football-2026",
+    "applicationCategory": "SportsApplication",
+    "operatingSystem": "Web",
+    "description": "AI-powered tournament simulator for the Summer 2026 football championship. Includes group stage results, knockout bracket, squad ratings and win probability for all 48 teams.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://www.linkedin.com/in/john-bowman/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does the Football 2026 simulator work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The simulator uses a deep analysis of all 48 teams based on squad ratings, coach quality, recent form, and tournament history. AI predicts group stage results and generates a full knockout bracket. You can click any team in the bracket to override the prediction and see how the tournament path changes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which team does the AI predict to win?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The AI predicts Argentina to win the Summer 2026 tournament, with France and Spain as the closest challengers. Argentina's 18% probability reflects their defending champion status, the Messi factor, and the deepest midfield in the tournament."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How are the team and player ratings calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ratings are on a 0-100 scale based on current club form, international performance, and squad depth. World Class (88+) covers generational players. Elite (80-87) covers top-level internationals. Good (72-79) covers solid squad contributors. Below 72 is squad depth."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I change the bracket results?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Click any team button in the knockout bracket to make them the winner of that match. The change cascades forward automatically through all later rounds. Click Reset to go back to the AI prediction."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many teams are in the 2026 tournament?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "48 teams compete across 12 groups of 4. Two teams advance from each group, giving 24 teams in the Round of 32 plus 8 third-place qualifiers. The knockout rounds are: Round of 32, Round of 16, Quarter-finals, Semi-finals, and the Final."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://johnb.io" },
+      { "@type": "ListItem", "position": 2, "name": "AI Tools", "item": "https://johnb.io/#tools" },
+      { "@type": "ListItem", "position": 3, "name": "Football 2026", "item": "https://johnb.io/football-2026" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="f26-ambient"></div>
+
+  <main class="f26-wrap" id="main-content">
+
+    <!-- Hero -->
+    <div class="f26-hero">
+      <h1 class="f26-title">Football <span class="f26-gradient">2026</span></h1>
+      <p class="f26-desc">AI predictions for the Summer 2026 football tournament. Group stage results, knockout bracket, and squad data for all 48 teams. Click any team in the bracket to change the winner.</p>
+    </div>
+
+    <!-- Win Probability -->
+    <div class="f26-section-head">
+      <h2 class="f26-section-title">AI Win Probability</h2>
+    </div>
+    <div class="f26-card">
+      <div id="f26-odds-body"></div>
+    </div>
+
+    <!-- Group Stage -->
+    <div class="f26-section-head">
+      <h2 class="f26-section-title">Group Stage Results</h2>
+    </div>
+    <div id="f26-groups" class="f26-groups"></div>
+
+    <!-- Bracket -->
+    <div class="f26-section-head">
+      <h2 class="f26-section-title">Knockout Bracket</h2>
+      <button class="f26-reset-btn" id="f26-reset-btn" aria-label="Reset bracket to AI prediction">
+        <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span>
+        Reset to AI Prediction
+      </button>
+    </div>
+
+    <p class="f26-bracket-note"><strong>Click any team</strong> to pick them as the winner of that match. Changes cascade forward through the bracket automatically.</p>
+
+    <div class="f26-card f26-bracket-section">
+      <div class="f26-bracket-rounds">
+        <div class="f26-round-col">
+          <div class="f26-round-label">Round of 32</div>
+          <div class="f26-round-matches" id="f26-r32"></div>
+        </div>
+        <div class="f26-round-col">
+          <div class="f26-round-label">Round of 16</div>
+          <div class="f26-round-matches" id="f26-r16"></div>
+        </div>
+        <div class="f26-round-col">
+          <div class="f26-round-label">Quarter-finals</div>
+          <div class="f26-round-matches" id="f26-qf"></div>
+        </div>
+        <div class="f26-round-col">
+          <div class="f26-round-label">Semi-finals</div>
+          <div class="f26-round-matches" id="f26-sf"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final -->
+    <div class="f26-final-section">
+      <div id="f26-final"></div>
+    </div>
+
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <!-- Tool info -->
+  <section class="tool-info" aria-label="About this tool">
+    <div class="tool-info-inner">
+
+      <div class="tool-info-meta">
+        <span>Last updated: April 2026</span>
+        <span class="tool-info-sep">·</span>
+        <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      </div>
+
+      <div class="tool-info-body">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">How the AI Predictions Are Built</h2>
+        <p>The predictions draw on squad rating data across all 48 teams, recent international form, qualifying campaign performance, and historical tournament data. Each team has 8 players rated 0-100 based on current club and international output. The bracket is generated by simulating match probabilities at each stage using weighted team ratings, form scores, and coaching quality.</p>
+        <p>Argentina comes out top on the AI model. Their midfield depth (Valverde, Fernandez, Mac Allister, De Paul) combined with Messi's experience and Alvarez's finishing gives them the most complete profile across all three phases. France is the closest challenger - Mbappe and Dembele make them the most dangerous attacking unit in the tournament, but their defensive structure is slightly less settled than Argentina's.</p>
+      </div>
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>How does the Football 2026 simulator work?</dt>
+                <dd>The simulator uses a deep analysis of all 48 teams based on squad ratings, coach quality, recent form, and tournament history. AI predicts group stage results and generates a full knockout bracket. You can click any team in the bracket to override the prediction and see how the tournament path changes.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Which team does the AI predict to win?</dt>
+                <dd>The AI predicts Argentina to win the Summer 2026 tournament, with France and Spain as the closest challengers. Argentina's 18% probability reflects their defending champion status, the Messi factor, and the deepest midfield in the tournament.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>How are the team and player ratings calculated?</dt>
+                <dd>Ratings are on a 0-100 scale based on current club form, international performance, and squad depth. World Class (88+) covers generational players. Elite (80-87) covers top-level internationals. Good (72-79) covers solid squad contributors. Below 72 is squad depth.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Can I change the bracket results?</dt>
+                <dd>Yes. Click any team button in the knockout bracket to make them the winner of that match. The change cascades forward automatically through all later rounds. Click Reset to go back to the AI prediction.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>How many teams are in the 2026 tournament?</dt>
+                <dd>48 teams compete across 12 groups of 4. Two teams advance from each group, giving 24 teams in the Round of 32 plus 8 third-place qualifiers. The knockout rounds are: Round of 32, Round of 16, Quarter-finals, Semi-finals, and the Final.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <p>Each of the 48 teams has a squad rating (0-100), a form score (out of 10 based on last 5 matches), and 8 key players each with individual ratings and recent form. The group stage simulates all 6 matches per group using head-to-head probability weighting from these inputs. The top 2 from each group advance.</p>
+            <p>The knockout bracket then pairs teams by seeding and simulates each match. Win probability at each stage is recalculated using the same model. The final bracket shows the AI's most likely path for each team to win. Click any team to override a result and the cascade logic updates all later rounds automatically.</p>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul>
+              <li>All 48 teams rated with 8-player squads each</li>
+              <li>AI win probability shown for top 10 contenders</li>
+              <li>Group stage fixtures and results for all 12 groups</li>
+              <li>Full knockout bracket from Round of 32 to the Final</li>
+              <li>Click any team in the bracket to change the winner - cascades forward automatically</li>
+              <li>Squad modal shows full player ratings by clicking any team name in the group tables</li>
+              <li>Reset button restores the original AI prediction at any point</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <p>Team ratings and squad data are based on a deep analysis of international football performance up to April 2026, covering qualifying campaigns, recent friendlies, and current club form for all 48 qualified nations. Player ratings reflect the 2025-26 club season output alongside international caps and tournament history. Bracket predictions are AI-generated simulations and are not official odds or betting lines.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Modal -->
+  <div class="f26-modal-overlay" id="f26-modal-overlay" aria-hidden="true"></div>
+  <div class="f26-team-modal" id="f26-team-modal" role="dialog" aria-modal="true" aria-label="Team details">
+    <div class="f26-modal-inner">
+      <button class="f26-modal-close" id="f26-modal-close" aria-label="Close team details">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+      <div id="f26-modal-content"></div>
+    </div>
+  </div>
+
+  <script src="/scripts.js?v=4"></script>
+  <script src="/football-2026.js?v=1"></script>
+</body>
+</html>
