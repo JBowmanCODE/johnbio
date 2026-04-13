@@ -719,6 +719,33 @@ function resetBracket() {
 resetBracket();
 
 // ── Group Promote Logic ───────────────────────────────────────────────────────
+function demoteTeam(groupName, teamToDemote) {
+  const group = GROUPS.find(g => g.name === groupName);
+  const state = groupState[groupName];
+  if (!state.has(teamToDemote)) return;
+
+  // Promote the highest-ranked eliminated team (first in table order)
+  const teamToPromote = group.teams.find(t => !state.has(t.team));
+  if (!teamToPromote) return;
+
+  state.delete(teamToDemote);
+  state.add(teamToPromote.team);
+
+  bracket.r32.forEach((match, idx) => {
+    if (match[0] === teamToDemote) {
+      bracket.r32[idx][0] = teamToPromote.team;
+      if (bracket.r32[idx][2] === teamToDemote) bracket.r32[idx][2] = teamToPromote.team;
+    } else if (match[1] === teamToDemote) {
+      bracket.r32[idx][1] = teamToPromote.team;
+      if (bracket.r32[idx][2] === teamToDemote) bracket.r32[idx][2] = teamToPromote.team;
+    }
+  });
+
+  clearTeamFromLaterRounds(teamToDemote, teamToPromote.team);
+  renderGroups();
+  renderBracket();
+}
+
 function clearTeamFromLaterRounds(oldTeam, newTeam) {
   bracket.r16.forEach(match => { if (match[1] === oldTeam) match[1] = newTeam; });
   bracket.qf.forEach(match => { if (match[1] === oldTeam) match[1] = newTeam; });
@@ -909,7 +936,10 @@ function renderGroups() {
               <td><button class="f26-team-btn" data-team="${t.team}">${t.team}</button></td>
               <td class="f26-th-center f26-pts">${t.pts}</td>
               <td class="f26-th-right">${isAdvancing
-                ? '<span class="f26-status-badge f26-status-badge--advance">ADV</span>'
+                ? `<div class="f26-adv-cell">
+                     <span class="f26-status-badge f26-status-badge--advance">ADV</span>
+                     <button class="f26-demote-btn" data-team="${t.team}" data-group="${g.name}" aria-label="Demote ${t.team}" title="Demote">&#8595;</button>
+                   </div>`
                 : `<button class="f26-promote-btn" data-team="${t.team}" data-group="${g.name}" aria-label="Promote ${t.team}">&#8593; Promote</button>`
               }</td>
             </tr>`;
@@ -940,6 +970,9 @@ function renderGroups() {
   });
   el.querySelectorAll('.f26-promote-btn').forEach(btn => {
     btn.addEventListener('click', () => promoteTeam(btn.dataset.group, btn.dataset.team));
+  });
+  el.querySelectorAll('.f26-demote-btn').forEach(btn => {
+    btn.addEventListener('click', () => demoteTeam(btn.dataset.group, btn.dataset.team));
   });
 }
 
