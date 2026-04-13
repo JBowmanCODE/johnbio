@@ -394,6 +394,12 @@
 
   <!-- News -->
   <url>
+    <loc>https://johnb.io/news/geo-generative-engine-optimisation</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://johnb.io/news</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>weekly</changefreq>

@@ -1,5 +1,16 @@
 const NEWS_POSTS = [
   {
+    slug: '/news/geo-generative-engine-optimisation',
+    title: 'GEO: A Practical Guide to Generative Engine Optimisation in 2026',
+    excerpt: 'Generative engine optimisation explained: how GEO differs from SEO, what AI systems look for in content, whether llms.txt works, and what to actually do about it.',
+    category: 'AI',
+    date: '2026-04-13',
+    dateDisplay: '13 April 2026',
+    readTime: '7 min read',
+    tags: ['AI', 'GEO', 'SEO', 'AI Search', 'llms.txt'],
+    image: '/news/images/geo-generative-engine-optimisation.webp'
+  },
+  {
     slug: '/news/claude-code-vsc',
     title: 'Claude Code VSC: AI Coding for Beginners',
     excerpt: 'Claude Code VSC is Anthropic\'s AI coding assistant built into Visual Studio Code. What it does, how to install it, what it costs, and what to try first - for beginners with no technical background.',
