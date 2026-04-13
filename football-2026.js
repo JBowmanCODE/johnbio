@@ -1375,12 +1375,60 @@ function generateShareImage() {
   ctx.fillText('AI PREDICTED CHAMPION', cx, cardY+108);
   ctx.textAlign = 'left';
 
-  // ── download ──
+  // ── show share panel ──
   canvas.toBlob(blob => {
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = 'my-2026-predictions.png'; a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    const objectURL = URL.createObjectURL(blob);
+    const file = new File([blob], 'my-2026-predictions.png', { type: 'image/png' });
+
+    // Preview
+    const preview = document.getElementById('f26-share-preview');
+    if (preview.src) URL.revokeObjectURL(preview.src);
+    preview.src = objectURL;
+
+    // Download button
+    document.getElementById('f26-share-dl').onclick = () => {
+      const a = document.createElement('a');
+      a.href = objectURL; a.download = 'my-2026-predictions.png'; a.click();
+    };
+
+    // Native share (mobile)
+    const nativeBtn = document.getElementById('f26-share-native');
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      nativeBtn.hidden = false;
+      nativeBtn.onclick = () => {
+        navigator.share({
+          files: [file],
+          title: 'My 2026 Football Tournament Predictions',
+          text: 'I used AI to predict the 2026 Football World Cup \uD83C\uDFC6 Make your own predictions at johnb.io/football-2026',
+        }).catch(() => {});
+      };
+    }
+
+    // Social share links
+    const pageURL = encodeURIComponent('https://johnb.io/football-2026');
+    const shareText = encodeURIComponent('I used AI to predict the 2026 Football World Cup \uD83C\uDFC6 Make your own predictions at johnb.io/football-2026');
+    const shareTitle = encodeURIComponent('My AI-predicted 2026 Football World Cup bracket');
+    document.getElementById('f26-soc-x').href =
+      `https://twitter.com/intent/tweet?text=${shareText}&url=${pageURL}`;
+    document.getElementById('f26-soc-li').href =
+      `https://www.linkedin.com/sharing/share-offsite/?url=${pageURL}`;
+    document.getElementById('f26-soc-fb').href =
+      `https://www.facebook.com/sharer/sharer.php?u=${pageURL}`;
+    document.getElementById('f26-soc-wa').href =
+      `https://wa.me/?text=${shareText}%20${pageURL}`;
+    document.getElementById('f26-soc-rd').href =
+      `https://www.reddit.com/submit?url=${pageURL}&title=${shareTitle}`;
+
+    // Note
+    const canShareFile = navigator.canShare && navigator.canShare({ files: [file] });
+    document.getElementById('f26-share-note').textContent = canShareFile
+      ? 'Tip: use Share to send the image directly. Social buttons share the page link.'
+      : 'Download the image to attach it to posts on Instagram or Facebook. Social buttons share the page link.';
+
+    // Show panel
+    const panel = document.getElementById('f26-share-panel');
+    panel.hidden = false;
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, 'image/png');
 }
 

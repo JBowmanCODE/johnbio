@@ -571,6 +571,68 @@
   opacity: 0.45;
   margin: 0;
 }
+
+/* Share panel */
+.f26-share-panel {
+  max-width: 660px; margin: 0 auto 2.5rem;
+  background: rgba(14,14,22,0.85);
+  border: 1px solid rgba(0,238,252,0.18);
+  border-radius: 0.75rem; padding: 1.2rem 1.4rem;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.f26-share-preview {
+  width: 100%; border-radius: 0.5rem;
+  border: 1px solid rgba(0,238,252,0.12);
+  display: block;
+}
+.f26-share-actions {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+}
+.f26-share-dl, .f26-share-native {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.4rem;
+  background: rgba(0,238,252,0.1);
+  color: #00EEFC;
+  border: 1px solid rgba(0,238,252,0.3);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.f26-share-dl:hover, .f26-share-native:hover {
+  background: rgba(0,238,252,0.18);
+  border-color: rgba(0,238,252,0.55);
+}
+.f26-share-dl .material-symbols-outlined,
+.f26-share-native .material-symbols-outlined { font-size: 1rem; }
+.f26-soc-btn {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem; font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  text-decoration: none;
+  transition: opacity 0.15s, border-color 0.15s;
+  opacity: 0.82;
+}
+.f26-soc-btn:hover { opacity: 1; border-color: rgba(255,255,255,0.3); }
+.f26-soc-x        { background: #000; color: #fff; }
+.f26-soc-li       { background: #0a66c2; color: #fff; }
+.f26-soc-fb       { background: #1877f2; color: #fff; }
+.f26-soc-wa       { background: #25d366; color: #fff; }
+.f26-soc-rd       { background: #ff4500; color: #fff; }
+.f26-share-note {
+  font-size: 0.68rem; margin: 0;
+  color: var(--on-surface-variant); opacity: 0.38;
+}
+@media (max-width: 520px) {
+  .f26-share-actions { gap: 0.4rem; }
+  .f26-soc-btn { font-size: 0.7rem; padding: 0.4rem 0.65rem; }
+}
+
 .f26-final-card {
   background: rgba(14,14,22,0.8);
   backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
