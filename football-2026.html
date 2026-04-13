@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="/styles.css?v=2">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
-  <link rel="stylesheet" href="/football-2026.css?v=4">
+  <link rel="stylesheet" href="/football-2026.css?v=5">
 
   <!-- SEO -->
   <meta name="description" content="AI-powered Summer 2026 football tournament simulator. See AI predictions for all 48 teams, group stage results, and the full knockout bracket. Click to change winners.">
@@ -205,13 +205,25 @@
 
     <div class="f26-bracket-scroll">
       <div class="f26-bracket-inner">
-        <div class="f26-round-col">
-          <div class="f26-round-head">
+
+        <!-- Round of 32: two sub-columns of 8 -->
+        <div class="f26-round-col f26-round-col--r32">
+          <div class="f26-round-head f26-round-head--wide">
             <div class="f26-round-label">Round of 32</div>
             <div class="f26-round-count">16 matches</div>
           </div>
-          <div class="f26-round-matches" id="f26-r32"></div>
+          <div class="f26-r32-pair">
+            <div class="f26-r32-sub">
+              <div class="f26-r32-sub-label">Matches 1–8</div>
+              <div class="f26-round-matches" id="f26-r32a"></div>
+            </div>
+            <div class="f26-r32-sub">
+              <div class="f26-r32-sub-label">Matches 9–16</div>
+              <div class="f26-round-matches" id="f26-r32b"></div>
+            </div>
+          </div>
         </div>
+
         <div class="f26-round-col">
           <div class="f26-round-head">
             <div class="f26-round-label">Round of 16</div>
@@ -349,6 +361,6 @@
   </div>
 
   <script src="/scripts.js?v=4"></script>
-  <script src="/football-2026.js?v=4"></script>
+  <script src="/football-2026.js?v=5"></script>
 </body>
 </html>
