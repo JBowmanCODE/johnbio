@@ -1392,11 +1392,17 @@ function generateShareImage() {
   ctx.textAlign = 'left';
 
   // ── show share panel ──
-  // Use dataURL for preview + download (synchronous, universally supported as img src)
   const dataURL = canvas.toDataURL('image/png');
-
+  const panel = document.getElementById('f26-share-panel');
   const preview = document.getElementById('f26-share-preview');
-  preview.src = dataURL;
+  const actions = document.getElementById('f26-share-actions');
+  const nativeBtn = document.getElementById('f26-share-native');
+
+  // Show panel container immediately (no content yet)
+  panel.hidden = false;
+  preview.hidden = true;
+  actions.hidden = true;
+  nativeBtn.hidden = true;
 
   // Download button
   document.getElementById('f26-share-dl').onclick = () => {
@@ -1404,15 +1410,13 @@ function generateShareImage() {
     a.href = dataURL; a.download = 'my-2026-predictions.png'; a.click();
   };
 
-
-  // Show panel immediately
-  const panel = document.getElementById('f26-share-panel');
-  panel.hidden = false;
-  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-  // Native share (mobile) — needs blob, load async after panel is visible
-  const nativeBtn = document.getElementById('f26-share-native');
-  nativeBtn.hidden = true;
+  // Reveal img + buttons only once image has loaded
+  preview.onload = () => {
+    preview.hidden = false;
+    actions.hidden = false;
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  };
+  preview.src = dataURL;
   if (navigator.canShare) {
     canvas.toBlob(blob => {
       if (!blob) return;
