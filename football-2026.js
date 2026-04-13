@@ -705,6 +705,7 @@ const PREDICTED_BRACKET = {
 // Live state (user modifications)
 let bracket;
 let groupState = {}; // groupName → Set of advancing team names
+let userModifiedBracket = false; // true once user changes any knockout/final pick
 
 function initGroupState() {
   GROUPS.forEach(g => {
@@ -1043,7 +1044,7 @@ function renderBracket() {
           </button>
         </div>
         <div class="f26-champion-wrap">
-          <div class="f26-champion-label">AI Predicted Champion</div>
+          <div class="f26-champion-label">${userModifiedBracket ? 'My Predicted Champion' : 'AI Predicted Champion'}</div>
           <div class="f26-champion">${bracket.final[2]}</div>
         </div>
       </div>
@@ -1051,6 +1052,7 @@ function renderBracket() {
     finalEl.querySelectorAll('.f26-final-team').forEach(btn => {
       btn.addEventListener('click', () => {
         bracket.final[2] = btn.dataset.team;
+        userModifiedBracket = true;
         renderBracket();
       });
     });
@@ -1076,6 +1078,7 @@ function renderRound(elId, data, round, roundIdx, getData, indexOffset = 0) {
   el.querySelectorAll('.f26-team-pick').forEach(btn => {
     btn.addEventListener('click', () => {
       const { round: r, idx, team } = btn.dataset;
+      userModifiedBracket = true;
       if (r === 'r32') {
         setWinner('r32', +idx, team);
       } else if (r === 'r16') {
@@ -1372,7 +1375,7 @@ function generateShareImage() {
   ctx.fillStyle = '#ffffff'; ctx.font = 'bold 22px Arial,sans-serif';
   ctx.fillText(champion.toUpperCase(), cx, cardY+83);
   ctx.fillStyle = 'rgba(0,238,252,0.4)'; ctx.font = 'bold 8px Arial,sans-serif';
-  ctx.fillText('AI PREDICTED CHAMPION', cx, cardY+108);
+  ctx.fillText(userModifiedBracket ? 'MY PREDICTED CHAMPION' : 'AI PREDICTED CHAMPION', cx, cardY+108);
   ctx.textAlign = 'left';
 
   // ── show share panel ──
@@ -1443,6 +1446,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeTeamModal(); });
 
   document.getElementById('f26-reset-btn').addEventListener('click', () => {
+    userModifiedBracket = false;
     resetBracket();
     renderGroups();
     renderBracket();
