@@ -888,8 +888,16 @@ function renderGroups() {
   });
 }
 
+// Bracket slot sizing — keep in sync with CSS variable --f26-slot
+const SLOT = 60;  // px per R32 slot
+
+function matchTop(roundIdx, matchIdx) {
+  const mult = Math.pow(2, roundIdx);
+  return matchIdx * mult * SLOT + (mult - 1) * SLOT / 2;
+}
+
 function renderBracket() {
-  renderRound('f26-r32', bracket.r32, 'r32', (i) => {
+  renderRound('f26-r32', bracket.r32, 'r32', 0, (i) => {
     return { t1: bracket.r32[i][0], t2: bracket.r32[i][1], winner: bracket.r32[i][2] };
   });
 
@@ -897,19 +905,19 @@ function renderBracket() {
     const [t1, t2] = getR16Teams(i);
     return { t1, t2, winner: m[1] };
   });
-  renderRound('f26-r16', r16Data, 'r16', (i) => r16Data[i]);
+  renderRound('f26-r16', r16Data, 'r16', 1, (i) => r16Data[i]);
 
   const qfData = bracket.qf.map((m, i) => {
     const [t1, t2] = getQFTeams(i);
     return { t1, t2, winner: m[1] };
   });
-  renderRound('f26-qf', qfData, 'qf', (i) => qfData[i]);
+  renderRound('f26-qf', qfData, 'qf', 2, (i) => qfData[i]);
 
   const sfData = bracket.sf.map((m, i) => {
     const [t1, t2] = getSFTeams(i);
     return { t1, t2, winner: m[1] };
   });
-  renderRound('f26-sf', sfData, 'sf', (i) => sfData[i]);
+  renderRound('f26-sf', sfData, 'sf', 3, (i) => sfData[i]);
 
   // Final
   const [ft1, ft2] = getFinalTeams();
@@ -952,13 +960,16 @@ function renderBracket() {
   }
 }
 
-function renderRound(elId, data, round, getData) {
+function renderRound(elId, data, round, roundIdx, getData) {
   const el = document.getElementById(elId);
   if (!el) return;
+  // Set column height to fit all R32 slots
+  el.style.height = (16 * SLOT) + 'px';
   el.innerHTML = data.map((_, i) => {
     const { t1, t2, winner } = getData(i);
+    const top = matchTop(roundIdx, i);
     return `
-      <div class="f26-match">
+      <div class="f26-match" style="top:${top}px">
         <button class="f26-team-pick ${winner === t1 ? 'f26-winner' : ''}" data-round="${round}" data-idx="${i}" data-team="${t1}">${t1 || '?'}</button>
         <button class="f26-team-pick ${winner === t2 ? 'f26-winner' : ''}" data-round="${round}" data-idx="${i}" data-team="${t2}">${t2 || '?'}</button>
       </div>
