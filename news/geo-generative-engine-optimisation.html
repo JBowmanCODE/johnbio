@@ -192,7 +192,7 @@
 
 <div class="na-body">
 
-<p>Search hasn't died. But it has changed. A growing share of queries now get answered inline — by Google AI Overviews, by Perplexity, by ChatGPT. The user types a question, gets a structured response with cited sources, and may not click anything.</p>
+<p>Search hasn't died. But it has changed. A growing share of queries now get answered inline. Google AI Overviews, Perplexity, ChatGPT. The user types a question, gets a structured response with cited sources, and may not click anything.</p>
 
 <p>If your site is one of those cited sources, you get brand exposure, and some of those users will visit. If your site isn't cited despite being relevant, you're invisible to that particular conversation.</p>
 
@@ -203,30 +203,30 @@
 <p>Term: Generative Engine Optimisation (GEO)</p>
 <p>Definition: The practice of structuring content so that AI-powered search engines and assistants cite, reference, or summarise it accurately when answering relevant queries.</p>
 
-<p>The term borrows from SEO but the mechanism is different. Traditional SEO works on ranking algorithms — signals like backlinks, keyword relevance, and page speed push pages up or down in results. GEO works on retrieval and attribution — whether an AI model, when generating an answer, treats your content as a credible source and includes it.</p>
+<p>The term borrows from SEO but the mechanism is different. Traditional SEO works on ranking algorithms: backlinks, keyword relevance, and page speed push pages up or down in results. GEO works on retrieval and attribution — whether an AI model, when generating an answer, treats your content as a credible source and includes it.</p>
 
-<p>The systems GEO targets are those using retrieval-augmented generation (RAG): Google AI Overviews, Perplexity, ChatGPT with browsing, Microsoft Copilot, Claude with web access. They search the web (or a curated index), pull relevant passages, and synthesise a response. Your content is evaluated as raw material for that synthesis.</p>
+<p>The systems GEO targets are those using retrieval-augmented generation (RAG): Google AI Overviews, Perplexity, ChatGPT with browsing, Microsoft Copilot, Claude with web access. They search the web (or a structured index), pull relevant passages, and synthesise a response. Your content is evaluated as raw material for that synthesis.</p>
 
 <h2 id="geo-vs-seo">How does GEO differ from SEO?</h2>
 
 <p>SEO optimises for position. GEO optimises for citation.</p>
 
-<p>A page that ranks first on Google gets traffic when someone clicks on it. A page that gets cited in an AI Overview may not get clicked at all — the answer is delivered inline. But being cited still does something: it builds brand recognition, establishes topical authority, and drives direct traffic from people who want more than the summary.</p>
+<p>A page that ranks first on Google gets traffic when someone clicks on it. A page that gets cited in an AI Overview may not get clicked at all. The answer is delivered inline. But being cited still does something: it builds brand recognition, establishes topical authority, and drives direct traffic from people who want more than the summary.</p>
 
 <p>The content practices overlap heavily. Authoritative, specific, well-structured writing that ranks well tends to get cited well too. But GEO has a sharper emphasis on a few things SEO doesn't care about as much:</p>
 
 <ul>
-  <li>Extractability — can a single paragraph stand alone as a complete answer to a question?</li>
-  <li>Directness — does the answer appear immediately after the question, or buried three paragraphs in?</li>
-  <li>Named entities — specific companies, regulations, dates, and people rather than vague references</li>
-  <li>Self-containment — does each section make sense without reading the rest of the article?</li>
+  <li>Extractability: can a single paragraph stand alone as a complete answer to a question?</li>
+  <li>Directness: does the answer appear immediately after the question, or buried three paragraphs in?</li>
+  <li>Named entities: specific companies, regulations, dates, and people rather than vague references</li>
+  <li>Self-containment: does each section make sense without reading the rest of the article?</li>
 </ul>
 
 <p>A passage that requires surrounding context to make sense is harder for an AI to cite usefully. A passage that answers a specific question in 50 words is ideal retrieval material.</p>
 
 <h2 id="what-ai-looks-for">What do AI systems actually look for?</h2>
 
-<p>No AI company has published a full list of GEO ranking factors — that transparency doesn't exist yet. But from how retrieval systems work and from patterns in what gets cited, a few things are clear.</p>
+<p>No AI company has published a full list of GEO ranking factors. That transparency doesn't exist yet. But from how retrieval systems work and from patterns in what gets cited, a few things are clear.</p>
 
 <p><strong>Question-formatted headings help.</strong> H2 headings written as direct questions match the format of the queries being asked. "What is RAG in AI?" is more useful for retrieval than "RAG Overview."</p>
 
@@ -236,25 +236,25 @@
 
 <p><strong>Schema markup helps.</strong> FAQPage, Article, HowTo and other structured data types make it easier for systems to understand what type of content they're looking at. Google's own documentation confirms that structured data is used to improve AI Overviews.</p>
 
-<p><strong>Authority signals help.</strong> Backlinks, mentions in other authoritative sources, and consistent citation by other AI responses all reinforce a source's credibility in retrieval systems. This is the same dynamic as link authority in SEO.</p>
+<p><strong>Authority signals help.</strong> Backlinks, mentions in other authoritative sources, and consistent citation by other AI responses all reinforce a source's credibility in retrieval systems. This mirrors link authority in SEO.</p>
 
 <h2 id="llms-txt">What is llms.txt and does it actually work?</h2>
 
-<p>An <a href="/llms-generator">llms.txt file</a> sits at your website root — yourdomain.com/llms.txt — and provides a structured, AI-readable overview of what your site contains. It was proposed by Jeremy Howard (fast.ai) in September 2024 and is now supported by Cloudflare, which auto-generates it for sites on its platform.</p>
+<p>An <a href="/llms-generator">llms.txt file</a> sits at your website root (yourdomain.com/llms.txt) and provides a structured, AI-readable overview of what your site contains. It was proposed by Jeremy Howard (fast.ai) in September 2024 and is now supported by Cloudflare, which auto-generates it for sites on its platform.</p>
 
 <p>AI tools with web access can read it during retrieval. It doesn't guarantee citations, but it does two useful things: it tells AI systems which pages are most important on your site, and it reduces the chance of a model misrepresenting what you do by citing an outdated or peripheral page.</p>
 
-<p>For a site with a lot of pages covering similar topics — like a tool directory or a course with 35 lessons — an llms.txt file is particularly useful. It acts as a curated index, giving AI systems a direct path to the most authoritative content rather than having them work it out from crawl data alone.</p>
+<p>For a site with a lot of pages covering similar topics, like a tool directory or a course with 35 lessons, an llms.txt file is particularly useful. It acts as a structured index, giving AI systems a direct path to the most authoritative content rather than having them work it out from crawl data alone.</p>
 
 <p>You can generate one for your own site using the <a href="/llms-generator">LLMs.txt Generator</a> here.</p>
 
 <h2 id="geo-replace-seo">Does GEO replace SEO?</h2>
 
-<p>No. Google Search still accounts for the majority of web traffic for most sites. Traditional SEO — keyword research, quality content, backlinks, page speed, technical hygiene — remains the foundation.</p>
+<p>No. Google Search still accounts for the majority of web traffic for most sites. Traditional SEO remains the foundation: keyword research, quality content, backlinks, page speed, technical hygiene.</p>
 
-<p>But the goalposts have shifted. AI Overviews have reduced organic clicks for many informational queries. As more searches get answered inline, ranking first matters less if the answer is given before the results. The relevant question for some query types is no longer "does my page rank?" — it's "does my page get cited?"</p>
+<p>But the goalposts have shifted. AI Overviews have reduced organic clicks for many informational queries. As more searches get answered inline, ranking first matters less if the answer is given before the results. The relevant question for some query types is no longer "does my page rank?" It's "does my page get cited?"</p>
 
-<p>Practically: keep doing SEO. Add GEO as a layer on top. The incremental work — restructuring content for extractability, adding schema markup, creating an llms.txt file — is manageable and overlaps with existing good content practice.</p>
+<p>Keep doing SEO. Add GEO as a layer on top. The incremental work is manageable: restructuring content for extractability, adding schema markup, creating an llms.txt file. It overlaps with existing good content practice.</p>
 
 <h2 id="honest-picture">The honest picture</h2>
 
@@ -262,7 +262,7 @@
 
 <p>What consistently shows up in cited content: specificity, authority, clear structure, and standalone paragraph clarity. Those aren't GEO-specific traits. They're just good writing and good technical practice applied more deliberately.</p>
 
-<p>If your content is already strong and your site is technically solid, GEO is mostly about reorganising for extractability rather than rebuilding from scratch. Start with schema markup and an llms.txt file — those are the highest-leverage, lowest-effort changes — then audit your key pages for direct question-answer structure.</p>
+<p>If your content is already strong and your site is technically solid, GEO is mostly about reorganising for extractability rather than rebuilding from scratch. Start with schema markup and an llms.txt file. Those are the highest-impact, lowest-effort changes. Then audit your key pages for direct question-answer structure.</p>
 
 </div><!-- /.na-body -->
 </article>
@@ -305,7 +305,7 @@
 </div>
 <div class="faq-item">
 <dt>How is GEO different from SEO?</dt>
-<dd>SEO optimises for position in search results. GEO optimises for citation in AI-generated answers. Traditional SEO drives traffic when users click a ranked result. GEO-optimised content gets referenced in AI responses. The content practices overlap significantly — quality, structure, and authority matter for both — but GEO places extra emphasis on extractability, directness, and standalone paragraph clarity.</dd>
+<dd>SEO optimises for position in search results. GEO optimises for citation in AI-generated answers. Traditional SEO drives traffic when users click a ranked result. GEO-optimised content gets referenced in AI responses. The content practices overlap significantly, but GEO places extra emphasis on extractability, directness, and standalone paragraph clarity.</dd>
 </div>
 <div class="faq-item">
 <dt>Does GEO replace SEO?</dt>
@@ -350,7 +350,7 @@
 <li><strong>Extractability is the core principle.</strong> Content that answers a specific question in a standalone paragraph is more likely to be pulled into AI responses than content that requires surrounding context.</li>
 <li><strong>Schema markup is the highest-leverage technical fix.</strong> FAQPage and Article JSON-LD are specifically used by Google to inform AI Overviews. Add them to key pages if they aren't already there.</li>
 <li><strong>llms.txt is low effort with measurable upside.</strong> It doesn't guarantee citations but gives AI systems a structured index of your site. Generate one for free using the <a href="/llms-generator">LLMs.txt Generator</a>.</li>
-<li><strong>GEO doesn't replace SEO.</strong> Traditional SEO still drives the majority of traffic. GEO is an additive layer, not a pivot. The content practices overlap heavily — quality, authority, and structure serve both.</li>
+<li><strong>GEO doesn't replace SEO.</strong> Traditional SEO still drives the majority of traffic. GEO is an additive layer, not a pivot. Quality, authority, and structure serve both.</li>
 <li><strong>AI citation decisions are partly opaque.</strong> There are no confirmed GEO ranking factors equivalent to Google's documented signals. Follow best practices, but don't expect precise control over what gets cited.</li>
 </ul>
 </div>
