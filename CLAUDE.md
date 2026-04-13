@@ -215,10 +215,76 @@ Replace with plain direct alternatives. If you can't think of one, cut the sente
 - Semantic HTML throughout (`<article>`, `<nav>`, `<section>`, etc.)
 - Keyboard navigable
 
+### Article audio (Listen to this article)
+
+Every article should have a "Listen to this article" audio player. Generate the MP3 using the local script:
+
+```bash
+python generate-article-audio.py news/article-slug.html
+```
+
+**Requirements (one-time setup):**
+- `pip install openai beautifulsoup4`
+- `OPENAI_API_KEY` set as a Windows environment variable (already configured)
+
+**Voice:** Shimmer (Female Soft) | **Model:** tts-1
+
+The script extracts the headline + `na-body` text, chunks it at sentence boundaries (OpenAI limit is 4,096 chars per request), calls OpenAI TTS, concatenates the chunks, and saves `news/article-slug.mp3`.
+
+**After running the script:**
+1. Upload the `.mp3` to `public_html/news/` via Namecheap cPanel File Manager — do NOT commit audio files to git (they break FTP deploy)
+2. Paste the printed `na-audio` HTML block into the article just before `<div class="na-body">`
+
+The `na-audio` block template (replace `SLUG` with the article slug):
+
+```html
+<div aria-label="Listen to this article" class="na-audio">
+  <span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
+  <div class="na-audio-info">
+    <div class="na-audio-top">
+      <span class="na-audio-label">Listen to this article</span>
+      <div class="na-volume">
+        <button aria-label="Mute" class="na-mute-btn" id="na-mute-btn">
+          <span class="material-symbols-outlined">volume_up</span>
+        </button>
+        <input aria-label="Volume" class="na-volume-slider" id="na-volume-slider" max="1" min="0" step="0.02" type="range" value="1"/>
+      </div>
+    </div>
+    <audio id="na-player" preload="none" src="/news/SLUG.mp3"></audio>
+    <div class="na-audio-controls">
+      <button aria-label="Skip back 10 seconds" class="na-skip-btn" id="na-skip-back">
+        <span class="material-symbols-outlined">replay_10</span>
+      </button>
+      <button aria-label="Play article audio" class="na-audio-btn" id="na-play-btn">
+        <span class="material-symbols-outlined">play_arrow</span>
+      </button>
+      <button aria-label="Skip forward 10 seconds" class="na-skip-btn" id="na-skip-fwd">
+        <span class="material-symbols-outlined">forward_10</span>
+      </button>
+      <div aria-label="Playback speed" class="na-speed-btns" role="group">
+        <button class="na-speed-btn active" data-speed="1">1x</button>
+        <button class="na-speed-btn" data-speed="1.5">1.5x</button>
+        <button class="na-speed-btn" data-speed="2">2x</button>
+      </div>
+      <canvas aria-hidden="true" class="na-waveform" height="52" id="na-waveform" width="200"></canvas>
+    </div>
+    <div class="na-audio-progress-wrap">
+      <span class="na-audio-time" id="na-current-time">0:00</span>
+      <div aria-label="Audio progress" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="na-progress" id="na-progress" role="slider">
+        <div class="na-progress-fill" id="na-progress-fill"></div>
+        <div class="na-progress-thumb" id="na-progress-thumb"></div>
+      </div>
+      <span class="na-audio-time na-audio-duration" id="na-duration">0:00</span>
+    </div>
+  </div>
+</div>
+```
+
 ### After creating the article
 - Prepend new entry to `NEWS_POSTS` in `news-data.js`
 - Add URL to `sitemap.xml` with `lastmod`, `changefreq="weekly"`, `priority="0.7"`
 - Add URL to `llms.txt` under the News/Blog section
+- Generate audio with `python generate-article-audio.py news/article-slug.html` and upload MP3 via cPanel
 
 ## Cache strategy
 
