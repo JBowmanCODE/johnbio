@@ -9,7 +9,7 @@ const projects = [
     color: 'green',
     icons: ['summarize', 'policy'],
     href: 'https://johnb.io/tcs-simplifier',
-    img: '/og_images/tcs_simplifier_og.webp',
+    img: '/images/tcs_simplifier_og.webp',
     thumbIcon: 'summarize',
   },
   {
