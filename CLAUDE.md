@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Always commit and push after making changes unless told otherwise.
 
-**Audio files (mp3/m4a):** Commit and push as normal — they deploy via FTP automatically. Keep individual files under ~10MB to avoid FTP timeouts.
+**Audio files (mp3/m4a):** Both `.mp3` and `.m4a` files are excluded from FTP deploy (`**/*.mp3` and `**/*.m4a` in exclude list). Upload audio files directly via Namecheap cPanel File Manager to the correct folder (`public_html/course/` or `public_html/news/`). Never commit audio files expecting them to auto-deploy — they timeout the FTP connection and break deploys.
 
 ## Architecture
 
@@ -232,7 +232,7 @@ python generate-article-audio.py news/article-slug.html
 The script extracts the headline + `na-body` text, chunks it at sentence boundaries (OpenAI limit is 4,096 chars per request), calls OpenAI TTS, concatenates the chunks, and saves `news/article-slug.mp3`.
 
 **After running the script:**
-1. Commit and push the `.mp3` — it deploys automatically via FTP
+1. Upload the `.mp3` to `public_html/news/` via Namecheap cPanel File Manager — do NOT commit audio files to git (they timeout FTP and break deploys)
 2. Paste the printed `na-audio` HTML block into the article just before `<div class="na-body">`
 
 The `na-audio` block template (replace `SLUG` with the article slug):
