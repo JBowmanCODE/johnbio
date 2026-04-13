@@ -27,5 +27,3 @@ jobs:
             **/.git*/**
             .github/**
             README.md
-            **/*.m4a
-            **/*.mp3
