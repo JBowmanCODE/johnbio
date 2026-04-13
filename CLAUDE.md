@@ -230,19 +230,37 @@ Always `https://johnb.io` (no www). All pages must have `<link rel="canonical" h
 
 ## Worker pattern
 
+**IMPORTANT — use the Service Worker format, NOT ES Modules.** The Cloudflare dashboard defaults to Service Worker mode. Using `export default { async fetch(req, env) {} }` (ES Module syntax) will cause the worker to silently fail with CORS errors on the client side because the worker never executes.
+
+The correct format uses `addEventListener('fetch', ...)` and accesses secrets/KV as globals (not via `env`):
+
 ```js
-export default {
-  async fetch(req, env) {
-    // 1. CORS check against ALLOWED origins
-    // 2. Rate limit via env.RATE_LIMIT (KV namespace)
-    // 3. Parse + validate JSON body
-    // 4. Call upstream API using env.ANTHROPIC_API_KEY etc.
-    // 5. Return JSON { reply } or { error }
-  }
-};
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request).catch(err => {
+    return new Response(JSON.stringify({ success: false, error: err.message }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+    });
+  }));
+});
+
+async function handleRequest(request) {
+  // 1. CORS — build headers from ALLOWED_ORIGINS vs request Origin
+  // 2. OPTIONS preflight — return 204 immediately
+  // 3. Rate limit via RATE_LIMIT_KV (global KV binding, fail-open if undefined)
+  // 4. Parse + validate JSON body
+  // 5. Call upstream API using ANTHROPIC_API_KEY (global secret)
+  // 6. Return JSON { success, result } or { success: false, error }
+}
 ```
 
-All workers follow this exact pattern. See `workers/editor-worker.js` as the canonical reference.
+**Naming convention:** Workers are named with a `-worker` suffix in the Cloudflare dashboard (e.g. `tcs-simplifier-worker`, `faq-schema-worker`, `prompt-improver-worker`). The deployed URL is therefore `https://[name]-worker.ukjbowman.workers.dev`. Always match this in the frontend JS `WORKER_URL` constant.
+
+**Secrets and KV bindings** are accessed as globals in Service Worker format:
+- Secret: `ANTHROPIC_API_KEY` (add under Settings → Variables and Secrets)
+- KV: `RATE_LIMIT_KV` (add under Settings → KV Namespace Bindings, variable name must be exactly `RATE_LIMIT_KV`)
+
+See `workers/editor-worker.js` as the canonical reference (it uses the older Service Worker format correctly).
 
 ## Content Security Policy (CSP)
 
