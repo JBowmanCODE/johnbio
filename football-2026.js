@@ -842,6 +842,7 @@ function renderGroups() {
     <div class="f26-group-card">
       <div class="f26-group-header">
         <span class="f26-group-letter">Group ${g.name}</span>
+        <span class="f26-group-hint">Click team name for squad</span>
       </div>
       <table class="f26-group-table">
         <thead>
@@ -863,16 +864,22 @@ function renderGroups() {
           }).join('')}
         </tbody>
       </table>
-      <div class="f26-results-head">Results</div>
-      <div class="f26-fixtures">
-        ${g.fixtures.map(f => `
-          <div class="f26-fixture">
-            <span class="f26-fx-home">${f.home}</span>
-            <span class="f26-fx-score">${f.score}</span>
-            <span class="f26-fx-away">${f.away}</span>
-          </div>
-        `).join('')}
-      </div>
+      <details class="f26-fixtures-details" open>
+        <summary class="f26-fixtures-summary">
+          <span class="f26-fixtures-label">Fixtures <span class="f26-fixtures-sub">(AI Predictions)</span></span>
+          <span class="f26-fixtures-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="f26-fixtures">
+          ${g.fixtures.map(f => `
+            <div class="f26-fixture">
+              <span class="f26-fx-home">${f.home}</span>
+              <span class="f26-fx-score">${f.score}</span>
+              <span class="f26-fx-away">${f.away}</span>
+              <span class="f26-fx-date">${f.date}</span>
+            </div>
+          `).join('')}
+        </div>
+      </details>
     </div>`;
   }).join('');
 
