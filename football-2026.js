@@ -1024,7 +1024,7 @@ function renderBracket() {
       <div class="f26-final-card">
         <div class="f26-final-meta">
           <span class="f26-final-tag">The Final</span>
-          <span class="f26-final-date">Jul 19, 2026 &middot; MetLife Stadium, New Jersey</span>
+          <span class="f26-final-date">Jul 19, 2026</span>
         </div>
         <div class="f26-final-matchup">
           <button class="f26-final-team ${bracket.final[2] === ft1 ? 'f26-winner' : ''}" data-round="final" data-idx="0" data-team="${ft1}">
