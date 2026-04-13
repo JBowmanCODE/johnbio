@@ -3,15 +3,8 @@ Allow: /
 Disallow: /header.html
 Disallow: /footer.html
 Disallow: /template.html
-Disallow: /ytsum.html
-Disallow: /ytsum
-Disallow: /cgi-bin/
-Disallow: /result.html
-Disallow: /data.html
 Disallow: /heart.html
 Disallow: /michael-scott.html
-Disallow: /recipes.html
-Disallow: /wo.html
-Disallow: /CV-Cover-Letter.html
+Disallow: /cgi-bin/
 
 Sitemap: https://johnb.io/sitemap.xml
