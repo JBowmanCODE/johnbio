@@ -631,6 +631,19 @@
   font-size: 0.68rem; margin: 0;
   color: var(--on-surface-variant); opacity: 0.38;
 }
+.f26-sharing-credit {
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(248,245,253,0.4);
+  margin: 0.75rem 0 2rem;
+}
+.f26-sharing-credit a {
+  color: #00EEFC;
+  text-decoration: none;
+}
+.f26-sharing-credit a:hover {
+  text-decoration: underline;
+}
 @media (max-width: 520px) {
   .f26-share-actions { gap: 0.4rem; }
   .f26-soc-btn { font-size: 0.7rem; padding: 0.4rem 0.65rem; }
