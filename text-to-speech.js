@@ -60,6 +60,7 @@ btn.addEventListener('click', async () => {
       throw new Error(`Request failed (${res.status})`);
     }
 
+    if (player.src && player.src.startsWith('blob:')) URL.revokeObjectURL(player.src);
     audioBlob = await res.blob();
     const url = URL.createObjectURL(audioBlob);
 
