@@ -203,11 +203,40 @@ Replace with plain direct alternatives. If you can't think of one, cut the sente
 - Twitter card tags including `twitter:image:alt`
 - Google Analytics gtag
 - Schema.org JSON-LD blocks (all in `<head>`, no microdata in body):
-  - `Article` — must include `image` (full absolute URL), `datePublished` and `dateModified` in ISO 8601 with timezone (`2026-04-03T00:00:00+00:00`), full `Person` author with `name` and `url`, `Organization` publisher
+  - `Article` — must include:
+    - `image` (full absolute URL)
+    - `datePublished` and `dateModified` in ISO 8601 with timezone (`2026-04-03T00:00:00+00:00`) — update `dateModified` whenever the article is edited
+    - `author`: `@type: Person`, `name: "John Bowman"`, `url: "https://johnb.io/about"`, `sameAs: ["https://www.linkedin.com/in/john-bowman/"]` — always use `/about`, never the LinkedIn URL as `url`
+    - `publisher`: `@type: Organization`, `name: "JohnB.io"`, `url: "https://johnb.io"`
+    - `mainEntityOfPage`: `{ "@type": "WebPage", "@id": "https://johnb.io/news/article-slug" }`
+    - `speakable`: `{ "@type": "SpeakableSpecification", "cssSelector": [".na-title", ".na-body"] }`
   - `FAQPage` — answers must exactly match the visible on-page FAQ text
   - `BreadcrumbList` — Home → News → Article name
+  - `HowTo` — add if the article has a "How It Works" accordion with numbered steps (`ol.info-steps`). Each `<li>` becomes a `HowToStep` with `position`, `name` (the bold text), and `text` (full step content).
 
 **Schema rule:** Use JSON-LD only. Never add `itemscope`, `itemtype`, or `itemprop` attributes to HTML elements — these create duplicate Article schema blocks that Google flags as errors. One JSON-LD block in `<head>` is the single source of truth.
+
+### Author name link and bio block
+
+**Author name link:** In the `.na-author-details` div, the "John Bowman" text must link to `/about`, not LinkedIn:
+```html
+<a href="/about">John Bowman</a>
+```
+The author image already links to `/about` — the name must match.
+
+**Author bio block:** Every article must include an author bio block immediately after `</article>` and before `<a class="na-back">`:
+```html
+<div class="na-about-author">
+  <img alt="John Bowman" src="/images/JohnB.webp"/>
+  <div class="na-about-author-text">
+    <strong>John Bowman</strong>
+    <span>AI Strategist &amp; Developer</span>
+    <p>20+ years across iGaming and digital marketing. Builds AI-powered tools at JohnB.io and writes on practical AI strategy, how it actually works, not how it's supposed to work.</p>
+    <a href="/about">About John</a>
+  </div>
+</div>
+```
+The CSS for this block is in `news.css` — no inline styles needed.
 
 ### Images and accessibility
 - All images must have descriptive `alt` tags
