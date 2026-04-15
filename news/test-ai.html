@@ -41,7 +41,7 @@
 <link href="/styles.css?v=2" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
-<link href="/news.css?v=3" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/>
 <style>
     main.na-wrap { max-width: 1120px; margin: 0 auto; padding-top: 120px; padding-left: 1.5rem; padding-right: 1.5rem; box-sizing: border-box; width: 100%; }
@@ -59,12 +59,21 @@
     "author": {
       "@type": "Person",
       "name": "John Bowman",
-      "url": "https://www.linkedin.com/in/john-bowman/"
+      "url": "https://johnb.io/about",
+      "sameAs": ["https://www.linkedin.com/in/john-bowman/"]
     },
     "publisher": {
       "@type": "Organization",
       "name": "JohnB.io",
       "url": "https://johnb.io"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://johnb.io/news/test-ai"
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".na-title", ".na-body"]
     },
     "keywords": "AI 2026, large language models, LLMs, generative engine optimisation, GEO, AI search, AI Overviews, iGaming AI, EU AI Act",
     "articleSection": "AI"
@@ -155,7 +164,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="/about">John Bowman</a>
 <span class="na-author-role">AI Strategist & Developer</span>
 </div>
 <div class="na-header-meta">
@@ -329,6 +338,17 @@
 <span class="na-tag">EU AI Act</span>
 </div>
 </article>
+
+<div class="na-about-author">
+  <img alt="John Bowman" src="/images/JohnB.webp"/>
+  <div class="na-about-author-text">
+    <strong>John Bowman</strong>
+    <span>AI Strategist &amp; Developer</span>
+    <p>20+ years across iGaming and digital marketing. Builds AI-powered tools at JohnB.io and writes on practical AI strategy, how it actually works, not how it's supposed to work.</p>
+    <a href="/about">About John</a>
+  </div>
+</div>
+
 <a class="na-back" href="/news">
 <span class="material-symbols-outlined">arrow_back</span>
       Back to News

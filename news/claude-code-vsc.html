@@ -44,7 +44,7 @@
 <link href="/styles.css?v=2" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
-<link href="/news.css?v=3" rel="stylesheet"/>
+<link href="/news.css?v=4" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/>
 <style>
     main.na-wrap { max-width: 1120px; margin: 0 auto; padding-top: 120px; padding-left: 1.5rem; padding-right: 1.5rem; box-sizing: border-box; width: 100%; }
@@ -62,12 +62,21 @@
     "author": {
       "@type": "Person",
       "name": "John Bowman",
-      "url": "https://www.linkedin.com/in/john-bowman/"
+      "url": "https://johnb.io/about",
+      "sameAs": ["https://www.linkedin.com/in/john-bowman/"]
     },
     "publisher": {
       "@type": "Organization",
       "name": "JohnB.io",
       "url": "https://johnb.io"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://johnb.io/news/claude-code-vsc"
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".na-title", ".na-body"]
     },
     "keywords": "Claude Code VSC, Claude Code VS Code, AI coding beginners, VS Code AI assistant, Anthropic Claude Code",
     "articleSection": "AI"
@@ -132,6 +141,46 @@
     ]
   }
   </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Install and Use Claude Code in VS Code",
+  "description": "Five steps to get Claude Code VSC running in Visual Studio Code and start using AI assistance on your projects.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Install VS Code",
+      "text": "Download the free code editor from code.visualstudio.com. It runs on Windows, Mac and Linux."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Install the Claude Code extension",
+      "text": "Open the Extensions panel in VS Code, search for 'Claude Code', and install the extension published by Anthropic."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Connect your account",
+      "text": "Set up a Claude Max subscription or add credits to an Anthropic API key. The extension prompts you to do this on first launch."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Open the Claude Code panel",
+      "text": "Click the Spark icon in the Activity Bar on the left. The chat panel opens and you can start asking Claude about your code."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "Create a CLAUDE.md file",
+      "text": "Add a CLAUDE.md file in your project folder with a short description of what you're building. This gives Claude persistent context across sessions and improves suggestion quality."
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div id="header-placeholder"></div>
@@ -158,7 +207,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="/about">John Bowman</a>
 <span class="na-author-role">AI Strategist & Developer</span>
 </div>
 <div class="na-header-meta">
@@ -344,6 +393,17 @@
 <span class="na-tag">Beginners</span>
 </div>
 </article>
+
+<div class="na-about-author">
+  <img alt="John Bowman" src="/images/JohnB.webp"/>
+  <div class="na-about-author-text">
+    <strong>John Bowman</strong>
+    <span>AI Strategist &amp; Developer</span>
+    <p>20+ years across iGaming and digital marketing. Builds AI-powered tools at JohnB.io and writes on practical AI strategy, how it actually works, not how it's supposed to work.</p>
+    <a href="/about">About John</a>
+  </div>
+</div>
+
 <a class="na-back" href="/news">
 <span class="material-symbols-outlined">arrow_back</span>
       Back to News
