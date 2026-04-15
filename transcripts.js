@@ -332,6 +332,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-window.matchMedia('(prefers-color-scheme: dark)').addListener(updateLoadingTextColor);
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateLoadingTextColor);
 
 /* end of code */
