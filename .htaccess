@@ -103,6 +103,11 @@ RewriteRule ^(.*)$ $1.html [L]
     AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript text/javascript application/json
 </IfModule>
 
+# Brotli compression (if available on server)
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI text/html text/plain text/xml text/css application/javascript text/javascript application/json
+</IfModule>
+
 # Security headers
 <IfModule mod_headers.c>
     Header set X-Frame-Options "SAMEORIGIN"
