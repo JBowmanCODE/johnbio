@@ -32,7 +32,7 @@ function loadHeaderAndFooter() {
     }
 
     // Load footer (use sessionStorage cache)
-    const cachedFooter = sessionStorage.getItem('site-footer');
+    const cachedFooter = sessionStorage.getItem('site-footer-v1');
     if (cachedFooter && footerPlaceholder) {
         footerPlaceholder.innerHTML = cachedFooter;
         initializeFooter();
@@ -45,7 +45,7 @@ function loadHeaderAndFooter() {
             .then(data => {
                 if (footerPlaceholder) {
                     footerPlaceholder.innerHTML = data;
-                    sessionStorage.setItem('site-footer', data);
+                    sessionStorage.setItem('site-footer-v1', data);
                     initializeFooter();
                 }
             })
