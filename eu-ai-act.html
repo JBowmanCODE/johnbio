@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EU AI Act Compliance Assessment - JohnB.io</title>
+    <meta name="description" content="Automated risk classification for AI systems under the EU AI Act. Free assessment identifies prohibited, high-risk, or minimal-risk status. Paid reports include full compliance requirements.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://johnb.io/eu-ai-act">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="EU AI Act Compliance Assessment">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://johnb.io/eu-ai-act">
+    <meta property="og:description" content="Risk classification and compliance documentation for AI systems under the EU AI Act.">
+    <meta property="og:image" content="https://johnb.io/images/og-default.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="EU AI Act Compliance Tool">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EU AI Act Compliance Assessment">
+    <meta name="twitter:description" content="Risk classification and compliance documentation for AI systems under the EU AI Act.">
+    <meta name="twitter:image" content="https://johnb.io/images/og-default.webp">
+    <meta name="twitter:image:alt" content="EU AI Act Compliance Tool">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_GA_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YOUR_GA_ID');
+    </script>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "EU AI Act Compliance Assessment",
+        "description": "Automated risk classification and compliance documentation for AI systems under the EU AI Act.",
+        "url": "https://johnb.io/eu-ai-act",
+        "applicationCategory": "BusinessApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "JohnB.io",
+            "url": "https://johnb.io"
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="/styles.css?v=2">
+    <link rel="stylesheet" href="/eu-ai-act.css?v=1">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="eaa-container">
+        <section class="eaa-hero">
+            <h1>EU AI Act Compliance Assessment</h1>
+            <p>Understand the regulatory status of your AI system under the EU AI Act. Get instant risk classification and compliance requirements.</p>
+            <div class="eaa-disclaimer">
+                <strong>⚠ Disclaimer:</strong> This tool provides general compliance guidance only and does not constitute legal advice. Always consult qualified legal counsel for final compliance decisions.
+            </div>
+        </section>
+
+        <section class="eaa-form-section" id="eaa-form-section">
+            <h2>Tell us about your AI system</h2>
+            <form id="eaa-form">
+                <div class="form-group">
+                    <label for="system-type">What type of AI system are you deploying?</label>
+                    <select id="system-type" name="system-type" required>
+                        <option value="">-- Select --</option>
+                        <option value="biometric-identification">Biometric identification system</option>
+                        <option value="credit-scoring">Credit scoring system</option>
+                        <option value="hr-recruitment">HR recruitment tool</option>
+                        <option value="education-assessment">Educational assessment system</option>
+                        <option value="content-recommendation">Content recommendation algorithm</option>
+                        <option value="chatbot">Chatbot or conversational AI</option>
+                        <option value="image-generation">Image/video generation (deepfakes)</option>
+                        <option value="law-enforcement">Law enforcement investigation support</option>
+                        <option value="healthcare">Healthcare diagnosis system</option>
+                        <option value="autonomous-vehicle">Autonomous vehicle system</option>
+                        <option value="other">Other (please describe)</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="system-description-group" style="display: none;">
+                    <label for="system-description">Please describe your AI system</label>
+                    <textarea id="system-description" name="system-description" placeholder="What does your system do? Who does it affect?" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="target-country">Which EU country is your primary market?</label>
+                    <select id="target-country" name="target-country" required>
+                        <option value="">-- Select --</option>
+                        <option value="AT">Austria</option>
+                        <option value="BE">Belgium</option>
+                        <option value="BG">Bulgaria</option>
+                        <option value="HR">Croatia</option>
+                        <option value="CY">Cyprus</option>
+                        <option value="CZ">Czech Republic</option>
+                        <option value="DK">Denmark</option>
+                        <option value="EE">Estonia</option>
+                        <option value="FI">Finland</option>
+                        <option value="FR">France</option>
+                        <option value="DE">Germany</option>
+                        <option value="GR">Greece</option>
+                        <option value="HU">Hungary</option>
+                        <option value="IE">Ireland</option>
+                        <option value="IT">Italy</option>
+                        <option value="LV">Latvia</option>
+                        <option value="LT">Lithuania</option>
+                        <option value="LU">Luxembourg</option>
+                        <option value="MT">Malta</option>
+                        <option value="NL">Netherlands</option>
+                        <option value="PL">Poland</option>
+                        <option value="PT">Portugal</option>
+                        <option value="RO">Romania</option>
+                        <option value="SK">Slovakia</option>
+                        <option value="SI">Slovenia</option>
+                        <option value="ES">Spain</option>
+                        <option value="SE">Sweden</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="your-role">What is your role?</label>
+                    <select id="your-role" name="your-role" required>
+                        <option value="">-- Select --</option>
+                        <option value="provider">AI provider/vendor</option>
+                        <option value="deployer">Organization deploying AI</option>
+                        <option value="counsel">Legal/compliance counsel</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="eaa-button eaa-button-primary">Get Your Risk Classification</button>
+            </form>
+        </section>
+
+        <section class="eaa-results-section" id="eaa-results-section" style="display: none;">
+            <div class="eaa-results">
+                <div id="eaa-result-content"></div>
+                <div class="eaa-cta-section">
+                    <p id="eaa-cta-text"></p>
+                    <button id="eaa-upgrade-btn" class="eaa-button eaa-button-primary" style="display: none;">View Full Report (Unlock with Subscription)</button>
+                    <button id="eaa-new-assessment-btn" class="eaa-button eaa-button-secondary">New Assessment</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="eaa-info-section">
+            <h2>How it works</h2>
+            <details class="eaa-accordion" open>
+                <summary><strong>Free Assessment</strong></summary>
+                <p>Submit your AI system details and get an instant risk classification (Prohibited, High-Risk, Limited-Risk, or Minimal-Risk) plus key compliance flags. Free users get one assessment per month.</p>
+            </details>
+            <details class="eaa-accordion">
+                <summary><strong>Paid Subscription (€49/month)</strong></summary>
+                <p>Unlock your full compliance report with detailed requirements, documentation checklist, enforcement timeline, and specific obligations for your risk tier. Save and export reports. Unlimited assessments per month.</p>
+            </details>
+            <details class="eaa-accordion">
+                <summary><strong>EU AI Act Timeline</strong></summary>
+                <ul>
+                    <li><strong>August 2025:</strong> Prohibited AI provisions (Article 5) apply</li>
+                    <li><strong>August 2026:</strong> GPAI model transparency provisions apply</li>
+                    <li><strong>August 2027:</strong> Full enforcement of high-risk system requirements (Annex III)</li>
+                </ul>
+            </details>
+            <details class="eaa-accordion">
+                <summary><strong>What is the EU AI Act?</strong></summary>
+                <p>The EU AI Act (2024/1689) is the world's first comprehensive AI regulation. It classifies AI systems into risk tiers and requires different compliance measures based on the risk level. High-risk systems (like HR tools or credit scoring) must have risk management systems, data governance, transparency measures, and human oversight.</p>
+            </details>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/scripts.js?v=4" defer></script>
+    <script src="/eu-ai-act.js?v=1" defer></script>
+</body>
+</html>
