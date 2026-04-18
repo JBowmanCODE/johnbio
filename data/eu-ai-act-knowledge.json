@@ -1,0 +1,152 @@
+{
+  "act_version": "EU AI Act (2024/1689)",
+  "enforcement_timeline": {
+    "Aug_2025": "Prohibited AI provisions (Article 5) apply",
+    "Aug_2026": "GPAI model provisions apply",
+    "Aug_2027": "Full enforcement including Annex III high-risk systems"
+  },
+  "prohibited_ai": [
+    {
+      "id": "biometric_categorisation",
+      "article": "Article 5(1)(a)",
+      "description": "Use of AI for biometric categorisation based on race, ethnicity, sexual orientation, or political opinion",
+      "exceptions": "None"
+    },
+    {
+      "id": "social_scoring",
+      "article": "Article 5(1)(b)",
+      "description": "Social scoring systems that assign individuals scores on creditworthiness or reliability based on their social behaviour",
+      "exceptions": "Narrow exceptions for financial or social security institutions"
+    },
+    {
+      "id": "realtime_biometric_public",
+      "article": "Article 5(1)(c)",
+      "description": "Real-time remote biometric identification of individuals in public spaces",
+      "exceptions": "Law enforcement with strict safeguards and judicial oversight"
+    },
+    {
+      "id": "emotion_recognition_police",
+      "article": "Article 5(1)(d)",
+      "description": "Emotion recognition in law enforcement, border management, migration or asylum processing",
+      "exceptions": "None"
+    }
+  ],
+  "high_risk_categories": [
+    {
+      "id": "biometric_identification",
+      "annex": "Annex III(1)",
+      "description": "Biometric identification and authentication of natural persons (excluding emotion recognition)"
+    },
+    {
+      "id": "critical_infrastructure",
+      "annex": "Annex III(2)",
+      "description": "Critical infrastructure management in energy, transport, water, electricity sectors"
+    },
+    {
+      "id": "education_vocational",
+      "annex": "Annex III(3)",
+      "description": "Determining access to or determining outcomes in education and vocational training"
+    },
+    {
+      "id": "employment",
+      "annex": "Annex III(4)",
+      "description": "Recruitment, selection, promotion, termination, task allocation or performance monitoring of workers"
+    },
+    {
+      "id": "essential_services",
+      "annex": "Annex III(5)",
+      "description": "Access to or delivery of essential private or public services (healthcare, housing, credit, insurance)"
+    },
+    {
+      "id": "law_enforcement",
+      "annex": "Annex III(6)",
+      "description": "Law enforcement AI affecting natural persons' fundamental rights"
+    },
+    {
+      "id": "migration_asylum_visas",
+      "annex": "Annex III(7)",
+      "description": "Management of migration, asylum, visa issuance and border control"
+    },
+    {
+      "id": "justice_democratic",
+      "annex": "Annex III(8)",
+      "description": "Administration of justice and democratic processes"
+    }
+  ],
+  "high_risk_requirements": [
+    "Article 9: Risk management system (design, implementation, continuous monitoring)",
+    "Article 10: Data governance (training data quality, governance, documentation)",
+    "Article 11: Technical documentation and record keeping",
+    "Article 12: Transparency and provision of information to authorities",
+    "Article 13: Transparency obligations to end users",
+    "Article 14: Human oversight (capacity to override or interrupt)",
+    "Article 15: Accuracy, robustness, cybersecurity",
+    "Annex IV: Technical documentation (15 items including model training, testing, performance metrics)"
+  ],
+  "limited_risk_requirements": [
+    "Article 50: Transparency obligations for certain AI systems (chatbots, deepfakes, recommended content ranking)"
+  ],
+  "minimal_risk_requirements": [
+    "No mandatory requirements, but best practices recommended"
+  ],
+  "risk_classification_rules": [
+    {
+      "rule": "If system is in prohibited_ai list → PROHIBITED",
+      "severity": "Critical — do not deploy in EU"
+    },
+    {
+      "rule": "If system is in high_risk_categories list → HIGH_RISK",
+      "severity": "High — requires full compliance framework"
+    },
+    {
+      "rule": "If system is a chatbot, deepfake generator, or content ranking system → LIMITED_RISK",
+      "severity": "Medium — requires transparency measures"
+    },
+    {
+      "rule": "Otherwise → MINIMAL_RISK",
+      "severity": "Low — no specific legal requirements"
+    }
+  ],
+  "countries": {
+    "AT": {"name": "Austria", "supervisor": "Data Protection Authority (DSB)"},
+    "BE": {"name": "Belgium", "supervisor": "Belgian DPA (APD/GBA)"},
+    "BG": {"name": "Bulgaria", "supervisor": "Commission for Personal Data Protection"},
+    "HR": {"name": "Croatia", "supervisor": "Croatian DPA"},
+    "CY": {"name": "Cyprus", "supervisor": "Commissioner for Personal Data Protection"},
+    "CZ": {"name": "Czech Republic", "supervisor": "Office for Personal Data Protection"},
+    "DK": {"name": "Denmark", "supervisor": "Danish Data Protection Agency"},
+    "EE": {"name": "Estonia", "supervisor": "Estonian Data Protection Inspectorate"},
+    "FI": {"name": "Finland", "supervisor": "Office of the Data Protection Ombudsman"},
+    "FR": {"name": "France", "supervisor": "CNIL (Commission Nationale de l'Informatique et des Libertés)"},
+    "DE": {"name": "Germany", "supervisor": "German Federal Data Protection Commissioner (BfDI) and state DPAs"},
+    "GR": {"name": "Greece", "supervisor": "Hellenic DPA"},
+    "HU": {"name": "Hungary", "supervisor": "Hungarian Data Protection Authority"},
+    "IE": {"name": "Ireland", "supervisor": "Data Protection Commission"},
+    "IT": {"name": "Italy", "supervisor": "Italian DPA (Garantista)"},
+    "LV": {"name": "Latvia", "supervisor": "Data State Inspectorate"},
+    "LT": {"name": "Lithuania", "supervisor": "Lithuanian Data Protection Inspectorate"},
+    "LU": {"name": "Luxembourg", "supervisor": "Commission Nationale pour la Protection des Données"},
+    "MT": {"name": "Malta", "supervisor": "Office of the Information and Data Protection Commissioner"},
+    "NL": {"name": "Netherlands", "supervisor": "Dutch DPA (Autoriteit Persoonsgegevens)"},
+    "PL": {"name": "Poland", "supervisor": "Polish DPA (UODO)"},
+    "PT": {"name": "Portugal", "supervisor": "Portuguese DPA (CNPD)"},
+    "RO": {"name": "Romania", "supervisor": "National Supervisory Authority for Personal Data Processing"},
+    "SK": {"name": "Slovakia", "supervisor": "Slovak DPA"},
+    "SI": {"name": "Slovenia", "supervisor": "Information Commissioner of the Republic of Slovenia"},
+    "ES": {"name": "Spain", "supervisor": "Spanish DPA (AEPD)"},
+    "SE": {"name": "Sweden", "supervisor": "Swedish Authority for Privacy Protection (IMY)"}
+  },
+  "ai_system_types": [
+    "Biometric identification system",
+    "Credit scoring system",
+    "HR recruitment tool",
+    "Educational assessment system",
+    "Content recommendation algorithm",
+    "Chatbot or conversational AI",
+    "Image/video generation (deepfakes)",
+    "Law enforcement investigation support",
+    "Healthcare diagnosis system",
+    "Autonomous vehicle system",
+    "Other (please describe)"
+  ]
+}

@@ -277,6 +277,18 @@ const projects = [
     img: '/images/faq_schema_og.webp',
     thumbIcon: 'data_object',
   },
+  {
+    id: 'eu-ai-act',
+    title: 'EU AI Act Compliance',
+    desc: 'Risk classification and compliance documentation for AI systems under the EU AI Act. Free assessment identifies if your system is prohibited, high-risk, limited-risk, or minimal-risk. Paid subscription unlocks full compliance reports.',
+    category: 'digital',
+    badge: 'COMPLIANCE AI',
+    color: 'green',
+    icons: ['gavel', 'verified_user'],
+    href: 'https://johnb.io/eu-ai-act',
+    img: '/images/eu-ai-act-og.webp',
+    thumbIcon: 'gavel',
+  },
 ];
 
 // ── HERO NEWS PANEL ──────────────────────────────────────────────────────
