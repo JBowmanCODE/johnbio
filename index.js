@@ -457,9 +457,14 @@ function applyFilters() {
 }
 
 document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
     activeFilter = btn.dataset.filter;
     applyFilters();
   });

@@ -11,6 +11,17 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // Profile image swap on hover
+    const profileImage = document.getElementById('profileImage');
+    if (profileImage) {
+        profileImage.addEventListener('mouseenter', () => {
+            profileImage.src = '/images/jbcode.webp';
+        });
+        profileImage.addEventListener('mouseleave', () => {
+            profileImage.src = '/images/JohnB.webp';
+        });
+    }
 });
 
 function displaySkillDetails(skillCategory) {

@@ -127,15 +127,13 @@ main {
 .profile-image {
   width: 160px; height: 160px;
   border-radius: 50%;
-  background-image: url('/images/JohnB.webp');
-  background-size: cover; background-position: center;
+  object-fit: cover;
   border: 2px solid rgba(255,0,127,0.4);
   box-shadow: 0 0 30px rgba(255,0,127,0.25);
-  transition: border-color 0.3s, box-shadow 0.3s, background-image 0.1s;
+  transition: border-color 0.3s, box-shadow 0.3s;
   cursor: pointer;
 }
 .profile-image:hover {
-  background-image: url('/images/jbcode.webp');
   border-color: rgba(0,238,252,0.6);
   box-shadow: 0 0 40px rgba(0,238,252,0.3);
 }
