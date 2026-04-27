@@ -334,6 +334,17 @@
             <p>What you might get is a creative tool that's genuinely fun to use, a record of what you can build in a few hours, and the knowledge that if it resonates with people, they'll find it. The reach is real. The money isn't.</p>
 
             <p>Go in with eyes open, but it's worth the experiment.</p>
+
+            <div style="margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+              <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem; color: #fbbf24;">Listen to a Track from the Experiment</h3>
+              <div style="background: linear-gradient(135deg, rgba(251,191,36,0.08), rgba(255,0,127,0.04)); border: 1px solid rgba(251,191,36,0.2); border-radius: 12px; padding: 1.5rem;">
+                <p style="margin: 0 0 1.5rem 0; font-size: 0.95rem; color: rgba(255,255,255,0.8);"><strong>88 Million Views Track</strong> - An example of the Suno-generated music from this experiment</p>
+                <audio style="width: 100%; height: 32px;" controls>
+                  <source src="/news/88-Million-Views-Song.mp3" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+            </div>
           </div><!-- /.na-body -->
 
           <div aria-label="Tags" class="na-tags">
@@ -342,6 +353,50 @@
             <span class="na-tag">Music Generation</span>
             <span class="na-tag">SoundON Global</span>
             <span class="na-tag">Monetization</span>
+          </div>
+
+          <!-- ── Deep Dive Podcast ── -->
+          <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
+            <div class="na-podcast-badge">
+              <span aria-hidden="true" class="material-symbols-outlined">podcasts</span>
+              Deep Dive Podcast
+            </div>
+            <div class="na-podcast-inner">
+              <div class="na-podcast-left">
+                <div aria-hidden="true" class="na-podcast-icon">
+                  <span class="material-symbols-outlined">graphic_eq</span>
+                </div>
+                <div class="na-podcast-meta">
+                  <p class="na-podcast-title">88 Million AI Streams for £600</p>
+                  <p class="na-podcast-sub">Deep dive into the economics and reality of AI music generation</p>
+                </div>
+              </div>
+              <audio aria-label="Deep Dive Podcast audio" data-src="/news/88_Million_AI_Streams_for_600_Pounds_64k.m4a" id="na-podcast-audio" preload="metadata"></audio>
+              <div class="na-podcast-controls">
+                <div aria-label="Playback progress" class="na-podcast-progress-wrap" role="group">
+                  <span class="na-podcast-time" id="na-pod-current">0:00</span>
+                  <input aria-label="Seek" class="na-podcast-progress" id="na-pod-progress" min="0" step="0.1" type="range" value="0"/>
+                  <span class="na-podcast-time" id="na-pod-duration">0:00</span>
+                </div>
+                <div class="na-podcast-btns">
+                  <button aria-label="Skip back 15 seconds" class="na-pod-btn na-pod-btn--skip" id="na-pod-back">
+                    <span class="material-symbols-outlined">replay</span><span class="na-pod-skip-label">15s</span>
+                  </button>
+                  <button aria-label="Play podcast" class="na-pod-btn na-pod-btn--play" id="na-pod-play">
+                    <span class="material-symbols-outlined" id="na-pod-play-icon">play_arrow</span>
+                  </button>
+                  <button aria-label="Skip forward 15 seconds" class="na-pod-btn na-pod-btn--skip" id="na-pod-fwd">
+                    <span class="material-symbols-outlined">forward</span><span class="na-pod-skip-label">15s</span>
+                  </button>
+                  <div class="na-pod-volume">
+                    <button aria-label="Mute" class="na-pod-btn na-pod-mute" id="na-pod-mute">
+                      <span class="material-symbols-outlined" id="na-pod-mute-icon">volume_up</span>
+                    </button>
+                    <input aria-label="Volume" class="na-pod-vol-slider" id="na-pod-vol" max="1" min="0" step="0.05" type="range" value="1"/>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
         </article>
