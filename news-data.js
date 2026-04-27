@@ -8,7 +8,7 @@ const NEWS_POSTS = [
     dateDisplay: '27 April 2026',
     readTime: '6 min read',
     tags: ['AI', 'Suno', 'Music Generation', 'SoundON Global', 'Monetization'],
-    image: '/news/images/soundon-data.webp'
+    image: '/news/images/88-million-AI-song-views.webp'
   },
   {
     slug: '/news/geo-generative-engine-optimisation',
