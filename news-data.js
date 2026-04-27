@@ -1,5 +1,16 @@
 const NEWS_POSTS = [
   {
+    slug: '/news/ai-music-88-million-views',
+    title: 'What Happens When Your AI Songs Get 88 Million Views',
+    excerpt: 'I generated 88 million streams with AI music in 2024-2026. Here\'s what I actually made—and why I won\'t share the songs.',
+    category: 'AI & Creative Tools',
+    date: '2026-04-27',
+    dateDisplay: '27 April 2026',
+    readTime: '6 min read',
+    tags: ['AI', 'Suno', 'Music Generation', 'SoundON Global', 'Monetization'],
+    image: '/news/images/soundon-data.webp'
+  },
+  {
     slug: '/news/geo-generative-engine-optimisation',
     title: 'GEO: A Practical Guide to Generative Engine Optimisation in 2026',
     excerpt: 'Generative engine optimisation explained: how GEO differs from SEO, what AI systems look for in content, whether llms.txt works, and what to actually do about it.',

@@ -42,6 +42,7 @@
 ## News and Insights
 
 - [News](https://johnb.io/news): News and insights on AI, iGaming, SEO and digital from John Bowman.
+- [What Happens When Your AI Songs Get 88 Million Views](https://johnb.io/news/ai-music-88-million-views): I generated 88 million streams with AI music in 2024-2026. Here's what I actually made—and why I won't share the songs. Covers Suno, SoundON Global distribution, streaming monetization, and the reality gap between reach and revenue.
 - [GEO: A Practical Guide to Generative Engine Optimisation in 2026](https://johnb.io/news/geo-generative-engine-optimisation): Explains what GEO is, how it differs from SEO, what AI retrieval systems look for in content, whether llms.txt actually works, and practical steps to get cited by ChatGPT, Perplexity and Google AI Overviews.
 - [AI Terms Explained: A Beginner's Guide to LLMs, ML, and Every Buzzword in Between](https://johnb.io/news/ai-terms-explained): Plain-English guide explaining the difference between AI, ML, LLMs, deep learning, neural networks, and other common AI terms. Written for beginners who want to follow AI conversations without the jargon.
 - [Claude Code VSC: AI Coding for Beginners](https://johnb.io/news/claude-code-vsc): Beginner's guide to the Claude Code VS Code extension by Anthropic. Covers what Claude Code VSC is, how it differs from Claude.ai, installation steps, what it can do, the CLAUDE.md briefing file, pricing (Claude Max subscription vs API credits), and what to try first.
