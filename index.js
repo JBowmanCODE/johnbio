@@ -25,6 +25,18 @@ const projects = [
     thumbIcon: 'summarize',
   },
   {
+    id: 'eu-ai-act',
+    title: 'EU AI Act Compliance',
+    desc: 'Automated risk classification for AI systems under the EU AI Act. Free assessment identifies prohibited, high-risk, or minimal-risk status. Paid reports include full compliance requirements.',
+    category: 'digital',
+    badge: 'DIGITAL AI',
+    color: 'green',
+    icons: ['gavel', 'policy'],
+    href: 'https://johnb.io/eu-ai-act',
+    img: '/images/og-default.webp',
+    thumbIcon: 'gavel',
+  },
+  {
     id: 'igaming-compliance',
     title: 'iGaming Compliance Map',
     desc: 'Interactive world map of 203 iGaming regulations across 60+ jurisdictions. Browse gambling laws, AML directives, data protection rules and advertising codes by country.',

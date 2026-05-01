@@ -292,7 +292,6 @@ function initializeTerminal() {
         printLines([
             { text: '── Contact ─────────────────────────────────────', cls: 't-head' },
             { text: '' },
-            { text: '  phone      +44 7872 039 124', cls: 't-hi' },
             { text: '  contact    johnb.io/contact', cls: 't-hi' },
             { text: '  location   Leeds, LS18, UK', cls: 't-hi' },
             { text: '  linkedin   linkedin.com/in/john-bowman', cls: 't-hi' },

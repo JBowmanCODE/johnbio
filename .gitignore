@@ -9,3 +9,7 @@ workers/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Logs and error logs
+error_log
+*.log
