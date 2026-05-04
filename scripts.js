@@ -92,7 +92,6 @@ function loadHeaderAndFooter() {
     const cachedFooter = sessionStorage.getItem('site-footer-v1');
     if (cachedFooter && footerPlaceholder) {
         footerPlaceholder.innerHTML = cachedFooter;
-        initializeFooter();
     } else {
         fetch('/footer.html', { cache: 'no-store' })
             .then(response => {
@@ -103,7 +102,6 @@ function loadHeaderAndFooter() {
                 if (footerPlaceholder) {
                     footerPlaceholder.innerHTML = data;
                     sessionStorage.setItem('site-footer-v1', data);
-                    initializeFooter();
                 }
             })
             .catch(error => console.error('Error loading footer:', error));
@@ -531,66 +529,6 @@ function enableDarkMode() {
 function disableDarkMode() {
     document.body.classList.remove('dark-mode');
     localStorage.setItem('darkMode', 'disabled');
-}
-
-// Initialize footer functionality (cookie banner logic moved here from footer.js)
-function initializeFooter() {
-    const cookieBanner = document.getElementById('cookie-banner');
-    const acceptButton = document.getElementById('accept-cookies');
-    const rejectButton = document.getElementById('reject-cookies');
-
-    if (!cookieBanner) {
-        console.error('Cookie banner element not found in the footer.');
-        return;
-    }
-
-    function setConsent(value) {
-        localStorage.setItem('cookiesAccepted', value);
-    }
-
-    function getConsent() {
-        return localStorage.getItem('cookiesAccepted');
-    }
-
-    function showCookieBanner() {
-        cookieBanner.classList.remove('cookie-banner-hidden');
-    }
-
-    function hideCookieBanner() {
-        cookieBanner.classList.add('cookie-banner-hidden');
-    }
-
-    function grantAnalyticsConsent() {
-        if (typeof gtag !== 'undefined') {
-            gtag('consent', 'update', { analytics_storage: 'granted' });
-        }
-    }
-
-    function handleCookieAcceptance(accepted) {
-        setConsent(accepted.toString());
-        hideCookieBanner();
-        if (accepted) {
-            grantAnalyticsConsent();
-        }
-    }
-
-    if (acceptButton) {
-        acceptButton.addEventListener('click', () => handleCookieAcceptance(true));
-    }
-
-    if (rejectButton) {
-        rejectButton.addEventListener('click', () => handleCookieAcceptance(false));
-    }
-
-    const consent = getConsent();
-    if (consent === null) {
-        showCookieBanner();
-    } else {
-        hideCookieBanner();
-        if (consent === 'true') {
-            grantAnalyticsConsent();
-        }
-    }
 }
 
 // Add info and download icons to the container
