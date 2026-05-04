@@ -131,7 +131,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=3" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -157,7 +157,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener noreferrer" target="_blank">John Bowman</a>
 <span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta"><span class="lp-unit-badge lp-unit-3">Unit 3</span><span class="na-date">5 April 2026</span><span class="na-read">8 min read</span></div></div>
@@ -204,7 +204,7 @@
 <h2>What AI Governance Actually Means in Practice</h2>
 <p>In practice, governance means rules. Rules about how data gets handled, who can access models, what happens before deployment, and how you audit for problems. It also means accountability - knowing who's responsible when something goes wrong.</p>
 <p>Right now, governance is a patchwork. Some governments are legislating. Some companies are self-regulating. Most organisations are doing whatever they can get away with.</p>
-<p>The EU is furthest along. Their <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" rel="noopener" target="_blank">EU AI Act</a> categorises AI systems by risk level. High-risk applications - facial recognition, hiring systems, credit decisions - face strict requirements: mandatory audits, record-keeping, transparency about limitations. Lower-risk systems have fewer requirements. It's not perfect, but it's actual law with enforcement mechanisms.</p>
+<p>The EU is furthest along. Their <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" rel="noopener noreferrer" target="_blank">EU AI Act</a> categorises AI systems by risk level. High-risk applications - facial recognition, hiring systems, credit decisions - face strict requirements: mandatory audits, record-keeping, transparency about limitations. Lower-risk systems have fewer requirements. It's not perfect, but it's actual law with enforcement mechanisms.</p>
 <p>The US has moved more slowly. The NIST AI Risk Management Framework provides guidelines and practices that organisations can follow, but don't have to. It covers four functions: Govern (setting policies), Map (understanding what your system does), Measure (testing for problems), and Manage (acting on findings). More robust than nothing, but voluntary.</p>
 <p>China's approach is more centralised, with government mandates about what AI can do. The UK has taken a lighter touch, preferring industry self-regulation. The approaches vary significantly, which creates problems for organisations operating across borders.</p>
 </section>
@@ -229,7 +229,7 @@
 <p>No. The frameworks exist, but they're not binding enough and they're not keeping up.</p>
 <p>The EU AI Act is the most serious attempt, but it's getting criticised for being vague about what counts as "high-risk." Companies will find loopholes - they always do. The US has nothing comparable at the federal level. Real-world <a href="/course/ai-failures-ethics">AI failures</a> keep showing why this matters.</p>
 <p>What bothers me most is that governance relies on companies self-reporting problems. If an AI system causes <a href="/course/ai-hallucinations-bias-ip">hallucinations or bias</a>, does the company tell regulators? More likely they tell their lawyers first. Proactive disclosure opens liability. So the incentives push against transparency.</p>
-<p>What's actually needed: mandatory third-party audits before deployment for systems affecting people's opportunities, safety, or civil rights. Real liability, not "we did our best." Transparency requirements so that if AI makes decisions about you, you can find out what data it used. And some international standard, because companies will otherwise operate from whichever jurisdiction has the weakest rules. Frameworks like <a href="https://www.iso.org/standard/81230.html" rel="noopener" target="_blank">ISO/IEC 42001</a> are a start.</p>
+<p>What's actually needed: mandatory third-party audits before deployment for systems affecting people's opportunities, safety, or civil rights. Real liability, not "we did our best." Transparency requirements so that if AI makes decisions about you, you can find out what data it used. And some international standard, because companies will otherwise operate from whichever jurisdiction has the weakest rules. Frameworks like <a href="https://www.iso.org/standard/81230.html" rel="noopener noreferrer" target="_blank">ISO/IEC 42001</a> are a start.</p>
 <p>None of this is happening at the scale it should be. Most companies are choosing which governance rules to follow based on what's politically convenient in their market. That's not governance. It's regulatory arbitrage.</p>
 </section>
 <div aria-label="Lesson quiz" class="lp-quiz" id="quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions - select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What is the key difference between the EU AI Act and the NIST AI Risk Management Framework?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>The EU AI Act only covers public sector AI; NIST covers private companies</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>The EU AI Act is binding law with enforcement; NIST is voluntary guidance organisations can choose to follow</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>NIST requires mandatory audits; the EU AI Act does not</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>They cover different types of AI - the EU Act for generative AI, NIST for machine learning</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">Why does AI governance typically lag behind AI capability?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>Governments have no interest in regulating AI</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>AI systems take years to develop so there's always enough time to regulate them</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>Companies can deploy new AI systems far faster than regulators can understand, legislate, and enforce rules about them</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>AI systems are too simple for existing laws to apply to</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
@@ -241,7 +241,7 @@
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
 <div class="na-podcast-meta">
 <p class="na-podcast-title">Podcast Version</p>
-<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener noreferrer" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
 </div>
 </div>
 <audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="metadata" data-src="/course/ai-governance-frameworks.m4a"></audio>
@@ -331,7 +331,7 @@
 </button>
 <div id="footer-placeholder"></div>
 <script src="/course-data.js"></script><script src="/news-data.js"></script>
-<script defer="" src="/scripts.js?v=4"></script>
+<script defer="" src="/scripts.js?v=5"></script>
 <script defer="" src="/news-article.js?v=2"></script>
 <script defer="" src="/news-chat.js"></script>
 <script>

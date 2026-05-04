@@ -134,7 +134,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=3" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -162,7 +162,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener noreferrer" target="_blank">John Bowman</a>
 <span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta">
@@ -213,7 +213,7 @@
 <h2 id="the-problem-rag-is-solving">The problem RAG is solving</h2>
 <p>A language model is like someone who read a lot in school and then never read anything new. Ask it about something after its training cutoff and it'll confidently make something up. Ask it about an internal document it never saw, and it either hasn't seen it or confabulates details.</p>
 <p>That's hallucination. It's not malice or stupidity - the model does what it was trained to do, predict plausible text. But plausible isn't the same as true.</p>
-<p>RAG solves this by giving the model access to relevant context before it answers. You ask a question, RAG finds relevant documents or database entries, and feeds those to the model along with your question. Now the model has actual facts to work with. <a href="https://huggingface.co/docs/transformers/training" target="_blank" rel="noopener">Hugging Face's training documentation</a> is the standard reference for implementing this in practice.</p>
+<p>RAG solves this by giving the model access to relevant context before it answers. You ask a question, RAG finds relevant documents or database entries, and feeds those to the model along with your question. Now the model has actual facts to work with. <a href="https://huggingface.co/docs/transformers/training" target="_blank" rel="noopener noreferrer">Hugging Face's training documentation</a> is the standard reference for implementing this in practice.</p>
 <h2 id="how-rag-works-retrieve-then-generate">How RAG works: retrieve then generate</h2>
 <p>The process has two steps. First, retrieve. You take the user's query and search a database of documents to find relevant ones. Usually by embedding the query and finding documents with similar embeddings - semantic similarity, not keyword matching.</p>
 <p>Then generate. You take the retrieved documents and the original query and feed them both to a language model. The model generates an answer with those documents as context. If the documents contain the answer, the model can usually find it.</p>
@@ -253,7 +253,7 @@
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
 <div class="na-podcast-meta">
 <p class="na-podcast-title">Podcast Version</p>
-<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener noreferrer" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
 </div>
 </div>
 <audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="metadata"></audio>
@@ -347,7 +347,7 @@
 </button>
 <div id="footer-placeholder"></div>
 <script src="/course-data.js"></script><script src="/news-data.js"></script>
-<script defer="" src="/scripts.js?v=4"></script>
+<script defer="" src="/scripts.js?v=5"></script>
 <script defer="" src="/news-article.js?v=2"></script>
 <script defer="" src="/news-chat.js"></script>
 <script>

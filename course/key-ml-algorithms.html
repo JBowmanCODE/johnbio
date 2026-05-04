@@ -131,7 +131,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=3" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -157,7 +157,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener noreferrer" target="_blank">John Bowman</a>
 <span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta"><span class="lp-unit-badge lp-unit-5">Unit 5</span><span class="na-date">5 April 2026</span><span class="na-read">9 min read</span></div></div>
@@ -203,7 +203,7 @@
 <section id="decision-trees">
 <h2>Decision Trees: How They Work and Why They're Intuitive</h2>
 <p>Decision trees are probably the most intuitive machine learning model. A human can look at a trained decision tree and understand exactly what it's doing.</p>
-<p>The idea: you ask a series of yes/no questions about the data, and each answer narrows down the prediction. Is the email long? If yes, branch A. If no, branch B. In branch A, does it contain certain words? If yes, probably spam. This is how you'd manually build a flowchart. The <a href="https://scikit-learn.org/stable/user_guide.html" target="_blank" rel="noopener">scikit-learn user guide</a> has good practical examples of all these algorithms. A decision tree is that flowchart, built automatically from data.</p>
+<p>The idea: you ask a series of yes/no questions about the data, and each answer narrows down the prediction. Is the email long? If yes, branch A. If no, branch B. In branch A, does it contain certain words? If yes, probably spam. This is how you'd manually build a flowchart. The <a href="https://scikit-learn.org/stable/user_guide.html" target="_blank" rel="noopener noreferrer">scikit-learn user guide</a> has good practical examples of all these algorithms. A decision tree is that flowchart, built automatically from data.</p>
 <p>Mathematically, the tree is built by recursively splitting the data. At each node, the algorithm finds the single question that splits data into two groups as homogeneously as possible - the same kind of process that underpins <a href="/course/how-ai-learns">how AI learns</a> - where "homogeneous" means all items in each group belong to the same class. The algorithm measures this with Gini impurity or entropy, and keeps splitting until groups are pure or a stopping condition is met.</p>
 <p>Why are trees intuitive? You can trace any prediction back to the rule that produced it: "This email is spam because it's long and contains the word 'prize'." You can argue with the tree. You can understand why it learned that rule. This is in stark contrast to neural networks, which produce a prediction with no auditable explanation.</p>
 <p>The downside: single trees tend to overfit. They'll learn very specific rules that fit the training data but don't generalise. That's where random forests come in.</p>
@@ -212,7 +212,7 @@
 <h2>Random Forests: An Extension of Decision Trees</h2>
 <p>A random forest is hundreds of decision trees trained slightly differently. You train each tree on a random subset of the data and a random subset of the features. Then you predict by having all trees vote. If 300 trees say "spam" and 200 say "not spam," predict spam.</p>
 <p>Why does voting help? Because the trees are diverse. Each overfits in a different way. The errors average out. The ensemble is more robust than any individual tree - and usually more accurate than a single tree by a significant margin.</p>
-<p>Random forests are widely used and a strong default for most structured data problems. They're less interpretable than a single tree (you can't point to "the rule"), but far more accurate. <a href="https://en.wikipedia.org/wiki/Random_forest" target="_blank" rel="noopener">Wikipedia's random forest article</a> covers the statistical foundations in more depth. The trade-off: single trees for interpretability, forests for accuracy.</p>
+<p>Random forests are widely used and a strong default for most structured data problems. They're less interpretable than a single tree (you can't point to "the rule"), but far more accurate. <a href="https://en.wikipedia.org/wiki/Random_forest" target="_blank" rel="noopener noreferrer">Wikipedia's random forest article</a> covers the statistical foundations in more depth. The trade-off: single trees for interpretability, forests for accuracy.</p>
 </section>
 <section id="svms">
 <h2>Support Vector Machines: The Core Idea</h2>
@@ -248,7 +248,7 @@
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
 <div class="na-podcast-meta">
 <p class="na-podcast-title">Podcast Version</p>
-<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener noreferrer" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
 </div>
 </div>
 <audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="metadata"></audio>
@@ -338,7 +338,7 @@
 </button>
 <div id="footer-placeholder"></div>
 <script src="/course-data.js"></script><script src="/news-data.js"></script>
-<script defer="" src="/scripts.js?v=4"></script>
+<script defer="" src="/scripts.js?v=5"></script>
 <script defer="" src="/news-article.js?v=2"></script>
 <script defer="" src="/news-chat.js"></script>
 <script>

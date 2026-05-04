@@ -134,7 +134,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=3" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -162,7 +162,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener noreferrer" target="_blank">John Bowman</a>
 <span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta">
@@ -216,7 +216,7 @@
 <p>When you write "Write a 400-word article about machine learning for someone who's never programmed, aimed at business executives, explaining why they should care," you've narrowed down the space of valid outputs dramatically. The model still has choices, but it knows what you're actually asking for.</p>
 <p>This isn't creativity or magic. It's being specific.</p>
 <h2 id="techniques-that-actually-work">Techniques that actually work</h2>
-<p><strong>Chain of thought.</strong> Ask the model to think step by step instead of jumping to conclusions. "What are the steps to solve this problem?" gets better results than "Solve this problem." <a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener">OpenAI's prompt engineering guide</a> has good worked examples of this technique. The model writes out reasoning, which both helps it arrive at the right answer and lets you see where the thinking goes wrong.</p>
+<p><strong>Chain of thought.</strong> Ask the model to think step by step instead of jumping to conclusions. "What are the steps to solve this problem?" gets better results than "Solve this problem." <a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener noreferrer">OpenAI's prompt engineering guide</a> has good worked examples of this technique. The model writes out reasoning, which both helps it arrive at the right answer and lets you see where the thinking goes wrong.</p>
 <p><strong>Few-shot examples.</strong> Show the model examples of what you want. If you need a specific format or tone, give it two or three examples and ask for a new one in the same style. Models are good at learning from examples - better than from abstract descriptions.</p>
 <p><strong>Role prompting.</strong> Tell the model to adopt a perspective. "You're a senior software engineer reviewing this code" or "You're a product manager thinking about customer impact" changes how it approaches a problem. This works because the model has learned what different roles typically care about and how they communicate.</p>
 <p>These aren't tricks. They work because they align with how the model processes language. When you show examples, you're giving it a pattern to follow. When you ask it to think step by step, you're asking it to generate reasoning tokens, which helps with complex problems. When you define a role, you're activating patterns associated with that perspective.</p>
@@ -246,7 +246,7 @@
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
 <div class="na-podcast-meta">
 <p class="na-podcast-title">Podcast Version</p>
-<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener noreferrer" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
 </div>
 </div>
 <audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="metadata"></audio>
@@ -337,7 +337,7 @@
 </button>
 <div id="footer-placeholder"></div>
 <script src="/course-data.js"></script><script src="/news-data.js"></script>
-<script defer="" src="/scripts.js?v=4"></script>
+<script defer="" src="/scripts.js?v=5"></script>
 <script defer="" src="/news-article.js?v=2"></script>
 <script defer="" src="/news-chat.js"></script>
 <script>

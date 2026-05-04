@@ -131,7 +131,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=3" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -157,7 +157,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener noreferrer" target="_blank">John Bowman</a>
 <span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta"><span class="lp-unit-badge lp-unit-3">Unit 3</span><span class="na-date">5 April 2026</span><span class="na-read">8 min read</span></div></div>
@@ -202,7 +202,7 @@
 <div class="na-body">
 <section id="hallucinations">
 <h2>What AI Hallucinations Actually Are</h2>
-<p>An <a href="https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)" rel="noopener" target="_blank">AI hallucination</a> is when an AI confidently outputs something completely false.</p>
+<p>An <a href="https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)" rel="noopener noreferrer" target="_blank">AI hallucination</a> is when an AI confidently outputs something completely false.</p>
 <p>You ask ChatGPT for the name of a famous biologist from the 1800s. It gives you a detailed answer about "Dr Margaret Livingston" with a full biographical paragraph. Sounds great. Completely made up. The person never existed.</p>
 <p>Or you ask for a specific study. The model generates a perfectly formatted academic reference that sounds real, uses actual researchers' names, but the study itself doesn't exist. The model didn't remember the study - it invented one. The format was convincing enough that people have cited these fake papers in real academic work.</p>
 <p>This happens because language models don't "know" things the way you do. They predict the next word based on patterns in training data. If the pattern suggests a plausible-sounding next word, they pick it. There's no internal fact-checker running in parallel, no system that says "wait, is this actually true?"</p>
@@ -220,14 +220,14 @@
 <p>Bias starts with <a href="/course/how-ai-learns">training data</a>, but it's not always obvious where.</p>
 <p>If you train a medical AI on data from hospitals serving wealthy populations, it works well for those people. Deploy it in a clinic serving a completely different population - different genetics, lifestyle factors, disease presentations - and it fails. That's data bias: the training data didn't represent the real world the model has to handle.</p>
 <p>Sometimes it's inherited from human writing. Train a language model on internet text and it absorbs every bias, stereotype, and harmful pattern that exists in human communication. The model can't distinguish "this reflects reality" from "this is a harmful stereotype." It just learns the pattern.</p>
-<p>What gets produced? Wrong decisions that appear systematic. Résumé-screening that filters out qualified candidates. <a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing" rel="noopener" target="_blank">Criminal justice algorithms</a> that recommend longer sentences based on demographic factors. Loan approval systems that vary by postcode after controlling for credit score.</p>
+<p>What gets produced? Wrong decisions that appear systematic. Résumé-screening that filters out qualified candidates. <a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing" rel="noopener noreferrer" target="_blank">Criminal justice algorithms</a> that recommend longer sentences based on demographic factors. Loan approval systems that vary by postcode after controlling for credit score.</p>
 <p>The scary part is how well these biases hide. You deploy an algorithm, it works on your test set, and you never check whether it's working differently for different groups. The problem only surfaces if someone specifically looks for demographic disparities. Most deployments don't check. These are the kinds of <a href="/course/ai-failures-ethics">real-world AI failures</a> that governance frameworks are supposed to prevent.</p>
 </section>
 <section id="ip">
 <h2>The Intellectual Property Question</h2>
 <p>You use AI to write a song, generate art, or produce code. Who owns it? You, who prompted it? The AI company that built the model? The original creators whose work the model was trained on?</p>
 <p>There isn't a clear answer yet, and companies are betting you won't figure this out quickly.</p>
-<p>Some AI companies claim the user owns the output - convenient for them, as they take no liability. Others claim the company retains rights. Many are deliberately vague. Courts haven't settled major cases definitively, which means everyone's in a legal grey area right now. The UK government has published <a href="https://www.gov.uk/guidance/copyright-in-ai-generated-works" rel="noopener" target="_blank">guidance on copyright in AI-generated works</a>.</p>
+<p>Some AI companies claim the user owns the output - convenient for them, as they take no liability. Others claim the company retains rights. Many are deliberately vague. Courts haven't settled major cases definitively, which means everyone's in a legal grey area right now. The UK government has published <a href="https://www.gov.uk/guidance/copyright-in-ai-generated-works" rel="noopener noreferrer" target="_blank">guidance on copyright in AI-generated works</a>.</p>
 <p>The situation for original creators is genuinely unjust. AI companies trained on millions of images from photographers, artists, and illustrators without explicit permission. Those creators didn't consent to their work being used to train something that would compete with them.</p>
 <p>But the counterpoint: if you personally prompt an AI and it generates something original-looking, saying the original artists "own" your specific output because the model trained on their work is also a stretch. The line is blurry on purpose - nobody wants to be the one who draws it.</p>
 <p>If you're creating AI-generated content to sell or monetise, you're taking a legal risk right now. Some jurisdictions are starting to move - the EU is exploring requirements for AI companies to disclose training data, which would at least let creators see whether their work was used. That's a start, not a resolution.</p>
@@ -241,7 +241,7 @@
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
 <div class="na-podcast-meta">
 <p class="na-podcast-title">Podcast Version</p>
-<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener noreferrer" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
 </div>
 </div>
 <audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="metadata" data-src="/course/ai-hallucinations-bias-ip.m4a"></audio>
@@ -330,7 +330,7 @@
 </button>
 <div id="footer-placeholder"></div>
 <script src="/course-data.js"></script><script src="/news-data.js"></script>
-<script defer="" src="/scripts.js?v=4"></script>
+<script defer="" src="/scripts.js?v=5"></script>
 <script defer="" src="/news-article.js?v=2"></script>
 <script defer="" src="/news-chat.js"></script>
 <script>

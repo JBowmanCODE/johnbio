@@ -134,7 +134,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=3" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -162,7 +162,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener noreferrer" target="_blank">John Bowman</a>
 <span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta">
@@ -225,7 +225,7 @@
 <p>Pooling says: we detected this feature somewhere in this region - we don't care exactly where. That's useful because a cat's eyes appear in different positions in different photos, but we still want to recognise it as a cat.</p>
 <p>You don't always need pooling. Modern networks sometimes skip it. But it's standard because it works and it's efficient.</p>
 <h2 id="building-a-simple-cnn-in-keras">Building a simple CNN in Keras</h2>
-<p>Here's the structure of a basic CNN in <a href="https://keras.io/" rel="noopener" target="_blank">Keras</a> for image classification. Seven layers total: two convolution-pooling pairs, a flatten, a dense layer, and an output.</p>
+<p>Here's the structure of a basic CNN in <a href="https://keras.io/" rel="noopener noreferrer" target="_blank">Keras</a> for image classification. Seven layers total: two convolution-pooling pairs, a flatten, a dense layer, and an output.</p>
 <pre class="lp-code-block"><code>model = Sequential([
     Conv2D(32, 3, activation='relu', input_shape=(28, 28, 1)),
     MaxPooling2D(2),
@@ -241,7 +241,7 @@
 <p>CNNs are excellent for <a href="/course/key-ai-subfields">computer vision</a> tasks including image classification and object detection. They're efficient, they learn good features, and they work well on reasonable-sized datasets.</p>
 <p>But they're not the only option any more. <a href="/course/rnns-transformers-autoencoders">Vision Transformers</a> (ViTs) apply the transformer architecture to images and are competitive with CNNs - sometimes better, especially with lots of data. For most state-of-the-art vision research in the last few years, Transformers have taken over.</p>
 <p>So why still learn CNNs? Because they're more efficient with small datasets, simpler to understand, and the intuition - convolutions detect patterns - is valuable for understanding any vision model. For many practical applications, a CNN works fine. You probably don't need cutting-edge.</p>
-<p>If you're building something with massive training data and unlimited compute, maybe reach for a Vision Transformer. If you're learning, or if you have reasonable data and want to train fast, CNNs are still the right choice. <a href="https://en.wikipedia.org/wiki/Transfer_learning" rel="noopener" target="_blank">Transfer learning</a> from models pre-trained on <a href="https://en.wikipedia.org/wiki/ImageNet" rel="noopener" target="_blank">ImageNet</a> makes this even faster. They're not obsolete. They've just been supplemented by approaches that sometimes work better.</p>
+<p>If you're building something with massive training data and unlimited compute, maybe reach for a Vision Transformer. If you're learning, or if you have reasonable data and want to train fast, CNNs are still the right choice. <a href="https://en.wikipedia.org/wiki/Transfer_learning" rel="noopener noreferrer" target="_blank">Transfer learning</a> from models pre-trained on <a href="https://en.wikipedia.org/wiki/ImageNet" rel="noopener noreferrer" target="_blank">ImageNet</a> makes this even faster. They're not obsolete. They've just been supplemented by approaches that sometimes work better.</p>
 </div>
 <!-- Quiz -->
 <div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions - select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What does max pooling do in a CNN?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>Detects edges in the image by applying filters</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>Reduces feature map size and provides tolerance to small positional shifts</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>Applies the activation function to every pixel individually</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>Increases the number of filters in the next layer</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">Why are CNNs still worth learning when Vision Transformers exist?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>CNNs always outperform Vision Transformers on every task</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>Vision Transformers can't process colour images</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>CNNs are more efficient on smaller datasets and the convolution intuition helps you understand all vision models</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>Keras doesn't support Vision Transformers yet</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
@@ -253,7 +253,7 @@
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
 <div class="na-podcast-meta">
 <p class="na-podcast-title">Podcast Version</p>
-<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener noreferrer" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
 </div>
 </div>
 <audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="metadata"></audio>
@@ -343,7 +343,7 @@
 </button>
 <div id="footer-placeholder"></div>
 <script src="/course-data.js"></script><script src="/news-data.js"></script>
-<script defer="" src="/scripts.js?v=4"></script>
+<script defer="" src="/scripts.js?v=5"></script>
 <script defer="" src="/news-article.js?v=2"></script>
 <script defer="" src="/news-chat.js"></script>
 <script>

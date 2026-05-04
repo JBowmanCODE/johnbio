@@ -35,7 +35,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=3" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -123,7 +123,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener noreferrer" target="_blank">John Bowman</a>
 <span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta">
@@ -192,10 +192,10 @@
 <h2 id="unsupervised">Unsupervised Learning: Find Patterns Without Being Told What To Look For</h2>
 <p>Unsupervised learning is harder conceptually. You give the system data with no labels and it figures out what patterns exist on its own.</p>
 <p>This sounds powerful but it's actually limited. The system can find clusters and groupings, and it can compress data. What it can't do is tell you whether what it found is meaningful - that's still your job.</p>
-<p>A retail store uses it for customer segmentation: thousands of transactions, no pre-defined categories. The algorithm discovers that some customers buy cheap bulk items, others buy expensive specialties, others are inconsistent. The system found those groups without being told to look for them. <a href="https://en.wikipedia.org/wiki/Recommender_system" rel="noopener" target="_blank">Recommendation systems</a> work similarly - by finding which items have similar viewing or purchase patterns without explicit labelling.</p>
+<p>A retail store uses it for customer segmentation: thousands of transactions, no pre-defined categories. The algorithm discovers that some customers buy cheap bulk items, others buy expensive specialties, others are inconsistent. The system found those groups without being told to look for them. <a href="https://en.wikipedia.org/wiki/Recommender_system" rel="noopener noreferrer" target="_blank">Recommendation systems</a> work similarly - by finding which items have similar viewing or purchase patterns without explicit labelling.</p>
 <p>The downside is evaluation. With supervised learning you count how many predictions were right. With unsupervised learning, judging whether the system found something useful is subjective. You have to assess that yourself. If you have labelled data available, supervised learning usually wins.</p>
 <h2 id="reinforcement">Reinforcement Learning: Learn Through Trial, Error, and Reward</h2>
-<p>Reinforcement learning is learning by interacting with an environment and getting feedback on whether your actions were good or bad. This is how <a href="https://deepmind.google/research/breakthroughs/alphago/" rel="noopener" target="_blank">AlphaGo</a> learned to beat humans at Go, how robots learn to walk, and how recommendation systems optimise for what actually gets watched.</p>
+<p>Reinforcement learning is learning by interacting with an environment and getting feedback on whether your actions were good or bad. This is how <a href="https://deepmind.google/research/breakthroughs/alphago/" rel="noopener noreferrer" target="_blank">AlphaGo</a> learned to beat humans at Go, how robots learn to walk, and how recommendation systems optimise for what actually gets watched.</p>
 <p>You set up a system with actions it can take and a reward signal - a number that says "good" or "bad." The system tries millions of actions, learns which ones lead to rewards, and optimises for maximising future rewards.</p>
 <p>YouTube's recommendation system doesn't just show videos similar to what you watched - its actual goal is "show videos that you'll watch for a long time and come back for more." That's a reward signal. The system constantly tests small changes, keeping the ones that increase watch time.</p>
 <p>The catch is that the reward signal has to be designed carefully. If it incentivises the wrong thing, the system optimises for the wrong thing brilliantly. A content system that optimises purely for engagement time might recommend increasingly extreme content, because extreme content is engaging. A robot optimising for forward progress might ignore obstacles. Get the reward wrong and you get exactly what you asked for - which isn't what you wanted.</p>
@@ -247,7 +247,7 @@
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
 <div class="na-podcast-meta">
 <p class="na-podcast-title">How AI Learns</p>
-<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener noreferrer" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
 </div>
 </div>
 <audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="metadata" data-src="/course/how-ai-learns.m4a"></audio>
@@ -332,11 +332,11 @@
 </summary>
 <div class="tool-accordion-body">
 <ol class="info-sources">
-<li><a href="https://en.wikipedia.org/wiki/Supervised_learning" rel="noopener" target="_blank">Supervised Learning - Wikipedia</a> - overview of the approach and its applications</li>
-<li><a href="https://en.wikipedia.org/wiki/Unsupervised_learning" rel="noopener" target="_blank">Unsupervised Learning - Wikipedia</a> - clustering, dimensionality reduction and related methods</li>
-<li><a href="https://en.wikipedia.org/wiki/Reinforcement_learning" rel="noopener" target="_blank">Reinforcement Learning - Wikipedia</a> - agents, rewards, environments and the key algorithms</li>
-<li><a href="https://deepmind.google/research/breakthroughs/alphago/" rel="noopener" target="_blank">AlphaGo - DeepMind</a> - the reinforcement learning system that beat the world's best Go players</li>
-<li><a href="https://scikit-learn.org/stable/supervised_learning.html" rel="noopener" target="_blank">Scikit-learn Supervised Learning Documentation</a> - practical reference for common supervised algorithms</li>
+<li><a href="https://en.wikipedia.org/wiki/Supervised_learning" rel="noopener noreferrer" target="_blank">Supervised Learning - Wikipedia</a> - overview of the approach and its applications</li>
+<li><a href="https://en.wikipedia.org/wiki/Unsupervised_learning" rel="noopener noreferrer" target="_blank">Unsupervised Learning - Wikipedia</a> - clustering, dimensionality reduction and related methods</li>
+<li><a href="https://en.wikipedia.org/wiki/Reinforcement_learning" rel="noopener noreferrer" target="_blank">Reinforcement Learning - Wikipedia</a> - agents, rewards, environments and the key algorithms</li>
+<li><a href="https://deepmind.google/research/breakthroughs/alphago/" rel="noopener noreferrer" target="_blank">AlphaGo - DeepMind</a> - the reinforcement learning system that beat the world's best Go players</li>
+<li><a href="https://scikit-learn.org/stable/supervised_learning.html" rel="noopener noreferrer" target="_blank">Scikit-learn Supervised Learning Documentation</a> - practical reference for common supervised algorithms</li>
 </ol>
 </div>
 </details>
@@ -348,7 +348,7 @@
 </button>
 <div id="footer-placeholder"></div>
 <script src="/course-data.js"></script><script src="/news-data.js"></script>
-<script defer="" src="/scripts.js?v=4"></script>
+<script defer="" src="/scripts.js?v=5"></script>
 <script defer="" src="/news-article.js?v=2"></script>
 <script defer="" src="/news-chat.js"></script>
 <script>

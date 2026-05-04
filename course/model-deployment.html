@@ -134,7 +134,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=3" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -162,7 +162,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener noreferrer" target="_blank">John Bowman</a>
 <span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta">
@@ -217,11 +217,11 @@
 <h2 id="serving-a-model-via-an-api">Serving a model via an API</h2>
 <p>The standard way to serve a model is through an API - an Application Programming Interface. Another piece of software sends a request to your API, and your API returns a prediction.</p>
 <p>The basic flow: 1) Client sends an HTTP request with features - "Here are the customer features, predict if they'll churn." 2) Your server receives the request. 3) Your server loads the model (or uses one already in memory). 4) Your server runs inference on the features. 5) Your server returns the prediction in the response.</p>
-<p>Simple in concept. You write a small web service - usually in Flask or <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI</a> - that loads your model and accepts requests. When it gets a request, it preprocesses the features, runs the model, postprocesses the output, and returns it.</p>
+<p>Simple in concept. You write a small web service - usually in Flask or <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener noreferrer">FastAPI</a> - that loads your model and accepts requests. When it gets a request, it preprocesses the features, runs the model, postprocesses the output, and returns it.</p>
 <p>Why this works: any application that can make HTTP requests can use your model. You don't have to ship the model to different applications. You maintain one serving infrastructure.</p>
 <p>The trade-off: your model is now a network service, so there's latency. Every request goes over the network. If you need sub-millisecond response times, an API might be too slow. For most use cases, the latency is fine.</p>
 <h2 id="what-docker-containers-are-and-why-they-matter">What Docker containers are and why they matter</h2>
-<p>A container is a packaged application environment. You take your code, your dependencies, your model, and package them into a container image. That image can run anywhere - on your laptop, on a server, in the cloud. <a href="https://docs.docker.com/" target="_blank" rel="noopener">Docker's documentation</a> is the standard reference for getting started.</p>
+<p>A container is a packaged application environment. You take your code, your dependencies, your model, and package them into a container image. That image can run anywhere - on your laptop, on a server, in the cloud. <a href="https://docs.docker.com/" target="_blank" rel="noopener noreferrer">Docker's documentation</a> is the standard reference for getting started.</p>
 <p>Why this matters for ML: reproducibility and portability.</p>
 <p>You develop and test your serving code in a container locally. Then you deploy the exact same container to production. No "but it works on my machine" problems. No dependency version mismatches. No confusion about what Python version or system libraries are needed.</p>
 <p>Docker is the container technology that became standard. You write a Dockerfile that describes your environment, Docker builds an image, and that image runs on any system with Docker installed. A minimal Dockerfile for model serving looks like:</p>
@@ -259,7 +259,7 @@ CMD ["python", "app.py"]</code></pre>
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
 <div class="na-podcast-meta">
 <p class="na-podcast-title">Podcast Version</p>
-<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener noreferrer" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
 </div>
 </div>
 <audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="metadata"></audio>
@@ -351,7 +351,7 @@ CMD ["python", "app.py"]</code></pre>
 </button>
 <div id="footer-placeholder"></div>
 <script src="/course-data.js"></script><script src="/news-data.js"></script>
-<script defer="" src="/scripts.js?v=4"></script>
+<script defer="" src="/scripts.js?v=5"></script>
 <script defer="" src="/news-article.js?v=2"></script>
 <script defer="" src="/news-chat.js"></script>
 <script>

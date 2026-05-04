@@ -134,7 +134,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=3" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -162,7 +162,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener noreferrer" target="_blank">John Bowman</a>
 <span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta">
@@ -214,17 +214,17 @@
 <p>A generative model learns a probability distribution. It's learning P(x) - the probability of seeing something like x. Once it learns that distribution, you can sample from it to create new things.</p>
 <p>This matters because you can't just memorise. Your training set might have a million images, but the space of possible images is infinite. The model has to compress what it learns into something that can generate novel examples.</p>
 <h2 id="variational-autoencoders-vaes">Variational Autoencoders (VAEs)</h2>
-<p><a href="https://en.wikipedia.org/wiki/Variational_autoencoder" rel="noopener" target="_blank">VAEs</a> work in two pieces. The encoder compresses an image down to a small vector of numbers - a latent representation. The decoder reconstructs the image from that vector.</p>
+<p><a href="https://en.wikipedia.org/wiki/Variational_autoencoder" rel="noopener noreferrer" target="_blank">VAEs</a> work in two pieces. The encoder compresses an image down to a small vector of numbers - a latent representation. The decoder reconstructs the image from that vector.</p>
 <p>The clever part is what happens in the middle. VAEs don't learn a fixed compression. They learn a distribution over possible latent codes. The encoder outputs a mean and variance, and you sample from that distribution. Then you decode the sample.</p>
 <p>This forces the model to learn a smooth latent space. Move slightly in that space, and the decoded image changes smoothly. You can interpolate between two images by interpolating in latent space.</p>
 <p>VAEs are mathematically elegant - you can write down and understand why they work. But the images they generate often look blurry. The model is averaging over possibilities rather than committing to sharp details.</p>
 <h2 id="gans-the-generator-vs-discriminator-game">GANs: the generator vs discriminator game</h2>
-<p><a href="https://en.wikipedia.org/wiki/Generative_adversarial_network" rel="noopener" target="_blank">GANs</a> are adversarial. Two networks fight each other. The generator creates fake images from random noise. The discriminator tries to tell which images are real and which are fake.</p>
+<p><a href="https://en.wikipedia.org/wiki/Generative_adversarial_network" rel="noopener noreferrer" target="_blank">GANs</a> are adversarial. Two networks fight each other. The generator creates fake images from random noise. The discriminator tries to tell which images are real and which are fake.</p>
 <p>If the discriminator gets too good, the generator has to make more convincing fakes. If the generator gets too good, the discriminator can't tell the difference. In theory they reach a Nash equilibrium where the generator produces indistinguishable samples.</p>
 <p>This was genuinely exciting when it came out. GANs could produce sharp, detailed images in ways VAEs couldn't. People built increasingly sophisticated GAN architectures and got impressive results.</p>
 <p>But GANs are hard to train. The adversarial dynamic is unstable. Mode collapse happens - the generator learns to produce a few variations really well instead of the full diversity of the training distribution. Training requires careful tuning, careful architecture choices, and often luck. Most practitioners working with images today aren't using GANs. The technology works but it's temperamental.</p>
 <h2 id="diffusion-models-the-dominant-approach">Diffusion models: the dominant approach</h2>
-<p><a href="https://en.wikipedia.org/wiki/Diffusion_model" rel="noopener" target="_blank">Diffusion models</a> solve image generation differently. They start with random noise and gradually denoise it over many steps.</p>
+<p><a href="https://en.wikipedia.org/wiki/Diffusion_model" rel="noopener noreferrer" target="_blank">Diffusion models</a> solve image generation differently. They start with random noise and gradually denoise it over many steps.</p>
 <p>Take an image and add noise to it repeatedly until it's pure random noise - that's the forward process. Then train a model to reverse it: to predict what the image was before the last noise was added.</p>
 <p>If you can predict denoising at every step, you can start from pure noise and iteratively denoise. Each step removes a little noise until you have a generated image.</p>
 <p>This is simple. Elegantly simple. The training objective is clear - predict the noise that was added. It's not adversarial, so there's no mode collapse. You get as much diversity as your training data had.</p>
@@ -245,7 +245,7 @@
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
 <div class="na-podcast-meta">
 <p class="na-podcast-title">Podcast Version</p>
-<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener noreferrer" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
 </div>
 </div>
 <audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="metadata"></audio>
@@ -336,7 +336,7 @@
 </button>
 <div id="footer-placeholder"></div>
 <script src="/course-data.js"></script><script src="/news-data.js"></script>
-<script defer="" src="/scripts.js?v=4"></script>
+<script defer="" src="/scripts.js?v=5"></script>
 <script defer="" src="/news-article.js?v=2"></script>
 <script defer="" src="/news-chat.js"></script>
 <script>

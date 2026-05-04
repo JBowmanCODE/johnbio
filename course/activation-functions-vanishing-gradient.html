@@ -131,7 +131,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=3" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -157,7 +157,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener noreferrer" target="_blank">John Bowman</a>
 <span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta"><span class="lp-unit-badge lp-unit-6">Unit 6</span><span class="na-date">5 April 2026</span><span class="na-read">7 min read</span></div></div>
@@ -209,16 +209,16 @@
 </section>
 <section id="main-functions">
 <h2>The Main Activation Functions</h2>
-<p><a href="https://en.wikipedia.org/wiki/Sigmoid_function" rel="noopener" target="_blank"><strong>Sigmoid</strong></a> was the classic. It takes any number and squashes it to a value between 0 and 1. Smooth, with useful mathematical properties. The problem: it's almost flat at the extremes. Very high or very low inputs produce near-zero gradients. This is what causes the vanishing gradient problem.</p>
+<p><a href="https://en.wikipedia.org/wiki/Sigmoid_function" rel="noopener noreferrer" target="_blank"><strong>Sigmoid</strong></a> was the classic. It takes any number and squashes it to a value between 0 and 1. Smooth, with useful mathematical properties. The problem: it's almost flat at the extremes. Very high or very low inputs produce near-zero gradients. This is what causes the vanishing gradient problem.</p>
 <p><strong>Tanh</strong> is similar but squashes to between -1 and 1. It's centred at zero, which helps training slightly compared to sigmoid. But it has the same vanishing gradient problem at the extremes.</p>
-<p><a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)" rel="noopener" target="_blank"><strong>ReLU</strong></a> (rectified linear unit) is simple: if the input is positive, output it unchanged. If it's negative, output zero. Not smooth, but extremely effective. It doesn't flatten at the extremes - it's either zero or linear. No vanishing gradient.</p>
+<p><a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)" rel="noopener noreferrer" target="_blank"><strong>ReLU</strong></a> (rectified linear unit) is simple: if the input is positive, output it unchanged. If it's negative, output zero. Not smooth, but extremely effective. It doesn't flatten at the extremes - it's either zero or linear. No vanishing gradient.</p>
 <p>ReLU became the standard for hidden layers because it's computationally cheap and it works. Sigmoid is still used for output layers in binary classification because its 0-1 range gives a probability. There are ReLU variants - Leaky ReLU, ELU, GELU - but they're refinements. ReLU was the breakthrough that mattered.</p>
 </section>
 <section id="vanishing-gradient">
 <h2>The Vanishing Gradient Problem</h2>
 <p>When you <a href="/course/backpropagation">backpropagate</a> through sigmoid or tanh, you multiply gradients at each layer. The gradient of sigmoid in its flat regions is very small - close to zero. Multiply many small numbers together and you get something extremely small.</p>
 <p>Multiply 0.1 by itself ten times: you get 0.0000000001. That's the size of the gradient signal reaching the early layers. The update to each weight is proportional to its gradient, so weights in early layers barely change. Those layers essentially stop learning.</p>
-<p>This is the <a href="https://en.wikipedia.org/wiki/Vanishing_gradient_problem" rel="noopener" target="_blank">vanishing gradient problem</a>. Deep networks with sigmoid activations couldn't train effectively because the first layers received negligible gradient signals. The network would train fine near the output but be nearly random near the input.</p>
+<p>This is the <a href="https://en.wikipedia.org/wiki/Vanishing_gradient_problem" rel="noopener noreferrer" target="_blank">vanishing gradient problem</a>. Deep networks with sigmoid activations couldn't train effectively because the first layers received negligible gradient signals. The network would train fine near the output but be nearly random near the input.</p>
 <p>This was a fundamental barrier to deep learning. Networks with more than a few layers couldn't be trained reliably.</p>
 </section>
 <section id="relu-helped">
@@ -238,7 +238,7 @@
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
 <div class="na-podcast-meta">
 <p class="na-podcast-title">Podcast Version</p>
-<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener noreferrer" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
 </div>
 </div>
 <audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="metadata"></audio>
@@ -326,7 +326,7 @@
 </button>
 <div id="footer-placeholder"></div>
 <script src="/course-data.js"></script><script src="/news-data.js"></script>
-<script defer="" src="/scripts.js?v=4"></script>
+<script defer="" src="/scripts.js?v=5"></script>
 <script defer="" src="/news-article.js?v=2"></script>
 <script defer="" src="/news-chat.js"></script>
 <script>

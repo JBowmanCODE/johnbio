@@ -134,7 +134,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=3" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -162,7 +162,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener noreferrer" target="_blank">John Bowman</a>
 <span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta">
@@ -218,7 +218,7 @@
 <p>A notebook solves exactly one problem: build a model. Production needs to solve dozens more. <a href="/course/model-evaluation">Model evaluation</a> is one of those problems - and it looks different in production than it does in a notebook.</p>
 <h2 id="what-mlops-is-and-why-it-exists">What MLOps is and why it exists</h2>
 <p>MLOps is the infrastructure and practices that turn a model into a system that works reliably in production.</p>
-<p>It's borrowed from DevOps - the practices that make software deployable and maintainable. But ML adds complexity because your system has three moving parts: code, data, and models. In traditional software, the code is the source of truth. In ML, the code matters less than the data and the model weights. Tools like <a href="https://mlflow.org" target="_blank" rel="noopener">MLflow</a> and <a href="https://www.kubeflow.org/docs/" target="_blank" rel="noopener">Kubeflow</a> exist specifically to manage these three parts together.</p>
+<p>It's borrowed from DevOps - the practices that make software deployable and maintainable. But ML adds complexity because your system has three moving parts: code, data, and models. In traditional software, the code is the source of truth. In ML, the code matters less than the data and the model weights. Tools like <a href="https://mlflow.org" target="_blank" rel="noopener noreferrer">MLflow</a> and <a href="https://www.kubeflow.org/docs/" target="_blank" rel="noopener noreferrer">Kubeflow</a> exist specifically to manage these three parts together.</p>
 <p>MLOps exists because ML in production fails in different ways than regular software. A regular application can be fully tested before deployment. An ML system can never be fully tested - and that's true regardless of the <a href="/course/tensorflow-pytorch-keras">framework</a> used - you'll always encounter data distributions you didn't see in training. A regular application is deterministic - the same input always produces the same output. An ML system is probabilistic - it makes mistakes, and those mistakes change over time as data changes.</p>
 <p>You need different tools and practices for this reality.</p>
 <h2 id="the-key-stages-data-training-deployment-monitoring">The key stages: data, training, deployment, monitoring</h2>
@@ -247,7 +247,7 @@
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
 <div class="na-podcast-meta">
 <p class="na-podcast-title">Podcast Version</p>
-<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener noreferrer" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
 </div>
 </div>
 <audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="metadata"></audio>
@@ -338,7 +338,7 @@
 </button>
 <div id="footer-placeholder"></div>
 <script src="/course-data.js"></script><script src="/news-data.js"></script>
-<script defer="" src="/scripts.js?v=4"></script>
+<script defer="" src="/scripts.js?v=5"></script>
 <script defer="" src="/news-article.js?v=2"></script>
 <script defer="" src="/news-chat.js"></script>
 <script>

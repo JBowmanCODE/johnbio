@@ -8,7 +8,12 @@
       "Bash(ls -la /c/Users/John/Desktop/johnb2026/*.html)",
       "Read(//c/Users/John/Desktop/johnb2026/**)",
       "Bash(grep -r \"webp\" /c/Users/John/Desktop/johnb2026/*.html)",
-      "Bash(curl -s \"https://api.cdnjs.com/libraries/font-awesome/6.4.0?fields=files,sri\")"
+      "Bash(curl -s \"https://api.cdnjs.com/libraries/font-awesome/6.4.0?fields=files,sri\")",
+      "Bash(git remote *)",
+      "Bash(curl -s \"https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.0.0/jspdf.umd.min.js\")",
+      "Bash(openssl dgst *)",
+      "Bash(curl -s \"https://unpkg.com/docx@7.8.2/build/index.js\")",
+      "Bash(curl -s https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.11.246/pdf.min.js)"
     ]
   }
 }

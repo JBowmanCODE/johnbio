@@ -134,7 +134,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=3" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -162,7 +162,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener noreferrer" target="_blank">John Bowman</a>
 <span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta">
@@ -218,7 +218,7 @@
 <h2 id="what-data-drift-is">What data drift is</h2>
 <p>Data drift is when the input data distribution changes. The features your model sees in production are statistically different from the features it saw in training.</p>
 <p>You trained on data where customer age ranged from 18 to 65. In production, you're seeing users from 15 to 85. That's drift. You trained on mobile and desktop users equally. In production, 80% are mobile. Drift. You trained on products in three categories. A new category launched and now 30% of your predictions are on that category. Drift.</p>
-<p>Data drift is relatively easy to detect. You log the features you see in production. You compare them to the training data distribution. If the statistics are significantly different, you have drift. Calculate means, variances, percentiles of features in a recent production window and compare to training data. Statistical tests like the Kolmogorov-Smirnov test or Wasserstein distance can quantify the difference. Tools like <a href="https://docs.evidentlyai.com/" target="_blank" rel="noopener">Evidently AI</a> automate this monitoring.</p>
+<p>Data drift is relatively easy to detect. You log the features you see in production. You compare them to the training data distribution. If the statistics are significantly different, you have drift. Calculate means, variances, percentiles of features in a recent production window and compare to training data. Statistical tests like the Kolmogorov-Smirnov test or Wasserstein distance can quantify the difference. Tools like <a href="https://docs.evidentlyai.com/" target="_blank" rel="noopener noreferrer">Evidently AI</a> automate this monitoring.</p>
 <h2 id="what-concept-drift-is-and-how-it-differs">What concept drift is and how it differs</h2>
 <p>Concept drift is different. It's when the relationship between features and the target changes. The features look the same but they mean different things.</p>
 <p>You train a model: "If a user visits a product page for 10 seconds, they're likely to buy." You deploy it. In production, people are reading reviews more carefully and time on page means something different. The relationship changed even though the feature is the same.</p>
@@ -253,7 +253,7 @@
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
 <div class="na-podcast-meta">
 <p class="na-podcast-title">Podcast Version</p>
-<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener noreferrer" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
 </div>
 </div>
 <audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="metadata"></audio>
@@ -344,7 +344,7 @@
 </button>
 <div id="footer-placeholder"></div>
 <script src="/course-data.js"></script><script src="/news-data.js"></script>
-<script defer="" src="/scripts.js?v=4"></script>
+<script defer="" src="/scripts.js?v=5"></script>
 <script defer="" src="/news-article.js?v=2"></script>
 <script defer="" src="/news-chat.js"></script>
 <script>

@@ -35,7 +35,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=3" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -123,7 +123,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener noreferrer" target="_blank">John Bowman</a>
 <span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta">
@@ -193,16 +193,16 @@
 <p>So really, you're choosing between TensorFlow (with Keras as the interface) and PyTorch.</p>
 <h2 id="keras-tensorflow">How Keras Relates to TensorFlow</h2>
 <p>Keras is the simple, friendly way to use TensorFlow. You write code like <code>model.add(Dense(128))</code> and <code>model.compile(optimizer='adam', loss='categorical_crossentropy')</code> and it handles the complexity underneath.</p>
-<p>TensorFlow is the full framework. If you need more control, you can drop down and write custom operations, manage computational graphs directly, and do things Keras doesn't expose. Most beginners will never need that lower level. The <a href="https://www.tensorflow.org/api_docs" target="_blank" rel="noopener">TensorFlow API documentation</a> is the reference for when you do.</p>
+<p>TensorFlow is the full framework. If you need more control, you can drop down and write custom operations, manage computational graphs directly, and do things Keras doesn't expose. Most beginners will never need that lower level. The <a href="https://www.tensorflow.org/api_docs" target="_blank" rel="noopener noreferrer">TensorFlow API documentation</a> is the reference for when you do.</p>
 <p>So when you hear "learn TensorFlow," it mostly means "learn the Keras API that ships with TensorFlow."</p>
 <h2 id="practical-differences">The Practical Differences for a Beginner</h2>
 <p>PyTorch feels more like writing Python. Operations happen immediately - eager execution by default. If you write <code>x = some_tensor * 2</code>, you get a result right then. This is good for debugging because you can print intermediate values and see what's happening at each step.</p>
 <p>TensorFlow with Keras is simpler for standard tasks. You define a model, compile it, and fit it to data. There's more abstraction, which means less control but also less boilerplate. For image classification or basic text tasks, Keras is faster to get working.</p>
 <p>PyTorch requires more explicit thinking. You often write training loops by hand - more verbose, but it gives you more control and teaches you what's actually happening.</p>
-<p>For a beginner trying to classify handwritten digits or build a basic image classifier, <a href="https://keras.io/api/" target="_blank" rel="noopener">Keras</a> is fine. You'll learn the core concepts faster because there's less scaffolding to write. If you want to understand what's happening at every step, PyTorch's explicit loops will teach you more.</p>
+<p>For a beginner trying to classify handwritten digits or build a basic image classifier, <a href="https://keras.io/api/" target="_blank" rel="noopener noreferrer">Keras</a> is fine. You'll learn the core concepts faster because there's less scaffolding to write. If you want to understand what's happening at every step, PyTorch's explicit loops will teach you more.</p>
 <h2 id="landscape-shift">How the Landscape Has Shifted</h2>
 <p>Five years ago, TensorFlow dominated. Every serious ML job used it. Every course taught it.</p>
-<p>Now <a href="https://pytorch.org/docs/stable/index.html" target="_blank" rel="noopener">PyTorch</a> dominates in research and increasingly in production at major companies. Researchers prefer PyTorch because it's easier to prototype with. Production teams increasingly follow because, if all your researchers are building in PyTorch, it makes sense to keep that consistent.</p>
+<p>Now <a href="https://pytorch.org/docs/stable/index.html" target="_blank" rel="noopener noreferrer">PyTorch</a> dominates in research and increasingly in production at major companies. Researchers prefer PyTorch because it's easier to prototype with. Production teams increasingly follow because, if all your researchers are building in PyTorch, it makes sense to keep that consistent.</p>
 <p>TensorFlow is still widely used - it hasn't disappeared - but it's lost the assumed dominance. Last I checked, new research papers were more likely to use PyTorch than TensorFlow. This shift happened because PyTorch is genuinely nicer to use. It's not that TensorFlow is bad; PyTorch is just more intuitive for people who think like programmers rather than dataflow engineers.</p>
 <h2 id="which-first">Which One to Learn First and Why</h2>
 <p>Learn PyTorch.</p>
@@ -254,7 +254,7 @@
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
 <div class="na-podcast-meta">
 <p class="na-podcast-title">TensorFlow, PyTorch and Keras</p>
-<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener noreferrer" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
 </div>
 </div>
 <audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="metadata"></audio>
@@ -339,10 +339,10 @@
 </summary>
 <div class="tool-accordion-body">
 <ol class="info-sources">
-<li><a href="https://www.tensorflow.org/" rel="noopener" target="_blank">TensorFlow official documentation</a> - Google's deep learning framework</li>
-<li><a href="https://pytorch.org/" rel="noopener" target="_blank">PyTorch official documentation</a> - Meta's deep learning framework</li>
-<li><a href="https://keras.io/" rel="noopener" target="_blank">Keras official documentation</a> - TensorFlow's high-level API</li>
-<li><a href="https://paperswithcode.com/trends" rel="noopener" target="_blank">Papers With Code - Framework Trends</a> - tracks which frameworks research papers use</li>
+<li><a href="https://www.tensorflow.org/" rel="noopener noreferrer" target="_blank">TensorFlow official documentation</a> - Google's deep learning framework</li>
+<li><a href="https://pytorch.org/" rel="noopener noreferrer" target="_blank">PyTorch official documentation</a> - Meta's deep learning framework</li>
+<li><a href="https://keras.io/" rel="noopener noreferrer" target="_blank">Keras official documentation</a> - TensorFlow's high-level API</li>
+<li><a href="https://paperswithcode.com/trends" rel="noopener noreferrer" target="_blank">Papers With Code - Framework Trends</a> - tracks which frameworks research papers use</li>
 </ol>
 </div>
 </details>
@@ -354,7 +354,7 @@
 </button>
 <div id="footer-placeholder"></div>
 <script src="/course-data.js"></script><script src="/news-data.js"></script>
-<script defer="" src="/scripts.js?v=4"></script>
+<script defer="" src="/scripts.js?v=5"></script>
 <script defer="" src="/news-article.js?v=2"></script>
 <script defer="" src="/news-chat.js"></script>
 <script>

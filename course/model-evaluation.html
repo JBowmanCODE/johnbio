@@ -131,7 +131,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=3" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -157,7 +157,7 @@
 <div class="na-author">
 <a aria-label="About John Bowman" href="/about"><img alt="John Bowman" class="na-author-img" src="/images/JohnB.webp"/></a>
 <div class="na-author-details">
-<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener" target="_blank">John Bowman</a>
+<a href="https://www.linkedin.com/in/john-bowman/" rel="noopener noreferrer" target="_blank">John Bowman</a>
 <span class="na-author-role">AI Strategist &amp; Developer</span>
 </div>
 <div class="na-header-meta"><span class="lp-unit-badge lp-unit-5">Unit 5</span><span class="na-date">5 April 2026</span><span class="na-read">9 min read</span></div></div>
@@ -220,7 +220,7 @@
 <h2>Key Metrics: Accuracy, Precision, Recall, F1</h2>
 <p><strong>Accuracy</strong>: what fraction of predictions were correct? If you predicted 100 emails and got 95 right, accuracy is 95%. Easy to understand, easy to misuse.</p>
 <p><strong>Precision</strong>: of everything I predicted as positive, how many were actually positive? If you flag 50 emails as spam and 40 were spam, precision is 80%. Precision measures false positives - how often you cry wolf.</p>
-<p><strong>Recall</strong>: of all actual positives, how many did I catch? If 100 emails are actually spam and you caught 40, recall is 40%. <a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" rel="noopener">Scikit-learn's model evaluation docs</a> show how to compute all of these in code. Recall measures false negatives - how often you miss the real thing.</p>
+<p><strong>Recall</strong>: of all actual positives, how many did I catch? If 100 emails are actually spam and you caught 40, recall is 40%. <a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" rel="noopener noreferrer">Scikit-learn's model evaluation docs</a> show how to compute all of these in code. Recall measures false negatives - how often you miss the real thing.</p>
 <p>They trade off. Perfect recall is easy: predict everything as positive. You'll catch all the spam but flag everything. Perfect precision is also achievable: predict almost nothing as positive. You'll rarely be wrong, but you'll miss most spam.</p>
 <p><strong>F1 score</strong>: the harmonic mean of precision and recall, balancing both into one number. If precision is 80% and recall is 40%, F1 is about 53%.</p>
 <p>When to use which: <strong>accuracy</strong> when false positives and false negatives are equally bad (rare). <strong>Precision</strong> when false positives are expensive - fraud detection where false alarms waste investigator time. <strong>Recall</strong> when false negatives are expensive - medical diagnosis where missing a disease is dangerous. <strong>F1</strong> when you want a single balanced number and aren't sure which error type matters more.</p>
@@ -248,7 +248,7 @@
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined">graphic_eq</span></div>
 <div class="na-podcast-meta">
 <p class="na-podcast-title">Podcast Version</p>
-<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
+<p class="na-podcast-sub">Created with <a class="na-podcast-notebooklm" href="https://notebooklm.google.com/" rel="noopener noreferrer" target="_blank"><strong>Google NotebookLM</strong></a> · AI-generated audio overview</p>
 </div>
 </div>
 <audio aria-label="Deep Dive Podcast audio" id="na-podcast-audio" preload="metadata"></audio>
@@ -338,7 +338,7 @@
 </button>
 <div id="footer-placeholder"></div>
 <script src="/course-data.js"></script><script src="/news-data.js"></script>
-<script defer="" src="/scripts.js?v=4"></script>
+<script defer="" src="/scripts.js?v=5"></script>
 <script defer="" src="/news-article.js?v=2"></script>
 <script defer="" src="/news-chat.js"></script>
 <script>
