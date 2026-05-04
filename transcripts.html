@@ -33,7 +33,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
-  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/styles.css?v=3">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
   <link rel="stylesheet" href="/transcripts.css?v=1">
@@ -90,7 +90,7 @@
 <body>
 
 <div id="header-placeholder"></div>
-<div class="ambient"></div>
+<div class="ambient" aria-hidden="true"></div>
 
 <main class="transcripts-main" id="main-content">
 
@@ -193,12 +193,12 @@
     <div class="tool-info-meta">
       <span>Last updated: March 2026</span>
       <span class="tool-info-sep">·</span>
-      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener noreferrer">John Bowman</a> - questions? Connect on LinkedIn.</span>
     </div>
 
     <div class="tool-info-body">
-      <p>This tool takes the raw transcript from any <a href="https://support.google.com/youtube/answer/100078" target="_blank" rel="noopener">YouTube video</a> and turns it into a structured, SEO-optimised blog post - complete with a title, meta description, and H2 headings. It is built for content teams, marketers, and solo creators who want to repurpose video content without spending hours rewriting from scratch.</p>
-      <p>The generator runs on <a href="https://www.anthropic.com/claude/haiku" target="_blank" rel="noopener">Claude Haiku</a>, Anthropic's fast, lightweight language model. Your transcript is sent securely to Anthropic's API for processing and is not stored or used for training. The tool complies with <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/" target="_blank" rel="noopener">UK GDPR</a> and the <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a> as of March 2026. Always review the output before publishing - AI-generated content should be treated as a first draft.</p>
+      <p>This tool takes the raw transcript from any <a href="https://support.google.com/youtube/answer/100078" target="_blank" rel="noopener noreferrer">YouTube video</a> and turns it into a structured, SEO-optimised blog post - complete with a title, meta description, and H2 headings. It is built for content teams, marketers, and solo creators who want to repurpose video content without spending hours rewriting from scratch.</p>
+      <p>The generator runs on <a href="https://www.anthropic.com/claude/haiku" target="_blank" rel="noopener noreferrer">Claude Haiku</a>, Anthropic's fast, lightweight language model. Your transcript is sent securely to Anthropic's API for processing and is not stored or used for training. The tool complies with <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/" target="_blank" rel="noopener noreferrer">UK GDPR</a> and the <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic Privacy Policy</a> as of March 2026. Always review the output before publishing - AI-generated content should be treated as a first draft.</p>
     </div>
 
     <div class="tool-accordions">
@@ -212,11 +212,11 @@
           <dl class="info-faq">
             <div class="faq-item">
               <dt>What AI model does this tool use?</dt>
-              <dd>The tool uses <a href="https://www.anthropic.com/claude/haiku" target="_blank" rel="noopener">Claude Haiku by Anthropic</a> - specifically the <code>claude-haiku-4-5</code> model. It was chosen for its speed and ability to follow structured formatting instructions reliably. Anthropic is an AI safety company founded in 2021, and Claude is their primary language model family.</dd>
+              <dd>The tool uses <a href="https://www.anthropic.com/claude/haiku" target="_blank" rel="noopener noreferrer">Claude Haiku by Anthropic</a> - specifically the <code>claude-haiku-4-5</code> model. It was chosen for its speed and ability to follow structured formatting instructions reliably. Anthropic is an AI safety company founded in 2021, and Claude is their primary language model family.</dd>
             </div>
             <div class="faq-item">
               <dt>Is my transcript stored or used to train AI?</dt>
-              <dd>No. Your transcript is sent to Anthropic's API solely to generate the blog post. Anthropic does not use API inputs to train its models by default. You can read the full details in the <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a>. JohnB.io does not log or store the content you submit.</dd>
+              <dd>No. Your transcript is sent to Anthropic's API solely to generate the blog post. Anthropic does not use API inputs to train its models by default. You can read the full details in the <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic Privacy Policy</a>. JohnB.io does not log or store the content you submit.</dd>
             </div>
             <div class="faq-item">
               <dt>How long can the transcript be?</dt>
@@ -224,11 +224,11 @@
             </div>
             <div class="faq-item">
               <dt>Will the output pass AI detection tools?</dt>
-              <dd>No, and this is stated clearly on the page. AI-generated text is detectable by tools such as <a href="https://gptzero.me" target="_blank" rel="noopener">GPTZero</a> and <a href="https://originality.ai" target="_blank" rel="noopener">Originality.ai</a>. You should treat the output as a draft and rewrite it in your own voice before publishing, particularly if your platform or client has an AI content policy.</dd>
+              <dd>No, and this is stated clearly on the page. AI-generated text is detectable by tools such as <a href="https://gptzero.me" target="_blank" rel="noopener noreferrer">GPTZero</a> and <a href="https://originality.ai" target="_blank" rel="noopener noreferrer">Originality.ai</a>. You should treat the output as a draft and rewrite it in your own voice before publishing, particularly if your platform or client has an AI content policy.</dd>
             </div>
             <div class="faq-item">
               <dt>What is the daily usage limit?</dt>
-              <dd>There is a per-IP daily limit to keep the tool available for all users without a login requirement. If you hit the limit, it resets at midnight UTC. For higher-volume use, <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">get in touch</a> to discuss options.</dd>
+              <dd>There is a per-IP daily limit to keep the tool available for all users without a login requirement. If you hit the limit, it resets at midnight UTC. For higher-volume use, <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener noreferrer">get in touch</a> to discuss options.</dd>
             </div>
           </dl>
         </div>
@@ -273,11 +273,11 @@
         </summary>
         <div class="tool-accordion-body">
           <ol class="info-sources">
-            <li><a href="https://support.google.com/youtube/answer/100078" target="_blank" rel="noopener">Google Support - View, search, and print video transcripts</a>. YouTube Help Centre. Accessed March 2026.</li>
-            <li><a href="https://www.anthropic.com/claude/haiku" target="_blank" rel="noopener">Anthropic - Claude Haiku model overview</a>. Anthropic.com. Accessed March 2026.</li>
-            <li><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic Privacy Policy</a>. Anthropic.com. Accessed March 2026.</li>
-            <li><a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener">Google Search Central - SEO Starter Guide</a>. Google Developers. Accessed March 2026.</li>
-            <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/" target="_blank" rel="noopener">ICO - UK GDPR guidance and resources</a>. Information Commissioner's Office. Accessed March 2026.</li>
+            <li><a href="https://support.google.com/youtube/answer/100078" target="_blank" rel="noopener noreferrer">Google Support - View, search, and print video transcripts</a>. YouTube Help Centre. Accessed March 2026.</li>
+            <li><a href="https://www.anthropic.com/claude/haiku" target="_blank" rel="noopener noreferrer">Anthropic - Claude Haiku model overview</a>. Anthropic.com. Accessed March 2026.</li>
+            <li><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic Privacy Policy</a>. Anthropic.com. Accessed March 2026.</li>
+            <li><a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener noreferrer">Google Search Central - SEO Starter Guide</a>. Google Developers. Accessed March 2026.</li>
+            <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/" target="_blank" rel="noopener noreferrer">ICO - UK GDPR guidance and resources</a>. Information Commissioner's Office. Accessed March 2026.</li>
           </ol>
         </div>
       </details>
@@ -292,7 +292,7 @@
 
   <div id="footer-placeholder"></div>
 
-<script src="/scripts.js?v=4" defer></script>
+<script src="/scripts.js?v=5" defer></script>
 <script src="/transcripts.js?v=2" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');

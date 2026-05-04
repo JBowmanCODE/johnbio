@@ -27,7 +27,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/styles.css?v=3">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
   <link rel="stylesheet" href="/index.css?v=2">
@@ -105,7 +105,7 @@
 </head>
 <body>
 
-  <div class="ambient"></div>
+  <div class="ambient" aria-hidden="true"></div>
 
   <div id="header-placeholder"></div>
 
@@ -162,7 +162,7 @@
   <div id="footer-placeholder"></div>
 
   <script src="/news-data.js?v=2"></script>
-  <script src="/scripts.js?v=4" defer></script>
+  <script src="/scripts.js?v=5" defer></script>
   <script src="/index.js?v=1" defer></script>
 
   <script>
@@ -178,6 +178,10 @@
       const w1 = document.querySelector('.word-1');
       const w2 = document.querySelector('.word-2');
       if (!w1 || !w2) return;
+
+      // Respect prefers-reduced-motion
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
 
       let idleTimer;
       let isIdle = false;

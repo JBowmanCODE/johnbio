@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
-  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/styles.css?v=3">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
   <link rel="stylesheet" href="/lm-chat.css?v=1">
@@ -80,7 +80,7 @@
 <body>
 
 <div id="header-placeholder"></div>
-<div class="ambient"></div>
+<div class="ambient" aria-hidden="true"></div>
 
 <div class="chat-layout">
 
@@ -174,12 +174,12 @@
     <div class="tool-info-meta">
       <span>Last updated: March 2026</span>
       <span class="tool-info-sep">·</span>
-      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener noreferrer">John Bowman</a> - questions? Connect on LinkedIn.</span>
     </div>
 
     <div class="tool-info-body">
-      <p>LLM Chat runs three AI models side by side - <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Claude Sonnet by Anthropic</a>, <a href="https://openai.com/gpt-4o-mini" target="_blank" rel="noopener">GPT-4o-mini by OpenAI</a>, and <a href="https://deepmind.google/technologies/gemini/flash/" target="_blank" rel="noopener">Gemini 2.5 Flash Lite by Google</a>. You can chat with each model individually or use the broadcast bar to send the same prompt to all three simultaneously and compare the responses in real time. It is useful for evaluating which model handles a specific task best, stress-testing prompts across providers, or simply exploring how different models approach the same question.</p>
-      <p>Each model maintains its own conversation history within the session, so you can have multi-turn conversations with each one independently. Prompts are routed securely through a <a href="https://workers.cloudflare.com" target="_blank" rel="noopener">Cloudflare Worker</a> proxy to the respective provider APIs. Your messages are subject to the privacy policies of each provider: <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic</a>, <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">OpenAI</a>, and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a>. Do not include sensitive personal information in your prompts.</p>
+      <p>LLM Chat runs three AI models side by side - <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer">Claude Sonnet by Anthropic</a>, <a href="https://openai.com/gpt-4o-mini" target="_blank" rel="noopener noreferrer">GPT-4o-mini by OpenAI</a>, and <a href="https://deepmind.google/technologies/gemini/flash/" target="_blank" rel="noopener noreferrer">Gemini 2.5 Flash Lite by Google</a>. You can chat with each model individually or use the broadcast bar to send the same prompt to all three simultaneously and compare the responses in real time. It is useful for evaluating which model handles a specific task best, stress-testing prompts across providers, or simply exploring how different models approach the same question.</p>
+      <p>Each model maintains its own conversation history within the session, so you can have multi-turn conversations with each one independently. Prompts are routed securely through a <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Worker</a> proxy to the respective provider APIs. Your messages are subject to the privacy policies of each provider: <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic</a>, <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">OpenAI</a>, and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google</a>. Do not include sensitive personal information in your prompts.</p>
     </div>
 
     <div class="tool-accordions">
@@ -193,15 +193,15 @@
           <dl class="info-faq">
             <div class="faq-item">
               <dt>Which AI models are used?</dt>
-              <dd>The tool connects to three models: <code>claude-sonnet-4</code> by <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a>, <code>gpt-4o-mini</code> by <a href="https://openai.com" target="_blank" rel="noopener">OpenAI</a>, and <code>gemini-2.5-flash-lite</code> by <a href="https://deepmind.google" target="_blank" rel="noopener">Google DeepMind</a>. These are current production models as of March 2026.</dd>
+              <dd>The tool connects to three models: <code>claude-sonnet-4</code> by <a href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">Anthropic</a>, <code>gpt-4o-mini</code> by <a href="https://openai.com" target="_blank" rel="noopener noreferrer">OpenAI</a>, and <code>gemini-2.5-flash-lite</code> by <a href="https://deepmind.google" target="_blank" rel="noopener noreferrer">Google DeepMind</a>. These are current production models as of March 2026.</dd>
             </div>
             <div class="faq-item">
               <dt>Are my messages stored?</dt>
-              <dd>Conversation history exists only in your browser for the current session and is cleared when you close the tab. Prompts are forwarded to each provider's API - they are subject to the respective privacy policies of <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic</a>, <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">OpenAI</a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a>. JohnB.io does not log or retain your messages.</dd>
+              <dd>Conversation history exists only in your browser for the current session and is cleared when you close the tab. Prompts are forwarded to each provider's API - they are subject to the respective privacy policies of <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic</a>, <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">OpenAI</a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google</a>. JohnB.io does not log or retain your messages.</dd>
             </div>
             <div class="faq-item">
               <dt>Why use GPT-4o-mini rather than GPT-4o?</dt>
-              <dd>GPT-4o-mini is a cost-efficient model that performs well for most conversational and reasoning tasks, making it a practical choice for a free comparison tool. For tasks requiring maximum capability from OpenAI, GPT-4o or GPT-o1 would be more appropriate - but those are better evaluated via <a href="https://chat.openai.com" target="_blank" rel="noopener">ChatGPT</a> directly.</dd>
+              <dd>GPT-4o-mini is a cost-efficient model that performs well for most conversational and reasoning tasks, making it a practical choice for a free comparison tool. For tasks requiring maximum capability from OpenAI, GPT-4o or GPT-o1 would be more appropriate - but those are better evaluated via <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">ChatGPT</a> directly.</dd>
             </div>
             <div class="faq-item">
               <dt>Can I use this to decide which model to use for my project?</dt>
@@ -254,11 +254,11 @@
         </summary>
         <div class="tool-accordion-body">
           <ol class="info-sources">
-            <li><a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">Anthropic - Claude model overview</a>. Anthropic.com. Accessed March 2026.</li>
-            <li><a href="https://openai.com/gpt-4o-mini" target="_blank" rel="noopener">OpenAI - GPT-4o-mini overview</a>. OpenAI.com. Accessed March 2026.</li>
-            <li><a href="https://deepmind.google/technologies/gemini/flash/" target="_blank" rel="noopener">Google DeepMind - Gemini Flash overview</a>. DeepMind.google. Accessed March 2026.</li>
-            <li><a href="https://workers.cloudflare.com" target="_blank" rel="noopener">Cloudflare Workers - Serverless execution environment</a>. Cloudflare.com. Accessed March 2026.</li>
-            <li><a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">OpenAI Privacy Policy</a>. OpenAI.com. Accessed March 2026.</li>
+            <li><a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer">Anthropic - Claude model overview</a>. Anthropic.com. Accessed March 2026.</li>
+            <li><a href="https://openai.com/gpt-4o-mini" target="_blank" rel="noopener noreferrer">OpenAI - GPT-4o-mini overview</a>. OpenAI.com. Accessed March 2026.</li>
+            <li><a href="https://deepmind.google/technologies/gemini/flash/" target="_blank" rel="noopener noreferrer">Google DeepMind - Gemini Flash overview</a>. DeepMind.google. Accessed March 2026.</li>
+            <li><a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers - Serverless execution environment</a>. Cloudflare.com. Accessed March 2026.</li>
+            <li><a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">OpenAI Privacy Policy</a>. OpenAI.com. Accessed March 2026.</li>
           </ol>
         </div>
       </details>
@@ -273,7 +273,7 @@
 
   <div id="footer-placeholder"></div>
 
-<script src="/scripts.js?v=4" defer></script>
+<script src="/scripts.js?v=5" defer></script>
 <script>
 (function() {
   const WORKER = 'https://twilight-recipe-a80f.ukjbowman.workers.dev';
