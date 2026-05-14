@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last verified clean 1 May 2026 -->
+<!-- Last verified clean 14 May 2026 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Core -->
@@ -116,6 +116,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://johnb.io/content-repurposer</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://johnb.io/text-to-speech</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -164,6 +170,13 @@
   </url>
 
   <!-- Other -->
+  <url>
+    <loc>https://johnb.io/wo</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <!-- AI Course -->
   <url>
     <loc>https://johnb.io/course</loc>
@@ -409,7 +422,7 @@
   </url>
   <url>
     <loc>https://johnb.io/news</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
