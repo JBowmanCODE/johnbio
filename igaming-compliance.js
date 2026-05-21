@@ -115,12 +115,12 @@ const REGULATIONS = [
   },
   {
     id: 'uk-affordability-checks-2026',
-    name: 'UKGC Financial Vulnerability and Affordability Checks 2026',
+    name: 'UKGC Financial Risk Assessments (Affordability Checks) 2026',
     url: 'https://www.gamblingcommission.gov.uk/licensees-and-businesses/lccp/upcoming-changes',
     countries: ['GB'],
     category: 'gambling',
     region: 'europe',
-    notes: 'Frictionless affordability checks triggered at £150 net deposits within 30 days. Full rollout to all online casino operators required by Q3 2026. Enhanced checks at higher thresholds.'
+    notes: 'Two-stage Financial Risk Assessment regime. Stage 1 frictionless credit-reference checks active since February 2026 at £150 net loss within a 30-day window; ~95% resolve without player interruption. Stage 2 enhanced FRAs go live 22 May 2026 at higher loss thresholds (e.g. £1,000/24h or £2,000/90d) requiring manual evidence of affordability. Full Stage 1 compliance required by end of Q3 2026; Stage 2 by Q1 2027. Operators failing to implement face formal regulatory action up to licence revocation.'
   },
   {
     id: 'malta-gaming-act-2018',
@@ -536,7 +536,7 @@ const REGULATIONS = [
     countries: ['BR'],
     category: 'gambling',
     region: 'americas',
-    notes: 'Brazil sports betting and online gaming fully operational from January 2025. Grace period ended 1 January 2026; SPA moved to strict enforcement of Ordinance 722. 78 licensed operators holding 138 brands. .bet.br domains required. Credit cards and crypto-anonymity banned; payments must originate from CPF-verified accounts.'
+    notes: 'Brazil sports betting and online gaming fully operational from January 2025. Grace period ended 1 January 2026; SPA moved to strict enforcement of Ordinance 722. 78 licensed operators running 138 brands processed via SIGAP as of May 2026; first full regulated year generated approx. €5.96bn in gambling revenue. .bet.br domains required. Credit cards and crypto-anonymity banned; payments must originate from CPF-verified accounts. Apple began requiring SPA licences to publish Brazilian betting apps in May 2026.'
   },
   {
     id: 'brazil-spa-561-2024',
@@ -608,12 +608,12 @@ const REGULATIONS = [
   },
   {
     id: 'india-meity-online-gaming-2025',
-    name: 'Promotion and Regulation of Online Gaming Act, 2025',
+    name: 'Promotion and Regulation of Online Gaming Act, 2025 (PROGA)',
     url: 'https://www.meity.gov.in/',
     countries: ['IN'],
     category: 'gambling',
     region: 'asia-pacific',
-    notes: 'Notified August 2025 — attempts to prohibit online money games regardless of skill/chance distinction. Constitutional challenges pending. 28% GST on full deposit value.'
+    notes: 'PROGA received Presidential assent August 2025; the Promotion and Regulation of Online Gaming Rules, 2026 were notified on 22 April 2026 and entered into force on 1 May 2026. Establishes the Online Gaming Authority of India (OGAI). Prohibits online money games regardless of any skill/chance distinction. Constitutional challenges filed by Head Digital Works (A23), Clubboom 11 Sports, Bagheera Carrom and others remain pending — the Supreme Court referred the matter to a three-judge bench, hearings deferred while the bench is constituted. 28% GST on full deposit value remains in force since October 2023.'
   },
   {
     id: 'india-it-rules-2023',
@@ -939,7 +939,7 @@ const REGULATIONS = [
     countries: EU,
     category: 'financial',
     region: 'eu-wide',
-    notes: 'Fully applicable December 2024. Governs crypto-asset payments including those accepted by gambling operators. iGaming operators accepting cryptocurrencies or stablecoins from EU players now face additional licensing, KYC, and AML obligations including blockchain transaction analysis, Source of Funds checks, and potential MiCA-specific licensing depending on the assets used.'
+    notes: 'Fully applicable December 2024. Transitional period for legacy crypto-asset service providers ends 1 July 2026 — after that date any entity providing crypto-asset services to EU clients without a MiCA licence is in breach of EU law. Governs crypto-asset payments including those accepted by gambling operators. iGaming operators accepting cryptocurrencies or stablecoins from EU players face additional licensing, KYC and AML obligations including blockchain transaction analysis, Source of Funds checks, real-time transaction monitoring and (for asset-referenced tokens under Art. 58) auditable 1:1 reserve backing with quarterly third-party attestations.'
   },
   {
     id: 'eu-dora-2022',
@@ -1213,7 +1213,7 @@ const REGULATIONS = [
   { id: 'us-ri-igaming', name: 'Rhode Island iGaming Act (2023)', url: 'https://www.rilot.com', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Rhode Island online casino legislation.' },
   { id: 'us-nv-igaming', name: 'Nevada AB 114 (2013, online poker) / NRS 463', url: 'https://gaming.nv.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Nevada online poker only (no full casino games); first US online poker market.' },
   { id: 'us-me-igaming', name: 'Maine LD 1164 (Jan 2026, tribal-exclusive iGaming)', url: 'https://www.maine.gov/dps/gamb-control', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Maine tribal-exclusive online casino framework, effective January 2026.' },
-  { id: 'us-il-igaming-2026', name: 'Illinois HB 1167 (iGaming, 2026 — pending)', url: 'https://www.ilga.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Illinois iGaming bill passed committee late January 2026; most likely next US state to legalise full online casino gaming.' },
+  { id: 'us-il-igaming-2026', name: 'Illinois HB 1167 (iGaming, 2026 — pending)', url: 'https://www.ilga.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Illinois iGaming bill cleared its assigned committee in late January 2026 and awaits a full house floor vote as of May 2026. If passed cleanly, senate consideration is expected in the spring calendar; lobbyists target signing before the July 2026 recess, which would position Illinois as the 9th regulated iGaming state (after CT, DE, MI, NJ, PA, RI, WV and ME). Fiscal estimates project nearly US$400m in annual tax revenue at maturity.' },
 
   // US States — sports betting only
   { id: 'us-az-sports', name: 'Arizona HB 2772 (2021)', url: 'https://gaming.az.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Arizona sports betting.' },
@@ -1232,6 +1232,7 @@ const REGULATIONS = [
   { id: 'us-vt-sports', name: 'Vermont Act 75 of 2023', url: 'https://liquorandlottery.vermont.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Vermont sports betting.' },
   { id: 'us-va-sports', name: 'Virginia HB 896/SB 384 (2020)', url: 'https://www.valottery.com', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Virginia sports betting.' },
   { id: 'us-wy-sports', name: 'Wyoming HB 133 (2021)', url: 'https://gaming.wyo.gov', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Wyoming online-only sports betting.' },
+  { id: 'us-wi-sports-2026', name: 'Wisconsin Online Sports Betting Act (signed 9 April 2026)', url: 'https://docs.legis.wisconsin.gov/', countries: ['US'], category: 'gambling', region: 'americas', notes: 'Online sports betting only (not online casino). Signed by Governor Tony Evers 9 April 2026. Launch contingent on renegotiation and federal approval of tribal-state compacts — each of the four federally-recognised Wisconsin tribes may partner with one third-party operator. No state-licensed online casino games legal.' },
 
   // ════════════════════════════════════════════════════════════
   // ADDITIONAL CANADA
@@ -1331,7 +1332,7 @@ const EMERGING = [
   {
     title: "Brazil's SPA Licensing Regime",
     jurisdiction: 'Brazil',
-    body: 'Fully operational January 2025. 70 licensed operators with 79 authorised brands as of February 2026 (Daniele Cardoso appointed SPA head Feb 2026). .bet.br domains required. GTI-Bets tax enforcement unit active. 12% GGR tax. Licensed GGR exceeded US$3.2 billion in H1 2025.'
+    body: 'Fully operational January 2025. 78 licensed operators running 138 authorised brands processed via the SIGAP monitoring system as of May 2026. Daniele Cardoso appointed SPA head February 2026. .bet.br domains required. GTI-Bets tax enforcement unit active. 12% GGR tax. First full regulated year (2025) generated approximately €5.96bn in gambling revenue. Apple began requiring SPA authorisation before listing Brazilian betting apps in May 2026.'
   },
   {
     title: "Curaçao's LOK Reform",
@@ -1341,17 +1342,17 @@ const EMERGING = [
   {
     title: "India's Online Gaming Act 2025 (PROGA)",
     jurisdiction: 'India',
-    body: 'Received Presidential assent August 2025 but commencement has not yet been notified in the Official Gazette. Act attempts to prohibit all online money games regardless of skill/chance distinction. Supreme Court referred the constitutional challenge to a three-judge bench, with a hearing scheduled for 21 January 2026. Most major real-money operators (Dream11, MPL, PokerBaazi, Zupee) have already suspended or scaled down Indian operations. 28% GST on full deposit value remains in force since October 2023.'
+    body: 'PROGA received Presidential assent August 2025. The implementing Promotion and Regulation of Online Gaming Rules, 2026 were notified by MeitY on 22 April 2026 and entered into force on 1 May 2026, operationalising the Act and establishing the Online Gaming Authority of India (OGAI) with powers to register social games, issue guidelines and impose penalties up to ₹2 crore. The Act prohibits all online money games regardless of skill/chance distinction. Constitutional challenges by Head Digital Works (A23), Clubboom 11 Sports, Bagheera Carrom and others were referred by the Supreme Court to a three-judge bench; substantive hearings remain pending while the bench is constituted. Most major real-money operators (Dream11, MPL, PokerBaazi, Zupee) have suspended or wound down Indian operations. 28% GST on full deposit value remains in force.'
   },
   {
     title: "Kenya's Gambling Control Act 2025",
     jurisdiction: 'Kenya',
-    body: 'Enacted August 2025 (Act No. 14 of 2025). Replaced 1966-era law. First formal online gambling regulation. New Gambling Regulatory Authority (GRA) replaces the Betting Control and Licensing Board (BCLB) — transition expected to complete by end of February 2026, with Joseph Kirui Limo appointed non-executive chairperson. Licence applications suspended during transition. 30% Kenyan ownership mandate. KSh 1 billion minimum capital. Six draft regulations (Licensing, Conduct, National Lottery, Advertising, Appeals Tribunal, Foreign-Based Operators) published for 2026 implementation.'
+    body: 'Enacted August 2025 (Act No. 14 of 2025) and commenced 16 August 2025. Replaced 1966-era law. First formal online gambling regulation. New Gambling Regulatory Authority (GRA) formally assumed regulatory authority from the Betting Control and Licensing Board (BCLB) on 28 February 2026, with Joseph Kirui Limo appointed non-executive chairperson. Annual licence applications remain suspended during the rollout; the new framework is targeted for full effect before the current licensing cycle closes in June 2026. 30% Kenyan ownership mandate. KSh 1 billion minimum capital. Six draft regulations (Licensing, Conduct, National Lottery, Advertising, Appeals Tribunal, Foreign-Based Operators) published for 2026 implementation, including mandatory real-time monitoring tool integration as a licensing condition.'
   },
   {
     title: "UK Gambling Act Review — 2025/2026 Changes",
     jurisdiction: 'United Kingdom',
-    body: 'Statutory Gambling Levy in force 6 April 2025 (replaces voluntary system; 1.1% of GGY for remote operators, 0.1%–1.1% across other sectors; forecast £90–£100m in 2025/26). Online slot stake limits: £5 max for 25+, £2 for 18–24 (October 2024). Two-tier affordability (financial risk) checks rolling out to all online casino operators — "light-touch" Stage 1 triggered at £150 net deposits within 30 days (~95% of checks frictionless via credit reference data); "enhanced" Stage 2 checks triggered at £1,000 loss within 24 hours or £2,000 loss within 90 days, requiring manual evidence of affordability. Full compliance required Q3 2026. LCCP Licence Condition 7.1.1 updated 6 April 2026: Consumer Protection from Unfair Trading Regulations 2008 replaced by Digital Markets, Competition and Consumers Act 2024. UKGC enforcement up sharply: 9,700 compliance actions in 2024/25 vs 4,200 the prior year.'
+    body: 'Statutory Gambling Levy in force 6 April 2025 (replaces voluntary system; 1.1% of GGY for remote operators, 0.1%–1.1% across other sectors; forecast £90–£100m in 2025/26). Online slot stake limits: £5 max for 25+, £2 for 18–24 (October 2024). Two-tier financial-risk (affordability) checks rolling out to all online casino operators — Stage 1 "frictionless" credit-reference checks active since February 2026 at the £150 net-loss-per-month threshold (~95% resolve without player interruption); Stage 2 enhanced Financial Risk Assessments go live 22 May 2026 at higher loss thresholds (£1,000/24h or £2,000/90d), requiring manual evidence of affordability. Stage 1 full compliance required by end of Q3 2026; Stage 2 by Q1 2027. The Betting and Gaming Council has signalled a possible legal challenge to full Stage 2 implementation. LCCP Licence Condition 7.1.1 updated 6 April 2026: Consumer Protection from Unfair Trading Regulations 2008 replaced by Digital Markets, Competition and Consumers Act 2024. UKGC enforcement up sharply: 9,700 compliance actions in 2024/25 vs 4,200 the prior year.'
   },
   {
     title: 'EU AI Act — Phased Application',
@@ -1391,22 +1392,22 @@ const EMERGING = [
   {
     title: "Finland — iGaming Market Liberalisation",
     jurisdiction: 'Finland',
-    body: 'Finland is in the process of ending the Veikkaus state monopoly and opening its iGaming market to competitive licensing. The transition is being formalised in 2026. Operators targeting Finnish players should monitor the forthcoming licensing framework. Finland is an EU member state — once licensed, operators would benefit from EU mutual recognition frameworks.'
+    body: 'Finland\'s new Gambling Act was approved by Parliament on 16 December 2025 and took effect in early 2026, ending the Veikkaus exclusive monopoly over betting, online slots and online casino games (Veikkaus retains lotteries, scratch cards and land-based gambling). B2C licence applications opened 1 March 2026; the licensed market is scheduled to commence operations on 1 July 2027, with B2B licence applications opening in January 2027 and B2B operations from 2028. Regulatory oversight moves from the National Police Board to a new Licensing and Supervisory Authority. The reform targets recapture of an estimated €600–900m of annual gambling activity currently leaking to offshore operators.'
   },
   {
     title: "Netherlands KSA — 2026 Licensing & Intervention Reforms",
     jurisdiction: 'Netherlands',
-    body: 'Revised remote gambling licensing framework effective 1 January 2026 ahead of the October 2026 expiry of the first five-year KOA licences. April 2026 KSA guidance prescribes exactly when licensees must intervene with players showing signs of dependency, acceptable contact methods and staff messaging content. Proposed reforms include a single cross-operator deposit limit across all licensees, a financial capacity (affordability) test before any limit increase, and raising the minimum age for high-risk games (online slots) from 18 to 21. Existing deposit limits remain €300/month for 18–24 year-olds and €700/month for 24+.'
+    body: 'Revised remote gambling licensing framework effective 1 January 2026. The first five-year KOA licences (issued September 2021) expire 1 October 2026 and renewal is contingent on operators demonstrating implementation of the new intervention framework. April 2026 KSA guidance prescribes exactly when licensees must intervene with players showing signs of dependency, acceptable contact methods and staff messaging content. Proposed reforms include a single cross-operator deposit limit across all licensees, a financial capacity (draagkrachttoets / affordability) test before any limit increase, and raising the minimum age for high-risk games (online slots) from 18 to 21. Existing deposit limits remain €300/month for 18–24 year-olds and €700/month for 24+ — KSA reports the proportion of accounts losing more than €1,000 fell from 3.9% (pre-October 2024) to 0.9% after the limits were introduced.'
   },
   {
-    title: "Curaçao LOK — Implementation & Six-Month Extension",
+    title: "Curaçao LOK — Implementation Progress",
     jurisdiction: 'Curaçao',
-    body: 'LOK in force 24 December 2024. Curaçao Gaming Authority (CGA) replaces the Gaming Control Board (GCB) as the sole licence issuer, ending the master/sublicence model. Transition was set at six months with an additional six-month extension; provisional (NOOGH) licences remained valid until 24 June 2025 with extensions granted into late 2025. B2C applications reopened March 2025 and B2B in mid-2025. Operators must maintain a physical presence in Curaçao, with key-staff and local-director requirements phased over 4–5 years. CGA updated its fee policy under the new framework in November 2025.'
+    body: 'LOK in force 24 December 2024. Curaçao Gaming Authority (CGA) replaces the Gaming Control Board (GCB) as the sole licence issuer, ending the master/sublicence model. All legacy sub-licences expired in January 2025; the orange (transitional) seal expired permanently on 15 October 2025. As of April 2026 the CGA has processed approximately 140 direct-licence applications — roughly 87 approved and the remainder rejected or shelved (a rejection rate near 38%, signalling stricter standards). B2C applications reopened March 2025 and B2B mid-2025. Operators must maintain a physical presence in Curaçao, with key-staff and local-director requirements phased over 4–5 years. CGA updated its fee policy under the new framework in November 2025.'
   },
   {
     title: "United States — State-Level 2026 Shifts",
     jurisdiction: 'United States',
-    body: 'Wisconsin became the eighth US state to legalise online casino gaming (signed into law by Governor Tony Evers on 9 April 2026), joining Connecticut, Delaware, Michigan, New Jersey, Pennsylvania, Rhode Island and West Virginia. Maine joined New Hampshire and Massachusetts in banning credit cards for sports wagering and iGaming. Multiple states have passed sweepstakes casino bans ahead of the 2026 legislative season, and prediction-market legislation is creating federal/state tension likely headed for the Supreme Court.'
+    body: 'Eight US states currently allow real-money online casinos: Connecticut, Delaware, Maine (tribal-exclusive launch January 2026), Michigan, New Jersey, Pennsylvania, Rhode Island and West Virginia. Wisconsin Governor Tony Evers signed an online sports betting (not iGaming) bill on 9 April 2026, with launch dependent on federally-approved tribal-state compact renegotiation. Illinois HB 1167 cleared committee in late January 2026 and would, if enacted, make Illinois the 9th regulated iGaming state. A coordinated wave of sweepstakes casino bans has accelerated — California (AB 831, effective 1 January 2026), New York, New Jersey, Montana, Connecticut, Indiana, Maine, Tennessee and most recently Oklahoma (SB 1589 veto-overridden, effective 1 November 2026) have all enacted bans, with Mississippi, Louisiana, Minnesota and Washington DC pending. Prediction-market legislation continues to generate federal/state tension likely headed for the Supreme Court.'
   },
 ];
 
