@@ -40,12 +40,10 @@ function clearStatus() {
   statusEl.className = 'pdm-status';
 }
 
-// ── FILE INPUT CLICK ──
-fileLabel.addEventListener('click', () => {
-  fileInput.click();
-});
-
+// ── FILE INPUT CHANGE ──
 fileInput.addEventListener('change', (e) => {
+  mergedPdfBytes = null;
+  outputSection.style.display = 'none';
   const files = Array.from(e.target.files || []);
   handleFilesSelected(files);
 });
@@ -262,8 +260,3 @@ printBtn.addEventListener('click', () => {
   window.open(url, '_blank');
 });
 
-// ── RESET ON NEW SELECTION ──
-fileInput.addEventListener('change', () => {
-  mergedPdfBytes = null;
-  outputSection.style.display = 'none';
-});
