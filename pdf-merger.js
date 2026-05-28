@@ -259,20 +259,7 @@ printBtn.addEventListener('click', () => {
 
   const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
   const url = URL.createObjectURL(blob);
-  const iframe = document.createElement('iframe');
-  iframe.style.display = 'none';
-  iframe.src = url;
-  document.body.appendChild(iframe);
-
-  // Wait for iframe to load, then trigger print
-  iframe.onload = () => {
-    iframe.contentWindow.print();
-    // Cleanup after a brief delay
-    setTimeout(() => {
-      document.body.removeChild(iframe);
-      URL.revokeObjectURL(url);
-    }, 1000);
-  };
+  window.open(url, '_blank');
 });
 
 // ── RESET ON NEW SELECTION ──
