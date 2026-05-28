@@ -1,0 +1,313 @@
+/* ── AMBIENT BACKGROUND ── */
+.pdm-ambient {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.pdm-ambient::before {
+  content: '';
+  position: absolute; top: -20%; left: -10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(34,197,94,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pdmDrift1 20s ease-in-out infinite alternate;
+}
+.pdm-ambient::after {
+  content: '';
+  position: absolute; bottom: -20%; right: -10%;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(234,179,8,0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pdmDrift2 25s ease-in-out infinite alternate;
+}
+@keyframes pdmDrift1 { from { transform: translate(0,0); } to { transform: translate(60px,80px); } }
+@keyframes pdmDrift2 { from { transform: translate(0,0); } to { transform: translate(-80px,-60px); } }
+
+/* ── MAIN CONTAINER ── */
+.pdm-wrap {
+  position: relative; z-index: 1;
+  max-width: 820px; margin: 0 auto;
+  padding: 120px 1.5rem 5rem;
+}
+
+/* ── HERO SECTION ── */
+.pdm-hero { margin-bottom: 2.5rem; text-align: center; }
+
+.pdm-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-weight: 900; text-transform: uppercase;
+  letter-spacing: -0.02em; line-height: 1;
+  color: var(--on-surface); margin-bottom: 1rem;
+}
+
+.pdm-gradient {
+  background: linear-gradient(135deg, #22c55e, #84cc16);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pdm-desc {
+  font-size: 1.1rem; line-height: 1.6;
+  color: var(--on-surface-variant);
+  max-width: 600px; margin: 0 auto;
+}
+
+/* ── TOOL CARD ── */
+.pdm-card {
+  background: var(--surface-variant);
+  border: 1px solid var(--outline);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+/* ── FILE INPUT ── */
+.pdm-file-input-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.pdm-file-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem;
+  border: 2px dashed var(--outline);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--on-surface-variant);
+  font-weight: 500;
+}
+
+.pdm-file-label:hover {
+  border-color: var(--primary);
+  background: var(--surface-variant);
+  color: var(--on-surface);
+}
+
+.pdm-file-label.drag-over {
+  border-color: var(--primary);
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.pdm-file-icon {
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+#pdm-file-input {
+  display: none;
+}
+
+/* ── PREVIEW LIST ── */
+.pdm-preview-container {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--outline);
+}
+
+.pdm-preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.pdm-preview-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--outline);
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.pdm-preview-name {
+  flex: 1;
+  font-weight: 500;
+  color: var(--on-surface);
+  word-break: break-word;
+}
+
+.pdm-preview-size {
+  margin: 0 1rem;
+  color: var(--on-surface-variant);
+  font-size: 0.9rem;
+  min-width: 60px;
+  text-align: right;
+}
+
+.pdm-preview-remove {
+  background: none;
+  border: none;
+  color: var(--error);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+}
+
+.pdm-preview-remove:hover {
+  color: var(--error-bright);
+}
+
+.pdm-size-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border-radius: 0.5rem;
+  font-weight: 500;
+  color: var(--on-surface);
+}
+
+.pdm-size-warning {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(234, 179, 8, 0.1);
+  border-left: 3px solid #eab308;
+  border-radius: 0.5rem;
+  color: var(--on-surface-variant);
+  font-size: 0.9rem;
+}
+
+.pdm-size-warning .material-symbols-outlined {
+  color: #eab308;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* ── BUTTONS ── */
+.pdm-merge-btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.pdm-merge-btn:hover:not(:disabled) {
+  background: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.pdm-merge-btn:disabled {
+  background: var(--outline);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pdm-merge-btn.merging {
+  pointer-events: none;
+}
+
+.pdm-action-btn {
+  flex: 1;
+  padding: 0.875rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.pdm-action-btn:hover {
+  background: #16a34a;
+  transform: translateY(-2px);
+}
+
+.pdm-action-btn:active {
+  transform: translateY(0);
+}
+
+/* ── STATUS MESSAGES ── */
+.pdm-status {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  display: none;
+}
+
+.pdm-status.error {
+  display: block;
+  background: rgba(239, 68, 68, 0.1);
+  border-left: 3px solid #ef4444;
+  color: #dc2626;
+}
+
+.pdm-status.success {
+  display: block;
+  background: rgba(34, 197, 94, 0.1);
+  border-left: 3px solid #22c55e;
+  color: #16a34a;
+}
+
+.pdm-status.loading {
+  display: block;
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 3px solid #3b82f6;
+  color: #1d4ed8;
+}
+
+/* ── OUTPUT SECTION ── */
+.pdm-output-section {
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--outline);
+  border-radius: 0.75rem;
+}
+
+.pdm-output-header {
+  margin-bottom: 1.5rem;
+}
+
+.pdm-success-message {
+  color: var(--on-surface);
+  font-weight: 500;
+  margin: 0;
+}
+
+.pdm-output-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .pdm-wrap { padding: 80px 1rem 3rem; }
+  .pdm-title { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+  .pdm-card { padding: 1.5rem; }
+  .pdm-file-label { padding: 2rem; }
+  .pdm-output-actions { flex-direction: column; }
+  .pdm-action-btn { width: 100%; }
+}

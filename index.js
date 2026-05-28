@@ -277,6 +277,18 @@ const projects = [
     img: '/images/faq_schema_og.webp',
     thumbIcon: 'data_object',
   },
+  {
+    id: 'pdf-merger',
+    title: 'PDF Merger',
+    desc: 'Merge multiple PDFs into one file instantly. Upload, preview, and download your combined PDF — no file size limits.',
+    category: 'digital',
+    badge: 'DIGITAL TOOL',
+    color: 'green',
+    icons: ['merge_type', 'description'],
+    href: 'https://johnb.io/pdf-merger',
+    img: '/images/pdf_merger_og.webp',
+    thumbIcon: 'merge_type',
+  },
 ];
 
 // ── HERO NEWS PANEL ──────────────────────────────────────────────────────

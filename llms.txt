@@ -37,6 +37,7 @@
 - [T&Cs Simplifier](https://johnb.io/tcs-simplifier): Paste casino bonus terms and conditions and get a plain English summary, red flag list and key numbers block (wagering, expiry, max bet, max win). Built for players, affiliates and compliance teams. Not legal advice.
 - [FAQ Schema Generator](https://johnb.io/faq-schema): Free tool that turns question and answer pairs into valid FAQPage JSON-LD structured data. Includes a manual builder and an AI draft mode that generates 5–8 FAQs from a topic. Output is ready to paste into the page head.
 - [Prompt Improver](https://johnb.io/prompt-improver): Rewrites weak AI prompts into stronger versions with a short change log. Includes a library of starter prompts for common tasks (summarising, cold email, code review, SEO briefs, meeting notes). Works for ChatGPT, Claude, Gemini and any LLM.
+- [PDF Merger](https://johnb.io/pdf-merger): Merge multiple PDF files into one instantly. Upload, preview, and download your combined PDF — no file size limits. All processing happens locally on your device.
 
 ## News and Insights
 

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Merger - Combine Multiple PDFs Online | JohnB.io</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css?v=3">
+  <link rel="stylesheet" href="/header.css?v=4">
+  <link rel="stylesheet" href="/footer.css?v=2">
+  <link rel="stylesheet" href="/pdf-merger.css?v=1">
+
+  <!-- SEO -->
+  <meta name="description" content="Merge multiple PDF files into one. Upload, preview, and download your combined PDF instantly — no file size limits.">
+  <meta name="keywords" content="pdf merger, combine pdf files, merge pdf online, pdf combiner, free pdf merger, merge multiple pdfs, pdf joiner">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/pdf-merger">
+  <meta name="author" content="John Bowman">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PDF Merger - Combine Multiple PDFs Online">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/pdf-merger">
+  <meta property="og:description" content="Merge multiple PDF files into one. Upload, preview, and download your combined PDF instantly — no file size limits.">
+  <meta property="og:image" content="https://johnb.io/images/pdf_merger_og.webp">
+  <meta property="og:image:width" content="770">
+  <meta property="og:image:height" content="430">
+  <meta property="og:image:alt" content="PDF Merger tool by JohnB.io">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PDF Merger - JohnB.io">
+  <meta name="twitter:description" content="Free tool to merge multiple PDF files into one. Upload, preview, and download instantly.">
+  <meta name="twitter:image" content="https://johnb.io/images/pdf_merger_og.webp">
+  <meta name="twitter:image:alt" content="PDF Merger tool by JohnB.io">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "PDF Merger",
+    "url": "https://johnb.io/pdf-merger",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "description": "Free tool to merge multiple PDF files into one complete PDF. Upload, preview, and download — no file size limits.",
+    "image": "https://johnb.io/images/pdf_merger_og.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is there a file size limit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Merge as many PDFs as you want and they can be any size. The tool processes files locally on your device, so there's no server-side limit. Processing speed depends on your device's available memory."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I reorder the PDFs before merging?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The tool merges PDFs in the order you select them. Plan the order before uploading, or download and re-merge if you need a different sequence."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if a PDF is corrupted?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tool will show an error and stop merging immediately. It will tell you which file caused the problem so you can check it or remove it from your selection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I print the merged PDF directly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Once the merge is complete, click the Print button to open your browser's print dialog. Print to paper or save as PDF from there."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which browsers are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tool works on all modern browsers: Chrome, Firefox, Safari, and Edge. Older browsers may not support the required PDF processing features."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="pdm-ambient"></div>
+
+  <main class="pdm-wrap" id="main-content">
+
+    <div class="pdm-hero">
+      <h1 class="pdm-title">PDF <span class="pdm-gradient">Merger</span></h1>
+      <p class="pdm-desc">Upload multiple PDFs from your computer and merge them into one file. Perfect for combining documents for printing without limits.</p>
+    </div>
+
+    <!-- Tool Card -->
+    <div class="pdm-card">
+
+      <!-- File Input -->
+      <div class="pdm-file-input-wrapper">
+        <label for="pdm-file-input" class="pdm-file-label">
+          <span class="material-symbols-outlined pdm-file-icon" aria-hidden="true">upload_file</span>
+          <span>Select PDFs or drag & drop</span>
+        </label>
+        <input
+          type="file"
+          id="pdm-file-input"
+          accept=".pdf"
+          multiple
+          aria-label="Select PDF files"
+        >
+      </div>
+
+      <!-- Preview List -->
+      <div id="pdm-preview-container" class="pdm-preview-container" style="display: none;">
+        <div class="pdm-preview-list" id="pdm-preview-list"></div>
+        <div class="pdm-size-info">
+          <span>Total size:</span>
+          <span id="pdm-total-size">0 MB</span>
+        </div>
+        <div id="pdm-size-warning" class="pdm-size-warning" style="display: none;" role="alert">
+          <span class="material-symbols-outlined" aria-hidden="true">info</span>
+          <span>This may take a few seconds to process. Large files depend on your device's available memory.</span>
+        </div>
+      </div>
+
+      <!-- Status Messages -->
+      <div id="pdm-status" class="pdm-status" role="status" aria-live="polite"></div>
+
+      <!-- Merge Button -->
+      <button class="pdm-merge-btn" id="pdm-merge-btn" disabled aria-label="Merge selected PDFs">
+        <span class="material-symbols-outlined" aria-hidden="true">merge_type</span>
+        <span id="pdm-merge-btn-text">Merge PDFs</span>
+      </button>
+
+      <!-- Output Section -->
+      <div id="pdm-output-section" class="pdm-output-section" style="display: none;">
+        <div class="pdm-output-header">
+          <p class="pdm-success-message">Merge complete! You can now download or print.</p>
+        </div>
+        <div class="pdm-output-actions">
+          <button class="pdm-action-btn" id="pdm-download-btn" aria-label="Download merged PDF">
+            <span class="material-symbols-outlined" aria-hidden="true">download</span>
+            Download
+          </button>
+          <button class="pdm-action-btn" id="pdm-print-btn" aria-label="Print merged PDF">
+            <span class="material-symbols-outlined" aria-hidden="true">print</span>
+            Print
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <!-- Tool Info / SEO Article -->
+  <section class="tool-info" aria-label="About this tool">
+    <div class="tool-info-inner">
+
+      <div class="tool-info-meta">
+        <span>Last updated: May 2026</span>
+        <span class="tool-info-sep">·</span>
+        <span>By <a href="/about">John Bowman</a> - questions? Connect on <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</span>
+      </div>
+
+      <div class="tool-info-body">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Why Merge PDFs Locally?</h2>
+        <p>Uploading sensitive documents to a web service is risky. This tool processes everything on your device — no files leave your computer. Merge as many PDFs as you need without file size limits or account requirements.</p>
+      </div>
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>Is there a file size limit?</dt>
+                <dd>No. Merge as many PDFs as you want and they can be any size. The tool processes files locally on your device, so there's no server-side limit. Processing speed depends on your device's available memory.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Can I reorder the PDFs before merging?</dt>
+                <dd>No. The tool merges PDFs in the order you select them. Plan the order before uploading, or download and re-merge if you need a different sequence.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What happens if a PDF is corrupted?</dt>
+                <dd>The tool will show an error and stop merging immediately. It will tell you which file caused the problem so you can check it or remove it from your selection.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Can I print the merged PDF directly?</dt>
+                <dd>Yes. Once the merge is complete, click the Print button to open your browser's print dialog. Print to paper or save as PDF from there.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Which browsers are supported?</dt>
+                <dd>The tool works on all modern browsers: Chrome, Firefox, Safari, and Edge. Older browsers may not support the required PDF processing features.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Click to select PDFs.</strong> Choose multiple files from your computer. You can also drag and drop them onto the page.</li>
+              <li><strong>Preview your selection.</strong> See the filenames and sizes. Remove any you don't want.</li>
+              <li><strong>Click Merge PDFs.</strong> The tool combines them in the order you selected them.</li>
+              <li><strong>Download or print.</strong> Once done, download the merged PDF or open the print dialog.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>No limits on file size or number of PDFs.</strong> Merge as many as your device can handle.</li>
+              <li><strong>All processing happens locally.</strong> Your files never leave your computer — no uploads to any server.</li>
+              <li><strong>Merges in upload order.</strong> The tool combines PDFs exactly as you select them.</li>
+              <li><strong>No account required.</strong> Just open the tool and start merging.</li>
+              <li><strong>Works on any device.</strong> Merge on Windows, Mac, Linux, or mobile browsers.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources & Further Reading</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://pdf-lib.js.org/" target="_blank" rel="noopener noreferrer">pdf-lib — JavaScript PDF library used in this tool</a>.</li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/File" target="_blank" rel="noopener noreferrer">MDN Web Docs — File API</a>.</li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob" target="_blank" rel="noopener noreferrer">MDN Web Docs — Blob API</a>.</li>
+              <li><a href="/faq-schema">FAQ Schema Generator</a> — related tool for structured data.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder"></div>
+
+  <!-- pdf-lib from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" defer></script>
+
+  <script src="/scripts.js?v=5" defer></script>
+  <script src="/pdf-merger.js?v=1" defer></script>
+
+  <script>
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
