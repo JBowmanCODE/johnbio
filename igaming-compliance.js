@@ -120,7 +120,7 @@ const REGULATIONS = [
     countries: ['GB'],
     category: 'gambling',
     region: 'europe',
-    notes: 'Two-stage Financial Risk Assessment regime. Stage 1 frictionless credit-reference checks active since February 2026 at £150 net loss within a 30-day window; ~95% resolve without player interruption. Stage 2 enhanced FRAs go live 22 May 2026 at higher loss thresholds (e.g. £1,000/24h or £2,000/90d) requiring manual evidence of affordability. Full Stage 1 compliance required by end of Q3 2026; Stage 2 by Q1 2027. Operators failing to implement face formal regulatory action up to licence revocation.'
+    notes: 'Two-stage Financial Risk Assessment regime. Stage 1 frictionless credit-reference checks remain active (since February 2026) at £150 net loss within a 30-day window; ~95% of accounts resolve without player interruption and Stage 1 full compliance is still required by end of Q3 2026. Stage 2 enhanced FRAs (higher loss thresholds — e.g. £1,000/24h or £2,000/90d, requiring manual evidence of affordability) were NOT launched as planned on 22 May 2026: at its 21 May 2026 board meeting the Gambling Commission confirmed it had reviewed an extensive evidence base but had not yet completed its assessment and would communicate further in due course; no revised Stage 2 implementation date has been published. Operators failing to implement Stage 1 still face formal regulatory action up to licence revocation.'
   },
   {
     id: 'malta-gaming-act-2018',
@@ -305,7 +305,7 @@ const REGULATIONS = [
     countries: ['IT'],
     category: 'gambling',
     region: 'europe',
-    notes: '50 new 9-year online licenses offered at €7M each; 3% GGR fee + 0.2% for responsible gambling.'
+    notes: 'New 9-year online licences offered at €7M each (€4M on award + €3M on launch); 3% GGR fee + 0.2% for responsible gambling. Two-stage ADM tender closed September 2025: 52 concessions awarded to 46 operators. From 13 November 2025 the use of secondary "skins" websites ended — each licensee may operate online gaming only through a single ADM-authorised domain. A new "partial" self-exclusion mechanism (alongside the existing general system) became operative from 1 February 2026, and Sports Betting Protocol 5.0 is the operator standard from March 2026.'
   },
   {
     id: 'portugal-dl-66-2015',
@@ -536,7 +536,7 @@ const REGULATIONS = [
     countries: ['BR'],
     category: 'gambling',
     region: 'americas',
-    notes: 'Brazil sports betting and online gaming fully operational from January 2025. Grace period ended 1 January 2026; SPA moved to strict enforcement of Ordinance 722. 78 licensed operators running 138 brands processed via SIGAP as of May 2026; first full regulated year generated approx. €5.96bn in gambling revenue. .bet.br domains required. Credit cards and crypto-anonymity banned; payments must originate from CPF-verified accounts. Apple began requiring SPA licences to publish Brazilian betting apps in May 2026.'
+    notes: 'Brazil sports betting and online gaming fully operational from January 2025. Grace period ended 1 January 2026; SPA moved to strict enforcement of Ordinance 722. 79 licensed companies running 138 brands processed via SIGAP as of late 2025; first full regulated year generated BRL37bn (~US$7bn) in GGR with 25.2m bettors and BRL9.95bn in federal taxes; Q1 2026 betting tax receipts hit BRL3.4bn (+123.7% YoY). Centralised national self-exclusion platform live since 10 December 2025 (230,000+ requests logged; operators must block players within 72h of notice). .bet.br domains required. Credit cards and crypto-anonymity banned; payments must originate from CPF-verified accounts. Apple began requiring SPA licences to publish Brazilian betting apps in May 2026.'
   },
   {
     id: 'brazil-spa-561-2024',
@@ -1332,7 +1332,7 @@ const EMERGING = [
   {
     title: "Brazil's SPA Licensing Regime",
     jurisdiction: 'Brazil',
-    body: 'Fully operational January 2025. 78 licensed operators running 138 authorised brands processed via the SIGAP monitoring system as of May 2026. Daniele Cardoso appointed SPA head February 2026. .bet.br domains required. GTI-Bets tax enforcement unit active. 12% GGR tax. First full regulated year (2025) generated approximately €5.96bn in gambling revenue. Apple began requiring SPA authorisation before listing Brazilian betting apps in May 2026.'
+    body: 'Fully operational January 2025. As of late 2025 the SPA confirmed 79 licensed companies running 138 authorised brands via the SIGAP monitoring system; the first regulated year generated BRL37bn (~US$7bn / ~€6.4bn) in GGR with 25.2m unique Brazilian bettors, and the federal government collected BRL9.95bn (~US$2bn) in taxes for 2025 (plus ~BRL2.5bn in licence fees and BRL95.5m in inspection fees). Q1 2026 betting tax receipts hit BRL3.4bn (+123.7% YoY). Centralised national self-exclusion platform (developed by SERPRO, accessed via Gov.br) went live 10 December 2025 and has logged more than 230,000 player requests; specific and centralised self-exclusion modes available for 1–12 months or indefinitely. Operators must block self-excluded players within 72 hours. Daniele Cardoso appointed SPA head February 2026. .bet.br domains required. GTI-Bets tax enforcement unit active. 12% GGR tax scheduled to rise to 15% (2027) and 18% (2028). Apple began requiring SPA authorisation before listing Brazilian betting apps in May 2026.'
   },
   {
     title: "Curaçao's LOK Reform",
@@ -1352,7 +1352,7 @@ const EMERGING = [
   {
     title: "UK Gambling Act Review — 2025/2026 Changes",
     jurisdiction: 'United Kingdom',
-    body: 'Statutory Gambling Levy in force 6 April 2025 (replaces voluntary system; 1.1% of GGY for remote operators, 0.1%–1.1% across other sectors; forecast £90–£100m in 2025/26). Online slot stake limits: £5 max for 25+, £2 for 18–24 (October 2024). Two-tier financial-risk (affordability) checks rolling out to all online casino operators — Stage 1 "frictionless" credit-reference checks active since February 2026 at the £150 net-loss-per-month threshold (~95% resolve without player interruption); Stage 2 enhanced Financial Risk Assessments go live 22 May 2026 at higher loss thresholds (£1,000/24h or £2,000/90d), requiring manual evidence of affordability. Stage 1 full compliance required by end of Q3 2026; Stage 2 by Q1 2027. The Betting and Gaming Council has signalled a possible legal challenge to full Stage 2 implementation. LCCP Licence Condition 7.1.1 updated 6 April 2026: Consumer Protection from Unfair Trading Regulations 2008 replaced by Digital Markets, Competition and Consumers Act 2024. UKGC enforcement up sharply: 9,700 compliance actions in 2024/25 vs 4,200 the prior year.'
+    body: 'Statutory Gambling Levy in force 6 April 2025 (replaces voluntary system; 1.1% of GGY for remote operators, 0.1%–1.1% across other sectors; forecast £90–£100m in 2025/26). Online slot stake limits: £5 max for 25+, £2 for 18–24 (October 2024). Two-tier financial-risk (affordability) checks: Stage 1 "frictionless" credit-reference checks active since February 2026 at the £150 net-loss-per-month threshold (~95% resolve without player interruption); Stage 1 full compliance still required by end of Q3 2026. Stage 2 enhanced Financial Risk Assessments were NOT launched on the previously planned 22 May 2026 date — at its 21 May 2026 board meeting the UK Gambling Commission confirmed it had not completed its assessment of the pilot evidence (covering reliability of credit-reference data, player friction and risk of channelling to unregulated operators) and deferred a final decision; no revised Stage 2 implementation date has been published. The Betting and Gaming Council and Horseracing Bettors Forum have signalled possible legal challenges to full Stage 2 implementation. LCCP Licence Condition 7.1.1 updated 6 April 2026: Consumer Protection from Unfair Trading Regulations 2008 replaced by Digital Markets, Competition and Consumers Act 2024. UKGC enforcement up sharply: 9,700 compliance actions in 2024/25 vs 4,200 the prior year.'
   },
   {
     title: 'EU AI Act — Phased Application',
@@ -1407,7 +1407,12 @@ const EMERGING = [
   {
     title: "United States — State-Level 2026 Shifts",
     jurisdiction: 'United States',
-    body: 'Eight US states currently allow real-money online casinos: Connecticut, Delaware, Maine (tribal-exclusive launch January 2026), Michigan, New Jersey, Pennsylvania, Rhode Island and West Virginia. Wisconsin Governor Tony Evers signed an online sports betting (not iGaming) bill on 9 April 2026, with launch dependent on federally-approved tribal-state compact renegotiation. Illinois HB 1167 cleared committee in late January 2026 and would, if enacted, make Illinois the 9th regulated iGaming state. A coordinated wave of sweepstakes casino bans has accelerated — California (AB 831, effective 1 January 2026), New York, New Jersey, Montana, Connecticut, Indiana, Maine, Tennessee and most recently Oklahoma (SB 1589 veto-overridden, effective 1 November 2026) have all enacted bans, with Mississippi, Louisiana, Minnesota and Washington DC pending. Prediction-market legislation continues to generate federal/state tension likely headed for the Supreme Court.'
+    body: 'Eight US states currently allow real-money online casinos: Connecticut, Delaware, Maine (tribal-exclusive launch January 2026), Michigan, New Jersey, Pennsylvania, Rhode Island and West Virginia. Wisconsin Governor Tony Evers signed an online sports betting (not iGaming) bill on 9 April 2026, with launch dependent on federally-approved tribal-state compact renegotiation. Illinois HB 1167 cleared committee in late January 2026 and would, if enacted, make Illinois the 9th regulated iGaming state. New York Senator Joseph Addabbo reintroduced an iGaming bill in May 2026 (30.5% tax, US$2–10m licence fees) — the fourth consecutive year — with any launch unlikely before 2027. A coordinated wave of sweepstakes casino bans has accelerated — California (AB 831, effective 1 January 2026), New York, New Jersey, Montana, Connecticut, Indiana, Maine, Tennessee, Louisiana and most recently Oklahoma (SB 1589 veto-overridden, effective 1 November 2026) have all enacted bans, with Mississippi, Minnesota and Washington DC pending and 27+ states actively considering legislation. Prediction-market legislation continues to generate federal/state tension likely headed for the Supreme Court.'
+  },
+  {
+    title: "Italy ADM — 2025/26 Concession Round and Online Reforms",
+    jurisdiction: 'Italy',
+    body: 'ADM completed its two-stage 9-year online concession tender in September 2025: 52 concessions awarded to 46 operators at €7m each (€4m on award, €3m on launch), with a 3% GGR fee plus 0.2% responsible gambling levy. From 13 November 2025 the long-standing use of secondary "skin" websites ended — each licensee may now operate online gaming through a single ADM-authorised domain only. A new "partial" self-exclusion mechanism became operative from 1 February 2026 alongside the existing general self-exclusion register, and Sports Betting Protocol 5.0 is the operator standard from March 2026. A separate 2026 land-based tender (~10,000 betting shops and hundreds of thousands of gaming machines, est. €1.5bn+ total investment) is expected to be formally published in Q3 2026. Italy\'s total ban on gambling advertising under the Decreto Dignità remains in force.'
   },
 ];
 
