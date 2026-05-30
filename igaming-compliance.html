@@ -395,9 +395,13 @@
   <div id="footer-placeholder"></div>
 
   <script src="/scripts.js?v=5" defer></script>
-  <script src="/footer.js?v=2" defer></script>
   <script src="/igaming-compliance.js?v=1" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
-      btt.
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
