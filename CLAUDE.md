@@ -216,6 +216,46 @@ Consistency across the site:
 - Doesn't end with a summary — stops when the last point is made
 - Structure follows the thinking, not a template — most interesting point doesn't have to come last
 
+**Point of view — mandatory:**
+- Every article must have a clear, stated point of view — not a neutral summary of all sides
+- The writer's position should be clear by the end of the second section at the latest
+- "Here are the arguments for and against" is not a point of view — pick one and defend it
+- A stated view that some readers will disagree with is a feature, not a risk
+
+**Imperfect transitions — required:**
+- Not every section needs to flow logically from the last — humans jump, double back, and change direction
+- Avoid neat connective tissue between every paragraph — some sections can simply start fresh
+- A jarring transition is better than a smooth AI one ("With that said", "Building on this")
+- If two ideas don't connect cleanly, don't force them to — leave the gap
+
+**Memory — revisit earlier claims:**
+- Humans remember what they said earlier and return to it — reference a claim from section one in section three
+- Use phrases like "which is why I said earlier that..." or "this is the same problem as..." — not to summarise but to build
+- If the opening claim turns out to be more complicated than stated, say so later in the piece
+- Don't treat each section as self-contained — let the argument develop and complicate itself
+
+**Personal judgement — name it:**
+- Where a judgement call is made, say it is one — "I'd pick X over Y here", "In my experience this rarely works"
+- Don't hide opinions behind passive constructions — "it could be argued" means nothing
+- Personal judgement is not the same as opinion — it includes reasoning: "I lean toward X because Y happened when I tried Z"
+
+**No perfect chronology:**
+- Don't tell the story in the order it happened — start with the most interesting moment, then explain how you got there
+- Historical context belongs after the point it supports, not before
+- "First X happened, then Y happened, then Z" is a timeline, not an argument — restructure around meaning not sequence
+
+**Contradiction — include it:**
+- If the evidence points in two directions, say so — don't smooth it out into a false consensus
+- "This works well except when it doesn't" is more useful than pretending it always works
+- Where the writer has changed their mind on something, say so — "I used to think X, I don't anymore"
+- Unresolved tension in an argument is honest — AI resolves everything neatly, humans don't
+
+**Asymmetry — obsess over what matters:**
+- Give more space to the thing that matters most, less to everything else — not equal coverage across all points
+- AI treats all subtopics as equally important — humans know which one is the real issue and say so
+- One section can be three times longer than another if the subject warrants it
+- If one side of an argument is stronger, say it plainly — don't balance it with weaker counterpoints to appear fair
+
 **Banned words — never use any of these:**
 
 AI verbs: delve, utilize, leverage, foster, navigate, empower, streamline, unlock, harness, elevate, bolster, spearhead, cultivate, illuminate, underscore, revolutionize, democratize, curate, craft, resonate, embark, facilitate, tailor, pave the way, move the needle, test the waters
