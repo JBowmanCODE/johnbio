@@ -1,0 +1,84 @@
+rules_version = '2';
+
+// Firestore Security Rules for johnblogin-fdcc6
+// -------------------------------------------------------------------
+// Deploy with:  firebase deploy --only firestore:rules
+// (or paste into Firebase console -> Firestore Database -> Rules)
+//
+// CONTEXT — read before deploying:
+// The exam is scored in the browser (exam.js) and the certificate is
+// currently minted by the browser (certificate.js writes the public
+// `certificates/{id}` doc and updates `users/{uid}`). Security rules alone
+// CANNOT verify that a user genuinely passed, because the client computes the
+// score. The only way to make certificates non-forgeable is to move issuance
+// to a trusted backend (a Firebase Cloud Function using the Admin SDK, which
+// bypasses these rules) and have the client only READ the result.
+//
+// These rules give you the secure target state:
+//   * users/{uid}      — a user can read/write only their OWN document.
+//   * certificates/{id}— world-readable (needed by verify.js), but NO client
+//                        can create or modify one. Issue them from a Cloud
+//                        Function instead.
+//   * meta/*           — locked to the backend only.
+//   * everything else  — denied by default.
+//
+// If you deploy these AS-IS before moving issuance server-side, the current
+// browser-based certificate flow will stop working (client cert writes are
+// denied) — which is the point: it also stops anyone forging a certificate.
+// See the "TRANSITIONAL" block at the bottom if you need the old flow to keep
+// working for a short window while you build the Cloud Function.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // --- Users -------------------------------------------------------
+    // Owner-only. Stops any user reading or tampering with another user's
+    // document (their progress, exam results, or certificate flag).
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // --- Certificates ------------------------------------------------
+    // Public read so /verify/{certId} works for anyone. Writes are denied to
+    // all clients — certificates must be created by a Cloud Function (Admin
+    // SDK) after it has re-scored the exam server-side. This is what makes a
+    // certificate trustworthy.
+    match /certificates/{certId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // --- Meta (certificate counter, etc.) ----------------------------
+    // Backend only. No client read or write.
+    match /meta/{docId} {
+      allow read, write: if false;
+    }
+
+    // --- Default deny ------------------------------------------------
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
+// -------------------------------------------------------------------
+// TRANSITIONAL (NOT RECOMMENDED — forgeable):
+// If you must keep the current browser-based issuance working while you build
+// the Cloud Function, replace the certificates + meta blocks above with the
+// versions below. They constrain writes to authenticated users and basic
+// shapes, but a determined user can still mint their own certificate because
+// the score is client-computed. Remove this the moment issuance moves
+// server-side.
+//
+//   match /certificates/{certId} {
+//     allow read: if true;
+//     allow create: if request.auth != null
+//                   && request.resource.data.certId == certId
+//                   && request.resource.data.name is string
+//                   && request.resource.data.score is number;
+//     allow update, delete: if false;
+//   }
+//   match /meta/{docId} {
+//     allow read: if request.auth != null;
+//     allow write: if request.auth != null;   // needed by the cert counter txn
+//   }

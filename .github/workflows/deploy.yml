@@ -26,6 +26,17 @@ jobs:
             **/.git*
             **/.git*/**
             .github/**
+            .claude/**
+            workers/**
             README.md
+            CLAUDE.md
             **/*.m4a
             **/*.mp3
+            **/*.py
+            flask_app/**
+            docs/**
+            firestore.rules
+            filter.txt
+            error_log
+            **/*.log
+            _unlink_test.tmp

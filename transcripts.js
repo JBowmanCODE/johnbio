@@ -149,7 +149,12 @@ function handleErrorResponse(body) {
 
 function displayBlogPost(blogPost) {
     resultContent.style.display = 'block';
-    blogContainer.innerHTML = marked.parse(blogPost);
+    // Sanitise the rendered markdown: marked passes raw HTML in the source
+    // through untouched, so anything the model emits could otherwise inject.
+    const rendered = marked.parse(blogPost);
+    blogContainer.innerHTML = (typeof DOMPurify !== 'undefined')
+        ? DOMPurify.sanitize(rendered)
+        : rendered.replace(/<script[\s\S]*?<\/script>/gi, '');
     updateLoadingTextColor();
     
     const wordCount = blogPost.split(/\s+/).length;
@@ -172,7 +177,9 @@ function generateSeoPreview(blogPost) {
 
 function embedVideo() {
     const videoId = getVideoIdFromUrl(videoUrlInput.value);
-    if (videoId) {
+    // Only embed a well-formed YouTube ID (11 chars). Anything else from the
+    // URL is rejected so it can't break out of the src attribute.
+    if (videoId && /^[A-Za-z0-9_-]{11}$/.test(videoId)) {
         const videoEmbed = document.getElementById('video-embed');
         videoEmbed.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
         videoEmbed.style.display = 'block';

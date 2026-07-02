@@ -197,6 +197,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
     function displayAnalysis(analysis) {
         const parts = analysis.split(/(?=Analysis Results:|Edited Version:|Flesch Reading Ease Score:|Word Count:|Overall Feedback:)/);
         let html = '';
@@ -206,7 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
         parts.forEach(part => {
             if (part.startsWith('Analysis Results:')) {
                 const analysisContent = part.replace('Analysis Results:', '').trim();
-                const formattedAnalysis = analysisContent.replace(/(\d+\.)/g, '<br>$1');
+                // Escape the model output first, THEN add our own <br> formatting.
+                const formattedAnalysis = escapeHtml(analysisContent).replace(/(\d+\.)/g, '<br>$1');
                 html += `
                     <div class="analysis-section">
                         <h3>Analysis Results</h3>
@@ -218,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 html += `
                     <div class="edited-version-section">
                         <h3>Edited Version</h3>
-                        <pre id="edited-version">${editedVersion}</pre>
+                        <pre id="edited-version">${escapeHtml(editedVersion)}</pre>
                         <button class="copy-btn" onclick="copyToClipboard()">Copy Edited Version</button>
                     </div>
                 `;
@@ -228,8 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const [label, value] = line.split(':');
                     readabilityMetrics += `
                         <p>
-                            <strong>${label.trim()}:</strong>
-                            <span>${value ? value.trim() : ''}</span>
+                            <strong>${escapeHtml(label.trim())}:</strong>
+                            <span>${value ? escapeHtml(value.trim()) : ''}</span>
                         </p>
                     `;
                 });

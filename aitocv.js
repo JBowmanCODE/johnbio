@@ -352,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="score-text">
                         <h3>Suitability Score</h3>
-                        <p>${scoreAnalysis}</p>
+                        <p>${escapeHtml(scoreAnalysis)}</p>
                     </div>
                 </div>
             `;
@@ -360,11 +360,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (missingSkills && missingSkillsContainer) {
             missingSkillsContainer.innerHTML = `
                 <h3>Skills to Highlight</h3>
-                <p>${missingSkills.replace(/\n/g, '<br>')}</p>
+                <p>${escapeHtml(missingSkills).replace(/\n/g, '<br>')}</p>
             `;
         }
         if (interviewPrepContainer) {
-            const formatted = interviewPrepText
+            // Escape the model output first, then apply our own markdown-ish
+            // formatting so only the tags we generate reach innerHTML.
+            const formatted = escapeHtml(interviewPrepText)
                 .replace(/###\s*(.*)/g, '<h4 style="font-family:DM Serif Display,serif;font-size:1.05rem;color:#1c1917;margin:20px 0 10px;font-weight:400">$1</h4>')
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                 .replace(/^\* (.+)$/gm, '<li style="margin-bottom:6px">$1</li>')
