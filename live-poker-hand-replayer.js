@@ -570,8 +570,8 @@
       seat.style.setProperty('--y', seatY + '%');
       seat.innerHTML =
         '<span class="lpr-seat-action"></span>' +
-        '<div class="lpr-seat-name"><span class="lpr-seat-pos">' + posByName[name] + '</span>' +
-        escapeHtml(name) + '</div>' +
+        '<div class="lpr-seat-pos">' + posByName[name] + '</div>' +
+        '<div class="lpr-seat-name">' + escapeHtml(name) + '</div>' +
         '<div class="lpr-seat-stack"></div>' +
         '<div class="lpr-seat-cards"></div>';
       seatsWrap.appendChild(seat);
@@ -667,21 +667,16 @@
     return (a.type === 'bet' ? 'bets ' : 'raises to ') + fmt(a.amount);
   }
 
-  function describeStep(step) {
-    // Core descriptions use raw numbers; add the currency for cash games.
-    if (draft.gameType !== 'cash') return step.description;
-    return step.description.replace(/\b(\d[\d,]*(?:\.\d+)?)\b/g, m => {
-      return draft.currency + m;
+  // Core descriptions use raw numbers; add thousands separators for
+  // readability and the currency symbol for cash games.
+  function describeStepText(text) {
+    return text.replace(/\b(\d[\d,]*(?:\.\d+)?)\b/g, m => {
+      const formatted = Number(m.replace(/,/g, '')).toLocaleString('en-GB', { maximumFractionDigits: 2 });
+      return draft.gameType === 'cash' ? draft.currency + formatted : formatted;
     });
   }
-
-  function describeResult(state) {
-    return describeStepText(state.result.announcement);
-  }
-  function describeStepText(text) {
-    if (draft.gameType !== 'cash') return text;
-    return text.replace(/\b(\d[\d,]*(?:\.\d+)?)\b/g, m => draft.currency + m);
-  }
+  function describeStep(step) { return describeStepText(step.description); }
+  function describeResult(state) { return describeStepText(state.result.announcement); }
 
   // ── Playback controls ───────────────────────────────────────────────────────
 
