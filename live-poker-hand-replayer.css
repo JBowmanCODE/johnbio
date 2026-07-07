@@ -306,9 +306,11 @@
   text-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
 
-/* Seats — positioned by JS on an ellipse */
+/* Seats — positioned by JS on an ellipse via --x/--y custom properties */
 .lpr-seat {
   position: absolute;
+  left: var(--x);
+  top: var(--y);
   transform: translate(-50%, -50%);
   width: 118px;
   background: var(--surface-container-high);
@@ -484,7 +486,8 @@ html.lpr-embed .lpr-made-with { display: block; }
   }
   .lpr-table { aspect-ratio: 4 / 4.4; max-height: none; }
   .lpr-felt { inset: 12% 6%; }
-  .lpr-seat { width: 84px; padding: 5px 6px; }
+  /* Keep the outermost seats inside the viewport — half a seat is ~12% wide here */
+  .lpr-seat { width: 84px; padding: 5px 6px; left: clamp(12%, var(--x), 88%); }
   .lpr-seat-name { font-size: 0.7rem; }
   .lpr-seat-stack { font-size: 0.68rem; }
   .lpr-seat-cards .lpr-mini-card { min-width: 20px; height: 27px; font-size: 0.7rem; }

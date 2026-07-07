@@ -565,8 +565,9 @@
 
       const seat = document.createElement('div');
       seat.className = 'lpr-seat';
-      seat.style.left = seatX + '%';
-      seat.style.top = seatY + '%';
+      // CSS reads these so the mobile media query can clamp seats inside the viewport
+      seat.style.setProperty('--x', seatX + '%');
+      seat.style.setProperty('--y', seatY + '%');
       seat.innerHTML =
         '<span class="lpr-seat-action"></span>' +
         '<div class="lpr-seat-name"><span class="lpr-seat-pos">' + posByName[name] + '</span>' +
