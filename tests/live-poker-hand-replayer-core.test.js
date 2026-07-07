@@ -320,6 +320,123 @@ test('evaluator names hands in plain English', () => {
   );
 });
 
+// ── Task 4: winner resolution ────────────────────────────────────────────────
+
+test('showdown with known cards names the winner and the hand', () => {
+  const hand = makeHand({
+    players: [
+      { seat: 1, name: 'Sarah', stack: 200, position: 'SB', cards: ['Kh', '8h'] },
+      { seat: 2, name: 'Tom', stack: 200, position: 'BB', cards: ['Ac', 'Qd'] },
+    ],
+    board: { flop: ['Kc', '8d', '2s'], turn: '5h', river: '3c' },
+    actions: [
+      { street: 'preflop', player: 'Sarah', type: 'raise', amount: 6 },
+      { street: 'preflop', player: 'Tom', type: 'call' },
+      { street: 'flop', player: 'Tom', type: 'check' },
+      { street: 'flop', player: 'Sarah', type: 'bet', amount: 8 },
+      { street: 'flop', player: 'Tom', type: 'call' },
+      { street: 'turn', player: 'Tom', type: 'check' },
+      { street: 'turn', player: 'Sarah', type: 'check' },
+      { street: 'river', player: 'Tom', type: 'check' },
+      { street: 'river', player: 'Sarah', type: 'check' },
+    ],
+  });
+  const { steps, error } = Core.buildTimeline(hand);
+  assert.strictEqual(error, null, String(error));
+  const result = steps[steps.length - 1];
+  assert.strictEqual(result.kind, 'result');
+  assert.match(result.description, /Sarah wins 28 with two pair, kings and eights/);
+  assert.strictEqual(result.state.players.Sarah.stack, 200 + 14);
+  assert.strictEqual(result.state.players.Tom.stack, 200 - 14);
+});
+
+test('tie splits the pot', () => {
+  const hand = makeHand({
+    players: [
+      { seat: 1, name: 'A', stack: 100, position: 'SB', cards: ['Ah', 'Kd'] },
+      { seat: 2, name: 'B', stack: 100, position: 'BB', cards: ['Ad', 'Kh'] },
+    ],
+    board: { flop: ['2c', '7d', 'Jh'], turn: '3s', river: '9s' },
+    actions: [
+      { street: 'preflop', player: 'A', type: 'allin' },
+      { street: 'preflop', player: 'B', type: 'call' },
+    ],
+  });
+  const { steps, error } = Core.buildTimeline(hand);
+  assert.strictEqual(error, null, String(error));
+  const final = steps[steps.length - 1].state;
+  assert.strictEqual(final.players.A.stack, 100);
+  assert.strictEqual(final.players.B.stack, 100);
+});
+
+test('side pots pay the right players', () => {
+  // A (short, best hand) wins main pot only; B (second) takes the side pot over C.
+  const hand = makeHand({
+    players: [
+      { seat: 1, name: 'A', stack: 100, position: 'SB', cards: ['Ah', 'Ad'] },
+      { seat: 2, name: 'B', stack: 250, position: 'BB', cards: ['Kh', 'Kd'] },
+      { seat: 3, name: 'C', stack: 250, position: 'BTN', cards: ['Qh', 'Qd'] },
+    ],
+    board: { flop: ['2c', '7d', 'Jh'], turn: '3s', river: '9s' },
+    actions: [
+      { street: 'preflop', player: 'C', type: 'raise', amount: 10 },
+      { street: 'preflop', player: 'A', type: 'allin' },
+      { street: 'preflop', player: 'B', type: 'allin' },
+      { street: 'preflop', player: 'C', type: 'call' },
+    ],
+  });
+  const { steps, error } = Core.buildTimeline(hand);
+  assert.strictEqual(error, null, String(error));
+  const final = steps[steps.length - 1].state;
+  assert.strictEqual(final.players.A.stack, 300); // wins 300 main
+  assert.strictEqual(final.players.B.stack, 300); // wins 300 side
+  assert.strictEqual(final.players.C.stack, 0);
+});
+
+test('everyone folds: pot ships without showing cards', () => {
+  const hand = makeHand({
+    actions: [
+      { street: 'preflop', player: 'Hero', type: 'raise', amount: 6 },
+      { street: 'preflop', player: 'Alice', type: 'fold' },
+      { street: 'preflop', player: 'Bob', type: 'fold' },
+    ],
+  });
+  const { steps, error } = Core.buildTimeline(hand);
+  assert.strictEqual(error, null, String(error));
+  const result = steps[steps.length - 1];
+  assert.match(result.description, /Hero wins 9/);
+  assert.ok(!/with/.test(result.description)); // no hand name announced
+});
+
+test('unknown cards at showdown: last aggressor wins, winnerOverride beats that', () => {
+  const base = {
+    players: [
+      { seat: 1, name: 'A', stack: 100, position: 'SB', cards: null },
+      { seat: 2, name: 'B', stack: 100, position: 'BB', cards: null },
+    ],
+    board: { flop: ['2c', '7d', 'Jh'], turn: '3s', river: '9s' },
+    actions: [
+      { street: 'preflop', player: 'A', type: 'call' },
+      { street: 'preflop', player: 'B', type: 'check' },
+      { street: 'flop', player: 'B', type: 'check' },
+      { street: 'flop', player: 'A', type: 'bet', amount: 4 },
+      { street: 'flop', player: 'B', type: 'call' },
+      { street: 'turn', player: 'B', type: 'check' },
+      { street: 'turn', player: 'A', type: 'check' },
+      { street: 'river', player: 'B', type: 'check' },
+      { street: 'river', player: 'A', type: 'check' },
+    ],
+  };
+  const h1 = makeHand(JSON.parse(JSON.stringify(base)));
+  const r1 = Core.buildTimeline(h1);
+  assert.strictEqual(r1.error, null, String(r1.error));
+  assert.match(r1.steps[r1.steps.length - 1].description, /^A wins/); // last aggressor (flop bet)
+
+  const h2 = makeHand(Object.assign(JSON.parse(JSON.stringify(base)), { winnerOverride: 'B' }));
+  const r2 = Core.buildTimeline(h2);
+  assert.match(r2.steps[r2.steps.length - 1].description, /^B wins/);
+});
+
 test('incomplete hand reports an error naming who still has to act', () => {
   const hand = makeHand({
     actions: [{ street: 'preflop', player: 'Hero', type: 'raise', amount: 6 }],

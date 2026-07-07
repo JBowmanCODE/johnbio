@@ -494,14 +494,65 @@ const LPRCore = (function () {
   // ── Placeholder exports filled in by later tasks ────────────────────────────
 
   function resolveWinners(state, hand) {
-    // Implemented in Task 4. Minimal fold-out handling so buildTimeline works.
     const actives = activeNames(state);
     const pots = computePots(state.players);
     const total = pots.reduce((s, p) => s + p.amount, 0);
-    const winner = actives[0];
+
+    // Everyone folded — ship it, show nothing.
+    if (actives.length === 1) {
+      return {
+        winners: [{ name: actives[0], amount: total, handName: null }],
+        announcement: actives[0] + ' wins ' + total,
+        showdown: false,
+      };
+    }
+
+    const cardsByName = {};
+    for (const p of hand.players) cardsByName[p.name] = p.cards;
+    const allKnown = actives.every(n => Array.isArray(cardsByName[n]));
+
+    if (!allKnown) {
+      // Can't evaluate — use the override, else the last player who bet or raised.
+      let winner = hand.winnerOverride && actives.includes(hand.winnerOverride)
+        ? hand.winnerOverride : null;
+      if (!winner) {
+        for (const a of hand.actions) {
+          if (['bet', 'raise', 'allin'].includes(a.type) && actives.includes(a.player)) winner = a.player;
+        }
+      }
+      if (!winner) winner = actives[0];
+      return {
+        winners: [{ name: winner, amount: total, handName: null }],
+        announcement: winner + ' wins ' + total,
+        showdown: true,
+      };
+    }
+
+    const evals = {};
+    for (const n of actives) evals[n] = evaluateSeven(cardsByName[n].concat(state.board));
+
+    const won = {}; // name -> amount
+    const parts = [];
+    for (const pot of pots) {
+      const eligible = pot.eligible.filter(n => actives.includes(n));
+      let best = null;
+      for (const n of eligible) if (!best || compareEvals(evals[n], evals[best]) > 0) best = n;
+      const winners = eligible.filter(n => compareEvals(evals[n], evals[best]) === 0)
+        .sort((a, b) => state.order.indexOf(a) - state.order.indexOf(b));
+      const share = Math.floor(pot.amount / winners.length);
+      let remainder = pot.amount - share * winners.length;
+      for (const n of winners) {
+        const amount = share + (remainder-- > 0 ? 1 : 0); // odd chips to earliest position
+        won[n] = (won[n] || 0) + amount;
+      }
+      if (winners.length === 1) parts.push(winners[0] + ' wins ' + pot.amount + ' with ' + evals[winners[0]].name);
+      else parts.push(winners.join(' and ') + ' split ' + pot.amount + ' with ' + evals[winners[0]].name);
+    }
+
     return {
-      winners: [{ name: winner, amount: total, handName: null }],
-      announcement: winner + ' wins ' + total,
+      winners: Object.keys(won).map(n => ({ name: n, amount: won[n], handName: evals[n].name })),
+      announcement: parts.join('. '),
+      showdown: true,
     };
   }
 
