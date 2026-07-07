@@ -485,6 +485,31 @@ test('encoding compresses well below plain URI-encoded JSON', () => {
   assert.ok(encoded < plain * 0.6, encoded + ' should be < 60% of ' + plain);
 });
 
+// ── Builder support: allowIncomplete mode ───────────────────────────────────
+
+test('allowIncomplete: mid-street partial hand returns who is to act', () => {
+  const hand = makeHand({
+    actions: [{ street: 'preflop', player: 'Hero', type: 'raise', amount: 6 }],
+  });
+  const res = Core.buildTimeline(hand, { allowIncomplete: true });
+  assert.strictEqual(res.error, null);
+  assert.strictEqual(res.incomplete, true);
+  assert.strictEqual(res.state.toAct, 'Alice');
+});
+
+test('allowIncomplete: closed street without board cards asks for them', () => {
+  const hand = makeHand({
+    actions: [
+      { street: 'preflop', player: 'Hero', type: 'call' },
+      { street: 'preflop', player: 'Alice', type: 'fold' },
+      { street: 'preflop', player: 'Bob', type: 'check' },
+    ],
+  });
+  const res = Core.buildTimeline(hand, { allowIncomplete: true });
+  assert.strictEqual(res.error, null);
+  assert.strictEqual(res.needsBoard, 'flop');
+});
+
 test('incomplete hand reports an error naming who still has to act', () => {
   const hand = makeHand({
     actions: [{ street: 'preflop', player: 'Hero', type: 'raise', amount: 6 }],

@@ -352,7 +352,10 @@ const LPRCore = (function () {
 
   // Returns { steps, error }. Each step: { kind, description, state } where state
   // is a full snapshot for the replay to render. Kinds: post | action | deal | result.
-  function buildTimeline(hand) {
+  // With opts.allowIncomplete the builder can feed a partial hand and gets back
+  // { incomplete: true, needsBoard?, state } instead of an error.
+  function buildTimeline(hand, opts) {
+    opts = opts || {};
     const shapeErrors = validateShape(hand);
     if (shapeErrors.length) return { steps: [], error: shapeErrors[0] };
 
@@ -381,6 +384,10 @@ const LPRCore = (function () {
 
     // Run out any remaining board when betting is over (all-ins) or hand complete
     while (state.readyToAdvance) {
+      const nextStreet = STREETS[STREETS.indexOf(state.street) + 1];
+      if (opts.allowIncomplete && !boardFor(hand, nextStreet)) {
+        return { steps, error: null, incomplete: true, needsBoard: nextStreet, state };
+      }
       const err = dealNext();
       if (err) return { steps, error: err };
       if (!state.toAct && state.street === 'river' && state.needToAct.length === 0) {
@@ -389,6 +396,7 @@ const LPRCore = (function () {
     }
 
     if (!state.complete) {
+      if (opts.allowIncomplete) return { steps, error: null, incomplete: true, state };
       const who = state.toAct ? ' — ' + state.toAct + ' still has to act' : '';
       return { steps, error: 'The hand ends before the betting finished' + who };
     }
@@ -697,7 +705,7 @@ const LPRCore = (function () {
 
   return {
     RANKS, SUITS, STREETS, POSITIONS_BY_COUNT,
-    isValidCard, validateHand, buildTimeline, legalActions, computePots,
+    isValidCard, validateHand, validateShape, buildTimeline, legalActions, computePots,
     initialState, applyAction, evaluateSeven, compareEvals,
     encodeHand, decodeHand,
   };
