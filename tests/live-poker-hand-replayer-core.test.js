@@ -437,6 +437,54 @@ test('unknown cards at showdown: last aggressor wins, winnerOverride beats that'
   assert.match(r2.steps[r2.steps.length - 1].description, /^B wins/);
 });
 
+// ── Task 5: share codec ──────────────────────────────────────────────────────
+
+test('encodeHand/decodeHand round-trips a full 9-player hand', () => {
+  const positions = Core.POSITIONS_BY_COUNT[9];
+  const hand = makeHand({
+    gameType: 'tournament',
+    blinds: { sb: 100, bb: 200, ante: 25, straddle: 0 },
+    players: positions.map((pos, i) => ({
+      seat: i + 1,
+      name: 'Player ' + (i + 1),
+      stack: 10000 + i * 500,
+      position: pos,
+      cards: i === 8 ? ['As', 'Kc'] : null,
+      isHero: i === 8,
+    })),
+    board: { flop: ['7c', '8d', '2s'], turn: 'Qh', river: '3c' },
+    actions: [
+      { street: 'preflop', player: 'Player 3', type: 'raise', amount: 500 },
+      { street: 'preflop', player: 'Player 4', type: 'fold' },
+    ],
+    winnerOverride: 'Player 3',
+  });
+  const encoded = Core.encodeHand(hand);
+  assert.match(encoded, /^[A-Za-z0-9_-]+$/, 'URL-safe alphabet, no escaping needed');
+  assert.deepStrictEqual(Core.decodeHand(encoded), hand);
+});
+
+test('decodeHand returns null on garbage', () => {
+  assert.strictEqual(Core.decodeHand('not!a$valid%hash'), null);
+  assert.strictEqual(Core.decodeHand(''), null);
+  assert.strictEqual(Core.decodeHand('AAAAAAAA'), null);
+});
+
+test('encoding compresses well below plain URI-encoded JSON', () => {
+  const positions = Core.POSITIONS_BY_COUNT[9];
+  const hand = makeHand({
+    players: positions.map((pos, i) => ({
+      seat: i + 1, name: 'Player ' + (i + 1), stack: 20000, position: pos, cards: null, isHero: false,
+    })),
+    actions: Array.from({ length: 20 }, (_, i) => ({
+      street: 'preflop', player: 'Player ' + ((i % 9) + 1), type: 'fold',
+    })),
+  });
+  const plain = encodeURIComponent(JSON.stringify(hand)).length;
+  const encoded = Core.encodeHand(hand).length;
+  assert.ok(encoded < plain * 0.6, encoded + ' should be < 60% of ' + plain);
+});
+
 test('incomplete hand reports an error naming who still has to act', () => {
   const hand = makeHand({
     actions: [{ street: 'preflop', player: 'Hero', type: 'raise', amount: 6 }],

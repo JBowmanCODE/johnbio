@@ -556,10 +556,150 @@ const LPRCore = (function () {
     };
   }
 
+  // ── Share codec ─────────────────────────────────────────────────────────────
+  // LZW over UTF-8 bytes with variable-width codes (9 bits up), bit-packed and
+  // base64url-encoded. Self-contained so share links need no server and no CDN.
+
+  const B64_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+  const MAX_DICT = 1 << 16;
+
+  function bytesToB64url(bytes) {
+    let out = '';
+    for (let i = 0; i < bytes.length; i += 3) {
+      const b0 = bytes[i], b1 = bytes[i + 1], b2 = bytes[i + 2];
+      out += B64_ALPHABET[b0 >> 2];
+      out += B64_ALPHABET[((b0 & 3) << 4) | ((b1 || 0) >> 4)];
+      if (b1 === undefined) break;
+      out += B64_ALPHABET[((b1 & 15) << 2) | ((b2 || 0) >> 6)];
+      if (b2 === undefined) break;
+      out += B64_ALPHABET[b2 & 63];
+    }
+    return out;
+  }
+
+  function b64urlToBytes(str) {
+    const vals = [];
+    for (const ch of str) {
+      const v = B64_ALPHABET.indexOf(ch);
+      if (v === -1) throw new Error('bad char');
+      vals.push(v);
+    }
+    const bytes = [];
+    for (let i = 0; i < vals.length; i += 4) {
+      const v0 = vals[i], v1 = vals[i + 1], v2 = vals[i + 2], v3 = vals[i + 3];
+      if (v1 === undefined) break;
+      bytes.push((v0 << 2) | (v1 >> 4));
+      if (v2 === undefined) break;
+      bytes.push(((v1 & 15) << 4) | (v2 >> 2));
+      if (v3 === undefined) break;
+      bytes.push(((v2 & 3) << 6) | v3);
+    }
+    return bytes;
+  }
+
+  function lzwCompress(bytes) {
+    const dict = new Map();
+    for (let i = 0; i < 256; i++) dict.set(String.fromCharCode(i), i);
+    let nextCode = 256;
+    let width = 9;
+    const out = [];
+    let bitBuf = 0, bitCount = 0;
+
+    function writeCode(code) {
+      for (let i = width - 1; i >= 0; i--) {
+        bitBuf = (bitBuf << 1) | ((code >> i) & 1);
+        if (++bitCount === 8) { out.push(bitBuf & 0xff); bitBuf = 0; bitCount = 0; }
+      }
+    }
+
+    let w = '';
+    for (const b of bytes) {
+      const ch = String.fromCharCode(b);
+      const wc = w + ch;
+      if (dict.has(wc)) { w = wc; continue; }
+      writeCode(dict.get(w));
+      if (nextCode < MAX_DICT) {
+        dict.set(wc, nextCode++);
+        if (nextCode === (1 << width) && width < 16) width++;
+      }
+      w = ch;
+    }
+    if (w) writeCode(dict.get(w));
+    if (bitCount > 0) out.push((bitBuf << (8 - bitCount)) & 0xff);
+    return out;
+  }
+
+  function lzwDecompress(bytes) {
+    const dict = [];
+    for (let i = 0; i < 256; i++) dict[i] = String.fromCharCode(i);
+    let nextCode = 256;
+    let width = 9;
+    let bitPos = 0;
+    const totalBits = bytes.length * 8;
+
+    function readCode() {
+      if (bitPos + width > totalBits) return -1;
+      let code = 0;
+      for (let i = 0; i < width; i++) {
+        code = (code << 1) | ((bytes[bitPos >> 3] >> (7 - (bitPos & 7))) & 1);
+        bitPos++;
+      }
+      return code;
+    }
+
+    const first = readCode();
+    if (first === -1) return '';
+    if (first > 255) throw new Error('bad stream');
+    let prev = dict[first];
+    let out = prev;
+
+    for (;;) {
+      // The decoder's table runs one entry behind the encoder's, so grow the
+      // width one code early to stay in sync.
+      if (nextCode + 1 === (1 << width) && width < 16) width++;
+      const code = readCode();
+      if (code === -1) break;
+      let entry;
+      if (code < nextCode) entry = dict[code];
+      else if (code === nextCode) entry = prev + prev[0];
+      else throw new Error('bad stream');
+      out += entry;
+      if (nextCode < MAX_DICT) dict[nextCode++] = prev + entry[0];
+      prev = entry;
+    }
+    return out;
+  }
+
+  function encodeHand(hand) {
+    const json = JSON.stringify({ v: 1, h: hand });
+    const utf8 = typeof TextEncoder !== 'undefined'
+      ? Array.from(new TextEncoder().encode(json))
+      : Array.from(Buffer.from(json, 'utf8'));
+    return bytesToB64url(lzwCompress(utf8));
+  }
+
+  function decodeHand(str) {
+    if (!str || typeof str !== 'string') return null;
+    try {
+      const byteStr = lzwDecompress(b64urlToBytes(str));
+      const bytes = new Uint8Array(byteStr.length);
+      for (let i = 0; i < byteStr.length; i++) bytes[i] = byteStr.charCodeAt(i);
+      const json = typeof TextDecoder !== 'undefined'
+        ? new TextDecoder('utf-8', { fatal: true }).decode(bytes)
+        : Buffer.from(bytes).toString('utf8');
+      const obj = JSON.parse(json);
+      if (!obj || obj.v !== 1 || !obj.h || typeof obj.h !== 'object') return null;
+      return obj.h;
+    } catch (e) {
+      return null;
+    }
+  }
+
   return {
     RANKS, SUITS, STREETS, POSITIONS_BY_COUNT,
     isValidCard, validateHand, buildTimeline, legalActions, computePots,
     initialState, applyAction, evaluateSeven, compareEvals,
+    encodeHand, decodeHand,
   };
 })();
 
