@@ -422,6 +422,64 @@ const LPRCore = (function () {
     }
   }
 
+  // ── Hand evaluator ──────────────────────────────────────────────────────────
+
+  const RANK_VALUE = {};
+  RANKS.split('').forEach((r, i) => { RANK_VALUE[r] = i + 2; });
+  const SINGULAR = { 2: 'deuce', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten', 11: 'jack', 12: 'queen', 13: 'king', 14: 'ace' };
+  const PLURAL = { 2: 'deuces', 3: 'threes', 4: 'fours', 5: 'fives', 6: 'sixes', 7: 'sevens', 8: 'eights', 9: 'nines', 10: 'tens', 11: 'jacks', 12: 'queens', 13: 'kings', 14: 'aces' };
+
+  function evaluateFive(cards) {
+    const vals = cards.map(c => RANK_VALUE[c[0]]).sort((a, b) => b - a);
+    const isFlush = cards.every(c => c[1] === cards[0][1]);
+
+    let straightHigh = 0;
+    const unique = [...new Set(vals)];
+    if (unique.length === 5) {
+      if (unique[0] - unique[4] === 4) straightHigh = unique[0];
+      else if (unique[0] === 14 && unique[1] === 5 && unique[4] === 2) straightHigh = 5; // wheel
+    }
+
+    const counts = {};
+    for (const v of vals) counts[v] = (counts[v] || 0) + 1;
+    // Group ranks by count desc, then rank desc — this IS the tiebreak order.
+    const groups = Object.keys(counts).map(Number)
+      .sort((a, b) => counts[b] - counts[a] || b - a);
+    const shape = groups.map(g => counts[g]).join('');
+
+    if (isFlush && straightHigh) {
+      return { rank: 8, tiebreak: [straightHigh], name: straightHigh === 14 ? 'a royal flush' : 'a straight flush, ' + SINGULAR[straightHigh] + ' high' };
+    }
+    if (shape === '41') return { rank: 7, tiebreak: groups, name: 'four of a kind, ' + PLURAL[groups[0]] };
+    if (shape === '32') return { rank: 6, tiebreak: groups, name: 'a full house, ' + PLURAL[groups[0]] + ' full of ' + PLURAL[groups[1]] };
+    if (isFlush) return { rank: 5, tiebreak: vals, name: 'a flush, ' + SINGULAR[vals[0]] + ' high' };
+    if (straightHigh) return { rank: 4, tiebreak: [straightHigh], name: 'a straight, ' + SINGULAR[straightHigh] + ' high' };
+    if (shape === '311') return { rank: 3, tiebreak: groups, name: 'three of a kind, ' + PLURAL[groups[0]] };
+    if (shape === '221') return { rank: 2, tiebreak: groups, name: 'two pair, ' + PLURAL[groups[0]] + ' and ' + PLURAL[groups[1]] };
+    if (shape === '2111') return { rank: 1, tiebreak: groups, name: 'a pair of ' + PLURAL[groups[0]] };
+    return { rank: 0, tiebreak: vals, name: 'high card ' + SINGULAR[vals[0]] };
+  }
+
+  function compareEvals(a, b) {
+    if (a.rank !== b.rank) return a.rank - b.rank;
+    for (let i = 0; i < a.tiebreak.length; i++) {
+      if (a.tiebreak[i] !== b.tiebreak[i]) return a.tiebreak[i] - b.tiebreak[i];
+    }
+    return 0;
+  }
+
+  function evaluateSeven(cards) {
+    let best = null;
+    for (let a = 0; a < 7; a++) {
+      for (let b = a + 1; b < 7; b++) {
+        const five = cards.filter((_, i) => i !== a && i !== b);
+        const ev = evaluateFive(five);
+        if (!best || compareEvals(ev, best) > 0) best = ev;
+      }
+    }
+    return best;
+  }
+
   // ── Public validation (shape + full legality via the engine) ───────────────
 
   function validateHand(hand) {
@@ -450,7 +508,7 @@ const LPRCore = (function () {
   return {
     RANKS, SUITS, STREETS, POSITIONS_BY_COUNT,
     isValidCard, validateHand, buildTimeline, legalActions, computePots,
-    initialState, applyAction,
+    initialState, applyAction, evaluateSeven, compareEvals,
   };
 })();
 

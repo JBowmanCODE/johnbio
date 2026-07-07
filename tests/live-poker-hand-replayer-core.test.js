@@ -261,6 +261,65 @@ test('board runs out automatically when everyone is all-in', () => {
   assert.strictEqual(steps[steps.length - 1].kind, 'result');
 });
 
+// ── Task 3: hand evaluator ───────────────────────────────────────────────────
+
+function beats(a, b) {
+  const ra = Core.evaluateSeven(a), rb = Core.evaluateSeven(b);
+  return Core.compareEvals(ra, rb) > 0;
+}
+
+test('evaluateSeven ranks categories in the right order', () => {
+  const royal = ['Ah', 'Kh', 'Qh', 'Jh', 'Th', '2c', '3d'];
+  const straightFlush = ['9h', '8h', '7h', '6h', '5h', '2c', '3d'];
+  const quads = ['Ac', 'Ad', 'Ah', 'As', '5h', '2c', '3d'];
+  const fullHouse = ['Kc', 'Kd', 'Kh', '8s', '8h', '2c', '3d'];
+  const flush = ['Ah', 'Jh', '8h', '5h', '2h', 'Kc', '3d'];
+  const straight = ['9h', '8c', '7d', '6s', '5h', 'Kc', '2d'];
+  const trips = ['Qc', 'Qd', 'Qh', '8s', '5h', '2c', '3d'];
+  const twoPair = ['Kc', 'Kd', '8h', '8s', '5h', '2c', '3d'];
+  const pair = ['Kc', 'Kd', '9h', '8s', '5h', '2c', '3d'];
+  const high = ['Ac', 'Kd', '9h', '8s', '5h', '2c', '3d'];
+  const ladder = [royal, straightFlush, quads, fullHouse, flush, straight, trips, twoPair, pair, high];
+  for (let i = 0; i < ladder.length - 1; i++) {
+    assert.ok(beats(ladder[i], ladder[i + 1]), 'rung ' + i + ' should beat rung ' + (i + 1));
+  }
+});
+
+test('evaluateSeven finds the wheel straight (A-5)', () => {
+  const wheel = Core.evaluateSeven(['Ah', '2c', '3d', '4s', '5h', 'Kc', 'Kd']);
+  assert.strictEqual(wheel.rank, 4); // straight
+  assert.ok(/five high/.test(wheel.name), wheel.name);
+});
+
+test('kickers break ties', () => {
+  assert.ok(beats(
+    ['Ac', 'Ad', 'Kh', '8s', '5h', '2c', '3d'],   // aces, king kicker
+    ['Ah', 'As', 'Qh', '8c', '5d', '2s', '3h']    // aces, queen kicker
+  ));
+});
+
+test('board plays: identical best fives compare equal', () => {
+  const board = ['Ah', 'Kh', 'Qh', 'Jh', 'Th'];
+  const a = Core.evaluateSeven(board.concat(['2c', '3d']));
+  const b = Core.evaluateSeven(board.concat(['7s', '8s']));
+  assert.strictEqual(Core.compareEvals(a, b), 0);
+});
+
+test('evaluator names hands in plain English', () => {
+  assert.strictEqual(
+    Core.evaluateSeven(['Kc', 'Kd', '8h', '8s', '5h', '2c', '3d']).name,
+    'two pair, kings and eights'
+  );
+  assert.strictEqual(
+    Core.evaluateSeven(['Kc', 'Kd', 'Kh', '8s', '8h', '2c', '3d']).name,
+    'a full house, kings full of eights'
+  );
+  assert.strictEqual(
+    Core.evaluateSeven(['Ah', 'Kh', 'Qh', 'Jh', 'Th', '2c', '3d']).name,
+    'a royal flush'
+  );
+});
+
 test('incomplete hand reports an error naming who still has to act', () => {
   const hand = makeHand({
     actions: [{ street: 'preflop', player: 'Hero', type: 'raise', amount: 6 }],
