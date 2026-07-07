@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Poker Hand Replayer - JohnB.io</title>
+
+  <!-- Embed mode: hide site chrome before first paint -->
+  <script>
+    if (new URLSearchParams(location.search).get('embed') === '1') {
+      document.documentElement.classList.add('lpr-embed');
+    }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css?v=3">
+  <link rel="stylesheet" href="/header.css?v=4">
+  <link rel="stylesheet" href="/footer.css?v=2">
+  <link rel="stylesheet" href="/live-poker-hand-replayer.css?v=1">
+
+  <!-- SEO -->
+  <meta name="description" content="Replay live poker hands on an animated table. Type your hand or paste notes, then watch every action, share a link, or embed it.">
+  <meta name="keywords" content="poker hand replayer, live poker hand replay, replay poker hands, poker hand history viewer, poker replayer online, share poker hands">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/live-poker-hand-replayer">
+  <meta name="author" content="John Bowman">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Live Poker Hand Replayer">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/live-poker-hand-replayer">
+  <meta property="og:description" content="Replay live poker hands on an animated table. Type your hand or paste notes, then watch every action, share a link, or embed it.">
+  <meta property="og:image" content="https://johnb.io/images/live_poker_hand_replayer_og.webp">
+  <meta property="og:image:width" content="770">
+  <meta property="og:image:height" content="430">
+  <meta property="og:image:alt" content="Live Poker Hand Replayer tool by JohnB.io">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Live Poker Hand Replayer - JohnB.io">
+  <meta name="twitter:description" content="Replay live poker hands on an animated table. Share a link or embed the replay anywhere.">
+  <meta name="twitter:image" content="https://johnb.io/images/live_poker_hand_replayer_og.webp">
+  <meta name="twitter:image:alt" content="Live Poker Hand Replayer tool by JohnB.io">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Live Poker Hand Replayer",
+    "url": "https://johnb.io/live-poker-hand-replayer",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "description": "Replay live No Limit Hold'em poker hands on an animated table. Build the hand in a guided form or paste your notes, then watch every action, share a link, or embed the replay.",
+    "image": "https://johnb.io/images/live_poker_hand_replayer_og.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does the Live Poker Hand Replayer do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It turns a poker hand you describe into an animated replay on a virtual table. You see every player's name, chip stack and position, then step through each bet, call, raise and fold street by street, right up to the showdown."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Live Poker Hand Replayer free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Building hands with the form, replaying, sharing and embedding are free with no limits. The AI note parser is also free but capped at 5 hands per day to keep the tool running."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I share a replay with friends?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Every replay gets a share link that contains the whole hand, so anyone who opens it sees the same replay. You can also copy an embed code to drop the replay into a forum post, blog or website."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if the AI can't read my notes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You never lose your work. Whatever the AI did manage to understand is loaded into the hand builder form, with a note on what's missing, so you fill in the gaps rather than starting again."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which poker games does it support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No Limit Hold'em with 2 to 9 players, as a cash game or a tournament hand. Antes and straddles are supported, and all-ins with side pots are worked out automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you store my hands anywhere?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The hand lives inside the share link itself, compressed into the address. There is no database and no account, so nothing is stored on a server and links keep working forever."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main class="lpr-wrap" id="main-content">
+
+    <div class="lpr-hero">
+      <h1 class="lpr-title">Live Poker <span class="lpr-gradient">Hand Replayer</span></h1>
+      <p class="lpr-desc">Turn any live hand into an animated replay. Build it step by step or paste your notes and let AI do the typing - then watch it play out, share the link, or embed it anywhere.</p>
+    </div>
+
+    <!-- ── Input card ─────────────────────────────────────────────── -->
+    <div class="lpr-card" id="lpr-input-card">
+
+      <div class="lpr-tabs" role="tablist" aria-label="How to enter your hand">
+        <button class="lpr-tab active" id="lpr-tab-build" role="tab" aria-selected="true" aria-controls="lpr-panel-build">
+          <span class="material-symbols-outlined" aria-hidden="true">edit_note</span> Build the hand
+        </button>
+        <button class="lpr-tab" id="lpr-tab-paste" role="tab" aria-selected="false" aria-controls="lpr-panel-paste">
+          <span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span> Paste your notes
+        </button>
+      </div>
+
+      <!-- Build panel: step 1 setup -->
+      <div class="lpr-panel" id="lpr-panel-build" role="tabpanel" aria-labelledby="lpr-tab-build">
+        <div id="lpr-setup">
+          <div class="lpr-form-row">
+            <div class="lpr-field">
+              <label for="lpr-game-type">Game</label>
+              <select id="lpr-game-type">
+                <option value="cash">Cash game</option>
+                <option value="tournament">Tournament</option>
+              </select>
+            </div>
+            <div class="lpr-field" id="lpr-currency-field">
+              <label for="lpr-currency">Currency</label>
+              <select id="lpr-currency">
+                <option value="$">$</option>
+                <option value="£">£</option>
+                <option value="€">€</option>
+              </select>
+            </div>
+            <div class="lpr-field">
+              <label for="lpr-sb">Small blind</label>
+              <input type="number" id="lpr-sb" min="0.01" step="any" value="1" inputmode="decimal">
+            </div>
+            <div class="lpr-field">
+              <label for="lpr-bb">Big blind</label>
+              <input type="number" id="lpr-bb" min="0.01" step="any" value="2" inputmode="decimal">
+            </div>
+            <div class="lpr-field">
+              <label for="lpr-ante">Ante <span class="lpr-optional">(optional)</span></label>
+              <input type="number" id="lpr-ante" min="0" step="any" value="0" inputmode="decimal">
+            </div>
+            <div class="lpr-field">
+              <label for="lpr-straddle">Straddle <span class="lpr-optional">(optional)</span></label>
+              <input type="number" id="lpr-straddle" min="0" step="any" value="0" inputmode="decimal">
+            </div>
+            <div class="lpr-field">
+              <label for="lpr-player-count">Players</label>
+              <select id="lpr-player-count">
+                <option>2</option><option>3</option><option>4</option><option>5</option>
+                <option selected>6</option><option>7</option><option>8</option><option>9</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="lpr-players-head" aria-hidden="true">
+            <span>Position</span><span>Name</span><span>Stack</span><span>Cards</span>
+          </div>
+          <div id="lpr-players"></div>
+
+          <div class="lpr-error" id="lpr-setup-error" role="alert"></div>
+
+          <button class="lpr-primary-btn" id="lpr-to-actions">
+            <span class="material-symbols-outlined" aria-hidden="true">playing_cards</span>
+            Continue to the action
+          </button>
+        </div>
+
+        <!-- Build panel: step 2 actions -->
+        <div id="lpr-actions" hidden>
+          <div class="lpr-action-status">
+            <span class="lpr-street-tag" id="lpr-street-tag">Preflop</span>
+            <span class="lpr-pot-readout">Pot: <strong id="lpr-pot-readout">0</strong></span>
+          </div>
+          <div class="lpr-board-readout" id="lpr-board-readout" aria-label="Community cards so far"></div>
+          <p class="lpr-turn-line" id="lpr-turn-line"></p>
+          <div class="lpr-action-buttons" id="lpr-action-buttons"></div>
+          <div class="lpr-board-prompt" id="lpr-board-prompt" hidden></div>
+          <div class="lpr-error" id="lpr-action-error" role="alert"></div>
+          <ol class="lpr-history" id="lpr-history" aria-label="Actions so far"></ol>
+          <div class="lpr-action-footer">
+            <button class="lpr-ghost-btn" id="lpr-undo">
+              <span class="material-symbols-outlined" aria-hidden="true">undo</span> Undo
+            </button>
+            <button class="lpr-ghost-btn" id="lpr-back-to-setup">
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span> Back to setup
+            </button>
+            <button class="lpr-primary-btn" id="lpr-watch" hidden>
+              <span class="material-symbols-outlined" aria-hidden="true">play_circle</span> Watch the replay
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paste panel -->
+      <div class="lpr-panel" id="lpr-panel-paste" role="tabpanel" aria-labelledby="lpr-tab-paste" hidden>
+        <label class="lpr-paste-label" for="lpr-notes">Paste your hand notes in any style. Include blinds, stacks, positions and the action - the AI sorts out the rest.</label>
+        <textarea id="lpr-notes" rows="8" maxlength="5000" placeholder="e.g. 1/2 live, I'm on the button with KhKd, 300 deep. UTG (250) raises to 10, I 3-bet to 35, blinds fold, UTG calls. Flop 7c 8d 2s, he checks, I bet 40, he shoves, I call. He shows 88. Turn Qh, river 3c."></textarea>
+        <div class="lpr-paste-meta">
+          <span id="lpr-char-count">0 / 5,000</span>
+          <span class="lpr-quota-note">5 free AI parses per day</span>
+        </div>
+        <div class="lpr-error" id="lpr-paste-error" role="alert"></div>
+        <button class="lpr-primary-btn" id="lpr-parse">
+          <span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span>
+          <span id="lpr-parse-label">Build my replay</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Replay ─────────────────────────────────────────────────── -->
+    <section class="lpr-replay" id="lpr-replay" hidden aria-label="Hand replay">
+      <div class="lpr-table-wrap">
+        <div class="lpr-table" id="lpr-table">
+          <div class="lpr-felt">
+            <div class="lpr-board" id="lpr-board"></div>
+            <div class="lpr-pot" id="lpr-pot"></div>
+            <div class="lpr-announce" id="lpr-announce"></div>
+          </div>
+          <div class="lpr-seats" id="lpr-seats"></div>
+        </div>
+      </div>
+
+      <p class="lpr-step-desc" id="lpr-step-desc" aria-live="polite"></p>
+
+      <div class="lpr-controls" role="group" aria-label="Replay controls">
+        <button class="lpr-ctrl-btn" id="lpr-prev" aria-label="Previous action">
+          <span class="material-symbols-outlined" aria-hidden="true">skip_previous</span>
+        </button>
+        <button class="lpr-ctrl-btn lpr-play" id="lpr-play" aria-label="Play replay">
+          <span class="material-symbols-outlined" aria-hidden="true" id="lpr-play-icon">play_arrow</span>
+        </button>
+        <button class="lpr-ctrl-btn" id="lpr-next" aria-label="Next action">
+          <span class="material-symbols-outlined" aria-hidden="true">skip_next</span>
+        </button>
+        <div class="lpr-speed-btns" role="group" aria-label="Playback speed">
+          <button class="lpr-speed-btn active" data-speed="1">1x</button>
+          <button class="lpr-speed-btn" data-speed="1.5">1.5x</button>
+          <button class="lpr-speed-btn" data-speed="2">2x</button>
+        </div>
+        <span class="lpr-progress" id="lpr-progress"></span>
+      </div>
+
+      <div class="lpr-share" id="lpr-share">
+        <button class="lpr-ghost-btn" id="lpr-copy-link">
+          <span class="material-symbols-outlined" aria-hidden="true">link</span> Copy share link
+        </button>
+        <button class="lpr-ghost-btn" id="lpr-show-embed">
+          <span class="material-symbols-outlined" aria-hidden="true">code</span> Embed
+        </button>
+        <button class="lpr-ghost-btn" id="lpr-edit-hand">
+          <span class="material-symbols-outlined" aria-hidden="true">edit</span> Edit this hand
+        </button>
+        <button class="lpr-ghost-btn" id="lpr-new-hand">
+          <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span> New hand
+        </button>
+      </div>
+      <div class="lpr-embed-box" id="lpr-embed-box" hidden>
+        <label for="lpr-embed-code">Copy this code into your site or forum post:</label>
+        <textarea id="lpr-embed-code" rows="4" readonly></textarea>
+        <button class="lpr-ghost-btn" id="lpr-copy-embed">
+          <span class="material-symbols-outlined" aria-hidden="true">content_copy</span> Copy embed code
+        </button>
+      </div>
+      <a class="lpr-made-with" href="https://johnb.io/live-poker-hand-replayer" target="_blank" rel="noopener">Made with JohnB.io</a>
+    </section>
+
+    <!-- ── Accordions ─────────────────────────────────────────────── -->
+    <section class="lpr-info">
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <h3>What does the Live Poker Hand Replayer do?</h3>
+            <p>It turns a poker hand you describe into an animated replay on a virtual table. You see every player's name, chip stack and position, then step through each bet, call, raise and fold street by street, right up to the showdown.</p>
+            <h3>Is the Live Poker Hand Replayer free?</h3>
+            <p>Yes. Building hands with the form, replaying, sharing and embedding are free with no limits. The AI note parser is also free but capped at 5 hands per day to keep the tool running.</p>
+            <h3>Can I share a replay with friends?</h3>
+            <p>Yes. Every replay gets a share link that contains the whole hand, so anyone who opens it sees the same replay. You can also copy an embed code to drop the replay into a forum post, blog or website.</p>
+            <h3>What happens if the AI can't read my notes?</h3>
+            <p>You never lose your work. Whatever the AI did manage to understand is loaded into the hand builder form, with a note on what's missing, so you fill in the gaps rather than starting again.</p>
+            <h3>Which poker games does it support?</h3>
+            <p>No Limit Hold'em with 2 to 9 players, as a cash game or a tournament hand. Antes and straddles are supported, and all-ins with side pots are worked out automatically.</p>
+            <h3>Do you store my hands anywhere?</h3>
+            <p>No. The hand lives inside the share link itself, compressed into the address. There is no database and no account, so nothing is stored on a server and links keep working forever.</p>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Enter the hand.</strong> Use the builder to set blinds, players, stacks and cards, then tap the action as it happened - the tool only ever offers legal moves. Or paste your written notes and let the AI build the hand for you.</li>
+              <li><strong>Watch the replay.</strong> The hand plays out on the table: chips slide in, streets are dealt, stacks update. Step forward and back through every decision or let it auto-play at 1x, 1.5x or 2x.</li>
+              <li><strong>See the result.</strong> At showdown the tool ranks the hands, names the winner ("two pair, kings and eights") and ships the pot - side pots and split pots included.</li>
+              <li><strong>Share it.</strong> Copy a link that holds the entire hand, or grab the embed code and put the replay in a forum thread or on your own site.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>Built for live hands.</strong> No hand history files needed - if you can describe the hand, you can replay it.</li>
+              <li><strong>Poker-correct.</strong> Turn order, minimum raises, all-ins, side pots and split pots all follow the rules automatically.</li>
+              <li><strong>Nothing stored.</strong> The whole hand is compressed into the share link - no server, no database, no account.</li>
+              <li><strong>Embeds anywhere.</strong> The iframe embed works on forums, blogs and coaching sites.</li>
+              <li><strong>2 to 9 players.</strong> Heads-up to full ring, cash or tournament, with antes and straddles.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources & Further Reading</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://www.pokertda.com/poker-tda-rules/" target="_blank" rel="noopener noreferrer">Poker TDA Rules — the tournament rules this tool's betting logic follows</a>.</li>
+              <li><a href="https://en.wikipedia.org/wiki/List_of_poker_hands" target="_blank" rel="noopener noreferrer">List of poker hands — standard hand rankings used at showdown</a>.</li>
+              <li><a href="https://en.wikipedia.org/wiki/Betting_in_poker#Side_pots" target="_blank" rel="noopener noreferrer">Side pots — how all-in pots are split among players</a>.</li>
+              <li><a href="/bankroll">Bankroll Calculator</a> — related poker tool on this site.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </section>
+  </main>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js?v=5" defer></script>
+  <script src="/live-poker-hand-replayer-core.js?v=1" defer></script>
+  <script src="/live-poker-hand-replayer.js?v=1" defer></script>
+
+  <script>
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
