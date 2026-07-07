@@ -1,9 +1,11 @@
 /* Live Poker Hand Replayer */
 
 .lpr-wrap {
+  position: relative; z-index: 1;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 48px 20px 80px;
+  /* 120px top clears the fixed site header — same offset as other tool pages */
+  padding: 120px 20px 5rem;
 }
 
 /* ── Hero ── */
@@ -475,7 +477,7 @@ html.lpr-embed .lpr-made-with { display: block; }
 
 /* ── Responsive ── */
 @media (max-width: 700px) {
-  .lpr-wrap { padding: 28px 12px 60px; }
+  .lpr-wrap { padding: 80px 12px 3rem; }
   .lpr-card { padding: 16px; }
   .lpr-players-head { display: none; }
   .lpr-player-row {
