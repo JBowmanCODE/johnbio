@@ -110,7 +110,10 @@ RewriteRule ^(.*)$ $1.html [L]
 
 # Security headers
 <IfModule mod_headers.c>
-    Header set X-Frame-Options "SAMEORIGIN"
+    # The poker replayer is embeddable by design (iframe embed code), so it is
+    # exempt from X-Frame-Options. Everything else stays SAMEORIGIN.
+    SetEnvIf Request_URI "^/live-poker-hand-replayer" LPR_EMBEDDABLE
+    Header set X-Frame-Options "SAMEORIGIN" env=!LPR_EMBEDDABLE
     Header set X-Content-Type-Options "nosniff"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"

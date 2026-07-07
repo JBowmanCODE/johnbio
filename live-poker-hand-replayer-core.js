@@ -678,8 +678,62 @@ const LPRCore = (function () {
     return out;
   }
 
+  // The hand is packed into positional tuples before compression — player
+  // indexes instead of repeated names, numeric codes for streets and action
+  // types. This keeps share links roughly 5x shorter than compressed JSON.
+  const ACTION_TYPES = ['fold', 'check', 'call', 'bet', 'raise', 'allin'];
+
+  function packHand(hand) {
+    const positions = POSITIONS_BY_COUNT[hand.players.length] || [];
+    const names = hand.players.map(p => p.name);
+    const cardsStr = c => (Array.isArray(c) ? c.join('') : 0);
+    return [
+      2, // format version
+      hand.gameType === 'tournament' ? 1 : 0,
+      hand.currency || '$',
+      [hand.blinds.sb, hand.blinds.bb, hand.blinds.ante || 0, hand.blinds.straddle || 0],
+      hand.players.map(p => [p.name, p.stack, positions.indexOf(p.position), cardsStr(p.cards), p.isHero ? 1 : 0]),
+      [cardsStr(hand.board.flop), hand.board.turn || 0, hand.board.river || 0],
+      hand.actions.map(a => [
+        STREETS.indexOf(a.street),
+        names.indexOf(a.player),
+        ACTION_TYPES.indexOf(a.type),
+        typeof a.amount === 'number' ? a.amount : -1,
+      ]),
+      hand.winnerOverride ? names.indexOf(hand.winnerOverride) : -1,
+    ];
+  }
+
+  function unpackHand(t) {
+    if (!Array.isArray(t) || t[0] !== 2) return null;
+    const [, tourn, currency, blinds, players, board, actions, winnerIdx] = t;
+    const positions = POSITIONS_BY_COUNT[players.length] || [];
+    const splitCards = s => (typeof s === 'string' && s.length ? s.match(/.{2}/g) : null);
+    const full = players.map((p, i) => ({
+      seat: i + 1,
+      name: p[0],
+      stack: p[1],
+      position: positions[p[2]],
+      cards: splitCards(p[3]),
+      isHero: p[4] === 1,
+    }));
+    return {
+      gameType: tourn === 1 ? 'tournament' : 'cash',
+      currency,
+      blinds: { sb: blinds[0], bb: blinds[1], ante: blinds[2], straddle: blinds[3] },
+      players: full,
+      board: { flop: splitCards(board[0]), turn: board[1] || null, river: board[2] || null },
+      actions: actions.map(a => {
+        const action = { street: STREETS[a[0]], player: full[a[1]].name, type: ACTION_TYPES[a[2]] };
+        if (a[3] >= 0) action.amount = a[3];
+        return action;
+      }),
+      winnerOverride: winnerIdx >= 0 ? full[winnerIdx].name : null,
+    };
+  }
+
   function encodeHand(hand) {
-    const json = JSON.stringify({ v: 1, h: hand });
+    const json = JSON.stringify(packHand(hand));
     const utf8 = typeof TextEncoder !== 'undefined'
       ? Array.from(new TextEncoder().encode(json))
       : Array.from(Buffer.from(json, 'utf8'));
@@ -696,8 +750,10 @@ const LPRCore = (function () {
         ? new TextDecoder('utf-8', { fatal: true }).decode(bytes)
         : Buffer.from(bytes).toString('utf8');
       const obj = JSON.parse(json);
-      if (!obj || obj.v !== 1 || !obj.h || typeof obj.h !== 'object') return null;
-      return obj.h;
+      if (Array.isArray(obj)) return unpackHand(obj);
+      // Old v1 links carried the hand as plain JSON — keep them working
+      if (obj && obj.v === 1 && obj.h && typeof obj.h === 'object') return obj.h;
+      return null;
     } catch (e) {
       return null;
     }
