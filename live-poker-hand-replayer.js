@@ -1113,7 +1113,10 @@
       try {
         const ac = ensureAudio();
         if (!ac) throw new Error('no audio');
-        const lines = steps.map(st => speakableStep(st));
+        const lines = steps.map(st => speakableStep(st).slice(0, 380));
+        // Worker caps: 45 lines / 6000 chars — huge hands fall back to browser voice
+        const totalChars = lines.reduce((sum, l) => sum + l.length, 0);
+        if (lines.length > 45 || totalChars > 6000) throw new Error('hand too long to narrate');
         const resp = await fetch(WORKER_URL + '/narrate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
