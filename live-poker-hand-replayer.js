@@ -782,6 +782,7 @@
     $('lpr-play-icon').textContent = 'pause';
     $('lpr-play').setAttribute('aria-label', 'Pause replay');
     renderStep();
+    if (stepIndex === 0) announceIndex(0); // voice the intro line from the top
     scheduleNextStep();
   }
 
@@ -1461,6 +1462,9 @@
 
       drawVideoFrame(ctx, L, steps[0]);
       rec.start(250);
+      // Step 0 (the blinds intro) must be voiced too, or its hold time is dead air
+      playSound(sfxForStep(steps[0]));
+      if (narrateOn) playNarrationClip(0);
       const t0 = performance.now();
       let lastIdx = 0;
 
