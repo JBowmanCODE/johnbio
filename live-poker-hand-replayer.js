@@ -1037,18 +1037,72 @@
 
   function speakCard(c) { return RANK_WORDS[c[0]] + ' of ' + SUIT_WORDS[c[1]]; }
 
+  // The TTS model cannot be trusted with numerals — verified by transcription:
+  // it read "30002" as "3-thou-2" and "300000" as "$3,000". Spell amounts out.
+  const NUM_ONES = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
+    'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+  const NUM_TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+  function numberToWords(numStr) {
+    const parts = numStr.split('.');
+    let n = parseInt(parts[0], 10);
+    if (isNaN(n) || n > 999999999) return numStr;
+
+    function below1000(x) {
+      let s = '';
+      if (x >= 100) {
+        s += NUM_ONES[Math.floor(x / 100)] + ' hundred';
+        x %= 100;
+        if (x) s += ' and ';
+      }
+      if (x >= 20) {
+        s += NUM_TENS[Math.floor(x / 10)];
+        if (x % 10) s += '-' + NUM_ONES[x % 10];
+      } else if (x > 0) {
+        s += NUM_ONES[x];
+      }
+      return s;
+    }
+
+    const chunks = [];
+    const millions = Math.floor(n / 1000000);
+    const thousands = Math.floor((n % 1000000) / 1000);
+    const rest = n % 1000;
+    if (millions) chunks.push(below1000(millions) + ' million');
+    if (thousands) chunks.push(below1000(thousands) + ' thousand');
+    if (rest) chunks.push((chunks.length && rest < 100 ? 'and ' : '') + below1000(rest));
+    let words = chunks.join(' ') || 'zero';
+    if (parts[1]) words += ' point ' + parts[1].split('').map(d => NUM_ONES[+d] || 'zero').join(' ');
+    return words;
+  }
+
+  const CURRENCY_WORDS = { '$': ['dollar', 'dollars'], '£': ['pound', 'pounds'], '€': ['euro', 'euros'] };
+
+  function speakableText(text) {
+    return text
+      .replace(/(\d),(?=\d)/g, '$1') // "1,775" → "1775" before word conversion
+      .replace(/([$£€])?(\d+(?:\.\d+)?)/g, (m, cur, num) => {
+        const words = numberToWords(num);
+        if (!cur) return words;
+        const forms = CURRENCY_WORDS[cur];
+        return words + ' ' + (num === '1' ? forms[0] : forms[1]);
+      });
+  }
+
   function speakableStep(step) {
+    let line;
     if (step.kind === 'deal') {
       // No "River:" prefixes — TTS treats a leading "Name:" as a dialogue
       // speaker label and skips it. Full sentences read reliably.
       const board = step.state.board;
-      if (step.street === 'flop') return 'The flop comes ' + board.slice(0, 3).map(speakCard).join(', ');
-      if (step.street === 'turn') return 'The turn is ' + speakCard(board[3]);
-      if (step.street === 'river') return 'The river is ' + speakCard(board[4]);
+      if (step.street === 'flop') line = 'The flop comes ' + board.slice(0, 3).map(speakCard).join(', ');
+      else if (step.street === 'turn') line = 'The turn is ' + speakCard(board[3]);
+      else line = 'The river is ' + speakCard(board[4]);
+    } else {
+      line = speakableText(describeStep(step));
     }
-    // TTS reads "1,775" as "1, 775" and drops the thousand — strip the
-    // grouping commas from numbers for speech only
-    return describeStep(step).replace(/(\d),(?=\d)/g, '$1');
+    // A closing full stop stops terse lines ("John B folds") being read like names
+    return /[.!?]$/.test(line) ? line : line + '.';
   }
 
   async function ensureNarrationClips() {
