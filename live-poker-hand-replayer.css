@@ -582,10 +582,22 @@ html.lpr-embed .lpr-made-with { display: block; }
 .lpr-compact .lpr-seat-action { font-size: 0.56rem; top: -10px; padding: 2px 8px; }
 .lpr-compact .lpr-dealer { width: 17px; height: 17px; font-size: 0.56rem; }
 
-/* Short landscape viewports (phone rotated): cap the table height so the
-   whole thing fits without scrolling inside the fold. */
+/* Short landscape viewports (phone rotated): size the table from the actual
+   viewport height so table + caption + controls fit on screen. */
 @media (min-width: 701px) and (max-height: 620px) {
-  .lpr-table-wrap { padding: 38px 0 44px; }
-  .lpr-table { max-height: calc(100dvh - 250px); min-height: 240px; }
-  .lpr-replay { scroll-margin-top: 76px; }
+  .lpr-wrap { padding-top: 72px; }
+  .lpr-hero { margin-bottom: 18px; }
+  .lpr-table-wrap { padding: 28px 0 32px; }
+  .lpr-table {
+    aspect-ratio: auto;
+    height: calc(100dvh - 215px);
+    min-height: 185px;
+    max-height: 430px;
+  }
+  .lpr-felt { inset: 7% 9%; }
+  .lpr-step-desc { margin: 6px 0 6px; font-size: 0.9rem; }
+  .lpr-controls { gap: 8px; margin-bottom: 10px; }
+  .lpr-ctrl-btn { width: 40px; height: 40px; }
+  .lpr-ctrl-btn.lpr-play { width: 48px; height: 48px; }
+  .lpr-replay { scroll-margin-top: 72px; }
 }
