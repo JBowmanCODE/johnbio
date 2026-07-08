@@ -1159,59 +1159,66 @@
   async function downloadVideo(orientation) {
     if (!timeline || videoBusy) return;
     const statusEl = $('lpr-video-status');
+    const previewWrap = $('lpr-video-preview-wrap');
     const mime = pickVideoMime();
     if (!mime) {
       statusEl.textContent = "Your browser can't record video — try Chrome, Edge or Safari.";
       return;
     }
     videoBusy = true;
-    const L = VIDEO_LAYOUTS[orientation];
-    const canvas = document.createElement('canvas');
-    canvas.width = L.W;
-    canvas.height = L.H;
-    const ctx = canvas.getContext('2d');
-    const previewWrap = $('lpr-video-preview-wrap');
-    previewWrap.innerHTML = '';
-    previewWrap.appendChild(canvas);
+    try {
+      const steps = timeline; // snapshot: 'New hand' mid-recording must not break us
+      const L = VIDEO_LAYOUTS[orientation];
+      const canvas = document.createElement('canvas');
+      canvas.width = L.W;
+      canvas.height = L.H;
+      const ctx = canvas.getContext('2d');
+      previewWrap.innerHTML = '';
+      previewWrap.appendChild(canvas);
 
-    stopPlay();
-    const stream = canvas.captureStream(30);
-    const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8000000 });
-    const chunks = [];
-    rec.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
-    const stopped = new Promise(res => { rec.onstop = res; });
+      stopPlay();
+      const stream = canvas.captureStream(30);
+      const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8000000 });
+      const chunks = [];
+      rec.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+      const stopped = new Promise(res => { rec.onstop = res; });
 
-    const totalMs = (timeline.length - 1) * STEP_MS + END_HOLD_MS;
-    drawVideoFrame(ctx, L, timeline[0]);
-    rec.start(250);
-    const t0 = performance.now();
+      const totalMs = (steps.length - 1) * STEP_MS + END_HOLD_MS;
+      drawVideoFrame(ctx, L, steps[0]);
+      rec.start(250);
+      const t0 = performance.now();
 
-    await new Promise(resolve => {
-      function tick(now) {
-        const elapsed = now - t0;
-        const idx = Math.min(timeline.length - 1, Math.floor(elapsed / STEP_MS));
-        drawVideoFrame(ctx, L, timeline[idx]);
-        statusEl.textContent = 'Recording… ' + Math.max(0, Math.ceil((totalMs - elapsed) / 1000)) + 's left';
-        if (elapsed >= totalMs) { resolve(); return; }
+      await new Promise(resolve => {
+        function tick(now) {
+          // rAF timestamps can land a hair before t0 — clamp so idx never goes -1
+          const elapsed = Math.max(0, now - t0);
+          const idx = Math.max(0, Math.min(steps.length - 1, Math.floor(elapsed / STEP_MS)));
+          drawVideoFrame(ctx, L, steps[idx]);
+          statusEl.textContent = 'Recording… ' + Math.max(0, Math.ceil((totalMs - elapsed) / 1000)) + 's left';
+          if (elapsed >= totalMs) { resolve(); return; }
+          requestAnimationFrame(tick);
+        }
         requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    });
+      });
 
-    rec.stop();
-    await stopped;
-    const blob = new Blob(chunks, { type: mime });
-    const ext = mime.includes('mp4') ? 'mp4' : 'webm';
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'poker-hand-replay-' + orientation + '.' + ext;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(a.href), 10000);
-    statusEl.textContent = 'Done — ' + ext.toUpperCase() + ' saved to your downloads.';
-    previewWrap.innerHTML = '';
-    videoBusy = false;
+      rec.stop();
+      await stopped;
+      const blob = new Blob(chunks, { type: mime });
+      const ext = mime.includes('mp4') ? 'mp4' : 'webm';
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'poker-hand-replay-' + orientation + '.' + ext;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+      statusEl.textContent = 'Done — ' + ext.toUpperCase() + ' saved to your downloads.';
+    } catch (e) {
+      statusEl.textContent = 'Recording failed — refresh the page and try again.';
+    } finally {
+      previewWrap.innerHTML = '';
+      videoBusy = false;
+    }
   }
 
   // ── Voice input (Web Speech API) ────────────────────────────────────────────
