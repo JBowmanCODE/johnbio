@@ -1669,8 +1669,15 @@
 
   // ── View switching ──────────────────────────────────────────────────────────
 
+  // Drop ?s= and #h= from the address bar — once the user starts changing the
+  // hand, a refresh should not resurrect the shared one.
+  function clearShareUrl() {
+    history.replaceState(null, '', location.pathname);
+  }
+
   function backToBuilder() {
     stopPlay();
+    clearShareUrl();
     $('lpr-replay').hidden = true;
     $('lpr-input-card').hidden = false;
     heroFromHand(draft);
@@ -1685,7 +1692,7 @@
     heroIndex = -1;
     undoStack = [];
     timeline = null;
-    history.replaceState(null, '', location.pathname + location.search);
+    clearShareUrl();
     $('lpr-replay').hidden = true;
     $('lpr-input-card').hidden = false;
     $('lpr-setup').hidden = false;
@@ -1824,6 +1831,20 @@
     });
     $('lpr-edit-hand').addEventListener('click', backToBuilder);
     $('lpr-new-hand').addEventListener('click', newHand);
+
+    // Opening another #h= share link while already on the page (no reload)
+    window.addEventListener('hashchange', () => {
+      const hm = location.hash.match(/^#h=(.+)$/);
+      if (!hm) return;
+      const hand = LPRCore.decodeHand(hm[1]);
+      const check = hand ? LPRCore.validateHand(hand) : { ok: false };
+      if (hand && check.ok) {
+        heroFromHand(hand);
+        enterReplay(hand);
+      } else {
+        showBrokenLink();
+      }
+    });
 
     // Short share link (?s=id) — fetch the hand from the worker
     const shortId = new URLSearchParams(location.search).get('s');
