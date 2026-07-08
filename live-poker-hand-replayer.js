@@ -646,6 +646,7 @@
       seat.style.setProperty('--y', seatY + '%');
       seat.innerHTML =
         '<span class="lpr-seat-action"></span>' +
+        '<span class="lpr-seat-equity"></span>' +
         '<div class="lpr-seat-pos">' + posByName[name] + '</div>' +
         '<div class="lpr-seat-name">' + escapeHtml(name) + '</div>' +
         '<div class="lpr-seat-stack"></div>' +
@@ -710,6 +711,10 @@
       tag.textContent = (step.kind === 'action' && step.action && step.action.player === name)
         ? shortAction(step) : '';
 
+      const equity = stepEquity(step);
+      seat.querySelector('.lpr-seat-equity').textContent =
+        equity && name in equity && !p.folded ? equity[name] + '%' : '';
+
       betEls[name].textContent = p.streetCommitted > 0 ? fmt(p.streetCommitted) : '';
     });
 
@@ -758,12 +763,14 @@
 
   function stopPlay() {
     if (playTimer) { clearInterval(playTimer); playTimer = null; }
+    stopNarration();
     $('lpr-play-icon').textContent = 'play_arrow';
     $('lpr-play').setAttribute('aria-label', 'Play replay');
   }
 
   function togglePlay() {
     if (playTimer) { stopPlay(); return; }
+    ensureAudio(); // user gesture — unlock audio for the session
     if (stepIndex >= timeline.length - 1) { stepIndex = 0; renderStep(); }
     $('lpr-play-icon').textContent = 'pause';
     $('lpr-play').setAttribute('aria-label', 'Pause replay');
@@ -771,13 +778,16 @@
       if (stepIndex >= timeline.length - 1) { stopPlay(); return; }
       stepIndex++;
       renderStep();
+      announceStep(timeline[stepIndex]);
     }, 2000 / speed);
   }
 
   function stepBy(delta) {
     stopPlay();
+    const before = stepIndex;
     stepIndex = Math.min(timeline.length - 1, Math.max(0, stepIndex + delta));
     renderStep();
+    if (delta > 0 && stepIndex !== before) announceStep(timeline[stepIndex]);
   }
 
   // ── Paste path ──────────────────────────────────────────────────────────────
@@ -889,6 +899,123 @@
     });
   }
 
+  // ── Equity (TV-style win percentages) ───────────────────────────────────────
+  // Shown only when every player still in the hand has known cards.
+  // Memoised on the step object — computed once per step, reused by the
+  // on-screen replay and the video renderer.
+
+  function stepEquity(step) {
+    if (step.equityComputed) return step.equity;
+    step.equityComputed = true;
+    step.equity = null;
+    const s = step.state;
+    const actives = s.order.filter(n => !s.players[n].folded);
+    const cardsByName = {};
+    draft.players.forEach(p => { cardsByName[p.name] = p.cards; });
+    if (actives.length >= 2 && actives.every(n => Array.isArray(cardsByName[n]))) {
+      step.equity = LPRCore.computeEquity(
+        actives.map(n => ({ name: n, cards: cardsByName[n] })),
+        s.board
+      );
+    }
+    return step.equity;
+  }
+
+  // ── Sound effects (WebAudio, synthesised — no audio files) ──────────────────
+
+  let audioCtx = null;
+  let sfxBus = null;
+  let sfxOn = localStorage.getItem('lpr-sfx') !== 'off';
+  let narrateOn = localStorage.getItem('lpr-narrate') === 'on';
+
+  function ensureAudio() {
+    if (!audioCtx) {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return null;
+      audioCtx = new AC();
+      sfxBus = audioCtx.createGain();
+      sfxBus.gain.value = 0.9;
+      sfxBus.connect(audioCtx.destination);
+    }
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+  }
+
+  function noiseBuffer(ac, seconds) {
+    const buf = ac.createBuffer(1, Math.ceil(ac.sampleRate * seconds), ac.sampleRate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+    return buf;
+  }
+
+  function playSound(kind) {
+    if (!sfxOn) return;
+    const ac = ensureAudio();
+    if (!ac) return;
+    const t = ac.currentTime + 0.01;
+
+    function click(at, freq, vol, dur) {
+      const osc = ac.createOscillator();
+      const g = ac.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, at);
+      osc.frequency.exponentialRampToValueAtTime(freq * 0.7, at + dur);
+      g.gain.setValueAtTime(vol, at);
+      g.gain.exponentialRampToValueAtTime(0.001, at + dur);
+      osc.connect(g).connect(sfxBus);
+      osc.start(at);
+      osc.stop(at + dur + 0.02);
+    }
+    function noise(at, filterFreq, vol, dur) {
+      const src = ac.createBufferSource();
+      src.buffer = noiseBuffer(ac, dur);
+      const f = ac.createBiquadFilter();
+      f.type = 'bandpass';
+      f.frequency.value = filterFreq;
+      const g = ac.createGain();
+      g.gain.setValueAtTime(vol, at);
+      g.gain.exponentialRampToValueAtTime(0.001, at + dur);
+      src.connect(f).connect(g).connect(sfxBus);
+      src.start(at);
+    }
+
+    if (kind === 'chip') { click(t, 2600, 0.12, 0.05); click(t + 0.05, 2300, 0.1, 0.05); }
+    else if (kind === 'card') noise(t, 1400, 0.18, 0.06);
+    else if (kind === 'knock') click(t, 900, 0.12, 0.06);
+    else if (kind === 'fold') noise(t, 500, 0.1, 0.16);
+    else if (kind === 'win') { click(t, 660, 0.12, 0.14); click(t + 0.13, 880, 0.12, 0.2); }
+  }
+
+  function sfxForStep(step) {
+    if (step.kind === 'deal') return 'card';
+    if (step.kind === 'result') return 'win';
+    if (step.kind === 'post') return 'chip';
+    const t = step.action && step.action.type;
+    if (t === 'fold') return 'fold';
+    if (t === 'check') return 'knock';
+    return 'chip';
+  }
+
+  // ── Narration (browser SpeechSynthesis — local, free) ───────────────────────
+
+  function narrate(step) {
+    if (!narrateOn || !('speechSynthesis' in window)) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(describeStep(step));
+    u.lang = 'en-GB';
+    u.rate = 1.06;
+    speechSynthesis.speak(u);
+  }
+
+  function stopNarration() {
+    if ('speechSynthesis' in window) speechSynthesis.cancel();
+  }
+
+  function announceStep(step) {
+    playSound(sfxForStep(step));
+    narrate(step);
+  }
+
   // ── Video export ────────────────────────────────────────────────────────────
   // Redraws the replay onto a canvas at 2x speed (1s per step) and records it
   // with MediaRecorder. MP4 where the browser supports it, WebM otherwise.
@@ -914,8 +1041,10 @@
   function pickVideoMime() {
     if (typeof MediaRecorder === 'undefined') return null;
     const candidates = [
+      'video/mp4;codecs=avc1.42E01E,mp4a.40.2',
       'video/mp4;codecs=avc1.42E01E',
       'video/mp4',
+      'video/webm;codecs=vp9,opus',
       'video/webm;codecs=vp9',
       'video/webm',
     ];
@@ -1099,6 +1228,21 @@
       }
       ctx.globalAlpha = 1;
 
+      // Equity badge (TV-style win %)
+      const equity = stepEquity(step);
+      if (equity && name in equity && !p.folded) {
+        const eqText = equity[name] + '%';
+        ctx.font = '800 ' + Math.round(nameFont * 0.9) + 'px "Space Grotesk", Arial, sans-serif';
+        const etw = ctx.measureText(eqText).width;
+        rrPath(ctx, sx + seatW / 2 - etw - 18, y - nameFont * 1.05, etw + 24, nameFont * 1.5, nameFont * 0.75);
+        ctx.fillStyle = '#ffd76a';
+        ctx.fill();
+        ctx.fillStyle = '#3a2a00';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(eqText, sx + seatW / 2 - etw / 2 - 6, y - nameFont * 0.3);
+      }
+
       // Bet chip
       if (p.streetCommitted > 0) {
         const bx = L.cx + L.brx * Math.cos(angle);
@@ -1178,7 +1322,18 @@
 
       stopPlay();
       const stream = canvas.captureStream(30);
-      const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8000000 });
+      // Mix the sound-effects bus into the recording so exports have audio
+      const ac = ensureAudio();
+      let recStream = stream;
+      let msd = null;
+      if (ac && sfxBus && mime.indexOf(',') !== -1) {
+        msd = ac.createMediaStreamDestination();
+        sfxBus.connect(msd);
+        recStream = new MediaStream(
+          stream.getVideoTracks().concat(msd.stream.getAudioTracks())
+        );
+      }
+      const rec = new MediaRecorder(recStream, { mimeType: mime, videoBitsPerSecond: 8000000 });
       const chunks = [];
       rec.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
       const stopped = new Promise(res => { rec.onstop = res; });
@@ -1187,12 +1342,14 @@
       drawVideoFrame(ctx, L, steps[0]);
       rec.start(250);
       const t0 = performance.now();
+      let lastIdx = 0;
 
       await new Promise(resolve => {
         function tick(now) {
           // rAF timestamps can land a hair before t0 — clamp so idx never goes -1
           const elapsed = Math.max(0, now - t0);
           const idx = Math.max(0, Math.min(steps.length - 1, Math.floor(elapsed / STEP_MS)));
+          if (idx !== lastIdx) { lastIdx = idx; playSound(sfxForStep(steps[idx])); }
           drawVideoFrame(ctx, L, steps[idx]);
           statusEl.textContent = 'Recording… ' + Math.max(0, Math.ceil((totalMs - elapsed) / 1000)) + 's left';
           if (elapsed >= totalMs) { resolve(); return; }
@@ -1200,6 +1357,7 @@
         }
         requestAnimationFrame(tick);
       });
+      if (msd) { try { sfxBus.disconnect(msd); } catch (e) { /* already gone */ } }
 
       rec.stop();
       await stopped;
@@ -1389,6 +1547,28 @@
     $('lpr-show-embed').addEventListener('click', () => {
       $('lpr-embed-box').hidden = !$('lpr-embed-box').hidden;
     });
+    function paintToggles() {
+      $('lpr-sfx-btn').classList.toggle('active', sfxOn);
+      $('lpr-sfx-btn').setAttribute('aria-pressed', String(sfxOn));
+      $('lpr-sfx-icon').textContent = sfxOn ? 'volume_up' : 'volume_off';
+      $('lpr-narrate-btn').classList.toggle('active', narrateOn);
+      $('lpr-narrate-btn').setAttribute('aria-pressed', String(narrateOn));
+    }
+    paintToggles();
+    $('lpr-sfx-btn').addEventListener('click', () => {
+      sfxOn = !sfxOn;
+      localStorage.setItem('lpr-sfx', sfxOn ? 'on' : 'off');
+      if (sfxOn) { ensureAudio(); playSound('chip'); }
+      paintToggles();
+    });
+    $('lpr-narrate-btn').addEventListener('click', () => {
+      narrateOn = !narrateOn;
+      localStorage.setItem('lpr-narrate', narrateOn ? 'on' : 'off');
+      if (!narrateOn) stopNarration();
+      else if (timeline) narrate(timeline[stepIndex]);
+      paintToggles();
+    });
+
     $('lpr-video-btn').addEventListener('click', () => {
       $('lpr-video-box').hidden = !$('lpr-video-box').hidden;
     });

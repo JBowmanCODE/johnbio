@@ -564,6 +564,68 @@ const LPRCore = (function () {
     };
   }
 
+  // ── Equity (TV-style win percentages) ───────────────────────────────────────
+  // Exact enumeration on the flop (≤990 runouts), turn (≤44) and river (1);
+  // Monte Carlo preflop. Ties share the runout equally.
+
+  function computeEquity(playersWithCards, board) {
+    const known = [];
+    for (const p of playersWithCards) known.push(p.cards[0], p.cards[1]);
+    known.push(...board);
+    const deck = [];
+    for (const r of RANKS) {
+      for (const su of SUITS) {
+        const c = r + su;
+        if (!known.includes(c)) deck.push(c);
+      }
+    }
+
+    const need = 5 - board.length;
+    const wins = {};
+    playersWithCards.forEach(p => { wins[p.name] = 0; });
+    let total = 0;
+
+    function scoreRunout(extra) {
+      const fullBoard = board.concat(extra);
+      let best = null, winners = [];
+      for (const p of playersWithCards) {
+        const ev = evaluateSeven(p.cards.concat(fullBoard));
+        if (!best || compareEvals(ev, best) > 0) { best = ev; winners = [p.name]; }
+        else if (compareEvals(ev, best) === 0) winners.push(p.name);
+      }
+      for (const w of winners) wins[w] += 1 / winners.length;
+      total++;
+    }
+
+    if (need <= 0) {
+      scoreRunout([]);
+    } else if (need === 1) {
+      for (const c of deck) scoreRunout([c]);
+    } else if (need === 2) {
+      for (let i = 0; i < deck.length; i++) {
+        for (let j = i + 1; j < deck.length; j++) scoreRunout([deck[i], deck[j]]);
+      }
+    } else {
+      const ITERATIONS = 5000;
+      for (let k = 0; k < ITERATIONS; k++) {
+        const d = deck.slice();
+        const extra = [];
+        for (let n = 0; n < need; n++) {
+          const idx = n + Math.floor(Math.random() * (d.length - n));
+          const tmp = d[n]; d[n] = d[idx]; d[idx] = tmp;
+          extra.push(d[n]);
+        }
+        scoreRunout(extra);
+      }
+    }
+
+    const out = {};
+    for (const p of playersWithCards) {
+      out[p.name] = Math.round((wins[p.name] / total) * 1000) / 10;
+    }
+    return out;
+  }
+
   // ── Share codec ─────────────────────────────────────────────────────────────
   // LZW over UTF-8 bytes with variable-width codes (9 bits up), bit-packed and
   // base64url-encoded. Self-contained so share links need no server and no CDN.
@@ -763,7 +825,7 @@ const LPRCore = (function () {
     RANKS, SUITS, STREETS, POSITIONS_BY_COUNT,
     isValidCard, validateHand, validateShape, buildTimeline, legalActions, computePots,
     initialState, applyAction, evaluateSeven, compareEvals,
-    encodeHand, decodeHand,
+    encodeHand, decodeHand, computeEquity,
   };
 })();
 

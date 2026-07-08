@@ -458,6 +458,24 @@
   white-space: nowrap;
 }
 .lpr-seat-action:empty { display: none; }
+.lpr-seat-equity {
+  position: absolute;
+  top: -12px;
+  right: -10px;
+  background: #ffd76a;
+  color: #3a2a00;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 2px 9px;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+.lpr-seat-equity:empty { display: none; }
+.lpr-compact .lpr-seat-equity { font-size: 0.56rem; padding: 1px 7px; top: -10px; right: -6px; }
+.lpr-ctrl-btn.lpr-toggle-btn.active {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
 
 /* Bet chips and dealer button — positioned by JS */
 .lpr-bet {

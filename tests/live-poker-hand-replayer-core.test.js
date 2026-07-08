@@ -510,6 +510,47 @@ test('allowIncomplete: closed street without board cards asks for them', () => {
   assert.strictEqual(res.needsBoard, 'flop');
 });
 
+// ── Equity calculator ────────────────────────────────────────────────────────
+
+test('equity on a complete board is exact 100/0', () => {
+  const eq = Core.computeEquity(
+    [{ name: 'A', cards: ['Kh', '8h'] }, { name: 'B', cards: ['Ac', 'Qd'] }],
+    ['Kc', '8d', '2s', '5h', '3c'] // A has two pair, B has ace high
+  );
+  assert.strictEqual(eq.A, 100);
+  assert.strictEqual(eq.B, 0);
+});
+
+test('identical hands on a complete board split 50/50', () => {
+  const eq = Core.computeEquity(
+    [{ name: 'A', cards: ['Ah', 'Kd'] }, { name: 'B', cards: ['Ad', 'Kh'] }],
+    ['2c', '7d', 'Jh', '3s', '9s']
+  );
+  assert.strictEqual(eq.A, 50);
+  assert.strictEqual(eq.B, 50);
+});
+
+test('turn equity is enumerated exactly — clean flush outs only', () => {
+  // A: top set of kings. B: nut flush draw. 44 unseen rivers.
+  // 9 hearts remain, but 2h and 3h pair the board and fill A's boat,
+  // so B wins with exactly 7 of 44 rivers = 15.9%.
+  const eq = Core.computeEquity(
+    [{ name: 'A', cards: ['Kc', 'Kd'] }, { name: 'B', cards: ['Ah', 'Qh'] }],
+    ['Kh', '7h', '2s', '3d']
+  );
+  assert.ok(Math.abs(eq.A + eq.B - 100) < 0.01, 'sums to 100');
+  assert.ok(Math.abs(eq.B - (7 / 44) * 100) < 0.15, 'B equity ' + eq.B);
+});
+
+test('preflop AA vs KK lands in the 78-84% band', () => {
+  const eq = Core.computeEquity(
+    [{ name: 'A', cards: ['As', 'Ad'] }, { name: 'B', cards: ['Ks', 'Kd'] }],
+    []
+  );
+  assert.ok(eq.A >= 78 && eq.A <= 84, 'AA equity was ' + eq.A);
+  assert.ok(Math.abs(eq.A + eq.B - 100) <= 0.2, 'sums to ~100');
+});
+
 test('incomplete hand reports an error naming who still has to act', () => {
   const hand = makeHand({
     actions: [{ street: 'preflop', player: 'Hero', type: 'raise', amount: 6 }],
