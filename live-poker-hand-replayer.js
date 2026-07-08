@@ -1364,15 +1364,13 @@
       }
     });
 
-    // Title (vertical only)
+    // Title (vertical only) — branding lives in the footer URL, not up here,
+    // so the top seat never gets overlapped
     if (L.titleY) {
       ctx.textAlign = 'center';
       ctx.fillStyle = '#f8f5fd';
       ctx.font = '800 44px "Space Grotesk", Arial, sans-serif';
       ctx.fillText('LIVE POKER HAND REPLAY', L.cx, L.titleY);
-      ctx.fillStyle = '#FF007F';
-      ctx.font = '800 30px "Space Grotesk", Arial, sans-serif';
-      ctx.fillText('JOHNB.IO', L.cx, L.titleY + 52);
     }
 
     // Caption
