@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="/styles.css?v=3">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
-  <link rel="stylesheet" href="/live-poker-hand-replayer.css?v=10">
+  <link rel="stylesheet" href="/live-poker-hand-replayer.css?v=11">
 
   <!-- SEO -->
   <meta name="description" content="Replay live poker hands on an animated table. Type your hand or paste notes, then watch every action, share a link, or embed it.">
@@ -317,9 +317,11 @@
         <button class="lpr-ctrl-btn lpr-toggle-btn" id="lpr-opp-btn" aria-label="Show opponents' cards" aria-pressed="false" title="Show opponents' cards">
           <span class="material-symbols-outlined" aria-hidden="true" id="lpr-opp-icon">visibility_off</span>
         </button>
-        <span class="lpr-progress" id="lpr-progress"></span>
+        <span class="lpr-progress-wrap">
+          <span class="lpr-progress" id="lpr-progress"></span>
+          <div class="lpr-progressbar" id="lpr-voice-bar" hidden><div class="lpr-progressbar-fill"></div></div>
+        </span>
       </div>
-      <div class="lpr-progressbar" id="lpr-voice-bar" hidden><div class="lpr-progressbar-fill"></div></div>
 
       <div class="lpr-share" id="lpr-share">
         <button class="lpr-ghost-btn" id="lpr-copy-link">
