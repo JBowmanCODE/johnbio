@@ -1027,6 +1027,22 @@
   let narrationLoading = null;  // in-flight promise
   let narrationSource = null;
 
+  // Card codes read badly aloud ("5 H") — deal steps get spoken card names.
+  const RANK_WORDS = { A: 'ace', K: 'king', Q: 'queen', J: 'jack', T: 'ten', 9: 'nine', 8: 'eight', 7: 'seven', 6: 'six', 5: 'five', 4: 'four', 3: 'three', 2: 'two' };
+  const SUIT_WORDS = { s: 'spades', h: 'hearts', d: 'diamonds', c: 'clubs' };
+
+  function speakCard(c) { return RANK_WORDS[c[0]] + ' of ' + SUIT_WORDS[c[1]]; }
+
+  function speakableStep(step) {
+    if (step.kind === 'deal') {
+      const board = step.state.board;
+      if (step.street === 'flop') return 'Flop: ' + board.slice(0, 3).map(speakCard).join(', ');
+      if (step.street === 'turn') return 'Turn: ' + speakCard(board[3]);
+      if (step.street === 'river') return 'River: ' + speakCard(board[4]);
+    }
+    return describeStep(step);
+  }
+
   async function ensureNarrationClips() {
     if (narrationClips || narrationFailed || !timeline) return;
     if (narrationLoading) return narrationLoading;
@@ -1035,7 +1051,7 @@
       try {
         const ac = ensureAudio();
         if (!ac) throw new Error('no audio');
-        const lines = steps.map(st => describeStep(st));
+        const lines = steps.map(st => speakableStep(st));
         const resp = await fetch(WORKER_URL + '/narrate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -1092,7 +1108,7 @@
     // Fallback: browser speech (playback only — can't be recorded)
     stopNarration();
     if ('speechSynthesis' in window && timeline) {
-      const u = new SpeechSynthesisUtterance(describeStep(timeline[idx]));
+      const u = new SpeechSynthesisUtterance(speakableStep(timeline[idx]));
       u.lang = 'en-GB';
       u.rate = 1.06;
       speechSynthesis.speak(u);
