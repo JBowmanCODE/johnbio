@@ -700,7 +700,8 @@
       const cardsWrap = seat.querySelector('.lpr-seat-cards');
       cardsWrap.innerHTML = '';
       const cards = cardsByName[name];
-      const reveal = cards && (name === heroName || (isResult && state.result && state.result.showdown !== false && !p.folded));
+      const reveal = cards && (name === heroName || (showOppOn && !p.folded) ||
+        (isResult && state.result && state.result.showdown !== false && !p.folded));
       if (p.folded) {
         // fold leaves the slot empty
       } else if (reveal) {
@@ -714,7 +715,7 @@
       tag.textContent = (step.kind === 'action' && step.action && step.action.player === name)
         ? shortAction(step) : '';
 
-      const equity = stepEquity(step);
+      const equity = equityOn ? stepEquity(step) : null;
       seat.querySelector('.lpr-seat-equity').textContent =
         equity && name in equity && !p.folded ? equity[name] + '%' : '';
 
@@ -949,6 +950,8 @@
   let sfxBus = null;
   let sfxOn = localStorage.getItem('lpr-sfx') !== 'off';
   let narrateOn = localStorage.getItem('lpr-narrate') === 'on';
+  let equityOn = localStorage.getItem('lpr-equity') !== 'off';   // win % badges
+  let showOppOn = localStorage.getItem('lpr-showopp') === 'on';  // opponents' cards face-up before showdown
 
   function ensureAudio() {
     if (!audioCtx) {
@@ -1036,10 +1039,12 @@
 
   function speakableStep(step) {
     if (step.kind === 'deal') {
+      // No "River:" prefixes — TTS treats a leading "Name:" as a dialogue
+      // speaker label and skips it. Full sentences read reliably.
       const board = step.state.board;
-      if (step.street === 'flop') return 'Flop: ' + board.slice(0, 3).map(speakCard).join(', ');
-      if (step.street === 'turn') return 'Turn: ' + speakCard(board[3]);
-      if (step.street === 'river') return 'River: ' + speakCard(board[4]);
+      if (step.street === 'flop') return 'The flop comes ' + board.slice(0, 3).map(speakCard).join(', ');
+      if (step.street === 'turn') return 'The turn is ' + speakCard(board[3]);
+      if (step.street === 'river') return 'The river is ' + speakCard(board[4]);
     }
     // TTS reads "1,775" as "1, 775" and drops the thousand — strip the
     // grouping commas from numbers for speech only
@@ -1328,7 +1333,8 @@
       // Cards
       if (!p.folded) {
         const cards = cardsByName[name];
-        const reveal = cards && (name === heroName || (isResult && s.result && s.result.showdown !== false));
+        const reveal = cards && (name === heroName || showOppOn ||
+          (isResult && s.result && s.result.showdown !== false));
         const cy2 = y + nameFont * 3.2 + 10;
         drawVideoCard(ctx, sx - cw - 3, cy2, cw, ch, reveal ? cards[0] : null);
         drawVideoCard(ctx, sx + 3, cy2, cw, ch, reveal ? cards[1] : null);
@@ -1336,7 +1342,7 @@
       ctx.globalAlpha = 1;
 
       // Equity badge (TV-style win %)
-      const equity = stepEquity(step);
+      const equity = equityOn ? stepEquity(step) : null;
       if (equity && name in equity && !p.folded) {
         const eqText = equity[name] + '%';
         ctx.font = '800 ' + Math.round(nameFont * 0.9) + 'px "Space Grotesk", Arial, sans-serif';
@@ -1685,8 +1691,25 @@
       $('lpr-sfx-icon').textContent = sfxOn ? 'volume_up' : 'volume_off';
       $('lpr-narrate-btn').classList.toggle('active', narrateOn);
       $('lpr-narrate-btn').setAttribute('aria-pressed', String(narrateOn));
+      $('lpr-eq-btn').classList.toggle('active', equityOn);
+      $('lpr-eq-btn').setAttribute('aria-pressed', String(equityOn));
+      $('lpr-opp-btn').classList.toggle('active', showOppOn);
+      $('lpr-opp-btn').setAttribute('aria-pressed', String(showOppOn));
+      $('lpr-opp-icon').textContent = showOppOn ? 'visibility' : 'visibility_off';
     }
     paintToggles();
+    $('lpr-eq-btn').addEventListener('click', () => {
+      equityOn = !equityOn;
+      localStorage.setItem('lpr-equity', equityOn ? 'on' : 'off');
+      paintToggles();
+      if (timeline) renderStep();
+    });
+    $('lpr-opp-btn').addEventListener('click', () => {
+      showOppOn = !showOppOn;
+      localStorage.setItem('lpr-showopp', showOppOn ? 'on' : 'off');
+      paintToggles();
+      if (timeline) renderStep();
+    });
     $('lpr-sfx-btn').addEventListener('click', () => {
       sfxOn = !sfxOn;
       localStorage.setItem('lpr-sfx', sfxOn ? 'on' : 'off');

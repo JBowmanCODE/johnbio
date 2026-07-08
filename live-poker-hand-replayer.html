@@ -310,6 +310,12 @@
         <button class="lpr-ctrl-btn lpr-toggle-btn" id="lpr-narrate-btn" aria-label="Spoken narration" aria-pressed="false" title="Spoken narration">
           <span class="material-symbols-outlined" aria-hidden="true">record_voice_over</span>
         </button>
+        <button class="lpr-ctrl-btn lpr-toggle-btn" id="lpr-eq-btn" aria-label="Win percentages" aria-pressed="true" title="Win percentages">
+          <span class="material-symbols-outlined" aria-hidden="true">percent</span>
+        </button>
+        <button class="lpr-ctrl-btn lpr-toggle-btn" id="lpr-opp-btn" aria-label="Show opponents' cards" aria-pressed="false" title="Show opponents' cards">
+          <span class="material-symbols-outlined" aria-hidden="true" id="lpr-opp-icon">visibility_off</span>
+        </button>
         <span class="lpr-progress" id="lpr-progress"></span>
       </div>
 
@@ -450,7 +456,7 @@
 
   <script src="/scripts.js?v=5" defer></script>
   <script src="/live-poker-hand-replayer-core.js?v=3" defer></script>
-  <script src="/live-poker-hand-replayer.js?v=12" defer></script>
+  <script src="/live-poker-hand-replayer.js?v=13" defer></script>
 
   <script>
     const btt = document.getElementById('back-to-top');
