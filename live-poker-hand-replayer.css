@@ -548,9 +548,6 @@
 .lpr-made-with:hover { color: var(--primary); }
 
 .lpr-info { margin-top: 10px; }
-.lpr-info h3 { margin: 16px 0 6px; font-size: 1.02rem; }
-.lpr-info h3:first-child { margin-top: 0; }
-.lpr-info p { color: var(--on-surface-variant); line-height: 1.6; }
 
 /* ── Embed mode ── */
 html.lpr-embed #header-placeholder,
