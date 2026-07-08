@@ -583,6 +583,9 @@
       return false;
     }
     timeline = res.steps;
+    narrationClips = null;
+    narrationFailed = false;
+    stopNarration();
     buildTable(hand);
     stepIndex = 0;
     stopPlay();
@@ -762,24 +765,42 @@
   // ── Playback controls ───────────────────────────────────────────────────────
 
   function stopPlay() {
-    if (playTimer) { clearInterval(playTimer); playTimer = null; }
+    if (playTimer) { clearTimeout(playTimer); playTimer = null; }
     stopNarration();
     $('lpr-play-icon').textContent = 'play_arrow';
     $('lpr-play').setAttribute('aria-label', 'Play replay');
   }
 
-  function togglePlay() {
+  async function togglePlay() {
     if (playTimer) { stopPlay(); return; }
     ensureAudio(); // user gesture — unlock audio for the session
+    if (narrateOn && !narrationClips && !narrationFailed) {
+      $('lpr-progress').textContent = 'Preparing the voice…';
+      await ensureNarrationClips();
+    }
     if (stepIndex >= timeline.length - 1) { stepIndex = 0; renderStep(); }
     $('lpr-play-icon').textContent = 'pause';
     $('lpr-play').setAttribute('aria-label', 'Pause replay');
-    playTimer = setInterval(() => {
+    renderStep();
+    scheduleNextStep();
+  }
+
+  // Each step holds for the playback interval OR the narration clip's length,
+  // whichever is longer — so the voice always finishes its line.
+  function scheduleNextStep() {
+    const base = 2000 / speed;
+    let wait = base;
+    if (narrateOn) {
+      const clipMs = narrationDurationMs(stepIndex);
+      if (clipMs) wait = Math.max(base, clipMs + 350);
+    }
+    playTimer = setTimeout(() => {
       if (stepIndex >= timeline.length - 1) { stopPlay(); return; }
       stepIndex++;
       renderStep();
-      announceStep(timeline[stepIndex]);
-    }, 2000 / speed);
+      announceIndex(stepIndex);
+      scheduleNextStep();
+    }, wait);
   }
 
   function stepBy(delta) {
@@ -787,7 +808,7 @@
     const before = stepIndex;
     stepIndex = Math.min(timeline.length - 1, Math.max(0, stepIndex + delta));
     renderStep();
-    if (delta > 0 && stepIndex !== before) announceStep(timeline[stepIndex]);
+    if (delta > 0 && stepIndex !== before) announceIndex(stepIndex);
   }
 
   // ── Paste path ──────────────────────────────────────────────────────────────
@@ -934,7 +955,7 @@
       if (!AC) return null;
       audioCtx = new AC();
       sfxBus = audioCtx.createGain();
-      sfxBus.gain.value = 0.9;
+      sfxBus.gain.value = 0.45;
       sfxBus.connect(audioCtx.destination);
     }
     if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -957,7 +978,7 @@
     function click(at, freq, vol, dur) {
       const osc = ac.createOscillator();
       const g = ac.createGain();
-      osc.type = 'triangle';
+      osc.type = 'sine';
       osc.frequency.setValueAtTime(freq, at);
       osc.frequency.exponentialRampToValueAtTime(freq * 0.7, at + dur);
       g.gain.setValueAtTime(vol, at);
@@ -979,11 +1000,11 @@
       src.start(at);
     }
 
-    if (kind === 'chip') { click(t, 2600, 0.12, 0.05); click(t + 0.05, 2300, 0.1, 0.05); }
-    else if (kind === 'card') noise(t, 1400, 0.18, 0.06);
-    else if (kind === 'knock') click(t, 900, 0.12, 0.06);
-    else if (kind === 'fold') noise(t, 500, 0.1, 0.16);
-    else if (kind === 'win') { click(t, 660, 0.12, 0.14); click(t + 0.13, 880, 0.12, 0.2); }
+    if (kind === 'chip') { click(t, 1300, 0.05, 0.05); click(t + 0.055, 1100, 0.04, 0.05); }
+    else if (kind === 'card') noise(t, 1100, 0.07, 0.05);
+    else if (kind === 'knock') click(t, 650, 0.05, 0.06);
+    else if (kind === 'fold') noise(t, 450, 0.04, 0.14);
+    else if (kind === 'win') { click(t, 660, 0.05, 0.14); click(t + 0.13, 880, 0.05, 0.2); }
   }
 
   function sfxForStep(step) {
@@ -996,24 +1017,91 @@
     return 'chip';
   }
 
-  // ── Narration (browser SpeechSynthesis — local, free) ───────────────────────
+  // ── Narration ────────────────────────────────────────────────────────────────
+  // Primary voice: OpenAI Shimmer clips fetched in one batch from the worker
+  // and decoded to AudioBuffers (they route through sfxBus, so downloaded
+  // videos include the voice). Fallback: the browser's built-in speech.
 
-  function narrate(step) {
-    if (!narrateOn || !('speechSynthesis' in window)) return;
-    speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(describeStep(step));
-    u.lang = 'en-GB';
-    u.rate = 1.06;
-    speechSynthesis.speak(u);
+  let narrationClips = null;    // Array<AudioBuffer|null> aligned with timeline
+  let narrationFailed = false;
+  let narrationLoading = null;  // in-flight promise
+  let narrationSource = null;
+
+  async function ensureNarrationClips() {
+    if (narrationClips || narrationFailed || !timeline) return;
+    if (narrationLoading) return narrationLoading;
+    const steps = timeline;
+    narrationLoading = (async () => {
+      try {
+        const ac = ensureAudio();
+        if (!ac) throw new Error('no audio');
+        const lines = steps.map(st => describeStep(st));
+        const resp = await fetch(WORKER_URL + '/narrate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ lines }),
+        });
+        const data = await resp.json();
+        if (!resp.ok || !data.success || !Array.isArray(data.clips)) {
+          throw new Error((data && data.error) || 'narration failed');
+        }
+        const decoded = await Promise.all(data.clips.map(b64 => {
+          const bin = atob(b64);
+          const bytes = new Uint8Array(bin.length);
+          for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+          return ac.decodeAudioData(bytes.buffer).catch(() => null);
+        }));
+        if (timeline === steps) narrationClips = decoded;
+      } catch (e) {
+        narrationFailed = true; // browser voice takes over silently
+      } finally {
+        narrationLoading = null;
+      }
+    })();
+    return narrationLoading;
+  }
+
+  function narrationDurationMs(idx) {
+    if (Array.isArray(narrationClips) && narrationClips[idx]) {
+      return narrationClips[idx].duration * 1000;
+    }
+    return null;
   }
 
   function stopNarration() {
+    if (narrationSource) { try { narrationSource.stop(); } catch (e) { /* done */ } narrationSource = null; }
     if ('speechSynthesis' in window) speechSynthesis.cancel();
   }
 
-  function announceStep(step) {
-    playSound(sfxForStep(step));
-    narrate(step);
+  // Plays the Shimmer clip through the sfx bus (captured by video recording).
+  // Returns false when no clip exists so callers can fall back.
+  function playNarrationClip(idx) {
+    if (!(Array.isArray(narrationClips) && narrationClips[idx])) return false;
+    stopNarration();
+    const src = audioCtx.createBufferSource();
+    src.buffer = narrationClips[idx];
+    src.connect(sfxBus);
+    src.start();
+    narrationSource = src;
+    return true;
+  }
+
+  function playNarration(idx) {
+    if (!narrateOn) return;
+    if (playNarrationClip(idx)) return;
+    // Fallback: browser speech (playback only — can't be recorded)
+    stopNarration();
+    if ('speechSynthesis' in window && timeline) {
+      const u = new SpeechSynthesisUtterance(describeStep(timeline[idx]));
+      u.lang = 'en-GB';
+      u.rate = 1.06;
+      speechSynthesis.speak(u);
+    }
+  }
+
+  function announceIndex(idx) {
+    playSound(sfxForStep(timeline[idx]));
+    playNarration(idx);
   }
 
   // ── Video export ────────────────────────────────────────────────────────────
@@ -1321,8 +1409,13 @@
       previewWrap.appendChild(canvas);
 
       stopPlay();
+      // With narration on, fetch the Shimmer clips first so the voice is in the video
+      if (narrateOn && !narrationClips && !narrationFailed) {
+        statusEl.textContent = 'Preparing the voice…';
+        await ensureNarrationClips();
+      }
       const stream = canvas.captureStream(30);
-      // Mix the sound-effects bus into the recording so exports have audio
+      // Mix the sound-effects bus (chips + narration) into the recording
       const ac = ensureAudio();
       let recStream = stream;
       let msd = null;
@@ -1338,7 +1431,20 @@
       rec.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
       const stopped = new Promise(res => { rec.onstop = res; });
 
-      const totalMs = (steps.length - 1) * STEP_MS + END_HOLD_MS;
+      // Steps with narration hold until their clip finishes
+      const cumulative = [];
+      let acc = 0;
+      steps.forEach((st, i) => {
+        let d = STEP_MS;
+        if (narrateOn) {
+          const clipMs = narrationDurationMs(i);
+          if (clipMs) d = Math.max(STEP_MS, clipMs + 300);
+        }
+        acc += d;
+        cumulative.push(acc);
+      });
+      const totalMs = acc + END_HOLD_MS;
+
       drawVideoFrame(ctx, L, steps[0]);
       rec.start(250);
       const t0 = performance.now();
@@ -1346,10 +1452,15 @@
 
       await new Promise(resolve => {
         function tick(now) {
-          // rAF timestamps can land a hair before t0 — clamp so idx never goes -1
+          // rAF timestamps can land a hair before t0 — clamp so elapsed is never negative
           const elapsed = Math.max(0, now - t0);
-          const idx = Math.max(0, Math.min(steps.length - 1, Math.floor(elapsed / STEP_MS)));
-          if (idx !== lastIdx) { lastIdx = idx; playSound(sfxForStep(steps[idx])); }
+          let idx = 0;
+          while (idx < steps.length - 1 && elapsed >= cumulative[idx]) idx++;
+          if (idx !== lastIdx) {
+            lastIdx = idx;
+            playSound(sfxForStep(steps[idx]));
+            if (narrateOn) playNarrationClip(idx);
+          }
           drawVideoFrame(ctx, L, steps[idx]);
           statusEl.textContent = 'Recording… ' + Math.max(0, Math.ceil((totalMs - elapsed) / 1000)) + 's left';
           if (elapsed >= totalMs) { resolve(); return; }
@@ -1357,6 +1468,7 @@
         }
         requestAnimationFrame(tick);
       });
+      stopNarration();
       if (msd) { try { sfxBus.disconnect(msd); } catch (e) { /* already gone */ } }
 
       rec.stop();
@@ -1565,7 +1677,12 @@
       narrateOn = !narrateOn;
       localStorage.setItem('lpr-narrate', narrateOn ? 'on' : 'off');
       if (!narrateOn) stopNarration();
-      else if (timeline) narrate(timeline[stepIndex]);
+      else if (timeline) {
+        ensureAudio();
+        Promise.resolve(ensureNarrationClips()).then(() => {
+          if (narrateOn) playNarration(stepIndex);
+        });
+      }
       paintToggles();
     });
 
