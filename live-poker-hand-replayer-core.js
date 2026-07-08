@@ -540,7 +540,9 @@ const LPRCore = (function () {
     for (const n of actives) evals[n] = evaluateSeven(cardsByName[n].concat(state.board));
 
     const won = {}; // name -> amount
-    const parts = [];
+    // Pots taken by the same winners are announced once with the combined
+    // total — "wins 600", not one line per side pot.
+    const groups = []; // { sig, winners, amount }
     for (const pot of pots) {
       const eligible = pot.eligible.filter(n => actives.includes(n));
       let best = null;
@@ -553,9 +555,16 @@ const LPRCore = (function () {
         const amount = share + (remainder-- > 0 ? 1 : 0); // odd chips to earliest position
         won[n] = (won[n] || 0) + amount;
       }
-      if (winners.length === 1) parts.push(winners[0] + ' wins ' + pot.amount + ' with ' + evals[winners[0]].name);
-      else parts.push(winners.join(' and ') + ' split ' + pot.amount + ' with ' + evals[winners[0]].name);
+      const sig = winners.join('|');
+      const existing = groups.find(g => g.sig === sig);
+      if (existing) existing.amount += pot.amount;
+      else groups.push({ sig, winners, amount: pot.amount });
     }
+
+    const parts = groups.map(g => {
+      if (g.winners.length === 1) return g.winners[0] + ' wins ' + g.amount + ' with ' + evals[g.winners[0]].name;
+      return g.winners.join(' and ') + ' split ' + g.amount + ' with ' + evals[g.winners[0]].name;
+    });
 
     return {
       winners: Object.keys(won).map(n => ({ name: n, amount: won[n], handName: evals[n].name })),

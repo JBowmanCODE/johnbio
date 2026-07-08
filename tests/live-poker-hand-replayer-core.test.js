@@ -393,6 +393,30 @@ test('side pots pay the right players', () => {
   assert.strictEqual(final.players.C.stack, 0);
 });
 
+test('one player scooping several side pots gets a single combined announcement', () => {
+  // Three all-ins at different stack depths, best hand wins everything —
+  // the announcement must state one total, not a line per pot.
+  const hand = makeHand({
+    players: [
+      { seat: 1, name: 'A', stack: 100, position: 'SB', cards: ['Qh', 'Qd'] },
+      { seat: 2, name: 'B', stack: 250, position: 'BB', cards: ['Kh', 'Kd'] },
+      { seat: 3, name: 'C', stack: 400, position: 'BTN', cards: ['Ah', 'Ad'] },
+    ],
+    board: { flop: ['2c', '7d', 'Jh'], turn: '3s', river: '9s' },
+    actions: [
+      { street: 'preflop', player: 'C', type: 'raise', amount: 10 },
+      { street: 'preflop', player: 'A', type: 'allin' },
+      { street: 'preflop', player: 'B', type: 'allin' },
+      { street: 'preflop', player: 'C', type: 'call' },
+    ],
+  });
+  const { steps, error } = Core.buildTimeline(hand);
+  assert.strictEqual(error, null, String(error));
+  const result = steps[steps.length - 1];
+  assert.strictEqual(result.description, 'C wins 600 with a pair of aces');
+  assert.strictEqual(result.state.players.C.stack, 750); // 400 - 250 + 600
+});
+
 test('everyone folds: pot ships without showing cards', () => {
   const hand = makeHand({
     actions: [
