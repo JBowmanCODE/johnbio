@@ -542,11 +542,23 @@
     return true;
   }
 
+  // Small or short screens get compact seats pushed out onto the rail so the
+  // boxes never sit over the board.
+  function isCompact() {
+    return window.innerWidth < 700 || window.innerHeight < 620;
+  }
+
   function buildTable(hand) {
     const seatsWrap = $('lpr-seats');
     seatsWrap.innerHTML = '';
     for (const k in seatEls) delete seatEls[k];
     for (const k in betEls) delete betEls[k];
+
+    const compact = isCompact();
+    $('lpr-table').classList.toggle('lpr-compact', compact);
+    const seatRX = compact ? 47 : 44, seatRY = compact ? 46 : 42;
+    const betRX = compact ? 28 : 24, betRY = compact ? 27 : 22;
+    const dealerR = compact ? [41, 38] : [33, 31];
 
     const order = timeline[0].state.order;
     const n = order.length;
@@ -558,10 +570,10 @@
     order.forEach((name, i) => {
       const slot = (i - heroIdx + n) % n;
       const angle = (90 + slot * (360 / n)) * Math.PI / 180;
-      const seatX = 50 + 44 * Math.cos(angle);
-      const seatY = 50 + 42 * Math.sin(angle);
-      const betX = 50 + 24 * Math.cos(angle);
-      const betY = 50 + 22 * Math.sin(angle);
+      const seatX = 50 + seatRX * Math.cos(angle);
+      const seatY = 50 + seatRY * Math.sin(angle);
+      const betX = 50 + betRX * Math.cos(angle);
+      const betY = 50 + betRY * Math.sin(angle);
 
       const seat = document.createElement('div');
       seat.className = 'lpr-seat';
@@ -589,8 +601,8 @@
         const dealer = document.createElement('div');
         dealer.className = 'lpr-dealer';
         dealer.textContent = 'D';
-        dealer.style.left = (50 + 33 * Math.cos(angle + 0.35)) + '%';
-        dealer.style.top = (50 + 31 * Math.sin(angle + 0.35)) + '%';
+        dealer.style.left = (50 + dealerR[0] * Math.cos(angle + 0.35)) + '%';
+        dealer.style.top = (50 + dealerR[1] * Math.sin(angle + 0.35)) + '%';
         dealer.title = 'Dealer button';
         seatsWrap.appendChild(dealer);
       }
@@ -910,6 +922,13 @@
         document.querySelectorAll('.lpr-speed-btn').forEach(b => b.classList.toggle('active', b === btn));
         if (playTimer) { stopPlay(); togglePlay(); }
       });
+    });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      if (!timeline || $('lpr-replay').hidden) return;
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => { buildTable(draft); renderStep(); }, 150);
     });
 
     document.addEventListener('keydown', e => {
