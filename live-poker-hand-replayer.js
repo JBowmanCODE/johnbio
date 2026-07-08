@@ -1776,6 +1776,7 @@
       if (!narrateOn) stopNarration();
       else if (timeline) {
         ensureAudio();
+        narrationFailed = false; // toggling the voice back on retries the good voice
         Promise.resolve(ensureNarrationClips()).then(() => {
           if (narrateOn) playNarration(stepIndex);
         });
