@@ -889,6 +889,378 @@
     });
   }
 
+  // ── Video export ────────────────────────────────────────────────────────────
+  // Redraws the replay onto a canvas at 2x speed (1s per step) and records it
+  // with MediaRecorder. MP4 where the browser supports it, WebM otherwise.
+
+  const VIDEO_LAYOUTS = {
+    horizontal: {
+      W: 1920, H: 1080, cx: 960, cy: 500, frx: 640, fry: 340,
+      srx: 720, sry: 400, brx: 400, bry: 235, drx: 520, dry: 295,
+      seatW: 220, boardCardW: 96, boardCardH: 134, seatCardW: 56, seatCardH: 78,
+      captionY: 1030, titleY: null,
+    },
+    vertical: {
+      W: 1080, H: 1920, cx: 540, cy: 1000, frx: 460, fry: 600,
+      srx: 420, sry: 680, brx: 250, bry: 390, drx: 330, dry: 500,
+      seatW: 200, boardCardW: 84, boardCardH: 118, seatCardW: 50, seatCardH: 70,
+      captionY: 1820, titleY: 170,
+    },
+  };
+  const STEP_MS = 1000;   // 2x the on-screen default of 2s per action
+  const END_HOLD_MS = 3000;
+  let videoBusy = false;
+
+  function pickVideoMime() {
+    if (typeof MediaRecorder === 'undefined') return null;
+    const candidates = [
+      'video/mp4;codecs=avc1.42E01E',
+      'video/mp4',
+      'video/webm;codecs=vp9',
+      'video/webm',
+    ];
+    for (const c of candidates) {
+      if (MediaRecorder.isTypeSupported(c)) return c;
+    }
+    return null;
+  }
+
+  function rrPath(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function drawVideoCard(ctx, x, y, w, h, card) {
+    rrPath(ctx, x, y, w, h, w * 0.12);
+    if (!card) {
+      ctx.fillStyle = '#2b2b36';
+      ctx.fill();
+      ctx.strokeStyle = '#48474d';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      return;
+    }
+    ctx.fillStyle = '#f8f5fd';
+    ctx.fill();
+    const suit = SUITS.find(s => s.code === card[1]);
+    ctx.fillStyle = suit && suit.red ? '#d21f3c' : '#16161c';
+    ctx.font = '700 ' + Math.round(h * 0.42) + 'px "Space Grotesk", Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(card[0] + (suit ? suit.glyph : card[1]), x + w / 2, y + h / 2 + h * 0.02);
+  }
+
+  function fitText(ctx, text, maxW) {
+    if (ctx.measureText(text).width <= maxW) return text;
+    while (text.length > 1 && ctx.measureText(text + '…').width > maxW) text = text.slice(0, -1);
+    return text + '…';
+  }
+
+  function drawVideoFrame(ctx, L, step) {
+    const s = step.state;
+    const order = s.order;
+    const n = order.length;
+    const heroName = (draft.players.find(p => p.isHero) || {}).name;
+    const heroIdx = Math.max(0, order.indexOf(heroName));
+    const posByName = {}, cardsByName = {};
+    draft.players.forEach(p => { posByName[p.name] = p.position; cardsByName[p.name] = p.cards; });
+    const isResult = step.kind === 'result';
+    const winners = isResult && s.result ? s.result.winners.map(w => w.name) : [];
+
+    // Background
+    ctx.fillStyle = '#0e0e13';
+    ctx.fillRect(0, 0, L.W, L.H);
+
+    // Rail + felt
+    ctx.save();
+    ctx.translate(L.cx, L.cy);
+    ctx.scale(1, L.fry / L.frx);
+    ctx.beginPath();
+    ctx.arc(0, 0, L.frx + 26, 0, Math.PI * 2);
+    ctx.fillStyle = '#46301f';
+    ctx.fill();
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = 'rgba(255,215,106,0.25)';
+    ctx.stroke();
+    const grad = ctx.createRadialGradient(0, -L.frx * 0.2, L.frx * 0.1, 0, 0, L.frx);
+    grad.addColorStop(0, '#2f7a54');
+    grad.addColorStop(0.55, '#1f5c3d');
+    grad.addColorStop(1, '#0e2f1e');
+    ctx.beginPath();
+    ctx.arc(0, 0, L.frx, 0, Math.PI * 2);
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(0, 0, L.frx * 0.86, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(255,255,255,0.09)';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    ctx.restore();
+
+    // Felt watermark
+    ctx.fillStyle = 'rgba(255,255,255,0.07)';
+    ctx.font = '900 ' + Math.round(L.frx * 0.055) + 'px "Space Grotesk", Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('J O H N B . I O', L.cx, L.cy - L.fry * 0.55);
+
+    // Board
+    const bw = L.boardCardW, bh = L.boardCardH, gap = Math.round(bw * 0.12);
+    const boardW = 5 * bw + 4 * gap;
+    const boardX = L.cx - boardW / 2;
+    const boardY = L.cy - bh * 0.85;
+    for (let i = 0; i < 5; i++) {
+      if (s.board[i]) drawVideoCard(ctx, boardX + i * (bw + gap), boardY, bw, bh, s.board[i]);
+    }
+
+    // Pot
+    if (s.pot > 0) {
+      const potText = 'Pot: ' + fmt(s.pot);
+      ctx.font = '700 ' + Math.round(bh * 0.26) + 'px "Space Grotesk", Arial, sans-serif';
+      const tw = ctx.measureText(potText).width;
+      const px = L.cx, py = boardY + bh + bh * 0.42;
+      rrPath(ctx, px - tw / 2 - 26, py - bh * 0.21, tw + 52, bh * 0.42, bh * 0.21);
+      ctx.fillStyle = 'rgba(0,0,0,0.55)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255,215,106,0.5)';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.fillStyle = '#f8f5fd';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(potText, px, py);
+    }
+
+    // Result announcement on the felt
+    if (isResult && s.result) {
+      ctx.fillStyle = '#ffd76a';
+      ctx.font = '700 ' + Math.round(bh * 0.3) + 'px "Space Grotesk", Arial, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(fitText(ctx, describeStepText(s.result.announcement), L.frx * 1.6), L.cx, boardY + bh + bh * 0.95);
+    }
+
+    // Seats
+    const seatW = L.seatW;
+    const cw = L.seatCardW, ch = L.seatCardH;
+    const nameFont = Math.round(seatW * 0.115);
+    const seatH = nameFont * 3.2 + ch + 18;
+    order.forEach((name, i) => {
+      const p = s.players[name];
+      const slot = (i - heroIdx + n) % n;
+      const angle = (90 + slot * (360 / n)) * Math.PI / 180;
+      const sx = L.cx + L.srx * Math.cos(angle);
+      const sy = L.cy + L.sry * Math.sin(angle);
+      const x = sx - seatW / 2, y = sy - seatH / 2;
+
+      ctx.globalAlpha = p.folded ? 0.35 : 1;
+      rrPath(ctx, x, y, seatW, seatH, 16);
+      ctx.fillStyle = 'rgba(26,26,34,0.97)';
+      ctx.fill();
+      ctx.lineWidth = 3;
+      if (winners.includes(name)) {
+        ctx.strokeStyle = '#ffd76a';
+        ctx.shadowColor = 'rgba(255,215,106,0.8)';
+        ctx.shadowBlur = 24;
+      } else if (s.toAct === name) {
+        ctx.strokeStyle = '#00eefc';
+        ctx.shadowColor = 'rgba(0,238,252,0.6)';
+        ctx.shadowBlur = 18;
+      } else {
+        ctx.strokeStyle = 'rgba(255,255,255,0.16)';
+        ctx.shadowBlur = 0;
+      }
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = '#00eefc';
+      ctx.font = '800 ' + Math.round(nameFont * 0.72) + 'px "Space Grotesk", Arial, sans-serif';
+      ctx.fillText(posByName[name] || '', sx, y + nameFont * 0.8);
+      ctx.fillStyle = '#f8f5fd';
+      ctx.font = '700 ' + nameFont + 'px "Space Grotesk", Arial, sans-serif';
+      ctx.fillText(fitText(ctx, name, seatW - 20), sx, y + nameFont * 2);
+      ctx.fillStyle = p.allIn && p.stack === 0 && !isResult ? '#FF007F' : '#acaab1';
+      ctx.font = '600 ' + Math.round(nameFont * 0.9) + 'px "Space Grotesk", Arial, sans-serif';
+      ctx.fillText(p.allIn && p.stack === 0 && !isResult ? 'All-in' : fmt(p.stack), sx, y + nameFont * 3.1);
+
+      // Cards
+      if (!p.folded) {
+        const cards = cardsByName[name];
+        const reveal = cards && (name === heroName || (isResult && s.result && s.result.showdown !== false));
+        const cy2 = y + nameFont * 3.2 + 10;
+        drawVideoCard(ctx, sx - cw - 3, cy2, cw, ch, reveal ? cards[0] : null);
+        drawVideoCard(ctx, sx + 3, cy2, cw, ch, reveal ? cards[1] : null);
+      }
+      ctx.globalAlpha = 1;
+
+      // Bet chip
+      if (p.streetCommitted > 0) {
+        const bx = L.cx + L.brx * Math.cos(angle);
+        const by = L.cy + L.bry * Math.sin(angle);
+        const betText = fmt(p.streetCommitted);
+        ctx.font = '700 ' + Math.round(nameFont * 0.85) + 'px "Space Grotesk", Arial, sans-serif';
+        const btw = ctx.measureText(betText).width;
+        rrPath(ctx, bx - btw / 2 - 14, by - nameFont * 0.85, btw + 28, nameFont * 1.7, nameFont * 0.85);
+        ctx.fillStyle = '#0d0d12';
+        ctx.fill();
+        ctx.strokeStyle = '#00eefc';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.fillStyle = '#f8f5fd';
+        ctx.textAlign = 'center';
+        ctx.fillText(betText, bx, by + 1);
+      }
+
+      // Dealer button
+      const btnName = n === 2 ? order[0] : order[n - 1];
+      if (name === btnName) {
+        const dx = L.cx + L.drx * Math.cos(angle + 0.35);
+        const dy = L.cy + L.dry * Math.sin(angle + 0.35);
+        ctx.beginPath();
+        ctx.arc(dx, dy, nameFont * 0.8, 0, Math.PI * 2);
+        ctx.fillStyle = '#f8f5fd';
+        ctx.fill();
+        ctx.fillStyle = '#16161c';
+        ctx.font = '800 ' + Math.round(nameFont * 0.8) + 'px "Space Grotesk", Arial, sans-serif';
+        ctx.fillText('D', dx, dy + 1);
+      }
+    });
+
+    // Title (vertical only)
+    if (L.titleY) {
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#f8f5fd';
+      ctx.font = '800 44px "Space Grotesk", Arial, sans-serif';
+      ctx.fillText('LIVE POKER HAND REPLAY', L.cx, L.titleY);
+      ctx.fillStyle = '#FF007F';
+      ctx.font = '800 30px "Space Grotesk", Arial, sans-serif';
+      ctx.fillText('JOHNB.IO', L.cx, L.titleY + 52);
+    }
+
+    // Caption
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#f8f5fd';
+    ctx.font = '600 ' + (L.titleY ? 34 : 32) + 'px "Space Grotesk", Arial, sans-serif';
+    ctx.fillText(fitText(ctx, describeStep(step), L.W - 80), L.cx, L.captionY);
+
+    // Footer watermark
+    ctx.fillStyle = 'rgba(248,245,253,0.45)';
+    ctx.font = '600 24px "Space Grotesk", Arial, sans-serif';
+    ctx.textAlign = L.titleY ? 'center' : 'right';
+    ctx.fillText('johnb.io/live-poker-hand-replayer', L.titleY ? L.cx : L.W - 30, L.H - 28);
+  }
+
+  async function downloadVideo(orientation) {
+    if (!timeline || videoBusy) return;
+    const statusEl = $('lpr-video-status');
+    const mime = pickVideoMime();
+    if (!mime) {
+      statusEl.textContent = "Your browser can't record video — try Chrome, Edge or Safari.";
+      return;
+    }
+    videoBusy = true;
+    const L = VIDEO_LAYOUTS[orientation];
+    const canvas = document.createElement('canvas');
+    canvas.width = L.W;
+    canvas.height = L.H;
+    const ctx = canvas.getContext('2d');
+    const previewWrap = $('lpr-video-preview-wrap');
+    previewWrap.innerHTML = '';
+    previewWrap.appendChild(canvas);
+
+    stopPlay();
+    const stream = canvas.captureStream(30);
+    const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8000000 });
+    const chunks = [];
+    rec.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+    const stopped = new Promise(res => { rec.onstop = res; });
+
+    const totalMs = (timeline.length - 1) * STEP_MS + END_HOLD_MS;
+    drawVideoFrame(ctx, L, timeline[0]);
+    rec.start(250);
+    const t0 = performance.now();
+
+    await new Promise(resolve => {
+      function tick(now) {
+        const elapsed = now - t0;
+        const idx = Math.min(timeline.length - 1, Math.floor(elapsed / STEP_MS));
+        drawVideoFrame(ctx, L, timeline[idx]);
+        statusEl.textContent = 'Recording… ' + Math.max(0, Math.ceil((totalMs - elapsed) / 1000)) + 's left';
+        if (elapsed >= totalMs) { resolve(); return; }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+
+    rec.stop();
+    await stopped;
+    const blob = new Blob(chunks, { type: mime });
+    const ext = mime.includes('mp4') ? 'mp4' : 'webm';
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'poker-hand-replay-' + orientation + '.' + ext;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+    statusEl.textContent = 'Done — ' + ext.toUpperCase() + ' saved to your downloads.';
+    previewWrap.innerHTML = '';
+    videoBusy = false;
+  }
+
+  // ── Voice input (Web Speech API) ────────────────────────────────────────────
+
+  let recogniser = null;
+  let listening = false;
+
+  function updateMicUI() {
+    const btn = $('lpr-mic');
+    btn.classList.toggle('lpr-mic-active', listening);
+    btn.setAttribute('aria-pressed', String(listening));
+    $('lpr-mic-icon').textContent = listening ? 'stop_circle' : 'mic';
+    $('lpr-mic-label').textContent = listening ? 'Listening… tap to stop' : 'Speak your hand';
+  }
+
+  function toggleMic() {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) {
+      $('lpr-paste-error').textContent = 'Voice input needs Chrome, Edge or Safari.';
+      return;
+    }
+    if (listening) {
+      recogniser.stop();
+      return;
+    }
+    const notes = $('lpr-notes');
+    const base = notes.value ? notes.value.trim() + ' ' : '';
+    recogniser = new SR();
+    recogniser.lang = 'en-GB';
+    recogniser.continuous = true;
+    recogniser.interimResults = true;
+    recogniser.onresult = e => {
+      let text = '';
+      for (let i = 0; i < e.results.length; i++) text += e.results[i][0].transcript;
+      notes.value = (base + text).slice(0, 5000);
+      $('lpr-char-count').textContent = notes.value.length.toLocaleString('en-GB') + ' / 5,000';
+    };
+    recogniser.onerror = e => {
+      if (e.error === 'not-allowed') {
+        $('lpr-paste-error').textContent = 'Microphone access was blocked — allow it in your browser settings.';
+      }
+    };
+    recogniser.onend = () => { listening = false; updateMicUI(); };
+    $('lpr-paste-error').textContent = '';
+    recogniser.start();
+    listening = true;
+    updateMicUI();
+  }
+
   // ── Share / embed ───────────────────────────────────────────────────────────
 
   function copyText(text, btn, doneLabel) {
@@ -1010,6 +1382,12 @@
     $('lpr-show-embed').addEventListener('click', () => {
       $('lpr-embed-box').hidden = !$('lpr-embed-box').hidden;
     });
+    $('lpr-video-btn').addEventListener('click', () => {
+      $('lpr-video-box').hidden = !$('lpr-video-box').hidden;
+    });
+    $('lpr-video-h').addEventListener('click', () => downloadVideo('horizontal'));
+    $('lpr-video-v').addEventListener('click', () => downloadVideo('vertical'));
+    $('lpr-mic').addEventListener('click', toggleMic);
     $('lpr-copy-embed').addEventListener('click', e => {
       copyText($('lpr-embed-code').value, e.currentTarget, 'Copied');
     });

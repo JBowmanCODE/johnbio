@@ -271,6 +271,17 @@
 .lpr-history li.lpr-street-break { color: var(--secondary); font-weight: 700; }
 .lpr-action-footer { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
 
+.lpr-paste-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+@keyframes lpr-mic-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 0, 127, 0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(255, 0, 127, 0); }
+}
+.lpr-ghost-btn.lpr-mic-active {
+  border-color: var(--primary);
+  color: var(--primary);
+  animation: lpr-mic-pulse 1.4s ease-in-out infinite;
+}
+
 /* ── Paste panel ── */
 .lpr-paste-label { display: block; margin-bottom: 12px; color: var(--on-surface-variant); line-height: 1.5; }
 #lpr-notes { resize: vertical; min-height: 150px; line-height: 1.5; }
@@ -537,6 +548,22 @@
   font-size: 0.8rem;
   margin-bottom: 10px;
 }
+.lpr-video-box {
+  max-width: 640px;
+  margin: 16px auto 0;
+  text-align: center;
+}
+.lpr-video-note { color: var(--on-surface-variant); font-size: 0.85rem; margin-bottom: 12px; }
+.lpr-video-formats { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.lpr-video-status { font-weight: 600; margin-top: 10px; min-height: 1.2em; }
+.lpr-video-preview-wrap { margin-top: 12px; }
+.lpr-video-preview-wrap canvas {
+  max-width: 100%;
+  max-height: 320px;
+  border-radius: 12px;
+  border: 1px solid var(--outline-variant);
+}
+
 .lpr-made-with {
   display: none;
   text-align: center;
