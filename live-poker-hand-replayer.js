@@ -219,6 +219,38 @@
     }
     box.appendChild(grid);
 
+    // Optional context table: who's still in the hand (used for board pickers)
+    if (opts.players && opts.players.length) {
+      const tbl = document.createElement('div');
+      tbl.className = 'lpr-picker-players';
+      const head = document.createElement('div');
+      head.className = 'lpr-picker-player-row lpr-picker-player-head';
+      ['Still in the hand', 'Cards', 'Position'].forEach(t => {
+        const s = document.createElement('span');
+        s.textContent = t;
+        head.appendChild(s);
+      });
+      tbl.appendChild(head);
+      for (const p of opts.players) {
+        const row = document.createElement('div');
+        row.className = 'lpr-picker-player-row';
+        const nameEl = document.createElement('span');
+        nameEl.textContent = p.name;
+        const cardsEl = document.createElement('span');
+        cardsEl.className = 'lpr-picker-player-cards';
+        if (Array.isArray(p.cards)) p.cards.forEach(c => cardsEl.appendChild(cardEl(c)));
+        else { cardsEl.textContent = 'Unknown'; cardsEl.classList.add('lpr-unknown'); }
+        const posEl = document.createElement('span');
+        posEl.className = 'lpr-pos-tag';
+        posEl.textContent = p.position;
+        row.appendChild(nameEl);
+        row.appendChild(cardsEl);
+        row.appendChild(posEl);
+        tbl.appendChild(row);
+      }
+      box.appendChild(tbl);
+    }
+
     const footer = document.createElement('div');
     footer.className = 'lpr-picker-footer';
     const clear = ghost('Clear', () => { chosen = []; paint(); });
@@ -387,6 +419,7 @@
           count: n,
           current: [],
           used: usedCards(-1),
+          players: draft.players.filter(p => state.players[p.name] && !state.players[p.name].folded),
           onDone: cards => {
             if (cards.length !== n) return;
             if (res.needsBoard === 'flop') draft.board.flop = cards;
@@ -409,10 +442,21 @@
       return;
     }
 
-    // Someone is to act
+    // Someone is to act — show who, where they sit, their cards if known
     const toAct = state.toAct;
     const legal = LPRCore.legalActions(state);
-    turnLine.textContent = toAct + ' to act (' + fmt(state.players[toAct].stack) + ' behind)';
+    const actor = draft.players.find(pl => pl.name === toAct);
+    turnLine.textContent = '';
+    turnLine.appendChild(document.createTextNode(
+      toAct + (actor ? ' (' + actor.position + ')' : '') +
+      ' to act (' + fmt(state.players[toAct].stack) + ' behind)'
+    ));
+    if (actor && Array.isArray(actor.cards)) {
+      const cardsSpan = document.createElement('span');
+      cardsSpan.className = 'lpr-turn-cards';
+      actor.cards.forEach(c => cardsSpan.appendChild(cardEl(c)));
+      turnLine.appendChild(cardsSpan);
+    }
 
     if (legal.canFold) buttonsEl.appendChild(actBtn('Fold', () => addAction({ type: 'fold' })));
     if (legal.canCheck) buttonsEl.appendChild(actBtn('Check', () => addAction({ type: 'check' })));
@@ -511,7 +555,25 @@
   let stepIndex = 0;
   let playTimer = null;
   let speed = 1;
+  let shortShareUrl = null; // set async by requestShortLink; copy falls back to the long URL
   const seatEls = {}, betEls = {};
+
+  // Swap the long #h= link for a tiny ?s= one via the worker's KV store.
+  // Fire-and-forget: if it fails, the copy button just uses the long link.
+  async function requestShortLink(encoded) {
+    shortShareUrl = null;
+    try {
+      const resp = await fetch(WORKER_URL + '/shorten', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ h: encoded }),
+      });
+      const data = await resp.json();
+      if (resp.ok && data.success && data.id) {
+        shortShareUrl = 'https://johnb.io/live-poker-hand-replayer?s=' + data.id;
+      }
+    } catch (e) { /* long link fallback */ }
+  }
 
   function enterReplay(hand) {
     draft = hand;
@@ -532,6 +594,8 @@
     const encoded = LPRCore.encodeHand(hand);
     const shareUrl = 'https://johnb.io/live-poker-hand-replayer#h=' + encoded;
     $('lpr-copy-link').dataset.url = shareUrl;
+    requestShortLink(encoded);
+    // The embed keeps the full hash on purpose — it works standalone forever
     $('lpr-embed-code').value =
       '<iframe src="https://johnb.io/live-poker-hand-replayer?embed=1#h=' + encoded +
       '" width="100%" height="560" style="border:0;border-radius:12px" title="Poker hand replay" loading="lazy"></iframe>';
@@ -941,7 +1005,7 @@
     });
 
     $('lpr-copy-link').addEventListener('click', e => {
-      copyText(e.currentTarget.dataset.url, e.currentTarget, 'Link copied');
+      copyText(shortShareUrl || e.currentTarget.dataset.url, e.currentTarget, 'Link copied');
     });
     $('lpr-show-embed').addEventListener('click', () => {
       $('lpr-embed-box').hidden = !$('lpr-embed-box').hidden;
@@ -952,6 +1016,25 @@
     $('lpr-edit-hand').addEventListener('click', backToBuilder);
     $('lpr-new-hand').addEventListener('click', newHand);
 
+    // Short share link (?s=id) — fetch the hand from the worker
+    const shortId = new URLSearchParams(location.search).get('s');
+    if (shortId) {
+      fetch(WORKER_URL + '/r/' + encodeURIComponent(shortId))
+        .then(r => r.json())
+        .then(data => {
+          const hand = data && data.success && data.h ? LPRCore.decodeHand(data.h) : null;
+          const check = hand ? LPRCore.validateHand(hand) : { ok: false };
+          if (hand && check.ok) {
+            heroFromHand(hand);
+            enterReplay(hand);
+          } else {
+            showBrokenLink();
+          }
+        })
+        .catch(showBrokenLink);
+      return;
+    }
+
     // Shared replay in the URL?
     const m = location.hash.match(/^#h=(.+)$/);
     if (m) {
@@ -961,12 +1044,16 @@
         heroFromHand(hand);
         enterReplay(hand);
       } else {
-        $('lpr-setup-error').textContent = 'This replay link looks broken — the hand could not be read. Build it fresh below.';
-        if (document.documentElement.classList.contains('lpr-embed')) {
-          $('lpr-replay').hidden = false;
-          $('lpr-step-desc').textContent = 'This replay link looks broken.';
-        }
+        showBrokenLink();
       }
+    }
+  }
+
+  function showBrokenLink() {
+    $('lpr-setup-error').textContent = 'This replay link looks broken — the hand could not be read. Build it fresh below.';
+    if (document.documentElement.classList.contains('lpr-embed')) {
+      $('lpr-replay').hidden = false;
+      $('lpr-step-desc').textContent = 'This replay link looks broken.';
     }
   }
 

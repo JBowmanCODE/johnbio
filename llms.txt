@@ -10,6 +10,7 @@
 
 ## AI Tools
 
+- [Live Poker Hand Replayer](https://johnb.io/live-poker-hand-replayer): Turn any live No Limit Hold'em poker hand into an animated table replay. Build the hand in a guided form or paste notes parsed by Claude AI, then share a link or embed the replay anywhere.
 - [AI CV Enhancer](https://johnb.io/aitocv): Upload a CV and job description to get a tailored CV, cover letter, match score and interview prep powered by Claude AI. Also accessible via aitocv.com.
 - [AI Copyeditor](https://johnb.io/editor): Paste or upload text/Word documents to get AI-powered copyediting with UK/US English support and brand style guide options.
 - [Gen Z Translator](https://johnb.io/genz): AI-powered tool that rewrites text in Gen Z slang.

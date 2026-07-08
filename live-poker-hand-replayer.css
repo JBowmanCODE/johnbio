@@ -170,6 +170,29 @@
 .lpr-pick-card.used { opacity: 0.25; cursor: not-allowed; text-decoration: line-through; }
 .lpr-pick-card.chosen { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
 .lpr-picker-footer { display: flex; gap: 10px; justify-content: flex-end; }
+.lpr-picker-players {
+  border-top: 1px solid var(--outline-variant);
+  margin: 4px 0 14px;
+  padding-top: 10px;
+}
+.lpr-picker-player-row {
+  display: grid;
+  grid-template-columns: 1fr auto 64px;
+  gap: 10px;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 0.9rem;
+}
+.lpr-picker-player-head span {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--on-surface-variant);
+}
+.lpr-picker-player-cards { display: inline-flex; gap: 4px; }
+.lpr-picker-player-cards.lpr-unknown { color: var(--on-surface-variant); font-size: 0.8rem; }
+.lpr-picker-player-row .lpr-pos-tag { text-align: right; font-size: 0.8rem; }
 
 /* ── Buttons ── */
 .lpr-primary-btn {
@@ -214,7 +237,8 @@
 }
 .lpr-pot-readout { color: var(--on-surface-variant); }
 .lpr-board-readout { display: flex; gap: 6px; margin-bottom: 12px; min-height: 34px; }
-.lpr-turn-line { font-weight: 600; margin-bottom: 12px; }
+.lpr-turn-line { font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.lpr-turn-cards { display: inline-flex; gap: 4px; }
 .lpr-action-buttons { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 8px; }
 .lpr-act-btn {
   padding: 11px 22px;

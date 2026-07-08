@@ -1,6 +1,18 @@
 const projects = [
   // ── TOP 6 (visible by default) ──────────────────────────────────────────
   {
+    id: 'live-poker-hand-replayer',
+    title: 'Live Poker Hand Replayer',
+    desc: 'Turn any live poker hand into an animated replay. Build it in a guided form or paste your notes and AI does the typing — then watch it play out, share a short link, or embed it anywhere.',
+    category: 'ai',
+    badge: 'AI TOOL',
+    color: 'cyan',
+    icons: ['playing_cards', 'replay'],
+    href: 'https://johnb.io/live-poker-hand-replayer',
+    img: '/images/live_poker_hand_replayer_og.webp',
+    thumbIcon: 'playing_cards',
+  },
+  {
     id: 'football-2026',
     title: 'Football 2026',
     desc: 'AI predictions for the Summer 2026 football tournament. Group stage results, full knockout bracket, squad ratings for all 48 teams. Click to change bracket winners.',
