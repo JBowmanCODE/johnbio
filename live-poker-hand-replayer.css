@@ -218,6 +218,21 @@
   cursor: pointer;
 }
 .lpr-ghost-btn:hover { border-color: var(--primary); color: var(--primary); }
+/* Stand-out variant — same look as the header's About Me button */
+.lpr-ghost-btn.lpr-cta-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-container));
+  border: none;
+  color: var(--on-primary);
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(255, 137, 171, 0.25);
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+.lpr-ghost-btn.lpr-cta-btn:hover {
+  color: var(--on-primary);
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(255, 0, 127, 0.4);
+}
+.lpr-ghost-btn.lpr-cta-btn:active { transform: scale(0.97); }
 .lpr-error { color: #ff6b81; font-size: 0.9rem; margin: 10px 0; min-height: 1em; }
 
 /* ── Action builder ── */
