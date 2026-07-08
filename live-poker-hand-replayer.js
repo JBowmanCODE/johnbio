@@ -1041,7 +1041,9 @@
       if (step.street === 'turn') return 'Turn: ' + speakCard(board[3]);
       if (step.street === 'river') return 'River: ' + speakCard(board[4]);
     }
-    return describeStep(step);
+    // TTS reads "1,775" as "1, 775" and drops the thousand — strip the
+    // grouping commas from numbers for speech only
+    return describeStep(step).replace(/(\d),(?=\d)/g, '$1');
   }
 
   async function ensureNarrationClips() {
