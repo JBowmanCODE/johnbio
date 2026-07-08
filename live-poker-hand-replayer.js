@@ -777,7 +777,9 @@
     ensureAudio(); // user gesture — unlock audio for the session
     if (narrateOn && !narrationClips && !narrationFailed) {
       $('lpr-progress').textContent = 'Preparing the voice…';
+      setBar('lpr-voice-bar', null);
       await ensureNarrationClips();
+      hideBar('lpr-voice-bar');
     }
     if (stepIndex >= timeline.length - 1) { stepIndex = 0; renderStep(); }
     $('lpr-play-icon').textContent = 'pause';
@@ -1185,6 +1187,23 @@
     playNarration(idx);
   }
 
+  // ── Progress bars ───────────────────────────────────────────────────────────
+  // pct number → filling bar; null → indeterminate sweep; hide() when done.
+
+  function setBar(id, pct) {
+    const bar = $(id);
+    bar.hidden = false;
+    bar.classList.toggle('indeterminate', pct === null);
+    if (pct !== null) bar.querySelector('.lpr-progressbar-fill').style.width = Math.min(100, pct) + '%';
+  }
+
+  function hideBar(id) {
+    const bar = $(id);
+    bar.hidden = true;
+    bar.classList.remove('indeterminate');
+    bar.querySelector('.lpr-progressbar-fill').style.width = '0%';
+  }
+
   // ── Video export ────────────────────────────────────────────────────────────
   // Redraws the replay onto a canvas at 2x speed (1s per step) and records it
   // with MediaRecorder. MP4 where the browser supports it, WebM otherwise.
@@ -1492,6 +1511,7 @@
       // With narration on, fetch the Shimmer clips first so the voice is in the video
       if (narrateOn && !narrationClips && !narrationFailed) {
         statusEl.textContent = 'Preparing the voice…';
+        setBar('lpr-video-bar', null);
         await ensureNarrationClips();
       }
       const stream = canvas.captureStream(30);
@@ -1533,10 +1553,12 @@
       const t0 = performance.now();
       let lastIdx = 0;
 
+      // Timer chain, not requestAnimationFrame — rAF freezes in background tabs.
+      // Hidden tabs clamp timers to ~1s, which is fine: every step is ≥1s and
+      // each frame is static, so recording survives the user switching away.
       await new Promise(resolve => {
-        function tick(now) {
-          // rAF timestamps can land a hair before t0 — clamp so elapsed is never negative
-          const elapsed = Math.max(0, now - t0);
+        function tick() {
+          const elapsed = Math.max(0, performance.now() - t0);
           let idx = 0;
           while (idx < steps.length - 1 && elapsed >= cumulative[idx]) idx++;
           if (idx !== lastIdx) {
@@ -1546,10 +1568,11 @@
           }
           drawVideoFrame(ctx, L, steps[idx]);
           statusEl.textContent = 'Recording… ' + Math.max(0, Math.ceil((totalMs - elapsed) / 1000)) + 's left';
+          setBar('lpr-video-bar', (elapsed / totalMs) * 100);
           if (elapsed >= totalMs) { resolve(); return; }
-          requestAnimationFrame(tick);
+          setTimeout(tick, 120);
         }
-        requestAnimationFrame(tick);
+        tick();
       });
       stopNarration();
       if (msd) { try { sfxBus.disconnect(msd); } catch (e) { /* already gone */ } }
@@ -1569,6 +1592,7 @@
     } catch (e) {
       statusEl.textContent = 'Recording failed — refresh the page and try again.';
     } finally {
+      hideBar('lpr-video-bar');
       previewWrap.innerHTML = '';
       videoBusy = false;
     }
@@ -1780,7 +1804,9 @@
       else if (timeline) {
         ensureAudio();
         narrationFailed = false; // toggling the voice back on retries the good voice
+        if (!narrationClips) setBar('lpr-voice-bar', null);
         Promise.resolve(ensureNarrationClips()).then(() => {
+          hideBar('lpr-voice-bar');
           if (narrateOn) playNarration(stepIndex);
         });
       }

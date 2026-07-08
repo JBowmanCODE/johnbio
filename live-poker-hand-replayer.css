@@ -574,6 +574,33 @@
 .lpr-video-note { color: var(--on-surface-variant); font-size: 0.85rem; margin-bottom: 12px; }
 .lpr-video-formats { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 .lpr-video-status { font-weight: 600; margin-top: 10px; min-height: 1.2em; }
+
+/* Progress bars — determinate (recording) and indeterminate (voice prep) */
+.lpr-progressbar {
+  width: 100%;
+  max-width: 420px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--surface-container-high);
+  margin: 10px auto 0;
+  overflow: hidden;
+}
+.lpr-progressbar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transition: width 0.25s linear;
+}
+@keyframes lpr-indet {
+  0% { margin-left: -35%; }
+  100% { margin-left: 100%; }
+}
+.lpr-progressbar.indeterminate .lpr-progressbar-fill {
+  width: 35%;
+  transition: none;
+  animation: lpr-indet 1.1s ease-in-out infinite;
+}
 .lpr-video-preview-wrap { margin-top: 12px; }
 .lpr-video-preview-wrap canvas {
   max-width: 100%;
