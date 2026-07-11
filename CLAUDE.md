@@ -438,6 +438,7 @@ The `na-audio` block template (replace `SLUG` with the article slug):
 
 ### After creating the article
 - Prepend new entry to `NEWS_POSTS` in `news-data.js`
+- Run `python generate-news-links.py` and commit the regenerated `news/index.html` — this refreshes the static (crawlable) article links inside `#ns-grid`. A PostToolUse hook in `.claude/settings.json` normally does this automatically when `news-data.js` is edited; run it manually if the hook didn't fire, and never hand-edit the block between the `static-news` markers.
 - Add URL to `sitemap.xml` with `lastmod`, `changefreq="weekly"`, `priority="0.7"`
 - Add URL to `llms.txt` under the News/Blog section
 - Generate audio with `python generate-article-audio.py news/article-slug.html` and upload MP3 via cPanel
