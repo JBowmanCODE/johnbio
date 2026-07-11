@@ -74,7 +74,7 @@ def regenerate():
 def main():
     if "--hook" in sys.argv:
         try:
-            payload = json.load(sys.stdin)
+            payload = json.loads(sys.stdin.buffer.read().decode("utf-8-sig"))
         except (json.JSONDecodeError, ValueError):
             sys.exit(0)  # no/invalid hook payload - not an edit we care about
         file_path = str(payload.get("tool_input", {}).get("file_path", ""))

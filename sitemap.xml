@@ -414,13 +414,13 @@
   <!-- News -->
   <url>
     <loc>https://johnb.io/news/ai-music-88-million-views</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://johnb.io/news/geo-generative-engine-optimisation</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -432,19 +432,19 @@
   </url>
   <url>
     <loc>https://johnb.io/news/test-ai</loc>
-    <lastmod>2026-03-30</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://johnb.io/news/ai-terms-explained</loc>
-    <lastmod>2026-03-30</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://johnb.io/news/claude-code-vsc</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
