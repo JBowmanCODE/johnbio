@@ -26,14 +26,14 @@ def fail(msg):
 
 
 def parse_posts(js_text):
-    array_match = re.search(r"NEWS_POSTS\s*=\s*\[(.*)\];", js_text, re.S)
+    array_match = re.search(r"NEWS_POSTS\s*=\s*\[(.*?)^\];", js_text, re.S | re.M)
     if not array_match:
         fail("could not find NEWS_POSTS array in news-data.js")
     posts = []
     for block in re.findall(r"\{(.*?)\}", array_match.group(1), re.S):
         post = {}
         for field in REQUIRED_FIELDS:
-            m = re.search(field + r":\s*'((?:[^'\\]|\\.)*)'", block)
+            m = re.search(r"\b" + field + r":\s*'((?:[^'\\]|\\.)*)'", block)
             if not m:
                 fail(f"post #{len(posts) + 1} is missing required field '{field}'")
             post[field] = m.group(1).replace("\\'", "'")
@@ -65,7 +65,7 @@ def regenerate():
     pattern = re.compile(re.escape(START_MARKER) + r".*?" + re.escape(END_MARKER), re.S)
     new_page = pattern.sub(lambda _: build_block(posts), page, count=1)
     if new_page != page:
-        PAGE_FILE.write_text(new_page, encoding="utf-8")
+        PAGE_FILE.write_text(new_page, encoding="utf-8", newline="\n")
         print(f"Updated static news links ({len(posts)} articles).")
     else:
         print(f"Static news links already up to date ({len(posts)} articles).")
