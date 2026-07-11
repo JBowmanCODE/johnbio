@@ -173,14 +173,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Insights -->
-  <url>
-    <loc>https://johnb.io/project-insights</loc>
-    <lastmod>2026-03-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
   <!-- Other -->
   <url>
     <loc>https://johnb.io/wo</loc>

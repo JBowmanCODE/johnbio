@@ -112,10 +112,6 @@
 
 - [RAI Governance Framework](https://johnb.io/rai): Interactive responsible AI governance tool covering principles, risk tiering (EU AI Act aligned), RAI checklists, system cards and an AI registry.
 
-## Insights & Data
-
-- [Website Insights](https://johnb.io/project-insights): Google PageSpeed and performance insights for the site.
-
 ## Other
 
 
