@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Meditation Generator - Personalised & Free - JohnB.io</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css?v=3">
+  <link rel="stylesheet" href="/header.css?v=4">
+  <link rel="stylesheet" href="/footer.css?v=2">
+  <link rel="stylesheet" href="/meditation.css?v=1">
+
+  <!-- SEO -->
+  <meta name="description" content="Free AI meditation generator. Enter your name and goal, pick 5, 10 or 20 minutes and get a personalised guided meditation with voice and soundscape.">
+  <meta name="keywords" content="AI meditation generator, personalised guided meditation, free meditation tool, sleep meditation, focus meditation, relaxation">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/meditation">
+  <meta name="author" content="John Bowman">
+  <meta property="og:title" content="AI Meditation Generator - Personalised Guided Meditations">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/meditation">
+  <meta property="og:description" content="Enter your name and a goal, pick 5, 10 or 20 minutes, and listen to a guided meditation written just for you - with a calming AI voice and live soundscape.">
+  <meta property="og:image" content="https://johnb.io/images/meditation_og.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Meditation Generator - JohnB.io">
+  <meta name="twitter:description" content="Personalised guided meditations, generated on demand. Free, no signup.">
+  <meta name="twitter:image" content="https://johnb.io/images/meditation_og.webp">
+  <meta name="twitter:image:alt" content="AI Meditation Generator tool by JohnB.io">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI Meditation Generator",
+    "url": "https://johnb.io/meditation",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web",
+    "description": "AI tool that generates personalised guided meditations. Enter a name and a goal such as confidence, focus, relaxation or sleep, choose 5, 10 or 20 minutes, and listen to a unique session with an AI voice and a browser-synthesised ambient soundscape.",
+    "image": "https://johnb.io/images/meditation_og.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://johnb.io/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does the AI Meditation Generator do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It creates a personalised guided meditation from three inputs: your name, what you want to work on and how long you have. Claude writes a script built around your goal, an AI voice reads it aloud, and a calming soundscape plays underneath. Every session is unique."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You get 3 meditations per day at no cost. The limit exists because each session costs real money in AI usage. If you want more than 3 a day, get in touch on LinkedIn."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this medical advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This is a relaxation aid, not a treatment for any medical condition, including high blood pressure, anxiety disorders or insomnia. If you have a health concern, speak to a doctor. Stop the session if you feel unwell."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you store my name or goal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Your name and goal are sent to a Cloudflare Worker, used to generate the script and audio, and never saved. The only thing stored is a rate-limit counter tied to your IP address, which expires within two days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the voice pause between passages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Guided meditation is mostly silence. The voice speaks for a few seconds, then leaves space for you to follow the instruction while the soundscape continues. Longer sessions use longer pauses, and sleep meditations use the longest of all."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I listen with the screen locked?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not reliably. The audio is generated and mixed live in your browser, and phones suspend browser audio when the screen locks. Keep the tab open and the screen on, or use a desktop. Headphones give the best experience."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="med-ambient"></div>
+
+  <main class="med-wrap" id="main-content">
+
+    <div class="med-hero">
+      <h1 class="med-title">AI Meditation <span class="med-gradient">Generator</span></h1>
+      <p class="med-desc">A guided meditation written just for you. Enter your name and what you want to work on, pick a length, a voice and a soundscape - then press play.</p>
+    </div>
+
+    <!-- Form card -->
+    <div class="med-card" id="med-form-card">
+
+      <div class="med-field">
+        <label class="med-label" for="med-name">Your first name <span style="opacity:0.6;text-transform:none;letter-spacing:0;">(optional)</span></label>
+        <input type="text" id="med-name" class="med-input" maxlength="40" placeholder="e.g. Sarah" autocomplete="given-name">
+      </div>
+
+      <div class="med-field">
+        <span class="med-label" id="med-goal-label">What do you want to work on?</span>
+        <div class="med-chips" role="group" aria-labelledby="med-goal-label">
+          <button type="button" class="med-chip" data-goal="confidence" aria-pressed="false">Confidence</button>
+          <button type="button" class="med-chip" data-goal="focus" aria-pressed="false">Focus</button>
+          <button type="button" class="med-chip active" data-goal="relaxation" aria-pressed="true">Relaxation</button>
+          <button type="button" class="med-chip" data-goal="sleep" aria-pressed="false">Sleep</button>
+          <button type="button" class="med-chip" data-goal="custom" aria-pressed="false">Something else&hellip;</button>
+        </div>
+        <div id="med-custom-wrap" style="display:none;">
+          <label class="sr-only" for="med-goal-custom">Describe what you want to work on</label>
+          <input type="text" id="med-goal-custom" class="med-input" maxlength="100" placeholder="e.g. letting go of a stressful day at work">
+        </div>
+      </div>
+
+      <div class="med-field">
+        <span class="med-label" id="med-duration-label">How long do you have?</span>
+        <div class="med-seg" id="med-duration" role="group" aria-labelledby="med-duration-label">
+          <button type="button" class="med-seg-btn" data-min="5" aria-pressed="false">5 minutes</button>
+          <button type="button" class="med-seg-btn active" data-min="10" aria-pressed="true">10 minutes</button>
+          <button type="button" class="med-seg-btn" data-min="20" aria-pressed="false">20 minutes</button>
+        </div>
+      </div>
+
+      <div class="med-field">
+        <span class="med-label" id="med-voice-label">Voice</span>
+        <div class="med-seg" id="med-voice" role="group" aria-labelledby="med-voice-label">
+          <button type="button" class="med-seg-btn active" data-voice="shimmer" aria-pressed="true">Shimmer<small>Soft female</small></button>
+          <button type="button" class="med-seg-btn" data-voice="onyx" aria-pressed="false">Onyx<small>Deep male</small></button>
+          <button type="button" class="med-seg-btn" data-voice="nova" aria-pressed="false">Nova<small>Warm female</small></button>
+        </div>
+      </div>
+
+      <div class="med-field">
+        <span class="med-label" id="med-scape-label">Soundscape</span>
+        <div class="med-seg" id="med-scape" role="group" aria-labelledby="med-scape-label">
+          <button type="button" class="med-seg-btn active" data-scape="ocean" aria-pressed="true">Ocean waves</button>
+          <button type="button" class="med-seg-btn" data-scape="drone" aria-pressed="false">Deep drone</button>
+          <button type="button" class="med-seg-btn" data-scape="pads" aria-pressed="false">Soft pads</button>
+          <button type="button" class="med-seg-btn" data-scape="none" aria-pressed="false">None</button>
+        </div>
+      </div>
+
+      <button class="med-generate-btn" id="med-generate" aria-label="Generate my meditation">
+        <span class="material-symbols-outlined" aria-hidden="true">self_improvement</span>
+        Create My Meditation
+      </button>
+
+      <p id="med-status" class="med-status" role="status" aria-live="polite"></p>
+    </div>
+
+    <!-- Player card -->
+    <div class="med-player" id="med-player" style="display:none;" aria-label="Meditation player">
+      <h2 class="med-session-title" id="med-session-title">Your meditation</h2>
+
+      <button class="med-play-btn" id="med-play" aria-label="Play meditation">
+        <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span>
+      </button>
+
+      <div class="med-progress" id="med-progress" role="progressbar" aria-label="Session progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="med-progress-fill" id="med-progress-fill"></div>
+      </div>
+      <div class="med-times">
+        <span id="med-elapsed">0:00</span>
+        <span id="med-total">0:00</span>
+      </div>
+
+      <p class="med-ready" id="med-ready" aria-live="polite"></p>
+
+      <div class="med-volume-row" id="med-volume-row">
+        <span class="material-symbols-outlined" aria-hidden="true">music_note</span>
+        <input type="range" class="med-volume" id="med-volume" min="0" max="1" step="0.02" value="0.5" aria-label="Soundscape volume">
+      </div>
+
+      <p class="med-note" id="med-note" aria-live="polite"></p>
+
+      <button class="med-stop-btn" id="med-stop">End session</button>
+    </div>
+
+    <!-- Explainer / disclaimer -->
+    <div class="med-explainer" role="note">
+      <span class="material-symbols-outlined" aria-hidden="true">info</span>
+      <div class="med-explainer-text">
+        <p style="margin:0 0 0.6rem;"><strong>This is a relaxation aid, not medical advice.</strong> Meditation can support wellbeing but is not a treatment for any medical condition, including high blood pressure, anxiety disorders or insomnia. If you have a health concern, speak to a doctor. Stop if you feel unwell.</p>
+        <p style="margin:0;"><strong>Best with headphones.</strong> iPhone users: check the silent switch is off, and keep the screen on during your session - phones pause browser audio when the screen locks.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <!-- Tool info / SEO article -->
+  <section class="tool-info" aria-label="About this tool">
+    <div class="tool-info-inner">
+
+      <div class="tool-info-meta">
+        <span>Last updated: July 2026</span>
+        <span class="tool-info-sep">·</span>
+        <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener noreferrer">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      </div>
+
+      <div class="tool-info-body">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Why a Generated Meditation Beats a Library</h2>
+        <p>Meditation apps hand you a library of pre-recorded sessions and ask you to find one that fits. This tool works the other way round: you say what you want to work on, and the session is written for you on the spot. Your name appears in it. The pacing matches the length you chose. A sleep session slows down and lets you drift off; a focus session brings you back to a single point of attention.</p>
+        <p>The voice is generated by OpenAI text to speech, the script by Claude, and the soundscape is synthesised live in your browser with the Web Audio API - no recordings, no loops, no two sessions the same.</p>
+      </div>
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>What does the AI Meditation Generator do?</dt>
+                <dd>It creates a personalised guided meditation from three inputs: your name, what you want to work on and how long you have. Claude writes a script built around your goal, an AI voice reads it aloud, and a calming soundscape plays underneath. Every session is unique.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Is it free?</dt>
+                <dd>Yes. You get 3 meditations per day at no cost. The limit exists because each session costs real money in AI usage. If you want more than 3 a day, get in touch on LinkedIn.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Is this medical advice?</dt>
+                <dd>No. This is a relaxation aid, not a treatment for any medical condition, including high blood pressure, anxiety disorders or insomnia. If you have a health concern, speak to a doctor. Stop the session if you feel unwell.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Do you store my name or goal?</dt>
+                <dd>No. Your name and goal are sent to a Cloudflare Worker, used to generate the script and audio, and never saved. The only thing stored is a rate-limit counter tied to your IP address, which expires within two days.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Why does the voice pause between passages?</dt>
+                <dd>Guided meditation is mostly silence. The voice speaks for a few seconds, then leaves space for you to follow the instruction while the soundscape continues. Longer sessions use longer pauses, and sleep meditations use the longest of all.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Can I listen with the screen locked?</dt>
+                <dd>Not reliably. The audio is generated and mixed live in your browser, and phones suspend browser audio when the screen locks. Keep the tab open and the screen on, or use a desktop. Headphones give the best experience.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Fill in the form.</strong> Your first name is optional. Pick a goal or describe your own, choose 5, 10 or 20 minutes, then select a voice and a soundscape.</li>
+              <li><strong>Claude writes your script.</strong> The AI writes a timed meditation built around your goal - short spoken passages with deliberate pauses between them, personalised with your name.</li>
+              <li><strong>The voice is generated.</strong> Each passage is converted to speech by OpenAI text to speech at a slowed, calm pace. The first passage is ready within seconds; the rest load quietly in the background.</li>
+              <li><strong>Press play.</strong> Your browser synthesises the soundscape live with the Web Audio API and plays each spoken passage at the right moment, gently lowering the music while the voice speaks.</li>
+              <li><strong>Follow the voice.</strong> When the session ends the soundscape fades out slowly. Take a moment before you move.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points - Getting More From Meditation</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>Consistency beats length.</strong> Five minutes every day does more than twenty minutes once a week. Start with the 5-minute option and build up.</li>
+              <li><strong>A wandering mind is the exercise.</strong> Noticing you have drifted and coming back is not failing at meditation - it is the repetition that trains attention.</li>
+              <li><strong>Posture matters less than stillness.</strong> Sitting in a chair with both feet on the floor works fine. For sleep sessions, lie down in bed and let the session end without you.</li>
+              <li><strong>Match the session to the moment.</strong> Focus sessions work best before deep work, relaxation sessions after stress, sleep sessions as the last thing you do with the lights off.</li>
+              <li><strong>Headphones change the experience.</strong> The soundscape sits under the voice and the stereo detail is lost on laptop speakers.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources &amp; Further Reading</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://www.nhs.uk/mental-health/self-help/tips-and-support/mindfulness/" target="_blank" rel="noopener noreferrer">NHS - Mindfulness</a> - what mindfulness is and how it supports mental wellbeing.</li>
+              <li><a href="https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/breathing-exercises-for-stress/" target="_blank" rel="noopener noreferrer">NHS - Breathing Exercises for Stress</a> - the breathing techniques these sessions draw on.</li>
+              <li><a href="https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/1809754" target="_blank" rel="noopener noreferrer">Goyal et al., JAMA Internal Medicine (2014)</a> - meta-analysis of meditation programmes and psychological wellbeing.</li>
+              <li><a href="https://johnb.io/text-to-speech" target="_blank" rel="noopener noreferrer">Text to Speech tool</a> - the same AI voices, for any text you like.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/scripts.js?v=5" defer></script>
+  <script src="/meditation.js?v=1" defer></script>
+  <script>
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>

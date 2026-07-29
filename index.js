@@ -1,6 +1,18 @@
 const projects = [
   // ── TOP 6 (visible by default) ──────────────────────────────────────────
   {
+    id: 'meditation',
+    title: 'AI Meditation Generator',
+    desc: 'Personalised guided meditations, generated on demand. Pick a goal, length and voice — Claude writes the script, an AI voice reads it, and your browser synthesises the soundscape.',
+    category: 'ai',
+    badge: 'AI TOOL',
+    color: 'cyan',
+    icons: ['self_improvement', 'graphic_eq'],
+    href: 'https://johnb.io/meditation',
+    img: '/images/meditation_og.webp',
+    thumbIcon: 'self_improvement',
+  },
+  {
     id: 'live-poker-hand-replayer',
     title: 'Live Poker Hand Replayer',
     desc: 'Turn any live poker hand into an animated replay. Build it in a guided form or paste your notes and AI does the typing — then watch it play out, share a short link, or embed it anywhere.',
