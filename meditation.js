@@ -15,6 +15,7 @@ const customInput = document.getElementById('med-goal-custom');
 const durBtns     = Array.from(document.querySelectorAll('#med-duration .med-seg-btn'));
 const voiceBtns   = Array.from(document.querySelectorAll('#med-voice .med-seg-btn'));
 const scapeBtns   = Array.from(document.querySelectorAll('#med-scape .med-seg-btn'));
+const langSel     = document.getElementById('med-language');
 const generateBtn = document.getElementById('med-generate');
 const statusEl    = document.getElementById('med-status');
 const genBar      = document.getElementById('med-gen-progress');
@@ -113,6 +114,7 @@ generateBtn.addEventListener('click', async () => {
         goal: selectedGoal,
         goalText,
         duration: selectedDuration,
+        language: langSel.value,
       }),
     });
     const data = await res.json();
