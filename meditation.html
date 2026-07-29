@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="/styles.css?v=3">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
-  <link rel="stylesheet" href="/meditation.css?v=1">
+  <link rel="stylesheet" href="/meditation.css?v=2">
 
   <!-- SEO -->
   <meta name="description" content="Free AI meditation generator. Enter your name and goal, pick 5, 10 or 20 minutes and get a personalised guided meditation with voice and soundscape.">
@@ -127,6 +127,14 @@
           "@type": "Answer",
           "text": "Not reliably. The audio is generated and mixed live in your browser, and phones suspend browser audio when the screen locks. Keep the tab open and the screen on, or use a desktop. Headphones give the best experience."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I download my meditation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Once all the voice passages have loaded, use Download MP3 to save the full session with the voice and soundscape mixed at the background volume you set on the slider. On a phone, the Share button sends the file straight to WhatsApp or any other app."
+        }
       }
     ]
   }
@@ -206,11 +214,16 @@
     <div class="med-player" id="med-player" style="display:none;" aria-label="Meditation player">
       <h2 class="med-session-title" id="med-session-title">Your meditation</h2>
 
-      <button class="med-play-btn" id="med-play" aria-label="Play meditation">
-        <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span>
-      </button>
+      <div class="med-controls">
+        <button class="med-play-btn" id="med-play" aria-label="Play meditation">
+          <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span>
+        </button>
+        <button class="med-skip-btn" id="med-skip" aria-label="Skip to the next spoken passage">
+          <span class="material-symbols-outlined" aria-hidden="true">skip_next</span>
+        </button>
+      </div>
 
-      <div class="med-progress" id="med-progress" role="progressbar" aria-label="Session progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="med-progress" id="med-progress" role="slider" tabindex="0" aria-label="Session progress. Click or use arrow keys to skip" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
         <div class="med-progress-fill" id="med-progress-fill"></div>
       </div>
       <div class="med-times">
@@ -221,11 +234,23 @@
       <p class="med-ready" id="med-ready" aria-live="polite"></p>
 
       <div class="med-volume-row" id="med-volume-row">
-        <span class="material-symbols-outlined" aria-hidden="true">music_note</span>
-        <input type="range" class="med-volume" id="med-volume" min="0" max="1" step="0.02" value="0.5" aria-label="Soundscape volume">
+        <button class="med-mute-btn" id="med-mute" aria-label="Mute background sound">
+          <span class="material-symbols-outlined" aria-hidden="true">volume_up</span>
+        </button>
+        <input type="range" class="med-volume" id="med-volume" min="0" max="1" step="0.02" value="0.5" aria-label="Background sound volume">
       </div>
+      <p class="med-volume-caption" id="med-volume-caption">Background sound volume - the voice stays the same. Set the mix how you like it; downloads are created with this balance.</p>
 
       <p class="med-note" id="med-note" aria-live="polite"></p>
+
+      <div class="med-actions">
+        <button class="med-action-btn" id="med-download" disabled>
+          <span class="material-symbols-outlined" aria-hidden="true">download</span> Download MP3
+        </button>
+        <button class="med-action-btn" id="med-share" disabled>
+          <span class="material-symbols-outlined" aria-hidden="true">share</span> Share
+        </button>
+      </div>
 
       <button class="med-stop-btn" id="med-stop">End session</button>
     </div>
@@ -292,6 +317,10 @@
                 <dt>Can I listen with the screen locked?</dt>
                 <dd>Not reliably. The audio is generated and mixed live in your browser, and phones suspend browser audio when the screen locks. Keep the tab open and the screen on, or use a desktop. Headphones give the best experience.</dd>
               </div>
+              <div class="faq-item">
+                <dt>Can I download my meditation?</dt>
+                <dd>Yes. Once all the voice passages have loaded, use Download MP3 to save the full session with the voice and soundscape mixed at the background volume you set on the slider. On a phone, the Share button sends the file straight to WhatsApp or any other app.</dd>
+              </div>
             </dl>
           </div>
         </details>
@@ -307,7 +336,7 @@
               <li><strong>Claude writes your script.</strong> The AI writes a timed meditation built around your goal - short spoken passages with deliberate pauses between them, personalised with your name.</li>
               <li><strong>The voice is generated.</strong> Each passage is converted to speech by OpenAI text to speech at a slowed, calm pace. The first passage is ready within seconds; the rest load quietly in the background.</li>
               <li><strong>Press play.</strong> Your browser synthesises the soundscape live with the Web Audio API and plays each spoken passage at the right moment, gently lowering the music while the voice speaks.</li>
-              <li><strong>Follow the voice.</strong> When the session ends the soundscape fades out slowly. Take a moment before you move.</li>
+              <li><strong>Follow the voice.</strong> When the session ends the soundscape fades out slowly. Take a moment before you move. You can also download the finished session as an MP3, or share it straight to WhatsApp from your phone.</li>
             </ol>
           </div>
         </details>
@@ -354,7 +383,8 @@
   <div id="footer-placeholder"></div>
 
   <script src="/scripts.js?v=5" defer></script>
-  <script src="/meditation.js?v=1" defer></script>
+  <script src="/lame.min.js?v=1" defer></script>
+  <script src="/meditation.js?v=2" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
