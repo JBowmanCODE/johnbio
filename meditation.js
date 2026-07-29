@@ -1,7 +1,10 @@
 const WORKER_URL = 'https://meditation-worker.ukjbowman.workers.dev';
 const WORDS_PER_SEC = 2.25; // matches the worker's estimate for tts-1 at speed 0.9
-const RENDER_RATE = 24000;  // offline render/encode rate — matches OpenAI TTS output
-const RENDER_KBPS = 64;
+// 44.1kHz MPEG-1 CBR — the most compatible MP3 profile there is. Lower rates
+// (24kHz MPEG-2) confused WhatsApp's player: the file played once then
+// wouldn't replay.
+const RENDER_RATE = 44100;
+const RENDER_KBPS = 96;
 
 // ── DOM ──────────────────────────────────────────────────────────────────
 const formCard    = document.getElementById('med-form-card');
@@ -689,7 +692,7 @@ async function encodeMp3Blob(buffer, onProgress) {
   }
   const samples = buffer.getChannelData(0);
   const enc = new lamejs.Mp3Encoder(1, buffer.sampleRate, RENDER_KBPS);
-  const CHUNK = 1152 * 120; // ~5.8s of audio per slice at 24kHz
+  const CHUNK = 1152 * 120; // ~3.1s of audio per slice at 44.1kHz
   const parts = [];
   const int16 = new Int16Array(CHUNK);
   for (let i = 0; i < samples.length; i += CHUNK) {
