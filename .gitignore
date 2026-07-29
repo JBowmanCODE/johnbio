@@ -13,3 +13,7 @@ Thumbs.db
 # Logs and error logs
 error_log
 *.log
+
+# Audio is uploaded via cPanel, never through git (times out the FTP deploy)
+*.mp3
+*.m4a

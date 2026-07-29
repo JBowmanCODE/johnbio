@@ -386,6 +386,65 @@
 .med-action-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .med-action-btn:disabled:hover { background: rgba(0,238,252,0.1); border-color: rgba(0,238,252,0.3); }
 
+/* ── EXAMPLE MEDITATIONS ── */
+.med-samples { margin: 1.5rem 0; }
+.med-samples-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: #00EEFC;
+  text-align: center;
+  margin: 0 0 1rem;
+}
+.med-samples-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+.med-sample {
+  background: rgba(28,28,35,0.7);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0,238,252,0.2);
+  border-radius: 0.875rem;
+  padding: 1.1rem 1.25rem;
+}
+.med-sample-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem; font-weight: 800;
+  color: var(--on-surface);
+  margin: 0 0 0.2rem;
+}
+.med-sample-meta {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  color: var(--on-surface-variant);
+  margin: 0 0 0.7rem;
+}
+.med-sample audio {
+  width: 100%;
+  height: 36px;
+  color-scheme: dark; /* dark native controls */
+  margin-bottom: 0.7rem;
+}
+.med-sample-dl {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.07em;
+  padding: 0.4rem 0.9rem;
+  background: rgba(0,238,252,0.1);
+  border: 1px solid rgba(0,238,252,0.3);
+  border-radius: 0.4rem;
+  color: #00EEFC;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.med-sample-dl:hover { background: rgba(0,238,252,0.18); border-color: rgba(0,238,252,0.5); }
+.med-sample-dl .material-symbols-outlined { font-size: 0.9rem; }
+@media (max-width: 600px) {
+  .med-samples-grid { grid-template-columns: 1fr; }
+}
+
 /* ── EXPLAINER ── */
 .med-explainer {
   background: rgba(0,238,252,0.06);
