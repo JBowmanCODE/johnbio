@@ -383,7 +383,8 @@ function startOf(i) {
 // ── PLAYBACK ─────────────────────────────────────────────────────────────
 playBtn.addEventListener('click', () => {
   if (state === 'playing') { pauseSession(); return; }
-  if (state !== 'ready' && state !== 'paused') return;
+  if (state === 'done') prepareReplay();
+  else if (state !== 'ready' && state !== 'paused') return;
 
   ctx.resume();
 
@@ -491,11 +492,24 @@ function endSession() {
   updateProgress();
   if (soundscape) soundscape.stop(8); // long gentle fade
   soundscape = null;
-  setPlayUI(false);
-  playBtn.style.display = 'none';
+  soundscapeStarted = false;
+  playIcon.textContent = 'replay';
+  playBtn.setAttribute('aria-label', 'Replay meditation');
   noteEl.textContent = 'Session complete. Take a moment before you move.';
   stopBtn.textContent = 'New meditation';
   if (tickTimer) { clearInterval(tickTimer); tickTimer = null; }
+}
+
+// The segment MP3s are kept for the whole session, so replaying costs nothing
+function prepareReplay() {
+  playIdx = 0;
+  fillEl.style.width = '0%';
+  progressEl.setAttribute('aria-valuenow', '0');
+  elapsedEl.textContent = '0:00';
+  noteEl.textContent = '';
+  stopBtn.textContent = 'End session';
+  state = 'ready';
+  pumpDecode();
 }
 
 // ── SEEKING ──────────────────────────────────────────────────────────────
