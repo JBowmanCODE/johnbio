@@ -708,29 +708,38 @@ async function encodeMp3Blob(buffer, onProgress) {
   return new Blob(parts, { type: 'audio/mpeg' });
 }
 
+function triggerDownload(blob) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = fileName();
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 60000);
+}
+
 downloadBtn.addEventListener('click', async () => {
   try {
-    const blob = await getSessionBlob();
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = fileName();
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(a.href), 60000);
+    triggerDownload(await getSessionBlob());
   } catch (e) {
     showActionError(e);
   }
 });
 
+// The share sheet only delivers files reliably on phones. Desktop WhatsApp
+// silently drops files handed over by the Windows share sheet, so on desktop
+// we download instead and tell the user to drag the file into a chat.
+const IS_MOBILE = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
 shareBtn.addEventListener('click', async () => {
   try {
     const blob = await getSessionBlob();
     const file = new File([blob], fileName(), { type: 'audio/mpeg' });
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    if (IS_MOBILE && navigator.canShare && navigator.canShare({ files: [file] })) {
       await navigator.share({ files: [file], title: titleEl.textContent });
     } else {
-      noteEl.textContent = 'Direct sharing needs a phone. Download the MP3 and attach it in WhatsApp instead.';
+      triggerDownload(blob);
+      noteEl.textContent = "WhatsApp on desktop can't receive shared files, so the MP3 has been downloaded instead - drag it into any WhatsApp chat to send it.";
     }
   } catch (e) {
     if (e && e.name === 'AbortError') return; // user closed the share sheet
