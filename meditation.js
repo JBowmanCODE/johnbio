@@ -39,7 +39,10 @@ const muteBtn     = document.getElementById('med-mute');
 const muteIcon    = muteBtn.querySelector('.material-symbols-outlined');
 const volCaption  = document.getElementById('med-volume-caption');
 const downloadBtn = document.getElementById('med-download');
+const saveBtn     = document.getElementById('med-save');
 const shareBtn    = document.getElementById('med-share');
+const savedSection = document.getElementById('med-saved');
+const savedListEl  = document.getElementById('med-saved-list');
 
 // ── STATE ────────────────────────────────────────────────────────────────
 let state = 'idle'; // idle | generating | ready | playing | paused | done
@@ -61,6 +64,8 @@ let soundscapeStarted = false;
 let musicMuted = false;
 let seeking = false;
 let renderedBlob = null, renderedKey = '', renderBusy = false;
+let sessionDuration = 10;
+let sessionSaved = false;
 
 // ── FORM CONTROLS ────────────────────────────────────────────────────────
 function bindGroup(btns, onPick) {
@@ -255,6 +260,9 @@ function startSession(script) {
   soundscapeStarted = false;
   renderedBlob = null;
   renderedKey = '';
+  sessionDuration = selectedDuration;
+  sessionSaved = false;
+  saveBtn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">bookmark</span> Save';
   totalSec = segments.reduce((sum, s) => sum + s.estSec + s.pauseAfter, 0);
 
   titleEl.textContent = script.title;
@@ -335,6 +343,7 @@ function updateReadyUI() {
   const complete = done >= segments.length && segments.some(s => s.mp3);
   downloadBtn.disabled = !complete || renderBusy;
   shareBtn.disabled = !complete || renderBusy;
+  saveBtn.disabled = !complete || sessionSaved;
 }
 
 // ── DECODING (2 ahead of playhead; PCM is freed after play, MP3s are kept) ──
@@ -824,6 +833,188 @@ function showActionError(e) {
     noteEl.textContent = (e && e.message) || 'Could not create the MP3. Please try again.';
   }
 }
+
+// ── SAVED MEDITATIONS (IndexedDB, device-local, max 3) ───────────────────
+const MAX_SAVED = 3;
+const SCAPE_LABELS = {
+  ocean: 'Ocean waves', wind: 'Wind', fire: 'Fire crackle', brown: 'Brown noise',
+  heartbeat: 'Heartbeat', chimes: 'Wind chimes', bowl: 'Singing bowl',
+  drone: 'Deep drone', pads: 'Soft pads', binaural: 'Binaural tones', none: 'No',
+};
+
+function openDb() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open('johnb-meditations', 1);
+    req.onupgradeneeded = () => req.result.createObjectStore('sessions', { keyPath: 'id' });
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function dbAll() {
+  const db = await openDb();
+  return new Promise((resolve, reject) => {
+    const req = db.transaction('sessions').objectStore('sessions').getAll();
+    req.onsuccess = () => resolve(req.result.sort((a, b) => b.id - a.id));
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function dbPut(rec) {
+  const db = await openDb();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('sessions', 'readwrite');
+    tx.objectStore('sessions').put(rec);
+    tx.oncomplete = resolve;
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+async function dbDelete(id) {
+  const db = await openDb();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('sessions', 'readwrite');
+    tx.objectStore('sessions').delete(id);
+    tx.oncomplete = resolve;
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+saveBtn.addEventListener('click', async () => {
+  if (!segments.length || !segments.every(s => s.mp3 || s.failed) || !segments.some(s => s.mp3)) return;
+  try {
+    const all = await dbAll();
+    if (all.length >= MAX_SAVED) {
+      noteEl.textContent = `You've saved ${MAX_SAVED} meditations - delete one from the list below to make room.`;
+      return;
+    }
+    await dbPut({
+      id: Date.now(),
+      title: titleEl.textContent,
+      duration: sessionDuration,
+      voice: selectedVoice,
+      scape: selectedScape,
+      segments: segments.filter(s => s.mp3).map(s => ({ text: s.text, pauseAfter: s.pauseAfter, mp3: s.mp3 })),
+    });
+    sessionSaved = true;
+    saveBtn.disabled = true;
+    saveBtn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">bookmark_added</span> Saved';
+    noteEl.textContent = "Saved on this device - it'll be here when you come back.";
+    renderSavedList();
+  } catch (e) {
+    noteEl.textContent = 'Saving is not available in this browser (private browsing blocks it).';
+  }
+});
+
+async function renderSavedList() {
+  let all = [];
+  try { all = await dbAll(); } catch (e) {}
+  savedSection.style.display = all.length ? '' : 'none';
+  savedListEl.innerHTML = '';
+  all.forEach(rec => {
+    const row = document.createElement('div');
+    row.className = 'med-saved-item';
+
+    const info = document.createElement('div');
+    info.className = 'med-saved-info';
+    const name = document.createElement('span');
+    name.className = 'med-saved-name';
+    name.textContent = rec.title;
+    const meta = document.createElement('span');
+    meta.className = 'med-saved-meta';
+    meta.textContent = `${rec.duration} min · ${SCAPE_LABELS[rec.scape] || 'No'} soundscape`;
+    info.appendChild(name); info.appendChild(meta);
+
+    const listen = document.createElement('button');
+    listen.className = 'med-action-btn';
+    listen.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">play_arrow</span> Listen';
+    listen.addEventListener('click', () => loadSaved(rec));
+
+    const del = document.createElement('button');
+    del.className = 'med-saved-del';
+    del.setAttribute('aria-label', `Delete ${rec.title}`);
+    del.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">delete</span>';
+    del.addEventListener('click', async () => {
+      try { await dbDelete(rec.id); } catch (e) {}
+      renderSavedList();
+    });
+
+    row.appendChild(info); row.appendChild(listen); row.appendChild(del);
+    savedListEl.appendChild(row);
+  });
+}
+
+function setActiveBtn(btns, match) {
+  btns.forEach(b => {
+    const on = match(b);
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+}
+
+function loadSaved(rec) {
+  stopPreview();
+  if (tickTimer) { clearInterval(tickTimer); tickTimer = null; }
+  try { if (currentSource) currentSource.stop(); } catch (e) {}
+  currentSource = null;
+  if (soundscape) { soundscape.stop(0.3); soundscape = null; }
+  if (ctx) ctx.close().catch(() => {});
+  ctx = new (window.AudioContext || window.webkitAudioContext)();
+  ctx.resume();
+  buildGraph();
+
+  selectedVoice = rec.voice;
+  setActiveBtn(voiceBtns, b => b.dataset.voice === rec.voice);
+  selectedScape = rec.scape;
+  setActiveBtn(scapeBtns, b => b.dataset.scape === rec.scape);
+
+  segments = rec.segments.map(s => ({
+    text: s.text,
+    pauseAfter: s.pauseAfter,
+    estSec: countWords(s.text) / WORDS_PER_SEC,
+    durSec: null,
+    mp3: s.mp3,
+    audioBuffer: null,
+    decoding: false,
+    failed: false,
+  }));
+  playIdx = 0;
+  nextFetchIdx = segments.length; // nothing to fetch — audio came from storage
+  inFlight = 0;
+  ttsBlocked = false;
+  soundscapeStarted = false;
+  renderedBlob = null;
+  renderedKey = '';
+  sessionDuration = rec.duration;
+  sessionSaved = true; // it's already in the list
+  saveBtn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">bookmark_added</span> Saved';
+  totalSec = segments.reduce((sum, s) => sum + s.estSec + s.pauseAfter, 0);
+
+  titleEl.textContent = rec.title;
+  totalEl.textContent = fmt(totalSec);
+  elapsedEl.textContent = '0:00';
+  fillEl.style.width = '0%';
+  progressEl.setAttribute('aria-valuenow', '0');
+  noteEl.textContent = '';
+  const hasMusic = selectedScape !== 'none';
+  volumeRow.style.display = hasMusic ? '' : 'none';
+  volCaption.style.display = hasMusic ? '' : 'none';
+  setPlayUI(false);
+  playIcon.textContent = 'play_arrow';
+  stopBtn.textContent = 'End session';
+  playBtn.style.display = '';
+
+  formCard.style.display = 'none';
+  setStatus('');
+  playerCard.style.display = '';
+  playerCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  state = 'ready';
+  updateReadyUI();
+  pumpDecode();
+}
+
+renderSavedList();
 
 // ── SOUNDSCAPES ──────────────────────────────────────────────────────────
 // Uniform interface: create(ctx, type, offlineDuration?) →

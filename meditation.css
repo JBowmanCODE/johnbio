@@ -405,6 +405,53 @@
 .med-action-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 .med-action-btn:disabled:hover { background: rgba(0,238,252,0.1); border-color: rgba(0,238,252,0.3); }
 
+/* ── SAVED MEDITATIONS ── */
+.med-saved { margin: 1.5rem 0; }
+.med-saved-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.med-saved-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: rgba(28,28,35,0.7);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0,238,252,0.2);
+  border-radius: 0.875rem;
+  padding: 0.85rem 1.1rem;
+}
+.med-saved-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.15rem; }
+.med-saved-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem; font-weight: 800;
+  color: var(--on-surface);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.med-saved-meta {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.68rem;
+  color: var(--on-surface-variant);
+}
+.med-saved-del {
+  display: inline-flex; align-items: center;
+  background: transparent;
+  border: none;
+  color: var(--on-surface-variant);
+  cursor: pointer;
+  padding: 0.3rem;
+  transition: color 0.2s;
+}
+.med-saved-del:hover { color: #f87171; }
+.med-saved-del .material-symbols-outlined { font-size: 1.1rem; }
+.med-saved-note {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  color: var(--on-surface-variant);
+  opacity: 0.65;
+  text-align: center;
+  margin: 0.6rem 0 0;
+}
+@media (max-width: 600px) {
+  .med-saved-item { flex-wrap: wrap; }
+  .med-saved-info { flex-basis: 100%; }
+}
+
 /* ── EXAMPLE MEDITATIONS ── */
 .med-samples { margin: 1.5rem 0; }
 .med-samples-title {
