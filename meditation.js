@@ -14,6 +14,8 @@ const voiceBtns   = Array.from(document.querySelectorAll('#med-voice .med-seg-bt
 const scapeBtns   = Array.from(document.querySelectorAll('#med-scape .med-seg-btn'));
 const generateBtn = document.getElementById('med-generate');
 const statusEl    = document.getElementById('med-status');
+const genBar      = document.getElementById('med-gen-progress');
+const genFill     = document.getElementById('med-gen-fill');
 
 const playerCard  = document.getElementById('med-player');
 const titleEl     = document.getElementById('med-session-title');
@@ -96,6 +98,7 @@ generateBtn.addEventListener('click', async () => {
   state = 'generating';
   generateBtn.disabled = true;
   setStatus('Writing your meditation…');
+  startGenProgress();
 
   try {
     const res = await fetch(WORKER_URL, {
@@ -126,14 +129,46 @@ generateBtn.addEventListener('click', async () => {
       return;
     }
 
+    await finishGenProgress();
     startSession(data.result);
   } catch (e) {
     setStatus('Network error — please check your connection and try again.', true);
     state = 'idle';
   } finally {
+    stopGenProgress();
     generateBtn.disabled = false;
   }
 });
+
+// Simulated progress for the script call — a single AI request reports no real
+// progress, so ease towards 95% over ~12s and snap to 100% when it lands.
+let genTimer = null, genStart = 0;
+
+function startGenProgress() {
+  genStart = performance.now();
+  genFill.style.width = '0%';
+  genBar.style.display = '';
+  genBar.setAttribute('aria-valuenow', '0');
+  genTimer = setInterval(() => {
+    const t = performance.now() - genStart;
+    const pct = Math.min(95, 100 * (1 - Math.exp(-t / 5000)));
+    genFill.style.width = pct.toFixed(1) + '%';
+    genBar.setAttribute('aria-valuenow', String(Math.round(pct)));
+  }, 150);
+}
+
+async function finishGenProgress() {
+  if (genTimer) { clearInterval(genTimer); genTimer = null; }
+  genFill.style.width = '100%';
+  genBar.setAttribute('aria-valuenow', '100');
+  await new Promise(r => setTimeout(r, 300)); // let the bar visibly complete
+}
+
+function stopGenProgress() {
+  if (genTimer) { clearInterval(genTimer); genTimer = null; }
+  genBar.style.display = 'none';
+  genFill.style.width = '0%';
+}
 
 function setStatus(msg, isError = false) {
   statusEl.innerHTML = msg;

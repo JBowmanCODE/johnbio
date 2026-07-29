@@ -166,6 +166,22 @@
 .med-generate-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 .med-generate-btn .material-symbols-outlined { font-size: 1rem; }
 
+/* Generation progress bar */
+.med-gen-progress {
+  height: 6px;
+  margin-top: 1rem;
+  background: rgba(14,14,19,0.8);
+  border: 1px solid rgba(0,238,252,0.18);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.med-gen-progress-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, #00EEFC, #8b5cf6);
+  transition: width 0.25s ease-out;
+  box-shadow: 0 0 10px rgba(0,238,252,0.4);
+}
+
 /* Status */
 .med-status {
   font-family: 'Space Grotesk', sans-serif;
