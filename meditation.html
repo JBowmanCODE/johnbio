@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="/styles.css?v=3">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
-  <link rel="stylesheet" href="/meditation.css?v=3">
+  <link rel="stylesheet" href="/meditation.css?v=4">
 
   <!-- SEO -->
   <meta name="description" content="Free AI meditation generator. Enter your name and goal, pick 5, 10 or 20 minutes and get a personalised guided meditation with voice and soundscape.">
@@ -194,10 +194,18 @@
 
       <div class="med-field">
         <span class="med-label" id="med-scape-label">Soundscape</span>
-        <div class="med-seg" id="med-scape" role="group" aria-labelledby="med-scape-label">
+        <div class="med-seg med-seg--scape" id="med-scape" role="group" aria-labelledby="med-scape-label">
           <button type="button" class="med-seg-btn active" data-scape="ocean" aria-pressed="true">Ocean waves</button>
+          <button type="button" class="med-seg-btn" data-scape="rain" aria-pressed="false">Rain</button>
+          <button type="button" class="med-seg-btn" data-scape="wind" aria-pressed="false">Wind</button>
+          <button type="button" class="med-seg-btn" data-scape="fire" aria-pressed="false">Fire crackle</button>
+          <button type="button" class="med-seg-btn" data-scape="brown" aria-pressed="false">Brown noise</button>
+          <button type="button" class="med-seg-btn" data-scape="heartbeat" aria-pressed="false">Heartbeat</button>
+          <button type="button" class="med-seg-btn" data-scape="chimes" aria-pressed="false">Wind chimes</button>
+          <button type="button" class="med-seg-btn" data-scape="bowl" aria-pressed="false">Singing bowl</button>
           <button type="button" class="med-seg-btn" data-scape="drone" aria-pressed="false">Deep drone</button>
           <button type="button" class="med-seg-btn" data-scape="pads" aria-pressed="false">Soft pads</button>
+          <button type="button" class="med-seg-btn" data-scape="binaural" aria-pressed="false">Binaural tones<small>Use headphones</small></button>
           <button type="button" class="med-seg-btn" data-scape="none" aria-pressed="false">None</button>
         </div>
       </div>
@@ -387,7 +395,7 @@
 
   <script src="/scripts.js?v=5" defer></script>
   <script src="/lame.min.js?v=1" defer></script>
-  <script src="/meditation.js?v=5" defer></script>
+  <script src="/meditation.js?v=6" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {

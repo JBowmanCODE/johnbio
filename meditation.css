@@ -138,6 +138,11 @@
   text-transform: none; letter-spacing: 0;
 }
 .med-seg-btn:hover { border-color: rgba(0,238,252,0.55); color: var(--on-surface); }
+/* soundscape grid: 12 options — cap the flex growth so rows stay tidy */
+.med-seg--scape .med-seg-btn { flex: 1 1 30%; max-width: 33%; min-width: 104px; }
+@media (max-width: 600px) {
+  .med-seg--scape .med-seg-btn { flex: 1 1 45%; max-width: none; min-width: 88px; }
+}
 .med-seg-btn.active {
   background: rgba(0,238,252,0.14);
   border-color: rgba(0,238,252,0.7);

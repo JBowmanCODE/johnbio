@@ -651,7 +651,9 @@ async function renderSession() {
   });
   const total = t + FADE;
 
-  const off = new OfflineAudioContext(1, Math.ceil(total * RENDER_RATE), RENDER_RATE);
+  // binaural only exists in stereo — everything else renders mono
+  const channels = selectedScape === 'binaural' ? 2 : 1;
+  const off = new OfflineAudioContext(channels, Math.ceil(total * RENDER_RATE), RENDER_RATE);
   const vGain = off.createGain();
   vGain.connect(off.destination);
   const dGain = off.createGain();
@@ -690,20 +692,30 @@ async function encodeMp3Blob(buffer, onProgress) {
   if (typeof lamejs === 'undefined' || !lamejs.Mp3Encoder) {
     throw new Error('Encoder failed to load. Refresh the page and try again.');
   }
-  const samples = buffer.getChannelData(0);
-  const enc = new lamejs.Mp3Encoder(1, buffer.sampleRate, RENDER_KBPS);
+  const stereo = buffer.numberOfChannels === 2;
+  const left = buffer.getChannelData(0);
+  const right = stereo ? buffer.getChannelData(1) : null;
+  const enc = new lamejs.Mp3Encoder(stereo ? 2 : 1, buffer.sampleRate, stereo ? 128 : RENDER_KBPS);
   const CHUNK = 1152 * 120; // ~3.1s of audio per slice at 44.1kHz
   const parts = [];
-  const int16 = new Int16Array(CHUNK);
-  for (let i = 0; i < samples.length; i += CHUNK) {
-    const n = Math.min(CHUNK, samples.length - i);
+  const l16 = new Int16Array(CHUNK);
+  const r16 = stereo ? new Int16Array(CHUNK) : null;
+  const toInt16 = (v) => {
+    v = Math.max(-1, Math.min(1, v));
+    return v < 0 ? v * 0x8000 : v * 0x7FFF;
+  };
+  for (let i = 0; i < left.length; i += CHUNK) {
+    const n = Math.min(CHUNK, left.length - i);
     for (let j = 0; j < n; j++) {
-      const v = Math.max(-1, Math.min(1, samples[i + j]));
-      int16[j] = v < 0 ? v * 0x8000 : v * 0x7FFF;
+      l16[j] = toInt16(left[i + j]);
+      if (stereo) r16[j] = toInt16(right[i + j]);
     }
-    const d = enc.encodeBuffer(n === CHUNK ? int16 : int16.subarray(0, n));
+    const lc = n === CHUNK ? l16 : l16.subarray(0, n);
+    const d = stereo
+      ? enc.encodeBuffer(lc, n === CHUNK ? r16 : r16.subarray(0, n))
+      : enc.encodeBuffer(lc);
     if (d.length) parts.push(new Uint8Array(d));
-    if (onProgress) onProgress(i / samples.length);
+    if (onProgress) onProgress(i / left.length);
     await new Promise(r => setTimeout(r, 0)); // keep the page responsive
   }
   const tail = enc.flush();
@@ -767,12 +779,71 @@ function showActionError(e) {
 // time-driven (pad chord changes) must be scheduled up front.
 const Soundscapes = {
   create(audioCtx, type, offlineDuration) {
-    if (type === 'ocean') return createOcean(audioCtx);
-    if (type === 'drone') return createDrone(audioCtx);
-    if (type === 'pads')  return createPads(audioCtx, offlineDuration);
-    return null;
+    const factories = {
+      ocean:     createOcean,
+      rain:      createRain,
+      wind:      createWind,
+      fire:      createFire,
+      brown:     createBrownNoise,
+      heartbeat: createHeartbeat,
+      chimes:    createChimes,
+      bowl:      createBowl,
+      drone:     createDrone,
+      pads:      createPads,
+      binaural:  createBinaural,
+    };
+    const f = factories[type];
+    return f ? f(audioCtx, offlineDuration) : null;
   },
 };
+
+// ── shared soundscape helpers ────────────────────────────────────────────
+
+function makeNoiseBuffer(actx, seconds, type) {
+  const len = Math.floor(seconds * actx.sampleRate);
+  const buf = actx.createBuffer(1, len, actx.sampleRate);
+  const d = buf.getChannelData(0);
+  if (type === 'brown') {
+    let last = 0;
+    for (let i = 0; i < len; i++) {
+      const white = Math.random() * 2 - 1;
+      last = (last + 0.02 * white) / 1.02;
+      d[i] = last * 3.5;
+    }
+  } else {
+    for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+  }
+  return buf;
+}
+
+// Random recurring events (droplets, chimes, bowl strikes): live mode fires
+// them from tick(); offline mode schedules the whole session up front.
+function makeScheduler(actx, offlineDuration, spawn, delayFn, firstDelay) {
+  if (offlineDuration != null) {
+    return {
+      arm() {
+        let t = firstDelay != null ? firstDelay : delayFn();
+        while (t < offlineDuration) { spawn(t); t += delayFn(); }
+      },
+      tick() {},
+    };
+  }
+  let nextAt = null;
+  return {
+    arm() { nextAt = actx.currentTime + (firstDelay != null ? firstDelay : delayFn()); },
+    tick() {
+      if (nextAt != null && actx.currentTime >= nextAt) {
+        spawn(actx.currentTime + 0.02);
+        nextAt = actx.currentTime + delayFn();
+      }
+    },
+  };
+}
+
+function fadeStop(actx, output, nodes, fade) {
+  output.gain.setTargetAtTime(0, actx.currentTime, fade / 3);
+  setTimeout(() => { try { nodes.forEach(n => n.stop()); } catch (e) {} }, fade * 1000 + 300);
+}
 
 function createOcean(actx) {
   const output = actx.createGain();
@@ -856,6 +927,300 @@ function createDrone(actx) {
       output.gain.setTargetAtTime(0, actx.currentTime, fade / 3);
       setTimeout(() => { try { nodes.forEach(n => n.stop()); } catch (e) {} }, fade * 1000 + 300);
     },
+  };
+}
+
+function createRain(actx, offlineDuration) {
+  const output = actx.createGain();
+  output.gain.value = 0.9;
+  const noiseBuf = makeNoiseBuffer(actx, 4, 'white');
+
+  // steady rain hiss — brighter band than the ocean
+  const hissSrc = actx.createBufferSource();
+  hissSrc.buffer = noiseBuf;
+  hissSrc.loop = true;
+  const hp = actx.createBiquadFilter();
+  hp.type = 'highpass';
+  hp.frequency.value = 900;
+  const lp = actx.createBiquadFilter();
+  lp.type = 'lowpass';
+  lp.frequency.value = 5500;
+  const hissGain = actx.createGain();
+  hissGain.gain.value = 0.20;
+  const lfo = actx.createOscillator();
+  lfo.frequency.value = 0.07;
+  const lfoGain = actx.createGain();
+  lfoGain.gain.value = 0.04;
+  lfo.connect(lfoGain); lfoGain.connect(hissGain.gain);
+  hissSrc.connect(hp); hp.connect(lp); lp.connect(hissGain); hissGain.connect(output);
+
+  // random soft droplet ticks through a shared resonant filter
+  const dropFilter = actx.createBiquadFilter();
+  dropFilter.type = 'bandpass';
+  dropFilter.frequency.value = 3000;
+  dropFilter.Q.value = 3;
+  const dropBus = actx.createGain();
+  dropBus.gain.value = 0.5;
+  dropFilter.connect(dropBus); dropBus.connect(output);
+
+  function droplet(at) {
+    const src = actx.createBufferSource();
+    src.buffer = noiseBuf;
+    src.playbackRate.value = 0.8 + Math.random() * 0.9;
+    const env = actx.createGain();
+    env.gain.setValueAtTime(0.0001, at);
+    env.gain.linearRampToValueAtTime(0.4 + Math.random() * 0.3, at + 0.004);
+    env.gain.exponentialRampToValueAtTime(0.0001, at + 0.06);
+    src.connect(env); env.connect(dropFilter);
+    src.start(at, Math.random() * 3.5, 0.09);
+  }
+  const sched = makeScheduler(actx, offlineDuration, droplet, () => 0.25 + Math.random() * 1.1);
+
+  return {
+    output,
+    start() { hissSrc.start(); lfo.start(); sched.arm(); },
+    tick() { sched.tick(); },
+    stop(fade = 2) { fadeStop(actx, output, [hissSrc, lfo], fade); },
+  };
+}
+
+function createWind(actx, offlineDuration) {
+  const output = actx.createGain();
+  output.gain.value = 0.85;
+  const src = actx.createBufferSource();
+  src.buffer = makeNoiseBuffer(actx, 4, 'white');
+  src.loop = true;
+  const bp = actx.createBiquadFilter();
+  bp.type = 'bandpass';
+  bp.frequency.value = 500;
+  bp.Q.value = 1.2;
+  const g = actx.createGain();
+  g.gain.value = 0.5;
+  // two slow LFOs at unrelated rates make the wander feel irregular
+  const lfo1 = actx.createOscillator(); lfo1.frequency.value = 0.05;
+  const lg1 = actx.createGain(); lg1.gain.value = 250;
+  const lfo2 = actx.createOscillator(); lfo2.frequency.value = 0.013;
+  const lg2 = actx.createGain(); lg2.gain.value = 180;
+  lfo1.connect(lg1); lg1.connect(bp.frequency);
+  lfo2.connect(lg2); lg2.connect(bp.frequency);
+  // gusts
+  const lfoG = actx.createOscillator(); lfoG.frequency.value = 0.06;
+  const lgG = actx.createGain(); lgG.gain.value = 0.18;
+  lfoG.connect(lgG); lgG.connect(g.gain);
+  src.connect(bp); bp.connect(g); g.connect(output);
+  const nodes = [src, lfo1, lfo2, lfoG];
+  return {
+    output,
+    start() { nodes.forEach(n => n.start()); },
+    tick() {},
+    stop(fade = 2) { fadeStop(actx, output, nodes, fade); },
+  };
+}
+
+function createFire(actx, offlineDuration) {
+  const output = actx.createGain();
+  output.gain.value = 0.9;
+
+  // deep base rumble
+  const base = actx.createBufferSource();
+  base.buffer = makeNoiseBuffer(actx, 4, 'brown');
+  base.loop = true;
+  const lp = actx.createBiquadFilter();
+  lp.type = 'lowpass';
+  lp.frequency.value = 400;
+  const baseGain = actx.createGain();
+  baseGain.gain.value = 0.5;
+  base.connect(lp); lp.connect(baseGain); baseGain.connect(output);
+
+  // crackle: a sparse pre-generated pop buffer, looped twice at different
+  // rates so the repetition is never audible
+  const rate = actx.sampleRate;
+  const cLen = Math.floor(8 * rate);
+  const cBuf = actx.createBuffer(1, cLen, rate);
+  const cd = cBuf.getChannelData(0);
+  for (let p = 0; p < 48; p++) {
+    const start = Math.floor(Math.random() * (cLen - rate * 0.05));
+    const dur = Math.floor(rate * (0.003 + Math.random() * 0.02));
+    for (let i = 0; i < dur; i++) {
+      cd[start + i] += (Math.random() * 2 - 1) * Math.exp(-i / (dur / 5)) * 0.8;
+    }
+  }
+  const hpC = actx.createBiquadFilter();
+  hpC.type = 'highpass';
+  hpC.frequency.value = 1400;
+  const crackleGain = actx.createGain();
+  crackleGain.gain.value = 0.35;
+  hpC.connect(crackleGain); crackleGain.connect(output);
+  const c1 = actx.createBufferSource(); c1.buffer = cBuf; c1.loop = true; c1.connect(hpC);
+  const c2 = actx.createBufferSource(); c2.buffer = cBuf; c2.loop = true; c2.playbackRate.value = 0.73; c2.connect(hpC);
+
+  const nodes = [base, c1, c2];
+  return {
+    output,
+    start() { base.start(); c1.start(); c2.start(2.7); },
+    tick() {},
+    stop(fade = 2) { fadeStop(actx, output, nodes, fade); },
+  };
+}
+
+function createBrownNoise(actx, offlineDuration) {
+  const output = actx.createGain();
+  output.gain.value = 0.7;
+  const src = actx.createBufferSource();
+  src.buffer = makeNoiseBuffer(actx, 6, 'brown');
+  src.loop = true;
+  const lp = actx.createBiquadFilter();
+  lp.type = 'lowpass';
+  lp.frequency.value = 800;
+  const lfo = actx.createOscillator();
+  lfo.frequency.value = 0.03;
+  const lfoGain = actx.createGain();
+  lfoGain.gain.value = 0.07;
+  lfo.connect(lfoGain); lfoGain.connect(output.gain);
+  src.connect(lp); lp.connect(output);
+  return {
+    output,
+    start() { src.start(); lfo.start(); },
+    tick() {},
+    stop(fade = 2) { fadeStop(actx, output, [src, lfo], fade); },
+  };
+}
+
+function createHeartbeat(actx, offlineDuration) {
+  const output = actx.createGain();
+  output.gain.value = 0.9;
+  // one lub-dub cycle at 55bpm, written into a looped buffer
+  const rate = actx.sampleRate;
+  const cycle = 60 / 55;
+  const buf = actx.createBuffer(1, Math.floor(cycle * rate), rate);
+  const d = buf.getChannelData(0);
+  function thump(atSec, amp) {
+    const start = Math.floor(atSec * rate);
+    const dur = Math.floor(0.15 * rate);
+    for (let i = 0; i < dur && start + i < d.length; i++) {
+      const t = i / rate;
+      d[start + i] += Math.sin(2 * Math.PI * 52 * t) * Math.exp(-t / 0.045) * amp;
+    }
+  }
+  thump(0, 0.9);
+  thump(0.32, 0.6);
+  const src = actx.createBufferSource();
+  src.buffer = buf;
+  src.loop = true;
+  const lp = actx.createBiquadFilter();
+  lp.type = 'lowpass';
+  lp.frequency.value = 160;
+  src.connect(lp); lp.connect(output);
+  return {
+    output,
+    start() { src.start(); },
+    tick() {},
+    stop(fade = 2) { fadeStop(actx, output, [src], fade); },
+  };
+}
+
+function createChimes(actx, offlineDuration) {
+  const output = actx.createGain();
+  output.gain.value = 0.8;
+  // A major pentatonic, mid register
+  const NOTES = [220.00, 246.94, 277.18, 329.63, 369.99, 440.00];
+
+  function strike(at) {
+    const f = NOTES[Math.floor(Math.random() * NOTES.length)];
+    const decay = 5 + Math.random() * 3;
+    [[f, 0.10], [f * 1.003, 0.08], [f * 2.76, 0.02]].forEach(([freq, amp], i) => {
+      const o = actx.createOscillator();
+      o.type = 'sine';
+      o.frequency.value = freq;
+      const g = actx.createGain();
+      const dec = i === 2 ? decay * 0.4 : decay;
+      g.gain.setValueAtTime(0.0001, at);
+      g.gain.linearRampToValueAtTime(amp, at + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, at + dec);
+      o.connect(g); g.connect(output);
+      o.start(at);
+      o.stop(at + dec + 0.5);
+    });
+  }
+  const sched = makeScheduler(actx, offlineDuration, strike, () => 3.5 + Math.random() * 8, 2);
+
+  return {
+    output,
+    start() { sched.arm(); },
+    tick() { sched.tick(); },
+    stop(fade = 2) { output.gain.setTargetAtTime(0, actx.currentTime, fade / 3); },
+  };
+}
+
+function createBowl(actx, offlineDuration) {
+  const output = actx.createGain();
+  output.gain.value = 0.85;
+
+  // very quiet drone cushion under the strikes
+  const lp = actx.createBiquadFilter();
+  lp.type = 'lowpass';
+  lp.frequency.value = 300;
+  lp.connect(output);
+  const d1 = actx.createOscillator(); d1.type = 'sine'; d1.frequency.value = 82.41;
+  const d2 = actx.createOscillator(); d2.type = 'sine'; d2.frequency.value = 82.41; d2.detune.value = 7;
+  const dg = actx.createGain(); dg.gain.value = 0.05;
+  d1.connect(dg); d2.connect(dg); dg.connect(lp);
+
+  const FUNDAMENTALS = [174.61, 196.00, 220.00];
+
+  function strike(at) {
+    const f = FUNDAMENTALS[Math.floor(Math.random() * FUNDAMENTALS.length)];
+    // real bowls ring at inharmonic partials with slow beating
+    [[1, 0.12, 16], [2.77, 0.045, 10], [5.18, 0.02, 6]].forEach(([ratio, amp, decay]) => {
+      [-1.2, 1.2].forEach(det => {
+        const o = actx.createOscillator();
+        o.type = 'sine';
+        o.frequency.value = f * ratio + det;
+        const g = actx.createGain();
+        g.gain.setValueAtTime(0.0001, at);
+        g.gain.linearRampToValueAtTime(amp / 2, at + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, at + decay);
+        o.connect(g); g.connect(output);
+        o.start(at);
+        o.stop(at + decay + 0.5);
+      });
+    });
+  }
+  const sched = makeScheduler(actx, offlineDuration, strike, () => 28 + Math.random() * 25, 2);
+
+  return {
+    output,
+    start() { d1.start(); d2.start(); sched.arm(); },
+    tick() { sched.tick(); },
+    stop(fade = 2) { fadeStop(actx, output, [d1, d2], fade); },
+  };
+}
+
+function createBinaural(actx, offlineDuration) {
+  // 200Hz left / 204Hz right — a 4Hz offset, kept quiet. Needs headphones;
+  // in mono the two tones collapse into a gentle 4Hz pulse instead.
+  const output = actx.createGain();
+  output.gain.value = 0.5;
+  const merger = actx.createChannelMerger(2);
+  merger.connect(output);
+  const l = actx.createOscillator(); l.type = 'sine'; l.frequency.value = 200;
+  const r = actx.createOscillator(); r.type = 'sine'; r.frequency.value = 204;
+  const gl = actx.createGain(); gl.gain.value = 0.16;
+  const gr = actx.createGain(); gr.gain.value = 0.16;
+  l.connect(gl); gl.connect(merger, 0, 0);
+  r.connect(gr); gr.connect(merger, 0, 1);
+  // slow breathing so the tone doesn't feel clinical
+  const lfo = actx.createOscillator();
+  lfo.frequency.value = 0.05;
+  const lfoGain = actx.createGain();
+  lfoGain.gain.value = 0.06;
+  lfo.connect(lfoGain); lfoGain.connect(output.gain);
+  const nodes = [l, r, lfo];
+  return {
+    output,
+    start() { nodes.forEach(n => n.start()); },
+    tick() {},
+    stop(fade = 2) { fadeStop(actx, output, nodes, fade); },
   };
 }
 
