@@ -79,7 +79,43 @@ bindGroup(goalChips, btn => {
 });
 bindGroup(durBtns,   btn => { selectedDuration = Number(btn.dataset.min); });
 bindGroup(voiceBtns, btn => { selectedVoice = btn.dataset.voice; });
-bindGroup(scapeBtns, btn => { selectedScape = btn.dataset.scape; });
+bindGroup(scapeBtns, btn => {
+  selectedScape = btn.dataset.scape;
+  // switch the preview live if one is playing
+  if (previewScape) {
+    stopPreview();
+    if (selectedScape !== 'none') previewBtn.click();
+  }
+});
+
+// ── SOUNDSCAPE PREVIEW ───────────────────────────────────────────────────
+const previewBtn = document.getElementById('med-scape-preview');
+let previewCtx = null, previewScape = null, previewTimer = null;
+
+function stopPreview() {
+  if (previewTimer) { clearInterval(previewTimer); previewTimer = null; }
+  if (previewScape) { previewScape.stop(0.4); previewScape = null; }
+  previewBtn.classList.remove('active');
+  previewBtn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">volume_up</span> Preview soundscape';
+}
+
+previewBtn.addEventListener('click', () => {
+  if (previewScape) { stopPreview(); return; }
+  if (selectedScape === 'none') return;
+  if (!previewCtx) previewCtx = new (window.AudioContext || window.webkitAudioContext)();
+  previewCtx.resume();
+  previewScape = Soundscapes.create(previewCtx, selectedScape);
+  if (!previewScape) return;
+  const g = previewCtx.createGain();
+  g.gain.value = 0.6;
+  previewScape.output.connect(g);
+  g.connect(previewCtx.destination);
+  previewScape.start();
+  // chimes/bowl/pads schedule their events from tick()
+  previewTimer = setInterval(() => { if (previewScape && previewScape.tick) previewScape.tick(); }, 250);
+  previewBtn.classList.add('active');
+  previewBtn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">stop</span> Stop preview';
+});
 
 // ── GENERATE ─────────────────────────────────────────────────────────────
 generateBtn.addEventListener('click', async () => {
@@ -99,6 +135,7 @@ generateBtn.addEventListener('click', async () => {
     buildGraph();
   }
 
+  stopPreview();
   state = 'generating';
   generateBtn.disabled = true;
   setStatus('Writing your meditation…');

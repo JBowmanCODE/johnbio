@@ -10,7 +10,7 @@
 
 ## AI Tools
 
-- [AI Meditation Generator](https://johnb.io/meditation): Generates personalised guided meditations with Claude-written scripts, OpenAI TTS narration (Shimmer, Onyx or Nova voice) and 11 browser-synthesised soundscapes including rain, ocean and binaural tones. Choose 5, 10 or 20 minutes in 25 languages including Spanish, French, German, Japanese and Arabic. Downloadable as MP3. Not medical advice.
+- [AI Meditation Generator](https://johnb.io/meditation): Generates personalised guided meditations with Claude-written scripts, OpenAI TTS narration (Shimmer, Onyx or Nova voice) and 10 browser-synthesised soundscapes including ocean, fire crackle and binaural tones. Choose 5, 10 or 20 minutes in 25 languages including Spanish, French, German, Japanese and Arabic. Downloadable as MP3. Not medical advice.
 - [Live Poker Hand Replayer](https://johnb.io/live-poker-hand-replayer): Turn any live No Limit Hold'em poker hand into an animated table replay. Build the hand in a guided form or paste notes parsed by Claude AI, then share a link or embed the replay anywhere.
 - [AI CV Enhancer](https://johnb.io/aitocv): Upload a CV and job description to get a tailored CV, cover letter, match score and interview prep powered by Claude AI. Also accessible via aitocv.com.
 - [AI Copyeditor](https://johnb.io/editor): Paste or upload text/Word documents to get AI-powered copyediting with UK/US English support and brand style guide options.

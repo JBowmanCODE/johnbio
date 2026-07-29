@@ -152,6 +152,25 @@
   color: #00EEFC;
 }
 
+/* Soundscape preview button */
+.med-preview-btn {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  margin-top: 0.6rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.07em;
+  padding: 0.4rem 0.9rem;
+  background: rgba(0,238,252,0.1);
+  border: 1px solid rgba(0,238,252,0.3);
+  border-radius: 0.4rem;
+  color: #00EEFC;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.med-preview-btn:hover { background: rgba(0,238,252,0.18); border-color: rgba(0,238,252,0.5); }
+.med-preview-btn.active { background: rgba(0,238,252,0.22); border-color: rgba(0,238,252,0.7); }
+.med-preview-btn .material-symbols-outlined { font-size: 0.9rem; }
+
 /* Generate button */
 .med-generate-btn {
   display: flex; align-items: center; justify-content: center; gap: 0.5rem;
