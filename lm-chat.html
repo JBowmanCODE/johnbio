@@ -93,11 +93,11 @@
   <div class="broadcast-card">
     <input type="text" id="broadcastInput" placeholder="Send to all 3 models simultaneously..." />
     <button class="btn-broadcast" onclick="sendToAll()">
-      <span class="material-symbols-outlined">send</span>
+      <span class="material-symbols-outlined" aria-hidden="true">send</span>
       Send to All
     </button>
     <button class="btn-clear-all" onclick="clearAll()" title="Clear all conversations">
-      <span class="material-symbols-outlined">delete_sweep</span>
+      <span class="material-symbols-outlined" aria-hidden="true">delete_sweep</span>
     </button>
   </div>
 
@@ -118,7 +118,7 @@
         <textarea id="input-claude" placeholder="Message Claude..." rows="1"
           onkeydown="handleKey(event, 'claude')"></textarea>
         <button class="btn-send" onclick="sendMessage('claude')" title="Send">
-          <span class="material-symbols-outlined">send</span>
+          <span class="material-symbols-outlined" aria-hidden="true">send</span>
         </button>
       </div>
     </div>
@@ -137,7 +137,7 @@
         <textarea id="input-openai" placeholder="Message OpenAI..." rows="1"
           onkeydown="handleKey(event, 'openai')"></textarea>
         <button class="btn-send" onclick="sendMessage('openai')" title="Send">
-          <span class="material-symbols-outlined">send</span>
+          <span class="material-symbols-outlined" aria-hidden="true">send</span>
         </button>
       </div>
     </div>
@@ -156,7 +156,7 @@
         <textarea id="input-gemini" placeholder="Message Gemini..." rows="1"
           onkeydown="handleKey(event, 'gemini')"></textarea>
         <button class="btn-send" onclick="sendMessage('gemini')" title="Send">
-          <span class="material-symbols-outlined">send</span>
+          <span class="material-symbols-outlined" aria-hidden="true">send</span>
         </button>
       </div>
     </div>
@@ -267,7 +267,7 @@
 </section>
 
     <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
   </button>
 
   <div id="footer-placeholder"></div>

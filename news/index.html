@@ -195,7 +195,7 @@
           const prev = document.createElement('a');
           prev.className = 'ns-page-btn';
           prev.href = pageUrl(safePage - 1);
-          prev.innerHTML = '<span class="material-symbols-outlined">arrow_back</span> Previous';
+          prev.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">arrow_back</span> Previous';
           prev.addEventListener('click', e => { e.preventDefault(); history.pushState({}, '', prev.href); render(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
           pagNav.appendChild(prev);
         }
@@ -209,7 +209,7 @@
           const next = document.createElement('a');
           next.className = 'ns-page-btn';
           next.href = pageUrl(safePage + 1);
-          next.innerHTML = 'Next <span class="material-symbols-outlined">arrow_forward</span>';
+          next.innerHTML = 'Next <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>';
           next.addEventListener('click', e => { e.preventDefault(); history.pushState({}, '', next.href); render(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
           pagNav.appendChild(next);
         }

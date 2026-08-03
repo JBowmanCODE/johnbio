@@ -67,6 +67,28 @@ main {
   animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.4s both;
 }
 
+/* ── SITE INTRO (static, crawlable) ── */
+.site-intro {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem; line-height: 1.7;
+  color: var(--on-surface-variant);
+  max-width: 640px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+.site-intro a { color: #00EEFC; text-decoration: none; }
+.site-intro a:hover { text-decoration: underline; }
+
+/* ── STATIC PROJECT LINKS (crawlers / no-JS only; removed by index.js) ── */
+.static-projects {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  font-size: 0.85rem; line-height: 1.6;
+  color: var(--on-surface-variant);
+}
+.static-projects a { color: #00EEFC; }
+
 /* ── HERO NEWS PANEL ── */
 .hero-news {
   position: relative;

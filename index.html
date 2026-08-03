@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JohnB.io | AI Projects Gallery</title>
+  <title>JohnB.io - Free AI Tools & Projects by John Bowman</title>
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
@@ -30,21 +30,21 @@
   <link rel="stylesheet" href="/styles.css?v=3">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
-  <link rel="stylesheet" href="/index.css?v=2">
+  <link rel="stylesheet" href="/index.css?v=3">
 
   <!-- SEO -->
-  <meta name="description" content="JohnB.IO - An AI and development platform for testing and exploring cutting-edge artificial intelligence technologies.">
+  <meta name="description" content="Free AI tools by John Bowman: meditation generator, T&Cs simplifier, LLMs.txt generator, iGaming compliance map and 20+ more. No signup needed.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://johnb.io/">
   <meta name="author" content="John Bowman">
-  <meta property="og:title" content="JohnB.IO - John Bowman AI Projects">
+  <meta property="og:title" content="JohnB.io - Free AI Tools & Projects by John Bowman">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://johnb.io">
-  <meta property="og:description" content="See my latest AI Python and JS Projects.">
+  <meta property="og:description" content="Free AI tools by John Bowman: meditation generator, T&Cs simplifier, LLMs.txt generator, iGaming compliance map and 20+ more. No signup needed.">
   <meta property="og:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="JohnB.IO - AI and Development Platform">
-  <meta name="twitter:description" content="Explore cutting-edge AI technologies and development tools at JohnB.IO.">
+  <meta name="twitter:title" content="JohnB.io - Free AI Tools & Projects by John Bowman">
+  <meta name="twitter:description" content="Free AI tools by John Bowman: meditation generator, T&Cs simplifier, LLMs.txt generator, compliance map and 20+ more. No signup needed.">
   <meta name="twitter:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
   <script type="application/ld+json">
   {
@@ -73,8 +73,9 @@
     "name": "AI Tools & Projects - JohnB.io",
     "description": "Free AI tools, developer utilities and responsible AI resources built by John Bowman.",
     "url": "https://johnb.io",
-    "numberOfItems": 24,
+    "numberOfItems": 25,
     "itemListElement": [
+      { "@type": "ListItem", "position": 25, "name": "AI Meditation Generator", "url": "https://johnb.io/meditation" },
       { "@type": "ListItem", "position": 1, "name": "Live Poker Hand Replayer", "url": "https://johnb.io/live-poker-hand-replayer" },
       { "@type": "ListItem", "position": 2, "name": "Football 2026", "url": "https://johnb.io/football-2026" },
       { "@type": "ListItem", "position": 3, "name": "T&Cs Simplifier", "url": "https://johnb.io/tcs-simplifier" },
@@ -122,6 +123,8 @@
       <div class="hero-news" id="heroNews" aria-label="Latest news"></div>
     </section>
 
+    <p class="site-intro">JohnB.io is <a href="/about">John Bowman</a>'s AI playground: 25 free browser tools built with Claude and OpenAI, from an <a href="/meditation">AI meditation generator</a> to an <a href="/igaming-compliance">iGaming compliance map</a>, plus <a href="/news">articles on practical AI</a>. Free, no signup.</p>
+
     <!-- Filters -->
     <div class="filters-row">
       <button class="filter-btn active" data-filter="all">All Projects</button>
@@ -130,8 +133,8 @@
       <button class="filter-btn" data-filter="rai">Responsible AI</button>
       <button class="filter-btn" data-filter="digital">Digital AI</button>
       <div class="search-wrap">
-        <span class="material-symbols-outlined">search</span>
-        <input class="search-input" id="searchInput" placeholder="Search projects..." type="text">
+        <span class="material-symbols-outlined" aria-hidden="true">search</span>
+        <input class="search-input" id="searchInput" placeholder="Search projects..." type="text" aria-label="Search projects">
       </div>
     </div>
 
@@ -139,8 +142,36 @@
 
     <!-- Grid -->
     <div class="projects-grid" id="projectsGrid">
-      <div class="empty-state" id="emptyState">
-        <span class="material-symbols-outlined">search_off</span>
+      <!-- Static links for crawlers and no-JS visitors; index.js replaces this with the card gallery -->
+      <ul class="static-projects" id="staticProjects">
+        <li><a href="/meditation">AI Meditation Generator</a> - personalised guided meditations with AI voice and soundscapes</li>
+        <li><a href="/live-poker-hand-replayer">Live Poker Hand Replayer</a> - animated replays of live poker hands</li>
+        <li><a href="/football-2026">Football 2026</a> - AI tournament predictions and interactive bracket</li>
+        <li><a href="/tcs-simplifier">T&amp;Cs Simplifier</a> - casino bonus terms in plain English</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 60+ jurisdictions</li>
+        <li><a href="/promo-copy">iGaming Promo Copy Generator</a> - compliant promotional copy</li>
+        <li><a href="/rg-generator">RG Message Generator</a> - responsible gambling messaging</li>
+        <li><a href="/igaming-jargon">iGaming Jargon Translator</a> - industry terms explained</li>
+        <li><a href="/editor">AI Copyeditor</a> - copyediting with UK/US English support</li>
+        <li><a href="/lm-chat">LLM Chat</a> - chat with language models</li>
+        <li><a href="/text-to-speech">Text to Speech Converter</a> - natural AI voices for any text</li>
+        <li><a href="/llms-generator">LLMs.txt Generator</a> - llms.txt files for AI crawlers</li>
+        <li><a href="/content-repurposer">Content Repurposer</a> - one piece of content, many formats</li>
+        <li><a href="/aitocv">AI CV Enhancer</a> - tailored CVs and cover letters</li>
+        <li><a href="/transcripts">YouTube Transcripts</a> - transcripts and summaries from videos</li>
+        <li><a href="/rai">Governance Framework</a> - responsible AI governance resources</li>
+        <li><a href="/bonus-calculator">Bonus Cost Calculator</a> - iGaming bonus cost modelling</li>
+        <li><a href="/genz">Gen Z Translator</a> - slang decoded</li>
+        <li><a href="/zzmystery">Zig Zag Drop Slot</a> - browser slot game demo</li>
+        <li><a href="/bankroll">Poker Bankroll</a> - bankroll tracking</li>
+        <li><a href="/calculator">Bill Calculator</a> - bill splitting</li>
+        <li><a href="/ebay">eBay Tracker</a> - price tracking</li>
+        <li><a href="/text-to-voice">Text to Voice</a> - browser speech synthesis</li>
+        <li><a href="/prompt-improver">Prompt Improver</a> - better prompts for AI models</li>
+        <li><a href="/faq-schema">FAQ Schema Generator</a> - FAQPage JSON-LD markup</li>
+      </ul>
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <span class="material-symbols-outlined" aria-hidden="true">search_off</span>
         <h3>No projects found</h3>
         <p>Try a different search or filter.</p>
       </div>
@@ -156,14 +187,14 @@
   </main>
 
   <button id="back-to-top" aria-label="Back to top">
-    <span class="material-symbols-outlined">arrow_upward</span>
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
   </button>
 
   <div id="footer-placeholder"></div>
 
   <script src="/news-data.js?v=2"></script>
   <script src="/scripts.js?v=5" defer></script>
-  <script src="/index.js?v=3" defer></script>
+  <script src="/index.js?v=4" defer></script>
 
   <script>
     const btt = document.getElementById('back-to-top');

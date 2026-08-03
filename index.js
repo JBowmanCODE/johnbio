@@ -384,6 +384,9 @@ const projects = [
 const INITIAL_SHOW = 6;
 const grid = document.getElementById('projectsGrid');
 const emptyState = document.getElementById('emptyState');
+// drop the static crawler links — the card gallery replaces them
+const staticProjects = document.getElementById('staticProjects');
+if (staticProjects) staticProjects.remove();
 const resultsMeta = document.getElementById('resultsMeta');
 let showAll = false;
 
