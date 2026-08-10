@@ -33,7 +33,7 @@ function loadConsentBanner() {
             <div class="consent-inner">
                 <div class="consent-text">
                     <p><strong>Analytics</strong></p>
-                    <p>We use Google Analytics to understand how you use this site. No personal data is collected.</p>
+                    <p>We use Google Analytics to understand how the site is used. This collects usage data such as pages visited, device type and approximate location. See the <a href="/privacy">Privacy Policy</a> for details.</p>
                 </div>
                 <div class="consent-buttons">
                     <button id="consent-reject" class="consent-btn consent-reject">Reject</button>

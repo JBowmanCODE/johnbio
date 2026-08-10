@@ -5,7 +5,7 @@
   <!-- Core -->
   <url>
     <loc>https://johnb.io/</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -147,7 +147,7 @@
   </url>
   <url>
     <loc>https://johnb.io/igaming-compliance</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -177,14 +177,6 @@
     <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-
-  <!-- Other -->
-  <url>
-    <loc>https://johnb.io/wo</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
 
   <!-- AI Course -->
@@ -438,7 +430,7 @@
   </url>
   <url>
     <loc>https://johnb.io/news/test-ai</loc>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

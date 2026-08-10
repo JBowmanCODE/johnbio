@@ -4,6 +4,7 @@ Disallow: /header.html
 Disallow: /footer.html
 Disallow: /template.html
 Disallow: /heart.html
+Disallow: /wo
 Disallow: /cgi-bin/
 
 Sitemap: https://johnb.io/sitemap.xml
