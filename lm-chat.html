@@ -50,7 +50,7 @@
       {
         "@type": "Question",
         "name": "Which AI models are used?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The tool connects to three models: claude-sonnet-4 by Anthropic, gpt-4o-mini by OpenAI, and gemini-2.5-flash-lite by Google DeepMind. These are current production models as of March 2026." }
+        "acceptedAnswer": { "@type": "Answer", "text": "The tool connects to three models: claude-sonnet-4-6 by Anthropic, gpt-4o-mini by OpenAI, and gemini-2.5-flash-lite by Google DeepMind. These are current production models as of August 2026." }
       },
       {
         "@type": "Question",
@@ -109,7 +109,7 @@
       <div class="panel-header">
         <div class="panel-indicator"></div>
         <span class="panel-name">Claude</span>
-        <span class="panel-model">claude-sonnet-4-20250514</span>
+        <span class="panel-model">claude-sonnet-4-6</span>
       </div>
       <div class="messages" id="msgs-claude">
         <div class="empty-state">Awaiting prompt...</div>
@@ -192,7 +192,7 @@
           <dl class="info-faq">
             <div class="faq-item">
               <dt>Which AI models are used?</dt>
-              <dd>The tool connects to three models: <code>claude-sonnet-4</code> by <a href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">Anthropic</a>, <code>gpt-4o-mini</code> by <a href="https://openai.com" target="_blank" rel="noopener noreferrer">OpenAI</a>, and <code>gemini-2.5-flash-lite</code> by <a href="https://deepmind.google" target="_blank" rel="noopener noreferrer">Google DeepMind</a>. These are current production models as of March 2026.</dd>
+              <dd>The tool connects to three models: <code>claude-sonnet-4-6</code> by <a href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer">Anthropic</a>, <code>gpt-4o-mini</code> by <a href="https://openai.com" target="_blank" rel="noopener noreferrer">OpenAI</a>, and <code>gemini-2.5-flash-lite</code> by <a href="https://deepmind.google" target="_blank" rel="noopener noreferrer">Google DeepMind</a>. These are current production models as of August 2026.</dd>
             </div>
             <div class="faq-item">
               <dt>Are my messages stored?</dt>
@@ -237,7 +237,7 @@
         </summary>
         <div class="tool-accordion-body">
           <ul class="info-points">
-            <li><strong>Three leading models, one interface.</strong> Claude Sonnet 4 (Anthropic), GPT-4o-mini (OpenAI) and Gemini 2.5 Flash Lite (Google) - all in a single view. No switching between tabs or platforms.</li>
+            <li><strong>Three leading models, one interface.</strong> Claude Sonnet 4.6 (Anthropic), GPT-4o-mini (OpenAI) and Gemini 2.5 Flash Lite (Google) - all in a single view. No switching between tabs or platforms.</li>
             <li><strong>Broadcast mode saves time.</strong> Send the same prompt to all three models at once and see responses arrive in parallel. Useful for prompt engineering, benchmarking or demos.</li>
             <li><strong>Multi-turn conversations supported.</strong> Each panel maintains full conversation history for the session, so you can have extended back-and-forth exchanges rather than one-shot queries.</li>
             <li><strong>Routed via a secure proxy.</strong> API keys are never exposed in the browser. All requests go through a Cloudflare Worker, keeping credentials server-side.</li>
@@ -337,7 +337,7 @@
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-6',
         max_tokens: 1024,
         messages: histories.claude
       })
