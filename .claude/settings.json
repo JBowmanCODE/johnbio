@@ -7,6 +7,10 @@
           {
             "type": "command",
             "command": "python generate-news-links.py --hook"
+          },
+          {
+            "type": "command",
+            "command": "python generate-compliance-table.py --hook"
           }
         ]
       }
