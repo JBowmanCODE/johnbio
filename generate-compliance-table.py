@@ -99,7 +99,7 @@ process.stdout.write(JSON.stringify({
 """
 
 # Phrases that carry the counts. {n} = regulations, {m} = jurisdictions.
-# The "tracked across" pattern must run before the generic "across" one.
+# Every pattern must match at least once across the stamped segments.
 PAGE_COUNT_PATTERNS = [
     (r"\d+ iGaming regulations", "{n} iGaming regulations"),
     (r"\d+ regulations, directives", "{n} regulations, directives"),
@@ -122,10 +122,12 @@ def render_rows():
     try:
         proc = subprocess.run(
             ["node", "-e", NODE_RENDER, str(DATA_FILE)],
-            capture_output=True, encoding="utf-8",
+            capture_output=True, encoding="utf-8", timeout=30,
         )
     except FileNotFoundError:
         fail("node is required on PATH to evaluate igaming-compliance.js")
+    except subprocess.TimeoutExpired:
+        fail("node evaluation timed out")
     if proc.returncode != 0:
         fail(f"node evaluation failed: {proc.stderr.strip()}")
     try:
@@ -137,12 +139,15 @@ def render_rows():
     return data
 
 
-def stamp_counts(text, patterns, n, m, where):
+def stamp_counts(segments, patterns, n, m, where):
     for pat, repl in patterns:
-        text, count = re.subn(pat, repl.format(n=n, m=m), text)
-        if count == 0:
+        total = 0
+        for i, seg in enumerate(segments):
+            segments[i], count = re.subn(pat, repl.format(n=n, m=m), seg)
+            total += count
+        if total == 0:
             fail(f"count phrase /{pat}/ not found in {where}")
-    return text
+    return segments
 
 
 def regenerate():
@@ -150,19 +155,22 @@ def regenerate():
     n, m = data["regCount"], data["jurCount"]
 
     page = PAGE_FILE.read_text(encoding="utf-8")
-    if START_MARKER not in page or END_MARKER not in page:
-        fail("static-regs markers not found in igaming-compliance.html")
     block_re = re.compile(re.escape(START_MARKER) + r".*?" + re.escape(END_MARKER), re.S)
-    old_block = block_re.search(page).group(0)
+    m_block = block_re.search(page)
+    if not m_block:
+        fail("static-regs markers not found or out of order in igaming-compliance.html")
+    old_block = m_block.group(0)
     new_block = START_MARKER + "\n" + data["rows"] + "\n            " + END_MARKER
 
-    new_page = block_re.sub(lambda _: new_block, page, count=1)
+    head = page[:m_block.start()]
+    tail = page[m_block.end():]
     if new_block != old_block:
         stamp = date.today().strftime("%B %Y")
-        new_page, count = re.subn(r"(</strong> as of )\w+ \d{4}", r"\g<1>" + stamp, new_page)
+        tail, count = re.subn(r"(</strong> as of )\w+ \d{4}", r"\g<1>" + stamp, tail)
         if count == 0:
             fail('"as of" stamp not found in Key Points of igaming-compliance.html')
-    new_page = stamp_counts(new_page, PAGE_COUNT_PATTERNS, n, m, "igaming-compliance.html")
+    head, tail = stamp_counts([head, tail], PAGE_COUNT_PATTERNS, n, m, "igaming-compliance.html")
+    new_page = head + new_block + tail
 
     if new_page != page:
         PAGE_FILE.write_text(new_page, encoding="utf-8", newline="\n")
@@ -171,7 +179,7 @@ def regenerate():
         print(f"Static regulation table already up to date ({n} regulations, {m} jurisdictions).")
 
     llms = LLMS_FILE.read_text(encoding="utf-8")
-    new_llms = stamp_counts(llms, LLMS_COUNT_PATTERNS, n, m, "llms.txt")
+    new_llms = stamp_counts([llms], LLMS_COUNT_PATTERNS, n, m, "llms.txt")[0]
     if new_llms != llms:
         LLMS_FILE.write_text(new_llms, encoding="utf-8", newline="\n")
         print("Updated counts in llms.txt.")

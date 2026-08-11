@@ -1575,6 +1575,7 @@ function refreshTable() {
   }
 
   empty.hidden = true;
+  // NOTE: this row markup is copied verbatim into generate-compliance-table.py (static build) -- keep in sync.
   tbody.innerHTML = regs.map(reg => {
     let jurisdiction;
     if (reg.region === 'eu-wide' || reg.region === 'global') {
@@ -1774,6 +1775,7 @@ function refreshMap() {
 
 // ── HELPERS ───────────────────────────────────────────────────────────────────
 
+// NOTE: copied verbatim into generate-compliance-table.py -- keep in sync.
 function catLabel(cat) {
   const labels = {
     gambling: 'Gambling',
@@ -1787,6 +1789,7 @@ function catLabel(cat) {
   return labels[cat] || cat;
 }
 
+// NOTE: copied verbatim into generate-compliance-table.py -- keep in sync.
 function escHtml(str) {
   if (!str) return '';
   return String(str)
