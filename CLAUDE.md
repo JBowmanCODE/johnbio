@@ -33,6 +33,11 @@ Static HTML/CSS/JS site. No framework, no bundler, no package manager.
 | `news-chat.js` | "Newsy AI" sidebar chat widget — mounts in sidebar on desktop, moves to `document.body` as bottom sheet on mobile |
 | `sitemap.xml` | Manually maintained — update when adding pages |
 | `llms.txt` | AI assistant index — update when adding pages |
+| `igaming-compliance.js` | Compliance map data — `REGULATIONS` array is the single source of truth |
+
+## iGaming compliance map — generated table and counts
+
+The full regulation table in `igaming-compliance.html` (between the `static-regs` markers inside `#igc-table-body`) and the regulation/jurisdiction counts on that page and in `llms.txt` are **generated** by `generate-compliance-table.py` from the `REGULATIONS` array. A PostToolUse hook in `.claude/settings.json` regenerates them automatically whenever `igaming-compliance.js` is edited; run `python generate-compliance-table.py` manually if the hook didn't fire. Never hand-edit the block between the markers or the count phrases — the script overwrites them. If the script warns about `index.js` drift, update the tool-card description there by hand and bump its `?v=`. The row markup in the script is copied verbatim from `refreshTable()` — if you change the table template in `igaming-compliance.js`, update the copy in the script too (the JS has `// NOTE: keep in sync` comments at the three copied spots).
 
 ## Adding a new tool
 
