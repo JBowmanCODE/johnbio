@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Pre-render all 211 compliance-map regulations as static HTML table rows in `igaming-compliance.html` at build time, with counts auto-stamped from the data, regenerated automatically on every data edit.
+**Goal:** Pre-render all 212 compliance-map regulations as static HTML table rows in `igaming-compliance.html` at build time, with counts auto-stamped from the data, regenerated automatically on every data edit.
 
 **Architecture:** A root-level `generate-compliance-table.py` (mirroring `generate-news-links.py`) shells out to Node to evaluate the data arrays in `igaming-compliance.js` and render `<tr>` rows with code copied verbatim from the page's `refreshTable()`. Python splices the rows between `static-regs` markers inside `#igc-table-body` and regex-stamps the regulation/jurisdiction counts into the page copy/meta and `llms.txt`. A PostToolUse hook regenerates on any edit to `igaming-compliance.js`. No JS changes: on load `refreshTable()` overwrites the tbody with identical markup.
 
@@ -13,7 +13,7 @@
 **Context for the implementer (verified facts):**
 - `igaming-compliance.js`: `COUNTRY_META` starts line ~9, `const REGULATIONS = [` line ~65 (array ends with `];`), `getFilteredRegs()` returns `REGULATIONS` in source order when no filters are active, `catLabel()` line ~1772, `escHtml()` line ~1785, row template inside `refreshTable()` lines ~1564–1585.
 - `igaming-compliance.html`: tbody is `<tbody id="igc-table-body">` containing only `<!-- populated by JS -->` at 12-space indentation (line ~258).
-- Current correct counts: **211 regulations, 50 jurisdictions** (jurisdictions = unique values across all `countries` arrays).
+- Current correct counts: **212 regulations, 50 jurisdictions** (jurisdictions = unique values across all `countries` arrays).
 - The repo uses LF line endings; write files with `newline="\n"` exactly like `generate-news-links.py` does.
 - HTML pages are served no-cache, so no `?v=` bump is needed for HTML-only changes. Do NOT edit `igaming-compliance.js` or any CSS/JS in this plan.
 
@@ -277,15 +277,15 @@ Run: `python generate-compliance-table.py`
 Expected output (no WARNING lines):
 
 ```
-Updated static regulation table (211 regulations, 50 jurisdictions).
+Updated static regulation table (212 regulations, 50 jurisdictions).
 ```
 
 If it prints a `count phrase ... not found` error, a phrasing in the HTML no longer matches the patterns — inspect and fix the pattern, not the HTML.
 
-- [ ] **Step 3: Verify 211 rows landed between the markers**
+- [ ] **Step 3: Verify 212 rows landed between the markers**
 
 Run: `grep -c "<tr>" igaming-compliance.html`
-Expected output: `212` (211 generated rows + the `<tr>` in `<thead>`)
+Expected output: `213` (212 generated rows + the `<tr>` in `<thead>`)
 
 - [ ] **Step 4: Verify a generated row matches the JS template shape**
 
@@ -298,16 +298,16 @@ Run: `python generate-compliance-table.py && git diff --stat`
 Expected output:
 
 ```
-Static regulation table already up to date (211 regulations, 50 jurisdictions).
+Static regulation table already up to date (212 regulations, 50 jurisdictions).
 ```
 
-and `git diff --stat` shows only the two files changed by the FIRST run (`igaming-compliance.html`, plus the new untracked script) — the second run must not change anything further. The "as of" date in Key Points must show the current month/year (the block changed on first run, from empty to 211 rows).
+and `git diff --stat` shows only the two files changed by the FIRST run (`igaming-compliance.html`, plus the new untracked script) — the second run must not change anything further. The "as of" date in Key Points must show the current month/year (the block changed on first run, from empty to 212 rows).
 
 - [ ] **Step 6: Commit**
 
 ```bash
 git add generate-compliance-table.py igaming-compliance.html
-git commit -m "feat: build-step static render of compliance table (211 rows in raw HTML)"
+git commit -m "feat: build-step static render of compliance table (212 rows in raw HTML)"
 ```
 
 ---
@@ -321,12 +321,12 @@ git commit -m "feat: build-step static render of compliance table (211 rows in r
 Corrupt one count, re-run, confirm repair:
 
 ```bash
-sed -i 's/211 iGaming regulations across 50 jurisdictions/999 iGaming regulations across 9 jurisdictions/' llms.txt
+sed -i 's/212 iGaming regulations across 50 jurisdictions/999 iGaming regulations across 9 jurisdictions/' llms.txt
 python generate-compliance-table.py
 grep -o '[0-9]* iGaming regulations across [0-9]* jurisdictions' llms.txt
 ```
 
-Expected: script prints `Updated counts in llms.txt.` and the final grep prints `211 iGaming regulations across 50 jurisdictions`.
+Expected: script prints `Updated counts in llms.txt.` and the final grep prints `212 iGaming regulations across 50 jurisdictions`.
 
 - [ ] **Step 2: Verify missing-marker failure is loud**
 
@@ -341,7 +341,7 @@ Expected: `generate-compliance-table.py: ERROR: static-regs markers not found in
 - [ ] **Step 3: Re-run clean to confirm nothing is left dirty**
 
 Run: `python generate-compliance-table.py && git status --short`
-Expected: `Static regulation table already up to date (211 regulations, 50 jurisdictions).` and no modified files.
+Expected: `Static regulation table already up to date (212 regulations, 50 jurisdictions).` and no modified files.
 
 (No commit — this task changes nothing permanently.)
 
@@ -412,7 +412,7 @@ Expected output: `exit=0` and nothing else (silent skip).
 echo '{"tool_input":{"file_path":"c:\\Users\\John\\Desktop\\johnb2026\\igaming-compliance.js"}}' | python generate-compliance-table.py --hook
 ```
 
-Expected output: `Static regulation table already up to date (211 regulations, 50 jurisdictions).`
+Expected output: `Static regulation table already up to date (212 regulations, 50 jurisdictions).`
 
 - [ ] **Step 4: Commit**
 
@@ -456,17 +456,17 @@ Expected (after a few minutes): `completed success`
 curl -s https://johnb.io/igaming-compliance | grep -c "<tr>"
 ```
 
-Expected output: `212`
+Expected output: `213`
 
 - [ ] **Step 5: Verify the interactive layer still works (manual, browser)**
 
-Open `https://johnb.io/igaming-compliance` in a browser and confirm: table shows all rows on load with no flash/duplication, region tabs filter, search filters, category chips filter, and the browser console shows no errors. Also load it once with JavaScript disabled (DevTools → Ctrl+Shift+P → "Disable JavaScript", reload) and confirm the full 211-row table is visible.
+Open `https://johnb.io/igaming-compliance` in a browser and confirm: table shows all rows on load with no flash/duplication, region tabs filter, search filters, category chips filter, and the browser console shows no errors. Also load it once with JavaScript disabled (DevTools → Ctrl+Shift+P → "Disable JavaScript", reload) and confirm the full 212-row table is visible.
 
 ---
 
 ## Verification against spec (run after all tasks)
 
-- 211 rows in raw HTML between markers — Task 2 Step 3, Task 5 Step 4.
+- 212 rows in raw HTML between markers — Task 2 Step 3, Task 5 Step 4.
 - Markup identical to `refreshTable()` — by construction (Task 2 renders with copied code), spot-checked Task 2 Step 4 and Task 5 Step 5.
 - Counts stamped, drift repaired, loud failures — Task 2 Step 2, Task 3.
 - Idempotent, "as of" only refreshed when block changes — Task 2 Step 5, Task 3 Step 3.
