@@ -13,7 +13,7 @@ The regulation database lives only in `igaming-compliance.js` (`const REGULATION
 
 Follows the `generate-news-links.py` pattern exactly: marker-splice regeneration, `--hook` flag for PostToolUse filtering, fails loudly with a non-zero exit on any structural surprise. Root `.py` files are already excluded from FTP deploy, so nothing new ships to the server.
 
-**Data extraction:** the `REGULATIONS` array references JS constants (e.g. `EEA`) that regex cannot safely parse. The script shells out to `node` and evaluates the file prefix up to the end of the `REGULATIONS` definition (`new Function(prefix + '; return {REGULATIONS, COUNTRY_META};')`), printing JSON to stdout for Python to consume. If `node` is missing or evaluation fails, the script errors out — it never writes partial output.
+**Data extraction and row rendering:** the `REGULATIONS` array references JS constants (e.g. `EEA`) that regex cannot safely parse. The script shells out to `node` and evaluates the file prefix up to the end of the `REGULATIONS` definition (`new Function(prefix + '; return {REGULATIONS, COUNTRY_META};')`). The same Node snippet then renders the table rows using row-building code copied verbatim from `refreshTable()` (jurisdiction logic, `catLabel`, `escHtml`, template literal), so the generated markup cannot diverge from what the page's JS produces. It prints `{rows, regCount, jurCount}` as JSON to stdout; Python only splices and stamps. If `node` is missing or evaluation fails, the script errors out — it never writes partial output.
 
 ### 2. Static table rows in `igaming-compliance.html`
 
