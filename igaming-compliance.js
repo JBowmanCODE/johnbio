@@ -183,7 +183,7 @@ const REGULATIONS = [
     countries: ['IM'],
     category: 'gambling',
     region: 'europe',
-    notes: 'Isle of Man online gambling licensing framework. The GSC is consolidating seven existing gambling acts into a single Gambling Supervision Commission Bill expected to be enacted in 2026. New personal accountability rules allow civil penalties for key persons, controllers, and senior managers for AML/CFT contraventions. New Fitness and Propriety Framework expected summer 2026.'
+    notes: 'Isle of Man online gambling licensing framework. The Gambling Legislation (Amendment) Bill — consolidating seven gambling acts into a unified framework — completed its passage through Tynwald on 28 April 2026, with Royal Assent expected by summer 2026. Civil penalties for key persons, controllers and senior managers, new fitness-and-propriety criteria (GSC consultations ran to 25 May 2026), and expanded GSC inspection powers including warrantless entry and seizure. Moneyval on-site inspection scheduled October 2026.'
   },
   {
     id: 'alderney-egambling-ordinance-2009',
@@ -264,7 +264,7 @@ const REGULATIONS = [
     countries: ['AT'],
     category: 'gambling',
     region: 'europe',
-    notes: 'Austrian gambling monopoly framework managed by BMF. 2026 reporting indicates Austria is moving to end its iGaming monopoly and introduce a licensing framework - monitor for formal legislative proposal.'
+    notes: 'Austrian gambling monopoly framework managed by BMF. Reform underway: draft legislation to end the online monopoly and introduce an open licensing system was published for consultation in May 2026 and notified to the European Commission on 4 August 2026 (three-month TRIS standstill). Draft terms: unlicensed operators must exit by 1 January 2027 to qualify for a licence (18-month lock-out for non-compliance, rising to 24 months from 2030); deposit limits €250/week (under 26) and €1,680/month (26+); first centralised national exclusion register covering casino, slots and online.'
   },
 
   // ════════════════════════════════════════════════════════════
@@ -428,6 +428,15 @@ const REGULATIONS = [
     category: 'gambling',
     region: 'americas',
     notes: 'Prohibits financial institutions from processing payments for unlawful online gambling.'
+  },
+  {
+    id: 'us-sweepstakes-bans-2025-2026',
+    name: 'US State Sweepstakes-Casino Prohibitions (2025–2026)',
+    url: 'https://www.infolawgroup.com/',
+    countries: ['US'],
+    category: 'gambling',
+    region: 'americas',
+    notes: 'Sweepstakes casinos are now banned in roughly 14 states (as of July 2026). Statutory bans signed 2025–2026 include California (AB 831, signed 11 Oct 2025, effective 1 Jan 2026), Connecticut, Montana, Nevada, New Jersey, New York (signed April 2026, effective immediately with 60-day compliance window), Indiana (civil penalties from 1 July 2026), Louisiana and Tennessee (dedicated statutes signed May 2026), Maine (LD 2007, effective 14 July 2026), and Oklahoma (SB 1589 by veto override, effective 1 Nov 2026). Six state bans were signed in the first five months of 2026 alone.'
   },
   {
     id: 'us-igra-1988',
@@ -613,7 +622,7 @@ const REGULATIONS = [
     countries: ['NZ'],
     category: 'gambling',
     region: 'asia-pacific',
-    notes: 'In force 1 May 2026; the Online Casino Gambling Regulations 2026 followed from 3 July 2026. Licenses up to 15 online casino operators with extraterritorial reach. DIA opened the Expression of Interest stage 17 July 2026 (EOIs due 14 August 2026, NZ$19,000 fee). Unlicensed offshore operators must exit the market by 1 December 2026. Credit card ban, player-set limits, and a 3.5% quarterly levy on online gambling profits.'
+    notes: 'In force 1 May 2026; the Online Casino Gambling Regulations 2026 followed from 3 July 2026. Licenses up to 15 online casino operators with extraterritorial reach. DIA opened the Expression of Interest stage 17 July 2026 (EOIs due 14 August 2026, NZ$19,000 fee; applicants must show at least NZ$7.5m capital). Next stages: licence auction September 2026, full applications from October 2026, licences issued and market live early 2027. Unlicensed offshore operators must exit the market by 1 December 2026. Credit card ban, player-set limits, and a 3.5% quarterly levy on online gambling profits.'
   },
   {
     id: 'india-meity-online-gaming-2025',
@@ -658,7 +667,7 @@ const REGULATIONS = [
     countries: ['PH'],
     category: 'gambling',
     region: 'asia-pacific',
-    notes: 'PAGCOR authority over Philippine gambling; EO 74 (Nov 2024) banned POGOs/offshore gaming.'
+    notes: 'PAGCOR authority over Philippine gambling; EO 74 (Nov 2024) banned POGOs/offshore gaming. PAGCOR is running a major 2026 licensing and accreditation overhaul for online gaming suppliers: the B2B accreditation deadline was extended from 31 July to 30 September 2026, and non-compliant suppliers risk removal of their gaming systems and platforms from operation from 1 October 2026.'
   },
 
   // ════════════════════════════════════════════════════════════
@@ -690,7 +699,7 @@ const REGULATIONS = [
     countries: ['KE'],
     category: 'gambling',
     region: 'africa',
-    notes: 'New Kenya law enacted August 2025. First formal online gambling regulation. New GRA regulator. 30% Kenyan ownership, KSh 1B minimum capital. Five subsidiary regulations took effect 1 July 2026 and the GRA launched its first licensing cycle, though the High Court suspended enforcement of the Licensing Regulations on 20 July 2026 pending a legal challenge.'
+    notes: 'New Kenya law enacted August 2025. First formal online gambling regulation. New GRA regulator. 30% Kenyan ownership, KSh 1B minimum capital. Five subsidiary regulations took effect 1 July 2026 and the GRA launched its first licensing cycle, though the High Court suspended enforcement of the Licensing Regulations on 20 July 2026 pending a legal challenge - the stay also suspends linked enforcement measures including mobile-money payment directives. Petitioners (challenging public-participation adequacy, signing authority, and steep fee increases such as bookmaker renewals rising from KES 5,000 to up to KES 2.5m) were directed to file their substantive motion within 14 days; the matter is listed for mention on 21 September 2026.'
   },
 
   // ════════════════════════════════════════════════════════════
@@ -1356,7 +1365,7 @@ const EMERGING = [
   {
     title: "Kenya's Gambling Control Act 2025",
     jurisdiction: 'Kenya',
-    body: 'Enacted August 2025 (Act No. 14 of 2025) and commenced 16 August 2025. Replaced 1966-era law. First formal online gambling regulation. New Gambling Regulatory Authority (GRA) formally assumed regulatory authority from the Betting Control and Licensing Board (BCLB) on 28 February 2026, with Joseph Kirui Limo appointed non-executive chairperson. Five subsidiary regulations (Licensing; Conduct of Gambling Operations; Foreign-Based Operators; Advertising; Gambling Appeals Tribunal) were gazetted 30 June 2026 and took effect 1 July 2026, and the GRA launched Kenya\'s first licensing cycle under the new framework alongside a digital Gambling Management System for real-time monitoring (announced 22 July 2026). However, on 20 July 2026 the High Court (Justice W. Musyoka) issued an interim order suspending enforcement of the Gambling Control (Licensing) Regulations, 2026 pending a challenge over public participation and signing authority. A separate High Court petition challenging the eligibility of GRA Director-General Peter Karimi (former CEO of licensed operator mCheza) remains active. 30% Kenyan ownership mandate. KSh 1 billion minimum capital.'
+    body: 'Enacted August 2025 (Act No. 14 of 2025) and commenced 16 August 2025. Replaced 1966-era law. First formal online gambling regulation. New Gambling Regulatory Authority (GRA) formally assumed regulatory authority from the Betting Control and Licensing Board (BCLB) on 28 February 2026, with Joseph Kirui Limo appointed non-executive chairperson. Five subsidiary regulations (Licensing; Conduct of Gambling Operations; Foreign-Based Operators; Advertising; Gambling Appeals Tribunal) were gazetted 30 June 2026 and took effect 1 July 2026, and the GRA launched Kenya\'s first licensing cycle under the new framework alongside a digital Gambling Management System for real-time monitoring (announced 22 July 2026). However, on 20 July 2026 the High Court (Justice W. Musyoka) issued an interim order suspending enforcement of the Gambling Control (Licensing) Regulations, 2026 pending a challenge over public participation and signing authority — the stay also suspends linked enforcement measures including mobile-money payment directives, and steep fee increases (e.g. bookmaker renewals KES 5,000 → up to KES 2.5m) are central to the dispute. Petitioners were directed to file their substantive motion within 14 days, with the matter listed for mention on 21 September 2026. A separate High Court petition challenging the eligibility of GRA Director-General Peter Karimi (former CEO of licensed operator mCheza) remains active. 30% Kenyan ownership mandate. KSh 1 billion minimum capital.'
   },
   {
     title: "UK Gambling Act Review — 2025/2026 Changes",
@@ -1376,7 +1385,7 @@ const EMERGING = [
   {
     title: "Philippines POGO Ban",
     jurisdiction: 'Philippines',
-    body: 'Executive Order No. 74 (November 2024) banned all Philippine Offshore Gaming Operators (POGOs) and Integrated Gaming Licensees. Operators given wind-down period.'
+    body: 'Executive Order No. 74 (November 2024) banned all Philippine Offshore Gaming Operators (POGOs) and Integrated Gaming Licensees. Operators given wind-down period. Separately, PAGCOR is running a 2026 accreditation overhaul for online gaming suppliers: the B2B accreditation deadline was extended to 30 September 2026, with non-compliant suppliers facing removal of their systems from operation from 1 October 2026.'
   },
   {
     title: "Gibraltar Gambling Act 2025",
@@ -1386,7 +1395,7 @@ const EMERGING = [
   {
     title: "Isle of Man GSC Legislative Consolidation",
     jurisdiction: 'Isle of Man',
-    body: 'The GSC is consolidating seven existing gambling acts into a single Gambling Supervision Commission Bill, expected to be enacted in 2026. New personal accountability rules allow civil penalties for key persons, controllers, and senior managers for AML/CFT contraventions. New Fitness and Propriety Framework expected summer 2026. Reforms aligned with Moneyval inspection preparation.'
+    body: 'The Gambling Legislation (Amendment) Bill — consolidating seven gambling acts into a unified framework — completed its passage through Tynwald on 28 April 2026, with Royal Assent expected by summer 2026. New personal accountability rules allow civil penalties for key persons, controllers, and senior managers; new fitness-and-propriety criteria (GSC consultations on the F&P standard and civil penalty regime ran to 25 May 2026); expanded GSC powers including warrantless entry and seizure. Moneyval on-site inspection scheduled for October 2026.'
   },
   {
     title: "Sweden — Complete Credit Card Gambling Ban",
@@ -1401,7 +1410,7 @@ const EMERGING = [
   {
     title: "Finland — iGaming Market Liberalisation",
     jurisdiction: 'Finland',
-    body: 'Finland\'s new Gambling Act was approved by Parliament on 16 December 2025 and took effect in early 2026, ending the Veikkaus exclusive monopoly over betting, online slots and online casino games (Veikkaus retains lotteries, scratch cards and land-based gambling). B2C licence applications opened 1 March 2026 (24+ applications on file by early April 2026); the licensed market is scheduled to commence operations on 1 July 2027, with B2B licence applications opening in January 2027 and B2B operations from 2028. Regulatory oversight moves from the National Police Board to a new Licensing and Supervisory Authority. The reform targets recapture of an estimated €600–900m of annual gambling activity currently leaking to offshore operators.'
+    body: 'Finland\'s new Gambling Act was approved by Parliament on 16 December 2025 and took effect in early 2026, ending the Veikkaus exclusive monopoly over betting, online slots and online casino games (Veikkaus retains lotteries, scratch cards and land-based gambling). B2C licence applications opened 1 March 2026 (≈50 applications received by mid-2026, with processing taking around six months per application); the licensed market is scheduled to commence operations on 1 July 2027, with B2B licence applications opening in January 2027 and B2B operations from 2028. Regulatory oversight moves from the National Police Board to a new Licensing and Supervisory Authority. The reform targets recapture of an estimated €600–900m of annual gambling activity currently leaking to offshore operators.'
   },
   {
     title: "Netherlands KSA — 2026 Licensing & Intervention Reforms",
@@ -1411,17 +1420,22 @@ const EMERGING = [
   {
     title: "Curaçao LOK — Implementation Progress",
     jurisdiction: 'Curaçao',
-    body: 'LOK in force 24 December 2024. Curaçao Gaming Authority (CGA) replaces the Gaming Control Board (GCB) as the sole licence issuer, ending the master/sublicence model. All legacy sub-licences expired in January 2025; the orange (transitional) seal expired permanently on 15 October 2025. The CGA\'s public Online Gaming Licence Registry (updated 26 June 2026) lists 659 licences granted under the new policy — 571 B2C and 88 B2B — of which 586 are active, 41 revoked and 32 expired, with licences running on renewable six-month terms. B2C applications reopened March 2025 and B2B mid-2025. Operators must maintain a physical presence in Curaçao, with key-staff and local-director requirements phased over 4–5 years — the local staffing and hiring compliance deadline was extended to 1 April 2027. CGA updated its fee policy under the new framework in November 2025.'
+    body: 'LOK in force 24 December 2024. Curaçao Gaming Authority (CGA) replaces the Gaming Control Board (GCB) as the sole licence issuer, ending the master/sublicence model. All legacy sub-licences expired in January 2025; the orange (transitional) seal expired permanently on 15 October 2025. The CGA\'s public Online Gaming Licence Registry lists 615 active licences as of 26 July 2026, 194 of them issued in 2026, with licences running on renewable six-month terms. B2C applications reopened March 2025 and B2B mid-2025. Operators must maintain a physical presence in Curaçao, with key-staff and local-director requirements phased over 4–5 years — the local staffing and hiring compliance deadline was extended to 1 April 2027. CGA updated its fee policy under the new framework in November 2025.'
   },
   {
     title: "New Zealand — Online Casino Licensing 2026",
     jurisdiction: 'New Zealand',
-    body: 'The Online Casino Gambling Act 2026 came into force 1 May 2026, with the Online Casino Gambling Regulations 2026 following from 3 July 2026. Up to 15 online casino licences will be issued, with extraterritorial reach over offshore operators serving New Zealand players. The Department of Internal Affairs opened the Expression of Interest stage on 17 July 2026 — EOIs due 14 August 2026 with a NZ$19,000 fee. Unlicensed offshore operators must exit by 1 December 2026. The regime includes a credit card ban, mandatory player-set limits, and a 3.5% quarterly levy on online gambling profits.'
+    body: 'The Online Casino Gambling Act 2026 came into force 1 May 2026, with the Online Casino Gambling Regulations 2026 following from 3 July 2026. Up to 15 online casino licences will be issued, with extraterritorial reach over offshore operators serving New Zealand players. The Department of Internal Affairs opened the Expression of Interest stage on 17 July 2026 — EOIs due 14 August 2026 with a NZ$19,000 fee, and applicants must show at least NZ$7.5m capital. Next stages: licence auction September 2026, full applications from October 2026, licences issued and market live early 2027. Unlicensed offshore operators must exit by 1 December 2026. The regime includes a credit card ban, mandatory player-set limits, and a 3.5% quarterly levy on online gambling profits.'
   },
   {
     title: "United States — State-Level 2026 Shifts",
     jurisdiction: 'United States',
     body: 'Eight US states currently allow real-money online casinos: Connecticut, Delaware, Maine (tribal-exclusive launch January 2026), Michigan, New Jersey, Pennsylvania, Rhode Island and West Virginia. Wisconsin Governor Tony Evers signed an online sports betting (not iGaming) bill on 9 April 2026, with launch dependent on federally-approved tribal-state compact renegotiation. Illinois iGaming remains pending: HB 1167 cleared committee in late January 2026 but did not receive a floor vote before the summer recess, and a parallel bill (HB 4797, Rep. Edgar González Jr.) was introduced in February 2026. New York Senator Joseph Addabbo reintroduced an iGaming bill in May 2026 (30.5% tax, US$2–10m licence fees) — the fourth consecutive year — with any launch unlikely before 2027. A coordinated wave of sweepstakes casino bans has accelerated — California (AB 831, effective 1 January 2026), New York, New Jersey, Montana, Connecticut, Indiana (HB 1052, effective 1 July 2026), Maine (LD 2007, effective 14 July 2026), Tennessee, Louisiana and most recently Oklahoma (SB 1589 veto-overridden, effective 1 November 2026) have all enacted bans, with Mississippi and Minnesota pending, Washington DC introducing Council Bill 260656 (which would legalise iGaming while banning dual-currency sweepstakes), and 27+ states actively considering legislation. Prediction-market legislation continues to generate federal/state tension likely headed for the Supreme Court.'
+  },
+  {
+    title: "Austria — End of the Online Monopoly",
+    jurisdiction: 'Austria',
+    body: 'Draft legislation to replace Austria\'s online gambling monopoly with an open licensing system was published for consultation in May 2026, and on 4 August 2026 the Ministry of Finance notified the draft Gambling Act reform to the European Commission under the TRIS procedure, triggering a three-month standstill period (the parliamentary process may continue during standstill). Key draft terms: unlicensed operators must exit the market by 1 January 2027 to qualify for a licence (18-month lock-out for non-compliance, rising to 24 months from 2030); statutory deposit limits of €250/week for under-26s and €1,680/month for 26+; and Austria\'s first centralised exclusion register covering casino, slots and online gambling.'
   },
   {
     title: "Italy ADM — 2025/26 Concession Round and Online Reforms",
