@@ -13,39 +13,40 @@
   var CHARTS = {
     progress: {
       label: 'Benchmark progress',
-      title: 'SWE-bench Verified, February to November 2025',
-      sub: 'Share of real GitHub issues resolved. Higher is better.',
+      title: 'SWE-bench Verified, February 2025 to August 2026',
+      sub: 'Share of real GitHub issues resolved, standard scaffold. Higher is better.',
       unit: '%',
       max: 100,
       series: [{ name: 'SWE-bench Verified', colour: SERIES_1 }],
       groups: [
-        { cat: 'Claude 3.7 Sonnet', meta: 'Feb 2025', values: [70.3] },
+        { cat: 'Claude 3.7 Sonnet', meta: 'Feb 2025', values: [63.7] },
         { cat: 'GPT-5', meta: 'Aug 2025', values: [74.9] },
-        { cat: 'Claude Opus 4.5', meta: 'Nov 2025', values: [80.9] }
+        { cat: 'Claude Opus 4.5', meta: 'Nov 2025', values: [80.9] },
+        { cat: 'Claude Opus 5', meta: 'Aug 2026', values: [97.0] }
       ],
-      source: 'Anthropic, OpenAI model announcements (Feb, Aug and Nov 2025).'
+      source: 'Vendor announcements; Vals AI leaderboard (14 August 2026). The Claude 3.7 Sonnet figure is the standard-scaffold score, not the 70.3% parallel-sampling result.'
     },
     gap: {
       label: 'The benchmark gap',
-      title: 'Same models, three benchmarks',
-      sub: 'Scores collapse once the tasks get bigger. Higher is better.',
+      title: 'The gap between benchmarks, then and now',
+      sub: 'Best score on each benchmark at each date. Higher is better.',
       unit: '%',
       max: 100,
       series: [
-        { name: 'GPT-5', colour: SERIES_1 },
-        { name: 'Claude Opus 4.1', colour: SERIES_2 }
+        { name: 'September 2025', colour: SERIES_1 },
+        { name: 'August 2026', colour: SERIES_2 }
       ],
       groups: [
-        { cat: 'SWE-bench Verified', values: [74.9, 74.5] },
-        { cat: 'SWE-bench Pro (public)', values: [23.3, 23.1] },
-        { cat: 'SWE-bench Pro (commercial)', values: [14.9, 17.8] }
+        { cat: 'SWE-bench Verified', values: [74.9, 97.0] },
+        { cat: 'SWE-bench Pro (public)', values: [23.3, 61.5] },
+        { cat: 'SWE-bench Pro (commercial)', values: [17.8, 51.5] }
       ],
-      source: 'Scale AI, SWE-bench Pro (19 September 2025); vendor figures for SWE-bench Verified.'
+      source: 'Scale AI SWE-bench Pro leaderboards (launch figures 19 September 2025; current figures August 2026, led by Meta Muse Spark 1.1). Verified figures from vendor announcements and Vals AI.'
     },
     price: {
-      label: 'The price collapse',
-      title: 'Input price per million tokens',
-      sub: 'Flagship and workhorse model pricing. Lower is cheaper.',
+      label: 'The price picture',
+      title: "Anthropic's most expensive model, input price per million tokens",
+      sub: 'The flagship fell by two thirds. Then a new tier landed above it.',
       unit: '',
       prefix: '$',
       max: 16,
@@ -53,10 +54,9 @@
       groups: [
         { cat: 'Claude Opus 4.1', meta: 'Aug 2025', values: [15] },
         { cat: 'Claude Opus 4.5', meta: 'Nov 2025', values: [5] },
-        { cat: 'Claude Sonnet 5', meta: 'Jun 2026', values: [2] },
-        { cat: 'Gemini 3.7 Flash', meta: 'Aug 2026', values: [0.75] }
+        { cat: 'Claude Fable 5', meta: 'Jun 2026', values: [10] }
       ],
-      source: 'Anthropic and Google published API pricing, August 2025 to August 2026.'
+      source: 'Anthropic published API pricing. Like-for-like across one vendor: workhorse tiers fell further (Sonnet 5 at $2, made permanent 10 August 2026), but Gemini Flash at $0.75 is promotional until 31 December 2026 and is not an Opus-class comparison.'
     }
   };
 
