@@ -471,6 +471,10 @@ This applies to every `<link rel="stylesheet">` and `<script src="">` that refer
 
 Always `https://johnb.io` (no www). All pages must have `<link rel="canonical" href="https://johnb.io/pagename">`.
 
+**Two exceptions — `/news/` and `/course/` keep a trailing slash.** Both are real directories, so the server 301s `/news` to `/news/`. Their canonical, `og:url`, JSON-LD `url`, `sitemap.xml` and `llms.txt` entries all use the trailing-slash form so they point at the URL that actually returns 200. Don't "fix" these back to no-slash — that recreates a canonical pointing at a redirect.
+
+**Never block `header.html` or `footer.html` in `robots.txt`.** They are fetched at runtime and hold every internal nav link; tool pages have zero internal links in their raw HTML. Blocking them leaves Googlebot rendering every page with no navigation, which orphans the whole site. They are kept out of the index with `X-Robots-Tag: noindex` in `.htaccess` instead. Same rule for any page relying on a `noindex` meta tag: it must stay crawlable or Google can never read the tag.
+
 ## Worker pattern
 
 **IMPORTANT — use the Service Worker format, NOT ES Modules.** The Cloudflare dashboard defaults to Service Worker mode. Using `export default { async fetch(req, env) {} }` (ES Module syntax) will cause the worker to silently fail with CORS errors on the client side because the worker never executes.

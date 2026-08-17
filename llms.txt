@@ -43,7 +43,7 @@
 
 ## News and Insights
 
-- [News](https://johnb.io/news): News and insights on AI, iGaming, SEO and digital from John Bowman.
+- [News](https://johnb.io/news/): News and insights on AI, iGaming, SEO and digital from John Bowman.
 - [AI Models in 2026: What Actually Changed in the Last 12 Months](https://johnb.io/news/ai-models-2026): A sourced review of AI progress from August 2025 to August 2026, covering Anthropic's Claude Opus 5 and Fable 5, OpenAI's GPT-5 to GPT-5.6 releases and the Sora shutdown, Google Gemini 3 and Antigravity, video and image models including Veo and Nano Banana, open-weight models from DeepSeek and Qwen, and the METR randomised trial finding developers 19% slower with AI tools.
 - [What Happens When Your AI Songs Get 88 Million Views](https://johnb.io/news/ai-music-88-million-views): I generated 88 million streams with AI music in 2024-2026. Here's what I actually made—and why I won't share the songs. Covers Suno, SoundON Global distribution, streaming monetization, and the reality gap between reach and revenue.
 - [GEO: A Practical Guide to Generative Engine Optimisation in 2026](https://johnb.io/news/geo-generative-engine-optimisation): Explains what GEO is, how it differs from SEO, what AI retrieval systems look for in content, whether llms.txt actually works, and practical steps to get cited by ChatGPT, Perplexity and Google AI Overviews.
@@ -53,7 +53,7 @@
 
 ## AI Course
 
-- [AI & Machine Learning Course](https://johnb.io/course): Free AI and machine learning course with certificate. 9 units and 35 lessons covering AI fundamentals, deep learning, NLP, MLOps and business strategy. No login required to browse.
+- [AI & Machine Learning Course](https://johnb.io/course/): Free AI and machine learning course with certificate. 9 units and 35 lessons covering AI fundamentals, deep learning, NLP, MLOps and business strategy. No login required to browse.
 - [Final Exam](https://johnb.io/exam): 30-question randomised exam drawn from a 60-question bank covering all 9 units.
 - [Certificate Verification](https://johnb.io/verify): Public page to verify AI & Machine Learning Course certificates issued by JohnB.io. URL format: johnb.io/verify/JB-2026-XXXXXX
 

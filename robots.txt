@@ -1,10 +1,16 @@
 User-agent: *
 Allow: /
-Disallow: /header.html
-Disallow: /footer.html
+
+# header.html and footer.html are fetched at runtime by scripts.js and carry
+# every internal navigation link on the site. They must stay crawlable or
+# Googlebot renders every page with no navigation and no outgoing links.
+# They are kept out of the index with X-Robots-Tag: noindex in .htaccess.
+
+# /wo is deindexed by its meta robots tag, which Google can only act on if it
+# is allowed to crawl the page and read it. Blocking it here prevented that.
+
 Disallow: /template.html
 Disallow: /heart.html
-Disallow: /wo
 Disallow: /cgi-bin/
 
 Sitemap: https://johnb.io/sitemap.xml

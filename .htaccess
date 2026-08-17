@@ -18,6 +18,11 @@ RewriteRule ^(project-insights|michael-scott)(\.html)?$ https://johnb.io/ [R=301
 # Legacy tool URL — ytsum was renamed to transcripts
 RewriteRule ^ytsum(\.html)?$ https://johnb.io/transcripts [R=301,L]
 
+# Retired tools — redirect to the closest surviving page instead of 404
+RewriteRule ^youtube-analyzer(\.html)?$ https://johnb.io/transcripts [R=301,L,NC]
+RewriteRule ^cv-cover-letter(\.html)?$ https://johnb.io/aitocv [R=301,L,NC]
+RewriteRule ^eu-ai-act(\.html)?$ https://johnb.io/course/ai-governance-frameworks [R=301,L,NC]
+
 # Strip .html extension — redirect /page.html to /page
 RewriteCond %{THE_REQUEST} /([^.]+)\.html[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
@@ -96,6 +101,24 @@ RewriteRule ^(.*)$ $1.html [L]
     <FilesMatch "\.(html|htm)$">
         Header set Cache-Control "no-cache, must-revalidate"
     </FilesMatch>
+</IfModule>
+
+# Nav fragments: crawlable so Googlebot can render site navigation, but never
+# indexed as standalone pages. Separate <Files> blocks — LiteSpeed ignores
+# Header directives that carry an env= condition.
+<IfModule mod_headers.c>
+    <Files "header.html">
+        Header set X-Robots-Tag "noindex"
+    </Files>
+    <Files "footer.html">
+        Header set X-Robots-Tag "noindex"
+    </Files>
+    <Files "template.html">
+        Header set X-Robots-Tag "noindex"
+    </Files>
+    <Files "heart.html">
+        Header set X-Robots-Tag "noindex"
+    </Files>
 </IfModule>
 
 # Add version to static assets
