@@ -100,7 +100,11 @@
   padding: 1.5rem 1.25rem 1.25rem;
 }
 
-.amx-track {
+/* news.css sets ".na-body ul, .na-body ol { margin: 0 0 1.25rem 1.25rem;
+   padding: 0 }" and ".na-body li { margin-bottom: 0.5rem }", which outrank a
+   single class. These rules are doubled up so the timeline keeps its own
+   padding, otherwise the dots detach from the track line by 24px. */
+.amx .amx-track {
   list-style: none;
   margin: 0;
   padding: 0 0 0 1.5rem;
@@ -117,12 +121,13 @@
   background: var(--amx-baseline);
 }
 
-.amx-ev {
+.amx .amx-ev {
   position: relative;
+  margin: 0;
   padding: 0 0 1.35rem 0;
 }
 
-.amx-ev:last-child { padding-bottom: 0; }
+.amx .amx-ev:last-child { padding-bottom: 0; }
 
 .amx-ev::before {
   content: '';
@@ -353,10 +358,10 @@
 .amx-table th { color: var(--amx-ink-2); font-weight: 600; }
 .amx-table td { color: var(--amx-ink); font-variant-numeric: tabular-nums; }
 
-.amx-src {
+.amx .amx-src {
   font-size: 0.75rem;
   color: var(--amx-muted);
-  margin-top: 0.9rem;
+  margin: 0.9rem 0 0;
   line-height: 1.5;
 }
 
