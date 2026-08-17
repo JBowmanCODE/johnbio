@@ -1,0 +1,374 @@
+/* Article-specific infographic + benchmark charts for /news/ai-models-2026
+   Palette validated with the dataviz palette validator against the card
+   surface #19191f (dark): series cyan #00a3b0 + magenta #FF007F pass the
+   lightness band, chroma floor, CVD separation (deutan dE 9.2), the
+   normal-vision floor (dE 36.6) and 3:1 contrast. Do not re-tint by hand. */
+
+.amx {
+  --amx-surface: #19191f;
+  --amx-surface-2: #1f1f26;
+  --amx-series-1: #00a3b0;
+  --amx-series-2: #FF007F;
+  --amx-ink: #f8f5fd;
+  --amx-ink-2: #acaab1;
+  --amx-muted: #898781;
+  --amx-grid: #2c2c2a;
+  --amx-baseline: #383835;
+  --amx-border: rgba(248, 245, 253, 0.09);
+  margin: 2.5rem 0;
+}
+
+.amx-figure { margin: 0; }
+
+.amx-caption {
+  font-size: 0.82rem;
+  color: var(--amx-muted);
+  margin-top: 0.85rem;
+  line-height: 1.5;
+}
+
+/* ── Section heading ───────────────────────────────────────────────── */
+
+.amx-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.1rem;
+}
+
+.amx-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--amx-ink);
+  letter-spacing: -0.01em;
+}
+
+.amx-sub {
+  font-size: 0.82rem;
+  color: var(--amx-ink-2);
+}
+
+/* ── KPI stat tiles ────────────────────────────────────────────────── */
+
+.amx-kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.amx-kpi {
+  background: var(--amx-surface);
+  border: 1px solid var(--amx-border);
+  border-radius: 14px;
+  padding: 1rem 1.05rem;
+}
+
+.amx-kpi-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--amx-ink);
+  letter-spacing: -0.02em;
+}
+
+.amx-kpi-hero .amx-kpi-value { font-size: 2.4rem; }
+
+.amx-kpi-label {
+  font-size: 0.78rem;
+  color: var(--amx-ink-2);
+  margin-top: 0.4rem;
+  line-height: 1.45;
+}
+
+.amx-kpi-note {
+  font-size: 0.72rem;
+  color: var(--amx-muted);
+  margin-top: 0.35rem;
+}
+
+/* ── Timeline infographic ──────────────────────────────────────────── */
+
+.amx-timeline {
+  background: var(--amx-surface);
+  border: 1px solid var(--amx-border);
+  border-radius: 18px;
+  padding: 1.5rem 1.25rem 1.25rem;
+}
+
+.amx-track {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+  position: relative;
+}
+
+.amx-track::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: var(--amx-baseline);
+}
+
+.amx-ev {
+  position: relative;
+  padding: 0 0 1.35rem 0;
+}
+
+.amx-ev:last-child { padding-bottom: 0; }
+
+.amx-ev::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 5px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--amx-series-1);
+  box-shadow: 0 0 0 2px var(--amx-surface);
+}
+
+.amx-ev[data-tone="end"]::before { background: var(--amx-series-2); }
+
+.amx-ev-date {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--amx-muted);
+}
+
+.amx-ev-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--amx-ink);
+  margin-top: 0.15rem;
+}
+
+.amx-ev-desc {
+  font-size: 0.85rem;
+  color: var(--amx-ink-2);
+  margin-top: 0.2rem;
+  line-height: 1.5;
+}
+
+/* ── Chart card + tabs ─────────────────────────────────────────────── */
+
+.amx-card {
+  background: var(--amx-surface);
+  border: 1px solid var(--amx-border);
+  border-radius: 18px;
+  padding: 1.35rem 1.25rem 1.15rem;
+}
+
+.amx-tabs {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.amx-tab {
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--amx-ink-2);
+  background: var(--amx-surface-2);
+  border: 1px solid var(--amx-border);
+  border-radius: 999px;
+  padding: 0.42rem 0.9rem;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.amx-tab:hover { color: var(--amx-ink); border-color: rgba(248, 245, 253, 0.22); }
+
+.amx-tab[aria-selected="true"] {
+  color: #05161a;
+  background: var(--amx-series-1);
+  border-color: var(--amx-series-1);
+}
+
+/* ── Chart plot ────────────────────────────────────────────────────── */
+
+.amx-plot { position: relative; }
+
+.amx-svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+.amx-bar { transition: opacity 0.12s ease; cursor: pointer; }
+
+.amx-bar:focus-visible { outline: 2px solid var(--amx-ink); outline-offset: 2px; }
+
+.amx-plot.is-hovering .amx-bar { opacity: 0.45; }
+.amx-plot.is-hovering .amx-bar.is-active { opacity: 1; }
+
+.amx-grid-line { stroke: var(--amx-grid); stroke-width: 1; shape-rendering: crispEdges; }
+.amx-axis-line { stroke: var(--amx-baseline); stroke-width: 1; shape-rendering: crispEdges; }
+
+.amx-tick {
+  fill: var(--amx-muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.amx-cat {
+  fill: var(--amx-ink-2);
+  font-size: 11.5px;
+}
+
+.amx-val {
+  fill: var(--amx-ink);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ── Legend ────────────────────────────────────────────────────────── */
+
+.amx-legend {
+  display: flex;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+}
+
+/* display:flex would otherwise beat the hidden attribute's display:none */
+.amx-legend[hidden],
+.amx-table-wrap[hidden] { display: none; }
+
+.amx-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  color: var(--amx-ink-2);
+}
+
+.amx-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex: none;
+}
+
+/* ── Tooltip ───────────────────────────────────────────────────────── */
+
+.amx-tip {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -100%);
+  background: #0e0e13;
+  border: 1px solid var(--amx-border);
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+  min-width: 130px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.12s ease;
+  z-index: 5;
+}
+
+.amx-tip.is-visible { opacity: 1; }
+
+.amx-tip-cat {
+  font-size: 0.72rem;
+  color: var(--amx-muted);
+  margin-bottom: 0.3rem;
+}
+
+.amx-tip-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  white-space: nowrap;
+}
+
+.amx-tip-row + .amx-tip-row { margin-top: 0.2rem; }
+
+.amx-tip-key {
+  width: 12px;
+  height: 2px;
+  border-radius: 2px;
+  flex: none;
+  transform: translateY(-3px);
+}
+
+.amx-tip-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--amx-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.amx-tip-name { font-size: 0.76rem; color: var(--amx-ink-2); }
+
+/* ── Table view ────────────────────────────────────────────────────── */
+
+.amx-toggle {
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--amx-ink-2);
+  background: none;
+  border: none;
+  border-bottom: 1px dotted var(--amx-muted);
+  padding: 0;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.amx-toggle:hover { color: var(--amx-ink); }
+
+.amx-table-wrap { overflow-x: auto; margin-top: 0.9rem; }
+
+.amx-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.amx-table caption {
+  text-align: left;
+  font-size: 0.78rem;
+  color: var(--amx-muted);
+  padding-bottom: 0.5rem;
+}
+
+.amx-table th,
+.amx-table td {
+  text-align: left;
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  border-bottom: 1px solid var(--amx-border);
+  white-space: nowrap;
+}
+
+.amx-table th { color: var(--amx-ink-2); font-weight: 600; }
+.amx-table td { color: var(--amx-ink); font-variant-numeric: tabular-nums; }
+
+.amx-src {
+  font-size: 0.75rem;
+  color: var(--amx-muted);
+  margin-top: 0.9rem;
+  line-height: 1.5;
+}
+
+.amx-src a { color: var(--amx-ink-2); }
+
+@media (max-width: 560px) {
+  .amx-kpi-hero .amx-kpi-value { font-size: 2rem; }
+  .amx-kpi-value { font-size: 1.6rem; }
+  .amx-card { padding: 1.1rem 0.9rem 1rem; }
+  .amx-timeline { padding: 1.25rem 0.9rem 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .amx-bar, .amx-tip, .amx-tab { transition: none; }
+}
