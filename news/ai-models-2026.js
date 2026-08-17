@@ -14,17 +14,17 @@
     progress: {
       label: 'Benchmark progress',
       title: 'SWE-bench Verified, February 2025 to August 2026',
-      sub: 'Share of real GitHub issues resolved, standard scaffold. Higher is better.',
+      sub: 'Share of real GitHub issues resolved. Treat the later figures with caution.',
       unit: '%',
       max: 100,
       series: [{ name: 'SWE-bench Verified', colour: SERIES_1 }],
       groups: [
-        { cat: 'Claude 3.7 Sonnet', meta: 'Feb 2025', values: [63.7] },
+        { cat: 'Claude 3.7 Sonnet', meta: 'Feb 2025', values: [62.3] },
         { cat: 'GPT-5', meta: 'Aug 2025', values: [74.9] },
         { cat: 'Claude Opus 4.5', meta: 'Nov 2025', values: [80.9] },
         { cat: 'Claude Opus 5', meta: 'Aug 2026', values: [97.0] }
       ],
-      source: 'Vendor announcements; Vals AI leaderboard (14 August 2026). The Claude 3.7 Sonnet figure is the standard-scaffold score, not the 70.3% parallel-sampling result.'
+      source: 'Vendor announcements; Vals AI leaderboard (14 August 2026). Claude 3.7 Sonnet is the headline pass@1 score on the full 500-task set, not the 489-task subset (63.7%) or the custom-scaffold result (70.3%). OpenAI stopped evaluating on this benchmark in February 2026, calling it contaminated.'
     },
     gap: {
       label: 'The benchmark gap',
@@ -41,7 +41,7 @@
         { cat: 'SWE-bench Pro (public)', values: [23.3, 61.5] },
         { cat: 'SWE-bench Pro (commercial)', values: [17.8, 51.5] }
       ],
-      source: 'Scale AI SWE-bench Pro leaderboards (launch figures 19 September 2025; current figures August 2026, led by Meta Muse Spark 1.1). Verified figures from vendor announcements and Vals AI.'
+      source: "Scale AI SWE-bench Pro leaderboards, neutral harness (launch figures 19 September 2025; current figures August 2026, led by Meta Muse Spark 1.1 with Claude Opus 4.6 statistically tied on the commercial set). Verified figures from vendor announcements and Vals AI. Vendor-run scaffolds report higher Pro scores and are not directly comparable."
     },
     price: {
       label: 'The price picture',
