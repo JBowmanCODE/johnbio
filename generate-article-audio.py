@@ -20,6 +20,7 @@ Output:
 
 import sys
 import os
+import re
 from pathlib import Path
 from bs4 import BeautifulSoup, NavigableString
 
@@ -74,7 +75,23 @@ def extract_article_text(html_path: Path) -> str:
             if text:
                 parts.append(text)
 
-    return " ".join(p for p in parts if p)
+    return normalise_for_speech(" ".join(p for p in parts if p))
+
+
+# ── Speech normalisation ───────────────────────────────────────────────────────
+
+def normalise_for_speech(text: str) -> str:
+    """Fix text patterns that OpenAI TTS reads wrongly.
+
+    - Grouping commas split numbers: "1,775" is spoken as "1, 775", so the
+      listener hears "seven hundred and seventy five".
+    - A leading "Word:" is treated as a dialogue speaker label and skipped
+      entirely, which silently eats the GEO "Term:/Definition:" blocks.
+    """
+    text = re.sub(r"(\d),(?=\d)", r"\1", text)
+    text = re.sub(r"\bTerm:\s*([^.]+?)\.\s*Definition:\s*", r"\1 is defined as: ", text)
+    text = re.sub(r"\b(?:Term|Definition):\s*", "", text)
+    return text
 
 
 # ── Chunking ───────────────────────────────────────────────────────────────────

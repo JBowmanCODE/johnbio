@@ -411,6 +411,12 @@
 
   <!-- News -->
   <url>
+    <loc>https://johnb.io/news/ai-models-2026</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://johnb.io/news/ai-music-88-million-views</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
