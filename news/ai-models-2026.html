@@ -41,7 +41,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=3" rel="stylesheet"/>
+<link href="/styles.css?v=4" rel="stylesheet"/>
 <link href="/header.css?v=4" rel="stylesheet"/>
 <link href="/footer.css?v=2" rel="stylesheet"/>
 <link href="/news.css?v=4" rel="stylesheet"/>
@@ -59,7 +59,7 @@
     "url": "https://johnb.io/news/ai-models-2026",
     "image": "https://johnb.io/news/images/ai-models-2026.webp",
     "datePublished": "2026-08-17T00:00:00+00:00",
-    "dateModified": "2026-08-17T00:00:00+00:00",
+    "dateModified": "2026-08-18T00:00:00+00:00",
     "author": {
       "@type": "Person",
       "name": "John Bowman",
@@ -267,7 +267,7 @@
 <p>So here is my read on the year, and it is the argument the rest of this piece defends: the interesting story of 2026 is not that models got smarter. It is that the industry stopped selling wonder and started selling work, and got a lot cheaper doing it.</p>
 <h2 id="how-many">How many AI models launched in the past year?</h2>
 <p>Too many to be meaningful, which is itself the point. Anthropic alone shipped Claude Opus 4.1, Sonnet 4.5, Haiku 4.5, Opus 4.5, Opus 4.6, Sonnet 4.6, Opus 4.7, Opus 4.8, a new Fable 5 and Mythos 5 tier, Sonnet 5 and Opus 5 between August 2025 and July 2026. OpenAI went from GPT-5 on 7 August 2025 to the GPT-5.6 family on 9 July 2026, passing through 5.1, 5.2, 5.3, 5.4 and 5.5. Google launched Gemini 3 on 18 November 2025 and reached Gemini 3.7 Flash by 13 August 2026.</p>
-<p>Term: frontier model. Definition: the most capable general-purpose model a lab has released, usually also its most expensive to run.</p>
+<p>A <strong>frontier model</strong> is the most capable general-purpose model a lab has released, usually also its most expensive to run.</p>
 <p>Version numbers have stopped carrying information, and the size of the increment tells you nothing about the size of the change. Going from Claude Opus 4.1 to 4.5 cut prices by two thirds. The smaller step from 4.5 to 4.6 added a million-token context window. Meanwhile GPT-5's headline feature in August 2025 was removing the model picker entirely and auto-routing between fast and reasoning modes, which is a product decision dressed as a version bump. If you are choosing a model, the number tells you almost nothing. Price, context window and independent benchmarks tell you something.</p>
 <p>Two releases genuinely broke pattern. Anthropic introduced a tier above Opus on 9 June 2026 with Claude Fable 5 and Mythos 5, the latter restricted to approved organisations. Three days later the US government applied export controls, and because Anthropic could not verify user nationality in real time it suspended access for everyone, worldwide. The controls were lifted on 30 June 2026 and the models came back globally the next day. A frontier model being pulled worldwide for geopolitical reasons was new. Expect more of it.</p>
 <h2 id="prices">What happened to AI prices in 2026?</h2>
@@ -366,7 +366,7 @@
 </div>
 <h2 id="coding">What changed in AI coding?</h2>
 <p>Coding is where the money went, and where the evidence gets genuinely uncomfortable. Every lab now ships a coding agent alongside its base model: OpenAI's Codex line tracked each GPT-5 point release, Google launched Antigravity beside Gemini 3 in November 2025 and upgraded it to 2.0 at I/O in May 2026, and Anthropic's <a href="/news/claude-code-vsc">Claude Code and its VS Code extension</a> became a product line in its own right.</p>
-<p>Term: agentic coding. Definition: software development where an AI model plans and carries out multi-step work by itself, running commands and editing files, rather than suggesting single line completions.</p>
+<p><strong>Agentic coding</strong> is software development where an AI model plans and carries out multi-step work by itself, running commands and editing files, rather than suggesting single line completions.</p>
 <p>The benchmark story looks like straightforward progress. SWE-bench Verified, which measures resolving real GitHub issues, went from 62.3% for Claude 3.7 Sonnet in February 2025, to 74.9% for GPT-5 that August, to 80.9% for Claude Opus 4.5 in November. By August 2026 the leaders sit above 96%. Read that in isolation and software engineering looks solved.</p>
 <p>Then you notice that OpenAI stopped using it. On 23 February 2026 it published a post titled "Why SWE-bench Verified no longer measures frontier coding capabilities", calling the dataset <strong>"increasingly contaminated"</strong> and reporting that when it audited a 27.6% slice of the problems models kept failing, at least 59.4% of them had broken test cases that reject correct answers. The 96% figures sit on a benchmark one of its heaviest users has publicly walked away from.</p>
 <p>The harder benchmark tells a different story. Scale AI published SWE-bench Pro on 19 September 2025 using larger, enterprise-scale tasks. At launch the best models managed about 23% on the public set, and on the private commercial set Claude Opus 4.1 dropped to 17.8% and GPT-5 to 14.9%. Those numbers have moved a long way since. On Scale's own leaderboard in August 2026, Meta's Muse Spark 1.1 leads the public set at 61.5% and the commercial set at 51.5%, with Claude Opus 4.6 at 47.1%, close enough that Scale's confidence intervals rank the two jointly first. Roughly triple in eleven months, so the gap is genuinely closing.</p>
@@ -414,7 +414,7 @@
 <p>Which brings me back to Sora. It did not die because AI video failed. It died because a spectacular consumer product could not cover its own compute bill while an unglamorous coding assistant could. That is the year in one sentence, and it is why the price cuts matter more than the version numbers.</p>
 <h2 id="what-next">What to watch in the next six months</h2>
 <p>Three dates are already fixed. Sora's API shuts down on 24 September 2026, closing the chapter properly. Google replaces Assistant with Gemini on Android from 4 September 2026, moving a frontier model onto several billion devices by default. And the EU AI Act's high-risk obligations, which were due this month, were deferred to 2 December 2027 by the Digital Omnibus that came into force on 27 July 2026. What did land on 2 August was the Article 50 transparency duties and the existing general-purpose model obligations, alongside an expansion of the AI Office's supervisory powers rather than a simple switch-on.</p>
-<p>The thing I would actually watch is whether anyone publishes a second rigorous trial on developer productivity. We have had twelve months of model releases and one randomised controlled trial, and the trial disagreed with the marketing. If you want to understand how the terms in this piece fit together, start with the <a href="/news/ai-terms-explained">plain-English guide to AI jargon</a>, and if you are wondering how any of this affects being found online, the <a href="/news/geo-generative-engine-optimisation">practical guide to generative engine optimisation</a> covers that side. For a wider look at how these tools changed search and daily work, there is <a href="/news/test-ai">AI in 2026: LLMs, search, content and work</a>.</p>
+<p>The thing I would actually watch is whether anyone publishes a second rigorous trial on developer productivity. We have had twelve months of model releases and one randomised controlled trial, and the trial disagreed with the marketing. If the terminology here is new, my <a href="/course/">free AI and machine learning course</a> works up from neural networks to LLMs and RAG, and if you are wondering how any of this affects being found online, the <a href="/news/geo-generative-engine-optimisation">practical guide to generative engine optimisation</a> covers that side.</p>
 </div>
 <!-- ── Deep Dive Podcast ── -->
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
@@ -619,10 +619,10 @@
 <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
 </button>
 <div id="footer-placeholder"></div>
-<script defer="" src="/news-data.js"></script><script defer="" src="/news-article.js?v=2"></script>
-<script defer="" src="/scripts.js?v=6"></script>
-<script defer="" src="/news-chat.js"></script>
-<script defer="" src="/news-recent.js"></script>
+<script defer="" src="/news-data.js?v=3"></script><script defer="" src="/news-article.js?v=2"></script>
+<script defer="" src="/scripts.js?v=7"></script>
+<script defer="" src="/news-chat.js?v=1"></script>
+<script defer="" src="/news-recent.js?v=1"></script>
 <script defer="" src="/news/ai-models-2026.js?v=3"></script>
 <script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {

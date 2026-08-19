@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LLMs.txt Generator - Create AI-Ready Site Files Free | JohnB.io</title>
+  <title>LLMs.txt Generator - Free AI-Ready Site Files - JohnB.io</title>
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Styles -->
-  <link rel="stylesheet" href="/styles.css?v=3">
+  <link rel="stylesheet" href="/styles.css?v=4">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
   <link rel="stylesheet" href="/llms-generator.css?v=1">
@@ -34,13 +34,13 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://johnb.io/llms-generator">
   <meta name="author" content="John Bowman">
-  <meta property="og:title" content="LLMs.txt Generator - Help AI Assistants Find Your Site">
+  <meta property="og:title" content="LLMs.txt Generator - Free AI-Ready Site Files - JohnB.io">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://johnb.io/llms-generator">
   <meta property="og:description" content="Free tool. Enter your URL or paste your content and generate a structured llms.txt file in seconds. Optimise your site for ChatGPT, Claude, Perplexity and Google AI Overviews.">
   <meta property="og:image" content="https://johnb.io/og_images/llms_generator_og.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="LLMs.txt Generator - JohnB.io">
+  <meta name="twitter:title" content="LLMs.txt Generator - Free AI-Ready Site Files - JohnB.io">
   <meta name="twitter:description" content="Paste a URL or content and generate a structured llms.txt file. Help AI assistants understand and cite your website correctly.">
   <meta name="twitter:image" content="https://johnb.io/og_images/llms_generator_og.webp">
 
@@ -63,7 +63,8 @@
     "author": {
       "@type": "Person",
       "name": "John Bowman",
-      "url": "https://www.linkedin.com/in/john-bowman/"
+      "url": "https://johnb.io/about",
+      "sameAs": ["https://www.linkedin.com/in/john-bowman/"]
     }
   }
   </script>
@@ -76,42 +77,37 @@
       {
         "@type": "Question",
         "name": "What is an llms.txt file?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "An llms.txt file is a plain text file placed at the root of a website (e.g. yoursite.com/llms.txt). It provides a concise, structured overview of a website's content specifically formatted for large language models. The format was proposed by Jeremy Howard (fast.ai) in September 2024 and is defined at llmstxt.org."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "An llms.txt file is a plain text file placed at the root of a website that provides a concise, structured overview of the site's content formatted for large language models. It was proposed by Jeremy Howard (fast.ai) in September 2024 and is defined at llmstxt.org. It follows a simple format: a site title, a one-sentence description, and sections listing pages with brief descriptions." }
       },
       {
         "@type": "Question",
-        "name": "Does llms.txt help with SEO?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "llms.txt does not directly affect traditional Google search rankings. However, it is an important part of GEO (Generative Engine Optimisation) - optimising your site for AI-powered search engines and assistants like ChatGPT, Claude, Perplexity and Google AI Overviews. As AI-generated answers increasingly cite specific websites, a well-structured llms.txt helps AI systems understand which pages are authoritative and what they contain."
-        }
+        "name": "Does llms.txt help with Google SEO rankings?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Not directly. Google's organic search rankings are based on its own crawl and indexing signals. However, llms.txt is important for GEO (Generative Engine Optimisation) - helping AI assistants like ChatGPT, Perplexity and Google's AI Overviews understand and accurately cite your content. As AI-generated answers increasingly influence how users find information, GEO is becoming an important complement to traditional SEO." }
       },
       {
         "@type": "Question",
-        "name": "Which AI systems read llms.txt files?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "LLMs that have web access (such as ChatGPT with browsing, Perplexity AI, and Claude with web access) can read llms.txt during retrieval. Some AI training pipelines also use llms.txt to understand site structure. Adoption is growing and the specification is supported by Cloudflare, which offers automatic llms.txt generation for sites hosted on its platform."
-        }
+        "name": "Which AI systems read llms.txt?",
+        "acceptedAnswer": { "@type": "Answer", "text": "AI assistants with live web access - including ChatGPT (with browsing), Perplexity AI, Claude (with web access), and Bing Copilot - can retrieve and read llms.txt during inference. Some AI training datasets and indexing pipelines also process llms.txt to understand site structure. Cloudflare supports the format natively as of 2025." }
       },
       {
         "@type": "Question",
-        "name": "Is llms.txt the same as robots.txt?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. robots.txt tells search crawlers which pages they should or should not index. llms.txt is a separate, additive file that tells AI language models what your site is about and which pages are most important - it does not restrict access, it enhances discoverability."
-        }
+        "name": "Is llms.txt the same as robots.txt or sitemap.xml?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Robots.txt controls which pages web crawlers can access. Sitemap.xml lists all URLs for search engine indexing. Llms.txt is a separate, human- and machine-readable summary specifically designed to help LLMs understand what your site is about and identify its most important pages. All three can and should coexist." }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I include in my llms.txt?",
+        "acceptedAnswer": { "@type": "Answer", "text": "At minimum: your site name, a one-sentence description, and a list of your most important pages with brief descriptions of what each contains. Group pages into logical sections (e.g. Tools, Blog, About, Documentation). The goal is to give an LLM a clear mental model of your site in under two minutes of reading." }
       },
       {
         "@type": "Question",
         "name": "How often should I update my llms.txt?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Update your llms.txt whenever you add significant new content, launch new pages or tools, or change the focus of your site. For most sites, reviewing it quarterly is sufficient."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Update it whenever you add significant new content, launch new pages or tools, or change the focus of your site. For most sites, reviewing it quarterly is sufficient. Treat it like your sitemap - keep it current but not obsessively maintained." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can this tool generate llms.txt for any website?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The URL mode fetches and analyses your homepage. It works best on content-rich pages with clear headings and descriptions. Some sites may block automated fetches - if that happens, use Paste Content mode and provide a description of your site manually." }
       }
     ]
   }
@@ -322,9 +318,37 @@
     <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
   </button>
 
-  <div id="footer-placeholder"></div>
+  <div id="footer-placeholder">
+    <!-- Static site navigation: real crawlable links for search/AI crawlers and no-JS visitors.
+         scripts.js:loadHeaderAndFooter() replaces this block with footer.html for everyone else. -->
+    <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
+      <style>.crawl-nav{max-width:1280px;margin:0 auto;padding:3rem 2rem;border-top:1px solid rgba(248,245,253,0.07);font-family:'Space Grotesk',sans-serif;color:var(--on-surface-variant,#acaab1)}.crawl-nav-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,245,253,0.4);margin:0 0 1rem}.crawl-nav-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.5rem;font-size:0.85rem;line-height:1.6}.crawl-nav-list a{color:#00EEFC;text-decoration:none}.crawl-nav-list a:hover,.crawl-nav-list a:focus-visible{text-decoration:underline}</style>
+      <p class="crawl-nav-title">Explore JohnB.io</p>
+      <ul class="crawl-nav-list">
+        <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
+        <li><a href="/tcs-simplifier">T&amp;Cs Simplifier</a> - casino bonus terms in plain English</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 50 jurisdictions</li>
+        <li><a href="/bonus-calculator">Bonus Cost Calculator</a> - iGaming bonus cost modelling</li>
+        <li><a href="/promo-copy">iGaming Promo Copy Generator</a> - compliant promotional copy</li>
+        <li><a href="/rg-generator">RG Message Generator</a> - responsible gambling messaging</li>
+        <li><a href="/igaming-jargon">iGaming Jargon Translator</a> - industry terms explained</li>
+        <li><a href="/editor">AI Copyeditor</a> - copyediting with UK and US English</li>
+        <li><a href="/lm-chat">LLM Chat</a> - chat with language models</li>
+        <li><a href="/text-to-speech">Text to Speech Converter</a> - natural AI voices for any text</li>
+        <li><a href="/content-repurposer">Content Repurposer</a> - one piece of content, many formats</li>
+        <li><a href="/aitocv">AI CV Enhancer</a> - tailored CVs and cover letters</li>
+        <li><a href="/faq-schema">FAQ Schema Generator</a> - FAQPage JSON-LD markup</li>
+        <li><a href="/prompt-improver">Prompt Improver</a> - better prompts for AI models</li>
+        <li><a href="/rai">Responsible AI Governance Framework</a> - evaluating and managing AI risk</li>
+        <li><a href="/about">About John Bowman</a> - 20+ years in iGaming and digital marketing</li>
+        <li><a href="/news/">AI Blog</a> - practical AI strategy and how it works</li>
+        <li><a href="/course/">AI &amp; Machine Learning Course</a> - free structured course</li>
+        <li><a href="/contact">Contact</a> - get in touch</li>
+      </ul>
+    </nav>
+  </div>
 
-  <script src="/scripts.js?v=6" defer></script>
+  <script src="/scripts.js?v=7" defer></script>
   <script src="/llms-generator.js?v=1" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');

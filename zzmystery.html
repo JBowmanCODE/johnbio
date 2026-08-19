@@ -11,12 +11,26 @@
   gtag('js', new Date());
   gtag('config', 'G-0J6PBWMRNY');
 </script>
+<meta name="description" content="Zig-Zag Drop Mystery: a free browser plinko-style slot demo. Drop the ball, watch it bounce, no signup and no real money involved.">
+<meta name="keywords" content="zig zag drop, plinko game, browser slot demo, free casino game demo">
+<meta name="robots" content="index, follow">
+<meta name="author" content="John Bowman">
 <link rel="canonical" href="https://johnb.io/zzmystery">
+<meta property="og:title" content="Zig-Zag Drop Mystery - JohnB.io">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://johnb.io/zzmystery">
+<meta property="og:description" content="A free browser plinko-style slot demo. Drop the ball, watch it bounce, no signup and no real money involved.">
+<meta property="og:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zig-Zag Drop Mystery - JohnB.io">
+<meta name="twitter:description" content="A free browser plinko-style slot demo. Drop the ball, watch it bounce, no signup and no real money involved.">
+<meta name="twitter:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+<meta name="twitter:image:alt" content="Zig-Zag Drop Mystery browser game on JohnB.io">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=3">
+<link rel="stylesheet" href="/styles.css?v=4">
 <link rel="stylesheet" href="/header.css?v=4">
 <link rel="stylesheet" href="/footer.css?v=2">
 <style>
@@ -77,6 +91,7 @@
   }
 
   .zzm-logo {
+    margin: 0;
     font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(1.4rem, 4vw, 2rem);
     font-weight: 900;
@@ -469,7 +484,7 @@
   "applicationCategory": "GameApplication",
   "operatingSystem": "Web",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
-  "author": { "@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/" },
+  "author": { "@type": "Person", "name": "John Bowman", "url": "https://johnb.io/about", "sameAs": ["https://www.linkedin.com/in/john-bowman/"] },
   "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
 }
 </script>
@@ -483,7 +498,7 @@
 
   <!-- Game Header -->
   <div class="zzm-header">
-    <div class="zzm-logo"><span>Zig-Zag Drop </span><span>Mystery</span></div>
+    <h1 class="zzm-logo"><span>Zig-Zag Drop </span><span>Mystery</span></h1>
     <button class="zzm-sound-btn" id="soundBtn" title="Toggle sound">🔊</button>
   </div>
 
@@ -696,9 +711,38 @@
     <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
   </button>
 
-  <div id="footer-placeholder"></div>
+  <div id="footer-placeholder">
+    <!-- Static site navigation: real crawlable links for search/AI crawlers and no-JS visitors.
+         scripts.js:loadHeaderAndFooter() replaces this block with footer.html for everyone else. -->
+    <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
+      <style>.crawl-nav{max-width:1280px;margin:0 auto;padding:3rem 2rem;border-top:1px solid rgba(248,245,253,0.07);font-family:'Space Grotesk',sans-serif;color:var(--on-surface-variant,#acaab1)}.crawl-nav-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,245,253,0.4);margin:0 0 1rem}.crawl-nav-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.5rem;font-size:0.85rem;line-height:1.6}.crawl-nav-list a{color:#00EEFC;text-decoration:none}.crawl-nav-list a:hover,.crawl-nav-list a:focus-visible{text-decoration:underline}</style>
+      <p class="crawl-nav-title">Explore JohnB.io</p>
+      <ul class="crawl-nav-list">
+        <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
+        <li><a href="/tcs-simplifier">T&amp;Cs Simplifier</a> - casino bonus terms in plain English</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 50 jurisdictions</li>
+        <li><a href="/bonus-calculator">Bonus Cost Calculator</a> - iGaming bonus cost modelling</li>
+        <li><a href="/promo-copy">iGaming Promo Copy Generator</a> - compliant promotional copy</li>
+        <li><a href="/rg-generator">RG Message Generator</a> - responsible gambling messaging</li>
+        <li><a href="/igaming-jargon">iGaming Jargon Translator</a> - industry terms explained</li>
+        <li><a href="/editor">AI Copyeditor</a> - copyediting with UK and US English</li>
+        <li><a href="/lm-chat">LLM Chat</a> - chat with language models</li>
+        <li><a href="/text-to-speech">Text to Speech Converter</a> - natural AI voices for any text</li>
+        <li><a href="/llms-generator">LLMs.txt Generator</a> - llms.txt files for AI crawlers</li>
+        <li><a href="/content-repurposer">Content Repurposer</a> - one piece of content, many formats</li>
+        <li><a href="/aitocv">AI CV Enhancer</a> - tailored CVs and cover letters</li>
+        <li><a href="/football-2026">Football 2026</a> - AI tournament predictions and bracket</li>
+        <li><a href="/live-poker-hand-replayer">Live Poker Hand Replayer</a> - animated replays of live poker hands</li>
+        <li><a href="/bankroll">Poker Bankroll Tracker</a> - bankroll tracking</li>
+        <li><a href="/about">About John Bowman</a> - 20+ years in iGaming and digital marketing</li>
+        <li><a href="/news/">AI Blog</a> - practical AI strategy and how it works</li>
+        <li><a href="/course/">AI &amp; Machine Learning Course</a> - free structured course</li>
+        <li><a href="/contact">Contact</a> - get in touch</li>
+      </ul>
+    </nav>
+  </div>
 
-<script src="/scripts.js?v=6" defer></script>
+<script src="/scripts.js?v=7" defer></script>
 <script>
 // ─── CONFIG ─────────────────────────────────────────────────────────────────
 const MULTIPLIERS = {

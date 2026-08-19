@@ -329,7 +329,7 @@ const projects = [
   panel.innerHTML = `
     <div class="hn-topbar">
       <span class="hn-label">Latest News</span>
-      <a href="/news" class="hn-view-all">View all <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      <a href="/news/" class="hn-view-all">View all <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
     </div>
     <div class="hn-nav" id="hnNav"></div>
   `;

@@ -48,14 +48,87 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is the AI & Machine Learning Course really free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, completely. All 35 lessons across 9 units are free to read without an account. You only need to sign up to track your progress and earn a certificate of completion."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a technical background to take this course?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No prior experience is required. The course starts from the absolute basics - what AI actually is - and builds up to advanced topics like deep learning, NLP, and MLOps. Each lesson links to the next so you can follow the path in order."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does the course take to complete?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "That depends on your pace. Most people work through one or two lessons per session. At that rate, you can finish all 35 lessons in a few weeks. There's no time limit - you go at whatever pace suits you."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What certificate do I get?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Once you complete all 35 lessons and pass the final exam, you can download a certificate of completion from your dashboard. It's a JohnB.io certificate showing you've covered AI fundamentals through to deployment and ethics."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I take individual lessons without doing the whole course?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Every lesson is a standalone page you can read directly. If you just want to understand one topic - say, how transformers work or what MLOps means - go straight to that lesson. No account needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What topics does the course cover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The course covers AI and machine learning fundamentals, supervised and unsupervised learning, deep learning and neural networks, NLP and large language models, Python and ML libraries, model evaluation and deployment, generative AI, AI ethics, and MLOps. Full curriculum is listed above."
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=3">
+  <link rel="stylesheet" href="/styles.css?v=4">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
   <link rel="stylesheet" href="/course-dashboard.css?v=2">
+  <!--
+    The guest curriculum is the default state so crawlers and no-JS visitors get all
+    35 lesson links. Returning signed-in visitors are flagged in localStorage by
+    course-dashboard.js, so we can swap straight to the spinner and skip the flash.
+  -->
+  <script>
+    try {
+      if (localStorage.getItem('cd-signed-in') === '1') {
+        document.documentElement.classList.add('cd-returning');
+      }
+    } catch (e) {}
+  </script>
+  <style>
+    html.cd-returning #cdGuest,
+    html.cd-returning #cdGuestSticky { display: none !important; }
+    html.cd-returning #cdLoading { display: flex !important; }
+  </style>
 </head>
 <body>
   <div id="header-placeholder"></div>
@@ -63,13 +136,13 @@
 
   <main class="cd-wrap" id="cdWrap">
 
-    <!-- Loading state -->
-    <div class="cd-loading" id="cdLoading">
+    <!-- Loading state: only shown to visitors we already know are signed in -->
+    <div class="cd-loading hidden" id="cdLoading">
       <div class="cd-spinner"></div>
     </div>
 
-    <!-- Guest view (shown when not signed in) -->
-    <div class="cd-guest hidden" id="cdGuest">
+    <!-- Guest view: the default server-rendered state, hidden by JS once auth resolves to a signed-in user -->
+    <div class="cd-guest" id="cdGuest">
 
       <!-- Hero: 2-col on desktop -->
       <div class="cd-guest-hero">
@@ -136,8 +209,389 @@
       <!-- Curriculum -->
       <section class="cd-guest-curriculum" id="cdGuestUnits">
         <h2 class="cd-section-title">Course curriculum</h2>
-        <!-- Injected by JS -->
+        <!-- static-course -->
+        <!-- Generated by generate-course-links.py from course-data.js - do not edit by hand -->
+        <div class="cd-unit open">
+          <div class="cd-unit-header" role="button" aria-expanded="true" tabindex="0">
+            <div class="cd-unit-num">1</div>
+            <div class="cd-unit-info">
+              <div class="cd-unit-title">Unit 1 - Introduction to Artificial Intelligence</div>
+              <div class="cd-unit-meta">4 lessons</div>
+            </div>
+            <span class="material-symbols-outlined cd-unit-chevron" aria-hidden="true">expand_more</span>
+          </div>
+          <div class="cd-unit-lessons">
+            <a class="cd-lesson-row" href="/course/what-is-ai">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">What is AI? - History, definitions &amp; the Turing Test</span>
+              <span class="cd-lesson-duration">8 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/categories-of-ai">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Categories of AI - Narrow, General &amp; Super AI</span>
+              <span class="cd-lesson-duration">6 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/how-ai-learns">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">How AI Learns - Supervised, Unsupervised &amp; Reinforcement Learning</span>
+              <span class="cd-lesson-duration">10 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/ai-vs-augmented-intelligence">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">AI vs. Augmented Intelligence</span>
+              <span class="cd-lesson-duration">5 min</span>
+            </a>
+          </div>
+        </div>
+        <div class="cd-unit open">
+          <div class="cd-unit-header" role="button" aria-expanded="true" tabindex="0">
+            <div class="cd-unit-num">2</div>
+            <div class="cd-unit-info">
+              <div class="cd-unit-title">Unit 2 - The Modern AI Landscape</div>
+              <div class="cd-unit-meta">4 lessons</div>
+            </div>
+            <span class="material-symbols-outlined cd-unit-chevron" aria-hidden="true">expand_more</span>
+          </div>
+          <div class="cd-unit-lessons">
+            <a class="cd-lesson-row" href="/course/traditional-vs-generative-ai">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Traditional AI vs. Generative AI - Architecture differences</span>
+              <span class="cd-lesson-duration">9 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/ml-deep-learning-neural-networks">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Machine Learning, Deep Learning &amp; Neural Networks - How they relate</span>
+              <span class="cd-lesson-duration">10 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/key-ai-subfields">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Key AI Subfields - NLP, Computer Vision &amp; Edge AI</span>
+              <span class="cd-lesson-duration">8 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/ai-tools-platforms-2026">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">AI Tools &amp; Platforms - LLMs, Agents, RAG &amp; the 2026 market</span>
+              <span class="cd-lesson-duration">10 min</span>
+            </a>
+          </div>
+        </div>
+        <div class="cd-unit open">
+          <div class="cd-unit-header" role="button" aria-expanded="true" tabindex="0">
+            <div class="cd-unit-num">3</div>
+            <div class="cd-unit-info">
+              <div class="cd-unit-title">Unit 3 - Ethics, Governance &amp; Responsible AI</div>
+              <div class="cd-unit-meta">3 lessons</div>
+            </div>
+            <span class="material-symbols-outlined cd-unit-chevron" aria-hidden="true">expand_more</span>
+          </div>
+          <div class="cd-unit-lessons">
+            <a class="cd-lesson-row" href="/course/ai-failures-ethics">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Real-World AI Failures &amp; Why Ethics Matter</span>
+              <span class="cd-lesson-duration">9 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/ai-hallucinations-bias-ip">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Hallucinations, Bias &amp; Intellectual Property</span>
+              <span class="cd-lesson-duration">8 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/ai-governance-frameworks">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">AI Governance Frameworks &amp; Enterprise Guidelines</span>
+              <span class="cd-lesson-duration">10 min</span>
+            </a>
+          </div>
+        </div>
+        <div class="cd-unit open">
+          <div class="cd-unit-header" role="button" aria-expanded="true" tabindex="0">
+            <div class="cd-unit-num">4</div>
+            <div class="cd-unit-info">
+              <div class="cd-unit-title">Unit 4 - Python for AI</div>
+              <div class="cd-unit-meta">2 lessons</div>
+            </div>
+            <span class="material-symbols-outlined cd-unit-chevron" aria-hidden="true">expand_more</span>
+          </div>
+          <div class="cd-unit-lessons">
+            <a class="cd-lesson-row" href="/course/python-essentials-for-ai">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Python Essentials for AI - Variables, data structures &amp; control flow</span>
+              <span class="cd-lesson-duration">12 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/numpy-pandas">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Data Analysis with NumPy &amp; Pandas</span>
+              <span class="cd-lesson-duration">12 min</span>
+            </a>
+          </div>
+        </div>
+        <div class="cd-unit open">
+          <div class="cd-unit-header" role="button" aria-expanded="true" tabindex="0">
+            <div class="cd-unit-num">5</div>
+            <div class="cd-unit-info">
+              <div class="cd-unit-title">Unit 5 - Machine Learning</div>
+              <div class="cd-unit-meta">4 lessons</div>
+            </div>
+            <span class="material-symbols-outlined cd-unit-chevron" aria-hidden="true">expand_more</span>
+          </div>
+          <div class="cd-unit-lessons">
+            <a class="cd-lesson-row" href="/course/linear-regression-gradient-descent">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Linear Regression &amp; Gradient Descent</span>
+              <span class="cd-lesson-duration">11 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/logistic-regression-classification">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Logistic Regression &amp; Classification</span>
+              <span class="cd-lesson-duration">10 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/model-evaluation">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Model Evaluation - Validation, Overfitting &amp; Metrics</span>
+              <span class="cd-lesson-duration">11 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/key-ml-algorithms">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Key ML Algorithms - Decision Trees, SVMs &amp; More</span>
+              <span class="cd-lesson-duration">12 min</span>
+            </a>
+          </div>
+        </div>
+        <div class="cd-unit open">
+          <div class="cd-unit-header" role="button" aria-expanded="true" tabindex="0">
+            <div class="cd-unit-num">6</div>
+            <div class="cd-unit-info">
+              <div class="cd-unit-title">Unit 6 - Deep Learning &amp; Neural Networks</div>
+              <div class="cd-unit-meta">7 lessons</div>
+            </div>
+            <span class="material-symbols-outlined cd-unit-chevron" aria-hidden="true">expand_more</span>
+          </div>
+          <div class="cd-unit-lessons">
+            <a class="cd-lesson-row" href="/course/biological-vs-artificial-neurons">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Biological vs. Artificial Neurons</span>
+              <span class="cd-lesson-duration">7 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/neural-networks-forward-propagation">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Artificial Neural Networks &amp; Forward Propagation</span>
+              <span class="cd-lesson-duration">9 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/backpropagation">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Backpropagation &amp; How Neural Networks Learn</span>
+              <span class="cd-lesson-duration">11 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/activation-functions-vanishing-gradient">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Activation Functions &amp; the Vanishing Gradient Problem</span>
+              <span class="cd-lesson-duration">9 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/tensorflow-pytorch-keras">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Deep Learning Libraries - TensorFlow, PyTorch &amp; Keras</span>
+              <span class="cd-lesson-duration">10 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/cnns-with-keras">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Convolutional Neural Networks (CNNs) with Keras</span>
+              <span class="cd-lesson-duration">12 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/rnns-transformers-autoencoders">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">RNNs, Transformers &amp; Autoencoders</span>
+              <span class="cd-lesson-duration">13 min</span>
+            </a>
+          </div>
+        </div>
+        <div class="cd-unit open">
+          <div class="cd-unit-header" role="button" aria-expanded="true" tabindex="0">
+            <div class="cd-unit-num">7</div>
+            <div class="cd-unit-info">
+              <div class="cd-unit-title">Unit 7 - Generative AI &amp; Practical Applications</div>
+              <div class="cd-unit-meta">3 lessons</div>
+            </div>
+            <span class="material-symbols-outlined cd-unit-chevron" aria-hidden="true">expand_more</span>
+          </div>
+          <div class="cd-unit-lessons">
+            <a class="cd-lesson-row" href="/course/generative-ai-models">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Generative AI Models - VAEs, GANs &amp; Diffusion</span>
+              <span class="cd-lesson-duration">11 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/prompt-engineering-ai-agents">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Prompt Engineering &amp; AI Agents</span>
+              <span class="cd-lesson-duration">10 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/rag-finetuning-enterprise-ai">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">RAG, Fine-Tuning &amp; Enterprise AI Strategy</span>
+              <span class="cd-lesson-duration">11 min</span>
+            </a>
+          </div>
+        </div>
+        <div class="cd-unit open">
+          <div class="cd-unit-header" role="button" aria-expanded="true" tabindex="0">
+            <div class="cd-unit-num">8</div>
+            <div class="cd-unit-info">
+              <div class="cd-unit-title">Unit 8 - AI in Production</div>
+              <div class="cd-unit-meta">4 lessons</div>
+            </div>
+            <span class="material-symbols-outlined cd-unit-chevron" aria-hidden="true">expand_more</span>
+          </div>
+          <div class="cd-unit-lessons">
+            <a class="cd-lesson-row" href="/course/intro-to-mlops">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Introduction to MLOps - From notebook to production</span>
+              <span class="cd-lesson-duration">10 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/model-deployment">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Model Deployment - APIs, containers &amp; cloud services</span>
+              <span class="cd-lesson-duration">11 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/monitoring-drift">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Monitoring &amp; Drift - Keeping models healthy in the real world</span>
+              <span class="cd-lesson-duration">9 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/cicd-for-ml">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">CI/CD for ML - Automating the machine learning pipeline</span>
+              <span class="cd-lesson-duration">10 min</span>
+            </a>
+          </div>
+        </div>
+        <div class="cd-unit open">
+          <div class="cd-unit-header" role="button" aria-expanded="true" tabindex="0">
+            <div class="cd-unit-num">9</div>
+            <div class="cd-unit-info">
+              <div class="cd-unit-title">Unit 9 - AI Strategy &amp; Business Applications</div>
+              <div class="cd-unit-meta">4 lessons</div>
+            </div>
+            <span class="material-symbols-outlined cd-unit-chevron" aria-hidden="true">expand_more</span>
+          </div>
+          <div class="cd-unit-lessons">
+            <a class="cd-lesson-row" href="/course/ai-adoption-journey">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">How Organisations Adopt AI - The adoption journey &amp; ROI frameworks</span>
+              <span class="cd-lesson-duration">10 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/build-vs-buy">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Build vs. Buy - Evaluating AI tools as a business</span>
+              <span class="cd-lesson-duration">8 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/ai-across-industries">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">AI Across Industries - Healthcare, marketing, finance &amp; beyond</span>
+              <span class="cd-lesson-duration">10 min</span>
+            </a>
+            <a class="cd-lesson-row" href="/course/business-case-for-ai">
+              <div class="cd-lesson-check">
+                <span class="material-symbols-outlined" aria-hidden="true">check</span>
+              </div>
+              <span class="cd-lesson-title">Making the Business Case for AI</span>
+              <span class="cd-lesson-duration">9 min</span>
+            </a>
+          </div>
+        </div>
+        <!-- /static-course -->
       </section>
+      <!--
+        Runs at parse time so the accordion collapses before first paint. Without JS
+        every unit stays open and all 35 lessons stay visible and linked.
+      -->
+      <script>
+        (function () {
+          var box = document.getElementById('cdGuestUnits');
+          if (!box) return;
+          box.querySelectorAll('.cd-unit').forEach(function (unit, i) {
+            var header = unit.querySelector('.cd-unit-header');
+            if (!header) return;
+            function toggle() {
+              header.setAttribute('aria-expanded', String(unit.classList.toggle('open')));
+            }
+            header.addEventListener('click', toggle);
+            header.addEventListener('keydown', function (e) {
+              if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+            });
+            if (i !== 0) {
+              unit.classList.remove('open');
+              header.setAttribute('aria-expanded', 'false');
+            }
+          });
+          box.dataset.enhanced = '1';
+        })();
+      </script>
 
     </div>
 
@@ -264,11 +718,11 @@
               </div>
               <div class="faq-item">
                 <dt>Do I need a technical background to take this course?</dt>
-                <dd>No prior experience is required. The course starts from the absolute basics — what AI actually is — and builds up to advanced topics like deep learning, NLP, and MLOps. Each lesson links to the next so you can follow the path in order.</dd>
+                <dd>No prior experience is required. The course starts from the absolute basics - what AI actually is - and builds up to advanced topics like deep learning, NLP, and MLOps. Each lesson links to the next so you can follow the path in order.</dd>
               </div>
               <div class="faq-item">
                 <dt>How long does the course take to complete?</dt>
-                <dd>That depends on your pace. Most people work through one or two lessons per session. At that rate, you can finish all 35 lessons in a few weeks. There's no time limit — you go at whatever pace suits you.</dd>
+                <dd>That depends on your pace. Most people work through one or two lessons per session. At that rate, you can finish all 35 lessons in a few weeks. There's no time limit - you go at whatever pace suits you.</dd>
               </div>
               <div class="faq-item">
                 <dt>What certificate do I get?</dt>
@@ -276,7 +730,7 @@
               </div>
               <div class="faq-item">
                 <dt>Can I take individual lessons without doing the whole course?</dt>
-                <dd>Yes. Every lesson is a standalone page you can read directly. If you just want to understand one topic — say, how transformers work or what MLOps means — go straight to that lesson. No account needed.</dd>
+                <dd>Yes. Every lesson is a standalone page you can read directly. If you just want to understand one topic - say, how transformers work or what MLOps means - go straight to that lesson. No account needed.</dd>
               </div>
               <div class="faq-item">
                 <dt>What topics does the course cover?</dt>
@@ -296,7 +750,7 @@
               <li><strong>AI and machine learning fundamentals.</strong> Units 1 and 2 cover what AI actually is, how it differs from traditional software, the main subfields (machine learning, deep learning, NLP, computer vision, robotics), and the history behind modern AI systems.</li>
               <li><strong>Core machine learning concepts.</strong> Supervised, unsupervised, and reinforcement learning. How models learn from data, how they generalise, and where they fail. Bias-variance tradeoff, overfitting, regularisation, and evaluation metrics explained clearly.</li>
               <li><strong>Deep learning and neural networks.</strong> How multi-layer networks work, backpropagation, CNNs for image recognition, RNNs and LSTMs for sequences, and the transformer architecture that powers ChatGPT, Claude, and Gemini.</li>
-              <li><strong>Python and ML libraries.</strong> NumPy, Pandas, Scikit-learn, TensorFlow, and PyTorch — the core toolkit for any ML practitioner. Each lesson focuses on the concepts you need rather than turning into a coding tutorial.</li>
+              <li><strong>Python and ML libraries.</strong> NumPy, Pandas, Scikit-learn, TensorFlow, and PyTorch - the core toolkit for any ML practitioner. Each lesson focuses on the concepts you need rather than turning into a coding tutorial.</li>
               <li><strong>Generative AI, prompt engineering, and RAG.</strong> How LLMs work under the hood, how to write effective prompts, retrieval-augmented generation, fine-tuning, and the practical differences between the leading models.</li>
               <li><strong>Model deployment, MLOps, and AI ethics.</strong> Taking models from notebook to production. CI/CD for ML, monitoring, data drift, responsible AI, bias in training data, governance frameworks, and the EU AI Act.</li>
             </ol>
@@ -310,10 +764,10 @@
           </summary>
           <div class="tool-accordion-body">
             <ul class="info-points">
-              <li><strong>35 lessons across 9 structured units.</strong> The course follows a clear learning path from AI basics through to deployment and ethics — designed so each lesson builds on the last, but readable standalone if you just need one topic.</li>
+              <li><strong>35 lessons across 9 structured units.</strong> The course follows a clear learning path from AI basics through to deployment and ethics - designed so each lesson builds on the last, but readable standalone if you just need one topic.</li>
               <li><strong>Free with optional progress tracking.</strong> All lesson content is publicly accessible. Create a free account to track which lessons you've completed, see your progress ring update, and unlock the final exam and certificate.</li>
-              <li><strong>Each lesson includes audio and a quiz.</strong> You can listen to the lesson summary and test your understanding with a short quiz — all on the same page. Many lessons also include a deep dive podcast episode for going further.</li>
-              <li><strong>Built for beginners, useful for practitioners.</strong> The early units assume no prior knowledge. By the later units — RAG, fine-tuning, MLOps — the content is detailed enough to be useful to people already working with AI tools.</li>
+              <li><strong>Each lesson includes audio and a quiz.</strong> You can listen to the lesson summary and test your understanding with a short quiz - all on the same page. Many lessons also include a deep dive podcast episode for going further.</li>
+              <li><strong>Built for beginners, useful for practitioners.</strong> The early units assume no prior knowledge. By the later units - RAG, fine-tuning, MLOps - the content is detailed enough to be useful to people already working with AI tools.</li>
               <li><strong>Covers the tools and models you'll actually use.</strong> Rather than abstract theory, the course references ChatGPT, Claude, Gemini, PyTorch, TensorFlow, Hugging Face, and other real systems throughout.</li>
             </ul>
           </div>
@@ -326,13 +780,13 @@
           </summary>
           <div class="tool-accordion-body">
             <ol class="info-sources">
-              <li><a href="https://www.deeplearning.ai" target="_blank" rel="noopener noreferrer">DeepLearning.AI — Andrew Ng's AI education platform</a>. DeepLearning.ai. Accessed April 2026.</li>
-              <li><a href="https://pytorch.org/docs/stable/index.html" target="_blank" rel="noopener noreferrer">PyTorch — Official documentation</a>. PyTorch.org. Accessed April 2026.</li>
-              <li><a href="https://www.tensorflow.org/learn" target="_blank" rel="noopener noreferrer">TensorFlow — Learning resources</a>. TensorFlow.org. Accessed April 2026.</li>
-              <li><a href="https://huggingface.co/learn" target="_blank" rel="noopener noreferrer">Hugging Face — NLP course and model hub</a>. HuggingFace.co. Accessed April 2026.</li>
-              <li><a href="https://scikit-learn.org/stable/user_guide.html" target="_blank" rel="noopener noreferrer">Scikit-learn — User guide and API reference</a>. Scikit-learn.org. Accessed April 2026.</li>
-              <li><a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener noreferrer">European Commission — EU AI Act regulatory framework</a>. Digital-Strategy.ec.europa.eu. Accessed April 2026.</li>
-              <li><a href="https://www.anthropic.com/research" target="_blank" rel="noopener noreferrer">Anthropic — AI safety and research</a>. Anthropic.com. Accessed April 2026.</li>
+              <li><a href="https://www.deeplearning.ai" target="_blank" rel="noopener noreferrer">DeepLearning.AI - Andrew Ng's AI education platform</a>. DeepLearning.ai. Accessed April 2026.</li>
+              <li><a href="https://pytorch.org/docs/stable/index.html" target="_blank" rel="noopener noreferrer">PyTorch - Official documentation</a>. PyTorch.org. Accessed April 2026.</li>
+              <li><a href="https://www.tensorflow.org/learn" target="_blank" rel="noopener noreferrer">TensorFlow - Learning resources</a>. TensorFlow.org. Accessed April 2026.</li>
+              <li><a href="https://huggingface.co/learn" target="_blank" rel="noopener noreferrer">Hugging Face - NLP course and model hub</a>. HuggingFace.co. Accessed April 2026.</li>
+              <li><a href="https://scikit-learn.org/stable/user_guide.html" target="_blank" rel="noopener noreferrer">Scikit-learn - User guide and API reference</a>. Scikit-learn.org. Accessed April 2026.</li>
+              <li><a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener noreferrer">European Commission - EU AI Act regulatory framework</a>. Digital-Strategy.ec.europa.eu. Accessed April 2026.</li>
+              <li><a href="https://www.anthropic.com/research" target="_blank" rel="noopener noreferrer">Anthropic - AI safety and research</a>. Anthropic.com. Accessed April 2026.</li>
             </ol>
           </div>
         </details>
@@ -344,15 +798,15 @@
   <div id="footer-placeholder"></div>
 
   <!-- Mobile sticky sign-up banner (guest only) -->
-  <div class="cd-guest-sticky hidden" id="cdGuestSticky">
+  <div class="cd-guest-sticky" id="cdGuestSticky">
     <a href="/login?mode=signup" class="cd-guest-sticky-link">
-      Join free — earn your certificate
+      Join free - earn your certificate
       <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
     </a>
   </div>
 
-  <script src="/scripts.js?v=6" defer></script>
-  <script src="/course-data.js"></script>
-  <script type="module" src="/course-dashboard.js"></script>
+  <script src="/scripts.js?v=7" defer></script>
+  <script src="/course-data.js?v=1"></script>
+  <script type="module" src="/course-dashboard.js?v=2"></script>
 </body>
 </html>

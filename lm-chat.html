@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=3">
+    <link rel="stylesheet" href="/styles.css?v=4">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
   <link rel="stylesheet" href="/lm-chat.css?v=1">
@@ -38,7 +38,7 @@
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Web",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
-    "author": { "@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/" },
+    "author": { "@type": "Person", "name": "John Bowman", "url": "https://johnb.io/about", "sameAs": ["https://www.linkedin.com/in/john-bowman/"] },
     "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
   }
   </script>
@@ -55,22 +55,22 @@
       {
         "@type": "Question",
         "name": "Are my messages stored?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Conversation history exists only in your browser for the current session and is cleared when you close the tab. Prompts are forwarded to each provider's API and are subject to their respective privacy policies. JohnB.io does not log or retain your messages." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Conversation history exists only in your browser for the current session and is cleared when you close the tab. Prompts are forwarded to each provider's API - they are subject to the respective privacy policies of Anthropic, OpenAI and Google. JohnB.io does not log or retain your messages." }
       },
       {
         "@type": "Question",
         "name": "Why use GPT-4o-mini rather than GPT-4o?",
-        "acceptedAnswer": { "@type": "Answer", "text": "GPT-4o-mini is a cost-efficient model that performs well for most conversational and reasoning tasks, making it a practical choice for a free comparison tool. For tasks requiring maximum capability from OpenAI, GPT-4o or GPT-o1 would be more appropriate." }
+        "acceptedAnswer": { "@type": "Answer", "text": "GPT-4o-mini is a cost-efficient model that performs well for most conversational and reasoning tasks, making it a practical choice for a free comparison tool. For tasks requiring maximum capability from OpenAI, GPT-4o or GPT-o1 would be more appropriate - but those are better evaluated via ChatGPT directly." }
       },
       {
         "@type": "Question",
         "name": "Can I use this to decide which model to use for my project?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes - this is one of the best use cases. Run your specific prompts through all three models and compare quality, speed and tone. Model performance varies by task type: coding, creative writing, factual Q&A and structured reasoning can produce noticeably different results across providers." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes - this is one of the best use cases. Run your specific prompts through all three models and compare quality, speed and tone. Keep in mind that model performance varies by task type: coding, creative writing, factual Q&A and structured reasoning can produce noticeably different results across providers." }
       },
       {
         "@type": "Question",
         "name": "Is there a usage limit?",
-        "acceptedAnswer": { "@type": "Answer", "text": "There is no hard limit on the tool itself, but the underlying APIs have rate limits managed at the Cloudflare Worker level. If you hit a limit, wait a moment and try again." }
+        "acceptedAnswer": { "@type": "Answer", "text": "There is no hard limit on the tool itself, but the underlying APIs have rate limits managed at the Cloudflare Worker level. If you hit a limit, wait a moment and try again. For high-volume testing, the best approach is to access the provider APIs directly with your own keys." }
       }
     ]
   }
@@ -270,9 +270,37 @@
     <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
   </button>
 
-  <div id="footer-placeholder"></div>
+  <div id="footer-placeholder">
+    <!-- Static site navigation: real crawlable links for search/AI crawlers and no-JS visitors.
+         scripts.js:loadHeaderAndFooter() replaces this block with footer.html for everyone else. -->
+    <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
+      <style>.crawl-nav{max-width:1280px;margin:0 auto;padding:3rem 2rem;border-top:1px solid rgba(248,245,253,0.07);font-family:'Space Grotesk',sans-serif;color:var(--on-surface-variant,#acaab1)}.crawl-nav-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,245,253,0.4);margin:0 0 1rem}.crawl-nav-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.5rem;font-size:0.85rem;line-height:1.6}.crawl-nav-list a{color:#00EEFC;text-decoration:none}.crawl-nav-list a:hover,.crawl-nav-list a:focus-visible{text-decoration:underline}</style>
+      <p class="crawl-nav-title">Explore JohnB.io</p>
+      <ul class="crawl-nav-list">
+        <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
+        <li><a href="/tcs-simplifier">T&amp;Cs Simplifier</a> - casino bonus terms in plain English</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 50 jurisdictions</li>
+        <li><a href="/bonus-calculator">Bonus Cost Calculator</a> - iGaming bonus cost modelling</li>
+        <li><a href="/promo-copy">iGaming Promo Copy Generator</a> - compliant promotional copy</li>
+        <li><a href="/rg-generator">RG Message Generator</a> - responsible gambling messaging</li>
+        <li><a href="/igaming-jargon">iGaming Jargon Translator</a> - industry terms explained</li>
+        <li><a href="/editor">AI Copyeditor</a> - copyediting with UK and US English</li>
+        <li><a href="/text-to-speech">Text to Speech Converter</a> - natural AI voices for any text</li>
+        <li><a href="/llms-generator">LLMs.txt Generator</a> - llms.txt files for AI crawlers</li>
+        <li><a href="/content-repurposer">Content Repurposer</a> - one piece of content, many formats</li>
+        <li><a href="/aitocv">AI CV Enhancer</a> - tailored CVs and cover letters</li>
+        <li><a href="/prompt-improver">Prompt Improver</a> - better prompts for AI models</li>
+        <li><a href="/rai">Responsible AI Governance Framework</a> - evaluating and managing AI risk</li>
+        <li><a href="/transcripts">YouTube Transcripts</a> - transcripts and summaries from videos</li>
+        <li><a href="/about">About John Bowman</a> - 20+ years in iGaming and digital marketing</li>
+        <li><a href="/news/">AI Blog</a> - practical AI strategy and how it works</li>
+        <li><a href="/course/">AI &amp; Machine Learning Course</a> - free structured course</li>
+        <li><a href="/contact">Contact</a> - get in touch</li>
+      </ul>
+    </nav>
+  </div>
 
-<script src="/scripts.js?v=6" defer></script>
+<script src="/scripts.js?v=7" defer></script>
 <script>
 (function() {
   const WORKER = 'https://twilight-recipe-a80f.ukjbowman.workers.dev';

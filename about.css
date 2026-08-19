@@ -32,6 +32,17 @@ main {
 /* ── HERO ── */
 .hero { margin-bottom: 3rem; }
 
+.hero-sub {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--on-surface-variant);
+  max-width: 46ch;
+  margin: 1.25rem 0 0;
+  animation: slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.3s both;
+}
+
 .hero h1 {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 900; font-size: clamp(3.5rem, 10vw, 7rem);
@@ -168,6 +179,15 @@ main {
 .linkedin-btn .material-symbols-outlined { font-size: 0.9rem; }
 .linkedin-btn:hover { transform: scale(1.03); box-shadow: 0 0 30px rgba(255,0,127,0.4); }
 
+.gh-btn {
+  margin-top: 0;
+  background: transparent;
+  color: var(--secondary);
+  border: 1px solid rgba(0,238,252,0.35);
+  box-shadow: none;
+}
+.gh-btn:hover { box-shadow: 0 0 24px rgba(0,238,252,0.25); border-color: rgba(0,238,252,0.6); }
+
 /* ── BIO CARD ── */
 .bio-card {
   background: rgba(37,37,44,0.4);
@@ -188,8 +208,10 @@ main {
 .bio-text {
   font-size: 0.95rem; line-height: 1.7;
   color: var(--on-surface-variant);
-  margin: 0 0 2rem;
+  margin: 0 0 1rem;
 }
+.bio-text:last-of-type { margin-bottom: 2rem; }
+.bio-text strong { color: var(--on-surface); font-weight: 700; }
 
 /* ── SKILL BUTTONS ── */
 .skill-buttons-container {
@@ -211,8 +233,23 @@ main {
 .skill-button:hover { background: var(--surface-container-highest); color: var(--secondary); border-color: rgba(0,238,252,0.3); }
 .skill-button.active { background: var(--primary); color: var(--on-primary); border-color: transparent; box-shadow: 0 0 16px rgba(255,0,127,0.3); }
 
-/* ── SKILL DETAILS ── */
+/* ── SKILL DETAILS ──
+   Panels are static HTML. Without JS all six stay visible so crawlers and
+   no-script visitors read every skill. about.js adds .js-tabs to switch to
+   one-panel-at-a-time behaviour. */
 #skill-details { min-height: 200px; }
+
+.skill-panel + .skill-panel { margin-top: 2rem; }
+
+#skill-details.js-tabs .skill-panel { display: none; }
+#skill-details.js-tabs .skill-panel + .skill-panel { margin-top: 0; }
+#skill-details.js-tabs .skill-panel.active { display: block; }
+
+.skill-panel:focus-visible {
+  outline: 2px solid rgba(0,238,252,0.5);
+  outline-offset: 6px;
+  border-radius: 0.5rem;
+}
 
 #skill-details h3 {
   font-family: 'Space Grotesk', sans-serif;
@@ -243,3 +280,29 @@ main {
   transition: border-color 0.2s, color 0.2s;
 }
 .skill-list li:hover { border-color: rgba(0,238,252,0.4); color: var(--on-surface); }
+
+/* ── LONG-FORM BIO ──
+   Uses the shared .tool-info / .tool-accordion styles from styles.css. */
+.about-h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--on-surface);
+  margin: 1.75rem 0 0;
+  scroll-margin-top: 96px;
+}
+.about-h2:first-child { margin-top: 0; }
+
+.tool-info-body strong { color: var(--on-surface); font-weight: 700; }
+
+.about-def {
+  border-left: 2px solid var(--secondary);
+  background: rgba(0,238,252,0.05);
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 0.85rem 1rem;
+}
+.about-def strong { color: var(--secondary); }
+
+@media (max-width: 640px) {
+  .about-h2 { font-size: 0.95rem; }
+}

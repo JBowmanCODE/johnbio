@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!-- Styles -->
-  <link rel="stylesheet" href="/styles.css?v=3">
+  <link rel="stylesheet" href="/styles.css?v=4">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
   <link rel="stylesheet" href="/meditation.css?v=8">
@@ -65,7 +65,8 @@
     "author": {
       "@type": "Person",
       "name": "John Bowman",
-      "url": "https://johnb.io/about"
+      "url": "https://johnb.io/about",
+      "sameAs": ["https://www.linkedin.com/in/john-bowman/"]
     },
     "publisher": {
       "@type": "Organization",
@@ -83,58 +84,37 @@
       {
         "@type": "Question",
         "name": "What does the AI Meditation Generator do?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It creates a personalised guided meditation from three inputs: your name, what you want to work on and how long you have. Claude writes a script built around your goal, an AI voice reads it aloud, and a calming soundscape plays underneath. Every session is unique."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "It creates a personalised guided meditation from three inputs: your name, what you want to work on and how long you have. Claude writes a script built around your goal, an AI voice reads it aloud, and a calming soundscape plays underneath. Every session is unique." }
       },
       {
         "@type": "Question",
         "name": "Is it free?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. You get 3 meditations per day at no cost. The limit exists because each session costs real money in AI usage. If you want more than 3 a day, get in touch on LinkedIn."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 meditations per day at no cost. The limit exists because each session costs real money in AI usage. If you want more than 3 a day, get in touch on LinkedIn." }
       },
       {
         "@type": "Question",
         "name": "Is this medical advice?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. This is a relaxation aid, not a treatment for any medical condition, including high blood pressure, anxiety disorders or insomnia. If you have a health concern, speak to a doctor. Stop the session if you feel unwell."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "No. This is a relaxation aid, not a treatment for any medical condition, including high blood pressure, anxiety disorders or insomnia. If you have a health concern, speak to a doctor. Stop the session if you feel unwell." }
       },
       {
         "@type": "Question",
         "name": "Do you store my name or goal?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Your name and goal are sent to a Cloudflare Worker, used to generate the script and audio, and never saved. The only thing stored is a rate-limit counter tied to your IP address, which expires within two days."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Your name and goal are sent to a Cloudflare Worker, used to generate the script and audio, and never saved. The only thing stored is a rate-limit counter tied to your IP address, which expires within two days." }
       },
       {
         "@type": "Question",
         "name": "Why does the voice pause between passages?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Guided meditation is mostly silence. The voice speaks for a few seconds, then leaves space for you to follow the instruction while the soundscape continues. Longer sessions use longer pauses, and sleep meditations use the longest of all."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Guided meditation is mostly silence. The voice speaks for a few seconds, then leaves space for you to follow the instruction while the soundscape continues. Longer sessions use longer pauses, and sleep meditations use the longest of all." }
       },
       {
         "@type": "Question",
         "name": "Can I listen with the screen locked?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Not reliably. The audio is generated and mixed live in your browser, and phones suspend browser audio when the screen locks. Keep the tab open and the screen on, or use a desktop. Headphones give the best experience."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Not reliably. The audio is generated and mixed live in your browser, and phones suspend browser audio when the screen locks. Keep the tab open and the screen on, or use a desktop. Headphones give the best experience." }
       },
       {
         "@type": "Question",
         "name": "Can I download my meditation?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Once all the voice passages have loaded, use Download MP3 to save the full session with the voice and soundscape mixed at the background volume you set on the slider. On a phone, the Share button sends the file straight to WhatsApp or any other app."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Once all the voice passages have loaded, use Download MP3 to save the full session with the voice and soundscape mixed at the background volume you set on the slider. On a phone, the Share button sends the file straight to WhatsApp or any other app." }
       }
     ]
   }
@@ -473,9 +453,38 @@
     <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
   </button>
 
-  <div id="footer-placeholder"></div>
+  <div id="footer-placeholder">
+    <!-- Static site navigation: real crawlable links for search/AI crawlers and no-JS visitors.
+         scripts.js:loadHeaderAndFooter() replaces this block with footer.html for everyone else. -->
+    <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
+      <style>.crawl-nav{max-width:1280px;margin:0 auto;padding:3rem 2rem;border-top:1px solid rgba(248,245,253,0.07);font-family:'Space Grotesk',sans-serif;color:var(--on-surface-variant,#acaab1)}.crawl-nav-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,245,253,0.4);margin:0 0 1rem}.crawl-nav-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.5rem;font-size:0.85rem;line-height:1.6}.crawl-nav-list a{color:#00EEFC;text-decoration:none}.crawl-nav-list a:hover,.crawl-nav-list a:focus-visible{text-decoration:underline}</style>
+      <p class="crawl-nav-title">Explore JohnB.io</p>
+      <ul class="crawl-nav-list">
+        <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
+        <li><a href="/tcs-simplifier">T&amp;Cs Simplifier</a> - casino bonus terms in plain English</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 50 jurisdictions</li>
+        <li><a href="/bonus-calculator">Bonus Cost Calculator</a> - iGaming bonus cost modelling</li>
+        <li><a href="/promo-copy">iGaming Promo Copy Generator</a> - compliant promotional copy</li>
+        <li><a href="/rg-generator">RG Message Generator</a> - responsible gambling messaging</li>
+        <li><a href="/igaming-jargon">iGaming Jargon Translator</a> - industry terms explained</li>
+        <li><a href="/editor">AI Copyeditor</a> - copyediting with UK and US English</li>
+        <li><a href="/lm-chat">LLM Chat</a> - chat with language models</li>
+        <li><a href="/text-to-speech">Text to Speech Converter</a> - natural AI voices for any text</li>
+        <li><a href="/llms-generator">LLMs.txt Generator</a> - llms.txt files for AI crawlers</li>
+        <li><a href="/content-repurposer">Content Repurposer</a> - one piece of content, many formats</li>
+        <li><a href="/aitocv">AI CV Enhancer</a> - tailored CVs and cover letters</li>
+        <li><a href="/text-to-voice">Text to Voice</a> - browser speech synthesis</li>
+        <li><a href="/transcripts">YouTube Transcripts</a> - transcripts and summaries from videos</li>
+        <li><a href="/genz">Gen Z Translator</a> - slang decoded</li>
+        <li><a href="/about">About John Bowman</a> - 20+ years in iGaming and digital marketing</li>
+        <li><a href="/news/">AI Blog</a> - practical AI strategy and how it works</li>
+        <li><a href="/course/">AI &amp; Machine Learning Course</a> - free structured course</li>
+        <li><a href="/contact">Contact</a> - get in touch</li>
+      </ul>
+    </nav>
+  </div>
 
-  <script src="/scripts.js?v=6" defer></script>
+  <script src="/scripts.js?v=7" defer></script>
   <script src="/lame.min.js?v=1" defer></script>
   <script src="/meditation.js?v=10" defer></script>
   <script>

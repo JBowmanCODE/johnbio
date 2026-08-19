@@ -38,7 +38,7 @@
     <script src="https://unpkg.com/docx@7.8.2/build/index.js" integrity="sha384-zjTqOObJTD6OT6CUn8mSpDY+crIiP0cX457OjcZosSATiUFbmdXa9KRScjfLVxFH" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" integrity="sha512-Qlv6VSKh1gDKGoJbnyA5RMXYcvnpIqhO++MhIM2fStMcGT9i2T//tSwYFlcyoRRDcDZ+TYHpH8azBBCyhpSeqw==" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="/styles.css?v=3">
+    <link rel="stylesheet" href="/styles.css?v=4">
     <link rel="stylesheet" href="/header.css?v=4">
     <link rel="stylesheet" href="/footer.css?v=2">
     <link rel="stylesheet" href="/editor.css?v=1">
@@ -53,7 +53,7 @@
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Web",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
-    "author": { "@type": "Person", "name": "John Bowman", "url": "https://www.linkedin.com/in/john-bowman/" },
+    "author": { "@type": "Person", "name": "John Bowman", "url": "https://johnb.io/about", "sameAs": ["https://www.linkedin.com/in/john-bowman/"] },
     "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
   }
   </script>
@@ -75,7 +75,7 @@
       {
         "@type": "Question",
         "name": "Is my text stored or used to train the AI?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. Your text is sent to Anthropic's API to process your request and is not retained or used for training. JohnB.io does not log or store the content you submit." }
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Your text is sent to Anthropic's API to process your request and is not retained or used for training. See the Anthropic Privacy Policy for full details. JohnB.io does not log or store the content you submit." }
       },
       {
         "@type": "Question",
@@ -296,9 +296,37 @@
     <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
   </button>
 
-  <div id="footer-placeholder"></div>
+  <div id="footer-placeholder">
+    <!-- Static site navigation: real crawlable links for search/AI crawlers and no-JS visitors.
+         scripts.js:loadHeaderAndFooter() replaces this block with footer.html for everyone else. -->
+    <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
+      <style>.crawl-nav{max-width:1280px;margin:0 auto;padding:3rem 2rem;border-top:1px solid rgba(248,245,253,0.07);font-family:'Space Grotesk',sans-serif;color:var(--on-surface-variant,#acaab1)}.crawl-nav-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,245,253,0.4);margin:0 0 1rem}.crawl-nav-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.5rem;font-size:0.85rem;line-height:1.6}.crawl-nav-list a{color:#00EEFC;text-decoration:none}.crawl-nav-list a:hover,.crawl-nav-list a:focus-visible{text-decoration:underline}</style>
+      <p class="crawl-nav-title">Explore JohnB.io</p>
+      <ul class="crawl-nav-list">
+        <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
+        <li><a href="/tcs-simplifier">T&amp;Cs Simplifier</a> - casino bonus terms in plain English</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 50 jurisdictions</li>
+        <li><a href="/bonus-calculator">Bonus Cost Calculator</a> - iGaming bonus cost modelling</li>
+        <li><a href="/promo-copy">iGaming Promo Copy Generator</a> - compliant promotional copy</li>
+        <li><a href="/rg-generator">RG Message Generator</a> - responsible gambling messaging</li>
+        <li><a href="/igaming-jargon">iGaming Jargon Translator</a> - industry terms explained</li>
+        <li><a href="/lm-chat">LLM Chat</a> - chat with language models</li>
+        <li><a href="/text-to-speech">Text to Speech Converter</a> - natural AI voices for any text</li>
+        <li><a href="/llms-generator">LLMs.txt Generator</a> - llms.txt files for AI crawlers</li>
+        <li><a href="/content-repurposer">Content Repurposer</a> - one piece of content, many formats</li>
+        <li><a href="/aitocv">AI CV Enhancer</a> - tailored CVs and cover letters</li>
+        <li><a href="/prompt-improver">Prompt Improver</a> - better prompts for AI models</li>
+        <li><a href="/transcripts">YouTube Transcripts</a> - transcripts and summaries from videos</li>
+        <li><a href="/genz">Gen Z Translator</a> - slang decoded</li>
+        <li><a href="/about">About John Bowman</a> - 20+ years in iGaming and digital marketing</li>
+        <li><a href="/news/">AI Blog</a> - practical AI strategy and how it works</li>
+        <li><a href="/course/">AI &amp; Machine Learning Course</a> - free structured course</li>
+        <li><a href="/contact">Contact</a> - get in touch</li>
+      </ul>
+    </nav>
+  </div>
 
-    <script src="/scripts.js?v=6" defer></script>
+    <script src="/scripts.js?v=7" defer></script>
     <script src="editor.js?v=2" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');

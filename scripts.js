@@ -335,7 +335,7 @@ function initializeTerminal() {
             { text: '  John Bowman', cls: 't-cmd' },
             { text: '' },
             { text: '  AI Engineer & Digital Leader based in Leeds, UK.', cls: 't-val' },
-            { text: '  15+ years driving digital strategy, SEO, and', cls: 't-val' },
+            { text: '  20+ years driving digital strategy, SEO, and', cls: 't-val' },
             { text: '  product across the online gaming industry.', cls: 't-val' },
             { text: '  Now building LLM-powered tools at johnb.io.', cls: 't-val' },
             { text: '' },

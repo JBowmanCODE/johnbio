@@ -23,9 +23,34 @@ RewriteRule ^youtube-analyzer(\.html)?$ https://johnb.io/transcripts [R=301,L,NC
 RewriteRule ^cv-cover-letter(\.html)?$ https://johnb.io/aitocv [R=301,L,NC]
 RewriteRule ^eu-ai-act(\.html)?$ https://johnb.io/course/ai-governance-frameworks [R=301,L,NC]
 
+# Retired pages — deleted 18 Aug 2026, redirected to the closest surviving page.
+# These sit above the .html-stripping rule so /page.html redirects to its new
+# home in one hop instead of chaining through /page first.
+#
+# course.html was an unreachable duplicate: /course has always been served by
+# course/index.html, and nothing in the codebase ever linked to the root file.
+RewriteRule ^course\.html$ https://johnb.io/course/ [R=301,L,NC]
+# template.html was a stripped copy of text-to-voice.html sharing its title.
+RewriteRule ^template(\.html)?$ https://johnb.io/text-to-voice [R=301,L,NC]
+# heart.html was an off-topic nutrition guide.
+RewriteRule ^heart(\.html)?$ https://johnb.io/ [R=301,L,NC]
+# Two thin explainer articles retired against scaled-content signals.
+RewriteRule ^news/ai-terms-explained(\.html)?$ https://johnb.io/news/ai-models-2026 [R=301,L,NC]
+RewriteRule ^news/test-ai(\.html)?$ https://johnb.io/news/geo-generative-engine-optimisation [R=301,L,NC]
+
 # Strip .html extension — redirect /page.html to /page
+#
+# header.html and footer.html are exempt. scripts.js fetches them at their real
+# .html path on every single page load; without this exemption each fetch takes
+# a 301 to /header before landing back on header.html, so every visitor and
+# every crawler pays two extra round trips per page.
+RewriteCond %{REQUEST_URI} !^/(header|footer)\.html$ [NC]
 RewriteCond %{THE_REQUEST} /([^.]+)\.html[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
+
+# The nav fragments have exactly one valid URL each, the .html one. Anything
+# else 404s so they cannot be indexed as pages in their own right.
+RewriteRule ^(header|footer)/?$ - [R=404,L,NC]
 
 # Force the home page to use index.html
 RewriteRule ^$ index.html [L]
@@ -42,10 +67,26 @@ RewriteRule ^course/?$ course/index.html [L]
 # Route /verify/{certId} to verify.html (public certificate verification)
 RewriteRule ^verify/[A-Z0-9-]+$ /verify.html [L]
 
-# Handle HTML file extensions
+# Map extensionless page URLs to their .html file — /meditation -> meditation.html
+#
+# The two guards below are load-bearing, do not remove them.
+#
+# Unguarded, this rule matched ANY path that wasn't a real file, appended
+# .html, and then matched its own output again: /images/nope.webp became
+# nope.webp.html, then nope.webp.html.html, until the server gave up and
+# returned 500. Every missing image, stale asset reference and mistyped
+# directory URL on the site served a 5xx instead of a 404, and sustained 5xx
+# is one of the few things that makes Google throttle crawling of a whole host.
+#
+#   !\.[A-Za-z0-9]+$  - a path that already carries a file extension is an
+#                       asset request, not a page. It also terminates the loop,
+#                       because this rule's own output always ends in .html.
+#   ^(.*[^/])$        - a path ending in / is a directory request. Appending
+#                       .html to it produced "dir/.html" and looped.
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ $1.html [L]
+RewriteCond %{REQUEST_FILENAME} !\.[A-Za-z0-9]+$
+RewriteRule ^(.*[^/])$ $1.html [L]
 
 # Enable range requests for audio files (allows browser to stream/seek)
 <IfModule mod_headers.c>
@@ -92,6 +133,9 @@ RewriteRule ^(.*)$ $1.html [L]
     # HTML — no cache so users always get the latest page
     ExpiresByType text/html "access plus 0 seconds"
 
+    # Dataset export — refresh daily, not on the 1 month ExpiresDefault
+    ExpiresByType application/json "access plus 1 day"
+
     # Others
     ExpiresDefault "access plus 1 month"
 </IfModule>
@@ -111,12 +155,6 @@ RewriteRule ^(.*)$ $1.html [L]
         Header set X-Robots-Tag "noindex"
     </Files>
     <Files "footer.html">
-        Header set X-Robots-Tag "noindex"
-    </Files>
-    <Files "template.html">
-        Header set X-Robots-Tag "noindex"
-    </Files>
-    <Files "heart.html">
         Header set X-Robots-Tag "noindex"
     </Files>
 </IfModule>

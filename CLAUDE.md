@@ -39,6 +39,20 @@ Static HTML/CSS/JS site. No framework, no bundler, no package manager.
 
 The full regulation table in `igaming-compliance.html` (between the `static-regs` markers inside `#igc-table-body`) and the regulation/jurisdiction counts on that page and in `llms.txt` are **generated** by `generate-compliance-table.py` from the `REGULATIONS` array. A PostToolUse hook in `.claude/settings.json` regenerates them automatically whenever `igaming-compliance.js` is edited; run `python generate-compliance-table.py` manually if the hook didn't fire. Never hand-edit the block between the markers or the count phrases — the script overwrites them. If the script warns about `index.js` drift, update the tool-card description there by hand and bump its `?v=`. The row markup in the script is copied verbatim from `refreshTable()` — if you change the table template in `igaming-compliance.js`, update the copy in the script too (the JS has `// NOTE: keep in sync` comments at the three copied spots).
 
+The script also generates, from the same `REGULATIONS` array:
+
+- the per-jurisdiction cards and anchor index between the `static-jur` markers (52 stable `#jurisdiction-<slug>` anchors, plus `#reg-<id>` on every table row)
+- `igaming-regulations.json` at the repo root, declared as a `DataDownload` distribution on the page's Dataset schema and listed in `llms.txt`
+- the `FAQPage` JSON-LD, built from the visible FAQ `<dt>`/`<dd>` text — **never hand-edit the FAQ JSON-LD**, edit the visible FAQ and regenerate
+
+The two copies of the row template (in `refreshTable()` and in the script) are now fenced with `// row-template:start` / `// row-template:end` and compared by `check_row_template()`. If they drift, the script exits 1 and writes nothing.
+
+## AI course — generated lesson list
+
+The 9 units and 35 lesson links inside `course/index.html` (between the `static-course` markers) are **generated** by `generate-course-links.py` from `COURSE_UNITS` in `course-data.js`. Never hand-edit between the markers; run `python generate-course-links.py` if the PostToolUse hook didn't fire.
+
+The guest curriculum is the **default server-rendered state** — it must render with no JavaScript. `course-dashboard.js` hides it once Firebase Auth resolves to a signed-in user, never the other way round. A `cd-signed-in` localStorage flag plus an inline head script avoids a guest-view flash for returning users. Do not reintroduce `class="hidden"` on `#cdGuest`.
+
 ## Adding a new tool
 
 1. Create `toolname.html`, `toolname.css`, `toolname.js` — styled consistently with existing tools
@@ -74,6 +88,12 @@ FAQ schema in JSON-LD must exactly match the visible on-page FAQ answers.
 - Must match the look and feel of existing tool pages
 - Must be fully responsive — tested on mobile and desktop
 - Must meet accessibility standards: semantic HTML, ARIA labels, sufficient colour contrast, keyboard navigable
+
+**Crawlable internal links — required on every page:**
+
+`header.html` and `footer.html` are fetched at runtime, so a new page's raw HTML has **zero** internal links until you add them. Googlebot renders JS and copes, but GPTBot, ClaudeBot, PerplexityBot and CCBot do not — a page without static links is a dead end for AI citation.
+
+Copy the `<nav class="crawl-nav">` block from any existing tool page into `<div id="footer-placeholder">`. `scripts.js:loadHeaderAndFooter()` sets `innerHTML` on that div, so the block is real crawlable markup that JS replaces for human visitors. Vary the 3 related-tool links so long-tail pages get inbound links from siblings.
 
 **After creating the page:**
 - Add to `sitemap.xml` with `lastmod`, `changefreq`, `priority`
@@ -466,6 +486,29 @@ The site uses a standard long-cache + version-busting approach:
 - All tool-specific CSS/JS files (e.g. `tcs-simplifier.css`, `index.js`) start at `?v=1` — bump when changed
 
 This applies to every `<link rel="stylesheet">` and `<script src="">` that references a local file. External CDN URLs do not need version strings.
+
+**This includes the shared data scripts**, which are easy to miss because they carry no page-specific CSS: `news-data.js`, `news-chat.js`, `course-data.js`, `lesson-progress.js`, `news-recent.js`. These were referenced unversioned on 35-40 pages each, which pinned those pages to a one-year cached copy with no way to bust it. Every local `.js` and `.css` reference must carry `?v=N`.
+
+To find regressions:
+
+```bash
+grep -rhoE '(src|href)="/[^"?]+\.(js|css)"' --include=*.html .
+```
+
+Any output from that command is a file with no cache-bust path.
+
+## .htaccess extensionless-URL rule
+
+The rule that maps `/meditation` to `meditation.html` carries two guards that must not be removed:
+
+```apache
+RewriteCond %{REQUEST_FILENAME} !\.[A-Za-z0-9]+$
+RewriteRule ^(.*[^/])$ $1.html [L]
+```
+
+Without them the rule matched its own output and looped: `/images/nope.webp` became `nope.webp.html`, then `nope.webp.html.html`, until the server gave up with a **500**. Every missing image, stale asset reference and mistyped directory URL on the site returned 5xx instead of 404, and sustained 5xx makes Google throttle crawling of the whole host.
+
+After touching that rule, confirm `/images/nope.webp` and `/does-not-exist/` both return **404**.
 
 ## Canonical URL
 

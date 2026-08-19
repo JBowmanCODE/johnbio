@@ -466,3 +466,26 @@ body {
     flex: 1;
   }
 }
+
+/* ── Shared page title ────────────────────────────────────────────────────
+   Every tool page needs exactly one H1. This rule was previously duplicated
+   in eight per-page CSS files; those copies still load after this one and
+   win, so they are harmless. New pages should use these classes rather than
+   redefining them. */
+.page-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: var(--on-surface, #f8f5fd);
+  margin: 0 0 0.4rem;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #FF007F, #00eefc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(255,0,127,0.3));
+}

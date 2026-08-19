@@ -1,16 +1,24 @@
 User-agent: *
 Allow: /
 
-# header.html and footer.html are fetched at runtime by scripts.js and carry
-# every internal navigation link on the site. They must stay crawlable or
-# Googlebot renders every page with no navigation and no outgoing links.
-# They are kept out of the index with X-Robots-Tag: noindex in .htaccess.
+# Nothing on this site is blocked from crawling, deliberately.
+#
+# Every page that should stay out of the index is handled with a noindex
+# signal instead: X-Robots-Tag headers in .htaccess for header.html and
+# footer.html, and meta robots tags on /wo and /exam. A noindex only works
+# if the crawler is allowed to fetch the page and read it, so blocking any
+# of them here would pin them in the index permanently rather than remove
+# them.
+#
+# header.html and footer.html carry every internal navigation link on the
+# site and are fetched at runtime by scripts.js. Blocking them leaves
+# Googlebot rendering every page with no navigation at all.
+#
+# The old "Disallow: /template.html" and "Disallow: /heart.html" rules
+# never matched anything anyway: .htaccess 301s .html to the extensionless
+# URL, so the live paths were /template and /heart. Both pages have since
+# been deleted and now 301 to a surviving page.
 
-# /wo is deindexed by its meta robots tag, which Google can only act on if it
-# is allowed to crawl the page and read it. Blocking it here prevented that.
-
-Disallow: /template.html
-Disallow: /heart.html
 Disallow: /cgi-bin/
 
 Sitemap: https://johnb.io/sitemap.xml

@@ -5,7 +5,7 @@
 ## Pages
 
 - [Home](https://johnb.io/): Projects gallery — browse all tools and projects on the site.
-- [About](https://johnb.io/about): Background, skills, and interests of John Bowman.
+- [About](https://johnb.io/about): John Bowman, AI strategist and developer based in Leeds. 20+ years in iGaming and digital marketing, University of Oxford AI Programme graduate (2024), builds the free AI tools on JohnB.io.
 - [Contact](https://johnb.io/contact): Get in touch via email or LinkedIn. Also handles GDPR data privacy requests.
 
 ## AI Tools
@@ -25,6 +25,7 @@
 - [iGaming RG Message Generator](https://johnb.io/rg-generator): Generate compliant responsible gambling disclaimers for 10 jurisdictions including UK (UKGC), Malta (MGA), Ontario, Netherlands, Sweden, Denmark, Germany, Ireland, Spain and Gibraltar. Provides copy-paste disclaimer text, required logos and seals, helpline details, self-exclusion scheme information and channel-specific guidance for email, display, social media and SMS.
 - [iGaming Jargon Translator](https://johnb.io/igaming-jargon): AI-powered tool that translates iGaming industry terminology to plain English, or plain English descriptions to correct industry terminology. Covers GGR, NGR, RTP, wagering requirements, KYC/AML, CPA, RevShare, CLV, responsible gambling frameworks and more. Built for operators, affiliates, agencies and new starters.
 - [iGaming Regulatory Compliance Map](https://johnb.io/igaming-compliance): Interactive world map of 212 iGaming regulations across 50 jurisdictions. Browse gambling laws, AML directives, data protection rules and advertising codes by country — filterable by region and category.
+- [iGaming Regulations Dataset (JSON)](https://johnb.io/igaming-regulations.json): Machine-readable export of all 212 iGaming regulations across 50 jurisdictions, licensed CC BY 4.0. Each record carries the regulation name, category, region, jurisdiction codes and names, a hand-written summary and a link to the official regulator source. Individual jurisdictions are citable on the map at https://johnb.io/igaming-compliance#jurisdiction-united-kingdom and individual regulations at #reg-<id>.
 - [eBay & Vinted Profit Calculator](https://johnb.io/ebay): Calculate profit from eBay and Vinted sales, accounting for platform fees, postage and purchase costs.
 - [Bill Calculator](https://johnb.io/calculator): Split bills and calculate tips. Built with Python via Pyodide.
 - [Poker Bankroll Planner](https://johnb.io/bankroll): Evaluate poker experience level and plan bankroll strategy.
@@ -47,9 +48,7 @@
 - [AI Models in 2026: What Actually Changed in the Last 12 Months](https://johnb.io/news/ai-models-2026): A sourced review of AI progress from August 2025 to August 2026, covering Anthropic's Claude Opus 5 and Fable 5, OpenAI's GPT-5 to GPT-5.6 releases and the Sora shutdown, Google Gemini 3 and Antigravity, video and image models including Veo and Nano Banana, open-weight models from DeepSeek and Qwen, and the METR randomised trial finding developers 19% slower with AI tools.
 - [What Happens When Your AI Songs Get 88 Million Views](https://johnb.io/news/ai-music-88-million-views): I generated 88 million streams with AI music in 2024-2026. Here's what I actually made—and why I won't share the songs. Covers Suno, SoundON Global distribution, streaming monetization, and the reality gap between reach and revenue.
 - [GEO: A Practical Guide to Generative Engine Optimisation in 2026](https://johnb.io/news/geo-generative-engine-optimisation): Explains what GEO is, how it differs from SEO, what AI retrieval systems look for in content, whether llms.txt actually works, and practical steps to get cited by ChatGPT, Perplexity and Google AI Overviews.
-- [AI Terms Explained: A Beginner's Guide to LLMs, ML, and Every Buzzword in Between](https://johnb.io/news/ai-terms-explained): Plain-English guide explaining the difference between AI, ML, LLMs, deep learning, neural networks, and other common AI terms. Written for beginners who want to follow AI conversations without the jargon.
 - [Claude Code VSC: AI Coding for Beginners](https://johnb.io/news/claude-code-vsc): Beginner's guide to the Claude Code VS Code extension by Anthropic. Covers what Claude Code VSC is, how it differs from Claude.ai, installation steps, what it can do, the CLAUDE.md briefing file, pricing (Claude Max subscription vs API credits), and what to try first.
-- [AI in 2026: How Large Language Models Are Reshaping Search, Content and Work](https://johnb.io/news/test-ai): Covers how LLMs have shifted from novelty to infrastructure in 2026. Topics include Google AI Overviews and the impact on SEO, generative engine optimisation (GEO) and the llms.txt standard, AI use cases in writing, code and data analysis, AI applications and risks in iGaming across 50-plus jurisdictions, and what to watch in H2 2026 including AI agents, multimodal models and EU AI Act implementation. Includes FAQ schema, structured sources and internal links to related tools.
 
 ## AI Course
 

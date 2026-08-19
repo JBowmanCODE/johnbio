@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Styles -->
-  <link rel="stylesheet" href="/styles.css?v=3">
+  <link rel="stylesheet" href="/styles.css?v=4">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
   <link rel="stylesheet" href="/football-2026.css?v=12">
@@ -66,7 +66,8 @@
     "author": {
       "@type": "Person",
       "name": "John Bowman",
-      "url": "https://www.linkedin.com/in/john-bowman/"
+      "url": "https://johnb.io/about",
+      "sameAs": ["https://www.linkedin.com/in/john-bowman/"]
     },
     "publisher": {
       "@type": "Organization",
@@ -84,66 +85,42 @@
       {
         "@type": "Question",
         "name": "Why are you not calling the tournament by its real name?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The short answer is money and incredibly strict trademark laws. When you see a website, brand, or merchandise seller avoiding the name (or the official branding), it is almost always to avoid being sued by their legal team."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "The short answer is money and incredibly strict trademark laws. When you see a website, brand, or merchandise seller avoiding the name (or the official branding), it is almost always to avoid being sued by their legal team." }
       },
       {
         "@type": "Question",
         "name": "Is this betting advice?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Absolutely not. This is an AI prediction — I would not suggest betting on this outcome."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Absolutely not. This is an AI prediction — I would not suggest betting on this outcome." }
       },
       {
         "@type": "Question",
         "name": "How does the AI produce the predictions? What data does it use?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It reviewed 5 international matches per team and assessed 8 key players per squad, using training data and web searches to make informed qualitative judgements, not live statistical feeds."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "It reviewed 5 international matches per team and assessed 8 key players per squad, using training data and web searches to make informed qualitative judgements, not live statistical feeds." }
       },
       {
         "@type": "Question",
         "name": "How does the Football 2026 simulator work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The simulator uses a deep analysis of all 48 teams based on squad ratings, coach quality, recent form, and tournament history. AI predicts group stage results and generates a full knockout bracket. You can click any team in the bracket to override the prediction and see how the tournament path changes."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "The simulator uses a deep analysis of all 48 teams based on squad ratings, coach quality, recent form, and tournament history. AI predicts group stage results and generates a full knockout bracket. You can click any team in the bracket to override the prediction and see how the tournament path changes." }
       },
       {
         "@type": "Question",
         "name": "Which team does the AI predict to win?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The AI predicts Argentina to win the Summer 2026 tournament, with France and Spain as the closest challengers. Argentina's 18% probability reflects their defending champion status, the Messi factor, and the deepest midfield in the tournament."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "The AI predicts Argentina to win the Summer 2026 tournament, with France and Spain as the closest challengers. Argentina's 18% probability reflects their defending champion status, the Messi factor, and the deepest midfield in the tournament." }
       },
       {
         "@type": "Question",
         "name": "How are the team and player ratings calculated?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ratings are on a 0-100 scale based on current club form, international performance, and squad depth. World Class (88+) covers generational players. Elite (80-87) covers top-level internationals. Good (72-79) covers solid squad contributors. Below 72 is squad depth."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Ratings are on a 0-100 scale based on current club form, international performance, and squad depth. World Class (88+) covers generational players. Elite (80-87) covers top-level internationals. Good (72-79) covers solid squad contributors. Below 72 is squad depth." }
       },
       {
         "@type": "Question",
         "name": "Can I change the bracket results?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Click any team button in the knockout bracket to make them the winner of that match. The change cascades forward automatically through all later rounds. Click Reset to go back to the AI prediction."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Click any team button in the knockout bracket to make them the winner of that match. The change cascades forward automatically through all later rounds. Click Reset to go back to the AI prediction." }
       },
       {
         "@type": "Question",
         "name": "How many teams are in the 2026 tournament?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "48 teams compete across 12 groups of 4. Two teams advance from each group, giving 24 teams in the Round of 32 plus 8 third-place qualifiers. The knockout rounds are: Round of 32, Round of 16, Quarter-finals, Semi-finals, and the Final."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "48 teams compete across 12 groups of 4. Two teams advance from each group, giving 24 teams in the Round of 32 plus 8 third-place qualifiers. The knockout rounds are: Round of 32, Round of 16, Quarter-finals, Semi-finals, and the Final." }
       }
     ]
   }
@@ -437,8 +414,37 @@
     </div>
   </div>
 
-  <div id="footer-placeholder"></div>
-  <script src="/scripts.js?v=6"></script>
+  <div id="footer-placeholder">
+    <!-- Static site navigation: real crawlable links for search/AI crawlers and no-JS visitors.
+         scripts.js:loadHeaderAndFooter() replaces this block with footer.html for everyone else. -->
+    <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
+      <style>.crawl-nav{max-width:1280px;margin:0 auto;padding:3rem 2rem;border-top:1px solid rgba(248,245,253,0.07);font-family:'Space Grotesk',sans-serif;color:var(--on-surface-variant,#acaab1)}.crawl-nav-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,245,253,0.4);margin:0 0 1rem}.crawl-nav-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.5rem;font-size:0.85rem;line-height:1.6}.crawl-nav-list a{color:#00EEFC;text-decoration:none}.crawl-nav-list a:hover,.crawl-nav-list a:focus-visible{text-decoration:underline}</style>
+      <p class="crawl-nav-title">Explore JohnB.io</p>
+      <ul class="crawl-nav-list">
+        <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
+        <li><a href="/tcs-simplifier">T&amp;Cs Simplifier</a> - casino bonus terms in plain English</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 50 jurisdictions</li>
+        <li><a href="/bonus-calculator">Bonus Cost Calculator</a> - iGaming bonus cost modelling</li>
+        <li><a href="/promo-copy">iGaming Promo Copy Generator</a> - compliant promotional copy</li>
+        <li><a href="/rg-generator">RG Message Generator</a> - responsible gambling messaging</li>
+        <li><a href="/igaming-jargon">iGaming Jargon Translator</a> - industry terms explained</li>
+        <li><a href="/editor">AI Copyeditor</a> - copyediting with UK and US English</li>
+        <li><a href="/lm-chat">LLM Chat</a> - chat with language models</li>
+        <li><a href="/text-to-speech">Text to Speech Converter</a> - natural AI voices for any text</li>
+        <li><a href="/llms-generator">LLMs.txt Generator</a> - llms.txt files for AI crawlers</li>
+        <li><a href="/content-repurposer">Content Repurposer</a> - one piece of content, many formats</li>
+        <li><a href="/aitocv">AI CV Enhancer</a> - tailored CVs and cover letters</li>
+        <li><a href="/live-poker-hand-replayer">Live Poker Hand Replayer</a> - animated replays of live poker hands</li>
+        <li><a href="/bankroll">Poker Bankroll Tracker</a> - bankroll tracking</li>
+        <li><a href="/zzmystery">Zig Zag Drop Slot</a> - browser slot game demo</li>
+        <li><a href="/about">About John Bowman</a> - 20+ years in iGaming and digital marketing</li>
+        <li><a href="/news/">AI Blog</a> - practical AI strategy and how it works</li>
+        <li><a href="/course/">AI &amp; Machine Learning Course</a> - free structured course</li>
+        <li><a href="/contact">Contact</a> - get in touch</li>
+      </ul>
+    </nav>
+  </div>
+  <script src="/scripts.js?v=7"></script>
   <script src="/football-2026.js?v=18"></script>
 </body>
 </html>

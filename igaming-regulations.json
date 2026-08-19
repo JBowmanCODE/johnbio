@@ -1,0 +1,5302 @@
+{
+  "name": "iGaming Global Regulatory Compliance Database",
+  "description": "212 iGaming regulations, directives and licensing frameworks tracked across 50 jurisdictions, covering gambling-specific law, AML/CFT, data protection, financial services, digital services and AI, advertising restrictions and testing standards.",
+  "url": "https://johnb.io/igaming-compliance",
+  "downloadUrl": "https://johnb.io/igaming-regulations.json",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "creator": {
+    "name": "John Bowman",
+    "url": "https://johnb.io/about"
+  },
+  "publisher": {
+    "name": "JohnB.io",
+    "url": "https://johnb.io"
+  },
+  "dateModified": "2026-08-11",
+  "regulationCount": 212,
+  "jurisdictionCount": 50,
+  "categories": [
+    {
+      "id": "gambling",
+      "label": "Gambling"
+    },
+    {
+      "id": "aml",
+      "label": "AML / CFT"
+    },
+    {
+      "id": "data",
+      "label": "Data Protection"
+    },
+    {
+      "id": "financial",
+      "label": "Financial"
+    },
+    {
+      "id": "digital",
+      "label": "Digital & AI"
+    },
+    {
+      "id": "advertising",
+      "label": "Advertising"
+    },
+    {
+      "id": "standards",
+      "label": "Standards"
+    }
+  ],
+  "regions": [
+    "europe",
+    "americas",
+    "asia-pacific",
+    "africa",
+    "eu-wide",
+    "global"
+  ],
+  "jurisdictions": [
+    {
+      "code": "EU-EEA",
+      "name": "EU / EEA-wide",
+      "slug": "eu-eea",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-eu-eea",
+      "regulationCount": 24,
+      "jurisdictionSpecificCount": 24
+    },
+    {
+      "code": "GLOBAL",
+      "name": "Global standards",
+      "slug": "global",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-global",
+      "regulationCount": 6,
+      "jurisdictionSpecificCount": 6
+    },
+    {
+      "code": "GG",
+      "name": "Alderney / Guernsey",
+      "slug": "alderney-guernsey",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-alderney-guernsey",
+      "regulationCount": 3,
+      "jurisdictionSpecificCount": 3
+    },
+    {
+      "code": "AG",
+      "name": "Antigua and Barbuda",
+      "slug": "antigua-and-barbuda",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-antigua-and-barbuda",
+      "regulationCount": 3,
+      "jurisdictionSpecificCount": 3
+    },
+    {
+      "code": "AU",
+      "name": "Australia",
+      "slug": "australia",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-australia",
+      "regulationCount": 11,
+      "jurisdictionSpecificCount": 6
+    },
+    {
+      "code": "AT",
+      "name": "Austria",
+      "slug": "austria",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-austria",
+      "regulationCount": 25,
+      "jurisdictionSpecificCount": 1
+    },
+    {
+      "code": "BE",
+      "name": "Belgium",
+      "slug": "belgium",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-belgium",
+      "regulationCount": 26,
+      "jurisdictionSpecificCount": 2
+    },
+    {
+      "code": "BR",
+      "name": "Brazil",
+      "slug": "brazil",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-brazil",
+      "regulationCount": 7,
+      "jurisdictionSpecificCount": 6
+    },
+    {
+      "code": "BG",
+      "name": "Bulgaria",
+      "slug": "bulgaria",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-bulgaria",
+      "regulationCount": 24,
+      "jurisdictionSpecificCount": 0
+    },
+    {
+      "code": "CA",
+      "name": "Canada",
+      "slug": "canada",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-canada",
+      "regulationCount": 13,
+      "jurisdictionSpecificCount": 10
+    },
+    {
+      "code": "HR",
+      "name": "Croatia",
+      "slug": "croatia",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-croatia",
+      "regulationCount": 24,
+      "jurisdictionSpecificCount": 0
+    },
+    {
+      "code": "CW",
+      "name": "Curaçao",
+      "slug": "curacao",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-curacao",
+      "regulationCount": 2,
+      "jurisdictionSpecificCount": 2
+    },
+    {
+      "code": "CY",
+      "name": "Cyprus",
+      "slug": "cyprus",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-cyprus",
+      "regulationCount": 24,
+      "jurisdictionSpecificCount": 0
+    },
+    {
+      "code": "CZ",
+      "name": "Czech Republic",
+      "slug": "czech-republic",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-czech-republic",
+      "regulationCount": 25,
+      "jurisdictionSpecificCount": 1
+    },
+    {
+      "code": "DK",
+      "name": "Denmark",
+      "slug": "denmark",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-denmark",
+      "regulationCount": 26,
+      "jurisdictionSpecificCount": 2
+    },
+    {
+      "code": "EE",
+      "name": "Estonia",
+      "slug": "estonia",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-estonia",
+      "regulationCount": 26,
+      "jurisdictionSpecificCount": 2
+    },
+    {
+      "code": "FI",
+      "name": "Finland",
+      "slug": "finland",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-finland",
+      "regulationCount": 24,
+      "jurisdictionSpecificCount": 0
+    },
+    {
+      "code": "FR",
+      "name": "France",
+      "slug": "france",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-france",
+      "regulationCount": 29,
+      "jurisdictionSpecificCount": 3
+    },
+    {
+      "code": "DE",
+      "name": "Germany",
+      "slug": "germany",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-germany",
+      "regulationCount": 31,
+      "jurisdictionSpecificCount": 3
+    },
+    {
+      "code": "GI",
+      "name": "Gibraltar",
+      "slug": "gibraltar",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-gibraltar",
+      "regulationCount": 4,
+      "jurisdictionSpecificCount": 4
+    },
+    {
+      "code": "GR",
+      "name": "Greece",
+      "slug": "greece",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-greece",
+      "regulationCount": 26,
+      "jurisdictionSpecificCount": 2
+    },
+    {
+      "code": "HU",
+      "name": "Hungary",
+      "slug": "hungary",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-hungary",
+      "regulationCount": 25,
+      "jurisdictionSpecificCount": 1
+    },
+    {
+      "code": "IS",
+      "name": "Iceland",
+      "slug": "iceland",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-iceland",
+      "regulationCount": 17,
+      "jurisdictionSpecificCount": 0
+    },
+    {
+      "code": "IN",
+      "name": "India",
+      "slug": "india",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-india",
+      "regulationCount": 10,
+      "jurisdictionSpecificCount": 9
+    },
+    {
+      "code": "IE",
+      "name": "Ireland",
+      "slug": "ireland",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-ireland",
+      "regulationCount": 26,
+      "jurisdictionSpecificCount": 2
+    },
+    {
+      "code": "IM",
+      "name": "Isle of Man",
+      "slug": "isle-of-man",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-isle-of-man",
+      "regulationCount": 4,
+      "jurisdictionSpecificCount": 4
+    },
+    {
+      "code": "IT",
+      "name": "Italy",
+      "slug": "italy",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-italy",
+      "regulationCount": 33,
+      "jurisdictionSpecificCount": 5
+    },
+    {
+      "code": "JP",
+      "name": "Japan",
+      "slug": "japan",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-japan",
+      "regulationCount": 4,
+      "jurisdictionSpecificCount": 3
+    },
+    {
+      "code": "KE",
+      "name": "Kenya",
+      "slug": "kenya",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-kenya",
+      "regulationCount": 4,
+      "jurisdictionSpecificCount": 4
+    },
+    {
+      "code": "LV",
+      "name": "Latvia",
+      "slug": "latvia",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-latvia",
+      "regulationCount": 26,
+      "jurisdictionSpecificCount": 2
+    },
+    {
+      "code": "LI",
+      "name": "Liechtenstein",
+      "slug": "liechtenstein",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-liechtenstein",
+      "regulationCount": 17,
+      "jurisdictionSpecificCount": 0
+    },
+    {
+      "code": "LT",
+      "name": "Lithuania",
+      "slug": "lithuania",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-lithuania",
+      "regulationCount": 27,
+      "jurisdictionSpecificCount": 3
+    },
+    {
+      "code": "LU",
+      "name": "Luxembourg",
+      "slug": "luxembourg",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-luxembourg",
+      "regulationCount": 24,
+      "jurisdictionSpecificCount": 0
+    },
+    {
+      "code": "MT",
+      "name": "Malta",
+      "slug": "malta",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-malta",
+      "regulationCount": 34,
+      "jurisdictionSpecificCount": 4
+    },
+    {
+      "code": "NL",
+      "name": "Netherlands",
+      "slug": "netherlands",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-netherlands",
+      "regulationCount": 27,
+      "jurisdictionSpecificCount": 3
+    },
+    {
+      "code": "NZ",
+      "name": "New Zealand",
+      "slug": "new-zealand",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-new-zealand",
+      "regulationCount": 4,
+      "jurisdictionSpecificCount": 4
+    },
+    {
+      "code": "NG",
+      "name": "Nigeria",
+      "slug": "nigeria",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-nigeria",
+      "regulationCount": 4,
+      "jurisdictionSpecificCount": 4
+    },
+    {
+      "code": "NO",
+      "name": "Norway",
+      "slug": "norway",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-norway",
+      "regulationCount": 17,
+      "jurisdictionSpecificCount": 0
+    },
+    {
+      "code": "PH",
+      "name": "Philippines",
+      "slug": "philippines",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-philippines",
+      "regulationCount": 3,
+      "jurisdictionSpecificCount": 3
+    },
+    {
+      "code": "PL",
+      "name": "Poland",
+      "slug": "poland",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-poland",
+      "regulationCount": 25,
+      "jurisdictionSpecificCount": 1
+    },
+    {
+      "code": "PT",
+      "name": "Portugal",
+      "slug": "portugal",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-portugal",
+      "regulationCount": 25,
+      "jurisdictionSpecificCount": 1
+    },
+    {
+      "code": "RO",
+      "name": "Romania",
+      "slug": "romania",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-romania",
+      "regulationCount": 29,
+      "jurisdictionSpecificCount": 5
+    },
+    {
+      "code": "SG",
+      "name": "Singapore",
+      "slug": "singapore",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-singapore",
+      "regulationCount": 4,
+      "jurisdictionSpecificCount": 3
+    },
+    {
+      "code": "SK",
+      "name": "Slovakia",
+      "slug": "slovakia",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-slovakia",
+      "regulationCount": 24,
+      "jurisdictionSpecificCount": 0
+    },
+    {
+      "code": "SI",
+      "name": "Slovenia",
+      "slug": "slovenia",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-slovenia",
+      "regulationCount": 24,
+      "jurisdictionSpecificCount": 0
+    },
+    {
+      "code": "ZA",
+      "name": "South Africa",
+      "slug": "south-africa",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-south-africa",
+      "regulationCount": 5,
+      "jurisdictionSpecificCount": 4
+    },
+    {
+      "code": "KR",
+      "name": "South Korea",
+      "slug": "south-korea",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-south-korea",
+      "regulationCount": 3,
+      "jurisdictionSpecificCount": 2
+    },
+    {
+      "code": "ES",
+      "name": "Spain",
+      "slug": "spain",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-spain",
+      "regulationCount": 32,
+      "jurisdictionSpecificCount": 4
+    },
+    {
+      "code": "SE",
+      "name": "Sweden",
+      "slug": "sweden",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-sweden",
+      "regulationCount": 30,
+      "jurisdictionSpecificCount": 4
+    },
+    {
+      "code": "CH",
+      "name": "Switzerland",
+      "slug": "switzerland",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-switzerland",
+      "regulationCount": 3,
+      "jurisdictionSpecificCount": 3
+    },
+    {
+      "code": "GB",
+      "name": "United Kingdom",
+      "slug": "united-kingdom",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-united-kingdom",
+      "regulationCount": 19,
+      "jurisdictionSpecificCount": 13
+    },
+    {
+      "code": "US",
+      "name": "United States",
+      "slug": "united-states",
+      "url": "https://johnb.io/igaming-compliance#jurisdiction-united-states",
+      "regulationCount": 47,
+      "jurisdictionSpecificCount": 41
+    }
+  ],
+  "regulations": [
+    {
+      "id": "uk-gambling-act-2005",
+      "name": "Gambling Act 2005",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GB"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom"
+      ],
+      "summary": "Primary UK gambling legislation establishing the Gambling Commission and licensing framework.",
+      "officialUrl": "https://www.legislation.gov.uk/ukpga/2005/19/contents",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-uk-gambling-act-2005"
+    },
+    {
+      "id": "uk-lccp",
+      "name": "UKGC Licence Conditions and Codes of Practice (LCCP)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GB"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom"
+      ],
+      "summary": "Detailed operating conditions for all UK-licensed gambling operators.",
+      "officialUrl": "https://www.gamblingcommission.gov.uk/licensees-and-businesses/lccp",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-uk-lccp"
+    },
+    {
+      "id": "uk-gambling-licensing-advertising-2014",
+      "name": "Gambling (Licensing and Advertising) Act 2014",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GB"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom"
+      ],
+      "summary": "Extended UK licensing requirements to operators based offshore serving UK consumers.",
+      "officialUrl": "https://www.legislation.gov.uk/ukpga/2014/17/contents",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-uk-gambling-licensing-advertising-2014"
+    },
+    {
+      "id": "uk-statutory-levy-2025",
+      "name": "Statutory Gambling Levy Regulations 2025",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GB"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom"
+      ],
+      "summary": "0.1–1.1% of GGR levy replacing voluntary contributions, effective April 2025.",
+      "officialUrl": "https://www.gamblingcommission.gov.uk/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-uk-statutory-levy-2025"
+    },
+    {
+      "id": "uk-online-slots-stake-limits-2024",
+      "name": "UKGC Online Slots Stake Limits 2024",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GB"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom"
+      ],
+      "summary": "Maximum £5 per spin for players aged 25+; £2 for ages 18–24. Applies to all online slots from October 2024.",
+      "officialUrl": "https://www.gamblingcommission.gov.uk/licensees-and-businesses/lccp",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-uk-online-slots-stake-limits-2024"
+    },
+    {
+      "id": "uk-affordability-checks-2026",
+      "name": "UKGC Financial Risk Assessments (Affordability Checks) 2026",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GB"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom"
+      ],
+      "summary": "Financial Risk Assessment regime. Frictionless credit-reference checks remain active (since February 2026) at £150 net loss within a 30-day window; ~95% of accounts resolve without player interruption, with full compliance still required by end of Q3 2026. On 7 July 2026 the Commission announced a staged FRA rollout: Stage 1 applies to the largest operators at £5,000+ net deposit in a rolling 24-hour period (£2,500 for under-25s and high-risk groups), with the Stage 1 timetable to be confirmed following summer 2026 implementation groups; final-stage thresholds are £1,000/24h or £3,000/90d net deposits (£750/£2,000 for under-25s). The pilot found 97% of above-threshold customers can be assessed frictionlessly. No enforcement action will be taken for failure to act on an FRA during early implementation — note thresholds are net deposits, not losses.",
+      "officialUrl": "https://www.gamblingcommission.gov.uk/licensees-and-businesses/lccp/upcoming-changes",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-uk-affordability-checks-2026"
+    },
+    {
+      "id": "malta-gaming-act-2018",
+      "name": "Gaming Act 2018 (Cap. 583)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "MT"
+      ],
+      "jurisdictionNames": [
+        "Malta"
+      ],
+      "summary": "Consolidated Maltese gaming legislation underpinning the MGA licensing framework.",
+      "officialUrl": "https://legislation.mt/eli/cap/583/eng",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-malta-gaming-act-2018"
+    },
+    {
+      "id": "mga-capital-requirements-2025",
+      "name": "MGA Minimum Capital Requirements Policy 2025",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "MT"
+      ],
+      "jurisdictionNames": [
+        "Malta"
+      ],
+      "summary": "Effective 2025: €40,000 minimum for B2B licensees; €100,000 for B2C Types 1–2; cumulative cap €240,000. Operators with negative equity must restore it within 6 months or under a supervised 5-year plan. New Interim Financial Reporting (IFR) requirements alongside revised AFR standards.",
+      "officialUrl": "https://www.mga.org.mt/our-work/regulatory-framework/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-mga-capital-requirements-2025"
+    },
+    {
+      "id": "mga-player-protection-directive",
+      "name": "MGA Player Protection Directive (Directive 2 of 2018)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "MT"
+      ],
+      "jurisdictionNames": [
+        "Malta"
+      ],
+      "summary": "MGA responsible gambling and player protection requirements.",
+      "officialUrl": "https://www.mga.org.mt/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-mga-player-protection-directive"
+    },
+    {
+      "id": "mga-authorisations-compliance-directive",
+      "name": "MGA Gaming Authorisations and Compliance Directive (Directive 3 of 2018)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "MT"
+      ],
+      "jurisdictionNames": [
+        "Malta"
+      ],
+      "summary": "Licensing procedures and ongoing compliance obligations for MGA licensees.",
+      "officialUrl": "https://www.mga.org.mt/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-mga-authorisations-compliance-directive"
+    },
+    {
+      "id": "gibraltar-gambling-act-2005",
+      "name": "Gambling Act 2005 (Gibraltar) — superseded",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GI"
+      ],
+      "jurisdictionNames": [
+        "Gibraltar"
+      ],
+      "summary": "Superseded by the Gibraltar Gambling Act 2025 (in force 1 October 2025).",
+      "officialUrl": "https://www.gibraltarlaws.gov.gi/legislations/gambling-act-2005-1344",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-gibraltar-gambling-act-2005"
+    },
+    {
+      "id": "gibraltar-gambling-act-2025",
+      "name": "Gambling Act 2025 (Gibraltar)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GI"
+      ],
+      "jurisdictionNames": [
+        "Gibraltar"
+      ],
+      "summary": "In force 1 October 2025. Replaced the 2005 Act entirely. Six new licence categories (£10,000 application fee each). Marketing affiliates now require a licence. Sweepstakes and B2B operators newly in scope. New independent Gambling Appeals Tribunal. Personal accountability requirements for senior staff (similar to UK Senior Managers Regime). Expanded Gambling Commissioner powers: fines, inspections, licence suspension. 6-month transition period ended approximately April 2026.",
+      "officialUrl": "https://www.gibraltarlaws.gov.gi/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-gibraltar-gambling-act-2025"
+    },
+    {
+      "id": "iom-ogra-2001",
+      "name": "Online Gambling Regulation Act 2001 (OGRA)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "IM"
+      ],
+      "jurisdictionNames": [
+        "Isle of Man"
+      ],
+      "summary": "Isle of Man online gambling licensing framework. The Gambling Legislation (Amendment) Bill — consolidating seven gambling acts into a unified framework — completed its passage through Tynwald on 28 April 2026, with Royal Assent expected by summer 2026. Civil penalties for key persons, controllers and senior managers, new fitness-and-propriety criteria (GSC consultations ran to 25 May 2026), and expanded GSC inspection powers including warrantless entry and seizure. Moneyval on-site inspection scheduled October 2026.",
+      "officialUrl": "https://legislation.gov.im/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-iom-ogra-2001"
+    },
+    {
+      "id": "alderney-egambling-ordinance-2009",
+      "name": "Alderney eGambling Ordinance 2009",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GG"
+      ],
+      "jurisdictionNames": [
+        "Alderney / Guernsey"
+      ],
+      "summary": "Alderney (AGCC) online gambling regulation framework.",
+      "officialUrl": "https://www.gamblingcontrol.org/regulation-framework/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-alderney-egambling-ordinance-2009"
+    },
+    {
+      "id": "sweden-spellagen-2018",
+      "name": "Spellagen (2018:1138) — Swedish Gambling Act",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "SE"
+      ],
+      "jurisdictionNames": [
+        "Sweden"
+      ],
+      "summary": "Swedish re-regulation framework effective 2019, introducing channelling model.",
+      "officialUrl": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/svensk-forfattningssamling/spellag-20181138_sfs-2018-1138/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-sweden-spellagen-2018"
+    },
+    {
+      "id": "sweden-credit-card-ban-2026",
+      "name": "Sweden — Complete Credit Card Gambling Ban (April 2026)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "SE"
+      ],
+      "jurisdictionNames": [
+        "Sweden"
+      ],
+      "summary": "From 1 April 2026, Sweden enacted a complete ban on gambling with credit cards, overdrafts, personal loans, and buy-now-pay-later services. Sweden is the first EU member state to implement a total prohibition of credit-funded gambling.",
+      "officialUrl": "https://www.spelinspektionen.se/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-sweden-credit-card-ban-2026"
+    },
+    {
+      "id": "denmark-spilleloven",
+      "name": "Spilleloven (Gambling Act, Act No. 848)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "DK"
+      ],
+      "jurisdictionNames": [
+        "Denmark"
+      ],
+      "summary": "Danish online gambling regulation administered by Spillemyndigheden.",
+      "officialUrl": "https://www.spillemyndigheden.dk/en/legal-framework",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-denmark-spilleloven"
+    },
+    {
+      "id": "germany-gluestv-2021",
+      "name": "Glücksspielstaatsvertrag 2021 (Interstate Treaty on Gambling)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "DE"
+      ],
+      "jurisdictionNames": [
+        "Germany"
+      ],
+      "summary": "€1,000/month deposit limit, €1 max stake per spin, 5-second minimum spin time. GGL issued 231 C&D proceedings in 2024.",
+      "officialUrl": "https://www.ggl.de/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-germany-gluestv-2021"
+    },
+    {
+      "id": "netherlands-koa-2021",
+      "name": "Wet Kansspelen op afstand / Remote Gambling Act (KOA)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "NL"
+      ],
+      "jurisdictionNames": [
+        "Netherlands"
+      ],
+      "summary": "Dutch online gambling market opened October 2021 under KSA oversight. Gambling tax increased to 34.2% (January 2025); new KSA licensing framework with mandatory exit plans effective 1 January 2026.",
+      "officialUrl": "https://kansspelautoriteit.nl/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-netherlands-koa-2021"
+    },
+    {
+      "id": "belgium-gaming-act-1999",
+      "name": "Belgian Gaming Act of 7 May 1999 (as amended Feb 2024)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "BE"
+      ],
+      "jurisdictionNames": [
+        "Belgium"
+      ],
+      "summary": "Comprehensive Belgian gambling legislation; 2024 amendment tightened advertising rules.",
+      "officialUrl": "https://www.gamingcommission.be/en",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-belgium-gaming-act-1999"
+    },
+    {
+      "id": "switzerland-bgs-2018",
+      "name": "Geldspielgesetz / Federal Act on Money Games (BGS 935.51)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "CH"
+      ],
+      "jurisdictionNames": [
+        "Switzerland"
+      ],
+      "summary": "Swiss gambling act effective 2019, permitting licensed Swiss online casinos.",
+      "officialUrl": "https://www.fedlex.admin.ch/eli/cc/2018/795/de",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-switzerland-bgs-2018"
+    },
+    {
+      "id": "austria-glucksspielgesetz",
+      "name": "Glücksspielgesetz (GSpG — Austrian Gambling Act)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "AT"
+      ],
+      "jurisdictionNames": [
+        "Austria"
+      ],
+      "summary": "Austrian gambling monopoly framework managed by BMF. Reform underway: draft legislation to end the online monopoly and introduce an open licensing system was published for consultation in May 2026 and notified to the European Commission on 4 August 2026 (three-month TRIS standstill). Draft terms: unlicensed operators must exit by 1 January 2027 to qualify for a licence (18-month lock-out for non-compliance, rising to 24 months from 2030); deposit limits €250/week (under 26) and €1,680/month (26+); first centralised national exclusion register covering casino, slots and online.",
+      "officialUrl": "https://www.ris.bka.gv.at/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-austria-glucksspielgesetz"
+    },
+    {
+      "id": "spain-ley-13-2011",
+      "name": "Ley 13/2011 de regulación del juego",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "ES"
+      ],
+      "jurisdictionNames": [
+        "Spain"
+      ],
+      "summary": "Spanish online gambling act administered by DGOJ. RD 958/2020 severely restricts advertising.",
+      "officialUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-9280",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-spain-ley-13-2011"
+    },
+    {
+      "id": "spain-rd-176-2023",
+      "name": "Real Decreto 176/2023 (Safer Gambling Environments)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "ES"
+      ],
+      "jurisdictionNames": [
+        "Spain"
+      ],
+      "summary": "Enhanced responsible gambling requirements including cross-operator deposit limits under discussion.",
+      "officialUrl": "https://www.boe.es/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-spain-rd-176-2023"
+    },
+    {
+      "id": "italy-decreto-dignita-2018",
+      "name": "Decreto Dignità (Decree Law 87/2018)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "IT"
+      ],
+      "jurisdictionNames": [
+        "Italy"
+      ],
+      "summary": "Total ban on gambling advertising in Italy since August 2018.",
+      "officialUrl": "https://www.adm.gov.it/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-italy-decreto-dignita-2018"
+    },
+    {
+      "id": "italy-reorganisation-decree-2024",
+      "name": "Reorganisation of Gambling Decree (2024)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "IT"
+      ],
+      "jurisdictionNames": [
+        "Italy"
+      ],
+      "summary": "New 9-year online licences offered at €7M each (€4M on award + €3M on launch); 3% GGR fee + 0.2% for responsible gambling. Two-stage ADM tender closed September 2025: 52 concessions awarded to 46 operators. From 13 November 2025 the use of secondary \"skins\" websites ended — each licensee may operate online gaming only through a single ADM-authorised domain. A new \"partial\" self-exclusion mechanism (alongside the existing general system) became operative from 1 February 2026, and Sports Betting Protocol 5.0 is the operator standard from March 2026.",
+      "officialUrl": "https://www.adm.gov.it/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-italy-reorganisation-decree-2024"
+    },
+    {
+      "id": "portugal-dl-66-2015",
+      "name": "Decreto-Lei 66/2015 (Online Gambling Act)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "PT"
+      ],
+      "jurisdictionNames": [
+        "Portugal"
+      ],
+      "summary": "Portuguese online gambling regulation administered by SRIJ.",
+      "officialUrl": "https://dre.pt/dre/detalhe/decreto-lei/66-2015-67072750",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-portugal-dl-66-2015"
+    },
+    {
+      "id": "france-loi-2010-476",
+      "name": "Loi n° 2010-476 (Online Gambling Act)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "FR"
+      ],
+      "jurisdictionNames": [
+        "France"
+      ],
+      "summary": "French online gambling framework; ANJ regulator. Loi 2024-449 added fantasy betting (JONUMs).",
+      "officialUrl": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000022204510/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-france-loi-2010-476"
+    },
+    {
+      "id": "ireland-gambling-regulation-act-2024",
+      "name": "Gambling Regulation Act 2024",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "IE"
+      ],
+      "jurisdictionNames": [
+        "Ireland"
+      ],
+      "summary": "GRAI launched 5 March 2025. B2C betting licence applications opened 9 February 2026; GRAI began issuing B2C remote betting licences on 1 July 2026 and enforcement of the licence requirement has begun; in-person operator transition from 1 December 2026. Credit card ban, 5:30am–9pm TV/radio ad blackout.",
+      "officialUrl": "https://www.irishstatutebook.ie/eli/2024/act/35/enacted/en/html",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-ireland-gambling-regulation-act-2024"
+    },
+    {
+      "id": "romania-geo-77-2009",
+      "name": "Government Emergency Ordinance No. 77/2009 (GEO 77/2009)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "RO"
+      ],
+      "jurisdictionNames": [
+        "Romania"
+      ],
+      "summary": "Romanian online gambling regulation. ONJN Order 79/2025 created unified self-exclusion register.",
+      "officialUrl": "https://www.onjn.gov.ro/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-romania-geo-77-2009"
+    },
+    {
+      "id": "greece-law-4635-2019",
+      "name": "Law 4635/2019 (Online Gambling Framework)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GR"
+      ],
+      "jurisdictionNames": [
+        "Greece"
+      ],
+      "summary": "Greek Hellenic Gaming Commission (HGC/EEEP) online gambling licensing.",
+      "officialUrl": "https://www.gamingcommission.gov.gr/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-greece-law-4635-2019"
+    },
+    {
+      "id": "czech-gambling-act-186-2016",
+      "name": "Zákon č. 186/2016 Sb. o hazardních hrách",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "CZ"
+      ],
+      "jurisdictionNames": [
+        "Czech Republic"
+      ],
+      "summary": "Czech gambling act administered by Ministry of Finance with blacklist enforcement.",
+      "officialUrl": "https://www.zakonyprolidi.cz/cs/2016-186",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-czech-gambling-act-186-2016"
+    },
+    {
+      "id": "poland-gambling-act-2009",
+      "name": "Ustawa o grach hazardowych (Gambling Act, 19 Nov 2009)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "PL"
+      ],
+      "jurisdictionNames": [
+        "Poland"
+      ],
+      "summary": "Polish gambling act with strict IP/payment blocking enforcement.",
+      "officialUrl": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20092011540",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-poland-gambling-act-2009"
+    },
+    {
+      "id": "hungary-act-xxxiv-1991",
+      "name": "Act XXXIV of 1991 on Gambling Operations",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "HU"
+      ],
+      "jurisdictionNames": [
+        "Hungary"
+      ],
+      "summary": "Hungarian gambling legislation; state monopoly model.",
+      "officialUrl": "https://njt.hu/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-hungary-act-xxxiv-1991"
+    },
+    {
+      "id": "estonia-hasartmanguseadus",
+      "name": "Hasartmänguseadus (Gambling Act)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "EE"
+      ],
+      "jurisdictionNames": [
+        "Estonia"
+      ],
+      "summary": "Estonian online gambling regulation administered by Tax and Customs Board (EMTA).",
+      "officialUrl": "https://www.riigiteataja.ee/en/eli/504012024003/consolide",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-estonia-hasartmanguseadus"
+    },
+    {
+      "id": "latvia-gambling-lotteries-law",
+      "name": "Azartspēļu un izložu likums (Gambling and Lotteries Law)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "LV"
+      ],
+      "jurisdictionNames": [
+        "Latvia"
+      ],
+      "summary": "Latvian gambling regulation administered by IAUI.",
+      "officialUrl": "https://likumi.lv/ta/en/en/id/122941",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-latvia-gambling-lotteries-law"
+    },
+    {
+      "id": "lithuania-gaming-law-2001",
+      "name": "Azartinių lošimų įstatymas (Gaming Law, 2001)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "LT"
+      ],
+      "jurisdictionNames": [
+        "Lithuania"
+      ],
+      "summary": "Lithuanian gambling regulation; 2025 tightening of advertising restrictions.",
+      "officialUrl": "https://www.e-tar.lt/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-lithuania-gaming-law-2001"
+    },
+    {
+      "id": "us-wire-act-1961",
+      "name": "Interstate Wire Act of 1961 (18 U.S.C. § 1084)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Federal prohibition on wire communications for sports wagering; scope disputed for non-sports gambling.",
+      "officialUrl": "https://www.law.cornell.edu/uscode/text/18/1084",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-wire-act-1961"
+    },
+    {
+      "id": "us-uigea-2006",
+      "name": "Unlawful Internet Gambling Enforcement Act 2006 (UIGEA)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Prohibits financial institutions from processing payments for unlawful online gambling.",
+      "officialUrl": "https://www.federalreserve.gov/supervisionreg/regggcg.htm",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-uigea-2006"
+    },
+    {
+      "id": "us-sweepstakes-bans-2025-2026",
+      "name": "US State Sweepstakes-Casino Prohibitions (2025–2026)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Sweepstakes casinos are now banned in roughly 14 states (as of July 2026). Statutory bans signed 2025–2026 include California (AB 831, signed 11 Oct 2025, effective 1 Jan 2026), Connecticut, Montana, Nevada, New Jersey, New York (signed April 2026, effective immediately with 60-day compliance window), Indiana (civil penalties from 1 July 2026), Louisiana and Tennessee (dedicated statutes signed May 2026), Maine (LD 2007, effective 14 July 2026), and Oklahoma (SB 1589 by veto override, effective 1 Nov 2026). Six state bans were signed in the first five months of 2026 alone.",
+      "officialUrl": "https://www.infolawgroup.com/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-sweepstakes-bans-2025-2026"
+    },
+    {
+      "id": "us-igra-1988",
+      "name": "Indian Gaming Regulatory Act 1988 (IGRA)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Governs gambling on Native American tribal lands; NIGC oversight.",
+      "officialUrl": "https://www.nigc.gov/general-counsel/indian-gaming-regulatory-act",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-igra-1988"
+    },
+    {
+      "id": "us-nj-igaming",
+      "name": "NJ Casino Control Act; A2578 (2013 iGaming)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "New Jersey — first US state to legalise full online casino gaming.",
+      "officialUrl": "https://www.njoag.gov/about/divisions-and-offices/division-of-gaming-enforcement-home/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-nj-igaming"
+    },
+    {
+      "id": "us-pa-igaming",
+      "name": "PA Race Horse Development and Gaming Act; Act 42 of 2017",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Pennsylvania online casino and sports betting framework.",
+      "officialUrl": "https://gamingcontrolboard.pa.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-pa-igaming"
+    },
+    {
+      "id": "us-mi-igaming",
+      "name": "Michigan Lawful Internet Gaming Act (PA 152 of 2019)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Michigan full-scale online casino and sports betting.",
+      "officialUrl": "https://www.michigan.gov/mgcb",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-mi-igaming"
+    },
+    {
+      "id": "us-ny-sports-betting",
+      "name": "NY Chapter 553, Laws of 2019 / Mobile authorization 2021",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "New York mobile sports betting launched January 2022; highest-tax model (51% of GGR).",
+      "officialUrl": "https://www.gaming.ny.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-ny-sports-betting"
+    },
+    {
+      "id": "us-il-sports-betting",
+      "name": "Illinois Sports Wagering Act (PA 101-0031, 2019)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Illinois sports betting — major market with in-person registration removed 2022.",
+      "officialUrl": "https://www.igb.illinois.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-il-sports-betting"
+    },
+    {
+      "id": "canada-criminal-code-gambling",
+      "name": "Criminal Code of Canada, Part VII (Sections 201–209)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "CA"
+      ],
+      "jurisdictionNames": [
+        "Canada"
+      ],
+      "summary": "Federal framework; gambling regulated at provincial level following C-218 amendment.",
+      "officialUrl": "https://laws-lois.justice.gc.ca/eng/acts/c-46/page-38.html",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-canada-criminal-code-gambling"
+    },
+    {
+      "id": "canada-bill-c218-2021",
+      "name": "Bill C-218 (Safe and Regulated Sports Betting Act, 2021)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "CA"
+      ],
+      "jurisdictionNames": [
+        "Canada"
+      ],
+      "summary": "Legalised single-event sports wagering in Canada effective August 2021.",
+      "officialUrl": "https://www.parl.ca/legisinfo/en/bill/43-2/c-218",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-canada-bill-c218-2021"
+    },
+    {
+      "id": "ontario-igaming-2022",
+      "name": "Gaming Control Act 1992 (Ontario); iGaming Ontario Framework (2022)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "CA"
+      ],
+      "jurisdictionNames": [
+        "Canada"
+      ],
+      "summary": "Ontario open-market iGaming launched April 2022 — Canada's largest competitive market.",
+      "officialUrl": "https://igamingontario.ca",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-ontario-igaming-2022"
+    },
+    {
+      "id": "alberta-igaming-bill48-2025",
+      "name": "iGaming Alberta Act (Bill 48, 2025) — market live July 2026",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "CA"
+      ],
+      "jurisdictionNames": [
+        "Canada"
+      ],
+      "summary": "Bill 48 (iGaming Alberta Act) passed spring 2025. The regulated private market launched 13 July 2026 with 22 operator sites live on day one (including FanDuel, DraftKings, BetMGM and BetRivers), making Alberta the second Canadian province with an open market after Ontario. Alberta iGaming Corporation (AiGC) conducts market operations; AGLC regulates. Operator registration opened 13 January 2026 (~CA$200,000 combined fees); minimum age 18.",
+      "officialUrl": "https://aglc.ca",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-alberta-igaming-bill48-2025"
+    },
+    {
+      "id": "brazil-lei-14790-2023",
+      "name": "Law No. 14,790/2023 (Lei das Apostas / Betting Law)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "BR"
+      ],
+      "jurisdictionNames": [
+        "Brazil"
+      ],
+      "summary": "Brazil sports betting and online gaming fully operational from January 2025. Grace period ended 1 January 2026; SPA moved to strict enforcement of Ordinance 722. As of 30 June 2026, 87 operators held active federal licences (14 applications pending), down from 113 in Q1 2026 after H1 2026 enforcement revoked or suspended 26 operators over COAF reporting, SIGAP self-exclusion integration and advertising-to-minors failures. First full regulated year generated BRL37bn (~US$7bn) in GGR with 25.2m bettors and BRL9.95bn in federal taxes; Q1 2026 betting tax receipts hit BRL3.4bn (+123.7% YoY). Decree 13,033 (19 June 2026) lets the SPA order banks and payment firms to freeze unlicensed operators' accounts within 24 hours; SPA/MF Ordinance 1,964/2026 (effective 3 July 2026) mandates standardised warning messages in all betting advertising. Centralised national self-exclusion platform live since 10 December 2025 (230,000+ requests logged; operators must block players within 72h of notice). .bet.br domains required. Credit cards and crypto-anonymity banned; payments must originate from CPF-verified accounts. Apple began requiring SPA licences to publish Brazilian betting apps in May 2026.",
+      "officialUrl": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14790.htm",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-brazil-lei-14790-2023"
+    },
+    {
+      "id": "brazil-spa-561-2024",
+      "name": "SPA/MF Ordinance No. 561/2024 (Licensing procedures)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "BR"
+      ],
+      "jurisdictionNames": [
+        "Brazil"
+      ],
+      "summary": "Procedural rules for Brazil SPA licensing.",
+      "officialUrl": "https://www.gov.br/fazenda/pt-br/assuntos/apostas-esportivas-e-jogos-on-line",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-brazil-spa-561-2024"
+    },
+    {
+      "id": "curacao-lok-2024",
+      "name": "Landsverordening op de Kansspelen (LOK) — new law effective Dec 2024",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "CW"
+      ],
+      "jurisdictionNames": [
+        "Curaçao"
+      ],
+      "summary": "Replaced master/sublicense system with direct CGA licensing. Green seal mandatory; orange seal expired 15 October 2025. Physical presence in Curaçao required. Mandatory ADR and tightened T&C requirements in force 2026.",
+      "officialUrl": "https://www.cga.cw/regulation/online-gaming",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-curacao-lok-2024"
+    },
+    {
+      "id": "antigua-igiwr",
+      "name": "Interactive Gaming and Interactive Wagering Regulations (IGIWR)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "AG"
+      ],
+      "jurisdictionNames": [
+        "Antigua and Barbuda"
+      ],
+      "summary": "Antigua and Barbuda FSRC online gambling licensing.",
+      "officialUrl": "https://www.fsrc.gov.ag/index.php/services/gaming",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-antigua-igiwr"
+    },
+    {
+      "id": "australia-iga-2001",
+      "name": "Interactive Gambling Act 2001 (IGA)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "AU"
+      ],
+      "jurisdictionNames": [
+        "Australia"
+      ],
+      "summary": "Prohibits most interactive gambling to Australians; sports betting and lottery exempted.",
+      "officialUrl": "https://www.legislation.gov.au/C2004A00851/latest/text",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-australia-iga-2001"
+    },
+    {
+      "id": "australia-iga-2017-amendment",
+      "name": "Interactive Gambling Amendment Act 2017",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "AU"
+      ],
+      "jurisdictionNames": [
+        "Australia"
+      ],
+      "summary": "Strengthened enforcement including in-play betting ban and credit card prohibition.",
+      "officialUrl": "https://www.legislation.gov.au/C2017A00085/latest/text",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-australia-iga-2017-amendment"
+    },
+    {
+      "id": "australia-ncpf",
+      "name": "National Consumer Protection Framework (NCPF) incl. BetStop",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "AU"
+      ],
+      "jurisdictionNames": [
+        "Australia"
+      ],
+      "summary": "10-point framework including BetStop national self-exclusion register launched August 2023.",
+      "officialUrl": "https://www.infrastructure.gov.au/media-communications/gambling/interactive-gambling",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-australia-ncpf"
+    },
+    {
+      "id": "newzealand-gambling-act-2003",
+      "name": "Gambling Act 2003",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "NZ"
+      ],
+      "jurisdictionNames": [
+        "New Zealand"
+      ],
+      "summary": "Foundational New Zealand gambling legislation. Online casino licensing is now governed by the Online Casino Gambling Act 2026.",
+      "officialUrl": "https://www.legislation.govt.nz/act/public/2003/51/en/latest/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-newzealand-gambling-act-2003"
+    },
+    {
+      "id": "nz-online-casino-gambling-act-2026",
+      "name": "Online Casino Gambling Act 2026 (New Zealand)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "NZ"
+      ],
+      "jurisdictionNames": [
+        "New Zealand"
+      ],
+      "summary": "In force 1 May 2026; the Online Casino Gambling Regulations 2026 followed from 3 July 2026. Licenses up to 15 online casino operators with extraterritorial reach. DIA opened the Expression of Interest stage 17 July 2026 (EOIs due 14 August 2026, NZ$19,000 fee; applicants must show at least NZ$7.5m capital). Next stages: licence auction September 2026, full applications from October 2026, licences issued and market live early 2027. Unlicensed offshore operators must exit the market by 1 December 2026. Credit card ban, player-set limits, and a 3.5% quarterly levy on online gambling profits.",
+      "officialUrl": "https://www.legislation.govt.nz/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-nz-online-casino-gambling-act-2026"
+    },
+    {
+      "id": "india-meity-online-gaming-2025",
+      "name": "Promotion and Regulation of Online Gaming Act, 2025 (PROGA)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "IN"
+      ],
+      "jurisdictionNames": [
+        "India"
+      ],
+      "summary": "PROGA received Presidential assent August 2025; the Promotion and Regulation of Online Gaming Rules, 2026 were notified on 22 April 2026 and entered into force on 1 May 2026. Establishes the Online Gaming Authority of India (OGAI). Prohibits online money games regardless of any skill/chance distinction. Constitutional challenges by Head Digital Works (A23), Clubboom 11 Sports, Bagheera Carrom and others were referred to a three-judge Supreme Court bench (led by CJI Surya Kant), listed from 21 January 2026. On 27 May 2026 the Supreme Court (State of Tamil Nadu v. Junglee Games) upheld the Tamil Nadu and Karnataka bans, confirming individual states retain concurrent power to regulate, restrict or ban online gaming alongside the federal PROGA framework - operators face state-by-state divergence on top of PROGA. The core constitutional challenge to PROGA remains pending before a three-judge bench. The same two-judge bench (Justices Pardiwala and Mahadevan) also upheld the 28% GST on the full face value of deposits for real-money games including fantasy sports (DG GST Intelligence v. Gameskraft, 27 May 2026); the tax has been in force since October 2023.",
+      "officialUrl": "https://www.meity.gov.in/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-india-meity-online-gaming-2025"
+    },
+    {
+      "id": "india-it-rules-2023",
+      "name": "IT (Intermediary Guidelines) Rules 2021 (amended April 2023)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "IN"
+      ],
+      "jurisdictionNames": [
+        "India"
+      ],
+      "summary": "Self-regulatory online gaming intermediary framework via MeitY.",
+      "officialUrl": "https://www.meity.gov.in/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-india-it-rules-2023"
+    },
+    {
+      "id": "singapore-gambling-control-act-2022",
+      "name": "Gambling Control Act 2022 (GCA)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "SG"
+      ],
+      "jurisdictionNames": [
+        "Singapore"
+      ],
+      "summary": "Singapore consolidated gambling legislation replacing Casino Control Act for licensing. GRA regulator.",
+      "officialUrl": "https://sso.agc.gov.sg/Act/GCA2022",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-singapore-gambling-control-act-2022"
+    },
+    {
+      "id": "singapore-casino-control-amendment-2024",
+      "name": "Casino Control (Amendment) Act 2024",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "SG"
+      ],
+      "jurisdictionNames": [
+        "Singapore"
+      ],
+      "summary": "Updated casino entry levy and responsible gambling provisions.",
+      "officialUrl": "https://sso.agc.gov.sg/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-singapore-casino-control-amendment-2024"
+    },
+    {
+      "id": "philippines-pagcor-charter",
+      "name": "Presidential Decree No. 1869 (PAGCOR Charter)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "PH"
+      ],
+      "jurisdictionNames": [
+        "Philippines"
+      ],
+      "summary": "PAGCOR authority over Philippine gambling; EO 74 (Nov 2024) banned POGOs/offshore gaming. PAGCOR is running a major 2026 licensing and accreditation overhaul for online gaming suppliers: the B2B accreditation deadline was extended from 31 July to 30 September 2026, and non-compliant suppliers risk removal of their gaming systems and platforms from operation from 1 October 2026.",
+      "officialUrl": "https://www.pagcor.ph/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-philippines-pagcor-charter"
+    },
+    {
+      "id": "sa-national-gambling-act-2004",
+      "name": "National Gambling Act 2004 (Act No. 7 of 2004)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "africa",
+      "jurisdictionCodes": [
+        "ZA"
+      ],
+      "jurisdictionNames": [
+        "South Africa"
+      ],
+      "summary": "South African provincial licensing framework; Remote Gambling Bill 2024 pending.",
+      "officialUrl": "https://www.gov.za/documents/national-gambling-act-0",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-sa-national-gambling-act-2004"
+    },
+    {
+      "id": "nigeria-national-lottery-act-2005",
+      "name": "National Lottery Act 2005 (amended)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "africa",
+      "jurisdictionCodes": [
+        "NG"
+      ],
+      "jurisdictionNames": [
+        "Nigeria"
+      ],
+      "summary": "Nigerian federal gambling framework plus Lagos State Lotteries Law (amended 2021) for largest market.",
+      "officialUrl": "https://www.nlrc.gov.ng/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-nigeria-national-lottery-act-2005"
+    },
+    {
+      "id": "kenya-gambling-control-act-2025",
+      "name": "Gambling Control Act, 2025 (Act No. 14 of 2025)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "africa",
+      "jurisdictionCodes": [
+        "KE"
+      ],
+      "jurisdictionNames": [
+        "Kenya"
+      ],
+      "summary": "New Kenya law enacted August 2025. First formal online gambling regulation. New GRA regulator. 30% Kenyan ownership, KSh 1B minimum capital. Five subsidiary regulations took effect 1 July 2026 and the GRA launched its first licensing cycle, though the High Court suspended enforcement of the Licensing Regulations on 20 July 2026 pending a legal challenge - the stay also suspends linked enforcement measures including mobile-money payment directives. Petitioners (challenging public-participation adequacy, signing authority, and steep fee increases such as bookmaker renewals rising from KES 5,000 to up to KES 2.5m) were directed to file their substantive motion within 14 days; the matter is listed for mention on 21 September 2026.",
+      "officialUrl": "https://new.kenyalaw.org/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-kenya-gambling-control-act-2025"
+    },
+    {
+      "id": "eu-amld4",
+      "name": "AMLD4 — Directive (EU) 2015/849",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "EU AML directive explicitly classifying gambling operators as obliged entities. Superseded by 2024 AML package from July 2027.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32015L0849",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-amld4"
+    },
+    {
+      "id": "eu-amld5",
+      "name": "AMLD5 — Directive (EU) 2018/843",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Strengthened beneficial ownership registers and crypto asset oversight.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32018L0843",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-amld5"
+    },
+    {
+      "id": "eu-aml-regulation-2024",
+      "name": "EU AML Regulation (EU) 2024/1624 (Single Rulebook)",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden"
+      ],
+      "summary": "Directly applicable from 10 July 2027. Replaces fragmented AMLD transpositions. Eliminates national divergence in CDD requirements.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32024R1624",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-aml-regulation-2024"
+    },
+    {
+      "id": "eu-amla-2024",
+      "name": "AMLA — Regulation (EU) 2024/1620",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden"
+      ],
+      "summary": "EU Anti-Money Laundering Authority operational 1 July 2025 in Frankfurt. Direct supervision of 40 high-risk cross-border entities from January 2028.",
+      "officialUrl": "https://www.amla.europa.eu/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-amla-2024"
+    },
+    {
+      "id": "fatf-40-recommendations",
+      "name": "FATF 40 Recommendations",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "global",
+      "jurisdictionCodes": [
+        "GB",
+        "MT",
+        "DE",
+        "FR",
+        "IT",
+        "ES",
+        "US",
+        "CA",
+        "AU",
+        "IN",
+        "JP",
+        "KR",
+        "SG",
+        "BR",
+        "ZA"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom",
+        "Malta",
+        "Germany",
+        "France",
+        "Italy",
+        "Spain",
+        "United States",
+        "Canada",
+        "Australia",
+        "India",
+        "Japan",
+        "South Korea",
+        "Singapore",
+        "Brazil",
+        "South Africa"
+      ],
+      "summary": "Global AML/CFT standard across 187+ countries. Gambling operators classified as DNFBPs (Designated Non-Financial Businesses).",
+      "officialUrl": "https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Fatf-recommendations.html",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-fatf-40-recommendations"
+    },
+    {
+      "id": "uk-ml-regulations-2017",
+      "name": "UK Money Laundering Regulations 2017 (as amended)",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GB"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom"
+      ],
+      "summary": "UK AML framework for gambling businesses post-Brexit.",
+      "officialUrl": "https://www.legislation.gov.uk/uksi/2017/692/contents",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-uk-ml-regulations-2017"
+    },
+    {
+      "id": "us-bank-secrecy-act",
+      "name": "US Bank Secrecy Act / FinCEN",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "BSA requires casinos to file SARs and CTRs; FinCEN enforcement.",
+      "officialUrl": "https://www.fincen.gov/resources/statutes-and-regulations/bank-secrecy-act",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-bank-secrecy-act"
+    },
+    {
+      "id": "canada-pcmltfa",
+      "name": "Canada Proceeds of Crime (Money Laundering) and Terrorist Financing Act",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "CA"
+      ],
+      "jurisdictionNames": [
+        "Canada"
+      ],
+      "summary": "FINTRAC oversight for Canadian gambling operators.",
+      "officialUrl": "https://fintrac-canafe.gc.ca",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-canada-pcmltfa"
+    },
+    {
+      "id": "australia-amlctf-act-2006",
+      "name": "Australia AML/CTF Act 2006",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "AU"
+      ],
+      "jurisdictionNames": [
+        "Australia"
+      ],
+      "summary": "AUSTRAC reporting obligations for Australian gambling operators.",
+      "officialUrl": "https://www.austrac.gov.au/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-australia-amlctf-act-2006"
+    },
+    {
+      "id": "brazil-spa-aml-1143-2024",
+      "name": "SPA/MF Ordinance No. 1,143/2024 (AML/KYC compliance)",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "BR"
+      ],
+      "jurisdictionNames": [
+        "Brazil"
+      ],
+      "summary": "Brazil AML/KYC requirements for licensed betting operators.",
+      "officialUrl": "https://www.gov.br/fazenda/pt-br/assuntos/apostas-esportivas-e-jogos-on-line",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-brazil-spa-aml-1143-2024"
+    },
+    {
+      "id": "curacao-cga-aml",
+      "name": "CGA AML Regulations (NOIS/NORUT)",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "CW"
+      ],
+      "jurisdictionNames": [
+        "Curaçao"
+      ],
+      "summary": "Curaçao CGA anti-money laundering rules under new LOK framework.",
+      "officialUrl": "https://www.cga.cw",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-curacao-cga-aml"
+    },
+    {
+      "id": "india-pmla-2002",
+      "name": "Prevention of Money Laundering Act 2002 (PMLA)",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "IN"
+      ],
+      "jurisdictionNames": [
+        "India"
+      ],
+      "summary": "Indian AML framework applicable to gambling entities.",
+      "officialUrl": "https://www.indiacode.nic.in/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-india-pmla-2002"
+    },
+    {
+      "id": "sa-fica",
+      "name": "South Africa Financial Intelligence Centre Act (FICA)",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "africa",
+      "jurisdictionCodes": [
+        "ZA"
+      ],
+      "jurisdictionNames": [
+        "South Africa"
+      ],
+      "summary": "FIC oversight of South African gambling AML obligations.",
+      "officialUrl": "https://www.fic.gov.za/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-sa-fica"
+    },
+    {
+      "id": "kenya-aml-cft-2025",
+      "name": "Anti-Money Laundering and CFT Laws (Amendment) Act, 2025",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "africa",
+      "jurisdictionCodes": [
+        "KE"
+      ],
+      "jurisdictionNames": [
+        "Kenya"
+      ],
+      "summary": "Updated Kenyan AML/CFT framework aligned with new Gambling Control Act.",
+      "officialUrl": "https://new.kenyalaw.org/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-kenya-aml-cft-2025"
+    },
+    {
+      "id": "eu-gdpr",
+      "name": "GDPR — Regulation (EU) 2016/679",
+      "category": "data",
+      "categoryLabel": "Data Protection",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Primary EU data protection regulation. Extraterritorial scope. Fines up to €20M or 4% of global turnover.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32016R0679",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-gdpr"
+    },
+    {
+      "id": "eu-eprivacy-directive",
+      "name": "ePrivacy Directive 2002/58/EC (as amended)",
+      "category": "data",
+      "categoryLabel": "Data Protection",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Cookie consent and electronic communications privacy.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32002L0058",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-eprivacy-directive"
+    },
+    {
+      "id": "uk-dpa-2018",
+      "name": "UK Data Protection Act 2018 / UK GDPR",
+      "category": "data",
+      "categoryLabel": "Data Protection",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GB"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom"
+      ],
+      "summary": "UK equivalent of GDPR post-Brexit, enforced by ICO.",
+      "officialUrl": "https://www.legislation.gov.uk/ukpga/2018/12/contents",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-uk-dpa-2018"
+    },
+    {
+      "id": "us-ccpa-cpra",
+      "name": "CCPA / CPRA — California Consumer Privacy Act",
+      "category": "data",
+      "categoryLabel": "Data Protection",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "California privacy law effective 2020 / amended CPRA 2023. Applies to operators processing California residents' data.",
+      "officialUrl": "https://oag.ca.gov/privacy/ccpa",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-ccpa-cpra"
+    },
+    {
+      "id": "brazil-lgpd",
+      "name": "LGPD — Lei Geral de Proteção de Dados (Lei nº 13.709/2018)",
+      "category": "data",
+      "categoryLabel": "Data Protection",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "BR"
+      ],
+      "jurisdictionNames": [
+        "Brazil"
+      ],
+      "summary": "Brazilian data protection law. ANPD enforcement authority.",
+      "officialUrl": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-brazil-lgpd"
+    },
+    {
+      "id": "australia-privacy-act-1988",
+      "name": "Privacy Act 1988 (Cth)",
+      "category": "data",
+      "categoryLabel": "Data Protection",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "AU"
+      ],
+      "jurisdictionNames": [
+        "Australia"
+      ],
+      "summary": "Australian Privacy Principles for operators processing Australian data.",
+      "officialUrl": "https://www.legislation.gov.au/C2004A03712/latest/text",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-australia-privacy-act-1988"
+    },
+    {
+      "id": "canada-pipeda",
+      "name": "PIPEDA — Personal Information Protection and Electronic Documents Act",
+      "category": "data",
+      "categoryLabel": "Data Protection",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "CA"
+      ],
+      "jurisdictionNames": [
+        "Canada"
+      ],
+      "summary": "Canadian federal privacy law for private sector. Quebec Law 25 adds stricter requirements.",
+      "officialUrl": "https://laws-lois.justice.gc.ca/eng/acts/P-8.6/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-canada-pipeda"
+    },
+    {
+      "id": "sa-popia",
+      "name": "POPIA — Protection of Personal Information Act 4 of 2013",
+      "category": "data",
+      "categoryLabel": "Data Protection",
+      "region": "africa",
+      "jurisdictionCodes": [
+        "ZA"
+      ],
+      "jurisdictionNames": [
+        "South Africa"
+      ],
+      "summary": "South African GDPR-equivalent. ICRSA enforcement.",
+      "officialUrl": "https://www.gov.za/documents/protection-personal-information-act",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-sa-popia"
+    },
+    {
+      "id": "india-dpdp-2023",
+      "name": "Digital Personal Data Protection Act 2023 (DPDP)",
+      "category": "data",
+      "categoryLabel": "Data Protection",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "IN"
+      ],
+      "jurisdictionNames": [
+        "India"
+      ],
+      "summary": "Indian data protection law. Full compliance required by May 2027.",
+      "officialUrl": "https://www.meity.gov.in/data-protection-framework",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-india-dpdp-2023"
+    },
+    {
+      "id": "kenya-data-protection-act",
+      "name": "Data Protection Act (Kenya)",
+      "category": "data",
+      "categoryLabel": "Data Protection",
+      "region": "africa",
+      "jurisdictionCodes": [
+        "KE"
+      ],
+      "jurisdictionNames": [
+        "Kenya"
+      ],
+      "summary": "Kenyan data protection framework enforced by ODPC.",
+      "officialUrl": "https://new.kenyalaw.org/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-kenya-data-protection-act"
+    },
+    {
+      "id": "philippines-data-privacy-act",
+      "name": "Data Privacy Act (Republic Act No. 10173)",
+      "category": "data",
+      "categoryLabel": "Data Protection",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "PH"
+      ],
+      "jurisdictionNames": [
+        "Philippines"
+      ],
+      "summary": "Philippine data privacy law administered by National Privacy Commission.",
+      "officialUrl": "https://www.privacy.gov.ph/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-philippines-data-privacy-act"
+    },
+    {
+      "id": "eu-psd2",
+      "name": "PSD2 — Directive (EU) 2015/2366",
+      "category": "financial",
+      "categoryLabel": "Financial",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Payment Services Directive 2. SCA requirements directly impact deposit flows. PSD3 provisional agreement November 2025; Council position April 2026, formal adoption expected mid-to-late 2026.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32015L2366",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-psd2"
+    },
+    {
+      "id": "eu-mica-2023",
+      "name": "MiCA — Regulation (EU) 2023/1114 (Markets in Crypto-Assets)",
+      "category": "financial",
+      "categoryLabel": "Financial",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden"
+      ],
+      "summary": "Fully applicable December 2024. The transitional period for legacy crypto-asset service providers ended 1 July 2026 — any entity now providing crypto-asset services to EU clients without a MiCA licence is in breach of EU law. Governs crypto-asset payments including those accepted by gambling operators. iGaming operators accepting cryptocurrencies or stablecoins from EU players face additional licensing, KYC and AML obligations including blockchain transaction analysis, Source of Funds checks, real-time transaction monitoring and (for asset-referenced tokens under Art. 58) auditable 1:1 reserve backing with quarterly third-party attestations.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32023R1114",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-mica-2023"
+    },
+    {
+      "id": "eu-dora-2022",
+      "name": "DORA — Regulation (EU) 2022/2554 (Digital Operational Resilience Act)",
+      "category": "financial",
+      "categoryLabel": "Financial",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden"
+      ],
+      "summary": "Applicable January 2025. Imposes digital resilience requirements on financial entities and their ICT providers — captures iGaming payment infrastructure.",
+      "officialUrl": "https://eur-lex.europa.eu/eli/reg/2022/2554/oj",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-dora-2022"
+    },
+    {
+      "id": "eu-sca-2018",
+      "name": "SCA — Commission Delegated Regulation (EU) 2018/389",
+      "category": "financial",
+      "categoryLabel": "Financial",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Strong Customer Authentication requirements for payment services including gambling deposits.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32018R0389",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-sca-2018"
+    },
+    {
+      "id": "eu-dsa",
+      "name": "EU Digital Services Act (DSA) — Regulation (EU) 2022/2065",
+      "category": "digital",
+      "categoryLabel": "Digital & AI",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Transparency and advertising obligations for online platforms including iGaming sites. Extraterritorial scope.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32022R2065",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-dsa"
+    },
+    {
+      "id": "eu-ai-act-2024",
+      "name": "EU AI Act — Regulation (EU) 2024/1689",
+      "category": "digital",
+      "categoryLabel": "Digital & AI",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Risk-based AI regulation. Prohibitions since February 2025; transparency obligations from August 2026. Under the 2026 Digital Omnibus, high-risk (Annex III) obligations — the classification most relevant to player risk profiling and personalised marketing — are deferred to 2 December 2027 (Annex I embedded AI: 2 August 2028).",
+      "officialUrl": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-ai-act-2024"
+    },
+    {
+      "id": "eu-accessibility-act",
+      "name": "European Accessibility Act — Directive (EU) 2019/882",
+      "category": "digital",
+      "categoryLabel": "Digital & AI",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Mandatory from 28 June 2025. Requires iGaming platforms to meet WCAG 2.1 AA standards.",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2019/882/oj/eng",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-accessibility-act"
+    },
+    {
+      "id": "eu-nis2",
+      "name": "NIS2 Directive — Directive (EU) 2022/2555",
+      "category": "digital",
+      "categoryLabel": "Digital & AI",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Cybersecurity requirements for essential and important entities; applies to large iGaming operators.",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2022/2555/oj",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-nis2"
+    },
+    {
+      "id": "uk-online-safety-act-2023",
+      "name": "UK Online Safety Act 2023",
+      "category": "digital",
+      "categoryLabel": "Digital & AI",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GB"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom"
+      ],
+      "summary": "Ofcom regulation of online services including gambling platforms with user-generated content features.",
+      "officialUrl": "https://www.legislation.gov.uk/ukpga/2023/50",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-uk-online-safety-act-2023"
+    },
+    {
+      "id": "uk-childrens-code",
+      "name": "UK Age Appropriate Design Code (Children's Code)",
+      "category": "digital",
+      "categoryLabel": "Digital & AI",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GB"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom"
+      ],
+      "summary": "ICO code requiring high privacy protection for under-18s. Relevant to age verification on gambling sites.",
+      "officialUrl": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-uk-childrens-code"
+    },
+    {
+      "id": "us-coppa",
+      "name": "COPPA — Children's Online Privacy Protection Act",
+      "category": "digital",
+      "categoryLabel": "Digital & AI",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "FTC rule protecting under-13s online privacy; relevant to gambling age verification compliance.",
+      "officialUrl": "https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-coppa"
+    },
+    {
+      "id": "eu-avmsd-2018",
+      "name": "AVMSD — Directive (EU) 2018/1808",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Audiovisual Media Services Directive. Member states may restrict gambling advertising on TV/streaming.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32018L1808",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-avmsd-2018"
+    },
+    {
+      "id": "uk-cap-codes",
+      "name": "UK ASA/CAP Codes — Gambling sections (Section 16)",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GB"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom"
+      ],
+      "summary": "CAP/BCAP codes governing gambling advertising. Mandatory opt-in for direct marketing from May 2025.",
+      "officialUrl": "https://www.asa.org.uk/codes-and-rulings/advertising-codes.html",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-uk-cap-codes"
+    },
+    {
+      "id": "uk-pecr",
+      "name": "PECR — Privacy and Electronic Communications Regulations 2003",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GB"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom"
+      ],
+      "summary": "UK direct marketing rules governing email, SMS and cookie consent.",
+      "officialUrl": "https://www.legislation.gov.uk/uksi/2003/2426/contents",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-uk-pecr"
+    },
+    {
+      "id": "spain-rd-958-2020",
+      "name": "Real Decreto 958/2020 (Spanish gambling advertising decree)",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "ES"
+      ],
+      "jurisdictionNames": [
+        "Spain"
+      ],
+      "summary": "Severe Spanish advertising restrictions: no TV/radio 1am–5am; no celebrity/sports ambassadors; welcome bonuses only to verified existing players.",
+      "officialUrl": "https://www.boe.es/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-spain-rd-958-2020"
+    },
+    {
+      "id": "italy-decreto-dignita-advertising",
+      "name": "Decreto Dignità — Law 96/2018 (Italian gambling advertising ban)",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "IT"
+      ],
+      "jurisdictionNames": [
+        "Italy"
+      ],
+      "summary": "Total advertising ban for gambling in Italy since August 2018. No exceptions for sports sponsorship or streaming.",
+      "officialUrl": "https://www.gazzettaufficiale.it/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-italy-decreto-dignita-advertising"
+    },
+    {
+      "id": "netherlands-ksa-advertising-decree",
+      "name": "KSA Decree on Recruitment, Advertising and Addiction Prevention",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "NL"
+      ],
+      "jurisdictionNames": [
+        "Netherlands"
+      ],
+      "summary": "Netherlands banned untargeted gambling advertising from July 2023.",
+      "officialUrl": "https://kansspelautoriteit.nl/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-netherlands-ksa-advertising-decree"
+    },
+    {
+      "id": "ireland-gambling-act-advertising",
+      "name": "Ireland Gambling Regulation Act 2024 — advertising provisions",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "IE"
+      ],
+      "jurisdictionNames": [
+        "Ireland"
+      ],
+      "summary": "5:30am–9pm TV/radio ad blackout. Bans sports sponsorship involving under-18 teams. National Gambling Exclusion Register.",
+      "officialUrl": "https://www.irishstatutebook.ie/eli/2024/act/35/enacted/en/html",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-ireland-gambling-act-advertising"
+    },
+    {
+      "id": "belgium-gaming-act-advertising-2024",
+      "name": "Belgian Gaming Act advertising amendments (Feb 2024)",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "BE"
+      ],
+      "jurisdictionNames": [
+        "Belgium"
+      ],
+      "summary": "Tightened Belgian advertising rules following 2024 amendment.",
+      "officialUrl": "https://www.gamingcommission.be/en",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-belgium-gaming-act-advertising-2024"
+    },
+    {
+      "id": "romania-onjn-advertising-2025",
+      "name": "Romania ONJN advertising provisions (celebrity ban, Oct 2025)",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "RO"
+      ],
+      "jurisdictionNames": [
+        "Romania"
+      ],
+      "summary": "Romania celebrity/influencer advertising ban effective October 2025.",
+      "officialUrl": "https://www.onjn.gov.ro/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-romania-onjn-advertising-2025"
+    },
+    {
+      "id": "us-can-spam",
+      "name": "CAN-SPAM Act of 2003",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "US federal email marketing rules. Applies to promotional emails from gambling operators.",
+      "officialUrl": "https://www.ftc.gov/legal-library/browse/rules/can-spam-rule",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-can-spam"
+    },
+    {
+      "id": "australia-ncpf-advertising",
+      "name": "Australia NCPF responsible gambling messaging requirements",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "AU"
+      ],
+      "jurisdictionNames": [
+        "Australia"
+      ],
+      "summary": "Mandatory responsible gambling messaging in all advertising. Ad ban during live sports under ongoing discussion.",
+      "officialUrl": "https://www.infrastructure.gov.au/media-communications/gambling/interactive-gambling",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-australia-ncpf-advertising"
+    },
+    {
+      "id": "kenya-gra-celebrity-ban-2025",
+      "name": "Kenya GRA celebrity/influencer advertising ban (May 2025)",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "africa",
+      "jurisdictionCodes": [
+        "KE"
+      ],
+      "jurisdictionNames": [
+        "Kenya"
+      ],
+      "summary": "Kenya banned celebrity and influencer gambling advertising from May 2025. BCLB replaced by Gambling Regulatory Authority (GRA) under the Gambling Control Act 2025.",
+      "officialUrl": "https://bclb.go.ke/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-kenya-gra-celebrity-ban-2025"
+    },
+    {
+      "id": "india-mib-advisories",
+      "name": "India MIB Advisories on online betting advertising (2022–2024)",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "IN"
+      ],
+      "jurisdictionNames": [
+        "India"
+      ],
+      "summary": "Ministry of Information and Broadcasting advisories restricting online betting advertising across TV, digital and print.",
+      "officialUrl": "https://mib.gov.in/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-india-mib-advisories"
+    },
+    {
+      "id": "uk-national-lottery-act-1993",
+      "name": "National Lottery Act 1993 (as amended)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GB"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom"
+      ],
+      "summary": "Regulates the UK National Lottery including online ticket sales via Camelot/Allwyn.",
+      "officialUrl": "https://www.legislation.gov.uk/ukpga/1993/39/contents",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-uk-national-lottery-act-1993"
+    },
+    {
+      "id": "gibraltar-generic-code",
+      "name": "Gibraltar Generic Code of Practice for Gambling",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GI"
+      ],
+      "jurisdictionNames": [
+        "Gibraltar"
+      ],
+      "summary": "Operational requirements for all Gibraltar-licensed gambling operators.",
+      "officialUrl": "https://www.gibraltar.gov.gi/finance-gaming-and-regulations/remote-gambling",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-gibraltar-generic-code"
+    },
+    {
+      "id": "gibraltar-aml-code",
+      "name": "Gibraltar AML Code of Practice for Gambling",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GI"
+      ],
+      "jurisdictionNames": [
+        "Gibraltar"
+      ],
+      "summary": "AML/CFT obligations specifically for Gibraltar gambling licence holders.",
+      "officialUrl": "https://www.gibraltar.gov.gi/finance-gaming-and-regulations/remote-gambling",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-gibraltar-aml-code"
+    },
+    {
+      "id": "iom-casino-act-1986",
+      "name": "Casino Act 1986 (Isle of Man)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "IM"
+      ],
+      "jurisdictionNames": [
+        "Isle of Man"
+      ],
+      "summary": "Isle of Man casino licensing foundation.",
+      "officialUrl": "https://legislation.gov.im/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-iom-casino-act-1986"
+    },
+    {
+      "id": "iom-gaming-betting-lotteries-1988",
+      "name": "Gaming, Betting and Lotteries Act 1988 (Isle of Man)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "IM"
+      ],
+      "jurisdictionNames": [
+        "Isle of Man"
+      ],
+      "summary": "Isle of Man betting and lottery regulation.",
+      "officialUrl": "https://legislation.gov.im/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-iom-gaming-betting-lotteries-1988"
+    },
+    {
+      "id": "iom-online-gambling-advertising-2007",
+      "name": "Online Gambling (Advertising) Regulations 2007 (Isle of Man)",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "IM"
+      ],
+      "jurisdictionNames": [
+        "Isle of Man"
+      ],
+      "summary": "Isle of Man advertising rules for online gambling operators.",
+      "officialUrl": "https://legislation.gov.im/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-iom-online-gambling-advertising-2007"
+    },
+    {
+      "id": "alderney-law-1999",
+      "name": "Gambling (Alderney) Law 1999",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GG"
+      ],
+      "jurisdictionNames": [
+        "Alderney / Guernsey"
+      ],
+      "summary": "Foundational Alderney gambling enabling law.",
+      "officialUrl": "https://www.gamblingcontrol.org/regulation-framework/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-alderney-law-1999"
+    },
+    {
+      "id": "alderney-egambling-regs-2009",
+      "name": "Alderney eGambling Regulations 2009",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GG"
+      ],
+      "jurisdictionNames": [
+        "Alderney / Guernsey"
+      ],
+      "summary": "Detailed operational and technical requirements for AGCC licensees.",
+      "officialUrl": "https://www.gamblingcontrol.org/regulation-framework/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-alderney-egambling-regs-2009"
+    },
+    {
+      "id": "sweden-gambling-tax-act-2018",
+      "name": "Gambling Tax Act (2018:1139)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "SE"
+      ],
+      "jurisdictionNames": [
+        "Sweden"
+      ],
+      "summary": "Swedish gambling tax — 18% of GGR for online casino, 8% for sports betting.",
+      "officialUrl": "https://www.riksdagen.se/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-sweden-gambling-tax-act-2018"
+    },
+    {
+      "id": "sweden-gambling-ordinance-2018",
+      "name": "Gambling Ordinance (2018:1475)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "SE"
+      ],
+      "jurisdictionNames": [
+        "Sweden"
+      ],
+      "summary": "Implementing ordinance for the Swedish Gambling Act.",
+      "officialUrl": "https://www.riksdagen.se/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-sweden-gambling-ordinance-2018"
+    },
+    {
+      "id": "denmark-executive-orders-spilleloven",
+      "name": "Executive Orders under Spilleloven",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "DK"
+      ],
+      "jurisdictionNames": [
+        "Denmark"
+      ],
+      "summary": "Subordinate Danish legislation implementing the Gambling Act.",
+      "officialUrl": "https://www.spillemyndigheden.dk/en/legal-framework",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-denmark-executive-orders-spilleloven"
+    },
+    {
+      "id": "germany-spielverordnung",
+      "name": "Spielverordnung (Federal Gaming Ordinance)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "DE"
+      ],
+      "jurisdictionNames": [
+        "Germany"
+      ],
+      "summary": "German machine gaming technical standards regulation.",
+      "officialUrl": "https://www.gesetze-im-internet.de/spvo_2006/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-germany-spielverordnung"
+    },
+    {
+      "id": "netherlands-wet-op-de-kansspelen-1964",
+      "name": "Wet op de kansspelen (Betting and Gaming Act 1964, as amended)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "NL"
+      ],
+      "jurisdictionNames": [
+        "Netherlands"
+      ],
+      "summary": "Original Dutch gambling act; KOA 2021 added online gaming layer.",
+      "officialUrl": "https://wetten.overheid.nl/BWBR0002469/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-netherlands-wet-op-de-kansspelen-1964"
+    },
+    {
+      "id": "switzerland-geldspielverordnung",
+      "name": "Geldspielverordnung (Gaming Ordinance)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "CH"
+      ],
+      "jurisdictionNames": [
+        "Switzerland"
+      ],
+      "summary": "Swiss implementing ordinance for the Geldspielgesetz.",
+      "officialUrl": "https://www.fedlex.admin.ch/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-switzerland-geldspielverordnung"
+    },
+    {
+      "id": "switzerland-esbk-aml",
+      "name": "ESBK Money Laundering Ordinance (Gaming)",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "CH"
+      ],
+      "jurisdictionNames": [
+        "Switzerland"
+      ],
+      "summary": "Swiss gaming-specific AML obligations from ESBK.",
+      "officialUrl": "https://www.esbk.admin.ch/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-switzerland-esbk-aml"
+    },
+    {
+      "id": "spain-rd-1614-2011",
+      "name": "Real Decreto 1614/2011 (Licensing and Registration)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "ES"
+      ],
+      "jurisdictionNames": [
+        "Spain"
+      ],
+      "summary": "Spanish licensing procedures and operator registration requirements under DGOJ.",
+      "officialUrl": "https://www.boe.es/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-spain-rd-1614-2011"
+    },
+    {
+      "id": "italy-legge-bersani-2006",
+      "name": "Legge Bersani (Law No. 248/2006)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "IT"
+      ],
+      "jurisdictionNames": [
+        "Italy"
+      ],
+      "summary": "Italian iGaming licensing liberalisation; opened online betting to private operators.",
+      "officialUrl": "https://www.gazzettaufficiale.it/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-italy-legge-bersani-2006"
+    },
+    {
+      "id": "italy-legislative-decree-496-1948",
+      "name": "Legislative Decree No. 496/1948",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "IT"
+      ],
+      "jurisdictionNames": [
+        "Italy"
+      ],
+      "summary": "Foundational Italian gambling legislation establishing state monopoly.",
+      "officialUrl": "https://www.gazzettaufficiale.it/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-italy-legislative-decree-496-1948"
+    },
+    {
+      "id": "france-code-securite-interieure",
+      "name": "Code de la Sécurité Intérieure (Articles L.320-1 et seq.)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "FR"
+      ],
+      "jurisdictionNames": [
+        "France"
+      ],
+      "summary": "French criminal code provisions on unlicensed gambling.",
+      "officialUrl": "https://www.legifrance.gouv.fr/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-france-code-securite-interieure"
+    },
+    {
+      "id": "france-loi-2024-449",
+      "name": "Loi n° 2024-449 (Fantasy Betting / JONUMs)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "FR"
+      ],
+      "jurisdictionNames": [
+        "France"
+      ],
+      "summary": "French fantasy sports betting (Jeux de Pronostics à Univers Multiple) regulatory framework.",
+      "officialUrl": "https://www.legifrance.gouv.fr/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-france-loi-2024-449"
+    },
+    {
+      "id": "romania-gov-decision-111-2016",
+      "name": "Government Decision No. 111/2016 (Methodological Norms)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "RO"
+      ],
+      "jurisdictionNames": [
+        "Romania"
+      ],
+      "summary": "Romanian methodological norms implementing GEO 77/2009.",
+      "officialUrl": "https://www.onjn.gov.ro/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-romania-gov-decision-111-2016"
+    },
+    {
+      "id": "romania-geo-114-2018",
+      "name": "Government Emergency Ordinance No. 114/2018",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "RO"
+      ],
+      "jurisdictionNames": [
+        "Romania"
+      ],
+      "summary": "Romanian gaming tax amendments.",
+      "officialUrl": "https://www.onjn.gov.ro/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-romania-geo-114-2018"
+    },
+    {
+      "id": "romania-onjn-order-79-2025",
+      "name": "ONJN Order 79/2025 (Unified Self-Exclusion)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "RO"
+      ],
+      "jurisdictionNames": [
+        "Romania"
+      ],
+      "summary": "Romanian national self-exclusion register launched 2025.",
+      "officialUrl": "https://www.onjn.gov.ro/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-romania-onjn-order-79-2025"
+    },
+    {
+      "id": "greece-law-4002-2011",
+      "name": "Law 4002/2011 (Gambling Regulation)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "GR"
+      ],
+      "jurisdictionNames": [
+        "Greece"
+      ],
+      "summary": "Greek gambling regulation framework. HGC/EEEP regulator.",
+      "officialUrl": "https://www.gamingcommission.gov.gr/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-greece-law-4002-2011"
+    },
+    {
+      "id": "estonia-gambling-tax-act",
+      "name": "Estonian Gambling Tax Act",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "EE"
+      ],
+      "jurisdictionNames": [
+        "Estonia"
+      ],
+      "summary": "Estonian gambling tax framework.",
+      "officialUrl": "https://www.riigiteataja.ee/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-estonia-gambling-tax-act"
+    },
+    {
+      "id": "latvia-gambling-tax-law",
+      "name": "Latvian Gambling Tax Law",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "LV"
+      ],
+      "jurisdictionNames": [
+        "Latvia"
+      ],
+      "summary": "Latvian gambling taxation.",
+      "officialUrl": "https://likumi.lv/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-latvia-gambling-tax-law"
+    },
+    {
+      "id": "lithuania-lotteries-act-2003",
+      "name": "Loterijų įstatymas (Law on Lotteries, 2003)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "LT"
+      ],
+      "jurisdictionNames": [
+        "Lithuania"
+      ],
+      "summary": "Lithuanian lotteries regulation.",
+      "officialUrl": "https://www.e-tar.lt/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-lithuania-lotteries-act-2003"
+    },
+    {
+      "id": "lithuania-advertising-restrictions-2025",
+      "name": "Lithuania gambling advertising restrictions (2025 tightening)",
+      "category": "advertising",
+      "categoryLabel": "Advertising",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "LT"
+      ],
+      "jurisdictionNames": [
+        "Lithuania"
+      ],
+      "summary": "Lithuania tightened gambling advertising rules significantly in 2025.",
+      "officialUrl": "https://lpt.lrv.lt/en/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-lithuania-advertising-restrictions-2025"
+    },
+    {
+      "id": "us-paspa-1992",
+      "name": "Professional and Amateur Sports Protection Act 1992 (PASPA) — repealed 2018",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Federal sports betting prohibition struck down by Supreme Court (Murphy v. NCAA) May 2018, enabling state legalisation.",
+      "officialUrl": "https://www.congress.gov/bill/102nd-congress/senate-bill/474",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-paspa-1992"
+    },
+    {
+      "id": "us-illegal-gambling-business-act",
+      "name": "Illegal Gambling Business Act (18 U.S.C. § 1955)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Federal criminal prohibition on illegal gambling businesses with 5+ participants.",
+      "officialUrl": "https://www.law.cornell.edu/uscode/text/18/1955",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-illegal-gambling-business-act"
+    },
+    {
+      "id": "us-interstate-horseracing-act-1978",
+      "name": "Interstate Horseracing Act 1978",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Authorises interstate off-track horse race wagering; carve-out from Wire Act.",
+      "officialUrl": "https://www.law.cornell.edu/uscode/text/15/chapter-57",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-interstate-horseracing-act-1978"
+    },
+    {
+      "id": "us-regulation-gg",
+      "name": "Regulation GG (12 C.F.R. Part 233) — UIGEA implementing regulation",
+      "category": "financial",
+      "categoryLabel": "Financial",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "UIGEA implementing regulation requiring financial institutions to block restricted transactions.",
+      "officialUrl": "https://www.fdic.gov/news/financial-institution-letters/2010/fil10035a.pdf",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-regulation-gg"
+    },
+    {
+      "id": "us-wv-igaming",
+      "name": "WV Lottery Interactive Wagering Act (HB 2934, 2019)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "West Virginia online casino and sports betting.",
+      "officialUrl": "https://wvlottery.com",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-wv-igaming"
+    },
+    {
+      "id": "us-ct-igaming",
+      "name": "Connecticut Public Act 21-23 (2021, tribal compact-based)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Connecticut online casino via Mohegan Sun and Foxwoods tribal compacts.",
+      "officialUrl": "https://portal.ct.gov/DCP",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-ct-igaming"
+    },
+    {
+      "id": "us-de-igaming",
+      "name": "Delaware Gaming Competitiveness Act 2012 (HB 333)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Delaware first US state to legalise full online gambling (November 2013).",
+      "officialUrl": "https://www.delottery.com",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-de-igaming"
+    },
+    {
+      "id": "us-ri-igaming",
+      "name": "Rhode Island iGaming Act (2023)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Rhode Island online casino legislation.",
+      "officialUrl": "https://www.rilot.com",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-ri-igaming"
+    },
+    {
+      "id": "us-nv-igaming",
+      "name": "Nevada AB 114 (2013, online poker) / NRS 463",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Nevada online poker only (no full casino games); first US online poker market.",
+      "officialUrl": "https://gaming.nv.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-nv-igaming"
+    },
+    {
+      "id": "us-me-igaming",
+      "name": "Maine LD 1164 (Jan 2026, tribal-exclusive iGaming)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Maine tribal-exclusive online casino framework, effective January 2026.",
+      "officialUrl": "https://www.maine.gov/dps/gamb-control",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-me-igaming"
+    },
+    {
+      "id": "us-il-igaming-2026",
+      "name": "Illinois HB 1167 / HB 4797 (iGaming, 2026 — pending)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Illinois iGaming remains pending: HB 1167 cleared committee in late January 2026 but did not receive a floor vote before the summer recess. A parallel bill, HB 4797 (Rep. Edgar González Jr., introduced February 2026; 25% tax, US$250,000 licence fee), is also pending. No US state has been added to the eight regulated iGaming markets (CT, DE, MI, NJ, PA, RI, WV and ME) in 2026 to date. Fiscal estimates project nearly US$400m in annual tax revenue at maturity.",
+      "officialUrl": "https://www.ilga.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-il-igaming-2026"
+    },
+    {
+      "id": "us-az-sports",
+      "name": "Arizona HB 2772 (2021)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Arizona sports betting.",
+      "officialUrl": "https://gaming.az.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-az-sports"
+    },
+    {
+      "id": "us-co-sports",
+      "name": "Colorado HB 19-1327 / Proposition DD (2019)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Colorado sports betting — 10% of tax revenue goes to water conservation.",
+      "officialUrl": "https://sbg.colorado.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-co-sports"
+    },
+    {
+      "id": "us-in-sports",
+      "name": "Indiana HB 1015 (2019)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Indiana sports betting.",
+      "officialUrl": "https://www.in.gov/igc",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-in-sports"
+    },
+    {
+      "id": "us-ia-sports",
+      "name": "Iowa SF 617 (2019)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Iowa sports betting.",
+      "officialUrl": "https://irgc.iowa.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-ia-sports"
+    },
+    {
+      "id": "us-ks-sports",
+      "name": "Kansas SB 84 (2022)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Kansas sports betting.",
+      "officialUrl": "https://krgc.ks.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-ks-sports"
+    },
+    {
+      "id": "us-ky-sports",
+      "name": "Kentucky HB 551 (2023)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Kentucky sports betting launched September 2023.",
+      "officialUrl": "https://khrc.ky.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-ky-sports"
+    },
+    {
+      "id": "us-la-sports",
+      "name": "Louisiana SB 247 (2021)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Louisiana sports betting; 55 of 64 parishes approved by local referendum.",
+      "officialUrl": "https://lgcb.dps.louisiana.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-la-sports"
+    },
+    {
+      "id": "us-md-sports",
+      "name": "Maryland HB 940 (2021) / Question 2 ballot (2020)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Maryland sports betting.",
+      "officialUrl": "https://www.mdgaming.com",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-md-sports"
+    },
+    {
+      "id": "us-ma-sports",
+      "name": "Massachusetts Sports Wagering Act (Ch. 164, Acts of 2022)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Massachusetts sports betting.",
+      "officialUrl": "https://massgaming.com",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-ma-sports"
+    },
+    {
+      "id": "us-mo-sports",
+      "name": "Missouri Amendment 2 (2024 ballot)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Missouri sports betting approved by voters November 2024.",
+      "officialUrl": "https://www.mgc.dps.mo.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-mo-sports"
+    },
+    {
+      "id": "us-nc-sports",
+      "name": "North Carolina HB 347 (2023)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "North Carolina online sports betting launched March 2024.",
+      "officialUrl": "https://www.nclottery.com",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-nc-sports"
+    },
+    {
+      "id": "us-oh-sports",
+      "name": "Ohio HB 29 (2021)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Ohio sports betting launched January 2023.",
+      "officialUrl": "https://casinocontrol.ohio.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-oh-sports"
+    },
+    {
+      "id": "us-tn-sports",
+      "name": "Tennessee Sports Gaming Act (2019)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Tennessee online-only sports betting; no retail sportsbooks.",
+      "officialUrl": "https://www.tn.gov/swac.html",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-tn-sports"
+    },
+    {
+      "id": "us-vt-sports",
+      "name": "Vermont Act 75 of 2023",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Vermont sports betting.",
+      "officialUrl": "https://liquorandlottery.vermont.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-vt-sports"
+    },
+    {
+      "id": "us-va-sports",
+      "name": "Virginia HB 896/SB 384 (2020)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Virginia sports betting.",
+      "officialUrl": "https://www.valottery.com",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-va-sports"
+    },
+    {
+      "id": "us-wy-sports",
+      "name": "Wyoming HB 133 (2021)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Wyoming online-only sports betting.",
+      "officialUrl": "https://gaming.wyo.gov",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-wy-sports"
+    },
+    {
+      "id": "us-wi-sports-2026",
+      "name": "Wisconsin Online Sports Betting Act (signed 9 April 2026)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United States"
+      ],
+      "summary": "Online sports betting only (not online casino). Signed by Governor Tony Evers 9 April 2026. Launch contingent on renegotiation and federal approval of tribal-state compacts — each of the four federally-recognised Wisconsin tribes may partner with one third-party operator. No state-licensed online casino games legal.",
+      "officialUrl": "https://docs.legis.wisconsin.gov/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-us-wi-sports-2026"
+    },
+    {
+      "id": "bc-gaming-control-act",
+      "name": "Gaming Control Act (SBC 2002, c.14)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "CA"
+      ],
+      "jurisdictionNames": [
+        "Canada"
+      ],
+      "summary": "British Columbia gambling framework administered by BCLC.",
+      "officialUrl": "https://www2.gov.bc.ca/gov/content/sports-culture/gambling",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-bc-gaming-control-act"
+    },
+    {
+      "id": "quebec-racj",
+      "name": "Société des loteries du Québec Act / RACJ",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "CA"
+      ],
+      "jurisdictionNames": [
+        "Canada"
+      ],
+      "summary": "Quebec gambling regulation — Loto-Québec state monopoly for most products.",
+      "officialUrl": "https://www.racj.gouv.qc.ca",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-quebec-racj"
+    },
+    {
+      "id": "kahnawake-gaming-law-1996",
+      "name": "Kahnawake Gaming Law (K.R.L. c. G-1, 1996)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "CA"
+      ],
+      "jurisdictionNames": [
+        "Canada"
+      ],
+      "summary": "Kahnawake Mohawk Territory gaming law; basis for KGC online gambling licensing.",
+      "officialUrl": "https://gamingcommission.ca",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-kahnawake-gaming-law-1996"
+    },
+    {
+      "id": "kahnawake-interactive-gaming-regs",
+      "name": "Regulations Concerning Interactive Gaming (1999, amended 2020)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "CA"
+      ],
+      "jurisdictionNames": [
+        "Canada"
+      ],
+      "summary": "KGC online gambling operator licensing regulations.",
+      "officialUrl": "https://gamingcommission.ca/interactive-gaming/regulations/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-kahnawake-interactive-gaming-regs"
+    },
+    {
+      "id": "brazil-lei-13756-2018",
+      "name": "Law No. 13,756/2018 (Initial sports betting authorization)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "BR"
+      ],
+      "jurisdictionNames": [
+        "Brazil"
+      ],
+      "summary": "Initial Brazilian sports betting authorization, superseded by Law 14,790/2023.",
+      "officialUrl": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13756.htm",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-brazil-lei-13756-2018"
+    },
+    {
+      "id": "brazil-spa-1207-2024",
+      "name": "SPA/MF Ordinance No. 1,207/2024 (Technical requirements)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "BR"
+      ],
+      "jurisdictionNames": [
+        "Brazil"
+      ],
+      "summary": "Brazil technical and operational requirements for licensed betting operators.",
+      "officialUrl": "https://www.gov.br/fazenda/pt-br/assuntos/apostas-esportivas-e-jogos-on-line",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-brazil-spa-1207-2024"
+    },
+    {
+      "id": "antigua-free-trade-act-1994",
+      "name": "Free Trade and Processing Zone Act (1994)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "AG"
+      ],
+      "jurisdictionNames": [
+        "Antigua and Barbuda"
+      ],
+      "summary": "Antigua and Barbuda foundational legislation enabling offshore gaming businesses.",
+      "officialUrl": "https://www.fsrc.gov.ag/index.php/services/gaming",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-antigua-free-trade-act-1994"
+    },
+    {
+      "id": "antigua-gambling-act-2016",
+      "name": "Gambling Act of 2016 (Antigua and Barbuda)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "americas",
+      "jurisdictionCodes": [
+        "AG"
+      ],
+      "jurisdictionNames": [
+        "Antigua and Barbuda"
+      ],
+      "summary": "Updated Antiguan gambling legislation.",
+      "officialUrl": "https://www.fsrc.gov.ag",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-antigua-gambling-act-2016"
+    },
+    {
+      "id": "nz-racing-industry-act-2020",
+      "name": "Racing Industry Act 2020 (New Zealand)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "NZ"
+      ],
+      "jurisdictionNames": [
+        "New Zealand"
+      ],
+      "summary": "New Zealand racing and wagering structural reform.",
+      "officialUrl": "https://www.legislation.govt.nz/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-nz-racing-industry-act-2020"
+    },
+    {
+      "id": "nz-gambling-harm-prevention-regs-2004",
+      "name": "Gambling (Harm Prevention and Minimisation) Regulations 2004 (as amended 2023)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "NZ"
+      ],
+      "jurisdictionNames": [
+        "New Zealand"
+      ],
+      "summary": "NZ responsible gambling operational requirements.",
+      "officialUrl": "https://www.dia.govt.nz/Gambling-legislation-regulations",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-nz-gambling-harm-prevention-regs-2004"
+    },
+    {
+      "id": "india-public-gambling-act-1867",
+      "name": "Public Gambling Act, 1867",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "IN"
+      ],
+      "jurisdictionNames": [
+        "India"
+      ],
+      "summary": "Colonial-era Indian gambling prohibition; basis for most state laws.",
+      "officialUrl": "https://www.indiacode.nic.in/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-india-public-gambling-act-1867"
+    },
+    {
+      "id": "india-sikkim-online-gaming-act",
+      "name": "Sikkim Online Gaming (Regulation) Act, 2008 (amended 2024)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "IN"
+      ],
+      "jurisdictionNames": [
+        "India"
+      ],
+      "summary": "Sikkim state online gaming licensing.",
+      "officialUrl": "https://sikkim.gov.in/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-india-sikkim-online-gaming-act"
+    },
+    {
+      "id": "india-meghalaya-gaming-act-2021",
+      "name": "Meghalaya Regulation of Gaming Act, 2021",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "IN"
+      ],
+      "jurisdictionNames": [
+        "India"
+      ],
+      "summary": "Meghalaya state gambling regulation.",
+      "officialUrl": "https://meghalaya.gov.in/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-india-meghalaya-gaming-act-2021"
+    },
+    {
+      "id": "india-goa-gambling-act-1976",
+      "name": "Goa, Daman and Diu Public Gambling Act, 1976",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "IN"
+      ],
+      "jurisdictionNames": [
+        "India"
+      ],
+      "summary": "Goa state gambling act permitting licensed offshore and onshore casinos.",
+      "officialUrl": "https://goaonline.gov.in/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-india-goa-gambling-act-1976"
+    },
+    {
+      "id": "japan-penal-code-gambling",
+      "name": "Japan Penal Code Articles 185–187 (Gambling offences)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "JP"
+      ],
+      "jurisdictionNames": [
+        "Japan"
+      ],
+      "summary": "Japanese criminal prohibition on gambling (IR casino exemptions apply).",
+      "officialUrl": "https://www.japaneselawtranslation.go.jp/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-japan-penal-code-gambling"
+    },
+    {
+      "id": "japan-ir-implementation-act-2018",
+      "name": "IR Implementation Act (2018)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "JP"
+      ],
+      "jurisdictionNames": [
+        "Japan"
+      ],
+      "summary": "Japan Integrated Resort (casino) implementation framework.",
+      "officialUrl": "https://www.japaneselawtranslation.go.jp/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-japan-ir-implementation-act-2018"
+    },
+    {
+      "id": "japan-basic-law-gambling-addiction-2018",
+      "name": "Basic Law on Measures Against Gambling Addiction (2018)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "JP"
+      ],
+      "jurisdictionNames": [
+        "Japan"
+      ],
+      "summary": "Japanese addiction prevention framework for IR casinos.",
+      "officialUrl": "https://www.japaneselawtranslation.go.jp/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-japan-basic-law-gambling-addiction-2018"
+    },
+    {
+      "id": "korea-criminal-act-gambling",
+      "name": "Criminal Act Articles 246–247; National Sports Promotion Act",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "KR"
+      ],
+      "jurisdictionNames": [
+        "South Korea"
+      ],
+      "summary": "South Korean gambling prohibition with sports toto and Kangwon Land exception.",
+      "officialUrl": "https://law.go.kr/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-korea-criminal-act-gambling"
+    },
+    {
+      "id": "korea-tourism-promotion-act-2024",
+      "name": "Tourism Promotion Act (amended Feb 2024)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "KR"
+      ],
+      "jurisdictionNames": [
+        "South Korea"
+      ],
+      "summary": "Korean casino licensing for foreign visitors; amendment February 2024.",
+      "officialUrl": "https://law.go.kr/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-korea-tourism-promotion-act-2024"
+    },
+    {
+      "id": "singapore-casino-control-act-2006",
+      "name": "Casino Control Act 2006 (as amended)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "SG"
+      ],
+      "jurisdictionNames": [
+        "Singapore"
+      ],
+      "summary": "Singapore land-based casino regulation (Marina Bay Sands, Resorts World Sentosa).",
+      "officialUrl": "https://sso.agc.gov.sg/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-singapore-casino-control-act-2006"
+    },
+    {
+      "id": "philippines-ra-9160-aml",
+      "name": "Republic Act No. 9160 (Anti-Money Laundering Act)",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "asia-pacific",
+      "jurisdictionCodes": [
+        "PH"
+      ],
+      "jurisdictionNames": [
+        "Philippines"
+      ],
+      "summary": "Philippine AML law; casinos are covered institutions under AMLC.",
+      "officialUrl": "https://www.amlc.gov.ph/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-philippines-ra-9160-aml"
+    },
+    {
+      "id": "sa-remote-gambling-bill-2024",
+      "name": "Remote Gambling Bill, 2024 (South Africa)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "africa",
+      "jurisdictionCodes": [
+        "ZA"
+      ],
+      "jurisdictionNames": [
+        "South Africa"
+      ],
+      "summary": "Pending legislation to create a national online gambling framework. Currently in consultation.",
+      "officialUrl": "https://www.gov.za/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-sa-remote-gambling-bill-2024"
+    },
+    {
+      "id": "nigeria-national-lottery-regs-2007",
+      "name": "National Lottery Regulations, 2007 (as amended)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "africa",
+      "jurisdictionCodes": [
+        "NG"
+      ],
+      "jurisdictionNames": [
+        "Nigeria"
+      ],
+      "summary": "Nigerian implementing regulations for the National Lottery Act.",
+      "officialUrl": "https://www.nlrc.gov.ng/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-nigeria-national-lottery-regs-2007"
+    },
+    {
+      "id": "nigeria-lagos-state-lotteries-law",
+      "name": "Lagos State Lotteries Law, 2004 (amended 2021)",
+      "category": "gambling",
+      "categoryLabel": "Gambling",
+      "region": "africa",
+      "jurisdictionCodes": [
+        "NG"
+      ],
+      "jurisdictionNames": [
+        "Nigeria"
+      ],
+      "summary": "Lagos State — largest Nigerian gambling market by revenue. Administered by LSLGA.",
+      "officialUrl": "https://lslga.org/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-nigeria-lagos-state-lotteries-law"
+    },
+    {
+      "id": "nigeria-ml-act-2011",
+      "name": "Money Laundering (Prohibition) Act, 2011 (amended 2022)",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "africa",
+      "jurisdictionCodes": [
+        "NG"
+      ],
+      "jurisdictionNames": [
+        "Nigeria"
+      ],
+      "summary": "Nigerian AML framework applicable to gambling operators.",
+      "officialUrl": "https://www.nlrc.gov.ng/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-nigeria-ml-act-2011"
+    },
+    {
+      "id": "eu-amld6-criminal-2018",
+      "name": "AMLD6 — Directive (EU) 2018/1673 (criminal provisions)",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Harmonised EU criminal offences for money laundering; extends predicate offences.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32018L1673",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-amld6-criminal-2018"
+    },
+    {
+      "id": "eu-amld6-supervisory-2024",
+      "name": "AMLD6 — Directive (EU) 2024/1640 (new supervisory framework)",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden"
+      ],
+      "summary": "New EU AML supervisory framework alongside 2024 AML Regulation. Transpose by 10 July 2027.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32024L1640",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-amld6-supervisory-2024"
+    },
+    {
+      "id": "germany-gwg",
+      "name": "Geldwäschegesetz (German AML Act)",
+      "category": "aml",
+      "categoryLabel": "AML / CFT",
+      "region": "europe",
+      "jurisdictionCodes": [
+        "DE"
+      ],
+      "jurisdictionNames": [
+        "Germany"
+      ],
+      "summary": "German AML law imposing KYC and SAR obligations on gambling operators.",
+      "officialUrl": "https://www.gesetze-im-internet.de/gwg_2017/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-germany-gwg"
+    },
+    {
+      "id": "eu-psd3-proposal",
+      "name": "PSD3 proposal — COM(2023) 366",
+      "category": "financial",
+      "categoryLabel": "Financial",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden"
+      ],
+      "summary": "Proposed Payment Services Directive 3. Provisional political agreement November 2025; Council position agreed April 2026, with the Parliament's ECON committee signalling (18 May 2026) it will recommend adoption at second reading without amendment. Formal adoption and Official Journal publication expected mid-to-late 2026.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:52023PC0366",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-psd3-proposal"
+    },
+    {
+      "id": "eu-psr-proposal",
+      "name": "Payment Services Regulation (PSR) proposal — COM(2023) 367",
+      "category": "financial",
+      "categoryLabel": "Financial",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden"
+      ],
+      "summary": "Companion PSR regulation to PSD3; directly applicable payment services rules.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:52023PC0367",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-psr-proposal"
+    },
+    {
+      "id": "eu-emd2",
+      "name": "Electronic Money Directive 2 (EMD2) — Directive 2009/110/EC",
+      "category": "financial",
+      "categoryLabel": "Financial",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Governs e-money institutions used as gambling payment intermediaries. To be merged into PSD3.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32009L0110",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-emd2"
+    },
+    {
+      "id": "eu-dma",
+      "name": "EU Digital Markets Act (DMA) — Regulation (EU) 2022/1925",
+      "category": "digital",
+      "categoryLabel": "Digital & AI",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Obligations on gatekeeper platforms; affects app stores and distribution channels for gambling apps.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32022R1925",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-dma"
+    },
+    {
+      "id": "eu-consumer-rights-directive",
+      "name": "EU Consumer Rights Directive — Directive 2011/83/EU",
+      "category": "digital",
+      "categoryLabel": "Digital & AI",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Pre-contractual information, cancellation rights, and fair terms requirements for online services.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32011L0083",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-consumer-rights-directive"
+    },
+    {
+      "id": "eu-unfair-commercial-practices",
+      "name": "Unfair Commercial Practices Directive — Directive 2005/29/EC",
+      "category": "digital",
+      "categoryLabel": "Digital & AI",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Prohibits misleading and aggressive commercial practices; applies to gambling bonus promotions.",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:32005L0029",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-unfair-commercial-practices"
+    },
+    {
+      "id": "eu-bik-plus",
+      "name": "EU Better Internet for Kids Strategy (BIK+)",
+      "category": "digital",
+      "categoryLabel": "Digital & AI",
+      "region": "eu-wide",
+      "jurisdictionCodes": [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO"
+      ],
+      "jurisdictionNames": [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Iceland",
+        "Liechtenstein",
+        "Norway"
+      ],
+      "summary": "Child online protection strategy; relevant to age verification obligations on gambling platforms.",
+      "officialUrl": "https://digital-strategy.ec.europa.eu/en/policies/strategy-better-internet-kids",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-eu-bik-plus"
+    },
+    {
+      "id": "iso-iec-27001-2022",
+      "name": "ISO/IEC 27001:2022 (Information Security Management)",
+      "category": "standards",
+      "categoryLabel": "Standards",
+      "region": "global",
+      "jurisdictionCodes": [
+        "GB",
+        "MT",
+        "DE",
+        "ES",
+        "IT",
+        "SE",
+        "US",
+        "AU"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom",
+        "Malta",
+        "Germany",
+        "Spain",
+        "Italy",
+        "Sweden",
+        "United States",
+        "Australia"
+      ],
+      "summary": "International information security standard. Required or strongly recommended by MGA, UKGC, and multiple other regulators.",
+      "officialUrl": "https://www.iso.org/standard/27001",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-iso-iec-27001-2022"
+    },
+    {
+      "id": "gli-standards",
+      "name": "GLI Standards (GLI-19 for iGaming, GLI-11 for devices, GLI-33 for wagering)",
+      "category": "standards",
+      "categoryLabel": "Standards",
+      "region": "global",
+      "jurisdictionCodes": [
+        "GB",
+        "MT",
+        "US",
+        "AU",
+        "CA",
+        "DE",
+        "ES",
+        "IT"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom",
+        "Malta",
+        "United States",
+        "Australia",
+        "Canada",
+        "Germany",
+        "Spain",
+        "Italy"
+      ],
+      "summary": "Gaming Laboratories International standards mandated or accepted across 480+ jurisdictions worldwide.",
+      "officialUrl": "https://gaminglabs.com/gli-standards/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-gli-standards"
+    },
+    {
+      "id": "bmm-testlabs",
+      "name": "BMM Testlabs certification",
+      "category": "standards",
+      "categoryLabel": "Standards",
+      "region": "global",
+      "jurisdictionCodes": [
+        "GB",
+        "MT",
+        "US",
+        "AU",
+        "CA"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom",
+        "Malta",
+        "United States",
+        "Australia",
+        "Canada"
+      ],
+      "summary": "BMM Testlabs gaming testing and certification accepted across 470+ jurisdictions.",
+      "officialUrl": "https://bmm.com/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-bmm-testlabs"
+    },
+    {
+      "id": "ecogra-standards",
+      "name": "eCOGRA standards and certification",
+      "category": "standards",
+      "categoryLabel": "Standards",
+      "region": "global",
+      "jurisdictionCodes": [
+        "GB",
+        "MT",
+        "ES",
+        "IT",
+        "SE",
+        "US"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom",
+        "Malta",
+        "Spain",
+        "Italy",
+        "Sweden",
+        "United States"
+      ],
+      "summary": "eCOGRA fair gaming and player protection certification. Accepted by UK, Malta, Spain, Italy, Sweden, US states.",
+      "officialUrl": "https://ecogra.org/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-ecogra-standards"
+    },
+    {
+      "id": "ibia-standards",
+      "name": "IBIA — International Betting Integrity Association",
+      "category": "standards",
+      "categoryLabel": "Standards",
+      "region": "global",
+      "jurisdictionCodes": [
+        "GB",
+        "MT",
+        "AU",
+        "US",
+        "FR",
+        "DE"
+      ],
+      "jurisdictionNames": [
+        "United Kingdom",
+        "Malta",
+        "Australia",
+        "United States",
+        "France",
+        "Germany"
+      ],
+      "summary": "Betting integrity monitoring body with 90+ operator members; increasingly referenced in licensing conditions.",
+      "officialUrl": "https://ibia.bet/",
+      "pageUrl": "https://johnb.io/igaming-compliance#reg-ibia-standards"
+    }
+  ]
+}

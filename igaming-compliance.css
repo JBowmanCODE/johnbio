@@ -407,6 +407,7 @@ body {
 /* ── DATABASE SECTION ── */
 .igc-database {
   margin-bottom: 2.5rem;
+  scroll-margin-top: 96px;
 }
 
 .igc-db-header {
@@ -541,8 +542,30 @@ body {
 .igc-table td:first-child {
   font-weight: 600;
   color: var(--on-surface, #f8f5fd);
-  max-width: 340px;
+  max-width: 420px;
+  min-width: 240px;
 }
+
+/* Regulation cell: name on the first line, hand-written summary underneath */
+.igc-reg-name {
+  display: block;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.igc-reg-note {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(248,245,253,0.45);
+  line-height: 1.45;
+}
+
+/* Deep-linked rows (#reg-uk-gambling-act-2005) */
+.igc-table tr[id] { scroll-margin-top: 96px; }
+.igc-table tr:target td { background: rgba(255,0,127,0.07); }
+.igc-table tr:target td:first-child { box-shadow: inset 3px 0 0 #FF007F; }
 
 .igc-table td:nth-child(2) {
   font-size: 0.75rem;
@@ -576,6 +599,176 @@ body {
 
 .igc-table-empty .material-symbols-outlined { font-size: 2rem; }
 .igc-table-empty p { font-size: 0.85rem; }
+
+/* ── JURISDICTION INDEX + ANCHORS ── */
+.igc-jurisdictions {
+  margin-bottom: 2.5rem;
+  scroll-margin-top: 96px;
+}
+
+.igc-jur-intro {
+  font-size: 0.8rem;
+  color: rgba(248,245,253,0.5);
+  line-height: 1.55;
+  margin: 0 0 1rem;
+  max-width: 70ch;
+}
+
+.igc-jur-intro code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.74rem;
+  color: rgba(255,0,127,0.9);
+  background: rgba(255,0,127,0.07);
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.35rem;
+}
+
+.igc-jur-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.igc-jur-index-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.7rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 9999px;
+  color: rgba(248,245,253,0.6);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.igc-jur-index-link:hover,
+.igc-jur-index-link:focus-visible {
+  border-color: rgba(255,0,127,0.35);
+  background: rgba(255,0,127,0.06);
+  color: var(--on-surface, #f8f5fd);
+}
+
+.igc-jur-index-count {
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: rgba(255,0,127,0.8);
+}
+
+.igc-jur-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  align-items: start;
+  gap: 0.875rem;
+}
+
+.igc-jur {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 0.875rem;
+  padding: 1rem 1.25rem;
+  scroll-margin-top: 96px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.igc-jur:target {
+  border-color: rgba(255,0,127,0.45);
+  background: rgba(255,0,127,0.04);
+}
+
+.igc-jur-name {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--on-surface, #f8f5fd);
+  margin: 0 0 0.3rem;
+}
+
+.igc-jur-flag { font-size: 1.1rem; line-height: 1; }
+
+.igc-jur-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(248,245,253,0.35);
+  margin: 0 0 0.75rem;
+}
+
+.igc-jur-filter {
+  color: rgba(255,0,127,0.85);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255,0,127,0.4);
+}
+
+.igc-jur-filter:hover { color: #FF007F; }
+
+.igc-jur-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,0,127,0.35) transparent;
+}
+
+.igc-jur-list::-webkit-scrollbar { width: 4px; }
+.igc-jur-list::-webkit-scrollbar-track { background: transparent; }
+.igc-jur-list::-webkit-scrollbar-thumb { background: rgba(255,0,127,0.3); border-radius: 2px; }
+
+.igc-jur-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.igc-jur-reg {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--on-surface, #f8f5fd);
+  text-decoration: none;
+  line-height: 1.3;
+}
+
+.igc-jur-reg:hover { color: #FF007F; }
+
+.igc-jur-note {
+  flex-basis: 100%;
+  font-size: 0.72rem;
+  color: rgba(248,245,253,0.45);
+  line-height: 1.45;
+}
+
+.igc-jur-also {
+  font-size: 0.72rem;
+  color: rgba(248,245,253,0.4);
+  line-height: 1.5;
+  margin: 0.75rem 0 0;
+}
+
+.igc-jur-also a { color: rgba(255,0,127,0.85); text-decoration: none; }
+.igc-jur-also a:hover { text-decoration: underline; }
+
+.igc-jur-empty {
+  font-size: 0.75rem;
+  color: rgba(248,245,253,0.4);
+  line-height: 1.5;
+  margin: 0;
+}
 
 /* ── EMERGING DEVELOPMENTS ── */
 .igc-emerging {
@@ -636,6 +829,10 @@ body {
 @media (max-width: 768px) {
   #igc-map { height: 340px; }
   .igc-panel-body { grid-template-columns: 1fr; }
+  /* The regulation column now carries a summary line - scroll the table
+     sideways rather than squeezing four columns into a phone screen. */
+  .igc-table { min-width: 660px; }
+  .igc-jur-grid { grid-template-columns: 1fr; }
   .igc-filters { gap: 0.75rem; }
   .igc-search { width: 100%; }
   .igc-search-wrap { width: 100%; }

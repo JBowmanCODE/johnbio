@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Text to Speech Converter - OpenAI TTS MP3 Download - JohnB.io</title>
+  <title>Text to Speech Converter - Free MP3 Download - JohnB.io</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -19,20 +19,20 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://johnb.io/text-to-speech">
   <meta name="author" content="John Bowman">
-  <meta property="og:title" content="Text to Speech Converter - OpenAI TTS MP3 Download - JohnB.io">
+  <meta property="og:title" content="Text to Speech Converter - Free MP3 Download - JohnB.io">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://johnb.io/text-to-speech">
   <meta property="og:description" content="Convert text to natural-sounding speech and download as MP3. Powered by OpenAI TTS with 6 voice options and adjustable speed.">
   <meta property="og:image" content="https://johnb.io/images/text_to_speech_og.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Text to Speech Converter - OpenAI TTS MP3 Download - JohnB.io">
+  <meta name="twitter:title" content="Text to Speech Converter - Free MP3 Download - JohnB.io">
   <meta name="twitter:description" content="Convert text to natural-sounding speech and download as MP3. Powered by OpenAI TTS with 6 voice options and adjustable speed.">
   <meta name="twitter:image" content="https://johnb.io/images/text_to_speech_og.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=3">
+    <link rel="stylesheet" href="/styles.css?v=4">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
   <link rel="stylesheet" href="/text-to-speech.css?v=1">
@@ -50,7 +50,8 @@
     "author": {
       "@type": "Person",
       "name": "John Bowman",
-      "url": "https://www.linkedin.com/in/john-bowman/"
+      "url": "https://johnb.io/about",
+      "sameAs": ["https://www.linkedin.com/in/john-bowman/"]
     },
     "offers": {
       "@type": "Offer",
@@ -73,22 +74,27 @@
       {
         "@type": "Question",
         "name": "What is the maximum text length?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The tool accepts up to 4,000 characters per conversion. For longer articles, split the content into sections and convert each separately, then join the MP3 files in any audio editor." }
+        "acceptedAnswer": { "@type": "Answer", "text": "The tool accepts up to 4,000 characters per conversion. For longer articles, split the content into sections - introduction, body, conclusion - and convert each separately, then join the MP3 files in any audio editor." }
       },
       {
         "@type": "Question",
         "name": "What format is the output file?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The output is an MP3 file (audio/mpeg). MP3 is compatible with all audio players, podcast platforms, video editors and web browsers. It can be uploaded directly to Spotify, Apple Podcasts or embedded in a website." }
+        "acceptedAnswer": { "@type": "Answer", "text": "The output is an MP3 file (audio/mpeg). MP3 is compatible with all audio players, podcast platforms, video editors and web browsers. It can be uploaded directly to platforms like Spotify, Apple Podcasts or embedded in a website using an HTML audio element." }
       },
       {
         "@type": "Question",
         "name": "Is my text stored or used to train the AI?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. Your text is sent to OpenAI's API to generate the audio and is not retained by this tool. JohnB.io does not log or store the content you submit." }
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Your text is sent to OpenAI's API to generate the audio and is not retained by this tool. JohnB.io does not log or store the content you submit. See the OpenAI Privacy Policy for full details." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the daily usage limit mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "There is a per-IP daily limit to keep the tool available for everyone without requiring a login. If you hit the limit, it resets at midnight UTC. For higher-volume use, connect via LinkedIn." }
       },
       {
         "@type": "Question",
         "name": "How much does OpenAI TTS cost?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The tts-1 model costs $0.015 per 1,000 characters of input text. A typical 500-word article (around 3,000 characters) costs approximately $0.045 to generate." }
+        "acceptedAnswer": { "@type": "Answer", "text": "The tts-1 model costs $0.015 per 1,000 characters of input text. A typical 500-word article (around 3,000 characters) costs approximately $0.045 to generate. The tts-1-hd model at $0.030 per 1,000 characters offers marginally better quality for studio-grade production use." }
       }
     ]
   }
@@ -289,9 +295,37 @@
     <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
   </button>
 
-  <div id="footer-placeholder"></div>
+  <div id="footer-placeholder">
+    <!-- Static site navigation: real crawlable links for search/AI crawlers and no-JS visitors.
+         scripts.js:loadHeaderAndFooter() replaces this block with footer.html for everyone else. -->
+    <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
+      <style>.crawl-nav{max-width:1280px;margin:0 auto;padding:3rem 2rem;border-top:1px solid rgba(248,245,253,0.07);font-family:'Space Grotesk',sans-serif;color:var(--on-surface-variant,#acaab1)}.crawl-nav-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,245,253,0.4);margin:0 0 1rem}.crawl-nav-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.5rem;font-size:0.85rem;line-height:1.6}.crawl-nav-list a{color:#00EEFC;text-decoration:none}.crawl-nav-list a:hover,.crawl-nav-list a:focus-visible{text-decoration:underline}</style>
+      <p class="crawl-nav-title">Explore JohnB.io</p>
+      <ul class="crawl-nav-list">
+        <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
+        <li><a href="/tcs-simplifier">T&amp;Cs Simplifier</a> - casino bonus terms in plain English</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 50 jurisdictions</li>
+        <li><a href="/bonus-calculator">Bonus Cost Calculator</a> - iGaming bonus cost modelling</li>
+        <li><a href="/promo-copy">iGaming Promo Copy Generator</a> - compliant promotional copy</li>
+        <li><a href="/rg-generator">RG Message Generator</a> - responsible gambling messaging</li>
+        <li><a href="/igaming-jargon">iGaming Jargon Translator</a> - industry terms explained</li>
+        <li><a href="/editor">AI Copyeditor</a> - copyediting with UK and US English</li>
+        <li><a href="/lm-chat">LLM Chat</a> - chat with language models</li>
+        <li><a href="/llms-generator">LLMs.txt Generator</a> - llms.txt files for AI crawlers</li>
+        <li><a href="/content-repurposer">Content Repurposer</a> - one piece of content, many formats</li>
+        <li><a href="/aitocv">AI CV Enhancer</a> - tailored CVs and cover letters</li>
+        <li><a href="/text-to-voice">Text to Voice</a> - browser speech synthesis</li>
+        <li><a href="/meditation">AI Meditation Generator</a> - guided meditations with AI voice</li>
+        <li><a href="/transcripts">YouTube Transcripts</a> - transcripts and summaries from videos</li>
+        <li><a href="/about">About John Bowman</a> - 20+ years in iGaming and digital marketing</li>
+        <li><a href="/news/">AI Blog</a> - practical AI strategy and how it works</li>
+        <li><a href="/course/">AI &amp; Machine Learning Course</a> - free structured course</li>
+        <li><a href="/contact">Contact</a> - get in touch</li>
+      </ul>
+    </nav>
+  </div>
 
-  <script src="/scripts.js?v=6" defer></script>
+  <script src="/scripts.js?v=7" defer></script>
   <script src="/text-to-speech.js?v=3" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
