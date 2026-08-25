@@ -42,6 +42,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://johnb.io/recipe-shopping-list</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://johnb.io/aitocv</loc>
     <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe to Shopping List - UK Supermarkets - JohnB.io</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css?v=4">
+  <link rel="stylesheet" href="/header.css?v=4">
+  <link rel="stylesheet" href="/footer.css?v=2">
+  <link rel="stylesheet" href="/recipe-shopping-list.css?v=1">
+
+  <!-- SEO -->
+  <meta name="description" content="Paste a recipe or meal plan and get one shopping list, grouped by aisle, with one-click search links for Tesco, Sainsbury's, Asda and 5 more.">
+  <meta name="keywords" content="recipe to shopping list, meal plan shopping list, ingredients list generator, UK supermarket shopping list, grocery list from recipe">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/recipe-shopping-list">
+  <meta name="author" content="John Bowman">
+  <meta property="og:title" content="Recipe to Shopping List - UK Supermarkets - JohnB.io">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/recipe-shopping-list">
+  <meta property="og:description" content="Paste a recipe or a week of meals. Get one consolidated shopping list with one-click search links into eight UK supermarkets.">
+  <meta property="og:image" content="https://johnb.io/images/recipe_shopping_list_og.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Recipe to Shopping List - UK Supermarkets - JohnB.io">
+  <meta name="twitter:description" content="Paste a recipe or a week of meals. Get one consolidated shopping list with one-click search links into eight UK supermarkets.">
+  <meta name="twitter:image" content="https://johnb.io/images/recipe_shopping_list_og.webp">
+  <meta name="twitter:image:alt" content="Recipe to Shopping List tool by JohnB.io">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Recipe to Shopping List",
+    "url": "https://johnb.io/recipe-shopping-list",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "description": "AI tool that turns a recipe or meal plan into one consolidated UK supermarket shopping list, deduped and grouped by aisle, with one-click search links for Tesco, Sainsbury's, Asda, Morrisons, Ocado, Waitrose, Iceland and Co-op.",
+    "image": "https://johnb.io/images/recipe_shopping_list_og.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://johnb.io/about",
+      "sameAs": ["https://www.linkedin.com/in/john-bowman/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can it add everything to my basket automatically?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No, and be sceptical of anything that says it can. No UK supermarket offers a public add-to-basket API, so no website can fill your trolley without holding your login details. What this does is take you straight to the right search on your supermarket's own site, one ingredient at a time. You tap add, and they keep your basket." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which supermarkets does it work with?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Eight: Tesco, Sainsbury's, Asda, Morrisons, Ocado, Waitrose, Iceland and Co-op. Ocado results include M&S Food. You pick one supermarket at a time and the whole list re-links to it. Co-op is the weakest of the eight because its online shop is store-scoped, so it may ask for a postcode before running the search." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between the three shopping modes?",
+        "acceptedAnswer": { "@type": "Answer", "text": "They change the words typed into the supermarket's search box, and nothing else. Balanced uses the plain product name. Premium pick adds qualifiers like free range or organic. Best value strips the term back so own-brand basics rank first. None of them changes what you pay, because you still choose the product yourself." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I paste a whole week's meal plan?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, and that is what it is built for. Ingredients appearing in more than one recipe are merged and their quantities added up, so three recipes needing onions produce one line telling you how many to buy. Each item shows which recipes it came from, so you can check nothing was missed." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work with American recipes?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. US ingredient names are translated into UK supermarket vocabulary before the search links are built, so cilantro becomes coriander, zucchini becomes courgette and all-purpose flour becomes plain flour. Searching a UK supermarket for cilantro returns nothing at all, so this matters more than it sounds." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it free, and is my recipe stored anywhere?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It is free, with a limit of three lists per day. There is no sign-up and nothing is kept on a server: your text goes to the AI, the list comes back, and that is the end of it. Ticked-off items are saved in your own browser only, so you can close the page mid-shop and pick up where you left off." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="rsl-ambient"></div>
+
+  <main class="rsl-wrap" id="main-content">
+
+    <div class="rsl-hero">
+      <h1 class="page-title">Recipe to <span class="gradient-text">Shopping List</span></h1>
+      <p class="rsl-desc">Paste one recipe or a whole week of them. Get a single shopping list, deduped, quantities added up and grouped by aisle, with one-click search links into your supermarket's own site.</p>
+    </div>
+
+    <!-- Tool card -->
+    <div class="rsl-card">
+      <label for="rsl-input" class="rsl-sr-only">Paste your recipe or meal plan</label>
+      <textarea
+        id="rsl-input"
+        class="rsl-textarea"
+        placeholder="Paste a recipe, or a whole week of them.&#10;&#10;Ingredients lists work best, but a full recipe with the method is fine too. If you paste several, ingredients that appear in more than one get merged and the quantities added up.&#10;&#10;Want it scaled? Just say so at the top: 'double all of these'."
+        aria-label="Paste your recipe or meal plan"
+      ></textarea>
+      <div class="rsl-meta-row">
+        <span id="rsl-count" class="rsl-count">0 / 12,000</span>
+      </div>
+
+      <button class="rsl-generate-btn" id="rsl-generate" aria-label="Build shopping list">
+        <span class="material-symbols-outlined" aria-hidden="true">shopping_basket</span>
+        Build My Shopping List
+      </button>
+
+      <p id="rsl-status" class="rsl-status" role="status" aria-live="polite"></p>
+    </div>
+
+    <!-- Output -->
+    <div class="rsl-output-card" id="rsl-output" style="display:none;" aria-label="Your shopping list">
+      <div class="rsl-output-header">
+        <h2>Your Shopping List</h2>
+        <div class="rsl-output-actions">
+          <span id="rsl-progress" class="rsl-progress"></span>
+          <button class="rsl-action-btn" id="rsl-copy" aria-label="Copy shopping list to clipboard">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span> Copy
+          </button>
+        </div>
+      </div>
+
+      <p id="rsl-summary" class="rsl-summary"></p>
+
+      <div class="rsl-controls">
+        <div>
+          <span class="rsl-control-label" id="rsl-retailer-label">Shop at</span>
+          <div class="rsl-pills" id="rsl-retailers" role="group" aria-labelledby="rsl-retailer-label"></div>
+        </div>
+
+        <div>
+          <span class="rsl-control-label" id="rsl-mode-label">Shopping mode</span>
+          <div class="rsl-pills" id="rsl-modes" role="group" aria-labelledby="rsl-mode-label">
+            <button type="button" class="rsl-pill active" data-mode="balanced" aria-pressed="true">Balanced</button>
+            <button type="button" class="rsl-pill" data-mode="premium" aria-pressed="false">Premium pick</button>
+            <button type="button" class="rsl-pill" data-mode="value" aria-pressed="false">Best value</button>
+          </div>
+          <p class="rsl-mode-note">Modes change what gets typed into the search box, not what you pay.</p>
+        </div>
+
+        <div class="rsl-control-row">
+          <div class="rsl-servings" id="rsl-servings-wrap" style="display:none;">
+            <label class="rsl-control-label" for="rsl-servings" style="margin:0;">Serves</label>
+            <input type="number" id="rsl-servings" min="1" max="50" step="1" value="4">
+            <span class="rsl-servings-base" id="rsl-servings-base"></span>
+          </div>
+          <label class="rsl-toggle">
+            <input type="checkbox" id="rsl-hide-staples"> Hide store-cupboard staples
+          </label>
+        </div>
+      </div>
+
+      <p class="rsl-caveat" id="rsl-caveat" role="note" style="display:none;"></p>
+
+      <div class="rsl-output-body" id="rsl-list"></div>
+
+      <p class="rsl-unmatched" id="rsl-unmatched" style="display:none;"></p>
+    </div>
+
+    <!-- Explainer -->
+    <div class="rsl-explainer" role="note">
+      <span class="material-symbols-outlined" aria-hidden="true">info</span>
+      <div class="rsl-explainer-text">
+        <p style="margin:0 0 0.6rem;"><strong>This does not fill your basket.</strong> No UK supermarket offers a public add-to-basket API, so no website can do that without holding your login. Treat anything claiming otherwise with suspicion.</p>
+        <p style="margin:0;"><strong>What it does instead.</strong> It takes you straight to the right search on your supermarket's own site, one ingredient at a time. You tap add, they keep your basket, and prices and availability come from them rather than from this page. The saving is the retyping, not the tapping.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <!-- Tool info / SEO article -->
+  <section class="tool-info" aria-label="About this tool">
+    <div class="tool-info-inner">
+
+      <div class="tool-info-meta">
+        <span>Last updated: August 2026</span>
+        <span class="tool-info-sep">·</span>
+        <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener noreferrer">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      </div>
+
+      <div class="tool-info-body">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Why Writing a Shopping List From Recipes Is Such a Chore</h2>
+        <p>The tedious part of cooking from recipes isn't the cooking. It's sitting with four browser tabs open, working out that three of the recipes want onions, that two of them want a tin of chopped tomatoes, and that you already have paprika. Then typing all of it into a supermarket search box one item at a time, in a slightly different form than the recipe wrote it, because "2 tbsp finely chopped flat-leaf parsley" returns nothing useful.</p>
+        <p>That last bit is the interesting problem. Supermarket site search is a keyword matcher, not a semantic one. It wants "flat leaf parsley", not the recipe's phrasing. It wants "beef mince", not "ground beef" - which is why American recipes are so annoying to shop for in Britain. The translation step is doing more work here than the list-building step, and it's the part I'd have got wrong if I'd built this by hand.</p>
+        <p>What this page can't do is put anything in your trolley. I looked hard for a way. There isn't one that doesn't involve asking you for your Tesco password, and I'm not building that. So it stops at the search box and hands over to you.</p>
+      </div>
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>Can it add everything to my basket automatically?</dt>
+                <dd>No, and be sceptical of anything that says it can. No UK supermarket offers a public add-to-basket API, so no website can fill your trolley without holding your login details. What this does is take you straight to the right search on your supermarket's own site, one ingredient at a time. You tap add, and they keep your basket.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Which supermarkets does it work with?</dt>
+                <dd>Eight: Tesco, Sainsbury's, Asda, Morrisons, Ocado, Waitrose, Iceland and Co-op. Ocado results include M&amp;S Food. You pick one supermarket at a time and the whole list re-links to it. Co-op is the weakest of the eight because its online shop is store-scoped, so it may ask for a postcode before running the search.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What is the difference between the three shopping modes?</dt>
+                <dd>They change the words typed into the supermarket's search box, and nothing else. Balanced uses the plain product name. Premium pick adds qualifiers like free range or organic. Best value strips the term back so own-brand basics rank first. None of them changes what you pay, because you still choose the product yourself.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Can I paste a whole week's meal plan?</dt>
+                <dd>Yes, and that is what it is built for. Ingredients appearing in more than one recipe are merged and their quantities added up, so three recipes needing onions produce one line telling you how many to buy. Each item shows which recipes it came from, so you can check nothing was missed.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Does it work with American recipes?</dt>
+                <dd>Yes. US ingredient names are translated into UK supermarket vocabulary before the search links are built, so cilantro becomes coriander, zucchini becomes courgette and all-purpose flour becomes plain flour. Searching a UK supermarket for cilantro returns nothing at all, so this matters more than it sounds.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Is it free, and is my recipe stored anywhere?</dt>
+                <dd>It is free, with a limit of three lists per day. There is no sign-up and nothing is kept on a server: your text goes to the AI, the list comes back, and that is the end of it. Ticked-off items are saved in your own browser only, so you can close the page mid-shop and pick up where you left off.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Paste your recipes.</strong> One recipe or a week of them. An ingredients list is enough, but a full recipe with the method works too. If you want it scaled, write "double all of these" at the top and it will be handled.</li>
+              <li><strong>Get one consolidated list.</strong> Ingredients are merged across recipes, quantities are added up, and everything is grouped into supermarket aisles in roughly the order you walk them.</li>
+              <li><strong>Pick a shopping mode.</strong> Balanced, Premium pick or Best value. This rewrites the search term for every item instantly, with no waiting and no extra usage against your daily limit.</li>
+              <li><strong>Choose your supermarket.</strong> The whole list re-links to whichever of the eight you select. Your choice is remembered for next time.</li>
+              <li><strong>Work through the list.</strong> Each item opens that supermarket's search in a new tab, so your list stays put. Tick things off as you go; the ticks survive a page reload.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points - Shopping From Recipes</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>No UK supermarket has a public basket API.</strong> Tesco publishes product data but explicitly excludes ordering. Every tool that claims to fill a basket across retailers is either a browser extension driving your own logged-in session, or a paid scraping service. A web page cannot do it.</li>
+              <li><strong>Search terms are not recipe wording.</strong> Supermarket search matches keywords. Strip the quantity, the prep and the adjectives, and you get results; leave them in and you get an empty page.</li>
+              <li><strong>American recipes need translating.</strong> Cilantro, zucchini, scallions, heavy cream and all-purpose flour all return nothing on a UK grocery site. This is the single most common reason a search comes back empty.</li>
+              <li><strong>Merging across recipes is where the time goes.</strong> Cooking four meals in a week usually means the same six or seven base ingredients appear repeatedly. Summing them properly is the difference between one onion and five.</li>
+              <li><strong>Store-cupboard staples are worth separating.</strong> Salt, oil, flour and dried spices are usually already in the house. They stay on the list by default, dimmed, with a toggle to hide them, because silently dropping something you actually needed is the worse mistake.</li>
+              <li><strong>Ocado carries M&amp;S Food.</strong> Since the 2020 partnership replaced Waitrose as Ocado's supermarket partner, M&amp;S products appear in Ocado search results. Worth knowing if you are hunting for a specific M&amp;S item.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources &amp; Further Reading</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://www.tesco.com/groceries/" target="_blank" rel="noopener noreferrer">Tesco Groceries</a>. Product search used for the Tesco links.</li>
+              <li><a href="https://www.ocado.com/" target="_blank" rel="noopener noreferrer">Ocado</a>. Online-only retailer whose catalogue includes M&amp;S Food.</li>
+              <li><a href="https://www.coop.co.uk/ways-to-shop/home-delivery" target="_blank" rel="noopener noreferrer">Co-op home delivery</a>. Explains the store-scoped model and minimum order that make Co-op links less reliable than the rest.</li>
+              <li><a href="https://www.which.co.uk/reviews/supermarkets/article/supermarket-price-comparison-aPpYp9j1MFin" target="_blank" rel="noopener noreferrer">Which? supermarket price comparison</a>. Independent monthly comparison of UK supermarket basket prices.</li>
+              <li><a href="/content-repurposer">Content Repurposer</a>. Another JohnB.io tool that restructures one input into several usable outputs.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder">
+    <!-- Static site navigation: real crawlable links for search/AI crawlers and no-JS visitors.
+         scripts.js:loadHeaderAndFooter() replaces this block with footer.html for everyone else. -->
+    <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
+      <style>.crawl-nav{max-width:1280px;margin:0 auto;padding:3rem 2rem;border-top:1px solid rgba(248,245,253,0.07);font-family:'Space Grotesk',sans-serif;color:var(--on-surface-variant,#acaab1)}.crawl-nav-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,245,253,0.4);margin:0 0 1rem}.crawl-nav-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.5rem;font-size:0.85rem;line-height:1.6}.crawl-nav-list a{color:#00EEFC;text-decoration:none}.crawl-nav-list a:hover,.crawl-nav-list a:focus-visible{text-decoration:underline}</style>
+      <p class="crawl-nav-title">Explore JohnB.io</p>
+      <ul class="crawl-nav-list">
+        <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
+        <li><a href="/pdf-merger">PDF Merger</a> - merge PDF files in your browser</li>
+        <li><a href="/calculator">Bill Calculator</a> - split bills and calculate tips</li>
+        <li><a href="/content-repurposer">Content Repurposer</a> - one piece of content, many formats</li>
+        <li><a href="/ebay">eBay &amp; Vinted Profit Calculator</a> - profit after fees and postage</li>
+        <li><a href="/editor">AI Copyeditor</a> - copyediting with UK and US English</li>
+        <li><a href="/text-to-speech">Text to Speech Converter</a> - natural AI voices for any text</li>
+        <li><a href="/prompt-improver">Prompt Improver</a> - rewrite prompts for better AI answers</li>
+        <li><a href="/tcs-simplifier">T&amp;Cs Simplifier</a> - bonus terms in plain English</li>
+        <li><a href="/faq-schema">FAQ Schema Generator</a> - FAQPage JSON-LD structured data</li>
+        <li><a href="/llms-generator">LLMs.txt Generator</a> - llms.txt files for AI crawlers</li>
+        <li><a href="/lm-chat">LLM Chat</a> - chat with language models</li>
+        <li><a href="/meditation">AI Meditation Generator</a> - personalised guided meditations</li>
+        <li><a href="/aitocv">AI CV Enhancer</a> - tailored CVs and cover letters</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 50 jurisdictions</li>
+        <li><a href="/about">About John Bowman</a> - 20+ years in iGaming and digital marketing</li>
+        <li><a href="/news/">AI Blog</a> - practical AI strategy and how it works</li>
+        <li><a href="/course/">AI &amp; Machine Learning Course</a> - free structured course</li>
+        <li><a href="/contact">Contact</a> - get in touch</li>
+      </ul>
+    </nav>
+  </div>
+
+  <script src="/scripts.js?v=7" defer></script>
+  <script src="/recipe-shopping-list.js?v=1" defer></script>
+  <script>
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
