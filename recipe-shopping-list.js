@@ -177,7 +177,15 @@ generateBtn.addEventListener('click', async () => {
     setStatus('');
 
   } catch (e) {
-    setStatus('Network error — please check your connection and try again.', true);
+    // A thrown fetch here is almost never the user's connection: it's the
+    // worker being unreachable or a CORS rejection. Saying "check your
+    // connection" sends people to debug the wrong thing.
+    setStatus(
+      navigator.onLine
+        ? 'Couldn’t reach the shopping list service. It may be down or still deploying — try again shortly.'
+        : 'You appear to be offline. Reconnect and try again.',
+      true
+    );
   } finally {
     generateBtn.disabled = false;
   }
