@@ -57,6 +57,14 @@ const listEl      = document.getElementById('rsl-list');
 const unmatchedEl = document.getElementById('rsl-unmatched');
 const progressEl  = document.getElementById('rsl-progress');
 const copyBtn     = document.getElementById('rsl-copy');
+const openAllBtn  = document.getElementById('rsl-open-all');
+const openAllLbl  = document.getElementById('rsl-open-all-label');
+const openNoteEl  = document.getElementById('rsl-open-note');
+
+// Browsers allow a burst of window.open calls from one gesture, but 20 heavy
+// supermarket pages at once will bring a laptop to its knees. Open a batch,
+// let them tick those off, repeat.
+const OPEN_BATCH = 10;
 
 let listData   = null;
 let mode       = 'balanced';
@@ -261,6 +269,7 @@ function renderList(result) {
     unmatchedEl.style.display = 'none';
   }
 
+  setOpenNote('');
   restoreTicks();
   paintRetailerPills();
   applyLinks();
@@ -438,7 +447,60 @@ function updateProgress() {
   const rows = listEl.querySelectorAll('.rsl-item:not(.hidden-staple)');
   const done = listEl.querySelectorAll('.rsl-item:not(.hidden-staple).ticked');
   progressEl.textContent = rows.length ? `${done.length} of ${rows.length}` : '';
+  updateOpenAll();
 }
+
+// ── OPEN ALL IN TABS ─────────────────────────────────────────────────────
+// Everything still to buy: visible, and not already ticked off.
+function remainingRows() {
+  return [...listEl.querySelectorAll('.rsl-item:not(.hidden-staple):not(.ticked)')];
+}
+
+function updateOpenAll() {
+  const n = remainingRows().length;
+  const batch = Math.min(n, OPEN_BATCH);
+  openAllBtn.disabled = n === 0;
+  openAllLbl.textContent = n === 0
+    ? 'Open all'
+    : (n > OPEN_BATCH ? `Open ${batch} of ${n}` : `Open all ${n}`);
+  openAllBtn.setAttribute('aria-label', n === 0
+    ? 'Nothing left to open'
+    : `Open ${batch} remaining item${batch === 1 ? '' : 's'} in new tabs`);
+}
+
+function setOpenNote(msg, isError = false) {
+  openNoteEl.textContent = msg;
+  openNoteEl.className = 'rsl-open-note' + (isError ? ' error' : '');
+  openNoteEl.style.display = msg ? '' : 'none';
+}
+
+openAllBtn.addEventListener('click', () => {
+  const rows = remainingRows().slice(0, OPEN_BATCH);
+  if (!rows.length) return;
+
+  let blocked = 0;
+  rows.forEach(row => {
+    const href = row.querySelector('.rsl-shop-link').href;
+    // Note: passing 'noopener' in the features string makes window.open return
+    // null even on success, which would break blocked-popup detection. Open
+    // plainly, then sever the opener by hand.
+    const w = window.open(href, '_blank');
+    if (w) {
+      try { w.opener = null; } catch (e) { /* cross-origin, already severed */ }
+    } else {
+      blocked++;
+    }
+  });
+
+  const opened = rows.length - blocked;
+  if (blocked === 0) {
+    setOpenNote(`Opened ${opened} tab${opened === 1 ? '' : 's'}. Tick items off as you add them, then open the next batch.`);
+  } else if (opened === 0) {
+    setOpenNote('Your browser blocked the pop-ups. Allow pop-ups for johnb.io in the address bar, then try again.', true);
+  } else {
+    setOpenNote(`Only ${opened} of ${rows.length} opened — your browser blocked the rest. Allow pop-ups for johnb.io to open them all.`, true);
+  }
+});
 
 // ── COPY ─────────────────────────────────────────────────────────────────
 // Plain text, grouped by aisle, ticked items dropped, no URLs — the most

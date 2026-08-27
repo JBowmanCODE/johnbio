@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="/styles.css?v=4">
   <link rel="stylesheet" href="/header.css?v=4">
   <link rel="stylesheet" href="/footer.css?v=2">
-  <link rel="stylesheet" href="/recipe-shopping-list.css?v=1">
+  <link rel="stylesheet" href="/recipe-shopping-list.css?v=2">
 
   <!-- SEO -->
   <meta name="description" content="Paste a recipe or meal plan and get one shopping list, grouped by aisle, with one-click search links for Tesco, Sainsbury's, Asda and 5 more.">
@@ -154,6 +154,10 @@
         <h2>Your Shopping List</h2>
         <div class="rsl-output-actions">
           <span id="rsl-progress" class="rsl-progress"></span>
+          <button class="rsl-action-btn" id="rsl-open-all" aria-label="Open remaining items in new tabs">
+            <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+            <span id="rsl-open-all-label">Open all</span>
+          </button>
           <button class="rsl-action-btn" id="rsl-copy" aria-label="Copy shopping list to clipboard">
             <span class="material-symbols-outlined" aria-hidden="true">content_copy</span> Copy
           </button>
@@ -191,6 +195,7 @@
       </div>
 
       <p class="rsl-caveat" id="rsl-caveat" role="note" style="display:none;"></p>
+      <p class="rsl-open-note" id="rsl-open-note" role="status" aria-live="polite" style="display:none;"></p>
 
       <div class="rsl-output-body" id="rsl-list"></div>
 
@@ -276,6 +281,7 @@
               <li><strong>Pick a shopping mode.</strong> Balanced, Premium pick or Best value. This rewrites the search term for every item instantly, with no waiting and no extra usage against your daily limit.</li>
               <li><strong>Choose your supermarket.</strong> The whole list re-links to whichever of the eight you select. Your choice is remembered for next time.</li>
               <li><strong>Work through the list.</strong> Each item opens that supermarket's search in a new tab, so your list stays put. Tick things off as you go; the ticks survive a page reload.</li>
+              <li><strong>Or open them in bulk.</strong> The "Open all" button fires up a tab per remaining ingredient, ten at a time so your browser survives it. Ticked and hidden items are skipped. You will need to allow pop-ups for johnb.io the first time, and the button will tell you if your browser blocked them.</li>
             </ol>
           </div>
         </details>
@@ -352,7 +358,7 @@
   </div>
 
   <script src="/scripts.js?v=7" defer></script>
-  <script src="/recipe-shopping-list.js?v=2" defer></script>
+  <script src="/recipe-shopping-list.js?v=3" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {

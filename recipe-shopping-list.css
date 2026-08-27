@@ -224,6 +224,24 @@
 .rsl-servings input:focus { border-color: rgba(0,238,252,0.7); }
 .rsl-servings-base { font-size: 0.68rem; color: rgba(172,170,177,0.7); }
 
+.rsl-action-btn:disabled {
+  opacity: 0.4; cursor: not-allowed;
+  background: transparent; border-color: rgba(248,245,253,0.15); color: var(--on-surface-variant);
+}
+
+.rsl-open-note {
+  margin: 0.75rem 0 0; padding: 0.55rem 0.8rem;
+  background: rgba(34,197,94,0.08);
+  border-left: 2px solid rgba(34,197,94,0.5);
+  border-radius: 0.3rem;
+  font-size: 0.74rem; line-height: 1.5;
+  color: rgba(248,245,253,0.8);
+}
+.rsl-open-note.error {
+  background: rgba(245,158,11,0.08);
+  border-left-color: rgba(245,158,11,0.6);
+}
+
 .rsl-caveat {
   margin: 0.9rem 0 0; padding: 0.6rem 0.8rem;
   background: rgba(245,158,11,0.08);
@@ -331,7 +349,7 @@
 /* ── PRINT ── */
 @media print {
   .rsl-ambient, #header-placeholder, #footer-placeholder, #share-bar-placeholder,
-  #back-to-top, .tool-info, .rsl-card, .rsl-explainer, .rsl-controls,
+  #back-to-top, .tool-info, .rsl-card, .rsl-explainer, .rsl-controls, .rsl-open-note,
   .rsl-caveat, .rsl-output-actions, .rsl-shop-link, .rsl-item-term, .rsl-status {
     display: none !important;
   }
