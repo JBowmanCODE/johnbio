@@ -321,6 +321,83 @@
   color: rgba(172,170,177,0.65);
 }
 
+/* ── PRICE COMPARISON TABLE ── */
+.rsl-price-intro { font-size: 0.85rem; line-height: 1.6; color: var(--on-surface-variant); margin: 0 0 1rem; }
+.rsl-price-intro strong { color: var(--on-surface); }
+
+/* Seven price columns will not fit a phone. Scroll the table, never the page. */
+.rsl-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid rgba(248,245,253,0.08);
+  border-radius: 0.6rem;
+  margin: 0 0 0.75rem;
+}
+.rsl-table-scroll:focus-visible { outline: 2px solid #00EEFC; outline-offset: 2px; }
+
+.rsl-price-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 640px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+}
+.rsl-price-table th,
+.rsl-price-table td {
+  padding: 0.5rem 0.7rem;
+  text-align: right;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(248,245,253,0.06);
+}
+.rsl-price-table thead th {
+  position: sticky; top: 0;
+  background: #16161c;
+  color: rgba(248,245,253,0.55);
+  font-size: 0.66rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+/* Keep the ingredient name visible while the prices scroll under it. */
+.rsl-price-table tbody th,
+.rsl-price-table tfoot th,
+.rsl-price-table thead th:first-child {
+  position: sticky; left: 0;
+  background: #16161c;
+  text-align: left;
+  font-weight: 600;
+  color: var(--on-surface);
+}
+.rsl-price-table thead th:first-child { z-index: 2; }
+.rsl-price-table td { color: var(--on-surface-variant); }
+
+.rsl-price-table .rsl-best {
+  color: #22c55e;
+  font-weight: 800;
+  background: rgba(34,197,94,0.09);
+}
+.rsl-price-table tfoot th,
+.rsl-price-table tfoot td {
+  border-top: 2px solid rgba(248,245,253,0.15);
+  border-bottom: none;
+  font-weight: 800;
+  font-size: 0.84rem;
+  color: var(--on-surface);
+}
+.rsl-price-table tfoot .rsl-best { color: #22c55e; }
+.rsl-price-table abbr {
+  text-decoration: none;
+  color: #f59e0b;
+  cursor: help;
+  margin-left: 0.1rem;
+}
+
+.rsl-price-foot {
+  font-size: 0.72rem; line-height: 1.55;
+  color: rgba(172,170,177,0.75);
+  margin: 0 0 1rem;
+}
+.rsl-price-foot abbr { color: #f59e0b; text-decoration: none; }
+
 /* ── EXPLAINER ── */
 .rsl-explainer {
   display: flex; gap: 0.85rem;
