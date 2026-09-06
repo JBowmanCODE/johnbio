@@ -310,7 +310,7 @@
 .lpr-replay {
   margin-bottom: 40px;
   /* Land below the fixed site header when scrolled into view */
-  scroll-margin-top: 96px;
+  scroll-margin-top: calc(96px + var(--site-banner-h, 40px));
 }
 /* Seats overflow the ellipse — reserve room so they never collide with
    the header above or the step text below */
@@ -709,5 +709,5 @@ html.lpr-embed .lpr-made-with { display: block; }
   .lpr-controls { gap: 8px; margin-bottom: 10px; }
   .lpr-ctrl-btn { width: 40px; height: 40px; }
   .lpr-ctrl-btn.lpr-play { width: 48px; height: 48px; }
-  .lpr-replay { scroll-margin-top: 72px; }
+  .lpr-replay { scroll-margin-top: calc(72px + var(--site-banner-h, 40px)); }
 }

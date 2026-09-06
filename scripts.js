@@ -68,7 +68,7 @@ function loadHeaderAndFooter() {
     const footerPlaceholder = document.getElementById('footer-placeholder');
 
     // Load header (use sessionStorage cache to avoid flash on navigation)
-    const cachedHeader = sessionStorage.getItem('site-header-v4');
+    const cachedHeader = sessionStorage.getItem('site-header-v5');
     if (cachedHeader && headerPlaceholder) {
         headerPlaceholder.innerHTML = cachedHeader;
         initializeHeader();
@@ -81,7 +81,7 @@ function loadHeaderAndFooter() {
             .then(data => {
                 if (headerPlaceholder) {
                     headerPlaceholder.innerHTML = data;
-                    sessionStorage.setItem('site-header-v4', data);
+                    sessionStorage.setItem('site-header-v5', data);
                     initializeHeader();
                 }
             })
@@ -110,6 +110,26 @@ function loadHeaderAndFooter() {
 
 // Initialize header functionality
 function initializeHeader() {
+    // Site closure banner — the CSS reserves an estimated height per
+    // breakpoint, but the notice wraps to a different number of lines
+    // depending on viewport and font metrics. Measure what actually
+    // rendered and write it back to --site-banner-h so the fixed header
+    // and the html padding always clear the banner exactly.
+    const banner = document.querySelector('.site-banner');
+    if (banner) {
+        const syncBannerHeight = () => {
+            document.documentElement.style.setProperty(
+                '--site-banner-h', banner.offsetHeight + 'px'
+            );
+        };
+        syncBannerHeight();
+        window.addEventListener('resize', syncBannerHeight);
+        // Web fonts land after first paint and change the wrap point.
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(syncBannerHeight);
+        }
+    }
+
     // Logo typewriter hover effect
     const logoText = document.getElementById('logo-text');
     if (logoText) {

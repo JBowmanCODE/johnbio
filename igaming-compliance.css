@@ -407,7 +407,7 @@ body {
 /* ── DATABASE SECTION ── */
 .igc-database {
   margin-bottom: 2.5rem;
-  scroll-margin-top: 96px;
+  scroll-margin-top: calc(96px + var(--site-banner-h, 40px));
 }
 
 .igc-db-header {
@@ -563,7 +563,7 @@ body {
 }
 
 /* Deep-linked rows (#reg-uk-gambling-act-2005) */
-.igc-table tr[id] { scroll-margin-top: 96px; }
+.igc-table tr[id] { scroll-margin-top: calc(96px + var(--site-banner-h, 40px)); }
 .igc-table tr:target td { background: rgba(255,0,127,0.07); }
 .igc-table tr:target td:first-child { box-shadow: inset 3px 0 0 #FF007F; }
 
@@ -603,7 +603,7 @@ body {
 /* ── JURISDICTION INDEX + ANCHORS ── */
 .igc-jurisdictions {
   margin-bottom: 2.5rem;
-  scroll-margin-top: 96px;
+  scroll-margin-top: calc(96px + var(--site-banner-h, 40px));
 }
 
 .igc-jur-intro {
@@ -670,7 +670,7 @@ body {
   border: 1px solid rgba(255,255,255,0.07);
   border-radius: 0.875rem;
   padding: 1rem 1.25rem;
-  scroll-margin-top: 96px;
+  scroll-margin-top: calc(96px + var(--site-banner-h, 40px));
   transition: border-color 0.2s, background 0.2s;
 }
 

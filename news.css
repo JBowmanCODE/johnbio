@@ -1116,7 +1116,7 @@ main.na-wrap {
 
 /* ── Scroll offset so headings aren't hidden under fixed nav ── */
 .na-body h2[id] {
-  scroll-margin-top: 110px;
+  scroll-margin-top: calc(110px + var(--site-banner-h, 40px));
 }
 
 /* ── Table of Contents sidebar ── */

@@ -289,7 +289,7 @@ main {
   text-transform: uppercase; letter-spacing: 0.05em;
   color: var(--on-surface);
   margin: 1.75rem 0 0;
-  scroll-margin-top: 96px;
+  scroll-margin-top: calc(96px + var(--site-banner-h, 40px));
 }
 .about-h2:first-child { margin-top: 0; }
 

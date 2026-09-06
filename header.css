@@ -16,8 +16,39 @@
 }
 .skip-nav:focus { top: 0; outline: none; }
 
+/* ── Site closure banner ──
+   Fixed above the header. html padding-top (not body) shifts every page
+   down by the banner height: 12 tool stylesheets already set
+   body { padding-top: 72px } and load after this file, so a body rule
+   here would be overridden. Nothing styles html, so it is a safe anchor.
+   scripts.js measures the rendered height and rewrites --site-banner-h,
+   which keeps the offset correct when the text wraps to more lines. */
+:root { --site-banner-h: 40px; }
+html { padding-top: var(--site-banner-h); }
+
+.site-banner {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 400;
+  display: flex; align-items: center; justify-content: center;
+  min-height: var(--site-banner-h);
+  padding: 0.45rem 1rem;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #0e0e13;
+  text-align: center;
+}
+.site-banner p {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.85rem; font-weight: 600; line-height: 1.35;
+  max-width: 1280px;
+}
+.site-banner a {
+  color: inherit; font-weight: 800;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.site-banner a:hover { opacity: 0.72; }
+.site-banner a:focus-visible { outline: 2px solid #0e0e13; outline-offset: 2px; }
+
 header {
-  position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+  position: fixed; top: var(--site-banner-h); left: 0; width: 100%; z-index: 100;
   background: rgba(14,14,19,0.7);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
@@ -577,3 +608,17 @@ a.btn-primary:focus-visible,
 }
 .ideas-cta:hover { opacity: 0.9; transform: translateY(-1px); }
 .ideas-cta .material-symbols-outlined { font-size: 1rem; }
+
+/* ── Site closure banner: mobile ──
+   Narrower viewports wrap the notice onto more lines, so the reserved
+   height grows to match. scripts.js corrects these estimates to the real
+   rendered height on load and on resize. */
+@media (max-width: 768px) {
+  :root { --site-banner-h: 58px; }
+  .site-banner p { font-size: 0.78rem; }
+}
+@media (max-width: 480px) {
+  :root { --site-banner-h: 74px; }
+  .site-banner { padding: 0.4rem 0.75rem; }
+  .site-banner p { font-size: 0.74rem; }
+}
