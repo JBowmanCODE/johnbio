@@ -27,7 +27,7 @@ Then fill in the placeholders. Search for `{{` and replace every match before fi
 | `{{AUTHOR_SAMEAS}}` | LinkedIn/X profile URL | Author schema `sameAs` |
 | `{{ANALYTICS_ID}}` | `G-XXXXXXXXXX` | Analytics snippet |
 
-If your CMS handles the head, schema and layout automatically, use sections 1–5 only and skip the technical half.
+If your CMS handles the head, schema and layout automatically, use sections 1–9 only and skip the technical half.
 
 ---
 
@@ -179,7 +179,66 @@ You are an expert SEO writer creating content designed to rank on Google and be 
 
 ---
 
-## 7. Humanisation rules — apply all without exception
+## 7. Fact-checking and source of truth
+
+Sections 4 and 6 say to cite primary sources. This section is the method for getting there, and it's the one that earns its place — the johnb.io article this playbook came from needed two full rounds of corrections after publication despite following every rule above.
+
+### Two sources, and they must be independent
+
+The rule is not "find it on two websites". Two websites quoting the same press release is one source wearing two hats, and that's the most common way a wrong number survives a check.
+
+**Two sources count as independent only if neither could have got it from the other.** A vendor blog and six outlets reporting that vendor blog is one source. A regulator's published figure and an academic study that measured the same thing separately is two.
+
+The working procedure:
+
+1. Find the **primary** source — the legislation, the regulator's own page, the company's own announcement, the published paper, the filing
+2. Find a **second, independent** source that either measured it separately or reports a figure the first would have no way to supply
+3. If both agree, cite the primary and link it
+4. If they disagree, say so in the article and give both numbers with their sources — a stated disagreement is more useful than a confident wrong number
+5. If you can find only one source and it's the interested party's own claim, attribute it as such: "Alibaba's own figure, reported via Bloomberg" rather than stating it as fact
+6. **If you cannot source it at all, cut it.** Not soften it, not hedge it — cut it
+
+### Never cite your own training data
+
+A model writing about anything time-sensitive is working from a snapshot that is months old at best and was wrong about some things when it was taken. Every date, figure, version number, price and "first ever" claim needs a live lookup before it goes in the draft. A remembered fact that feels certain is exactly the kind that gets published wrong.
+
+### The nine ways facts actually go wrong
+
+These are the real errors found in review on one 2,271-word article, not a generic list. Check each one explicitly:
+
+1. **Right number, wrong event.** A figure gets attached to the wrong incident. `$279bn` was Nvidia's September 2024 record, not the June 2026 selloff (~$330bn). Both numbers are real; the pairing was invented.
+2. **Right facts, wrong causal order.** Two true events, arranged to imply one caused the other. The article had Disney reacting to a likeness row that was settled seven weeks before Disney signed. Check the dates before writing "in response to".
+3. **Metric definition drift.** "84% adoption" was really 84% *using or planning to use*. Read what the number actually measures, not what the headline calls it.
+4. **Stale figures presented as current.** Benchmark scores were 11 months out of date. Fixed by showing then-vs-now rather than silently updating.
+5. **Unsourceable claims that sound plausible.** "36% of text-generation downloads" could not be traced to anything and was removed. Plausibility is not evidence.
+6. **Merged attribution.** One sentence blended a Hugging Face figure with Alibaba's own claim. Split them and attribute each.
+7. **Off-by-one dates.** Export controls lifted 30 June, not 1 July. Check the primary source's own date, not a summary of it.
+8. **"First ever" claims.** Almost always wrong. "First adoption outside Google" missed an earlier one. Either verify exhaustively or don't make the claim.
+9. **Comparing things that aren't comparable.** A price chart put a flagship model against a budget-tier one. Compare like for like, and say which tier you're comparing.
+
+Add a tenth for benchmarks specifically: **check whether the measure is still considered valid.** The article cited SWE-bench Verified scores; OpenAI had published a piece calling that dataset contaminated. A number can be accurately quoted and still be meaningless.
+
+### Verify corrections too
+
+When a reviewer, a reader or another model sends you a list of factual errors, check each one before changing anything. In the second review round on that article, two of the reviewer's own corrections were wrong and the original figures stood. Confident feedback is not verified feedback.
+
+### What to write down
+
+- Date-stamp verification in the copy where the fact is volatile: "as of September 2026"
+- Every statistic carries its source and year inline: "72% of operators (ICO, 2024)"
+- Where a figure is an estimate rather than a reported number, say whose estimate: "Appfigures' estimate of in-app purchases"
+- Where sources genuinely conflict and no primary source settles it, give the range and say why it's a range
+
+### When the article is corrected after publishing
+
+- Update `dateModified` in the schema
+- Update the FAQ answers *and* the FAQPage JSON-LD together — they must stay word-for-word identical
+- Regenerate the audio file if the site has one
+- Keep the correction in the commit message, specific enough that the next person can see what was wrong and why the new figure is right
+
+---
+
+## 8. Humanisation rules — apply all without exception
 
 This is the section that does the most work. Everything above produces a technically correct article that still reads like a machine wrote it.
 
@@ -266,7 +325,7 @@ This is the section that does the most work. Everything above produces a technic
 
 ---
 
-## 8. Banned words — never use any of these
+## 9. Banned words — never use any of these
 
 Replace with plain direct alternatives. If you can't think of one, cut the sentence.
 
@@ -296,7 +355,7 @@ Replace with plain direct alternatives. If you can't think of one, cut the sente
 
 ---
 
-## 9. Head checklist — every article must have
+## 10. Head checklist — every article must have
 
 - `<title>` — max 60 chars
 - `<meta name="description">` — unique, 150 chars max
@@ -313,7 +372,7 @@ Replace with plain direct alternatives. If you can't think of one, cut the sente
 
 ---
 
-## 10. Schema (JSON-LD only)
+## 11. Schema (JSON-LD only)
 
 **Rule:** Use JSON-LD only. Never add `itemscope`, `itemtype`, or `itemprop` attributes to HTML elements — these create duplicate Article schema blocks that Google flags as errors. One JSON-LD block in `<head>` is the single source of truth.
 
@@ -336,7 +395,7 @@ Add if the article has a "How It Works" section with numbered steps (`ol`). Each
 
 ---
 
-## 11. Accordion order
+## 12. Accordion order
 
 Where the layout uses collapsible sections, always this sequence:
 
@@ -349,7 +408,7 @@ FAQ schema in JSON-LD must exactly match the visible on-page FAQ answers.
 
 ---
 
-## 12. Author byline and bio block
+## 13. Author byline and bio block
 
 **Byline link:** the author name must link to `{{AUTHOR_URL}}`, not to a social profile. If the author image also links out, both must point to the same place.
 
@@ -371,7 +430,7 @@ Style it in the site stylesheet — no inline styles.
 
 ---
 
-## 13. Images and accessibility
+## 14. Images and accessibility
 
 - All images must have descriptive `alt` text — genuinely descriptive, not keyword-stuffed
 - All interactive elements need `aria-label` or a visible label
@@ -382,7 +441,7 @@ Style it in the site stylesheet — no inline styles.
 
 ---
 
-## 14. Crawlable internal links
+## 15. Crawlable internal links
 
 If your header and footer are injected at runtime by JavaScript, a new article's raw HTML has **zero** internal links. Googlebot renders JS and copes. GPTBot, ClaudeBot, PerplexityBot and CCBot do not — a page without static links is a dead end for AI citation.
 
@@ -392,7 +451,7 @@ This does not apply if your CMS server-renders the nav.
 
 ---
 
-## 15. After writing — publish checklist
+## 16. After writing — publish checklist
 
 - [ ] Add the article to the site's post index / data source
 - [ ] Regenerate any static listing pages (if the listing is built from a data file)
@@ -402,7 +461,8 @@ This does not apply if your CMS server-renders the nav.
 - [ ] Verify FAQ JSON-LD matches visible FAQ text word for word
 - [ ] Verify canonical returns 200, not a redirect
 - [ ] Run the banned-words check (see below)
-- [ ] Fact-check pass: every statistic has a source and a year, every claim traces to a primary source
+- [ ] Fact-check pass against Section 7: every statistic has a source and a year, every claim traces to a primary source, every volatile fact corroborated by an independent second source
+- [ ] Walk the nine failure modes in Section 7 explicitly — especially dates, "first ever" claims, and what each metric actually measures
 
 ### Optional: article audio
 
@@ -414,7 +474,7 @@ Two things to normalise before sending text to TTS, both learned the hard way:
 
 ---
 
-## 16. Quality gate — run before publishing
+## 17. Quality gate — run before publishing
 
 A quick grep catches most of the banned list:
 
@@ -433,6 +493,8 @@ Then read the draft against these four questions:
 
 Failing any of the four means a rewrite, not a patch. These are structural.
 
+Then one factual pass, which is the slowest part and the only one that can't be skipped. Take every number, date, version and named claim in the draft, list them, and check each against its source. Anything you can't trace comes out. Anything an interested party is the only source for gets attributed to them rather than stated. See Section 7.
+
 ---
 
 ## What this file deliberately leaves out
@@ -441,7 +503,7 @@ The source `CLAUDE.md` this came from also covered deployment, Cloudflare Worker
 
 - Section 2 title format (your suffix, your character budget)
 - Section 3 language (UK vs US English)
-- Section 11 accordion order (only if your layout has accordions)
-- Section 14 (only if your nav is JS-injected)
+- Section 12 accordion order (only if your layout has accordions)
+- Section 15 (only if your nav is JS-injected)
 
 The humanisation rules and the banned-words list transfer unchanged. They're about how models write, not about any one site.
