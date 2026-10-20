@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="/styles.css?v=4">
   <link rel="stylesheet" href="/header.css?v=5">
   <link rel="stylesheet" href="/footer.css?v=2">
-  <link rel="stylesheet" href="/search-radar.css?v=1">
+  <link rel="stylesheet" href="/search-radar.css?v=2">
 
   <!-- SEO -->
   <meta name="description" content="Free keyword and AI prompt research tool. Scan Google, YouTube, Reddit and LinkedIn demand for any topic, plus likely ChatGPT prompts for AEO and GEO.">
@@ -205,6 +205,7 @@
         </div>
       </div>
 
+      <p class="sr-notice sr-ambiguity" id="sr-ambiguity" hidden></p>
       <div class="sr-grid" id="sr-grid" aria-live="off"></div>
     </section>
 
@@ -361,7 +362,7 @@
   <div class="sr-toast" id="sr-toast" role="status" aria-live="polite"></div>
 
   <script src="/scripts.js?v=8" defer></script>
-  <script src="/search-radar.js?v=2" defer></script>
+  <script src="/search-radar.js?v=3" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {

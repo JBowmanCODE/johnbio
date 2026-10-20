@@ -215,6 +215,7 @@
 .sr-filter-count { opacity: 0.75; font-weight: 600; }
 
 /* ── BENTO GRID ── */
+.sr-notice.sr-ambiguity { margin: 0 0 1.25rem; }
 .sr-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
 .sr-bento {
   background: rgba(28,28,35,0.72);

@@ -327,6 +327,15 @@
     if (data.cached) badges.appendChild(el('span', 'sr-badge is-cached', 'Cached'));
     if (MOCK) badges.appendChild(el('span', 'sr-badge is-rules', 'Mock data'));
 
+    // Short seeds and acronyms ("GEO", "RAG") mix unrelated meanings in autocomplete.
+    const amb = $('sr-ambiguity');
+    const s = String(data.seed || '').trim();
+    const ambiguous = s.length <= 4 || /^[A-Z0-9]{2,6}$/.test(s);
+    amb.textContent = ambiguous
+      ? 'Short terms and acronyms like "' + s + '" usually mix several unrelated meanings, so expect some off-topic results. For tighter results add context, e.g. "' + s + ' SEO", "' + s + ' marketing", or spell the term out in full.'
+      : '';
+    amb.hidden = !ambiguous;
+
     // filter counts: unique terms (case-insensitive) per filter. Intent clusters
     // regroup terms already listed elsewhere, so they're filtered visually but not counted.
     const sets = { q: new Set(), c: new Set(), t: new Set() };
@@ -562,7 +571,7 @@
     busy = true;
     scanSeq++;
     scanBtn.disabled = true;
-    setStatus('Scanning Google, YouTube, Reddit, Hacker News and LinkedIn for "' + seed + '"…');
+    setStatus('Scanning Google, YouTube, Reddit, Hacker News and LinkedIn for "' + seed + '"… The AI prompts step can take 10-15 seconds.');
     setPlatforms(null);
     notesEl.hidden = true;
     resultsEl.hidden = false;
