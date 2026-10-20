@@ -179,12 +179,12 @@
           { label: 'Tutorial gaps', category: 'Tutorial', type: 'chips', items: strs(y.tutorials) },
           { label: 'Video searches', category: 'Video search', type: 'chips', items: strs(y.queries) },
         ] },
-      { key: 'reddit', platform: 'Reddit', icon: 'forum', title: 'Reddit & Hacker News Pulse', sub: 'Reddit search intent and live Hacker News discussion.',
+      { key: 'reddit', platform: 'Reddit', icon: 'forum', title: 'Reddit & Hacker News Pulse', sub: 'Live Hacker News threads, plus Google searches people add "reddit" to (the Reddit API is closed).',
         groups: [
-          { label: 'Reddit searches', category: 'Search', type: 'chips', items: strs(r.searches) },
+          { label: 'What people want real opinions on', category: 'Reddit-intent search', type: 'chips', items: strs(r.searches) },
           { label: 'Hacker News threads', platform: 'Hacker News', category: 'Thread', type: 'threads', items: threads },
         ] },
-      { key: 'linkedin', platform: 'LinkedIn', icon: 'work', title: 'LinkedIn & B2B Angles', sub: 'Business framings and post hooks.',
+      { key: 'linkedin', platform: 'LinkedIn', icon: 'work', title: 'LinkedIn & B2B Angles', sub: 'Business searches from Google autocomplete, plus post hooks. Nothing is taken from LinkedIn.',
         groups: [
           { label: 'B2B modifiers', category: 'B2B modifier', type: 'chips', items: strs(li.modifiers),
             empty: 'No clear B2B angle in the searches for this topic. The hooks below still work for a personal or creator post.' },
@@ -344,7 +344,7 @@
     sec.appendChild(head);
     const hnSrc = data.sources && data.sources.hn;
     if (card.empty && !cardCount(card)) sec.appendChild(el('p', 'sr-empty', card.empty));
-    else card.groups.forEach((g) => sec.appendChild(renderGroup(g, card, data.seed, hnSrc)));
+    else card.groups.forEach((g) => sec.appendChild(renderGroup(g, card, data.topic || data.seed, hnSrc)));
     const none = el('p', 'sr-empty sr-filter-empty', 'Nothing in this card matches the filter.');
     none.hidden = true;
     sec.appendChild(none);
