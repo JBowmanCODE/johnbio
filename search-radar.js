@@ -20,7 +20,7 @@
       { title: 'Ask HN: Is workflow automation worth learning when agents can do it?', points: 54, comments: 96, date: '2026-08-21', url: 'https://news.ycombinator.com/item?id=3' },
     ];
     return {
-      success: true, seed: seed, country: country, generatedAt: new Date().toISOString(), cached: false, engine: 'ai',
+      success: true, seed: seed, topic: 'n8n', country: country, generatedAt: new Date().toISOString(), cached: false, engine: 'ai',
       sources: {
         google: { ok: true, count: 14 }, youtube: { ok: true, count: 7 },
         reddit: { ok: true, count: 3 },
@@ -57,6 +57,17 @@
           { name: 'Self-hosting and setup', terms: ['n8n automation self hosted', 'n8n setup docker step by step', 'n8n install on vps'] },
           { name: 'Tool comparisons', terms: ['n8n vs zapier', 'n8n vs make', 'n8n alternative open source'] },
           { name: 'AI agents', terms: ['n8n automation ai agent', 'n8n workflows explained'] },
+        ],
+      },
+      ideas: {
+        articles: [
+          { title: 'n8n vs Zapier: what a 12-person agency actually pays', angle: 'Real monthly costs for both tools at 5,000 tasks, including the hosting bill nobody quotes.', terms: ['n8n vs zapier', 'n8n automation pricing', 'is n8n free'] },
+          { title: 'Is n8n free? Fair-code licensing explained for UK businesses', angle: 'What the licence lets you do for clients, and where you need a paid plan.', terms: ['is n8n free', 'n8n automation self hosted'] },
+          { title: 'Self-hosting n8n with Docker: a setup you can leave running', angle: 'One VPS, Docker Compose, backups and basic auth, with the mistakes that break updates.', terms: ['n8n setup docker step by step', 'n8n install on vps', 'n8n self hosted'] },
+        ],
+        videos: [
+          { title: 'Build an AI agent in n8n in 20 minutes', angle: 'Screen recording from an empty canvas to a Gmail triage agent that posts to Slack.', terms: ['n8n automation ai agent', 'n8n tutorial for beginners'] },
+          { title: 'n8n vs Make: the same workflow built twice', angle: 'Side-by-side build of one lead-routing flow, timing each and comparing the bill.', terms: ['n8n vs make', 'n8n workflows explained'] },
         ],
       },
       totals: { unique: 41 },
@@ -122,8 +133,15 @@
   }
 
   // ── NORMALISE RESPONSE INTO CARDS ───────────────────────────────────────
-  // group types: chips (strings), prompts ({intent,text}), lines (strings), threads, clusters
+  // group types: chips (strings), prompts ({intent,text}), lines (strings), threads, clusters,
+  // ideas ({title,angle,terms})
+  function cleanIdeas(x) {
+    return arr(x).filter((i) => i && typeof i.title === 'string' && i.title.trim())
+      .map((i) => ({ title: i.title.trim(), angle: typeof i.angle === 'string' ? i.angle.trim() : '', terms: strs(i.terms).slice(0, 4) }));
+  }
+  const ideaText = (i) => i.title + (i.angle ? ' - ' + i.angle : '');
   function buildCards(d) {
+    const ideas = d.ideas && typeof d.ideas === 'object' ? d.ideas : {};
     const g = d.google || {}, y = d.youtube || {}, r = d.reddit || {}, hn = d.hn || {}, li = d.linkedin || {}, l = d.llm || {};
     const prompts = arr(l.prompts).filter((p) => p && typeof p.text === 'string' && p.text.trim())
       .map((p) => ({ intent: ['Discovery', 'Comparison', 'Implementation'].includes(p.intent) ? p.intent : 'Discovery', text: p.text.trim() }));
@@ -135,6 +153,13 @@
     }));
     const engine = d.engine === 'rules' || (d.sources && d.sources.llm && d.sources.llm.engine === 'rules') ? 'rules' : 'ai';
     return [
+      { key: 'ideas', platform: 'Content ideas', wide: true, icon: 'lightbulb', title: 'Content ideas',
+        sub: 'Article and video ideas built from the searches below.',
+        empty: 'No content ideas came back for this scan. The AI step may have been unavailable, or this is an older cached result.',
+        groups: [
+          { label: 'Article ideas', category: 'Article idea', type: 'ideas', items: cleanIdeas(ideas.articles) },
+          { label: 'Video ideas', category: 'Video idea', type: 'ideas', items: cleanIdeas(ideas.videos) },
+        ] },
       { key: 'llm', platform: 'AI prompts', wide: true, icon: 'psychology', title: 'LLM & AI Answer Engine Prompts (AEO/GEO)',
         sub: engine === 'rules'
           ? 'Rule-based prompt templates built from the search data below. The AI step was unavailable.'
@@ -171,6 +196,7 @@
     if (group.type === 'prompts') return group.items.map((p) => p.text);
     if (group.type === 'threads') return group.items.map((t) => t.title);
     if (group.type === 'clusters') return group.items.flatMap((c) => c.terms);
+    if (group.type === 'ideas') return group.items.map((i) => i.title);
     return group.items;
   }
   const cardCount = (card) => card.groups.reduce((n, g) => n + itemTexts(g).length, 0);
@@ -178,11 +204,11 @@
   // ── RENDER ──────────────────────────────────────────────────────────────
   // Chips: the visible term is the accessible name, plus a hidden " (copy)" suffix.
   // Long lines (prompts, hooks): short aria-label, with the text linked by aria-describedby.
-  function copyBtn(text, cls, children, label, describedBy) {
+  function copyBtn(text, cls, children, label, describedBy, clsText) {
     const b = el('button', cls);
     b.type = 'button';
     b.dataset.copy = text;
-    b.dataset.cls = classify(text);
+    b.dataset.cls = classify(clsText != null ? clsText : text);
     children.forEach((c) => b.appendChild(c));
     if (label) {
       b.setAttribute('aria-label', label);
@@ -228,6 +254,29 @@
         kids.push(textEl);
         const label = group.type === 'prompts' ? 'Copy prompt' : 'Copy hook';
         liEl.appendChild(copyBtn(text, 'sr-line', kids, label, textEl.id));
+        ul.appendChild(liEl);
+      });
+      wrap.appendChild(ul);
+    } else if (group.type === 'ideas') {
+      const ul = el('ul', 'sr-list sr-ideas');
+      group.items.forEach((it) => {
+        const liEl = el('li', 'sr-item');
+        liEl.dataset.cls = classify(it.title);
+        const body = el('span', 'sr-line-text sr-idea-body');
+        body.id = 'sr-t-' + (++idSeq);
+        body.appendChild(el('strong', 'sr-idea-title', it.title));
+        if (it.angle) body.appendChild(el('span', 'sr-idea-angle', it.angle));
+        if (it.terms.length) {
+          // plain spans, not buttons: a button can't contain interactive content
+          const tags = el('span', 'sr-idea-terms');
+          tags.appendChild(el('span', 'sr-visually-hidden', 'Search terms: '));
+          it.terms.forEach((t, i) => {
+            tags.appendChild(el('span', 'sr-idea-term', t));
+            if (i < it.terms.length - 1) tags.appendChild(el('span', 'sr-visually-hidden', ', '));
+          });
+          body.appendChild(tags);
+        }
+        liEl.appendChild(copyBtn(ideaText(it), 'sr-line sr-idea', [body], 'Copy idea', body.id, it.title));
         ul.appendChild(liEl);
       });
       wrap.appendChild(ul);
@@ -294,7 +343,8 @@
     head.appendChild(cb);
     sec.appendChild(head);
     const hnSrc = data.sources && data.sources.hn;
-    card.groups.forEach((g) => sec.appendChild(renderGroup(g, card, data.seed, hnSrc)));
+    if (card.empty && !cardCount(card)) sec.appendChild(el('p', 'sr-empty', card.empty));
+    else card.groups.forEach((g) => sec.appendChild(renderGroup(g, card, data.seed, hnSrc)));
     const none = el('p', 'sr-empty sr-filter-empty', 'Nothing in this card matches the filter.');
     none.hidden = true;
     sec.appendChild(none);
@@ -323,7 +373,8 @@
 
     const badges = $('sr-badges');
     badges.textContent = '';
-    const rules = cards[0].sub.startsWith('Rule-based');
+    const llmCard = cards.find((c) => c.key === 'llm');
+    const rules = !!llmCard && llmCard.sub.startsWith('Rule-based');
     badges.appendChild(el('span', 'sr-badge' + (rules ? ' is-rules' : ''), rules ? 'Rule-based prompts' : 'AI-synthesised'));
     if (data.cached) badges.appendChild(el('span', 'sr-badge is-cached', 'Cached'));
     if (MOCK) badges.appendChild(el('span', 'sr-badge is-rules', 'Mock data'));
@@ -336,6 +387,15 @@
       ? 'Short terms and acronyms like "' + s + '" usually mix several unrelated meanings, so expect some off-topic results. For tighter results add context, e.g. "' + s + ' SEO", "' + s + ' marketing", or spell the term out in full.'
       : '';
     amb.hidden = !ambiguous;
+
+    // The worker strips question framing ("what is a neocloud" -> "neocloud") before expanding.
+    const topicEl = $('sr-topic');
+    const topic = typeof data.topic === 'string' ? data.topic.trim() : '';
+    const showTopic = !!topic && topic.toLowerCase() !== s.toLowerCase();
+    if (topicEl) {
+      topicEl.textContent = showTopic ? 'Expanded on the core topic "' + topic + '"' : '';
+      topicEl.hidden = !showTopic;
+    }
 
     // filter counts: unique terms (case-insensitive) per filter. Intent clusters
     // regroup terms already listed elsewhere, so they're filtered visually but not counted.
@@ -472,11 +532,15 @@
   // ── MARKDOWN / CSV ──────────────────────────────────────────────────────
   const mdSafe = (s) => String(s).replace(/[\[\]]/g, (m) => (m === '[' ? '(' : ')'));
   function cardToMarkdown(card, seed) {
+    if (card.empty && !cardCount(card)) return '';
     let out = '## ' + card.title + '\n';
     card.groups.forEach((g) => {
       if (!itemTexts(g).length && g.type !== 'threads') return;
       out += '\n### ' + g.label + '\n';
       if (g.type === 'prompts') g.items.forEach((p) => { out += '- [' + p.intent + '] ' + p.text + '\n'; });
+      else if (g.type === 'ideas') g.items.forEach((i) => {
+        out += '- **' + i.title + '**' + (i.angle ? ': ' + i.angle : '') + (i.terms.length ? ' (terms: ' + i.terms.join(', ') + ')' : '') + '\n';
+      });
       else if (g.type === 'clusters') g.items.forEach((c) => { out += '- ' + c.name + ': ' + c.terms.join(', ') + '\n'; });
       else if (g.type === 'threads') {
         if (!g.items.length) out += '- No Hacker News threads returned. Reddit search: ' + redditSearch(seed) + '\n';
@@ -506,6 +570,7 @@
     const rows = [['Platform', 'Category', 'Term_or_Prompt', 'URL']];
     current.cards.forEach((card) => card.groups.forEach((g) => {
       if (g.type === 'prompts') g.items.forEach((p) => rows.push([card.platform, 'Prompt - ' + p.intent, p.text, '']));
+      else if (g.type === 'ideas') g.items.forEach((i) => rows.push([card.platform, g.category, ideaText(i), '']));
       else if (g.type === 'clusters') g.items.forEach((c) => c.terms.forEach((t) => rows.push([card.platform, 'Cluster - ' + c.name, t, ''])));
       else if (g.type === 'threads') g.items.forEach((t) => rows.push([g.platform || card.platform, g.category, t.title, t.url || '']));
       else g.items.forEach((s) => rows.push([card.platform, g.category, s, '']));
@@ -572,7 +637,7 @@
     busy = true;
     scanSeq++;
     scanBtn.disabled = true;
-    setStatus('Scanning Google, YouTube, Reddit, Hacker News and LinkedIn for "' + seed + '"… The AI prompts step can take 10-15 seconds.');
+    setStatus('Scanning Google, YouTube, Reddit, Hacker News and LinkedIn for "' + seed + '"… The AI step can take 10-20 seconds.');
     setPlatforms(null);
     notesEl.hidden = true;
     resultsEl.hidden = false;

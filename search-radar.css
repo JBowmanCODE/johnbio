@@ -285,6 +285,22 @@
 .sr-intent-comparison { background: rgba(234,179,8,0.1); border-color: rgba(234,179,8,0.4); color: #fde68a; }
 .sr-intent-implementation { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.4); color: #86efac; }
 
+/* Content ideas */
+.sr-idea-body { display: flex; flex-direction: column; gap: 0.2rem; }
+.sr-idea-title { font-weight: 700; color: var(--on-surface); }
+.sr-idea-angle { font-size: 0.78rem; color: var(--on-surface-variant); line-height: 1.5; }
+.sr-idea-terms { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.3rem; }
+.sr-idea-term {
+  font-size: 0.66rem; font-weight: 600; line-height: 1.3;
+  padding: 0.12rem 0.5rem; border-radius: 999px; max-width: 100%; overflow-wrap: anywhere;
+  background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.25); color: #86efac;
+}
+.sr-topic {
+  flex-basis: 100%; margin: 0;
+  font-size: 0.74rem; color: var(--on-surface-variant); overflow-wrap: anywhere;
+}
+.sr-topic[hidden] { display: none; }
+
 .sr-cluster { margin-top: 0.7rem; }
 .sr-cluster-name { font-size: 0.8rem; font-weight: 700; color: var(--on-surface); margin: 0 0 0.4rem; font-family: 'Space Grotesk', sans-serif; }
 

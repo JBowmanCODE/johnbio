@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="/styles.css?v=4">
   <link rel="stylesheet" href="/header.css?v=5">
   <link rel="stylesheet" href="/footer.css?v=2">
-  <link rel="stylesheet" href="/search-radar.css?v=2">
+  <link rel="stylesheet" href="/search-radar.css?v=3">
 
   <!-- SEO -->
   <meta name="description" content="Free keyword and AI prompt research tool. Scan Google, YouTube, Reddit and LinkedIn demand for any topic, plus likely ChatGPT prompts for AEO and GEO.">
@@ -188,6 +188,7 @@
         <div class="sr-summary-stats">
           <p class="sr-total"><span id="sr-total-num">0</span> unique terms for <strong id="sr-summary-seed"></strong></p>
           <div class="sr-badges" id="sr-badges"></div>
+          <p class="sr-topic" id="sr-topic" hidden></p>
         </div>
         <div class="sr-summary-actions">
           <button type="button" class="sr-action-btn" id="sr-copy-all">
@@ -362,7 +363,7 @@
   <div class="sr-toast" id="sr-toast" role="status" aria-live="polite"></div>
 
   <script src="/scripts.js?v=8" defer></script>
-  <script src="/search-radar.js?v=4" defer></script>
+  <script src="/search-radar.js?v=5" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
