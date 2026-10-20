@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search &amp; Prompt Radar - Keyword &amp; AI Prompt Tool - JohnB.io</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css?v=4">
+  <link rel="stylesheet" href="/header.css?v=5">
+  <link rel="stylesheet" href="/footer.css?v=2">
+  <link rel="stylesheet" href="/search-radar.css?v=1">
+
+  <!-- SEO -->
+  <meta name="description" content="Free keyword and AI prompt research tool. Scan Google, YouTube, Reddit and LinkedIn demand for any topic, plus likely ChatGPT prompts for AEO and GEO.">
+  <meta name="keywords" content="keyword research tool, search intent, AI prompt research, AEO, GEO, Google autocomplete, YouTube search, Reddit research, ChatGPT prompts, People Also Ask">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/search-radar">
+  <meta name="author" content="John Bowman">
+  <meta property="og:title" content="Search &amp; Prompt Radar - Keyword &amp; AI Prompt Tool">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/search-radar">
+  <meta property="og:description" content="See what people type into Google, YouTube and Reddit about any topic, plus the prompts they are likely asking ChatGPT and Claude.">
+  <meta property="og:image" content="https://johnb.io/images/search_radar_og.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Search &amp; Prompt Radar - JohnB.io">
+  <meta name="twitter:description" content="Free tool. Real search demand from Google, YouTube and Reddit, plus likely AI prompts for AEO and GEO content.">
+  <meta name="twitter:image" content="https://johnb.io/images/search_radar_og.webp">
+  <meta name="twitter:image:alt" content="Search &amp; Prompt Radar keyword and AI prompt research tool by JohnB.io">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Search & Prompt Radar",
+    "url": "https://johnb.io/search-radar",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "description": "Free keyword and AI prompt research tool. Collects Google and YouTube autocomplete suggestions, Reddit searches and threads, and LinkedIn B2B angles for a seed topic, then synthesises likely AI assistant prompts for AEO and GEO.",
+    "image": "https://johnb.io/images/search_radar_og.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://johnb.io/about",
+      "sameAs": ["https://www.linkedin.com/in/john-bowman/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Search & Prompt Radar free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. It's free and there's no sign-up. Each IP address gets 20 fresh scans a day, and repeating a scan that's already cached doesn't count towards that limit." }
+      },
+      {
+        "@type": "Question",
+        "name": "Where does the data come from?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google and YouTube autocomplete suggestions for your seed, plus Reddit search suggestions and public Reddit threads. The LinkedIn card turns that demand into B2B angles, and the AI prompts card is synthesised from all of it. A repeat scan of the same seed can return a cached copy rather than fresh data." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are the ChatGPT prompts real?",
+        "acceptedAnswer": { "@type": "Answer", "text": "They're not taken from ChatGPT. No AI platform publishes its prompt logs, so the prompts are synthesised from the real Google, YouTube and Reddit data the tool collects. Treat them as a reasoned estimate of what people ask AI assistants, grouped by Discovery, Comparison and Implementation intent." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are Reddit threads sometimes missing?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Reddit rate-limits automated requests and sometimes refuses them outright, so the live threads call can fail while everything else works. When that happens the card says so and gives you a direct link to search Reddit yourself. Try again later and the threads usually come back." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I export the results?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Copy all for LLM copies every result as clean Markdown you can paste into ChatGPT, Claude or a content brief. Export CSV downloads a file with platform, category and term columns that opens in Excel or Google Sheets. You can also click any single term to copy it." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the region setting change?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It sets the country Google and YouTube use for their suggestions, so UK returns British phrasing and spelling while US returns American queries. Global drops the country hint altogether. Reddit is one site worldwide, so its results change less between regions." }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://johnb.io" },
+      { "@type": "ListItem", "position": 2, "name": "Search & Prompt Radar", "item": "https://johnb.io/search-radar" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="sr-ambient" aria-hidden="true"></div>
+
+  <main class="sr-wrap" id="main-content">
+
+    <div class="sr-hero">
+      <h1 class="sr-title">Search &amp; Prompt <span class="sr-gradient">Radar</span></h1>
+      <p class="sr-desc">Type a topic and see what people search for on Google, YouTube, Reddit and LinkedIn, plus the prompts they're likely asking ChatGPT, Claude and Perplexity. Click any term to copy it.</p>
+    </div>
+
+    <!-- Control card -->
+    <form class="sr-card sr-control" id="sr-form" novalidate aria-label="Search intent scan">
+      <div class="sr-field-row">
+        <div class="sr-field sr-field-seed">
+          <label for="sr-seed" class="sr-label">Seed keyword or topic</label>
+          <input type="text" id="sr-seed" class="sr-input" placeholder="e.g. n8n automation" autocomplete="off" maxlength="80" aria-describedby="sr-seed-hint" required>
+        </div>
+        <div class="sr-field sr-field-region">
+          <label for="sr-country" class="sr-label">Region</label>
+          <select id="sr-country" class="sr-input sr-select">
+            <option value="gb" selected>UK (gb)</option>
+            <option value="us">US (us)</option>
+            <option value="global">Global</option>
+          </select>
+        </div>
+      </div>
+      <p id="sr-seed-hint" class="sr-hint">2 to 80 characters. A product, tool, problem or topic works best.</p>
+
+      <div class="sr-examples" role="group" aria-label="Example seeds">
+        <span class="sr-examples-label">Try:</span>
+        <button type="button" class="sr-example" data-seed="n8n automation">n8n automation</button>
+        <button type="button" class="sr-example" data-seed="RAG pipeline">RAG pipeline</button>
+        <button type="button" class="sr-example" data-seed="AI governance">AI governance</button>
+      </div>
+
+      <button type="submit" class="sr-scan-btn" id="sr-scan">
+        <span class="material-symbols-outlined" aria-hidden="true">radar</span>
+        Scan Search Intent
+      </button>
+
+      <p id="sr-status" class="sr-status" role="status" aria-live="polite"></p>
+
+      <ul class="sr-platforms" id="sr-platforms" aria-label="Platform status" hidden>
+        <li class="sr-platform" data-src="google"><span class="sr-dot" aria-hidden="true"></span><span class="sr-platform-name">Google</span><span class="sr-platform-state">Waiting</span></li>
+        <li class="sr-platform" data-src="youtube"><span class="sr-dot" aria-hidden="true"></span><span class="sr-platform-name">YouTube</span><span class="sr-platform-state">Waiting</span></li>
+        <li class="sr-platform" data-src="reddit"><span class="sr-dot" aria-hidden="true"></span><span class="sr-platform-name">Reddit</span><span class="sr-platform-state">Waiting</span></li>
+        <li class="sr-platform" data-src="linkedin"><span class="sr-dot" aria-hidden="true"></span><span class="sr-platform-name">LinkedIn</span><span class="sr-platform-state">Waiting</span></li>
+        <li class="sr-platform" data-src="llm"><span class="sr-dot" aria-hidden="true"></span><span class="sr-platform-name">AI prompts</span><span class="sr-platform-state">Waiting</span></li>
+      </ul>
+      <p id="sr-platform-notes" class="sr-platform-notes" hidden></p>
+    </form>
+
+    <!-- Results -->
+    <section class="sr-results" id="sr-results" aria-labelledby="sr-results-title" hidden>
+      <h2 id="sr-results-title" class="sr-visually-hidden">Search and prompt results</h2>
+
+      <div class="sr-summary" id="sr-summary" hidden>
+        <div class="sr-summary-stats">
+          <p class="sr-total"><span id="sr-total-num">0</span> unique terms for <strong id="sr-summary-seed"></strong></p>
+          <div class="sr-badges" id="sr-badges"></div>
+        </div>
+        <div class="sr-summary-actions">
+          <button type="button" class="sr-action-btn" id="sr-copy-all">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span> Copy all for LLM
+          </button>
+          <button type="button" class="sr-action-btn" id="sr-export">
+            <span class="material-symbols-outlined" aria-hidden="true">download</span> Export CSV
+          </button>
+        </div>
+        <div class="sr-filters" role="group" aria-label="Filter terms">
+          <button type="button" class="sr-filter active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="sr-filter" data-filter="q" aria-pressed="false">Questions</button>
+          <button type="button" class="sr-filter" data-filter="c" aria-pressed="false">Comparisons (vs)</button>
+          <button type="button" class="sr-filter" data-filter="t" aria-pressed="false">Tutorials</button>
+        </div>
+      </div>
+
+      <div class="sr-grid" id="sr-grid" aria-live="off"></div>
+    </section>
+
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <!-- Tool info / SEO article -->
+  <section class="tool-info" aria-label="About this tool">
+    <div class="tool-info-inner">
+
+      <div class="tool-info-meta">
+        <span>Last updated: October 2026</span>
+        <span class="tool-info-sep">·</span>
+        <span>By <a href="/about">John Bowman</a> - 20+ years in iGaming and digital marketing.</span>
+      </div>
+
+      <div class="tool-info-body">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Autocomplete Is the Most Honest Free Demand Signal</h2>
+        <p>Google, YouTube and Reddit only suggest a phrase when enough real people type it. That makes autocomplete the most honest free signal of demand you can get. Paid keyword tools estimate volume from samples and clickstream panels. Autocomplete shows you the actual wording, including the awkward questions nobody would put in a content brief. If you're writing for <a href="/faq-schema">FAQ schema</a> or an <a href="/llms-generator">llms.txt file</a>, that wording is what you want.</p>
+        <p>The AI prompts card is different, and I'd rather say so up front. No AI platform publishes its prompt logs: not OpenAI, not Anthropic, not Google. So those prompts are synthesised, not scraped. An AI model reads the real search data collected here and writes the prompts people are most likely asking ChatGPT, Claude or Perplexity about the same topic. If that step fails, you get rule-based prompts instead and the badge says so. Use them to shape AEO and GEO content, and don't report them to anyone as measured demand.</p>
+      </div>
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>Is Search &amp; Prompt Radar free?</dt>
+                <dd>Yes. It's free and there's no sign-up. Each IP address gets 20 fresh scans a day, and repeating a scan that's already cached doesn't count towards that limit.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Where does the data come from?</dt>
+                <dd>Google and YouTube autocomplete suggestions for your seed, plus Reddit search suggestions and public Reddit threads. The LinkedIn card turns that demand into B2B angles, and the AI prompts card is synthesised from all of it. A repeat scan of the same seed can return a cached copy rather than fresh data.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Are the ChatGPT prompts real?</dt>
+                <dd>They're not taken from ChatGPT. No AI platform publishes its prompt logs, so the prompts are synthesised from the real Google, YouTube and Reddit data the tool collects. Treat them as a reasoned estimate of what people ask AI assistants, grouped by Discovery, Comparison and Implementation intent.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Why are Reddit threads sometimes missing?</dt>
+                <dd>Reddit rate-limits automated requests and sometimes refuses them outright, so the live threads call can fail while everything else works. When that happens the card says so and gives you a direct link to search Reddit yourself. Try again later and the threads usually come back.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Can I export the results?</dt>
+                <dd>Yes. Copy all for LLM copies every result as clean Markdown you can paste into ChatGPT, Claude or a content brief. Export CSV downloads a file with platform, category and term columns that opens in Excel or Google Sheets. You can also click any single term to copy it.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What does the region setting change?</dt>
+                <dd>It sets the country Google and YouTube use for their suggestions, so UK returns British phrasing and spelling while US returns American queries. Global drops the country hint altogether. Reddit is one site worldwide, so its results change less between regions.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Enter a seed.</strong> A product, tool, problem or topic between 2 and 80 characters, such as n8n automation.</li>
+              <li><strong>Pick a region.</strong> UK, US or Global. It changes the country hint sent to Google and YouTube.</li>
+              <li><strong>Scan.</strong> The tool queries Google autocomplete, YouTube autocomplete and Reddit in parallel, then shows which platforms answered and which didn't.</li>
+              <li><strong>Synthesise prompts.</strong> The collected terms go to an AI model, which writes likely assistant prompts and groups the terms into intent clusters. If that step fails you get rule-based prompts, labelled as such.</li>
+              <li><strong>Filter and copy.</strong> Narrow the results to Questions, Comparisons or Tutorials, and click any term, prompt or hook to copy it.</li>
+              <li><strong>Export.</strong> Copy everything as Markdown to paste into an LLM, or download a CSV for a spreadsheet. The page URL updates too, so you can share the scan.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points - Search &amp; Prompt Research</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>Autocomplete reflects real typing.</strong> A suggestion only appears when enough people search the phrase, so it's evidence of demand rather than a model's guess.</li>
+              <li><strong>Questions are your FAQ and PAA targets.</strong> The question group in the Google card is the closest free proxy for People Also Ask boxes. Answer them in 40 to 60 words directly under the heading.</li>
+              <li><strong>Comparisons signal buying intent.</strong> People searching "vs" and "alternative" are close to a decision. These pages convert better than broad explainers.</li>
+              <li><strong>Tutorial searches show what people want shown, not told.</strong> If a YouTube query has thin results, a written guide with screenshots can take that traffic too.</li>
+              <li><strong>Reddit gives you the frustrated wording.</strong> Thread titles often make better H2s than anything a keyword tool suggests, because they're how people describe the problem.</li>
+              <li><strong>AI prompts are estimates.</strong> They're built from the search data, not from AI platform logs. Good for shaping AEO and GEO content, wrong for reporting demand. Run them through the <a href="/prompt-improver">Prompt Improver</a> if you want to test them yourself.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources &amp; Further Reading</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://support.google.com/websearch/answer/7368877" target="_blank" rel="noopener noreferrer">Google Search Help - How Google autocomplete predictions work</a>.</li>
+              <li><a href="https://www.youtube.com/howyoutubeworks/product-features/search/" target="_blank" rel="noopener noreferrer">YouTube - How YouTube search works</a>.</li>
+              <li><a href="https://support.reddithelp.com/hc/en-us/articles/16160319875092-Reddit-Data-API-Wiki" target="_blank" rel="noopener noreferrer">Reddit Help - Reddit Data API Wiki</a>.</li>
+              <li><a href="https://docs.anthropic.com" target="_blank" rel="noopener noreferrer">Anthropic - Claude documentation</a>.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder">
+    <!-- Static site navigation: real crawlable links for search/AI crawlers and no-JS visitors.
+         scripts.js:loadHeaderAndFooter() replaces this block with footer.html for everyone else. -->
+    <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
+      <style>.crawl-nav{max-width:1280px;margin:0 auto;padding:3rem 2rem;border-top:1px solid rgba(248,245,253,0.07);font-family:'Space Grotesk',sans-serif;color:var(--on-surface-variant,#acaab1)}.crawl-nav-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,245,253,0.4);margin:0 0 1rem}.crawl-nav-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.5rem;font-size:0.85rem;line-height:1.6}.crawl-nav-list a{color:#00EEFC;text-decoration:none}.crawl-nav-list a:hover,.crawl-nav-list a:focus-visible{text-decoration:underline}</style>
+      <p class="crawl-nav-title">Related tools</p>
+      <ul class="crawl-nav-list" style="margin-bottom:2rem;">
+        <li><a href="/faq-schema">FAQ Schema Generator</a> - FAQPage JSON-LD from questions and answers</li>
+        <li><a href="/llms-generator">LLMs.txt Generator</a> - llms.txt files for AI crawlers</li>
+        <li><a href="/prompt-improver">Prompt Improver</a> - better prompts for AI models</li>
+        <li><a href="/content-repurposer">Content Repurposer</a> - one piece of content, many formats</li>
+      </ul>
+      <p class="crawl-nav-title">Explore JohnB.io</p>
+      <ul class="crawl-nav-list">
+        <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
+        <li><a href="/tcs-simplifier">T&amp;Cs Simplifier</a> - casino bonus terms in plain English</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 50 jurisdictions</li>
+        <li><a href="/bonus-calculator">Bonus Cost Calculator</a> - iGaming bonus cost modelling</li>
+        <li><a href="/promo-copy">iGaming Promo Copy Generator</a> - compliant promotional copy</li>
+        <li><a href="/rg-generator">RG Message Generator</a> - responsible gambling messaging</li>
+        <li><a href="/igaming-jargon">iGaming Jargon Translator</a> - industry terms explained</li>
+        <li><a href="/editor">AI Copyeditor</a> - copyediting with UK and US English</li>
+        <li><a href="/lm-chat">LLM Chat</a> - chat with language models</li>
+        <li><a href="/text-to-speech">Text to Speech Converter</a> - natural AI voices for any text</li>
+        <li><a href="/aitocv">AI CV Enhancer</a> - tailored CVs and cover letters</li>
+        <li><a href="/transcripts">YouTube Transcripts</a> - transcripts and summaries from videos</li>
+        <li><a href="/rai">Responsible AI Governance Framework</a> - evaluating and managing AI risk</li>
+        <li><a href="/about">About John Bowman</a> - 20+ years in iGaming and digital marketing</li>
+        <li><a href="/news/">AI Blog</a> - practical AI strategy and how it works</li>
+        <li><a href="/course/">AI &amp; Machine Learning Course</a> - free structured course</li>
+        <li><a href="/contact">Contact</a> - get in touch</li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="sr-toast" id="sr-toast" role="status" aria-live="polite"></div>
+
+  <script src="/scripts.js?v=8" defer></script>
+  <script src="/search-radar.js?v=1" defer></script>
+  <script>
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>

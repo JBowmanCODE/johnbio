@@ -134,6 +134,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://johnb.io/search-radar</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://johnb.io/faq-schema</loc>
     <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
