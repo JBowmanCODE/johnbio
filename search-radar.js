@@ -161,7 +161,8 @@
         ] },
       { key: 'linkedin', platform: 'LinkedIn', icon: 'work', title: 'LinkedIn & B2B Angles', sub: 'Business framings and post hooks.',
         groups: [
-          { label: 'B2B modifiers', category: 'B2B modifier', type: 'chips', items: strs(li.modifiers) },
+          { label: 'B2B modifiers', category: 'B2B modifier', type: 'chips', items: strs(li.modifiers),
+            empty: 'No clear B2B angle in the searches for this topic. The hooks below still work for a personal or creator post.' },
           { label: 'Post hooks', category: 'Hook', type: 'lines', items: strs(li.hooks) },
         ] },
     ];
@@ -267,7 +268,7 @@
       wrap.appendChild(fb);
     }
     if (!itemTexts(group).length && group.type !== 'threads') {
-      wrap.appendChild(el('p', 'sr-empty', 'Nothing returned for this group.'));
+      wrap.appendChild(el('p', 'sr-empty', group.empty || 'Nothing returned for this group.'));
     }
     return wrap;
   }
