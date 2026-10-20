@@ -55,7 +55,7 @@
     "url": "https://johnb.io/search-radar",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Web",
-    "description": "Free keyword and AI prompt research tool. Collects Google and YouTube autocomplete suggestions, Reddit searches and threads, and LinkedIn B2B angles for a seed topic, then synthesises likely AI assistant prompts for AEO and GEO.",
+    "description": "Free keyword and AI prompt research tool. Collects Google and YouTube autocomplete suggestions, Reddit searches, Hacker News threads and LinkedIn B2B angles for a seed topic, then synthesises likely AI assistant prompts for AEO and GEO.",
     "image": "https://johnb.io/images/search_radar_og.webp",
     "offers": {
       "@type": "Offer",
@@ -89,17 +89,17 @@
       {
         "@type": "Question",
         "name": "Where does the data come from?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Google and YouTube autocomplete suggestions for your seed, plus Reddit search suggestions and public Reddit threads. The LinkedIn card turns that demand into B2B angles, and the AI prompts card is synthesised from all of it. A repeat scan of the same seed can return a cached copy rather than fresh data." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Google and YouTube autocomplete suggestions for your seed, Reddit search suggestions from Google, and Hacker News threads from the last 12 months. The LinkedIn card turns that demand into B2B angles, and the AI prompts card is synthesised from all of it. A repeat scan of the same seed can return a cached copy rather than fresh data." }
       },
       {
         "@type": "Question",
         "name": "Are the ChatGPT prompts real?",
-        "acceptedAnswer": { "@type": "Answer", "text": "They're not taken from ChatGPT. No AI platform publishes its prompt logs, so the prompts are synthesised from the real Google, YouTube and Reddit data the tool collects. Treat them as a reasoned estimate of what people ask AI assistants, grouped by Discovery, Comparison and Implementation intent." }
+        "acceptedAnswer": { "@type": "Answer", "text": "They're not taken from ChatGPT. No AI platform publishes its prompt logs, so the prompts are synthesised from the real Google, YouTube, Reddit and Hacker News data the tool collects. Treat them as a reasoned estimate of what people ask AI assistants, grouped by Discovery, Comparison and Implementation intent." }
       },
       {
         "@type": "Question",
-        "name": "Why are Reddit threads sometimes missing?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Reddit rate-limits automated requests and sometimes refuses them outright, so the live threads call can fail while everything else works. When that happens the card says so and gives you a direct link to search Reddit yourself. Try again later and the threads usually come back." }
+        "name": "Why does the tool show Hacker News threads instead of Reddit threads?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Reddit now blocks anonymous access to its search data, so live Reddit threads can't be fetched without an approved API account. The tool still shows what people search for on Reddit, taken from Google autocomplete, and links straight to Reddit search. Live threads come from Hacker News, which works best for tech, AI and startup topics." }
       },
       {
         "@type": "Question",
@@ -109,7 +109,7 @@
       {
         "@type": "Question",
         "name": "What does the region setting change?",
-        "acceptedAnswer": { "@type": "Answer", "text": "It sets the country Google and YouTube use for their suggestions, so UK returns British phrasing and spelling while US returns American queries. Global drops the country hint altogether. Reddit is one site worldwide, so its results change less between regions." }
+        "acceptedAnswer": { "@type": "Answer", "text": "It sets the country Google and YouTube use for their suggestions, so UK returns British phrasing and spelling while US returns American queries. Global drops the country hint altogether. Hacker News is one site worldwide, so its threads don't change between regions." }
       }
     ]
   }
@@ -173,6 +173,7 @@
         <li class="sr-platform" data-src="google"><span class="sr-dot" aria-hidden="true"></span><span class="sr-platform-name">Google</span><span class="sr-platform-state">Waiting</span></li>
         <li class="sr-platform" data-src="youtube"><span class="sr-dot" aria-hidden="true"></span><span class="sr-platform-name">YouTube</span><span class="sr-platform-state">Waiting</span></li>
         <li class="sr-platform" data-src="reddit"><span class="sr-dot" aria-hidden="true"></span><span class="sr-platform-name">Reddit</span><span class="sr-platform-state">Waiting</span></li>
+        <li class="sr-platform" data-src="hn"><span class="sr-dot" aria-hidden="true"></span><span class="sr-platform-name">Hacker News</span><span class="sr-platform-state">Waiting</span></li>
         <li class="sr-platform" data-src="linkedin"><span class="sr-dot" aria-hidden="true"></span><span class="sr-platform-name">LinkedIn</span><span class="sr-platform-state">Waiting</span></li>
         <li class="sr-platform" data-src="llm"><span class="sr-dot" aria-hidden="true"></span><span class="sr-platform-name">AI prompts</span><span class="sr-platform-state">Waiting</span></li>
       </ul>
@@ -242,15 +243,15 @@
               </div>
               <div class="faq-item">
                 <dt>Where does the data come from?</dt>
-                <dd>Google and YouTube autocomplete suggestions for your seed, plus Reddit search suggestions and public Reddit threads. The LinkedIn card turns that demand into B2B angles, and the AI prompts card is synthesised from all of it. A repeat scan of the same seed can return a cached copy rather than fresh data.</dd>
+                <dd>Google and YouTube autocomplete suggestions for your seed, Reddit search suggestions from Google, and Hacker News threads from the last 12 months. The LinkedIn card turns that demand into B2B angles, and the AI prompts card is synthesised from all of it. A repeat scan of the same seed can return a cached copy rather than fresh data.</dd>
               </div>
               <div class="faq-item">
                 <dt>Are the ChatGPT prompts real?</dt>
-                <dd>They're not taken from ChatGPT. No AI platform publishes its prompt logs, so the prompts are synthesised from the real Google, YouTube and Reddit data the tool collects. Treat them as a reasoned estimate of what people ask AI assistants, grouped by Discovery, Comparison and Implementation intent.</dd>
+                <dd>They're not taken from ChatGPT. No AI platform publishes its prompt logs, so the prompts are synthesised from the real Google, YouTube, Reddit and Hacker News data the tool collects. Treat them as a reasoned estimate of what people ask AI assistants, grouped by Discovery, Comparison and Implementation intent.</dd>
               </div>
               <div class="faq-item">
-                <dt>Why are Reddit threads sometimes missing?</dt>
-                <dd>Reddit rate-limits automated requests and sometimes refuses them outright, so the live threads call can fail while everything else works. When that happens the card says so and gives you a direct link to search Reddit yourself. Try again later and the threads usually come back.</dd>
+                <dt>Why does the tool show Hacker News threads instead of Reddit threads?</dt>
+                <dd>Reddit now blocks anonymous access to its search data, so live Reddit threads can't be fetched without an approved API account. The tool still shows what people search for on Reddit, taken from Google autocomplete, and links straight to Reddit search. Live threads come from Hacker News, which works best for tech, AI and startup topics.</dd>
               </div>
               <div class="faq-item">
                 <dt>Can I export the results?</dt>
@@ -258,7 +259,7 @@
               </div>
               <div class="faq-item">
                 <dt>What does the region setting change?</dt>
-                <dd>It sets the country Google and YouTube use for their suggestions, so UK returns British phrasing and spelling while US returns American queries. Global drops the country hint altogether. Reddit is one site worldwide, so its results change less between regions.</dd>
+                <dd>It sets the country Google and YouTube use for their suggestions, so UK returns British phrasing and spelling while US returns American queries. Global drops the country hint altogether. Hacker News is one site worldwide, so its threads don't change between regions.</dd>
               </div>
             </dl>
           </div>
@@ -273,7 +274,7 @@
             <ol class="info-steps">
               <li><strong>Enter a seed.</strong> A product, tool, problem or topic between 2 and 80 characters, such as n8n automation.</li>
               <li><strong>Pick a region.</strong> UK, US or Global. It changes the country hint sent to Google and YouTube.</li>
-              <li><strong>Scan.</strong> The tool queries Google autocomplete, YouTube autocomplete and Reddit in parallel, then shows which platforms answered and which didn't.</li>
+              <li><strong>Scan.</strong> The tool queries Google autocomplete, YouTube autocomplete and Hacker News in parallel, then shows which platforms answered and which didn't.</li>
               <li><strong>Synthesise prompts.</strong> The collected terms go to an AI model, which writes likely assistant prompts and groups the terms into intent clusters. If that step fails you get rule-based prompts, labelled as such.</li>
               <li><strong>Filter and copy.</strong> Narrow the results to Questions, Comparisons or Tutorials, and click any term, prompt or hook to copy it.</li>
               <li><strong>Export.</strong> Copy everything as Markdown to paste into an LLM, or download a CSV for a spreadsheet. The page URL updates too, so you can share the scan.</li>
@@ -292,7 +293,7 @@
               <li><strong>Questions are your FAQ and PAA targets.</strong> The question group in the Google card is the closest free proxy for People Also Ask boxes. Answer them in 40 to 60 words directly under the heading.</li>
               <li><strong>Comparisons signal buying intent.</strong> People searching "vs" and "alternative" are close to a decision. These pages convert better than broad explainers.</li>
               <li><strong>Tutorial searches show what people want shown, not told.</strong> If a YouTube query has thin results, a written guide with screenshots can take that traffic too.</li>
-              <li><strong>Reddit gives you the frustrated wording.</strong> Thread titles often make better H2s than anything a keyword tool suggests, because they're how people describe the problem.</li>
+              <li><strong>Discussion threads give you the frustrated wording.</strong> Hacker News and Reddit thread titles often make better H2s than anything a keyword tool suggests, because they're how people describe the problem.</li>
               <li><strong>AI prompts are estimates.</strong> They're built from the search data, not from AI platform logs. Good for shaping AEO and GEO content, wrong for reporting demand. Run them through the <a href="/prompt-improver">Prompt Improver</a> if you want to test them yourself.</li>
             </ul>
           </div>
@@ -308,6 +309,7 @@
               <li><a href="https://support.google.com/websearch/answer/7368877" target="_blank" rel="noopener noreferrer">Google Search Help - How Google autocomplete predictions work</a>.</li>
               <li><a href="https://www.youtube.com/howyoutubeworks/product-features/search/" target="_blank" rel="noopener noreferrer">YouTube - How YouTube search works</a>.</li>
               <li><a href="https://support.reddithelp.com/hc/en-us/articles/16160319875092-Reddit-Data-API-Wiki" target="_blank" rel="noopener noreferrer">Reddit Help - Reddit Data API Wiki</a>.</li>
+              <li><a href="https://hn.algolia.com/api" target="_blank" rel="noopener noreferrer">Algolia - Hacker News Search API</a>.</li>
               <li><a href="https://docs.anthropic.com" target="_blank" rel="noopener noreferrer">Anthropic - Claude documentation</a>.</li>
             </ol>
           </div>
@@ -359,7 +361,7 @@
   <div class="sr-toast" id="sr-toast" role="status" aria-live="polite"></div>
 
   <script src="/scripts.js?v=8" defer></script>
-  <script src="/search-radar.js?v=1" defer></script>
+  <script src="/search-radar.js?v=2" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {

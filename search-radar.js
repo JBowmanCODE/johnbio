@@ -2,7 +2,7 @@
    Backend: GET WORKER_URL/?seed=<seed>&country=<gb|us|global>
    Shared links (?q=) call the same endpoint with &cacheOnly=1: 200 on a cache hit,
    404 {error:'not_cached'} on a miss, and never start a paid fresh scan.
-   Test without the worker: add ?mock=1 (or ?mock=reddit-down) to the page URL. */
+   Test without the worker: add ?mock=1 (or ?mock=hn-down) to the page URL. */
 (function () {
   'use strict';
 
@@ -11,19 +11,20 @@
   const STORE_KEY = 'sr-region';
   const LINKEDIN = 'https://www.linkedin.com/in/john-bowman/';
 
-  // ── MOCK DATA (?mock=1 / ?mock=reddit-down) ─────────────────────────────
+  // ── MOCK DATA (?mock=1 / ?mock=hn-down) ─────────────────────────────
   // mock:start
-  function mockResponse(seed, country, redditDown) {
-    const threads = redditDown ? [] : [
-      { title: 'n8n vs Make vs Zapier after 6 months of real client work', subreddit: 'r/n8n', score: 412, comments: 137, url: 'https://www.reddit.com/r/n8n/comments/abc123/n8n_vs_make_vs_zapier/' },
-      { title: 'Self-hosting n8n on a £5 VPS - what broke and how I fixed it', subreddit: 'r/selfhosted', score: 268, comments: 81, url: 'https://www.reddit.com/r/selfhosted/comments/def456/selfhosting_n8n/' },
-      { title: 'Is n8n worth learning in 2026 or is everything going agentic?', subreddit: 'r/automation', score: 154, comments: 96, url: 'https://www.reddit.com/r/automation/comments/ghi789/is_n8n_worth_learning/' },
+  function mockResponse(seed, country, hnDown) {
+    const threads = hnDown ? [] : [
+      { title: 'Show HN: I replaced Zapier with self-hosted n8n for a 12-person agency', points: 212, comments: 137, date: '2026-06-14', url: 'https://news.ycombinator.com/item?id=1' },
+      { title: 'n8n is now fair-code. What that means for self-hosters', points: 168, comments: 81, date: '2026-03-02', url: 'https://news.ycombinator.com/item?id=2' },
+      { title: 'Ask HN: Is workflow automation worth learning when agents can do it?', points: 54, comments: 96, date: '2026-08-21', url: 'https://news.ycombinator.com/item?id=3' },
     ];
     return {
       success: true, seed: seed, country: country, generatedAt: new Date().toISOString(), cached: false, engine: 'ai',
       sources: {
         google: { ok: true, count: 14 }, youtube: { ok: true, count: 7 },
-        reddit: redditDown ? { ok: false, count: 3, error: 'Reddit threads unavailable (429)' } : { ok: true, count: 6 },
+        reddit: { ok: true, count: 3 },
+        hn: hnDown ? { ok: false, count: 0, error: 'Hacker News threads unavailable (503)' } : { ok: true, count: 3 },
         linkedin: { ok: true, count: 6 }, llm: { ok: true, engine: 'ai' },
       },
       google: {
@@ -37,8 +38,8 @@
       },
       reddit: {
         searches: ['n8n self hosted', 'n8n vs make reddit', 'n8n worth it'],
-        threads: threads,
       },
+      hn: { threads: threads },
       linkedin: {
         modifiers: ['n8n automation for agencies', 'n8n automation consultant', 'n8n automation enterprise'],
         hooks: ['We replaced 14 Zapier zaps with one n8n workflow. Here is what it cost.', 'Most "AI agents" are an n8n workflow with a nice name.', 'Self-hosting your automation stack is a compliance decision, not a cost one.'],
@@ -96,14 +97,16 @@
   const isRegion = (c) => typeof c === 'string' && Object.prototype.hasOwnProperty.call(REGIONS, c);
   const regionLabel = (c) => (isRegion(c) ? REGIONS[c] : 'Global');
 
-  function safeRedditUrl(u) {
+  function safeHnUrl(u) {
     try {
       const url = new URL(u);
-      if (url.protocol === 'https:' && /(^|\.)reddit\.com$/.test(url.hostname)) return url.href;
+      if (url.protocol === 'https:' && url.hostname === 'news.ycombinator.com') return url.href;
     } catch (e) { /* ignore */ }
     return null;
   }
   const redditSearch = (seed) => 'https://www.reddit.com/search/?q=' + encodeURIComponent(seed);
+  const googleRedditSearch = (seed) => 'https://www.google.com/search?q=' + encodeURIComponent('site:reddit.com ' + seed);
+  const hnSearch = (seed) => 'https://hn.algolia.com/?q=' + encodeURIComponent(seed);
 
   // ── CLASSIFICATION ──────────────────────────────────────────────────────
   const RX_Q = /^(how|why|what|when|where|who|which|can|is|does|do|should|are|will)\b/i;
@@ -121,14 +124,14 @@
   // ── NORMALISE RESPONSE INTO CARDS ───────────────────────────────────────
   // group types: chips (strings), prompts ({intent,text}), lines (strings), threads, clusters
   function buildCards(d) {
-    const g = d.google || {}, y = d.youtube || {}, r = d.reddit || {}, li = d.linkedin || {}, l = d.llm || {};
+    const g = d.google || {}, y = d.youtube || {}, r = d.reddit || {}, hn = d.hn || {}, li = d.linkedin || {}, l = d.llm || {};
     const prompts = arr(l.prompts).filter((p) => p && typeof p.text === 'string' && p.text.trim())
       .map((p) => ({ intent: ['Discovery', 'Comparison', 'Implementation'].includes(p.intent) ? p.intent : 'Discovery', text: p.text.trim() }));
     const clusters = arr(l.clusters).filter((c) => c && c.name)
       .map((c) => ({ name: String(c.name), terms: strs(c.terms) })).filter((c) => c.terms.length);
-    const threads = arr(r.threads).filter((t) => t && t.title).map((t) => ({
-      title: String(t.title), subreddit: String(t.subreddit || ''),
-      score: Number(t.score) || 0, comments: Number(t.comments) || 0, url: safeRedditUrl(t.url),
+    const threads = arr(hn.threads).filter((t) => t && t.title).map((t) => ({
+      title: String(t.title), date: /^\d{4}-\d{2}-\d{2}$/.test(t.date || '') ? t.date : '',
+      points: Number(t.points) || 0, comments: Number(t.comments) || 0, url: safeHnUrl(t.url),
     }));
     const engine = d.engine === 'rules' || (d.sources && d.sources.llm && d.sources.llm.engine === 'rules') ? 'rules' : 'ai';
     return [
@@ -151,10 +154,10 @@
           { label: 'Tutorial gaps', category: 'Tutorial', type: 'chips', items: strs(y.tutorials) },
           { label: 'Video searches', category: 'Video search', type: 'chips', items: strs(y.queries) },
         ] },
-      { key: 'reddit', platform: 'Reddit', icon: 'forum', title: 'Reddit & Social Pulse', sub: 'Search suggestions and live discussion.',
+      { key: 'reddit', platform: 'Reddit', icon: 'forum', title: 'Reddit & Hacker News Pulse', sub: 'Reddit search intent and live Hacker News discussion.',
         groups: [
           { label: 'Reddit searches', category: 'Search', type: 'chips', items: strs(r.searches) },
-          { label: 'Live threads', category: 'Thread', type: 'threads', items: threads },
+          { label: 'Hacker News threads', platform: 'Hacker News', category: 'Thread', type: 'threads', items: threads },
         ] },
       { key: 'linkedin', platform: 'LinkedIn', icon: 'work', title: 'LinkedIn & B2B Angles', sub: 'Business framings and post hooks.',
         groups: [
@@ -198,7 +201,12 @@
     });
     return ul;
   }
-  function renderGroup(group, card, seed, redditSrc) {
+  function fallbackLink(text, href) {
+    const a = el('a', null, text);
+    a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer nofollow';
+    return a;
+  }
+  function renderGroup(group, card, seed, hnSrc) {
     const wrap = el('div', 'sr-group');
     const label = el('h4', 'sr-group-label', group.label + ' ');
     label.appendChild(el('span', 'sr-count', itemTexts(group).length));
@@ -235,15 +243,11 @@
         group.items.forEach((t) => {
           const liEl = el('li', 'sr-item sr-thread');
           liEl.dataset.cls = classify(t.title);
-          const a = el('a', null, t.title);
-          a.href = t.url || redditSearch(t.title);
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer nofollow';
-          liEl.appendChild(a);
+          liEl.appendChild(fallbackLink(t.title, t.url || hnSearch(t.title)));
           const meta = el('div', 'sr-thread-meta');
-          if (t.subreddit) meta.appendChild(el('span', null, t.subreddit));
-          const up = el('span'); up.appendChild(icon('arrow_upward')); up.appendChild(document.createTextNode(t.score.toLocaleString('en-GB')));
-          up.setAttribute('aria-label', t.score + ' upvotes');
+          meta.appendChild(el('span', null, 'Hacker News' + (t.date ? ' · ' + new Date(t.date + 'T00:00:00Z').toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }) : '')));
+          const up = el('span'); up.appendChild(icon('arrow_upward')); up.appendChild(document.createTextNode(t.points.toLocaleString('en-GB')));
+          up.setAttribute('aria-label', t.points + ' points');
           const cm = el('span'); cm.appendChild(icon('chat_bubble')); cm.appendChild(document.createTextNode(t.comments.toLocaleString('en-GB')));
           cm.setAttribute('aria-label', t.comments + ' comments');
           meta.appendChild(up); meta.appendChild(cm);
@@ -252,14 +256,14 @@
         });
         wrap.appendChild(ul);
       } else {
-        const msg = (redditSrc && redditSrc.error) ? redditSrc.error + '.' : 'No live threads came back for this seed.';
-        wrap.appendChild(el('p', 'sr-notice', msg + ' Try again later, or search Reddit directly below.'));
+        const msg = (hnSrc && hnSrc.error) ? hnSrc.error + '.' : 'No Hacker News threads from the last 12 months for this seed. HN skews to tech and startups, so consumer topics often come back empty.';
+        wrap.appendChild(el('p', 'sr-notice', msg + ' Reddit discussion is one click away below.'));
         wrap.dataset.keep = '1';
       }
       const fb = el('p', 'sr-fallback');
-      const a = el('a', null, 'Search Reddit for "' + seed + '"');
-      a.href = redditSearch(seed); a.target = '_blank'; a.rel = 'noopener noreferrer nofollow';
-      fb.appendChild(a);
+      fb.appendChild(fallbackLink('Search Reddit for "' + seed + '"', redditSearch(seed)));
+      fb.appendChild(document.createTextNode(' · '));
+      fb.appendChild(fallbackLink('Reddit threads via Google', googleRedditSearch(seed)));
       wrap.appendChild(fb);
     }
     if (!itemTexts(group).length && group.type !== 'threads') {
@@ -288,8 +292,8 @@
     cb.appendChild(icon('content_copy'));
     head.appendChild(cb);
     sec.appendChild(head);
-    const redditSrc = data.sources && data.sources.reddit;
-    card.groups.forEach((g) => sec.appendChild(renderGroup(g, card, data.seed, redditSrc)));
+    const hnSrc = data.sources && data.sources.hn;
+    card.groups.forEach((g) => sec.appendChild(renderGroup(g, card, data.seed, hnSrc)));
     const none = el('p', 'sr-empty sr-filter-empty', 'Nothing in this card matches the filter.');
     none.hidden = true;
     sec.appendChild(none);
@@ -465,10 +469,10 @@
       if (g.type === 'prompts') g.items.forEach((p) => { out += '- [' + p.intent + '] ' + p.text + '\n'; });
       else if (g.type === 'clusters') g.items.forEach((c) => { out += '- ' + c.name + ': ' + c.terms.join(', ') + '\n'; });
       else if (g.type === 'threads') {
-        if (!g.items.length) out += '- No live threads returned. Search: ' + redditSearch(seed) + '\n';
+        if (!g.items.length) out += '- No Hacker News threads returned. Reddit search: ' + redditSearch(seed) + '\n';
         g.items.forEach((t) => {
-          out += '- [' + mdSafe(t.title) + '](' + (t.url || redditSearch(t.title)) + ') - ' +
-            (t.subreddit ? t.subreddit + ', ' : '') + t.score + ' upvotes, ' + t.comments + ' comments\n';
+          out += '- [' + mdSafe(t.title) + '](' + (t.url || hnSearch(t.title)) + ') - Hacker News' +
+            (t.date ? ' ' + t.date : '') + ', ' + t.points + ' points, ' + t.comments + ' comments\n';
         });
       } else g.items.forEach((s) => { out += '- ' + s + '\n'; });
     });
@@ -478,7 +482,7 @@
     const d = current.data;
     const date = new Date(d.generatedAt || Date.now()).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
     let out = '# Search & Prompt Radar: ' + d.seed + ' (' + regionLabel(d.country) + ', ' + date + ')\n\n';
-    out += 'Source: Google and YouTube autocomplete, Reddit, LinkedIn angles. AI prompts are synthesised from this data, not taken from AI platform logs.\n\n';
+    out += 'Source: Google and YouTube autocomplete, Reddit search intent, Hacker News threads, LinkedIn angles. AI prompts are synthesised from this data, not taken from AI platform logs.\n\n';
     current.cards.forEach((c) => { out += cardToMarkdown(c, d.seed); });
     return out.trim() + '\n';
   }
@@ -493,7 +497,7 @@
     current.cards.forEach((card) => card.groups.forEach((g) => {
       if (g.type === 'prompts') g.items.forEach((p) => rows.push([card.platform, 'Prompt - ' + p.intent, p.text, '']));
       else if (g.type === 'clusters') g.items.forEach((c) => c.terms.forEach((t) => rows.push([card.platform, 'Cluster - ' + c.name, t, ''])));
-      else if (g.type === 'threads') g.items.forEach((t) => rows.push([card.platform, g.category, t.title, t.url || '']));
+      else if (g.type === 'threads') g.items.forEach((t) => rows.push([g.platform || card.platform, g.category, t.title, t.url || '']));
       else g.items.forEach((s) => rows.push([card.platform, g.category, s, '']));
     }));
     return '﻿' + rows.map((r) => r.map(csvCell).join(',')).join('\r\n') + '\r\n';
@@ -524,7 +528,7 @@
   async function fetchScan(seed, country, cacheOnly) {
     if (MOCK) {
       await new Promise((r) => setTimeout(r, 900));
-      return { status: 200, data: mockResponse(seed, country, MOCK === 'reddit-down') };
+      return { status: 200, data: mockResponse(seed, country, MOCK === 'hn-down') };
     }
     const res = await fetch(WORKER_URL + '/?seed=' + encodeURIComponent(seed) + '&country=' + encodeURIComponent(country) +
       (cacheOnly ? '&cacheOnly=1' : ''));
@@ -558,7 +562,7 @@
     busy = true;
     scanSeq++;
     scanBtn.disabled = true;
-    setStatus('Scanning Google, YouTube, Reddit and LinkedIn for "' + seed + '"…');
+    setStatus('Scanning Google, YouTube, Reddit, Hacker News and LinkedIn for "' + seed + '"…');
     setPlatforms(null);
     notesEl.hidden = true;
     resultsEl.hidden = false;
