@@ -1,6 +1,18 @@
 const projects = [
   // ── TOP 6 (visible by default) ──────────────────────────────────────────
   {
+    id: 'search-radar',
+    title: 'Search & Prompt Radar',
+    desc: 'Type a topic and see what people search for on Google, YouTube and Reddit, plus live Hacker News threads, LinkedIn angles and the prompts they are likely asking ChatGPT and Claude. Copy any term or export to CSV.',
+    category: 'ai',
+    badge: 'AI TOOL',
+    color: 'cyan',
+    icons: ['radar', 'travel_explore'],
+    href: 'https://johnb.io/search-radar',
+    img: '/images/search_radar_og.webp',
+    thumbIcon: 'radar',
+  },
+  {
     id: 'meditation',
     title: 'AI Meditation Generator',
     desc: 'Personalised guided meditations, generated on demand. Pick a goal, length and voice — Claude writes the script, an AI voice reads it, and your browser synthesises the soundscape.',
