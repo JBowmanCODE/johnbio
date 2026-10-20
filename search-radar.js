@@ -381,7 +381,7 @@
 
     // Short seeds and acronyms ("GEO", "RAG") mix unrelated meanings in autocomplete.
     const amb = $('sr-ambiguity');
-    const s = String(data.seed || '').trim();
+    const s = String(data.topic || data.seed || '').trim(); // "what is GEO" -> topic "GEO" still gets the hint
     const ambiguous = s.length <= 4 || /^[A-Z0-9]{2,6}$/.test(s);
     amb.textContent = ambiguous
       ? 'Short terms and acronyms like "' + s + '" usually mix several unrelated meanings, so expect some off-topic results. For tighter results add context, e.g. "' + s + ' SEO", "' + s + ' marketing", or spell the term out in full.'
@@ -524,7 +524,7 @@
     const cardBtn = e.target.closest('[data-card-copy]');
     if (cardBtn && current) {
       const card = current.cards.find((c) => c.key === cardBtn.dataset.cardCopy);
-      if (card) copyText(cardToMarkdown(card, current.data.seed).trim(), 'Copied ' + cardCount(card) + ' ' + card.platform + ' items');
+      if (card) copyText(cardToMarkdown(card, current.data.topic || current.data.seed).trim(), 'Copied ' + cardCount(card) + ' ' + card.platform + ' items');
     }
   });
   const truncate = (s, n) => (s.length > n ? s.slice(0, n - 1) + '…' : s);
@@ -557,7 +557,7 @@
     const date = new Date(d.generatedAt || Date.now()).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
     let out = '# Search & Prompt Radar: ' + d.seed + ' (' + regionLabel(d.country) + ', ' + date + ')\n\n';
     out += 'Source: Google and YouTube autocomplete, Reddit search intent, Hacker News threads, LinkedIn angles. AI prompts are synthesised from this data, not taken from AI platform logs.\n\n';
-    current.cards.forEach((c) => { out += cardToMarkdown(c, d.seed); });
+    current.cards.forEach((c) => { out += cardToMarkdown(c, d.topic || d.seed); });
     return out.trim() + '\n';
   }
   // Prefix ' so Excel/Sheets treat cells starting with = + - @ tab or CR as text, not formulas
@@ -605,8 +605,16 @@
       await new Promise((r) => setTimeout(r, 900));
       return { status: 200, data: mockResponse(seed, country, MOCK === 'hn-down') };
     }
-    const res = await fetch(WORKER_URL + '/?seed=' + encodeURIComponent(seed) + '&country=' + encodeURIComponent(country) +
-      (cacheOnly ? '&cacheOnly=1' : ''));
+    // A fresh scan with the AI step takes 10-20s; give up at 45s rather than hang.
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 45000);
+    let res;
+    try {
+      res = await fetch(WORKER_URL + '/?seed=' + encodeURIComponent(seed) + '&country=' + encodeURIComponent(country) +
+        (cacheOnly ? '&cacheOnly=1' : ''), { signal: ctrl.signal });
+    } finally {
+      clearTimeout(timer);
+    }
     let data = null;
     try { data = await res.json(); } catch (e) { data = null; }
     return { status: res.status, data };
