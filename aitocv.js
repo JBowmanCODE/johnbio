@@ -1085,12 +1085,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 const okBtn   = document.getElementById('confirm-ok');
                 const cancelBtn = document.getElementById('confirm-cancel');
                 if (overlay && bodyEl && okBtn && cancelBtn) {
-                    bodyEl.textContent = `This will open ${boards.length} job board tabs in your browser.`;
+                    const titleEl = document.getElementById('confirm-title');
+                    const noteEl  = document.getElementById('confirm-note');
+                    const linksEl = document.getElementById('confirm-links');
+                    let pending = Array.from(boards);
+
+                    // Reset the dialog to its first state each time it opens
+                    if (titleEl) titleEl.textContent = 'Open Job Boards?';
+                    bodyEl.textContent = `This will open ${pending.length} job board tabs in your browser.`;
+                    if (noteEl) noteEl.textContent = 'You may need to allow pop-ups for this site if your browser blocks them.';
+                    if (linksEl) { linksEl.innerHTML = ''; linksEl.classList.add('hidden'); }
+                    okBtn.textContent = 'Open Tabs';
                     overlay.classList.remove('hidden');
+
                     const close = () => overlay.classList.add('hidden');
                     okBtn.onclick = () => {
-                        close();
-                        boards.forEach(a => window.open(a.href, '_blank', 'noopener,noreferrer'));
+                        // Browsers allow one new tab per click unless pop-ups are allowed for
+                        // the site. window.open returns null for each tab it blocks (it always
+                        // returns null with 'noopener', so cut the opener link by hand instead).
+                        const blocked = [];
+                        pending.forEach(a => {
+                            const w = window.open(a.href, '_blank');
+                            if (w) { try { w.opener = null; } catch (e) { /* cross-origin */ } }
+                            else blocked.push(a);
+                        });
+                        if (!blocked.length) { close(); return; }
+
+                        const opened = pending.length - blocked.length;
+                        pending = blocked;
+                        if (titleEl) titleEl.textContent = 'Your browser blocked some tabs';
+                        bodyEl.textContent = `${opened} of ${opened + blocked.length} opened. Your browser blocked the other ${blocked.length}.`;
+                        if (noteEl) noteEl.textContent = 'To open them all at once, allow pop-ups for johnb.io (look for the blocked pop-up icon at the right of the address bar) and click Try Again. Or open them one at a time:';
+                        if (linksEl) {
+                            linksEl.innerHTML = '';
+                            blocked.forEach(a => {
+                                const link = document.createElement('a');
+                                link.href = a.href;
+                                link.target = '_blank';
+                                link.rel = 'noopener noreferrer';
+                                link.textContent = a.textContent;
+                                link.addEventListener('click', () => {
+                                    link.classList.add('opened');
+                                    pending = pending.filter(p => p !== a);
+                                });
+                                linksEl.appendChild(link);
+                            });
+                            linksEl.classList.remove('hidden');
+                        }
+                        okBtn.textContent = 'Try Again';
                     };
                     cancelBtn.onclick = close;
                     overlay.onclick = (e) => { if (e.target === overlay) close(); };

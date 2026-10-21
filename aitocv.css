@@ -699,6 +699,25 @@ textarea:focus {
   padding-top: 10px; margin-top: 4px;
 }
 
+.confirm-links {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 6px;
+  max-height: 180px; overflow-y: auto;
+  margin: 0 0 18px;
+}
+.confirm-links.hidden { display: none; }
+.confirm-links a {
+  padding: 6px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem; font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.confirm-links a:hover { background: var(--accent-glow); border-color: var(--accent); }
+.confirm-links a.opened { color: var(--text-dim); border-color: var(--border); background: transparent; text-decoration: line-through; }
+
 .confirm-actions {
   display: flex; gap: 10px; margin-top: 20px;
 }
