@@ -1007,6 +1007,15 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: 'Stellenanzeigen.de', href: 'https://www.stellenanzeigen.de/', search: 'https://www.stellenanzeigen.de/suche/?fulltext={q}' },
             EURES,
         ]},
+        mt: { name: 'Malta', boards: [
+            linkedIn('Malta'),
+            { name: 'jobsinmalta', href: 'https://jobsinmalta.com/', search: 'https://jobsinmalta.com/jobs?keywords={q}' },
+            { name: 'Konnekt', href: 'https://www.konnekt.com/', search: 'https://www.konnekt.com/jobs/?search={q}' },
+            { name: 'Keepmeposted', href: 'https://keepmeposted.com.mt/' },
+            { name: 'Jobsplus (government)', href: 'https://jobsplus.gov.mt/' },
+            { name: 'Castille Resources', href: 'https://www.castilleresources.com/' },
+            EURES,
+        ]},
         bg: { name: 'Bulgaria', boards: [
             linkedIn('Bulgaria'),
             { name: 'Jobs.bg', href: 'https://www.jobs.bg/' },
