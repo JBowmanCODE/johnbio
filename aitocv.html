@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="/styles.css?v=4">
     <link rel="stylesheet" href="/header.css?v=6">
     <link rel="stylesheet" href="/footer.css?v=2">
-    <link rel="stylesheet" href="aitocv.css?v=2">
+    <link rel="stylesheet" href="aitocv.css?v=3">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -258,32 +258,49 @@
                 <p class="job-boards-title">Recommended Job Boards</p>
                 <div class="accordion-panel" style="max-height:none; overflow:visible;">
                     <div class="search-bar-row">
+                        <select id="job-country" aria-label="Country for job boards">
+                            <option value="gb" selected>United Kingdom</option>
+                            <option value="it">Italy</option>
+                            <option value="es">Spain</option>
+                            <option value="fr">France</option>
+                            <option value="br">Brazil</option>
+                            <option value="pt">Portugal</option>
+                            <option value="ro">Romania</option>
+                            <option value="de">Germany</option>
+                            <option value="bg">Bulgaria</option>
+                        </select>
                         <div class="search-bar-wrap">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                             <input type="text" id="job-search-input" placeholder="Search for roles e.g. Head of AI" />
                         </div>
                         <button id="job-search-btn">Search All Boards</button>
                     </div>
-                    <div class="link-grid" id="job-boards-grid">
-                        <a href="https://www.linkedin.com/jobs/" data-search="https://www.linkedin.com/jobs/search-results/?keywords={q}&origin=JOBS_HOME_SEARCH_BUTTON" target="_blank" rel="noopener noreferrer">LinkedIn Jobs</a>
-                        <a href="https://uk.indeed.com/" data-search="https://uk.indeed.com/jobs?q={q}" target="_blank" rel="noopener noreferrer">Indeed UK</a>
-                        <a href="https://www.reed.co.uk" data-search="https://www.reed.co.uk/jobs/{slug}-jobs" target="_blank" rel="noopener noreferrer">Reed.co.uk</a>
-                        <a href="https://weworkremotely.com" data-search="https://weworkremotely.com/remote-jobs/search?term={q+}" target="_blank" rel="noopener noreferrer">We Work Remotely</a>
-                        <a href="https://www.workingnomads.com/jobs" data-search="https://www.workingnomads.com/jobs?tag={slug}" target="_blank" rel="noopener noreferrer">Working Nomads</a>
-                        <a href="https://remote.co/remote-jobs/" data-search="https://remote.co/remote-jobs/search?searchkeyword={q%20}&useclocation=true" target="_blank" rel="noopener noreferrer">Remote.co</a>
-                        <a href="https://www.gamesjobsdirect.com" data-search="https://www.gamesjobsdirect.com/results?k={q%20}&ic=False" target="_blank" rel="noopener noreferrer">GamesJobsDirect</a>
-                        <a href="https://www.peopleperhour.com" data-search="https://www.peopleperhour.com/services/{q+}?ref=search" target="_blank" rel="noopener noreferrer">PeoplePerHour</a>
-                        <a href="https://www.pentasia.com/" data-search="https://www.pentasia.com/cm/candidates/jobs?keywords={q%20}" target="_blank" rel="noopener noreferrer">Pentasia</a>
-                        <a href="https://www.bettingjobs.com/current-vacancies/" data-search="https://www.bettingjobs.com/jobs/{slug}-jobs/" target="_blank" rel="noopener noreferrer">BettingJobs</a>
-                        <a href="https://www.searchandselect.com/job-search" data-search="https://www.searchandselect.com/job-search?keyword={q%20}" target="_blank" rel="noopener noreferrer">Search and Select</a>
-                        <a href="https://www.itjobswatch.co.uk/" data-search="https://www.itjobswatch.co.uk/find/{slug}-jobs-in-UK" target="_blank" rel="noopener noreferrer">IT Jobs Watch</a>
-                        <a href="https://hitmarker.net" target="_blank" rel="noopener noreferrer">Hitmarker</a>
-                        <a href="https://www.remotegamejobs.com" target="_blank" rel="noopener noreferrer">Remote Game Jobs</a>
-                        <a href="https://www.upwork.com" target="_blank" rel="noopener noreferrer">Upwork</a>
-                        <a href="https://vankaizen.com/vacancies" target="_blank" rel="noopener noreferrer">Van Kaizen</a>
-                        <a href="https://bullfinch.breezy.hr/" target="_blank" rel="noopener noreferrer">Bullfinch</a>
-                        <a href="https://www.flexjobs.com" target="_blank" rel="noopener noreferrer">FlexJobs</a>
-                        <a href="https://www.civilservicejobs.service.gov.uk/" data-search="https://www.civilservicejobs.service.gov.uk/csr/jobs.cgi?keywords={q}" target="_blank" rel="noopener noreferrer">Civil Service Jobs</a>
+                    <div id="job-boards-grid">
+                        <p class="board-group-label" id="board-country-label">United Kingdom</p>
+                        <div class="link-grid" id="board-country-grid">
+                            <a href="https://www.linkedin.com/jobs/" data-search="https://www.linkedin.com/jobs/search/?keywords={q}&amp;location=United%20Kingdom" target="_blank" rel="noopener noreferrer">LinkedIn Jobs</a>
+                            <a href="https://uk.indeed.com/" data-search="https://uk.indeed.com/jobs?q={q}" target="_blank" rel="noopener noreferrer">Indeed UK</a>
+                            <a href="https://www.reed.co.uk" data-search="https://www.reed.co.uk/jobs/{slug}-jobs" target="_blank" rel="noopener noreferrer">Reed.co.uk</a>
+                            <a href="https://www.itjobswatch.co.uk/" data-search="https://www.itjobswatch.co.uk/find/{slug}-jobs-in-UK" target="_blank" rel="noopener noreferrer">IT Jobs Watch</a>
+                            <a href="https://www.civilservicejobs.service.gov.uk/" data-search="https://www.civilservicejobs.service.gov.uk/csr/jobs.cgi?keywords={q}" target="_blank" rel="noopener noreferrer">Civil Service Jobs</a>
+                        </div>
+                        <p class="board-group-label">International &amp; remote</p>
+                        <div class="link-grid" id="board-intl-grid">
+                            <a href="https://weworkremotely.com" data-search="https://weworkremotely.com/remote-jobs/search?term={q+}" target="_blank" rel="noopener noreferrer">We Work Remotely</a>
+                            <a href="https://www.workingnomads.com/jobs" data-search="https://www.workingnomads.com/jobs?tag={slug}" target="_blank" rel="noopener noreferrer">Working Nomads</a>
+                            <a href="https://remote.co/remote-jobs/" data-search="https://remote.co/remote-jobs/search?searchkeyword={q%20}&amp;useclocation=true" target="_blank" rel="noopener noreferrer">Remote.co</a>
+                            <a href="https://www.flexjobs.com" target="_blank" rel="noopener noreferrer">FlexJobs</a>
+                            <a href="https://www.upwork.com" target="_blank" rel="noopener noreferrer">Upwork</a>
+                            <a href="https://www.peopleperhour.com" data-search="https://www.peopleperhour.com/services/{q+}?ref=search" target="_blank" rel="noopener noreferrer">PeoplePerHour</a>
+                            <a href="https://www.gamesjobsdirect.com" data-search="https://www.gamesjobsdirect.com/results?k={q%20}&amp;ic=False" target="_blank" rel="noopener noreferrer">GamesJobsDirect</a>
+                            <a href="https://hitmarker.net" target="_blank" rel="noopener noreferrer">Hitmarker</a>
+                            <a href="https://www.remotegamejobs.com" target="_blank" rel="noopener noreferrer">Remote Game Jobs</a>
+                            <a href="https://www.pentasia.com/" data-search="https://www.pentasia.com/cm/candidates/jobs?keywords={q%20}" target="_blank" rel="noopener noreferrer">Pentasia</a>
+                            <a href="https://www.bettingjobs.com/current-vacancies/" data-search="https://www.bettingjobs.com/jobs/{slug}-jobs/" target="_blank" rel="noopener noreferrer">BettingJobs</a>
+                            <a href="https://www.searchandselect.com/job-search" data-search="https://www.searchandselect.com/job-search?keyword={q%20}" target="_blank" rel="noopener noreferrer">Search and Select</a>
+                            <a href="https://vankaizen.com/vacancies" target="_blank" rel="noopener noreferrer">Van Kaizen</a>
+                            <a href="https://bullfinch.breezy.hr/" target="_blank" rel="noopener noreferrer">Bullfinch</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -308,7 +325,7 @@
     </div>
 
     <div class="tool-info-body">
-      <p>The AI CV Enhancer takes your existing CV and a job description, then produces a tailored CV, a matching cover letter, a suitability score and a set of interview prep questions - all in under 60 seconds. It is designed for job seekers who want to move fast without sacrificing quality. The tool also includes a role-fit finder that analyses your CV and suggests the ten job titles you are best suited for, plus a searchable directory of over 15 job boards. The domain <a href="https://aitocv.com" target="_blank" rel="noopener noreferrer">aitocv.com</a> redirects here.</p>
+      <p>The AI CV Enhancer takes your existing CV and a job description, then produces a tailored CV, a matching cover letter, a suitability score and a set of interview prep questions - all in under 60 seconds. It is designed for job seekers who want to move fast without sacrificing quality. The tool also includes a role-fit finder that analyses your CV and suggests the ten job titles you are best suited for, plus a searchable directory of job boards for the UK, Italy, Spain, France, Brazil, Portugal, Romania, Germany and Bulgaria, alongside international and remote boards. The domain <a href="https://aitocv.com" target="_blank" rel="noopener noreferrer">aitocv.com</a> redirects here.</p>
       <p>The tool runs on <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer">Claude Sonnet by Anthropic</a>, a more capable model chosen for the complexity of tailoring professional documents to specific roles. Your CV and job description are sent securely to Anthropic's API and are not stored or used to train AI models. The tool complies with <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/" target="_blank" rel="noopener noreferrer">UK GDPR</a> and the <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic Privacy Policy</a> as of March 2026. Always review the output before sending to employers - do not include sensitive personal information such as passport numbers or financial details.</p>
     </div>
 
@@ -501,7 +518,7 @@
       });
     </script>
     <script src="/scripts.js?v=9" defer></script>
-    <script src="aitocv.js?v=4" defer></script>
+    <script src="aitocv.js?v=5" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {

@@ -925,6 +925,121 @@ document.addEventListener('DOMContentLoaded', () => {
     const jobSearchInput = document.getElementById('job-search-input');
     const jobSearchBtn = document.getElementById('job-search-btn');
     const jobBoardsGrid = document.getElementById('job-boards-grid');
+    const jobCountrySelect = document.getElementById('job-country');
+    const boardCountryGrid = document.getElementById('board-country-grid');
+    const boardCountryLabel = document.getElementById('board-country-label');
+
+    // National job boards per country. The "International & remote" group in the
+    // HTML is shown for every country. `search` templates use the placeholders
+    // handled by buildSearchUrl(); boards without one link to the homepage only
+    // (their search URLs couldn't be verified - most block automated checks).
+    const EURES = { name: 'EURES (EU jobs)', href: 'https://eures.europa.eu/' };
+    const linkedIn = location => ({
+        name: 'LinkedIn Jobs',
+        href: 'https://www.linkedin.com/jobs/',
+        search: `https://www.linkedin.com/jobs/search/?keywords={q}&location=${encodeURIComponent(location)}`,
+    });
+    const indeed = (cc, name) => ({ name, href: `https://${cc}.indeed.com/`, search: `https://${cc}.indeed.com/jobs?q={q}` });
+
+    const COUNTRY_BOARDS = {
+        gb: { name: 'United Kingdom', boards: [
+            linkedIn('United Kingdom'),
+            indeed('uk', 'Indeed UK'),
+            { name: 'Reed.co.uk', href: 'https://www.reed.co.uk', search: 'https://www.reed.co.uk/jobs/{slug}-jobs' },
+            { name: 'IT Jobs Watch', href: 'https://www.itjobswatch.co.uk/', search: 'https://www.itjobswatch.co.uk/find/{slug}-jobs-in-UK' },
+            { name: 'Civil Service Jobs', href: 'https://www.civilservicejobs.service.gov.uk/', search: 'https://www.civilservicejobs.service.gov.uk/csr/jobs.cgi?keywords={q}' },
+        ]},
+        it: { name: 'Italy', boards: [
+            linkedIn('Italy'),
+            indeed('it', 'Indeed Italia'),
+            { name: 'Jobrapido', href: 'https://it.jobrapido.com/', search: 'https://it.jobrapido.com/?w={q+}' },
+            { name: 'Randstad Italia', href: 'https://www.randstad.it/offerte-lavoro/', search: 'https://www.randstad.it/offerte-lavoro/q-{slug}/' },
+            { name: 'Subito Lavoro', href: 'https://www.subito.it/annunci-italia/vendita/offerte-lavoro/' },
+            EURES,
+        ]},
+        es: { name: 'Spain', boards: [
+            linkedIn('Spain'),
+            { name: 'InfoJobs', href: 'https://www.infojobs.net/', search: 'https://www.infojobs.net/jobsearch/search-results/list.xhtml?keyword={q}' },
+            indeed('es', 'Indeed España'),
+            { name: 'Infoempleo', href: 'https://www.infoempleo.com/', search: 'https://www.infoempleo.com/trabajo/?q={q}' },
+            { name: 'Tecnoempleo', href: 'https://www.tecnoempleo.com/', search: 'https://www.tecnoempleo.com/ofertas-trabajo/?te={q}' },
+            EURES,
+        ]},
+        fr: { name: 'France', boards: [
+            linkedIn('France'),
+            indeed('fr', 'Indeed France'),
+            { name: 'Welcome to the Jungle', href: 'https://www.welcometothejungle.com/fr', search: 'https://www.welcometothejungle.com/fr/jobs?query={q}' },
+            { name: 'HelloWork', href: 'https://www.hellowork.com/fr-fr/', search: 'https://www.hellowork.com/fr-fr/emploi/recherche.html?k={q}' },
+            { name: 'APEC (cadres)', href: 'https://www.apec.fr/', search: 'https://www.apec.fr/candidat/recherche-emploi.html/emploi?motsCles={q}' },
+            { name: 'France Travail', href: 'https://candidat.francetravail.fr/', search: 'https://candidat.francetravail.fr/offres/recherche?motsCles={q}' },
+            EURES,
+        ]},
+        br: { name: 'Brazil', boards: [
+            linkedIn('Brazil'),
+            indeed('br', 'Indeed Brasil'),
+            { name: 'Catho', href: 'https://www.catho.com.br/', search: 'https://www.catho.com.br/vagas/{slug}/' },
+            { name: 'Vagas.com.br', href: 'https://www.vagas.com.br/', search: 'https://www.vagas.com.br/vagas-de-{slug}' },
+            { name: 'InfoJobs Brasil', href: 'https://www.infojobs.com.br/', search: 'https://www.infojobs.com.br/empregos.aspx?palabra={q}' },
+            { name: 'Gupy', href: 'https://portal.gupy.io/', search: 'https://portal.gupy.io/job-search/term={q}' },
+        ]},
+        pt: { name: 'Portugal', boards: [
+            linkedIn('Portugal'),
+            indeed('pt', 'Indeed Portugal'),
+            { name: 'Net-Empregos', href: 'https://www.net-empregos.com/', search: 'https://www.net-empregos.com/pesquisa-empregos.asp?chaves={q}' },
+            { name: 'SAPO Emprego', href: 'https://emprego.sapo.pt/', search: 'https://emprego.sapo.pt/ofertas?q={q}' },
+            { name: 'ITJobs.pt', href: 'https://www.itjobs.pt/', search: 'https://www.itjobs.pt/emprego?q={q}' },
+            EURES,
+        ]},
+        ro: { name: 'Romania', boards: [
+            linkedIn('Romania'),
+            { name: 'eJobs', href: 'https://www.ejobs.ro/', search: 'https://www.ejobs.ro/locuri-de-munca/{slug}' },
+            { name: 'BestJobs', href: 'https://www.bestjobs.eu/', search: 'https://www.bestjobs.eu/locuri-de-munca?keyword={q}' },
+            { name: 'Hipo.ro', href: 'https://www.hipo.ro/', search: 'https://www.hipo.ro/locuri-de-munca/cautajob/{q}' },
+            indeed('ro', 'Indeed România'),
+            EURES,
+        ]},
+        de: { name: 'Germany', boards: [
+            linkedIn('Germany'),
+            { name: 'StepStone', href: 'https://www.stepstone.de/', search: 'https://www.stepstone.de/jobs/{slug}' },
+            indeed('de', 'Indeed Deutschland'),
+            { name: 'Bundesagentur für Arbeit', href: 'https://www.arbeitsagentur.de/jobsuche/', search: 'https://www.arbeitsagentur.de/jobsuche/suche?was={q}' },
+            { name: 'XING Jobs', href: 'https://www.xing.com/jobs', search: 'https://www.xing.com/jobs/search?keywords={q}' },
+            { name: 'Stellenanzeigen.de', href: 'https://www.stellenanzeigen.de/', search: 'https://www.stellenanzeigen.de/suche/?fulltext={q}' },
+            EURES,
+        ]},
+        bg: { name: 'Bulgaria', boards: [
+            linkedIn('Bulgaria'),
+            { name: 'Jobs.bg', href: 'https://www.jobs.bg/' },
+            { name: 'Zaplata.bg', href: 'https://www.zaplata.bg/' },
+            { name: 'Karieri.bg', href: 'https://www.karieri.bg/' },
+            { name: 'DEV.BG (tech)', href: 'https://dev.bg/', search: 'https://dev.bg/?s={q+}&post_type=job_listing' },
+            EURES,
+        ]},
+    };
+
+    function renderCountryBoards(code) {
+        const country = COUNTRY_BOARDS[code] || COUNTRY_BOARDS.gb;
+        if (boardCountryLabel) boardCountryLabel.textContent = country.name;
+        if (boardCountryGrid) {
+            boardCountryGrid.innerHTML = country.boards.map(b =>
+                `<a href="${escapeAttr(b.href)}"${b.search ? ` data-search="${escapeAttr(b.search)}"` : ''} target="_blank" rel="noopener noreferrer">${escapeHtml(b.name)}</a>`
+            ).join('');
+        }
+        doJobSearch(); // re-apply the current search terms to the new links
+    }
+
+    if (jobCountrySelect) {
+        let saved = null;
+        try { saved = localStorage.getItem('aitocv-job-country'); } catch (e) { /* storage unavailable */ }
+        if (saved && COUNTRY_BOARDS[saved] && saved !== 'gb') {
+            jobCountrySelect.value = saved;
+            renderCountryBoards(saved);
+        }
+        jobCountrySelect.addEventListener('change', () => {
+            renderCountryBoards(jobCountrySelect.value);
+            try { localStorage.setItem('aitocv-job-country', jobCountrySelect.value); } catch (e) { /* storage unavailable */ }
+        });
+    }
 
     function buildSearchUrl(template, query) {
         const q = encodeURIComponent(query);
