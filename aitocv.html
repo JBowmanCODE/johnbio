@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI CV Enhancer | JohnB.io</title>
+    <title>AI CV Enhancer: Tailored CV &amp; Cover Letter - JohnB.io</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -16,6 +16,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     <meta name="description" content="Upload your CV and a job description. Get a tailored CV, cover letter, suitability score and interview prep powered by Claude AI.">
+    <meta name="keywords" content="AI CV enhancer, AI CV writer, tailored CV, cover letter generator, ATS CV, interview prep, Claude AI">
     <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://johnb.io/aitocv">
     <meta name="author" content="John Bowman">
@@ -28,6 +29,7 @@
     <meta name="twitter:title" content="AI CV Enhancer - JohnB.io">
     <meta name="twitter:description" content="Upload your CV and a job description. Get a tailored CV, cover letter, match score and interview prep in under 60 seconds.">
     <meta name="twitter:image" content="https://johnb.io/og_images/aitocv_og.webp">
+    <meta name="twitter:image:alt" content="AI CV Enhancer tool on JohnB.io - upload a CV and job description to get a tailored CV and cover letter">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -59,7 +61,7 @@
       {
         "@type": "Question",
         "name": "Which AI model does this tool use?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The tool uses Claude Sonnet by Anthropic - specifically the claude-sonnet-4 model. Sonnet is a more capable model than Claude Haiku and was chosen here because tailoring professional documents to specific roles requires stronger reasoning and instruction-following than simpler tasks." }
+        "acceptedAnswer": { "@type": "Answer", "text": "The tool uses Claude Sonnet by Anthropic - specifically Claude Sonnet 4.6 (claude-sonnet-4-6). Sonnet is a more capable model than Claude Haiku and was chosen here because tailoring professional documents to specific roles requires stronger reasoning and instruction-following than simpler tasks." }
       },
       {
         "@type": "Question",
@@ -280,9 +282,9 @@
   <div class="tool-info-inner">
 
     <div class="tool-info-meta">
-      <span>Last updated: March 2026</span>
+      <span>Last updated: October 2026</span>
       <span class="tool-info-sep">·</span>
-      <span>By <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener noreferrer">John Bowman</a> - questions? Connect on LinkedIn.</span>
+      <span>By <a href="/about">John Bowman</a> - questions? Connect on <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</span>
     </div>
 
     <div class="tool-info-body">
@@ -301,7 +303,7 @@
           <dl class="info-faq">
             <div class="faq-item">
               <dt>Which AI model does this tool use?</dt>
-              <dd>The tool uses <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer">Claude Sonnet by Anthropic</a> - specifically the <code>claude-sonnet-4</code> model. Sonnet is a more capable model than Claude Haiku and was chosen here because tailoring professional documents to specific roles requires stronger reasoning and instruction-following than simpler tasks.</dd>
+              <dd>The tool uses <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer">Claude Sonnet by Anthropic</a> - specifically Claude Sonnet 4.6 (<code>claude-sonnet-4-6</code>). Sonnet is a more capable model than Claude Haiku and was chosen here because tailoring professional documents to specific roles requires stronger reasoning and instruction-following than simpler tasks.</dd>
             </div>
             <div class="faq-item">
               <dt>Is my CV stored or shared?</dt>
@@ -454,8 +456,8 @@
 
     <!-- Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js" integrity="sha384-/cXAMbzovUIKbBERjPmR3SnPTh8siWr5lsvFYj1Uq4XP0yaJUZJmsh0YXyGv5P0y" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.11.246/pdf.min.js" integrity="sha384-ZSs6LKr2GoUPDyHrN+rCQgyHL1yUyok5xMniSrgeRG7rUvA6vTmxronM1eZOfjgz" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.0.0/jspdf.umd.min.js" integrity="sha384-ZSs6LKr2GoUPDyHrN+rCQgyHL1yUyok5xMniSrgeRG7rUvA6vTmxronM1eZOfjgz" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" integrity="sha384-/1qUCSGwTur9vjf/z9lmu/eCUYbpOTgSjmpbMQZ1/CtX2v/WcAIKqRv+U1DUCG6e" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.0.0/jspdf.umd.min.js" integrity="sha384-O5lMb4MDjtn5zz9DSqizqf3JK5ne6jnTbRh523aaJiE4fpejSlmaEaksvdfbbCiC" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/docx@7.8.2/build/index.js" integrity="sha384-zjTqOObJTD6OT6CUn8mSpDY+crIiP0cX457OjcZosSATiUFbmdXa9KRScjfLVxFH" crossorigin="anonymous"></script>
     <script>
       window.saveAs = function(blob, filename) {
@@ -475,7 +477,7 @@
       });
     </script>
     <script src="/scripts.js?v=9" defer></script>
-    <script src="aitocv.js?v=2" defer></script>
+    <script src="aitocv.js?v=3" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {

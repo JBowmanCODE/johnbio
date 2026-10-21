@@ -121,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 text = (await mammoth.extractRawText({ arrayBuffer: await file.arrayBuffer() })).value;
             } else if (fileExtension === 'pdf') {
                 if (typeof pdfjsLib === 'undefined') throw new Error('pdfjsLib not loaded');
+                pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
                 const pdf = await pdfjsLib.getDocument({
                     data: await file.arrayBuffer(),
                     cMapUrl: 'https://unpkg.com/pdfjs-dist@2.11.338/cmaps/',
