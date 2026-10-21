@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fileInput = document.getElementById('cv-file-input');
     const cvTextArea = document.getElementById('cv-text-area');
     const jobDescriptionArea = document.getElementById('job-description-area');
+    const languageSelect = document.getElementById('cv-language');
     const enhanceCvBtn = document.getElementById('enhance-cv-button');
     const loadingIndicator = document.getElementById('loading-indicator');
     const resultsSection = document.getElementById('results-section');
@@ -198,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const response = await fetch(CV_WORKER_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ cv, jobDescription: jobDesc }),
+                    body: JSON.stringify({ cv, jobDescription: jobDesc, language: languageSelect ? languageSelect.value : 'auto' }),
                 });
 
                 if (response.status === 429) {
@@ -452,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Sections
-        cvData.sections.forEach(section => {
+        cvData.sections.forEach((section, sectionIndex) => {
             elements.push(new Paragraph({
                 children: [new TextRun({ text: section.title.toUpperCase(), bold: true, size: 22, color: "2F5496", font: "Calibri" })],
                 spacing: { before: 300, after: 120 },
@@ -460,9 +461,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }));
 
             const contentLines = section.content.split('\n').filter(l => l.trim() !== '');
-            const profileSections = ['PROFILE', 'SUMMARY', 'PROFESSIONAL SUMMARY'];
 
-            if (profileSections.includes(section.title.toUpperCase())) {
+            if (isProfileSection(section, sectionIndex)) {
                 contentLines.forEach(line => elements.push(new Paragraph({
                     children: [new TextRun({ text: line.trim(), size: 20, font: "Calibri" })],
                     spacing: { after: 150 }
@@ -505,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             spacing: { after: 80 }
                         }));
                     } else {
-                        const isDate = /\d{4}|present/i.test(line);
+                        const isDate = isDateOnlyLine(line);
                         elements.push(new Paragraph({
                             children: [new TextRun({ text: line, size: 20, font: "Calibri", italics: isDate, color: isDate ? "595959" : "1a1a2e" })],
                             spacing: { after: 60 }
@@ -529,9 +529,71 @@ document.addEventListener('DOMContentLoaded', () => {
         return new Document({ sections: [{ properties: { page: { margins: { top: 1000, right: 1000, bottom: 1000, left: 1000 } } }, children: paragraphs }] });
     }
 
+    // The CV may be written in any supported language, so the profile is the
+    // first section rather than one with an English heading.
+    const PROFILE_TITLES = ['PROFILE', 'SUMMARY', 'PROFESSIONAL SUMMARY'];
+    function isProfileSection(section, index) {
+        return index === 0 || PROFILE_TITLES.includes(section.title.toUpperCase());
+    }
+
+    // A line that is nothing but a date or date range, e.g. "May 2020 - Present"
+    // or "2007 to 2010". Lines that merely contain a year (education entries) are not dates.
+    function isDateOnlyLine(line) {
+        return line.length <= 40 && /\d{4}/.test(line) && !/[:.,;]$/.test(line) &&
+            line.replace(/[\d\s()\-\u2013\u2014\/]/g, '').length <= 22;
+    }
+
+    // With the Unicode font loaded every supported language renders as-is. The
+    // helvetica fallback only covers Latin-1, so map common typographic characters
+    // to plain ones rather than deleting them.
+    let pdfFont = 'helvetica';
     function sanitizeForPdf(text) {
         if (!text) return '';
-        return text.replace(/[^\u0020-\u007E\u00A0-\u00FF]/g, '');
+        if (pdfFont !== 'helvetica') return text;
+        return text
+            .replace(/[\u2013\u2014\u2212]/g, '-')
+            .replace(/\s*\u2022\s*/g, '  |  ')
+            .replace(/[\u2018\u2019]/g, "'")
+            .replace(/[\u201C\u201D]/g, '"')
+            .replace(/\u2026/g, '...')
+            .replace(/[^\u0020-\u007E\u00A0-\u00FF]/g, '');
+    }
+
+    // Noto Sans subset (Latin, Latin Extended, Cyrillic), self-hosted in /fonts.
+    let pdfFontData = null;
+    async function loadPdfFontData() {
+        if (pdfFontData) return pdfFontData;
+        const styles = { normal: 'Regular', bold: 'Bold', italic: 'Italic' };
+        const toBase64 = buf => {
+            const bytes = new Uint8Array(buf);
+            let bin = '';
+            for (let i = 0; i < bytes.length; i += 0x8000) {
+                bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+            }
+            return btoa(bin);
+        };
+        const entries = await Promise.all(Object.entries(styles).map(async ([style, file]) => {
+            const res = await fetch(`/fonts/NotoSans-${file}-subset.ttf`);
+            if (!res.ok) throw new Error(`Font ${file} HTTP ${res.status}`);
+            return [style, toBase64(await res.arrayBuffer())];
+        }));
+        pdfFontData = Object.fromEntries(entries);
+        return pdfFontData;
+    }
+
+    async function registerPdfFont(doc) {
+        try {
+            const data = await loadPdfFontData();
+            Object.entries(data).forEach(([style, b64]) => {
+                const file = `NotoSans-${style}.ttf`;
+                doc.addFileToVFS(file, b64);
+                doc.addFont(file, 'NotoSans', style);
+            });
+            return 'NotoSans';
+        } catch (err) {
+            console.warn('PDF font failed to load, falling back to Helvetica:', err);
+            return 'helvetica';
+        }
     }
 
     // Fix dates that got concatenated without a separator
@@ -574,13 +636,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (downloadPdfBtn) {
-        downloadPdfBtn.addEventListener('click', () => {
+        downloadPdfBtn.addEventListener('click', async () => {
             if (!enhancedCvText) return showError('No CV text available to download.');
             const cvData = parseCvForGeneration(enhancedCvText);
             const personName = cvData.name ? cvData.name.trim().replace(/\s+/g, '_') : 'Enhanced';
             const fileName = `${personName}_CV.pdf`;
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
+            pdfFont = await registerPdfFont(doc);
 
             const pageW = doc.internal.pageSize.getWidth();
             const pageH = doc.internal.pageSize.getHeight();
@@ -605,12 +668,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // ── NAME ──────────────────────────────────────────────────────
-            doc.setFont('helvetica', 'bold').setFontSize(FS.name).setTextColor(...COL.name);
+            doc.setFont(pdfFont, 'bold').setFontSize(FS.name).setTextColor(...COL.name);
             doc.text(sanitizeForPdf(cvData.name), pageW / 2, y, { align: 'center' });
             y += 7;
 
             // ── CONTACT with clickable LinkedIn ───────────────────────────
-            doc.setFont('helvetica', 'normal').setFontSize(FS.contact).setTextColor(...COL.contact);
+            doc.setFont(pdfFont, 'normal').setFontSize(FS.contact).setTextColor(...COL.contact);
             const contactParts = cvData.contact.split('|').map(p => p.trim()).filter(Boolean);
             if (contactParts.length > 0) {
                 // Build full contact string to measure total width for centering
@@ -638,7 +701,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // ── TAGLINE ───────────────────────────────────────────────────
             if (cvData.tagline) {
-                doc.setFont('helvetica', 'italic').setFontSize(FS.tagline).setTextColor(...COL.tagline);
+                doc.setFont(pdfFont, 'italic').setFontSize(FS.tagline).setTextColor(...COL.tagline);
                 doc.text(sanitizeForPdf(cvData.tagline), pageW / 2, y, { align: 'center' });
                 y += 5;
             }
@@ -648,13 +711,11 @@ document.addEventListener('DOMContentLoaded', () => {
             y += 6;
 
             // ── SECTIONS ─────────────────────────────────────────────────
-            const PROFILE_SECTIONS = ['PROFILE', 'SUMMARY', 'PROFESSIONAL SUMMARY'];
-
-            cvData.sections.forEach(section => {
+            cvData.sections.forEach((section, sectionIndex) => {
                 checkBreak(14);
 
                 // Section heading
-                doc.setFont('helvetica', 'bold').setFontSize(FS.heading).setTextColor(...COL.heading);
+                doc.setFont(pdfFont, 'bold').setFontSize(FS.heading).setTextColor(...COL.heading);
                 doc.text(sanitizeForPdf(section.title.toUpperCase()), margin, y);
                 y += 1.5;
                 doc.setLineWidth(0.3).setDrawColor(...COL.heading).line(margin, y, pageW - margin, y);
@@ -662,8 +723,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const contentLines = section.content.split('\n').filter(l => l.trim() !== '');
 
-                if (PROFILE_SECTIONS.includes(section.title.toUpperCase())) {
-                    doc.setFont('helvetica', 'normal').setFontSize(FS.body).setTextColor(...COL.body);
+                if (isProfileSection(section, sectionIndex)) {
+                    doc.setFont(pdfFont, 'normal').setFontSize(FS.body).setTextColor(...COL.body);
                     const wrapped = doc.splitTextToSize(sanitizeForPdf(contentLines.join(' ')), maxWidth);
                     checkBreak(wrapped.length * 4.5);
                     doc.text(wrapped, margin, y, { lineHeightFactor: 1.4 });
@@ -685,18 +746,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             const compName = sanitizeForPdf(compParts[0]);
                             const compMeta = compParts.slice(1).map(p => sanitizeForPdf(p)).join('  |  ');
                             // Render company name bold
-                            doc.setFont('helvetica', 'bold').setFontSize(FS.company).setTextColor(...COL.company);
+                            doc.setFont(pdfFont, 'bold').setFontSize(FS.company).setTextColor(...COL.company);
                             const nameW = doc.getTextWidth(compName);
                             const nameLines = doc.splitTextToSize(compName, maxWidth);
                             doc.text(nameLines, margin, y);
                             // If everything fits on one line, render meta inline after name
                             if (compMeta && nameLines.length === 1 && nameW + doc.getTextWidth('  |  ' + compMeta) < maxWidth) {
-                                doc.setFont('helvetica', 'normal').setFontSize(FS.body - 0.5).setTextColor(...COL.contact);
+                                doc.setFont(pdfFont, 'normal').setFontSize(FS.body - 0.5).setTextColor(...COL.contact);
                                 doc.text('  |  ' + compMeta, margin + nameW, y);
                                 y += 5;
                             } else if (compMeta) {
                                 y += 4.5;
-                                doc.setFont('helvetica', 'normal').setFontSize(FS.body - 0.5).setTextColor(...COL.contact);
+                                doc.setFont(pdfFont, 'normal').setFontSize(FS.body - 0.5).setTextColor(...COL.contact);
                                 doc.text(compMeta, margin, y);
                                 y += 4;
                             } else {
@@ -706,33 +767,33 @@ document.addEventListener('DOMContentLoaded', () => {
                             // Bullet point
                             const bulletText = sanitizeForPdf(line.substring(2));
                             const wrapped = doc.splitTextToSize(bulletText, maxWidth - 6);
-                            doc.setFont('helvetica', 'normal').setFontSize(FS.bullet).setTextColor(...COL.body);
+                            doc.setFont(pdfFont, 'normal').setFontSize(FS.bullet).setTextColor(...COL.body);
                             doc.text('\u2022', margin + 1.5, y + 0.5);
                             doc.text(wrapped, margin + 5, y, { lineHeightFactor: 1.35 });
                             y += doc.getTextDimensions(wrapped, { fontSize: FS.bullet }).h * 1.35 + 1.5;
                         } else {
                             // Job title or plain line — check if it's an expertise label (contains colon)
                             const isExpertiseLine = line.includes(':') && !line.startsWith('http');
-                            const isDate = /\u2013|present|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|\d{4}/i.test(line) && !line.includes(':');
+                            const isDate = !line.includes(':') && isDateOnlyLine(line);
                             if (isExpertiseLine) {
                                 // Render "Label:" in bold, rest in normal
                                 const colonIdx = line.indexOf(':');
                                 const label = sanitizeForPdf(line.substring(0, colonIdx + 1));
                                 const rest = sanitizeForPdf(line.substring(colonIdx + 1));
-                                doc.setFont('helvetica', 'bold').setFontSize(FS.body).setTextColor(...COL.body);
+                                doc.setFont(pdfFont, 'bold').setFontSize(FS.body).setTextColor(...COL.body);
                                 const labelW = doc.getTextWidth(label);
                                 // Wrap the full line but render in two passes
                                 const fullWrapped = doc.splitTextToSize(label + rest, maxWidth);
                                 if (fullWrapped.length === 1) {
                                     // Single line — render label bold then rest normal
                                     doc.text(label, margin, y);
-                                    doc.setFont('helvetica', 'normal').setFontSize(FS.body).setTextColor(...COL.body);
+                                    doc.setFont(pdfFont, 'normal').setFontSize(FS.body).setTextColor(...COL.body);
                                     doc.text(rest, margin + labelW, y);
                                 } else {
                                     // Multi-line — render first line with bold label, rest normal
                                     doc.text(label, margin, y);
                                     const firstLineRest = fullWrapped[0].substring(label.length);
-                                    doc.setFont('helvetica', 'normal').setFontSize(FS.body).setTextColor(...COL.body);
+                                    doc.setFont(pdfFont, 'normal').setFontSize(FS.body).setTextColor(...COL.body);
                                     if (firstLineRest) doc.text(firstLineRest, margin + labelW, y);
                                     for (let li = 1; li < fullWrapped.length; li++) {
                                         y += 4.2;
@@ -741,12 +802,12 @@ document.addEventListener('DOMContentLoaded', () => {
                                 }
                                 y += doc.getTextDimensions(fullWrapped, { fontSize: FS.body }).h * 1.3 + 1;
                             } else if (isDate) {
-                                doc.setFont('helvetica', 'italic').setFontSize(FS.body - 0.5).setTextColor(...COL.contact);
+                                doc.setFont(pdfFont, 'italic').setFontSize(FS.body - 0.5).setTextColor(...COL.contact);
                                 const wrapped = doc.splitTextToSize(sanitizeForPdf(line), maxWidth);
                                 doc.text(wrapped, margin, y);
                                 y += doc.getTextDimensions(wrapped, { fontSize: FS.body }).h + 1;
                             } else {
-                                doc.setFont('helvetica', 'normal').setFontSize(FS.jobtitle).setTextColor(...COL.body);
+                                doc.setFont(pdfFont, 'normal').setFontSize(FS.jobtitle).setTextColor(...COL.body);
                                 const wrapped = doc.splitTextToSize(sanitizeForPdf(line), maxWidth);
                                 doc.text(wrapped, margin, y);
                                 y += doc.getTextDimensions(wrapped, { fontSize: FS.jobtitle }).h + 1.5;
@@ -791,22 +852,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (rolesResults) rolesResults.classList.add('hidden');
 
             try {
-                const rolesPrompt = `You are a career adviser. Based on the CV below, identify the top 10 most suitable job roles this person should apply for.
-
-For each role return ONLY valid JSON — an array of 10 objects with these exact keys:
-- "rank": number 1-10
-- "title": job title (concise, real job title e.g. "Head of AI Strategy")
-- "reason": one sentence explaining why it fits their background (max 18 words)
-
-Return ONLY the JSON array. No markdown, no explanation, no backticks.
-
-CV:
-${cvText}`;
 
                 const response = await fetch(CV_WORKER_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ rolesOnly: true, cv: cvText, rolesPrompt })
+                    body: JSON.stringify({ rolesOnly: true, cv: cvText, language: languageSelect ? languageSelect.value : 'auto' })
                 });
 
                 const data = await response.json();

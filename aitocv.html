@@ -16,7 +16,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     <meta name="description" content="Upload your CV and a job description. Get a tailored CV, cover letter, suitability score and interview prep powered by Claude AI.">
-    <meta name="keywords" content="AI CV enhancer, AI CV writer, tailored CV, cover letter generator, ATS CV, interview prep, Claude AI">
+    <meta name="keywords" content="AI CV enhancer, AI CV writer, tailored CV, cover letter generator, ATS CV, interview prep, multilingual CV, CV translator, Claude AI">
     <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://johnb.io/aitocv">
     <meta name="author" content="John Bowman">
@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="/styles.css?v=4">
     <link rel="stylesheet" href="/header.css?v=6">
     <link rel="stylesheet" href="/footer.css?v=2">
-    <link rel="stylesheet" href="aitocv.css?v=1">
+    <link rel="stylesheet" href="aitocv.css?v=2">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -72,6 +72,11 @@
         "@type": "Question",
         "name": "What file formats can I upload?",
         "acceptedAnswer": { "@type": "Answer", "text": "The tool accepts PDF, DOCX and TXT files. PDF and DOCX are recommended for preserving formatting. The text content is extracted on upload - embedded images and complex tables may not transfer perfectly, so check the extracted text before submitting." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can it write my CV in another language?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Choose an output language under the job description: English, Italian, Spanish, French, Portuguese (Brazil or Portugal), Romanian, German or Bulgarian. The default, Same as the job description, matches the language the job advert is written in, so a Spanish advert gets a Spanish CV, cover letter and interview prep. Company names and qualification titles are kept as they are, and the PDF download supports accented letters and Cyrillic." }
       },
       {
         "@type": "Question",
@@ -135,6 +140,21 @@
                     <h2>Job Description</h2>
                 </div>
                 <textarea id="job-description-area" placeholder="Paste the full job description here. The more detail, the more precisely your CV will be tailored..." rows="18"></textarea>
+                <div class="language-row">
+                    <label for="cv-language">Output language</label>
+                    <select id="cv-language">
+                        <option value="auto" selected>Same as the job description</option>
+                        <option value="en-GB">English (UK)</option>
+                        <option value="it">Italiano (Italian)</option>
+                        <option value="es">Español (Spanish)</option>
+                        <option value="fr">Français (French)</option>
+                        <option value="pt-BR">Português - Brasil (Portuguese, Brazil)</option>
+                        <option value="pt-PT">Português - Portugal (Portuguese, Portugal)</option>
+                        <option value="ro">Română (Romanian)</option>
+                        <option value="de">Deutsch (German)</option>
+                        <option value="bg">Български (Bulgarian)</option>
+                    </select>
+                </div>
             </div>
         </div>
 
@@ -314,6 +334,10 @@
               <dd>The tool accepts PDF, DOCX and TXT files. PDF and DOCX are recommended for preserving formatting. The text content is extracted on upload - embedded images and complex tables may not transfer perfectly, so check the extracted text before submitting.</dd>
             </div>
             <div class="faq-item">
+              <dt>Can it write my CV in another language?</dt>
+              <dd>Yes. Choose an output language under the job description: English, Italian, Spanish, French, Portuguese (Brazil or Portugal), Romanian, German or Bulgarian. The default, Same as the job description, matches the language the job advert is written in, so a Spanish advert gets a Spanish CV, cover letter and interview prep. Company names and qualification titles are kept as they are, and the PDF download supports accented letters and Cyrillic.</dd>
+            </div>
+            <div class="faq-item">
               <dt>How good is the tailored CV at beating ATS screening?</dt>
               <dd>The output is designed to incorporate relevant keywords from the job description in a natural way, which improves ATS pass rates. However, every employer configures their ATS differently. Tools like <a href="https://www.jobscan.co" target="_blank" rel="noopener noreferrer">Jobscan</a> can give you a more precise match score for a specific ATS. Use the AI output as a strong starting point, then review it yourself before applying.</dd>
             </div>
@@ -333,7 +357,7 @@
         <div class="tool-accordion-body">
           <ol class="info-steps">
             <li><strong>Upload your CV</strong> by dropping a PDF, DOCX or TXT file onto the upload area, or paste the text directly into the input field below it.</li>
-            <li><strong>Paste the job description</strong> into the right-hand panel. The more detail the job listing includes - responsibilities, required skills, company context - the more precisely the tool can tailor your CV.</li>
+            <li><strong>Paste the job description</strong> into the right-hand panel. The more detail the job listing includes - responsibilities, required skills, company context - the more precisely the tool can tailor your CV. Leave the output language on Same as the job description, or pick one of nine languages.</li>
             <li><strong>Click Enhance My CV &amp; Write Cover Letter.</strong> Claude Sonnet analyses both documents, rewrites your CV to highlight the most relevant experience, and generates a personalised cover letter for the role.</li>
             <li><strong>Review your results.</strong> You will receive a tailored CV, a cover letter, a suitability score out of 10, a list of any skills gaps to address, and a set of likely interview questions with suggested answers.</li>
             <li><strong>Download your documents</strong> as Word or PDF files. Use the role-fit finder to discover other roles that suit your background, and the job board search to apply directly.</li>
@@ -477,7 +501,7 @@
       });
     </script>
     <script src="/scripts.js?v=9" defer></script>
-    <script src="aitocv.js?v=3" defer></script>
+    <script src="aitocv.js?v=4" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {

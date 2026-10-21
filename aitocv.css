@@ -235,6 +235,34 @@ textarea:focus {
   box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
+/* ── OUTPUT LANGUAGE ─────────────────────────────────── */
+.language-row {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-top: 12px;
+}
+.language-row label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.82rem; font-weight: 600; color: var(--text-muted);
+}
+#cv-language {
+  flex: 1; min-width: 200px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#cv-language:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+#cv-language option { background: var(--surface); color: var(--text); }
+
 /* ── ERROR ───────────────────────────────────────────── */
 #error-message {
   background: var(--red-soft);
