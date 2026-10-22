@@ -929,8 +929,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const boardCountryGrid = document.getElementById('board-country-grid');
     const boardCountryLabel = document.getElementById('board-country-label');
 
-    // National job boards per country. The "International & remote" group in the
-    // HTML is shown for every country. `search` templates use the placeholders
+    // National job boards per country. The "iGaming & gambling" and
+    // "International & remote" groups in the HTML are shown for every country. `search` templates use the placeholders
     // handled by buildSearchUrl(); boards without one link to the homepage only
     // (their search URLs couldn't be verified - most block automated checks).
     const EURES = { name: 'EURES (EU jobs)', href: 'https://eures.europa.eu/' };
@@ -946,8 +946,18 @@ document.addEventListener('DOMContentLoaded', () => {
             linkedIn('United Kingdom'),
             indeed('uk', 'Indeed UK'),
             { name: 'Reed.co.uk', href: 'https://www.reed.co.uk', search: 'https://www.reed.co.uk/jobs/{slug}-jobs' },
-            { name: 'IT Jobs Watch', href: 'https://www.itjobswatch.co.uk/', search: 'https://www.itjobswatch.co.uk/find/{slug}-jobs-in-UK' },
+            { name: 'Totaljobs', href: 'https://www.totaljobs.com/', search: 'https://www.totaljobs.com/jobs/{slug}' },
+            { name: 'CV-Library', href: 'https://www.cv-library.co.uk/', search: 'https://www.cv-library.co.uk/{slug}-jobs' },
+            { name: 'Adzuna', href: 'https://www.adzuna.co.uk/', search: 'https://www.adzuna.co.uk/jobs/search?q={q}' },
+            { name: 'CWJobs (tech)', href: 'https://www.cwjobs.co.uk/', search: 'https://www.cwjobs.co.uk/jobs/{slug}' },
+            { name: 'Welcome to the Jungle', href: 'https://www.welcometothejungle.com/en', search: 'https://www.welcometothejungle.com/en/jobs?query={q}' },
+            { name: 'Glassdoor', href: 'https://www.glassdoor.co.uk/' },
+            { name: 'Find a Job (gov.uk)', href: 'https://findajob.dwp.gov.uk/', search: 'https://findajob.dwp.gov.uk/search?q={q}' },
             { name: 'Civil Service Jobs', href: 'https://www.civilservicejobs.service.gov.uk/', search: 'https://www.civilservicejobs.service.gov.uk/csr/jobs.cgi?keywords={q}' },
+            { name: 'NHS Jobs', href: 'https://www.jobs.nhs.uk/' },
+            { name: 'CharityJob', href: 'https://www.charityjob.co.uk/', search: 'https://www.charityjob.co.uk/jobs?keywords={q}' },
+            { name: 'jobs.ac.uk', href: 'https://www.jobs.ac.uk/', search: 'https://www.jobs.ac.uk/search/?keywords={q}' },
+            { name: 'IT Jobs Watch', href: 'https://www.itjobswatch.co.uk/', search: 'https://www.itjobswatch.co.uk/find/{slug}-jobs-in-UK' },
         ]},
         it: { name: 'Italy', boards: [
             linkedIn('Italy'),
