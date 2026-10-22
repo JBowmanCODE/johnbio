@@ -24,16 +24,18 @@
   <meta property="og:url" content="https://johnb.io/ebay">
   <meta property="og:description" content="Calculate your profit from eBay and Vinted sales including fees, postage and purchase costs.">
   <meta property="og:image" content="https://johnb.io/og_images/ebay_og.webp">
+  <meta property="og:image:alt" content="Profit Calculator - JohnB.io">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="eBay &amp; Vinted Profit Calculator - JohnB.io">
   <meta name="twitter:description" content="Calculate your profit from eBay and Vinted sales including fees, postage and purchase costs.">
   <meta name="twitter:image" content="https://johnb.io/og_images/ebay_og.webp">
+  <meta name="twitter:image:alt" content="Profit Calculator - JohnB.io">
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <link rel="stylesheet" href="/styles.css?v=4">
-  <link rel="stylesheet" href="/header.css?v=6">
-  <link rel="stylesheet" href="/footer.css?v=2">
+  <link rel="stylesheet" href="/styles.css?v=5">
+  <link rel="stylesheet" href="/header.css?v=7">
+  <link rel="stylesheet" href="/footer.css?v=3">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: "Segoe UI", -apple-system, sans-serif; padding-top: 72px; }
@@ -51,6 +53,114 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
     "author": { "@type": "Person", "name": "John Bowman", "url": "https://johnb.io/about", "sameAs": ["https://www.linkedin.com/in/john-bowman/"] },
     "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is eBay's current final value fee?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "eBay's standard final value fee for most private sellers in the UK is around 12.8–13.2% of the total sale amount including postage, as of March 2026. This varies by category - vehicles, property and business equipment have different rates. Always check eBay's current fee schedule before relying on this tool's default. eBay also charges a per-transaction fee of £0.30 for private sellers, which this tool accounts for separately."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Vinted charge selling fees?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Vinted does not charge the seller a commission - instead it charges a buyer protection fee to the buyer. This means your sale price is what you receive (minus postage if you are covering it). However, Vinted's fee structure does include optional promoted listing fees and postage labels purchased through the platform."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a buyer's premium in a saleroom context?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A buyer's premium is a percentage added to the hammer price at auction, paid by the buyer. For resellers who buy at auction and sell on eBay or Vinted, the total cost of an item is the hammer price plus the buyer's premium (typically 20–30%), plus any applicable VAT on the premium. The saleroom tab in this tool lets you enter the buyer's premium percentage and any online commission charged by the auction platform."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will my data be lost if I clear my browser cache?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The tool saves to localStorage, which is cleared when you clear site data or browser storage. If you have important item lists, export or note them down before clearing your cache."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool use AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. All profit calculations are straightforward arithmetic based on the values you enter. There is no AI model involved and no data is sent to any external service."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://johnb.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Profit Calculator",
+        "item": "https://johnb.io/ebay"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How Profit Calculator Works",
+    "description": "eBay and Vinted profit calculator for resellers.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Choose a tab",
+        "text": "Choose a tab. Select Vinted, eBay or Saleroom depending on where you bought or plan to sell your items. Each tab has fee settings specific to that platform."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Add your items",
+        "text": "Add your items. For Vinted and saleroom lots, you can paste listing HTML or enter items manually. For eBay, enter your sale price, purchase cost and postage. Set a default postage cost to apply it across multiple items at once."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Adjust fee rates",
+        "text": "Adjust fee rates. The tool pre-fills with current standard rates - eBay final value fee (default 13%), Vinted buyer protection, saleroom buyer's premium and online commission. Update these if your account has negotiated rates or if platform rates have changed."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Review your profit summary",
+        "text": "Review your profit summary. The tool displays profit per item, total profit across all items, ROI percentage and a suggested minimum sale price to hit your target profit margin. Use the filter to show only profitable items or high-return items."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Sort and export",
+        "text": "Sort and export. Sort columns by any field - sale price, profit, ROI. Your data is automatically saved to localStorage and reloads the next time you open the tool."
+      }
+    ]
   }
   </script>
 </head>
@@ -195,7 +305,7 @@
       </ul>
     </nav>
   </div>
-  <script src="/scripts.js?v=9"></script>
+  <script src="/scripts.js?v=10"></script>
   <script type="text/babel">
     const { useState, useEffect } = React;
     

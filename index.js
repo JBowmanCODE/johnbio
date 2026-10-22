@@ -111,7 +111,7 @@ const projects = [
   {
     id: 'ai-copyeditor',
     title: 'AI Copyeditor',
-    desc: 'A real-time rich text environment with built-in AI writing assistance and stylistic refinement.',
+    desc: 'Paste or upload text and Word documents for AI-powered copyediting with UK/US English, brand style guides and excluded word rules.',
     category: 'ai',
     badge: 'AI PROJECT',
     color: 'cyan',
@@ -123,7 +123,7 @@ const projects = [
   {
     id: 'llm-chat',
     title: 'LLM Chat',
-    desc: 'Unified interface for interacting with multiple open-source large language models with persistent history.',
+    desc: 'Compare Claude, OpenAI and Gemini responses side by side in real time. Broadcast one prompt to all three models or chat individually.',
     category: 'ai',
     badge: 'AI PROJECT',
     color: 'cyan',
@@ -133,6 +133,18 @@ const projects = [
     thumbIcon: 'forum',
   },
   // ── COLLAPSED (shown after "Show more") ─────────────────────────────────
+  {
+    id: 'recipe-shopping-list',
+    title: 'Recipe to Shopping List',
+    desc: 'Paste a recipe or weekly meal plan and get one consolidated UK supermarket shopping list, grouped by aisle with links to Tesco, Sainsbury\'s, Asda, Morrisons, Ocado, Waitrose, Iceland and Co-op.',
+    category: 'ai',
+    badge: 'AI TOOL',
+    color: 'cyan',
+    icons: ['shopping_basket', 'receipt_long'],
+    href: 'https://johnb.io/recipe-shopping-list',
+    img: '/images/recipe_shopping_list_og.webp',
+    thumbIcon: 'shopping_basket',
+  },
   {
     id: 'text-to-speech',
     title: 'Text to Speech Converter',
@@ -183,8 +195,8 @@ const projects = [
   },
   {
     id: 'yt-transcripts',
-    title: 'YouTube Transcripts',
-    desc: 'Neural network powered extraction of accurate video transcripts with multi-language support.',
+    title: 'YouTube Blog Post Generator',
+    desc: 'Paste a YouTube video transcript or URL and turn it into a structured, SEO-optimised blog post with Claude AI.',
     category: 'ai',
     badge: 'AI PROJECT',
     color: 'cyan',
@@ -232,7 +244,7 @@ const projects = [
   {
     id: 'zig-zag-slot',
     title: 'Zig Zag Drop Slot',
-    desc: 'Physics-based automation script for randomised UI interaction testing and mystery drop mechanics.',
+    desc: 'Interactive browser pachinko and plinko slot drop game demo with configurable ball drops, multipliers and mystery prize mechanics.',
     category: 'dev',
     badge: 'DEV TOOL',
     color: 'pink',
@@ -243,8 +255,8 @@ const projects = [
   },
   {
     id: 'poker-bankroll',
-    title: 'Poker Bankroll',
-    desc: 'Statistical analysis tool for tracking and optimising long-term professional poker earnings and variance.',
+    title: 'Poker Bankroll Planner',
+    desc: 'Evaluate your poker experience level and calculate a recommended starting bankroll and stake strategy.',
     category: 'dev',
     badge: 'DEV TOOL',
     color: 'pink',
@@ -256,7 +268,7 @@ const projects = [
   {
     id: 'bill-calculator',
     title: 'Bill Calculator',
-    desc: 'Smart utility for splitting complex expenses with multi-currency support and tax calculations.',
+    desc: 'Split restaurant bills and calculate tips per person in the browser, built with Python running client-side via Pyodide.',
     category: 'dev',
     badge: 'DEV TOOL',
     color: 'pink',
@@ -267,8 +279,8 @@ const projects = [
   },
   {
     id: 'ebay-tracker',
-    title: 'eBay Tracker',
-    desc: 'Scraper and analyser for real-time market value assessments on auction platforms with historical data.',
+    title: 'eBay & Vinted Profit Calculator',
+    desc: 'Calculate net profit and margins from eBay and Vinted sales after platform fees, postage and purchase costs.',
     category: 'dev',
     badge: 'DEV TOOL',
     color: 'pink',
@@ -280,7 +292,7 @@ const projects = [
   {
     id: 'text-to-voice',
     title: 'Text to Voice',
-    desc: 'Naturalistic speech synthesis utility leveraging generative adversarial networks for lifelike audio.',
+    desc: 'Browser-based text-to-speech with voice selection, speed control, reading time estimates and live word-by-word subtitle highlighting.',
     category: 'dev',
     badge: 'DEV TOOL',
     color: 'pink',
@@ -384,10 +396,20 @@ const projects = [
     dots[current].classList.add('active');
   }
 
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   function resetTimer() {
     clearInterval(timer);
+    if (reduceMotion) return;
     timer = setInterval(() => goTo((current + 1) % slides.length), 5000);
   }
+
+  panel.addEventListener('mouseenter', () => clearInterval(timer));
+  panel.addEventListener('mouseleave', resetTimer);
+  panel.addEventListener('focusin', () => clearInterval(timer));
+  panel.addEventListener('focusout', (e) => {
+    if (!panel.contains(e.relatedTarget)) resetTimer();
+  });
 
   resetTimer();
 })();
@@ -419,7 +441,7 @@ function buildCard(project, delay) {
   card.id = `card-${project.id}`;
 
   const iconsHtml = project.icons.map(icon =>
-    `<span class="material-symbols-outlined ${iconColorClass}">${icon}</span>`
+    `<span class="material-symbols-outlined ${iconColorClass}" aria-hidden="true">${icon}</span>`
   ).join('');
 
   card.innerHTML = `
@@ -428,7 +450,7 @@ function buildCard(project, delay) {
         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
       />
       <div class="card-thumb-fallback" style="display:none; color: var(--${colorClass === 'cyan' ? 'secondary' : colorClass === 'green' ? 'secondary' : 'primary'})">
-        <span class="material-symbols-outlined">${project.thumbIcon}</span>
+        <span class="material-symbols-outlined" aria-hidden="true">${project.thumbIcon}</span>
         <span class="label">${project.title}</span>
       </div>
       <span class="card-badge ${badgeClass}">${project.badge}</span>
@@ -440,7 +462,7 @@ function buildCard(project, delay) {
         <div class="card-icons">${iconsHtml}</div>
         <a class="card-link ${colorClass}" href="${project.href}" target="_self">
           View Project
-          <span class="material-symbols-outlined">arrow_forward</span>
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
         </a>
       </div>
     </div>

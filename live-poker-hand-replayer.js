@@ -121,7 +121,7 @@
       hero.style.padding = '6px 9px';
       hero.title = 'This is you';
       hero.setAttribute('aria-label', 'Mark ' + p.position + ' as you');
-      hero.innerHTML = '<span class="material-symbols-outlined" style="font-size:18px">' +
+      hero.innerHTML = '<span class="material-symbols-outlined" style="font-size:18px" aria-hidden="true">' +
         (i === heroIndex ? 'star' : 'star_border') + '</span>';
       if (i === heroIndex) { hero.style.borderColor = 'var(--primary)'; hero.style.color = 'var(--primary)'; }
       hero.addEventListener('click', () => { heroIndex = i; renderPlayerRows(); });

@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Python Essentials for AI: Variables and Control Flow - JohnB.io</title>
-<meta content="Learn the Python basics you actually need for AI: variables, data types, lists, dictionaries, loops and conditionals - with real machine learning examples." name="description"/>
+<title>Python Essentials for AI & Machine Learning - JohnB.io</title>
+<meta name="description" content="The core Python syntax, data structures, control flow and functions you need before working with NumPy, Pandas, PyTorch or LLM APIs.">
 <meta content="python for AI, python variables, python lists, python loops, python for machine learning, python beginner, AI course" name="keywords"/>
 <meta content="index, follow" name="robots"/>
 <meta content="John Bowman" name="author"/>
@@ -36,9 +36,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=4" rel="stylesheet"/>
-<link href="/header.css?v=6" rel="stylesheet"/>
-<link href="/footer.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=5" rel="stylesheet"/>
+<link href="/header.css?v=7" rel="stylesheet"/>
+<link href="/footer.css?v=3" rel="stylesheet"/>
 <link href="/news.css?v=6" rel="stylesheet"/>
 <link href="/lesson.css?v=5" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/>
@@ -47,6 +47,10 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".na-title", ".na-body"]
+  },
     "headline": "Python Essentials for AI: Variables, Data Structures and Control Flow",
     "description": "Learn the Python basics you actually need for AI: variables, data types, lists, dictionaries, loops and conditionals - with real machine learning examples.",
     "url": "https://johnb.io/course/python-essentials-for-ai",
@@ -93,8 +97,36 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://johnb.io"},
-      {"@type": "ListItem", "position": 2, "name": "AI Course", "item": "https://johnb.io/course"},
+      {"@type": "ListItem", "position": 2, "name": "AI Course", "item": "https://johnb.io/course/"},
       {"@type": "ListItem", "position": 3, "name": "Python Essentials for AI", "item": "https://johnb.io/course/python-essentials-for-ai"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How Python Essentials for AI & Machine Learning Works",
+    "description": "The core Python syntax, data structures, control flow and functions you need before working with NumPy, Pandas, PyTorch or LLM APIs.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Step 1",
+        "text": "Python is an interpreted language, meaning code runs line by line rather than being compiled before execution. Each variable you create is stored in memory under a name, and Python dynamically assigns a type based on the value you provide."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Step 2",
+        "text": "Lists are stored as contiguous blocks of references in memory, making index-based access fast. Dictionaries use a hash table internally - Python converts the key into a number (a hash), uses that to find the storage location, and returns the value. This makes dictionary lookup very fast regardless of how many items are in it."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Step 3",
+        "text": "For loops iterate through sequences by requesting items one at a time. The loop body runs once per item, and Python manages the iteration automatically. This is the same pattern used internally by pandas when processing DataFrame columns - which is why understanding Python loops helps you understand what pandas is doing under the hood."
+      }
     ]
   }
   </script>
@@ -107,9 +139,9 @@
 <div class="na-content">
 <nav aria-label="Breadcrumb" class="na-breadcrumb">
 <a href="/">Home</a>
-<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
-<a href="/course">AI Course</a>
-<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+<a href="/course/">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
 <span class="na-bc-current">Python Essentials for AI</span>
 </nav>
 <article>
@@ -142,7 +174,7 @@
 <summary class="na-mobile-toc-trigger">
 <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
           In this lesson
-          <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span>
+          <span class="material-symbols-outlined na-mobile-toc-chevron" aria-hidden="true">expand_more</span>
 </summary>
 <ol class="na-mobile-toc-list">
 <li><a href="#why-python">Why Python became the language of AI</a></li>
@@ -155,7 +187,7 @@
 </details>
 <hr class="na-divider"/>
 <div aria-label="Listen to this lesson" class="na-audio">
-<span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
+<span aria-hidden="true" class="na-audio-icon material-symbols-outlined" aria-hidden="true">headphones</span>
 <div class="na-audio-info">
 <div class="na-audio-top">
 <span class="na-audio-label">Listen to this lesson</span>
@@ -262,7 +294,7 @@ for customer in customers:
 <!-- Quiz -->
 <div aria-label="Lesson quiz" class="lp-quiz">
 <div class="lp-quiz-header">
-<div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div>
+<div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined" aria-hidden="true">quiz</span></div>
 <div>
 <p class="lp-quiz-title">Check your understanding</p>
 <p class="lp-quiz-sub">2 questions - select an answer then check it</p>
@@ -296,7 +328,7 @@ for customer in customers:
 </div><!-- /na-body -->
 <!-- Deep Dive Podcast -->
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
-<div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>
+<div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined" aria-hidden="true">podcasts</span>Deep Dive Podcast</div>
 <div class="na-podcast-inner">
 <div class="na-podcast-left">
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined" aria-hidden="true">graphic_eq</span></div>
@@ -314,10 +346,10 @@ for customer in customers:
 </div>
 <div class="na-podcast-btns">
 <button aria-label="Skip back 15 seconds" class="na-pod-btn na-pod-btn--skip" id="na-pod-back"><span class="material-symbols-outlined" aria-hidden="true">replay</span><span class="na-pod-skip-label">15s</span></button>
-<button aria-label="Play podcast" class="na-pod-btn na-pod-btn--play" id="na-pod-play"><span class="material-symbols-outlined" id="na-pod-play-icon">play_arrow</span></button>
+<button aria-label="Play podcast" class="na-pod-btn na-pod-btn--play" id="na-pod-play"><span class="material-symbols-outlined" id="na-pod-play-icon" aria-hidden="true">play_arrow</span></button>
 <button aria-label="Skip forward 15 seconds" class="na-pod-btn na-pod-btn--skip" id="na-pod-fwd"><span class="material-symbols-outlined" aria-hidden="true">forward</span><span class="na-pod-skip-label">15s</span></button>
 <div class="na-pod-volume">
-<button aria-label="Mute" class="na-pod-btn na-pod-mute" id="na-pod-mute"><span class="material-symbols-outlined" id="na-pod-mute-icon">volume_up</span></button>
+<button aria-label="Mute" class="na-pod-btn na-pod-mute" id="na-pod-mute"><span class="material-symbols-outlined" id="na-pod-mute-icon" aria-hidden="true">volume_up</span></button>
 <input aria-label="Volume" class="na-pod-vol-slider" id="na-pod-vol" max="1" min="0" step="0.05" type="range" value="1"/>
 </div>
 </div>
@@ -328,6 +360,15 @@ for customer in customers:
 <!-- Lesson navigation -->
 <nav aria-label="Lesson navigation" class="lp-nav" id="lp-lesson-nav"></nav>
 </article>
+<div class="na-about-author">
+  <img alt="John Bowman" src="/images/JohnB.webp" width="64" height="64" loading="lazy"/>
+  <div class="na-about-author-text">
+    <strong>John Bowman</strong>
+    <span>AI Strategist &amp; Developer</span>
+    <p>20+ years across iGaming and digital marketing. Builds AI-powered tools at JohnB.io and writes on practical AI strategy, how it actually works, not how it's supposed to work.</p>
+    <a href="/about">About John</a>
+  </div>
+</div>
 </div><!-- /na-content -->
 <!-- Sidebar -->
 <aside aria-label="Lesson navigation sidebar" class="na-sidebar">
@@ -402,11 +443,24 @@ for customer in customers:
 <button aria-label="Back to top" id="back-to-top">
 <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
 </button>
-<div id="footer-placeholder"></div>
+<div id="footer-placeholder">
+  <nav class="crawl-nav" aria-label="Site navigation">
+    <a href="/">JohnB.io Home</a>
+    <a href="/course/">AI Course Curriculum</a>
+    <a href="/aitocv">AI CV Enhancer</a>
+    <a href="/prompt-improver">Prompt Improver</a>
+    <a href="/course/">AI & ML Course</a>
+    <a href="/news/">News</a>
+    <a href="/about">About John Bowman</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+  </nav>
+</div>
 <script src="/course-data.js?v=1"></script><script src="/news-data.js?v=3"></script>
-<script defer="" src="/scripts.js?v=9"></script>
+<script defer="" src="/scripts.js?v=10"></script>
 <script defer="" src="/news-article.js?v=2"></script>
-<script defer="" src="/news-chat.js?v=1"></script>
+<script defer="" src="/news-chat.js?v=2"></script>
 <script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
@@ -419,5 +473,5 @@ for customer in customers:
       });
     });
   </script>
-<script type="module" src="/lesson-progress.js?v=1"></script></body>
+<script type="module" src="/lesson-progress.js?v=2"></script></body>
 </html>

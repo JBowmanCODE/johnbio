@@ -29,6 +29,9 @@ jobs:
             .github/**
             .claude/**
             workers/**
+            tests/**
+            data/**
+            cgi-bin/**
             README.md
             CLAUDE.md
             articles.md
@@ -41,4 +44,6 @@ jobs:
             filter.txt
             error_log
             **/*.log
+            .ftp-deploy-sync-state.json
+            .ftpquota
             _unlink_test.tmp

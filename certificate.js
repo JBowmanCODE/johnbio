@@ -41,7 +41,7 @@ onAuthStateChanged(auth, async (user) => {
       console.error('Cert ID generation failed:', err);
       document.getElementById('certWrap').innerHTML = `
         <div class="cert-locked" style="display:block">
-          <span class="material-symbols-outlined">error</span>
+          <span class="material-symbols-outlined" aria-hidden="true">error</span>
           <h2>Something went wrong</h2>
           <p>Could not generate your certificate. Please try refreshing the page.<br>
           If this keeps happening, the Firestore rules may need updating.</p>
@@ -105,17 +105,17 @@ function renderCertificate(name, dateStr, scoreStr, certId) {
     <div class="cert-actions">
       <div class="cert-actions-left">
         <button class="cert-btn cert-btn-download" id="certDownload">
-          <span class="material-symbols-outlined">download</span>
+          <span class="material-symbols-outlined" aria-hidden="true">download</span>
           Download image
         </button>
-        <a href="/course" class="cert-btn cert-btn-dash">
-          <span class="material-symbols-outlined">arrow_back</span>
+        <a href="/course/" class="cert-btn cert-btn-dash">
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
           Dashboard
         </a>
       </div>
       <div>
         <button class="cert-btn cert-btn-share" id="certShare">
-          <span class="material-symbols-outlined">share</span>
+          <span class="material-symbols-outlined" aria-hidden="true">share</span>
           Share
         </button>
       </div>
@@ -202,7 +202,7 @@ function buildCertDoc(name, dateStr, scoreStr, certId, verifyUrl) {
             <div class="cert-sig-label">J Bowman &middot; <strong>Instructor, JohnB.io</strong></div>
           </div>
           <div class="cert-verify-block">
-            <a class="cert-verify-btn" href="/verify/${certId}" target="_blank">${verifyUrl}</a>
+            <a class="cert-verify-btn" href="/verify/${certId}" target="_blank" rel="noopener noreferrer">${verifyUrl}</a>
             <div class="cert-verify-sub">Verify certificate at johnb.io</div>
           </div>
         </div>
@@ -316,7 +316,7 @@ function renderLinkedInGuide(dateStr, certId) {
 /* ----- Download as PNG ----- */
 async function downloadCert() {
   const btn = document.getElementById('certDownload');
-  btn.innerHTML = '<span class="material-symbols-outlined">hourglass_empty</span> Generating...';
+  btn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">hourglass_empty</span> Generating...';
   btn.disabled = true;
 
   try {
@@ -336,7 +336,7 @@ async function downloadCert() {
     alert('Download failed - try using Print / Save as PDF instead.');
   }
 
-  btn.innerHTML = '<span class="material-symbols-outlined">download</span> Download image';
+  btn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">download</span> Download image';
   btn.disabled = false;
 }
 
@@ -352,9 +352,9 @@ function shareCert(certId) {
   } else {
     navigator.clipboard.writeText(url).then(() => {
       const btn = document.getElementById('certShare');
-      btn.innerHTML = '<span class="material-symbols-outlined">check</span> Link copied!';
+      btn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">check</span> Link copied!';
       setTimeout(() => {
-        btn.innerHTML = '<span class="material-symbols-outlined">share</span> Share';
+        btn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">share</span> Share';
       }, 2500);
     });
   }

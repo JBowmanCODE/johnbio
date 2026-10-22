@@ -24,13 +24,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Styles -->
-  <link rel="stylesheet" href="/styles.css?v=4">
-  <link rel="stylesheet" href="/header.css?v=6">
-  <link rel="stylesheet" href="/footer.css?v=2">
+  <link rel="stylesheet" href="/styles.css?v=5">
+  <link rel="stylesheet" href="/header.css?v=7">
+  <link rel="stylesheet" href="/footer.css?v=3">
   <link rel="stylesheet" href="/prompt-improver.css?v=1">
 
   <!-- SEO -->
-  <meta name="description" content="Free prompt improver tool. Paste a weak AI prompt and get a stronger version with explanations of what changed and why. Works for ChatGPT, Claude, Gemini and any LLM.">
+  <meta name="description" content="Rewrite weak AI prompts into clear, structured instructions with a change log and starter prompt library for ChatGPT, Claude and Gemini.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://johnb.io/prompt-improver">
   <meta name="author" content="John Bowman">
@@ -39,6 +39,7 @@
   <meta property="og:url" content="https://johnb.io/prompt-improver">
   <meta property="og:description" content="Paste a weak prompt and get a stronger version with a short explanation of what changed. Works for ChatGPT, Claude, Gemini and any LLM.">
   <meta property="og:image" content="https://johnb.io/images/prompt_improver_og.webp">
+  <meta property="og:image:alt" content="Prompt Improver tool by JohnB.io">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Prompt Improver - Better AI Prompts, Free - JohnB.io">
   <meta name="twitter:description" content="Free tool. Rewrites weak AI prompts into stronger versions and tells you why.">
@@ -104,6 +105,66 @@
         "@type": "Question",
         "name": "Does the tool store my prompts?",
         "acceptedAnswer": { "@type": "Answer", "text": "No. Prompts are sent to a Cloudflare Worker that forwards them to an AI model and returns the rewrite. Nothing is logged beyond standard rate limit counters." }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://johnb.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Prompt Improver - Better AI Prompts, Free",
+        "item": "https://johnb.io/prompt-improver"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How Prompt Improver - Better AI Prompts, Free Works",
+    "description": "Rewrite weak AI prompts into clear, structured instructions with a change log and starter prompt library for ChatGPT, Claude and Gemini.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Paste your prompt",
+        "text": "Paste your prompt. Drop in whatever you are currently using. It can be a one-liner or a full paragraph."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Pick a target model",
+        "text": "Pick a target model. Leave it on Any LLM for a model-agnostic rewrite, or pick a specific one for tuned output."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Choose a style",
+        "text": "Choose a style. Balanced, Concise, Detailed or Creative. This controls how much structure the rewrite adds."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Click Improve",
+        "text": "Click Improve. The tool rewrites the prompt and returns a change log so you can see why each edit was made."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Copy and use it",
+        "text": "Copy and use it. Paste the improved prompt into your AI tool of choice and compare the output to what you were getting before."
       }
     ]
   }
@@ -349,7 +410,7 @@
     </nav>
   </div>
 
-  <script src="/scripts.js?v=9" defer></script>
+  <script src="/scripts.js?v=10" defer></script>
   <script src="/prompt-improver.js?v=1" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');

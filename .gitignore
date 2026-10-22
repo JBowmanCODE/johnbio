@@ -10,9 +10,11 @@ workers/
 .DS_Store
 Thumbs.db
 
-# Logs and error logs
+# Logs, FTP state, and error logs
 error_log
 *.log
+.ftp-deploy-sync-state.json
+.ftpquota
 
 # Audio is uploaded via cPanel, never through git (times out the FTP deploy)
 *.mp3

@@ -51,8 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (def === -1) def = voices.findIndex(v => v.lang.startsWith('en'));
         if (def === -1) def = 0;
 
+        function escapeHtml(str) {
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
         voiceSelection.innerHTML = voices
-            .map((v, i) => `<option value="${i}" ${i === def ? 'selected' : ''}>${v.name} (${v.lang})</option>`)
+            .map((v, i) => `<option value="${i}" ${i === def ? 'selected' : ''}>${escapeHtml(v.name)} (${escapeHtml(v.lang)})</option>`)
             .join('');
         startSpeechButton.disabled = false;
     }
@@ -230,9 +233,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ── SUBTITLE RENDER ──────────────────────────────────────────────────────
     function renderSubtitle(words, idx) {
-        const before = words.slice(0, idx).join(' ');
-        const current = words[idx];
-        const after = words.slice(idx + 1).join(' ');
+        const esc = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        const before = esc(words.slice(0, idx).join(' '));
+        const current = esc(words[idx]);
+        const after = esc(words.slice(idx + 1).join(' '));
         subtitleDisplay.innerHTML =
             (before ? before + ' ' : '') +
             `<span class="highlight">${current}</span>` +

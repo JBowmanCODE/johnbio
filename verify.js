@@ -43,18 +43,18 @@ function renderVerify(name, dateStr, scoreStr, certId, verifyUrl) {
 
   wrap.innerHTML = `
     <div class="cert-verified-badge">
-      <span class="material-symbols-outlined">verified</span>
+      <span class="material-symbols-outlined" aria-hidden="true">verified</span>
       Certificate verified - issued by JohnB.io
     </div>
 
     <div class="cert-actions">
       <div class="cert-actions-left">
         <button class="cert-btn cert-btn-download" id="certDownload">
-          <span class="material-symbols-outlined">download</span>
+          <span class="material-symbols-outlined" aria-hidden="true">download</span>
           Download image
         </button>
         <a href="/course" class="cert-btn cert-btn-share">
-          <span class="material-symbols-outlined">school</span>
+          <span class="material-symbols-outlined" aria-hidden="true">school</span>
           View course
         </a>
       </div>
@@ -141,7 +141,7 @@ function renderVerify(name, dateStr, scoreStr, certId, verifyUrl) {
 
 async function downloadCert() {
   const btn = document.getElementById('certDownload');
-  btn.innerHTML = '<span class="material-symbols-outlined">hourglass_empty</span> Generating...';
+  btn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">hourglass_empty</span> Generating...';
   btn.disabled = true;
 
   try {
@@ -159,7 +159,7 @@ async function downloadCert() {
     alert('Download failed - try using your browser print function instead.');
   }
 
-  btn.innerHTML = '<span class="material-symbols-outlined">download</span> Download image';
+  btn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">download</span> Download image';
   btn.disabled = false;
 }
 

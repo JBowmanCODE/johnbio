@@ -1603,7 +1603,7 @@ function refreshTable() {
       <td><span class="igc-badge igc-badge-${reg.category}">${catLabel(reg.category)}</span></td>
       <td>
         <a class="igc-table-link" href="${reg.url}" target="_blank" rel="noopener noreferrer">
-          <span class="material-symbols-outlined">open_in_new</span>Official
+          <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>Official
         </a>
       </td>
     </tr>`;
@@ -1715,8 +1715,8 @@ function showCountryPanel(isoId, countryName) {
       <div class="igc-reg-card">
         <div class="igc-reg-card-top">
           <span class="igc-reg-card-name">${escHtml(reg.name)}</span>
-          <a class="igc-reg-card-link" href="${reg.url}" target="_blank" rel="noopener noreferrer" title="Official source">
-            <span class="material-symbols-outlined">open_in_new</span>
+          <a class="igc-reg-card-link" href="${reg.url}" target="_blank" rel="noopener noreferrer" title="Official source" aria-label="Official source for ${escHtml(reg.name)}">
+            <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
           </a>
         </div>
         <span class="igc-badge igc-badge-${cat}">${catLabel(cat)}</span>

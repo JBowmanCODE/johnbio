@@ -1,24 +1,37 @@
 User-agent: *
 Allow: /
+Disallow: /cgi-bin/
+
+# Explicit allow for AI search, answer engines, and LLM crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
 
 # Nothing on this site is blocked from crawling, deliberately.
 #
 # Every page that should stay out of the index is handled with a noindex
 # signal instead: X-Robots-Tag headers in .htaccess for header.html and
-# footer.html, and meta robots tags on /wo and /exam. A noindex only works
-# if the crawler is allowed to fetch the page and read it, so blocking any
-# of them here would pin them in the index permanently rather than remove
-# them.
+# footer.html, and meta robots tags on /wo, /exam, /login and /certificate.
 #
-# header.html and footer.html carry every internal navigation link on the
-# site and are fetched at runtime by scripts.js. Blocking them leaves
-# Googlebot rendering every page with no navigation at all.
-#
-# The old "Disallow: /template.html" and "Disallow: /heart.html" rules
-# never matched anything anyway: .htaccess 301s .html to the extensionless
-# URL, so the live paths were /template and /heart. Both pages have since
-# been deleted and now 301 to a surviving page.
-
-Disallow: /cgi-bin/
+# AI assistants and RAG systems: see https://johnb.io/llms.txt and
+# https://johnb.io/llms-full.txt for a structured overview of all tools,
+# datasets, course lessons, and articles.
 
 Sitemap: https://johnb.io/sitemap.xml

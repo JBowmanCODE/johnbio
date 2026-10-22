@@ -43,7 +43,7 @@ function render() {
   if (!currentUser) {
     wrap.innerHTML = `
       <button class="lp-complete-btn" disabled>
-        <span class="material-symbols-outlined">radio_button_unchecked</span>
+        <span class="material-symbols-outlined" aria-hidden="true">radio_button_unchecked</span>
         Mark as complete
       </button>
       <p class="lp-complete-nudge"><a href="/login">Sign in</a> to track your progress</p>
@@ -54,7 +54,7 @@ function render() {
   if (isDone) {
     wrap.innerHTML = `
       <button class="lp-complete-btn lp-complete-btn--done" disabled>
-        <span class="material-symbols-outlined">check_circle</span>
+        <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
         Completed
       </button>
     `;
@@ -63,7 +63,7 @@ function render() {
 
   wrap.innerHTML = `
     <button class="lp-complete-btn" id="lpCompleteBtn">
-      <span class="material-symbols-outlined">radio_button_unchecked</span>
+      <span class="material-symbols-outlined" aria-hidden="true">radio_button_unchecked</span>
       Mark as complete
     </button>
   `;
@@ -74,7 +74,7 @@ async function markComplete() {
   const btn = document.getElementById('lpCompleteBtn');
   if (!btn || !currentUser) return;
   btn.disabled = true;
-  btn.innerHTML = `<span class="material-symbols-outlined">hourglass_empty</span> Saving...`;
+  btn.innerHTML = `<span class="material-symbols-outlined" aria-hidden="true">hourglass_empty</span> Saving...`;
 
   try {
     const ref = doc(db, 'users', currentUser.uid);
@@ -95,7 +95,7 @@ async function markComplete() {
   } catch (err) {
     console.error('lesson-progress markComplete error:', err);
     btn.disabled = false;
-    btn.innerHTML = `<span class="material-symbols-outlined">error</span> Error — try again`;
+    btn.innerHTML = `<span class="material-symbols-outlined" aria-hidden="true">error</span> Error — try again`;
   }
 }
 

@@ -11,15 +11,44 @@
   --surface-container-highest: #25252c;
   --on-surface: #f8f5fd;
   --on-surface-variant: #acaab1;
-  --on-primary: #62002d;
+  --on-primary: #0e0e13;
   --outline-variant: #48474d;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* Global focus visible — keyboard users only */
-:focus-visible { outline: 2px solid #FF007F; outline-offset: 2px; }
+:focus-visible { outline: 2px solid #FF007F !important; outline-offset: 2px; }
 :focus:not(:focus-visible) { outline: none; }
+
+/* Accessible placeholder contrast across dark inputs */
+input::placeholder,
+textarea::placeholder {
+  color: rgba(248, 245, 253, 0.52);
+}
+
+/* Screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Respect reduced motion preferences globally */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 body {
   background-color: var(--background);
@@ -55,7 +84,7 @@ body {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.78rem; font-weight: 600;
   letter-spacing: 0.02em;
-  color: rgba(248,245,253,0.45);
+  color: rgba(248,245,253,0.58);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -90,7 +119,7 @@ body {
 .share-bar-btn svg { width: 13px; height: 13px; flex-shrink: 0; fill: currentColor; }
 
 .share-bar-btn--x        { color: #e7e9ea; border-color: rgba(231,233,234,0.3); }
-.share-bar-btn--linkedin { color: #0a66c2; border-color: rgba(10,102,194,0.4); }
+.share-bar-btn--linkedin { color: #3b9eff; border-color: rgba(59,158,255,0.4); }
 .share-bar-btn--facebook { color: #1877f2; border-color: rgba(24,119,242,0.4); }
 .share-bar-btn--whatsapp { color: #25d366; border-color: rgba(37,211,102,0.4); }
 .share-bar-btn--reddit   { color: #ff4500; border-color: rgba(255,69,0,0.4); }

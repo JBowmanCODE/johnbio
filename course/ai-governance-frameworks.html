@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>AI Governance Frameworks and Enterprise Guidelines - JohnB.io</title>
-<meta content="The EU AI Act, NIST AI Risk Management Framework, and enterprise AI governance. What they require, why governance lags capability, and what's actually needed." name="description"/>
+<title>AI Governance Frameworks & EU AI Act - JohnB.io</title>
+<meta name="description" content="How organisations govern AI systems in 2026 using the EU AI Act risk tiers, NIST AI Risk Management Framework and ISO/IEC 42001.">
 <meta content="AI governance, EU AI Act, NIST AI framework, enterprise AI guidelines, AI regulation" name="keywords"/>
 <meta content="index, follow" name="robots"/>
 <meta content="John Bowman" name="author"/>
@@ -39,6 +39,10 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".na-title", ".na-body"]
+  },
     "headline": "AI Governance Frameworks and Enterprise Guidelines",
     "description": "The EU AI Act, NIST AI Risk Management Framework, and enterprise AI governance. What they require, why governance lags capability, and what's actually needed.",
     "url": "https://johnb.io/course/ai-governance-frameworks",
@@ -110,7 +114,7 @@
         "@type": "ListItem",
         "position": 2,
         "name": "AI Course",
-        "item": "https://johnb.io/course"
+        "item": "https://johnb.io/course/"
       },
       {
         "@type": "ListItem",
@@ -128,12 +132,34 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=4" rel="stylesheet"/>
-<link href="/header.css?v=6" rel="stylesheet"/>
-<link href="/footer.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=5" rel="stylesheet"/>
+<link href="/header.css?v=7" rel="stylesheet"/>
+<link href="/footer.css?v=3" rel="stylesheet"/>
 <link href="/news.css?v=6" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/>
 <link href="/lesson.css?v=5" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How AI Governance Frameworks & EU AI Act Works",
+    "description": "How organisations govern AI systems in 2026 using the EU AI Act risk tiers, NIST AI Risk Management Framework and ISO/IEC 42001.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Step 1",
+        "text": "The EU AI Act uses a risk-tiered approach. Unacceptable risk systems (social scoring, real-time remote biometric surveillance in public) are prohibited. High-risk systems (hiring, credit, safety-critical applications) require conformity assessments, technical documentation, human oversight, and registration in an EU database. Limited and minimal risk systems have transparency obligations or none."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Govern",
+        "text": "NIST's AI RMF is structured around four core functions: Govern - setting up culture, policies, and processes for responsible AI; Map - identifying context, purposes, and risks of AI systems; Measure - testing and evaluating AI risks; Manage - prioritising and acting on identified risks. It's designed to integrate with existing enterprise risk management frameworks."
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="lp-page" data-slug="ai-governance-frameworks">
 <div id="header-placeholder"></div>
@@ -141,9 +167,9 @@
 <main class="na-wrap" id="main-content">
 <nav aria-label="Breadcrumb" class="na-breadcrumb">
 <a href="/">Home</a>
-<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
-<a href="/course">AI Course</a>
-<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+<a href="/course/">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
 <span>AI Governance Frameworks</span>
 </nav>
 <div class="na-layout">
@@ -163,9 +189,9 @@
             Ask Newsy AI about this lesson
           </button>
 </div>
-<details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined" aria-hidden="true">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#what-governance-means">What Governance Means in Practice</a></li><li><a href="#enterprise">Enterprise Governance</a></li><li><a href="#why-it-lags">Why Governance Lags Capability</a></li><li><a href="#is-it-adequate">Is Current Governance Adequate?</a></li><li><a href="#quiz">Lesson Quiz</a></li></ol></details><hr class="na-divider"/>
+<details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined" aria-hidden="true">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron" aria-hidden="true">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#what-governance-means">What Governance Means in Practice</a></li><li><a href="#enterprise">Enterprise Governance</a></li><li><a href="#why-it-lags">Why Governance Lags Capability</a></li><li><a href="#is-it-adequate">Is Current Governance Adequate?</a></li><li><a href="#quiz">Lesson Quiz</a></li></ol></details><hr class="na-divider"/>
 <div aria-label="Listen to this lesson" class="na-audio">
-<span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
+<span aria-hidden="true" class="na-audio-icon material-symbols-outlined" aria-hidden="true">headphones</span>
 <div class="na-audio-info">
 <div class="na-audio-top">
 <span class="na-audio-label">Listen to this lesson</span>
@@ -229,10 +255,10 @@
 <p>What's actually needed: mandatory third-party audits before deployment for systems affecting people's opportunities, safety, or civil rights. Real liability, not "we did our best." Transparency requirements so that if AI makes decisions about you, you can find out what data it used. And some international standard, because companies will otherwise operate from whichever jurisdiction has the weakest rules. Frameworks like <a href="https://www.iso.org/standard/81230.html" rel="noopener noreferrer" target="_blank">ISO/IEC 42001</a> are a start.</p>
 <p>None of this is happening at the scale it should be. Most companies are choosing which governance rules to follow based on what's politically convenient in their market. That's not governance. It's regulatory arbitrage.</p>
 </section>
-<div aria-label="Lesson quiz" class="lp-quiz" id="quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions - select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What is the key difference between the EU AI Act and the NIST AI Risk Management Framework?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>The EU AI Act only covers public sector AI; NIST covers private companies</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>The EU AI Act is binding law with enforcement; NIST is voluntary guidance organisations can choose to follow</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>NIST requires mandatory audits; the EU AI Act does not</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>They cover different types of AI - the EU Act for generative AI, NIST for machine learning</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">Why does AI governance typically lag behind AI capability?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>Governments have no interest in regulating AI</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>AI systems take years to develop so there's always enough time to regulate them</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>Companies can deploy new AI systems far faster than regulators can understand, legislate, and enforce rules about them</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>AI systems are too simple for existing laws to apply to</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
+<div aria-label="Lesson quiz" class="lp-quiz" id="quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined" aria-hidden="true">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions - select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What is the key difference between the EU AI Act and the NIST AI Risk Management Framework?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>The EU AI Act only covers public sector AI; NIST covers private companies</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>The EU AI Act is binding law with enforcement; NIST is voluntary guidance organisations can choose to follow</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>NIST requires mandatory audits; the EU AI Act does not</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>They cover different types of AI - the EU Act for generative AI, NIST for machine learning</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">Why does AI governance typically lag behind AI capability?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>Governments have no interest in regulating AI</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>AI systems take years to develop so there's always enough time to regulate them</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>Companies can deploy new AI systems far faster than regulators can understand, legislate, and enforce rules about them</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>AI systems are too simple for existing laws to apply to</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 </div>
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
-<div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined">podcasts</span>Deep Dive Podcast</div>
+<div class="na-podcast-badge"><span aria-hidden="true" class="material-symbols-outlined" aria-hidden="true">podcasts</span>Deep Dive Podcast</div>
 <div class="na-podcast-inner">
 <div class="na-podcast-left">
 <div aria-hidden="true" class="na-podcast-icon"><span class="material-symbols-outlined" aria-hidden="true">graphic_eq</span></div>
@@ -250,10 +276,10 @@
 </div>
 <div class="na-podcast-btns">
 <button aria-label="Skip back 15 seconds" class="na-pod-btn na-pod-btn--skip" id="na-pod-back"><span class="material-symbols-outlined" aria-hidden="true">replay</span><span class="na-pod-skip-label">15s</span></button>
-<button aria-label="Play podcast" class="na-pod-btn na-pod-btn--play" id="na-pod-play"><span class="material-symbols-outlined" id="na-pod-play-icon">play_arrow</span></button>
+<button aria-label="Play podcast" class="na-pod-btn na-pod-btn--play" id="na-pod-play"><span class="material-symbols-outlined" id="na-pod-play-icon" aria-hidden="true">play_arrow</span></button>
 <button aria-label="Skip forward 15 seconds" class="na-pod-btn na-pod-btn--skip" id="na-pod-fwd"><span class="material-symbols-outlined" aria-hidden="true">forward</span><span class="na-pod-skip-label">15s</span></button>
 <div class="na-pod-volume">
-<button aria-label="Mute" class="na-pod-btn na-pod-mute" id="na-pod-mute"><span class="material-symbols-outlined" id="na-pod-mute-icon">volume_up</span></button>
+<button aria-label="Mute" class="na-pod-btn na-pod-mute" id="na-pod-mute"><span class="material-symbols-outlined" id="na-pod-mute-icon" aria-hidden="true">volume_up</span></button>
 <input aria-label="Volume" class="na-pod-vol-slider" id="na-pod-vol" max="1" min="0" step="0.05" type="range" value="1"/>
 </div>
 </div>
@@ -265,6 +291,15 @@
 <nav aria-label="Lesson navigation" class="lp-nav" id="lp-lesson-nav"></nav>
 </div>
 </article>
+<div class="na-about-author">
+  <img alt="John Bowman" src="/images/JohnB.webp" width="64" height="64" loading="lazy"/>
+  <div class="na-about-author-text">
+    <strong>John Bowman</strong>
+    <span>AI Strategist &amp; Developer</span>
+    <p>20+ years across iGaming and digital marketing. Builds AI-powered tools at JohnB.io and writes on practical AI strategy, how it actually works, not how it's supposed to work.</p>
+    <a href="/about">About John</a>
+  </div>
+</div>
 <aside aria-label="Lesson sidebar" class="na-sidebar">
 <nav aria-label="Table of contents" class="na-toc">
 <h2 class="na-toc-title">On this page</h2>
@@ -326,11 +361,24 @@
 <button aria-label="Back to top" id="back-to-top">
 <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
 </button>
-<div id="footer-placeholder"></div>
+<div id="footer-placeholder">
+  <nav class="crawl-nav" aria-label="Site navigation">
+    <a href="/">JohnB.io Home</a>
+    <a href="/course/">AI Course Curriculum</a>
+    <a href="/aitocv">AI CV Enhancer</a>
+    <a href="/prompt-improver">Prompt Improver</a>
+    <a href="/course/">AI & ML Course</a>
+    <a href="/news/">News</a>
+    <a href="/about">About John Bowman</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+  </nav>
+</div>
 <script src="/course-data.js?v=1"></script><script src="/news-data.js?v=3"></script>
-<script defer="" src="/scripts.js?v=9"></script>
+<script defer="" src="/scripts.js?v=10"></script>
 <script defer="" src="/news-article.js?v=2"></script>
-<script defer="" src="/news-chat.js?v=1"></script>
+<script defer="" src="/news-chat.js?v=2"></script>
 <script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
@@ -343,5 +391,5 @@
       });
     });
   </script>
-<script type="module" src="/lesson-progress.js?v=1"></script></body>
+<script type="module" src="/lesson-progress.js?v=2"></script></body>
 </html>

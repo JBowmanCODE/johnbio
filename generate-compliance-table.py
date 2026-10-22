@@ -103,7 +103,7 @@ function renderRow(reg) {
       <td><span class="igc-badge igc-badge-${reg.category}">${catLabel(reg.category)}</span></td>
       <td>
         <a class="igc-table-link" href="${reg.url}" target="_blank" rel="noopener noreferrer">
-          <span class="material-symbols-outlined">open_in_new</span>Official
+          <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>Official
         </a>
       </td>
     </tr>`;

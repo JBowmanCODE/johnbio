@@ -84,6 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (fileInput) fileInput.click();
         });
 
+        fileUploadArea.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (fileInput) fileInput.click();
+            }
+        });
+
         fileUploadArea.addEventListener('dragover', (e) => {
             e.preventDefault();
             fileUploadArea.classList.add('dragover');
@@ -311,8 +318,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Accordion ---
     const accordionToggle = document.querySelector('.accordion-toggle');
     if (accordionToggle) {
+        accordionToggle.setAttribute('aria-expanded', 'false');
         accordionToggle.addEventListener('click', function () {
-            this.classList.toggle('active');
+            const isOpen = this.classList.toggle('active');
+            this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
             const panel = this.nextElementSibling;
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;
@@ -349,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
             suitabilityScoreContainer.innerHTML = `
                 <div class="score-header">
                     <div class="score-badge" style="border-color:${scoreColor};background:${scoreColor}18">
-                        <span class="score-num" style="color:${scoreColor}">${score}</span>
+                        <span class="score-num" style="color:${scoreColor}">${escapeHtml(String(score))}</span>
                         <span class="score-denom">out of 10</span>
                     </div>
                     <div class="score-text">
@@ -873,8 +882,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (rolesResults) {
                     rolesResults.innerHTML = roles.map(r => `
-                        <div class="role-chip" data-role="${escapeAttr(r.title)}" title="Click to search this role on all job boards">
-                            <div class="role-num">#${r.rank}</div>
+                        <div class="role-chip" role="button" tabindex="0" data-role="${escapeAttr(r.title)}" title="Click to search this role on all job boards">
+                            <div class="role-num">#${escapeHtml(String(r.rank))}</div>
                             <div class="role-title">${escapeHtml(r.title)}</div>
                             <div class="role-reason">${escapeHtml(r.reason)}</div>
                             <div class="role-search-hint">Click to search all boards &rarr;</div>
@@ -882,9 +891,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     `).join('');
                     rolesResults.classList.remove('hidden');
 
-                    // Clicking a role chip populates search and triggers search
+                    // Clicking or pressing Enter/Space on a role chip populates search and triggers search
                     rolesResults.querySelectorAll('.role-chip').forEach(chip => {
-                        chip.addEventListener('click', () => {
+                        const activateChip = () => {
                             const role = chip.getAttribute('data-role');
                             const searchInput = document.getElementById('job-search-input');
                             if (searchInput) {
@@ -896,6 +905,13 @@ document.addEventListener('DOMContentLoaded', () => {
                                 setTimeout(() => {
                                     document.getElementById('job-search-btn')?.click();
                                 }, 600);
+                            }
+                        };
+                        chip.addEventListener('click', activateChip);
+                        chip.addEventListener('keydown', (e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                activateChip();
                             }
                         });
                     });

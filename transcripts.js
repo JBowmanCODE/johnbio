@@ -152,9 +152,11 @@ function displayBlogPost(blogPost) {
     // Sanitise the rendered markdown: marked passes raw HTML in the source
     // through untouched, so anything the model emits could otherwise inject.
     const rendered = marked.parse(blogPost);
-    blogContainer.innerHTML = (typeof DOMPurify !== 'undefined')
-        ? DOMPurify.sanitize(rendered)
-        : rendered.replace(/<script[\s\S]*?<\/script>/gi, '');
+    if (typeof DOMPurify !== 'undefined') {
+        blogContainer.innerHTML = DOMPurify.sanitize(rendered);
+    } else {
+        blogContainer.textContent = blogPost;
+    }
     updateLoadingTextColor();
     
     const wordCount = blogPost.split(/\s+/).length;
@@ -236,20 +238,20 @@ function shareOnTwitter() {
     const title = document.querySelector('.seo-title').textContent;
     const url = window.location.href;
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
-    window.open(twitterUrl, '_blank');
+    window.open(twitterUrl, '_blank', 'noopener,noreferrer');
 }
 
 function shareOnFacebook() {
     const url = window.location.href;
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-    window.open(facebookUrl, '_blank');
+    window.open(facebookUrl, '_blank', 'noopener,noreferrer');
 }
 
 function shareOnLinkedIn() {
     const title = document.querySelector('.seo-title').textContent;
     const url = window.location.href;
     const linkedinUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
-    window.open(linkedinUrl, '_blank');
+    window.open(linkedinUrl, '_blank', 'noopener,noreferrer');
 }
 
 function exportAsTXT() {

@@ -113,16 +113,26 @@ async function validateFile(file) {
 }
 
 // ── PREVIEW RENDERING ──
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function renderPreview() {
   previewList.innerHTML = '';
   selectedFiles.forEach((item, index) => {
+    const safeName = escapeHtml(item.name);
     const row = document.createElement('div');
     row.className = 'pdm-preview-item';
     row.innerHTML = `
-      <span class="pdm-preview-name">${item.name}</span>
-      <span class="pdm-preview-size">${item.size}</span>
-      <button class="pdm-preview-remove" aria-label="Remove ${item.name}" data-index="${index}">
-        <span class="material-symbols-outlined">close</span>
+      <span class="pdm-preview-name">${safeName}</span>
+      <span class="pdm-preview-size">${escapeHtml(item.size)}</span>
+      <button class="pdm-preview-remove" aria-label="Remove ${safeName}" data-index="${index}">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
       </button>
     `;
     previewList.appendChild(row);

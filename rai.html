@@ -13,17 +13,19 @@
 <meta property="og:url" content="https://johnb.io/rai">
 <meta property="og:description" content="A responsible AI governance framework for evaluating and managing AI risk.">
 <meta property="og:image" content="https://johnb.io/og_images/rai_og.webp">
+  <meta property="og:image:alt" content="RAI Governance Framework - JohnB.io">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="RAI Governance Framework - JohnB.io">
 <meta name="twitter:description" content="A responsible AI governance framework for evaluating and managing AI risk.">
 <meta name="twitter:image" content="https://johnb.io/og_images/rai_og.webp">
+  <meta name="twitter:image:alt" content="RAI Governance Framework - JohnB.io">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=4">
-<link rel="stylesheet" href="/header.css?v=6">
-<link rel="stylesheet" href="/footer.css?v=2">
+<link rel="stylesheet" href="/styles.css?v=5">
+<link rel="stylesheet" href="/header.css?v=7">
+<link rel="stylesheet" href="/footer.css?v=3">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -896,6 +898,66 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://johnb.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "RAI Governance Framework",
+        "item": "https://johnb.io/rai"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How RAI Governance Framework Works",
+    "description": "A responsible AI governance framework for evaluating and managing AI risk.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Classify your AI system",
+        "text": "Classify your AI system. Use the Risk panel to run through the classification questionnaire. Answer questions about your system's domain, autonomy level, data use and potential impact. The tool assigns a risk tier - High, Medium or Low - with an explanation of what that means for your governance obligations."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Assign responsibility",
+        "text": "Assign responsibility. In the Governance panel, populate the responsibility matrix with your team's roles. Define who is accountable for oversight, development, deployment and monitoring of each AI system."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Work through the checklist",
+        "text": "Work through the checklist. The Checklist panel provides a structured set of pre-deployment checks covering fairness, explainability, data quality, human oversight and incident response. Mark items complete as you go."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Create a system card",
+        "text": "Create a system card. The System Card panel generates a structured document recording your system's purpose, data sources, model type, identified risks, mitigations and oversight arrangements. Export it as a PDF or plain text file for your records."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Register and track systems",
+        "text": "Register and track systems. Add your AI systems to the Registry to maintain a searchable inventory. Use the Regulatory panel to map each system against relevant frameworks including the EU AI Act and UK AI principles."
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -915,39 +977,39 @@
   <nav class="sidebar">
     <div class="sidebar-section">Framework</div>
     <div class="nav-item active" onclick="showPanel('principles')">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v.5"/></svg>
+      <svg class="nav-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v.5"/></svg>
       Principles
     </div>
     <div class="nav-item" onclick="showPanel('governance')">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
+      <svg class="nav-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
       Governance
     </div>
     <div class="nav-item" onclick="showPanel('risk')">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2L14 13H2L8 2z"/><path d="M8 7v3M8 11.5v.5"/></svg>
+      <svg class="nav-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2L14 13H2L8 2z"/><path d="M8 7v3M8 11.5v.5"/></svg>
       Risk Tiering
     </div>
     <div class="nav-item" onclick="showPanel('checklist')">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5.5 8l2 2 3-3"/></svg>
+      <svg class="nav-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5.5 8l2 2 3-3"/></svg>
       RAI Checklist
     </div>
 
     <div class="sidebar-section">Tools</div>
     <div class="nav-item" onclick="showPanel('systemcard')">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 6h6M5 9h4"/></svg>
+      <svg class="nav-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 6h6M5 9h4"/></svg>
       System Card
     </div>
     <div class="nav-item" onclick="showPanel('systems')">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M1 6h14"/><path d="M5 9h2M5 11h4"/></svg>
+      <svg class="nav-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M1 6h14"/><path d="M5 9h2M5 11h4"/></svg>
       Systems
     </div>
     <div class="nav-item" onclick="showPanel('registry')">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M2 8h12M2 12h8"/></svg>
+      <svg class="nav-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M2 8h12M2 12h8"/></svg>
       AI Registry
     </div>
 
     <div class="sidebar-section">Reference</div>
     <div class="nav-item" onclick="showPanel('regulatory')">
-      <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 2v2M8 12v2M2 8h2M12 8h2"/></svg>
+      <svg class="nav-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 2v2M8 12v2M2 8h2M12 8h2"/></svg>
       Regulatory Map
     </div>
   </nav>
@@ -987,11 +1049,11 @@
         <div class="card-title">Add Custom Role</div>
         <div class="form-row-2">
           <div class="form-row" style="margin-bottom:0">
-            <label class="form-label">Role Title</label>
+            <label class="form-label" for="new-role-title">Role Title</label>
             <input class="form-input" id="new-role-title" placeholder="e.g. AI Product Manager" />
           </div>
           <div class="form-row" style="margin-bottom:0">
-            <label class="form-label">Responsibility</label>
+            <label class="form-label" for="new-role-resp">Responsibility</label>
             <input class="form-input" id="new-role-resp" placeholder="e.g. Day-to-day compliance..." />
           </div>
         </div>
@@ -1034,7 +1096,7 @@
       <div class="card">
         <div class="card-title">Classification Questionnaire</div>
         <div class="form-row">
-          <label class="form-label">Does the system make or inform decisions about individual people?</label>
+          <label class="form-label" for="q1">Does the system make or inform decisions about individual people?</label>
           <select class="form-select" id="q1" onchange="scoreRisk()">
             <option value="">— Select —</option>
             <option value="2">Yes, directly (employment, credit, health)</option>
@@ -1043,7 +1105,7 @@
           </select>
         </div>
         <div class="form-row">
-          <label class="form-label">Are outputs acted on without human review?</label>
+          <label class="form-label" for="q2">Are outputs acted on without human review?</label>
           <select class="form-select" id="q2" onchange="scoreRisk()">
             <option value="">— Select —</option>
             <option value="2">Yes, always automated</option>
@@ -1052,7 +1114,7 @@
           </select>
         </div>
         <div class="form-row">
-          <label class="form-label">Does failure could cause significant harm?</label>
+          <label class="form-label" for="q3">Could failure cause significant harm?</label>
           <select class="form-select" id="q3" onchange="scoreRisk()">
             <option value="">— Select —</option>
             <option value="2">Yes - safety, financial, reputational</option>
@@ -1061,7 +1123,7 @@
           </select>
         </div>
         <div class="form-row">
-          <label class="form-label">Does the system process sensitive personal data?</label>
+          <label class="form-label" for="q4">Does the system process sensitive personal data?</label>
           <select class="form-select" id="q4" onchange="scoreRisk()">
             <option value="">— Select —</option>
             <option value="2">Yes - special category data</option>
@@ -1112,21 +1174,21 @@
         <div class="card-title">System Overview</div>
         <div class="form-row-2">
           <div class="form-row">
-            <label class="form-label">System Name</label>
+            <label class="form-label" for="sc-name">System Name</label>
             <input class="form-input" id="sc-name" placeholder="e.g. Customer Churn Predictor" />
           </div>
           <div class="form-row">
-            <label class="form-label">Version</label>
+            <label class="form-label" for="sc-version">Version</label>
             <input class="form-input" id="sc-version" placeholder="e.g. v1.2.0" />
           </div>
         </div>
         <div class="form-row-2">
           <div class="form-row">
-            <label class="form-label">Owner / Team</label>
+            <label class="form-label" for="sc-owner">Owner / Team</label>
             <input class="form-input" id="sc-owner" placeholder="e.g. Data Science – CRM team" />
           </div>
           <div class="form-row">
-            <label class="form-label">Risk Tier</label>
+            <label class="form-label" for="sc-risk">Risk Tier</label>
             <select class="form-select" id="sc-risk">
               <option value="">— Select tier —</option>
               <option value="High">High</option>
@@ -1136,7 +1198,7 @@
           </div>
         </div>
         <div class="form-row">
-          <label class="form-label">System Purpose</label>
+          <label class="form-label" for="sc-purpose">System Purpose</label>
           <textarea class="form-textarea" id="sc-purpose" placeholder="What does this system do and why?"></textarea>
         </div>
       </div>
@@ -1144,16 +1206,16 @@
       <div class="card">
         <div class="card-title">Data & Model</div>
         <div class="form-row">
-          <label class="form-label">Data Sources</label>
+          <label class="form-label" for="sc-data">Data Sources</label>
           <textarea class="form-textarea" id="sc-data" placeholder="What data is used? Where does it come from?" style="min-height:60px"></textarea>
         </div>
         <div class="form-row-2">
           <div class="form-row">
-            <label class="form-label">Model Type</label>
+            <label class="form-label" for="sc-model">Model Type</label>
             <input class="form-input" id="sc-model" placeholder="e.g. XGBoost classifier" />
           </div>
           <div class="form-row">
-            <label class="form-label">Last Evaluated</label>
+            <label class="form-label" for="sc-date">Last Evaluated</label>
             <input class="form-input" id="sc-date" type="date" />
           </div>
         </div>
@@ -1162,15 +1224,15 @@
       <div class="card">
         <div class="card-title">Risk & Mitigations</div>
         <div class="form-row">
-          <label class="form-label">Identified Risks</label>
+          <label class="form-label" for="sc-risks">Identified Risks</label>
           <textarea class="form-textarea" id="sc-risks" placeholder="List key risks: bias, drift, misuse, security..."></textarea>
         </div>
         <div class="form-row">
-          <label class="form-label">Mitigations in Place</label>
+          <label class="form-label" for="sc-mitigations">Mitigations in Place</label>
           <textarea class="form-textarea" id="sc-mitigations" placeholder="How are risks addressed?"></textarea>
         </div>
         <div class="form-row">
-          <label class="form-label">Human Oversight Mechanism</label>
+          <label class="form-label" for="sc-oversight">Human Oversight Mechanism</label>
           <textarea class="form-textarea" id="sc-oversight" placeholder="How do humans intervene? Who can override?" style="min-height:60px"></textarea>
         </div>
       </div>
@@ -1209,17 +1271,17 @@
         <div class="card-title">Add System to Registry</div>
         <div class="form-row-2">
           <div class="form-row">
-            <label class="form-label">System Name</label>
+            <label class="form-label" for="reg-name">System Name</label>
             <input class="form-input" id="reg-name" placeholder="System name" />
           </div>
           <div class="form-row">
-            <label class="form-label">Owner</label>
+            <label class="form-label" for="reg-owner">Owner</label>
             <input class="form-input" id="reg-owner" placeholder="Team / person" />
           </div>
         </div>
         <div class="form-row-2">
           <div class="form-row">
-            <label class="form-label">Risk Tier</label>
+            <label class="form-label" for="reg-risk">Risk Tier</label>
             <select class="form-select" id="reg-risk">
               <option value="high">High</option>
               <option value="med">Medium</option>
@@ -1227,7 +1289,7 @@
             </select>
           </div>
           <div class="form-row">
-            <label class="form-label">Status</label>
+            <label class="form-label" for="reg-status">Status</label>
             <select class="form-select" id="reg-status">
               <option value="live">Live</option>
               <option value="review">In Review</option>
@@ -1282,7 +1344,7 @@
   <div class="modal">
     <div class="modal-header">
       <div class="modal-title" id="modal-title">Output</div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <button class="modal-close" aria-label="Close modal" onclick="closeModal()">✕</button>
     </div>
     <div id="modal-body"></div>
   </div>
@@ -1397,6 +1459,15 @@ const FRAMEWORKS = [
   { name: 'ICO AI Guidance', scope: 'UK data controllers', relevance: 'MED', desc: 'ICO guidance on AI and data protection. Covers bias, transparency, and accountability specifically for UK-regulated entities.' },
 ];
 
+function escapeHtml(str) {
+  return String(str == null ? '' : str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 // ─── STATE ──────────────────────────────────────────────────
 
 let selectedPrinciples = new Set();
@@ -1467,10 +1538,10 @@ function renderRoles() {
     </div>
   ` + roles.map((r, i) => `
     <div class="role-row">
-      <div class="role-cell"><div class="role-name">${r.role}</div></div>
+      <div class="role-cell"><div class="role-name">${escapeHtml(r.role)}</div></div>
       <div class="role-cell" style="display:flex;align-items:center;justify-content:space-between;gap:1rem">
-        <span style="font-size:0.75rem;color:var(--muted)">${r.resp}</span>
-        ${i >= DEFAULT_ROLES.length ? `<button class="btn btn-danger" style="padding:0.3rem 0.6rem;font-size:0.65rem" onclick="removeRole(${i})">✕</button>` : ''}
+        <span style="font-size:0.75rem;color:var(--muted)">${escapeHtml(r.resp)}</span>
+        ${i >= DEFAULT_ROLES.length ? `<button class="btn btn-danger" style="padding:0.3rem 0.6rem;font-size:0.65rem" aria-label="Remove role" onclick="removeRole(${i})">✕</button>` : ''}
       </div>
     </div>
   `).join('');
@@ -1686,18 +1757,18 @@ function renderSystems() {
     <div class="card" style="cursor:pointer;margin-bottom:0" onclick="viewSystem(${s.id})">
       <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.85rem">
         <div>
-          <div style="font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--text);margin-bottom:0.2rem">${s.name}</div>
-          <div style="font-size:0.75rem;color:var(--muted)">v${s.version} · ${s.owner}</div>
+          <div style="font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--text);margin-bottom:0.2rem">${escapeHtml(s.name)}</div>
+          <div style="font-size:0.75rem;color:var(--muted)">v${escapeHtml(s.version)} · ${escapeHtml(s.owner)}</div>
         </div>
         <span class="risk-badge ${riskClass[s.risk] || ''}" style="flex-shrink:0;margin-left:0.5rem">${s.risk}</span>
       </div>
-      <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.5;margin-bottom:1rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${s.purpose}</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.5;margin-bottom:1rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${escapeHtml(s.purpose)}</div>
       <div style="display:flex;align-items:center;justify-content:space-between">
         <div style="font-size:0.72rem;color:var(--muted)">Saved ${s.savedAt}</div>
         <div style="display:flex;gap:0.5rem">
           <button class="btn btn-ghost" style="padding:0.3rem 0.7rem;font-size:0.73rem" onclick="event.stopPropagation();viewSystem(${s.id})">View</button>
           <button class="btn btn-ghost" style="padding:0.3rem 0.7rem;font-size:0.73rem" onclick="event.stopPropagation();editSystem(${s.id})">Edit</button>
-          <button class="btn btn-danger" style="padding:0.3rem 0.7rem;font-size:0.73rem" onclick="event.stopPropagation();deleteSystem(${s.id})">✕</button>
+          <button class="btn btn-danger" style="padding:0.3rem 0.7rem;font-size:0.73rem" aria-label="Delete system" onclick="event.stopPropagation();deleteSystem(${s.id})">✕</button>
         </div>
       </div>
     </div>
@@ -1712,14 +1783,14 @@ function viewSystem(id) {
   const html = `
     <div style="font-size:0.7rem;font-weight:600;color:#8a96a8;letter-spacing:0.05em;margin-bottom:1rem;text-transform:uppercase">System Card · Saved ${s.savedAt}</div>
     <div class="info-row">
-      <div class="info-item"><div class="info-label">System</div><div class="info-value">${s.name}</div></div>
-      <div class="info-item"><div class="info-label">Version</div><div class="info-value">${s.version}</div></div>
+      <div class="info-item"><div class="info-label">System</div><div class="info-value">${escapeHtml(s.name)}</div></div>
+      <div class="info-item"><div class="info-label">Version</div><div class="info-value">${escapeHtml(s.version)}</div></div>
       <div class="info-item"><div class="info-label">Risk Tier</div><div class="info-value" style="color:${riskColor}">${s.risk}</div></div>
     </div>
     ${[['Owner', s.owner], ['Purpose', s.purpose], ['Data Sources', s.data], ['Model / Approach', s.model], ['Last Evaluated', s.date], ['Identified Risks', s.risks], ['Mitigations', s.mitigations], ['Human Oversight', s.oversight]].map(([label, val]) => `
       <div style="margin-bottom:0.9rem;padding-bottom:0.9rem;border-bottom:1px solid #e2e6ed">
         <div class="form-label" style="margin-bottom:0.25rem">${label}</div>
-        <div style="font-size:0.85rem;color:#4a5568;line-height:1.55">${val}</div>
+        <div style="font-size:0.85rem;color:#4a5568;line-height:1.55">${escapeHtml(val)}</div>
       </div>
     `).join('')}
     <div class="actions-row">
@@ -1807,12 +1878,12 @@ function renderRegistry() {
   }
   tbody.innerHTML = registry.map((r, i) => `
     <tr>
-      <td style="font-family:'Syne',sans-serif;font-weight:600;font-size:0.8rem">${r.name}</td>
-      <td style="color:var(--muted)">${r.owner}</td>
+      <td style="font-family:'Syne',sans-serif;font-weight:600;font-size:0.8rem">${escapeHtml(r.name)}</td>
+      <td style="color:var(--muted)">${escapeHtml(r.owner)}</td>
       <td><span class="risk-badge ${r.risk}">${r.risk}</span></td>
       <td><span class="status-dot ${r.status}">${r.status}</span></td>
       <td style="color:var(--muted);font-size:0.72rem">${r.date}</td>
-      <td><button class="btn btn-ghost" style="padding:0.3rem 0.6rem;font-size:0.65rem" onclick="removeFromRegistry(${i})">✕</button></td>
+      <td><button class="btn btn-ghost" style="padding:0.3rem 0.6rem;font-size:0.65rem" aria-label="Remove from registry" onclick="removeFromRegistry(${i})">✕</button></td>
     </tr>
   `).join('');
 }
@@ -2000,7 +2071,7 @@ renderSystems();
       </ul>
     </nav>
   </div>
-<script src="/scripts.js?v=9" defer></script>
+<script src="/scripts.js?v=10" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {

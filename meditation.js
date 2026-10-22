@@ -164,7 +164,8 @@ generateBtn.addEventListener('click', async () => {
     if (res.status === 429 || data.error === 'rate_limit') {
       setStatus(
         "That's your 3 free meditations used up for today. Want more? " +
-        "<a href='https://www.linkedin.com/in/john-bowman/' target='_blank' rel='noopener'>Get in touch on LinkedIn</a>.",
+        "<a href='https://www.linkedin.com/in/john-bowman/' target='_blank' rel='noopener noreferrer'>Get in touch on LinkedIn</a>.",
+        true,
         true
       );
       state = 'idle';
@@ -217,8 +218,12 @@ function stopGenProgress() {
   genFill.style.width = '0%';
 }
 
-function setStatus(msg, isError = false) {
-  statusEl.innerHTML = msg;
+function setStatus(msg, isError = false, allowHtml = false) {
+  if (allowHtml) {
+    statusEl.innerHTML = msg;
+  } else {
+    statusEl.textContent = msg;
+  }
   statusEl.className = 'med-status' + (isError ? ' error' : '');
 }
 

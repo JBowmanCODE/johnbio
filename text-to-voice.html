@@ -24,17 +24,19 @@
     <meta property="og:url" content="https://johnb.io/text-to-voice">
     <meta property="og:description" content="Paste text, pick a voice, and listen. Free text-to-speech with word-by-word subtitles.">
     <meta property="og:image" content="https://johnb.io/og_images/text_to_voice_og.webp">
+  <meta property="og:image:alt" content="Text to Voice - JohnB.io">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Text to Voice - JohnB.io">
     <meta name="twitter:description" content="Paste text, pick a voice, and listen. Free text-to-speech with word-by-word subtitles.">
     <meta name="twitter:image" content="https://johnb.io/og_images/text_to_voice_og.webp">
+  <meta name="twitter:image:alt" content="Text to Voice - JohnB.io">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/styles.css?v=4">
-    <link rel="stylesheet" href="/header.css?v=6">
-    <link rel="stylesheet" href="/footer.css?v=2">
+        <link rel="stylesheet" href="/styles.css?v=5">
+    <link rel="stylesheet" href="/header.css?v=7">
+    <link rel="stylesheet" href="/footer.css?v=3">
     <link rel="stylesheet" href="/text-to-voice.css?v=1">
   <script type="application/ld+json">
   {
@@ -49,6 +51,114 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
     "author": { "@type": "Person", "name": "John Bowman", "url": "https://johnb.io/about", "sameAs": ["https://www.linkedin.com/in/john-bowman/"] },
     "publisher": { "@type": "Organization", "name": "JohnB.io", "url": "https://johnb.io" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does this tool use AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The tool uses the Web Speech API , which is a standard browser feature - not a generative AI model. Speech synthesis is handled entirely by your browser and operating system. No AI model is called and no data is sent to any external service."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the Start button appear disabled when I first load the page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Start button is disabled until you enter some text. Once you paste or type in the input area, it activates automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are there no voices, or only one voice, in the dropdown?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Voice availability depends on your browser and operating system. Some browsers load voices asynchronously and the dropdown may appear empty on first load - try refreshing the page. On Windows, you can add more voices through Settings > Time & Language > Speech. On macOS, go to System Settings > Accessibility > Spoken Content."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this work on mobile?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The Web Speech API is supported on iOS Safari and Android Chrome. Voice selection and quality vary by device and OS version. On iOS, the speech synthesis voices are the same ones used by VoiceOver and tend to sound natural."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a limit on how much text I can convert?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There is no limit set by this tool. In practice, some browsers impose internal limits on speech synthesis queue length. For very long documents, the tool may pause or stop mid-way in certain browsers. If this happens, split the text into smaller sections and play them separately."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://johnb.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Text to Voice",
+        "item": "https://johnb.io/text-to-voice"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How Text to Voice Works",
+    "description": "Convert text to voice with speed control and subtitle display.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Paste your text",
+        "text": "Paste your text into the input area. The tool will display the word count and estimated reading and listening times as soon as you type or paste something."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Choose a voice",
+        "text": "Choose a voice. The Voice dropdown lists all speech synthesis voices installed on your device. The available voices vary by operating system and browser - Windows typically offers Microsoft voices, macOS offers Siri-based voices, and mobile devices have their own sets."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Set a playback speed",
+        "text": "Set a playback speed. The Speed selector lets you choose from 0.8× (slower than natural pace) up to 1.75× (fast but still intelligible). 1.25× is the default - a good balance between pace and clarity for most content."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Click Start",
+        "text": "Click Start. The text begins playing. Each word is highlighted in the subtitle display below the control panel as it is spoken, making it easier to follow along or spot errors."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Use Pause and Stop as needed",
+        "text": "Use Pause and Stop as needed. Pause freezes playback at the current position. Stop ends playback entirely. Click Start again to restart from the beginning."
+      }
+    ]
   }
   </script>
 </head>
@@ -250,8 +360,8 @@ If this is too fast, use a lower speed setting. Have fun!</textarea>
     </nav>
   </div>
 
-    <script src="/scripts.js?v=9" defer></script>
-    <script src="/text-to-voice.js?v=1" defer></script>
+    <script src="/scripts.js?v=10" defer></script>
+    <script src="/text-to-voice.js?v=2" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {

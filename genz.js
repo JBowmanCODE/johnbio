@@ -15,11 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
             outputLabel.textContent = 'Plain English';
             inputText.placeholder = 'Paste Gen Z slang here...';
             swapBtn.title = 'Switch to English → Gen Z';
+            swapBtn.setAttribute('aria-label', 'Switch to English to Gen Z');
         } else {
             inputLabel.textContent = 'Your Text';
             outputLabel.textContent = 'Gen Z Translation';
             inputText.placeholder = 'Paste your text here...';
             swapBtn.title = 'Switch to Gen Z → English';
+            swapBtn.setAttribute('aria-label', 'Switch to Gen Z to English');
         }
         swapBtn.classList.toggle('swapped', direction === 'to-english');
         outputText.textContent = '';

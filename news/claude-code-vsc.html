@@ -17,7 +17,7 @@
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
 <link href="/favicon.png" rel="icon" type="image/png"/>
 <link href="/favicon.png" rel="apple-touch-icon"/>
-<meta content="Claude Code VSC is Anthropic's AI coding assistant for VS Code. This beginner's guide explains what it does, how to install it, what it costs, and what to try first." name="description"/>
+<meta name="description" content="Beginner's guide to the Claude Code VS Code extension by Anthropic: installation, CLAUDE.md setup, pricing, and how it compares to Claude.ai.">
 <meta content="index, follow" name="robots"/>
 <link href="https://johnb.io/news/claude-code-vsc" rel="canonical"/>
 <meta content="John Bowman" name="author"/>
@@ -30,6 +30,7 @@
 <meta content="630" property="og:image:height"/>
 <meta content="Claude Code VSC - AI coding assistant inside Visual Studio Code for beginners" property="og:image:alt"/>
 <meta content="2026-04-03" property="article:published_time"/>
+  <meta property="article:modified_time" content="2026-08-18T00:00:00+00:00">
 <meta content="John Bowman" property="article:author"/>
 <meta content="AI" property="article:section"/>
 <meta content="summary_large_image" name="twitter:card"/>
@@ -41,9 +42,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=4" rel="stylesheet"/>
-<link href="/header.css?v=6" rel="stylesheet"/>
-<link href="/footer.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=5" rel="stylesheet"/>
+<link href="/header.css?v=7" rel="stylesheet"/>
+<link href="/footer.css?v=3" rel="stylesheet"/>
 <link href="/news.css?v=6" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/>
 <style>
@@ -136,7 +137,7 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://johnb.io" },
-      { "@type": "ListItem", "position": 2, "name": "News", "item": "https://johnb.io/news" },
+      { "@type": "ListItem", "position": 2, "name": "News", "item": "https://johnb.io/news/" },
       { "@type": "ListItem", "position": 3, "name": "Claude Code VSC", "item": "https://johnb.io/news/claude-code-vsc" }
     ]
   }
@@ -190,9 +191,9 @@
 <div class="na-content">
 <div aria-label="Breadcrumb" class="na-breadcrumb" role="navigation">
 <a href="/">Home</a>
-<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
-<a href="/news">News</a>
-<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+<a href="/news/">News</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
 <span class="na-bc-current">Claude Code VSC</span>
 </div>
 <article>
@@ -225,7 +226,7 @@
 <summary class="na-mobile-toc-trigger">
 <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
           In this article
-          <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span>
+          <span class="material-symbols-outlined na-mobile-toc-chevron" aria-hidden="true">expand_more</span>
 </summary>
 <ol class="na-mobile-toc-list">
 <li><a href="#what-is-claude-code-vsc">What is Claude Code VSC?</a></li>
@@ -239,7 +240,7 @@
 </details>
 <hr class="na-divider"/>
 <div aria-label="Listen to this article" class="na-audio">
-<span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
+<span aria-hidden="true" class="na-audio-icon material-symbols-outlined" aria-hidden="true">headphones</span>
 <div class="na-audio-info">
 <div class="na-audio-top">
 <span class="na-audio-label">Listen to this article</span>
@@ -343,7 +344,7 @@
 <!-- ── Deep Dive Podcast ── -->
 <div aria-label="Deep Dive Podcast" class="na-podcast" role="region">
 <div class="na-podcast-badge">
-<span aria-hidden="true" class="material-symbols-outlined">podcasts</span>
+<span aria-hidden="true" class="material-symbols-outlined" aria-hidden="true">podcasts</span>
           Deep Dive Podcast
         </div>
 <div class="na-podcast-inner">
@@ -368,14 +369,14 @@
 <span class="material-symbols-outlined" aria-hidden="true">replay</span><span class="na-pod-skip-label">15s</span>
 </button>
 <button aria-label="Play podcast" class="na-pod-btn na-pod-btn--play" id="na-pod-play">
-<span class="material-symbols-outlined" id="na-pod-play-icon">play_arrow</span>
+<span class="material-symbols-outlined" id="na-pod-play-icon" aria-hidden="true">play_arrow</span>
 </button>
 <button aria-label="Skip forward 15 seconds" class="na-pod-btn na-pod-btn--skip" id="na-pod-fwd">
 <span class="material-symbols-outlined" aria-hidden="true">forward</span><span class="na-pod-skip-label">15s</span>
 </button>
 <div class="na-pod-volume">
 <button aria-label="Mute" class="na-pod-btn na-pod-mute" id="na-pod-mute">
-<span class="material-symbols-outlined" id="na-pod-mute-icon">volume_up</span>
+<span class="material-symbols-outlined" id="na-pod-mute-icon" aria-hidden="true">volume_up</span>
 </button>
 <input aria-label="Volume" class="na-pod-vol-slider" id="na-pod-vol" max="1" min="0" step="0.05" type="range" value="1"/>
 </div>
@@ -403,7 +404,7 @@
   </div>
 </div>
 
-<a class="na-back" href="/news">
+<a class="na-back" href="/news/">
 <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
       Back to News
     </a>
@@ -511,10 +512,23 @@
 <button aria-label="Back to top" id="back-to-top">
 <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
 </button>
-<div id="footer-placeholder"></div>
+<div id="footer-placeholder">
+  <nav class="crawl-nav" aria-label="Site navigation">
+    <a href="/">JohnB.io Home</a>
+    <a href="/news/">All Articles</a>
+    <a href="/search-radar">Search & Prompt Radar</a>
+    <a href="/llms-generator">LLMs.txt Generator</a>
+    <a href="/course/">AI & ML Course</a>
+    <a href="/news/">News</a>
+    <a href="/about">About John Bowman</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+  </nav>
+</div>
 <script defer="" src="/news-data.js?v=3"></script><script defer="" src="/news-article.js?v=2"></script>
-<script defer="" src="/scripts.js?v=9"></script>
-<script defer="" src="/news-chat.js?v=1"></script>
+<script defer="" src="/scripts.js?v=10"></script>
+<script defer="" src="/news-chat.js?v=2"></script>
 <script defer="" src="/news-recent.js?v=1"></script>
 <script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {

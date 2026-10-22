@@ -529,7 +529,7 @@ addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request).catch(err => {
     return new Response(JSON.stringify({ success: false, error: err.message }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://johnb.io' },
     });
   }));
 });

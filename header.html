@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
 <a href="#main-content" class="skip-nav">Skip to main content</a>
 <header>
-  <nav>
+  <nav aria-label="Primary">
     <a href="/" class="logo"><span id="logo-text">JohnB.io</span></a>
     <div class="nav-links">
       <div class="nav-dropdown nav-dropdown--cyan">
@@ -58,17 +58,17 @@
       <a href="/course/" class="nav-course-link">
         <span class="material-symbols-outlined" aria-hidden="true">school</span>AI Course
       </a>
-      <a href="/news/" class="icon-btn" title="News">
+      <a href="/news/" class="icon-btn" title="News" aria-label="News">
         <span class="material-symbols-outlined" aria-hidden="true">article</span>
       </a>
-      <button class="icon-btn" id="ideas-btn" title="Submit an idea">
+      <button class="icon-btn" id="ideas-btn" title="Submit an idea" aria-label="Submit an idea">
         <span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
       </button>
-      <button class="icon-btn" id="terminal-btn" title="Terminal">
+      <button class="icon-btn" id="terminal-btn" title="Terminal" aria-label="Open interactive terminal">
         <span class="material-symbols-outlined" aria-hidden="true">terminal</span>
       </button>
       <a href="/about" class="btn-primary">About Me</a>
-      <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu">
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -85,7 +85,7 @@
       </button>
     </div>
 
-    <nav class="mobile-drawer-nav">
+    <nav class="mobile-drawer-nav" aria-label="Mobile">
       <a href="/course/" class="mobile-drawer-link">
         <span class="material-symbols-outlined" aria-hidden="true">school</span> AI Course
       </a>
@@ -147,13 +147,13 @@
 <div class="mobile-drawer-overlay" id="mobile-drawer-overlay"></div>
 
 <!-- ── IDEAS MODAL ── -->
-<div id="ideas-modal" class="ideas-modal" aria-hidden="true" role="dialog" aria-label="Submit an idea">
+<div id="ideas-modal" class="ideas-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Submit an idea">
   <div class="ideas-card">
     <button class="ideas-close" id="ideas-close" aria-label="Close">✕</button>
     <div class="ideas-icon">
       <span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
     </div>
-    <h2 class="ideas-title">Got an idea?</h2>
+    <div class="ideas-title" role="heading" aria-level="2">Got an idea?</div>
     <p class="ideas-body">I'm always looking for new tools to build and test - whether that's a fresh AI project, a dev utility, or an improvement to something already on the site.</p>
     <p class="ideas-body">If you've got an idea or a suggestion, I'd love to hear it.</p>
     <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener noreferrer" class="ideas-cta">
@@ -164,10 +164,10 @@
 </div>
 
 <!-- ── TERMINAL MODAL (outside header to avoid backdrop-filter stacking context) ── -->
-<div id="terminal-modal" class="terminal-modal" aria-hidden="true">
+<div id="terminal-modal" class="terminal-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Interactive CV Terminal">
   <div class="terminal-window">
     <div class="terminal-titlebar">
-      <div class="terminal-dots">
+      <div class="terminal-dots" aria-hidden="true">
         <span class="terminal-dot terminal-dot-red"></span>
         <span class="terminal-dot terminal-dot-yellow"></span>
         <span class="terminal-dot terminal-dot-green"></span>
@@ -175,7 +175,7 @@
       <span class="terminal-title">john@johnb.io - bash</span>
       <button class="terminal-close" id="terminal-close" aria-label="Close terminal">✕</button>
     </div>
-    <div class="terminal-output" id="terminal-output"></div>
+    <div class="terminal-output" id="terminal-output" role="log" aria-live="polite"></div>
     <div class="terminal-input-row">
       <span class="terminal-prompt-label">john@johnb.io:~$&nbsp;</span>
       <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal input">

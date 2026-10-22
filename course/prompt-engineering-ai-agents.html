@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Prompt Engineering and AI Agents Explained - JohnB.io</title>
-<meta content="What prompt engineering actually is, the techniques that work, how AI agents differ from chatbots, and whether prompt engineer will last as a job title. Unit 7, Lesson 2." name="description"/>
+<meta name="description" content="Practical prompt engineering techniques (few-shot, chain-of-thought, system prompts) and how tool-using AI agents differ from standard chatbots.">
 <meta content="prompt engineering, AI agents, chain of thought, few-shot prompting, tool use, LLM, ChatGPT" name="keywords"/>
 <meta content="index, follow" name="robots"/>
 <meta content="John Bowman" name="author"/>
@@ -45,6 +45,10 @@
     "@graph": [
       {
         "@type": "Article",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".na-title", ".na-body"]
+  },
         "headline": "Prompt Engineering and AI Agents Explained",
         "description": "What prompt engineering actually is, the techniques that work, how AI agents differ from chatbots, and whether prompt engineer will last as a job title.",
     "url": "https://johnb.io/course/prompt-engineering-ai-agents",
@@ -111,7 +115,7 @@
             "@type": "ListItem",
             "position": 2,
             "name": "AI Course",
-            "item": "https://johnb.io/course"
+            "item": "https://johnb.io/course/"
           },
           {
             "@type": "ListItem",
@@ -131,12 +135,52 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=4" rel="stylesheet"/>
-<link href="/header.css?v=6" rel="stylesheet"/>
-<link href="/footer.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=5" rel="stylesheet"/>
+<link href="/header.css?v=7" rel="stylesheet"/>
+<link href="/footer.css?v=3" rel="stylesheet"/>
 <link href="/news.css?v=6" rel="stylesheet"/>
 <link href="/lesson.css?v=5" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How Prompt Engineering and AI Agents Explained Works",
+    "description": "Practical prompt engineering techniques (few-shot, chain-of-thought, system prompts) and how tool-using AI agents differ from standard chatbots.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Zero-shot prompting:",
+        "text": "Zero-shot prompting: Give the task with no examples. Works for simple, well-defined tasks where the model has strong priors from training."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Few-shot prompting:",
+        "text": "Few-shot prompting: Include 2-5 examples of input-output pairs before the actual query. The model learns the pattern from the examples and applies it. Most effective when the format or style is hard to describe in words."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Chain-of-thought:",
+        "text": "Chain-of-thought: Add \"think step by step\" or include examples that show intermediate reasoning. The model generates reasoning tokens before the final answer, which substantially improves accuracy on multi-step problems."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "System prompts:",
+        "text": "System prompts: A system-level instruction that sets the context for the whole conversation - defining the model's role, constraints, and behaviour. Separate from the user prompt in most modern APIs."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "AI agents (tool use):",
+        "text": "AI agents (tool use): The model is given a list of available functions and their schemas. When it decides a function is needed, it outputs a structured function call. The surrounding system executes the call, returns the result, and continues the conversation. This loop continues until the task is complete."
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="lp-page" data-slug="prompt-engineering-ai-agents">
 <div id="header-placeholder"></div><div aria-hidden="true" class="lp-ambient"></div>
@@ -147,9 +191,9 @@
 <!-- Breadcrumb -->
 <nav aria-label="Breadcrumb" class="na-breadcrumb">
 <a href="/">Home</a>
-<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
-<a href="/course">AI Course</a>
-<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+<a href="/course/">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
 <span>Prompt Engineering and AI Agents</span>
 </nav>
 <!-- Unit badge + title -->
@@ -170,8 +214,8 @@
 </div><button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
 <span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span>
           Ask Newsy AI about this lesson
-        </button><details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined" aria-hidden="true">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#what-prompt-engineering-actually-is">What prompt engineering actually is</a></li><li><a href="#techniques-that-actually-work">Techniques that actually work</a></li><li><a href="#what-ai-agents-actually-are">What AI agents actually are</a></li><li><a href="#tool-use-and-multi-step-reasoning">Tool use and multi-step reasoning</a></li><li><a href="#will-prompt-engineer-survive-as-a-job-title">Will "prompt engineer" survive as a job title?</a></li></ol></details><hr class="na-divider"/><div aria-label="Listen to this lesson" class="na-audio">
-<span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
+        </button><details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined" aria-hidden="true">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron" aria-hidden="true">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#what-prompt-engineering-actually-is">What prompt engineering actually is</a></li><li><a href="#techniques-that-actually-work">Techniques that actually work</a></li><li><a href="#what-ai-agents-actually-are">What AI agents actually are</a></li><li><a href="#tool-use-and-multi-step-reasoning">Tool use and multi-step reasoning</a></li><li><a href="#will-prompt-engineer-survive-as-a-job-title">Will "prompt engineer" survive as a job title?</a></li></ol></details><hr class="na-divider"/><div aria-label="Listen to this lesson" class="na-audio">
+<span aria-hidden="true" class="na-audio-icon material-symbols-outlined" aria-hidden="true">headphones</span>
 <div class="na-audio-info">
 <div class="na-audio-top">
 <span class="na-audio-label">Listen to this lesson</span>
@@ -234,11 +278,20 @@
 <p>There's a real chance I'm wrong about this. Maybe prompting becomes more important as models become more powerful. Maybe understanding how to shape behaviour through prompts becomes deep enough expertise that it warrants its own role. My intuition is that the craft survives but the title doesn't last. I'd bet on that, but not at long odds. Prompting connects to wider enterprise use through <a href="/course/rag-finetuning-enterprise-ai">RAG and fine-tuning</a>, which is where most business value actually comes from. Also worth reading on potential downsides: the <a href="/course/ai-hallucinations-bias-ip">hallucinations and bias</a> lesson.</p>
 </div>
 <!-- Quiz -->
-<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions - select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What does chain-of-thought prompting do?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>Runs the same prompt multiple times and picks the most common answer</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>Connects multiple AI models together in a pipeline</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>Asks the model to write out its reasoning step by step before answering</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>Generates a chain of alternative responses for the user to choose from</button></div><button class="lp-quiz-check" data-answer="C" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">What is the key difference between a chatbot and an AI agent?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>Agents use newer AI models while chatbots use older ones</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>Agents can only work with structured data, chatbots can handle natural language</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>Agents can take actions by calling tools and executing multi-step plans, not just generate text</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>Chatbots can correct their own errors but agents can't</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
+<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined" aria-hidden="true">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions - select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">What does chain-of-thought prompting do?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>Runs the same prompt multiple times and picks the most common answer</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>Connects multiple AI models together in a pipeline</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>Asks the model to write out its reasoning step by step before answering</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>Generates a chain of alternative responses for the user to choose from</button></div><button class="lp-quiz-check" data-answer="C" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">What is the key difference between a chatbot and an AI agent?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>Agents use newer AI models while chatbots use older ones</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>Agents can only work with structured data, chatbots can handle natural language</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>Agents can take actions by calling tools and executing multi-step plans, not just generate text</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>Chatbots can correct their own errors but agents can't</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 <!-- Accordions -->
 <!-- Prev / Next nav -->
 <nav aria-label="Lesson navigation" class="lp-nav" id="lp-lesson-nav"></nav>
 </article>
+<div class="na-about-author">
+  <img alt="John Bowman" src="/images/JohnB.webp" width="64" height="64" loading="lazy"/>
+  <div class="na-about-author-text">
+    <strong>John Bowman</strong>
+    <span>AI Strategist &amp; Developer</span>
+    <p>20+ years across iGaming and digital marketing. Builds AI-powered tools at JohnB.io and writes on practical AI strategy, how it actually works, not how it's supposed to work.</p>
+    <a href="/about">About John</a>
+  </div>
+</div>
 <!-- â”€â”€ SIDEBAR â”€â”€ -->
 <aside aria-label="Course navigation" class="na-sidebar">
 <!-- Table of contents -->
@@ -302,11 +355,24 @@
 <button aria-label="Back to top" id="back-to-top">
 <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
 </button>
-<div id="footer-placeholder"></div>
+<div id="footer-placeholder">
+  <nav class="crawl-nav" aria-label="Site navigation">
+    <a href="/">JohnB.io Home</a>
+    <a href="/course/">AI Course Curriculum</a>
+    <a href="/aitocv">AI CV Enhancer</a>
+    <a href="/prompt-improver">Prompt Improver</a>
+    <a href="/course/">AI & ML Course</a>
+    <a href="/news/">News</a>
+    <a href="/about">About John Bowman</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+  </nav>
+</div>
 <script src="/course-data.js?v=1"></script><script src="/news-data.js?v=3"></script>
-<script defer="" src="/scripts.js?v=9"></script>
+<script defer="" src="/scripts.js?v=10"></script>
 <script defer="" src="/news-article.js?v=2"></script>
-<script defer="" src="/news-chat.js?v=1"></script>
+<script defer="" src="/news-chat.js?v=2"></script>
 <script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
@@ -319,5 +385,5 @@
       });
     });
   </script>
-<script type="module" src="/lesson-progress.js?v=1"></script></body>
+<script type="module" src="/lesson-progress.js?v=2"></script></body>
 </html>

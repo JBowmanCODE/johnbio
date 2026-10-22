@@ -63,11 +63,19 @@ const panelSignup = document.getElementById('panelSignup');
 
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
+    tabs.forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
     tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
     const which = tab.dataset.tab;
-    panelSignin.classList.toggle('hidden', which !== 'signin');
-    panelSignup.classList.toggle('hidden', which !== 'signup');
+    const hideSignin = which !== 'signin';
+    const hideSignup = which !== 'signup';
+    panelSignin.classList.toggle('hidden', hideSignin);
+    panelSignup.classList.toggle('hidden', hideSignup);
+    panelSignin.hidden = hideSignin;
+    panelSignup.hidden = hideSignup;
     clearErrors();
   });
 });
@@ -260,6 +268,6 @@ forgotLink && forgotLink.addEventListener('click', async (e) => {
 function getRedirect() {
   const p = new URLSearchParams(location.search);
   const dest = p.get('redirect');
-  if (dest && dest.startsWith('/')) return dest;
-  return '/course';
+  if (dest && dest.startsWith('/') && !dest.startsWith('//') && !dest.startsWith('/\\')) return dest;
+  return '/course/';
 }

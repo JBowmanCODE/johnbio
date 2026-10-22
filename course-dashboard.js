@@ -85,13 +85,13 @@ function renderGuestCurriculum() {
           <div class="cd-unit-title">Unit ${unit.id} — ${unit.title}</div>
           <div class="cd-unit-meta">${unit.lessons.length} lessons</div>
         </div>
-        <span class="material-symbols-outlined cd-unit-chevron">expand_more</span>
+        <span class="material-symbols-outlined cd-unit-chevron" aria-hidden="true">expand_more</span>
       </div>
       <div class="cd-unit-lessons">
         ${unit.lessons.map(l => `
           <a class="cd-lesson-row" href="${l.slug ? `/course/${l.slug}` : `/course?u=${l.id.split('-')[0]}&l=${l.id.split('-')[1]}`}">
             <div class="cd-lesson-check">
-              <span class="material-symbols-outlined">check</span>
+              <span class="material-symbols-outlined" aria-hidden="true">check</span>
             </div>
             <span class="cd-lesson-title">${l.title}</span>
             <span class="cd-lesson-duration">${l.duration}</span>
@@ -255,10 +255,10 @@ function renderHeroCard(progress) {
       </div>
       ${!allDone ? `
         <a class="cd-hero-btn" href="${href}">
-          <span class="material-symbols-outlined">play_arrow</span> Continue
+          <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span> Continue
         </a>` : `
         <a class="cd-hero-btn" href="/exam">
-          <span class="material-symbols-outlined">quiz</span> Take exam
+          <span class="material-symbols-outlined" aria-hidden="true">quiz</span> Take exam
         </a>`}
     </div>
   `;
@@ -284,7 +284,7 @@ function renderCta(progress, bestExam, hasCert) {
     const isFirst = nextLesson.id === '1-1';
     const shortTitle = nextLesson.title.replace(/\s+[—–]\s+.*$/, '');
     btn.innerHTML = `
-      <span class="material-symbols-outlined">play_arrow</span>
+      <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span>
       <span class="cd-btn-continue-inner">
         <span class="cd-btn-continue-label">${isFirst ? 'Start course' : 'Continue'}</span>
         <span class="cd-btn-continue-sub">${shortTitle}</span>
@@ -296,7 +296,7 @@ function renderCta(progress, bestExam, hasCert) {
     const examBtn = document.createElement('a');
     examBtn.href = '/exam';
     examBtn.className = 'cd-btn cd-btn-secondary';
-    examBtn.innerHTML = `<span class="material-symbols-outlined">quiz</span> ${bestExam ? 'Retake exam' : 'Take exam'}`;
+    examBtn.innerHTML = `<span class="material-symbols-outlined" aria-hidden="true">quiz</span> ${bestExam ? 'Retake exam' : 'Take exam'}`;
     row.appendChild(examBtn);
   }
 
@@ -304,7 +304,7 @@ function renderCta(progress, bestExam, hasCert) {
     const certBtn = document.createElement('a');
     certBtn.href = '/certificate';
     certBtn.className = 'cd-btn cd-btn-success';
-    certBtn.innerHTML = `<span class="material-symbols-outlined">workspace_premium</span> View certificate`;
+    certBtn.innerHTML = `<span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span> View certificate`;
     row.appendChild(certBtn);
   }
 }
@@ -322,7 +322,7 @@ function renderUnits(progress) {
 
     el.innerHTML = `
       <div class="cd-unit-header" role="button" aria-expanded="false" tabindex="0">
-        <div class="cd-unit-num">${isComplete ? '<span class="material-symbols-outlined" style="font-size:0.9rem">check</span>' : unit.id}</div>
+        <div class="cd-unit-num">${isComplete ? '<span class="material-symbols-outlined" style="font-size:0.9rem" aria-hidden="true">check</span>' : unit.id}</div>
         <div class="cd-unit-info">
           <div class="cd-unit-title">Unit ${unit.id} — ${unit.title}</div>
           <div class="cd-unit-meta">${unitDone}/${unit.lessons.length} lessons complete</div>
@@ -332,13 +332,13 @@ function renderUnits(progress) {
             <div class="cd-unit-bar-fill" style="width:${unitPct}%"></div>
           </div>
         </div>
-        <span class="material-symbols-outlined cd-unit-chevron">expand_more</span>
+        <span class="material-symbols-outlined cd-unit-chevron" aria-hidden="true">expand_more</span>
       </div>
       <div class="cd-unit-lessons">
         ${unit.lessons.map(l => `
           <a class="cd-lesson-row" href="${l.slug ? `/course/${l.slug}` : `/course?u=${l.id.split('-')[0]}&l=${l.id.split('-')[1]}`}">
             <div class="cd-lesson-check${progress[l.id] ? ' done' : ''}">
-              <span class="material-symbols-outlined">check</span>
+              <span class="material-symbols-outlined" aria-hidden="true">check</span>
             </div>
             <span class="cd-lesson-title">${l.title}</span>
             <span class="cd-lesson-duration">${l.duration}</span>

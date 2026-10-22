@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>CI/CD for ML: Automating the Machine Learning Pipeline - JohnB.io</title>
-<meta content="What CI/CD for ML covers, why ML pipelines need more than regular software CI/CD, the tools in use, and how mature ML automation is in 2026. Unit 8, Lesson 4." name="description"/>
+<title>CI/CD for ML: Automating ML Pipelines - JohnB.io</title>
+<meta name="description" content="How Continuous Integration and Continuous Deployment (CI/CD) works for machine learning: automated data validation, model testing and rollbacks.">
 <meta content="CI/CD for ML, MLOps, GitHub Actions, Airflow, DVC, MLflow, automated ML pipelines, model testing" name="keywords"/>
 <meta content="index, follow" name="robots"/>
 <meta content="John Bowman" name="author"/>
@@ -45,6 +45,10 @@
     "@graph": [
       {
         "@type": "Article",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".na-title", ".na-body"]
+  },
         "headline": "CI/CD for ML: Automating the Machine Learning Pipeline",
         "description": "What CI/CD for ML covers, why ML pipelines need more than regular software CI/CD, the tools in use, and how mature ML automation is in 2026.",
     "url": "https://johnb.io/course/cicd-for-ml",
@@ -111,7 +115,7 @@
             "@type": "ListItem",
             "position": 2,
             "name": "AI Course",
-            "item": "https://johnb.io/course"
+            "item": "https://johnb.io/course/"
           },
           {
             "@type": "ListItem",
@@ -131,12 +135,40 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<link href="/styles.css?v=4" rel="stylesheet"/>
-<link href="/header.css?v=6" rel="stylesheet"/>
-<link href="/footer.css?v=2" rel="stylesheet"/>
+<link href="/styles.css?v=5" rel="stylesheet"/>
+<link href="/header.css?v=7" rel="stylesheet"/>
+<link href="/footer.css?v=3" rel="stylesheet"/>
 <link href="/news.css?v=6" rel="stylesheet"/>
 <link href="/lesson.css?v=5" rel="stylesheet"/>
 <link href="/news-chat.css?v=7" rel="stylesheet"/><style>main.na-wrap{max-width:1120px;margin:0 auto;padding-top:120px;padding-left:1.5rem;padding-right:1.5rem;box-sizing:border-box;width:100%;}</style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How CI/CD for ML: Automating ML Pipelines Works",
+    "description": "How Continuous Integration and Continuous Deployment (CI/CD) works for machine learning: automated data validation, model testing and rollbacks.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "A typical ML CI/CD pipeline:",
+        "text": "A typical ML CI/CD pipeline:"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Step 2",
+        "text": "1. Trigger (new data, code commit, scheduled run). 2. Data validation: check schema, value ranges, missing values - fail loudly if data is corrupt. 3. Feature engineering: run transformation code, version the output. 4. Training: launch a training run, log to MLflow or equivalent. 5. Evaluation: compare new model vs current production model on a held-out evaluation set. 6. Gate: if new model meets performance threshold AND beats current model, proceed. Otherwise, alert a human. 7. Deployment: roll out to 10% of traffic, monitor, expand to 100% or roll back. 8. Monitor: log inputs, outputs, performance in production."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Lineage tracking:",
+        "text": "Lineage tracking: Every model in a registry should have: the git commit hash of the code that trained it, a pointer to the exact dataset version used, the hyperparameter configuration, and the evaluation metrics. Without this, you can't reproduce a model or debug why it behaved a certain way."
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="lp-page" data-slug="cicd-for-ml">
 <div id="header-placeholder"></div><div aria-hidden="true" class="lp-ambient"></div>
@@ -147,9 +179,9 @@
 <!-- Breadcrumb -->
 <nav aria-label="Breadcrumb" class="na-breadcrumb">
 <a href="/">Home</a>
-<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
-<a href="/course">AI Course</a>
-<span aria-hidden="true" class="na-bc-sep material-symbols-outlined">chevron_right</span>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
+<a href="/course/">AI Course</a>
+<span aria-hidden="true" class="na-bc-sep material-symbols-outlined" aria-hidden="true">chevron_right</span>
 <span>CI/CD for ML</span>
 </nav>
 <!-- Unit badge + title -->
@@ -170,8 +202,8 @@
 </div><button aria-label="Open Newsy AI" class="na-mobile-newsy-btn" id="na-mobile-newsy-btn">
 <span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span>
           Ask Newsy AI about this lesson
-        </button><details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined" aria-hidden="true">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#why-ml-pipelines-need-their-own-version-of-cicd">Why ML pipelines need their own version of CI/CD</a></li><li><a href="#what-ml-cicd-covers">What ML CI/CD covers</a></li><li><a href="#tools-in-this-space">Tools in this space</a></li><li><a href="#how-mature-ml-automation-is-right-now">How mature ML automation is right now</a></li></ol></details><hr class="na-divider"/><div aria-label="Listen to this lesson" class="na-audio">
-<span aria-hidden="true" class="na-audio-icon material-symbols-outlined">headphones</span>
+        </button><details class="na-mobile-toc"><summary class="na-mobile-toc-trigger"><span class="material-symbols-outlined" aria-hidden="true">menu_book</span> In this lesson <span class="material-symbols-outlined na-mobile-toc-chevron" aria-hidden="true">expand_more</span></summary><ol class="na-mobile-toc-list"><li><a href="#why-ml-pipelines-need-their-own-version-of-cicd">Why ML pipelines need their own version of CI/CD</a></li><li><a href="#what-ml-cicd-covers">What ML CI/CD covers</a></li><li><a href="#tools-in-this-space">Tools in this space</a></li><li><a href="#how-mature-ml-automation-is-right-now">How mature ML automation is right now</a></li></ol></details><hr class="na-divider"/><div aria-label="Listen to this lesson" class="na-audio">
+<span aria-hidden="true" class="na-audio-icon material-symbols-outlined" aria-hidden="true">headphones</span>
 <div class="na-audio-info">
 <div class="na-audio-top">
 <span class="na-audio-label">Listen to this lesson</span>
@@ -236,11 +268,20 @@
 <p>The maturity gap is biggest at small companies. A startup building an ML system probably doesn't have the engineering resources to build a sophisticated pipeline, so they do things manually and accept the messiness. Larger companies can invest in infrastructure. Eventually the tools will be good enough that even small teams can have mature practices without building everything from scratch.</p>
 </div>
 <!-- Quiz -->
-<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions - select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">Why does ML CI/CD need to handle more than regular software CI/CD?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>ML code is written in Python which doesn't support standard CI/CD tools</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>ML has three moving parts - code, data, and models - all of which need versioning, testing, and tracking</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>ML models are too large to deploy automatically without manual review</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>Regular CI/CD tools can't connect to GPU servers needed for training</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">What does DVC (Data Version Control) specifically solve for ML pipelines?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>It provides a visual dashboard for comparing model experiment results</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>It replaces Git entirely for ML projects</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>It versions code, data, and models together so every model has full lineage tracking</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>It automatically deploys models to AWS SageMaker</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
+<div aria-label="Lesson quiz" class="lp-quiz"><div class="lp-quiz-header"><div class="lp-quiz-icon"><span aria-hidden="true" class="material-symbols-outlined" aria-hidden="true">quiz</span></div><div><p class="lp-quiz-title">Check your understanding</p><p class="lp-quiz-sub">2 questions - select an answer then check it</p></div></div><div class="lp-quiz-q" id="q1"><p class="lp-quiz-q-num">Question 1 of 2</p><p class="lp-quiz-q-text">Why does ML CI/CD need to handle more than regular software CI/CD?</p><div aria-label="Question 1 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="1" data-v="A"><span class="lp-quiz-letter">A</span>ML code is written in Python which doesn't support standard CI/CD tools</button><button class="lp-quiz-option" data-q="1" data-v="B"><span class="lp-quiz-letter">B</span>ML has three moving parts - code, data, and models - all of which need versioning, testing, and tracking</button><button class="lp-quiz-option" data-q="1" data-v="C"><span class="lp-quiz-letter">C</span>ML models are too large to deploy automatically without manual review</button><button class="lp-quiz-option" data-q="1" data-v="D"><span class="lp-quiz-letter">D</span>Regular CI/CD tools can't connect to GPU servers needed for training</button></div><button class="lp-quiz-check" data-answer="B" data-q="1" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q1-fb"></p></div><div class="lp-quiz-q" id="q2"><p class="lp-quiz-q-num">Question 2 of 2</p><p class="lp-quiz-q-text">What does DVC (Data Version Control) specifically solve for ML pipelines?</p><div aria-label="Question 2 options" class="lp-quiz-options" role="group"><button class="lp-quiz-option" data-q="2" data-v="A"><span class="lp-quiz-letter">A</span>It provides a visual dashboard for comparing model experiment results</button><button class="lp-quiz-option" data-q="2" data-v="B"><span class="lp-quiz-letter">B</span>It replaces Git entirely for ML projects</button><button class="lp-quiz-option" data-q="2" data-v="C"><span class="lp-quiz-letter">C</span>It versions code, data, and models together so every model has full lineage tracking</button><button class="lp-quiz-option" data-q="2" data-v="D"><span class="lp-quiz-letter">D</span>It automatically deploys models to AWS SageMaker</button></div><button class="lp-quiz-check" data-answer="C" data-q="2" disabled="">Check answer</button><p class="lp-quiz-feedback" id="q2-fb"></p></div></div>
 <!-- Accordions -->
 <!-- Prev / Next nav -->
 <nav aria-label="Lesson navigation" class="lp-nav" id="lp-lesson-nav"></nav>
 </article>
+<div class="na-about-author">
+  <img alt="John Bowman" src="/images/JohnB.webp" width="64" height="64" loading="lazy"/>
+  <div class="na-about-author-text">
+    <strong>John Bowman</strong>
+    <span>AI Strategist &amp; Developer</span>
+    <p>20+ years across iGaming and digital marketing. Builds AI-powered tools at JohnB.io and writes on practical AI strategy, how it actually works, not how it's supposed to work.</p>
+    <a href="/about">About John</a>
+  </div>
+</div>
 <!-- â”€â”€ SIDEBAR â”€â”€ -->
 <aside aria-label="Course navigation" class="na-sidebar">
 <!-- Table of contents -->
@@ -303,11 +344,24 @@
 <button aria-label="Back to top" id="back-to-top">
 <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
 </button>
-<div id="footer-placeholder"></div>
+<div id="footer-placeholder">
+  <nav class="crawl-nav" aria-label="Site navigation">
+    <a href="/">JohnB.io Home</a>
+    <a href="/course/">AI Course Curriculum</a>
+    <a href="/aitocv">AI CV Enhancer</a>
+    <a href="/prompt-improver">Prompt Improver</a>
+    <a href="/course/">AI & ML Course</a>
+    <a href="/news/">News</a>
+    <a href="/about">About John Bowman</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+  </nav>
+</div>
 <script src="/course-data.js?v=1"></script><script src="/news-data.js?v=3"></script>
-<script defer="" src="/scripts.js?v=9"></script>
+<script defer="" src="/scripts.js?v=10"></script>
 <script defer="" src="/news-article.js?v=2"></script>
-<script defer="" src="/news-chat.js?v=1"></script>
+<script defer="" src="/news-chat.js?v=2"></script>
 <script>
     document.getElementById('na-mobile-newsy-btn').addEventListener('click', () => {
       const trigger = document.querySelector('.nc-trigger');
@@ -320,5 +374,5 @@
       });
     });
   </script>
-<script type="module" src="/lesson-progress.js?v=1"></script></body>
+<script type="module" src="/lesson-progress.js?v=2"></script></body>
 </html>

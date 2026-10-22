@@ -49,18 +49,18 @@ function showIntro() {
   inner.innerHTML = `
     <div class="ex-intro">
       <img src="/images/course/ai-exam.webp" alt="AI &amp; Machine Learning Course Final Exam" class="ex-intro-img" loading="lazy">
-      <div class="ex-intro-icon"><span class="material-symbols-outlined">quiz</span></div>
+      <div class="ex-intro-icon"><span class="material-symbols-outlined" aria-hidden="true">quiz</span></div>
       <h1 class="ex-title">Final Exam</h1>
       <p class="ex-sub">30 randomly selected questions from a bank of 60. Every attempt is different. You need 26/30 (85%) to pass.</p>
       <div class="ex-rules">
-        <div class="ex-rule"><span class="material-symbols-outlined">help_outline</span> 30 questions, multiple choice</div>
-        <div class="ex-rule"><span class="material-symbols-outlined">shuffle</span> Questions and order are randomised each attempt</div>
-        <div class="ex-rule"><span class="material-symbols-outlined">target</span> Pass mark: 26/30 (85%)</div>
-        <div class="ex-rule"><span class="material-symbols-outlined">workspace_premium</span> Score 30/30 for Grade A — shown on your certificate</div>
-        <div class="ex-rule"><span class="material-symbols-outlined">replay</span> You can retake as many times as you like</div>
+        <div class="ex-rule"><span class="material-symbols-outlined" aria-hidden="true">help_outline</span> 30 questions, multiple choice</div>
+        <div class="ex-rule"><span class="material-symbols-outlined" aria-hidden="true">shuffle</span> Questions and order are randomised each attempt</div>
+        <div class="ex-rule"><span class="material-symbols-outlined" aria-hidden="true">target</span> Pass mark: 26/30 (85%)</div>
+        <div class="ex-rule"><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span> Score 30/30 for Grade A — shown on your certificate</div>
+        <div class="ex-rule"><span class="material-symbols-outlined" aria-hidden="true">replay</span> You can retake as many times as you like</div>
       </div>
       <button class="ex-start-btn" id="exStartBtn">
-        <span class="material-symbols-outlined">play_arrow</span>
+        <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span>
         Start exam
       </button>
     </div>
@@ -116,14 +116,14 @@ function renderQuestion() {
 
     <div class="ex-nav">
       ${currentIndex > 0 ? `<button class="ex-nav-btn ex-btn-back" id="exBack">
-        <span class="material-symbols-outlined">arrow_back</span> Back
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span> Back
       </button>` : '<div></div>'}
       ${currentIndex < total - 1
         ? `<button class="ex-nav-btn ex-btn-next" id="exNext" ${selected === undefined ? 'disabled' : ''}>
-            Next <span class="material-symbols-outlined">arrow_forward</span>
+            Next <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
            </button>`
         : `<button class="ex-nav-btn ex-btn-submit" id="exSubmit" ${selected === undefined ? 'disabled' : ''}>
-            Submit exam <span class="material-symbols-outlined">send</span>
+            Submit exam <span class="material-symbols-outlined" aria-hidden="true">send</span>
            </button>`
       }
     </div>
@@ -218,15 +218,15 @@ function showResults(score, result) {
 
       <div class="ex-result-actions">
         ${result.passed ? `<a href="/certificate" class="ex-result-btn ex-btn-cert">
-          <span class="material-symbols-outlined">workspace_premium</span>
+          <span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span>
           View certificate
         </a>` : ''}
         <a href="/course" class="ex-result-btn ex-btn-dash">
-          <span class="material-symbols-outlined">dashboard</span>
+          <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
           Dashboard
         </a>
         <button class="ex-result-btn ex-btn-retry" id="exRetry">
-          <span class="material-symbols-outlined">replay</span>
+          <span class="material-symbols-outlined" aria-hidden="true">replay</span>
           Retake exam
         </button>
       </div>

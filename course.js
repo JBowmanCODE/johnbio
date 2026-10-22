@@ -48,7 +48,7 @@ function renderSidebar() {
     el.innerHTML = `
       <div class="cl-sb-unit-title">
         Unit ${unit.id}
-        <span class="material-symbols-outlined">expand_more</span>
+        <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
       </div>
       <div class="cl-sb-lessons">
         ${unit.lessons.map(l => `
@@ -124,7 +124,7 @@ function updateCompleteButton() {
   if (!currentUser) {
     wrap.innerHTML = `
       <button class="cl-complete-btn" disabled style="opacity:0.4;cursor:not-allowed">
-        <span class="material-symbols-outlined">check_circle</span>
+        <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
         Mark as complete
       </button>
       <p class="cl-login-nudge"><a href="/login">Sign in</a> to track your progress</p>
@@ -134,7 +134,7 @@ function updateCompleteButton() {
 
   wrap.innerHTML = `
     <button class="cl-complete-btn${isDone ? ' done' : ''}" id="clCompleteBtn">
-      <span class="material-symbols-outlined">${isDone ? 'check_circle' : 'radio_button_unchecked'}</span>
+      <span class="material-symbols-outlined" aria-hidden="true">${isDone ? 'check_circle' : 'radio_button_unchecked'}</span>
       ${isDone ? 'Completed' : 'Mark as complete'}
     </button>
   `;
@@ -149,7 +149,7 @@ async function markComplete() {
   if (!btn || !currentUser) return;
 
   btn.disabled = true;
-  btn.innerHTML = `<span class="material-symbols-outlined">hourglass_empty</span> Saving...`;
+  btn.innerHTML = `<span class="material-symbols-outlined" aria-hidden="true">hourglass_empty</span> Saving...`;
 
   try {
     const ref = doc(db, 'users', currentUser.uid);
@@ -179,7 +179,7 @@ async function markComplete() {
   } catch (err) {
     console.error(err);
     btn.disabled = false;
-    btn.innerHTML = `<span class="material-symbols-outlined">error</span> Error - try again`;
+    btn.innerHTML = `<span class="material-symbols-outlined" aria-hidden="true">error</span> Error - try again`;
   }
 }
 
@@ -191,15 +191,15 @@ function renderBottomNav() {
 
   nav.innerHTML = `
     ${prev ? `<a class="cl-nav-btn" href="/course?u=${prev.unitId}&l=${prev.id.split('-')[1]}">
-      <span class="material-symbols-outlined">arrow_back</span>
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
       <span class="cl-nav-label">${prev.title.split(' — ')[0]}</span>
     </a>` : '<div></div>'}
     ${next ? `<a class="cl-nav-btn next" href="/course?u=${next.unitId}&l=${next.id.split('-')[1]}">
       <span class="cl-nav-label">${next.title.split(' — ')[0]}</span>
-      <span class="material-symbols-outlined">arrow_forward</span>
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
     </a>` : `<a class="cl-nav-btn next" href="/exam">
       <span class="cl-nav-label">Take the exam</span>
-      <span class="material-symbols-outlined">quiz</span>
+      <span class="material-symbols-outlined" aria-hidden="true">quiz</span>
     </a>`}
   `;
 }

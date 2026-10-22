@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
     repurposeBtn.disabled = state;
     repurposeBtn.innerHTML = state
       ? `<span class="btn-spinner"></span> Repurposing...`
-      : `<span class="material-symbols-outlined">auto_awesome</span> Repurpose Content`;
+      : `<span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span> Repurpose Content`;
   }
 
   function showGrid() {
@@ -266,10 +266,10 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!text.trim()) return;
 
       if (platform === 'linkedin') {
-        window.open(`https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(text)}`, '_blank');
+        window.open(`https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
       } else if (platform === 'twitter') {
         const tweetText = text.length > 270 ? text.slice(0, 267) + '...' : text;
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`, '_blank');
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`, '_blank', 'noopener,noreferrer');
       } else if (platform === 'facebook') {
         // Copy text synchronously first (must be in same gesture tick)
         const ta = document.createElement('textarea');
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
         try { document.execCommand('copy'); } catch {}
         document.body.removeChild(ta);
         // Then open Facebook (synchronous, same tick — won't be popup-blocked)
-        window.open('https://www.facebook.com/', '_blank');
+        window.open('https://www.facebook.com/', '_blank', 'noopener,noreferrer');
         showToast('Text copied. Open a new post on Facebook and paste it in.');
       }
     }

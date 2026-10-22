@@ -14,7 +14,7 @@
   text-decoration: none;
   transition: top 0.15s;
 }
-.skip-nav:focus { top: 0; outline: none; }
+.skip-nav:focus { top: 0; outline: 2px solid var(--secondary); outline-offset: 2px; }
 
 header {
   position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
@@ -267,12 +267,13 @@ a.btn-primary:focus-visible,
   border-left: 1px solid rgba(255,0,127,0.2);
   z-index: 500;
   transform: translateX(100%);
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), visibility 0.3s;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
-.mobile-drawer.open { transform: translateX(0); }
+.mobile-drawer.open { transform: translateX(0); visibility: visible; }
 
 .mobile-drawer-overlay {
   display: none;
@@ -311,7 +312,7 @@ a.btn-primary:focus-visible,
   background: none;
   border: none;
   cursor: pointer;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248,245,253,0.65);
   display: flex;
   align-items: center;
   padding: 0.25rem;
@@ -389,11 +390,11 @@ a.btn-primary:focus-visible,
   display: flex; align-items: center; justify-content: center;
   background: rgba(0,0,0,0.75);
   backdrop-filter: blur(4px);
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.2s;
+  opacity: 0; pointer-events: none; visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
 }
 .terminal-modal.open {
-  opacity: 1; pointer-events: all;
+  opacity: 1; pointer-events: all; visibility: visible;
 }
 
 .terminal-window {
@@ -429,11 +430,11 @@ a.btn-primary:focus-visible,
   flex: 1; text-align: center;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248,245,253,0.58);
 }
 .terminal-close {
   background: none; border: none; cursor: pointer;
-  color: rgba(248,245,253,0.3); font-size: 0.8rem; line-height: 1;
+  color: rgba(248,245,253,0.58); font-size: 0.8rem; line-height: 1;
   padding: 0.1rem 0.3rem; border-radius: 0.25rem;
   transition: color 0.15s;
 }
@@ -465,6 +466,10 @@ a.btn-primary:focus-visible,
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.82rem; color: rgba(248,245,253,0.9);
   caret-color: #00eefc;
+}
+.terminal-input:focus-visible {
+  outline: 1px dashed rgba(0,238,252,0.7);
+  outline-offset: 2px;
 }
 
 /* Terminal glitch effect */
@@ -504,7 +509,7 @@ a.btn-primary:focus-visible,
 .t-head { color: #FF007F; font-weight: bold; }
 .t-hi   { color: rgba(248,245,253,0.9); }
 .t-val  { color: rgba(248,245,253,0.65); }
-.t-dim  { color: rgba(248,245,253,0.3); }
+.t-dim  { color: rgba(248,245,253,0.55); }
 .t-err  { color: #ff6b6b; }
 
 /* ── IDEAS MODAL ── */
@@ -513,11 +518,11 @@ a.btn-primary:focus-visible,
   display: flex; align-items: center; justify-content: center;
   background: rgba(0,0,0,0.65);
   backdrop-filter: blur(4px);
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.2s;
+  opacity: 0; pointer-events: none; visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
 }
 .ideas-modal.open {
-  opacity: 1; pointer-events: all;
+  opacity: 1; pointer-events: all; visibility: visible;
 }
 .ideas-card {
   position: relative;
@@ -537,7 +542,7 @@ a.btn-primary:focus-visible,
 .ideas-close {
   position: absolute; top: 1rem; right: 1rem;
   background: none; border: none; cursor: pointer;
-  color: rgba(248,245,253,0.3); font-size: 0.85rem;
+  color: rgba(248,245,253,0.6); font-size: 0.85rem;
   padding: 0.2rem 0.4rem; border-radius: 0.25rem;
   transition: color 0.15s;
 }
