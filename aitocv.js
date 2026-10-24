@@ -847,6 +847,90 @@ document.addEventListener('DOMContentLoaded', () => {
     const rolesResults = document.getElementById('roles-results');
     const rolesError = document.getElementById('roles-error');
 
+    // --- Saved results (this browser only) -----------------------------------
+    // Roles and the last job search survive a reload until the visitor clears them.
+    function storeGet(key) {
+        try { return JSON.parse(localStorage.getItem(key)); } catch (e) { return null; }
+    }
+    function storeSet(key, value) {
+        try {
+            if (value === null) localStorage.removeItem(key);
+            else localStorage.setItem(key, JSON.stringify(value));
+        } catch (e) { /* storage unavailable (private mode etc.) - nothing to save */ }
+    }
+
+    const ROLES_KEY = 'aitocv-saved-roles';
+    const rolesSaved = document.getElementById('roles-saved');
+    const rolesSavedText = document.getElementById('roles-saved-text');
+    const rolesClearBtn = document.getElementById('roles-clear-btn');
+
+    function renderRoles(roles) {
+        if (rolesResults) {
+            rolesResults.innerHTML = roles.map(r => `
+                <div class="role-chip" role="button" tabindex="0" data-role="${escapeAttr(r.title)}" title="Click to search this role on all job boards">
+                    <div class="role-num">#${escapeHtml(String(r.rank))}</div>
+                    <div class="role-title">${escapeHtml(r.title)}</div>
+                    <div class="role-reason">${escapeHtml(r.reason)}</div>
+                    <div class="role-search-hint">Click to search all boards &rarr;</div>
+                </div>
+            `).join('');
+            rolesResults.classList.remove('hidden');
+
+            // Clicking or pressing Enter/Space on a role chip populates search and triggers search
+            rolesResults.querySelectorAll('.role-chip').forEach(chip => {
+                const activateChip = () => {
+                    const role = chip.getAttribute('data-role');
+                    const searchInput = document.getElementById('job-search-input');
+                    if (searchInput) {
+                        searchInput.value = role;
+                        searchInput.dispatchEvent(new Event('input'));
+                        // Scroll to job boards
+                        document.getElementById('job-boards-grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Trigger search after scroll
+                        setTimeout(() => {
+                            document.getElementById('job-search-btn')?.click();
+                        }, 600);
+                    }
+                };
+                chip.addEventListener('click', activateChip);
+                chip.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        activateChip();
+                    }
+                });
+            });
+        }
+    }
+
+    function showRolesSaved(savedAt) {
+        if (!rolesSaved) return;
+        const when = savedAt ? new Date(savedAt).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '';
+        if (rolesSavedText) rolesSavedText.textContent = `Saved in this browser${when ? ' \u00b7 ' + when : ''}`;
+        rolesSaved.classList.remove('hidden');
+    }
+
+    function saveRoles(roles) {
+        const savedAt = new Date().toISOString();
+        storeSet(ROLES_KEY, { roles, savedAt });
+        showRolesSaved(savedAt);
+    }
+
+    if (rolesClearBtn) {
+        rolesClearBtn.addEventListener('click', () => {
+            storeSet(ROLES_KEY, null);
+            if (rolesResults) { rolesResults.innerHTML = ''; rolesResults.classList.add('hidden'); }
+            if (rolesSaved) rolesSaved.classList.add('hidden');
+        });
+    }
+
+    // Restore the last roles on page load
+    const savedRoles = storeGet(ROLES_KEY);
+    if (savedRoles && Array.isArray(savedRoles.roles) && savedRoles.roles.length) {
+        renderRoles(savedRoles.roles);
+        showRolesSaved(savedRoles.savedAt);
+    }
+
     if (findRolesBtn) {
         findRolesBtn.addEventListener('click', async () => {
             // Use the CV text from the main textarea at the top of the page
@@ -880,42 +964,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!Array.isArray(roles) || roles.length === 0) throw new Error('No roles returned');
 
-                if (rolesResults) {
-                    rolesResults.innerHTML = roles.map(r => `
-                        <div class="role-chip" role="button" tabindex="0" data-role="${escapeAttr(r.title)}" title="Click to search this role on all job boards">
-                            <div class="role-num">#${escapeHtml(String(r.rank))}</div>
-                            <div class="role-title">${escapeHtml(r.title)}</div>
-                            <div class="role-reason">${escapeHtml(r.reason)}</div>
-                            <div class="role-search-hint">Click to search all boards &rarr;</div>
-                        </div>
-                    `).join('');
-                    rolesResults.classList.remove('hidden');
-
-                    // Clicking or pressing Enter/Space on a role chip populates search and triggers search
-                    rolesResults.querySelectorAll('.role-chip').forEach(chip => {
-                        const activateChip = () => {
-                            const role = chip.getAttribute('data-role');
-                            const searchInput = document.getElementById('job-search-input');
-                            if (searchInput) {
-                                searchInput.value = role;
-                                searchInput.dispatchEvent(new Event('input'));
-                                // Scroll to job boards
-                                document.getElementById('job-boards-grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                // Trigger search after scroll
-                                setTimeout(() => {
-                                    document.getElementById('job-search-btn')?.click();
-                                }, 600);
-                            }
-                        };
-                        chip.addEventListener('click', activateChip);
-                        chip.addEventListener('keydown', (e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                                e.preventDefault();
-                                activateChip();
-                            }
-                        });
-                    });
-                }
+                renderRoles(roles);
+                saveRoles(roles);
 
             } catch(err) {
                 console.error('Roles error:', err);
@@ -941,6 +991,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const jobSearchInput = document.getElementById('job-search-input');
     const jobSearchBtn = document.getElementById('job-search-btn');
     const jobBoardsGrid = document.getElementById('job-boards-grid');
+    const jobClearBtn = document.getElementById('job-clear-btn');
+    const JOB_SEARCH_KEY = 'aitocv-saved-job-search';
     const jobCountrySelect = document.getElementById('job-country');
     const boardCountryGrid = document.getElementById('board-country-grid');
     const boardCountryLabel = document.getElementById('board-country-label');
@@ -1089,13 +1141,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function doJobSearch() {
         const query = jobSearchInput ? jobSearchInput.value.trim() : '';
-        if (!query || !jobBoardsGrid) return;
+        if (jobClearBtn) jobClearBtn.classList.toggle('hidden', !query);
+        if (!jobBoardsGrid) return;
 
         const links = jobBoardsGrid.querySelectorAll('a[data-search]');
         links.forEach(a => {
-            const url = buildSearchUrl(a.getAttribute('data-search'), query);
-            a.href = url;
-            a.classList.add('searched');
+            // Remember the board's own link so clearing the search can restore it
+            if (!a.dataset.home) a.dataset.home = a.getAttribute('href');
+            if (query) {
+                a.href = buildSearchUrl(a.getAttribute('data-search'), query);
+                a.classList.add('searched');
+            } else {
+                a.href = a.dataset.home;
+                a.classList.remove('searched');
+            }
         });
     }
 
@@ -1175,7 +1234,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         // Live-update hrefs as user types
-        jobSearchInput.addEventListener('input', () => doJobSearch());
+        jobSearchInput.addEventListener('input', () => {
+            doJobSearch();
+            const query = jobSearchInput.value.trim();
+            storeSet(JOB_SEARCH_KEY, query ? { query } : null);
+        });
+
+        // Restore the last search on page load
+        const savedSearch = storeGet(JOB_SEARCH_KEY);
+        if (savedSearch && savedSearch.query) {
+            jobSearchInput.value = savedSearch.query;
+            doJobSearch();
+        }
+    }
+
+    if (jobClearBtn) {
+        jobClearBtn.addEventListener('click', () => {
+            if (jobSearchInput) { jobSearchInput.value = ''; jobSearchInput.focus(); }
+            storeSet(JOB_SEARCH_KEY, null);
+            doJobSearch();
+        });
     }
 
 });

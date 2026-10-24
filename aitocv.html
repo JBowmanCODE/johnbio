@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="/styles.css?v=5">
     <link rel="stylesheet" href="/header.css?v=7">
     <link rel="stylesheet" href="/footer.css?v=3">
-    <link rel="stylesheet" href="aitocv.css?v=5">
+    <link rel="stylesheet" href="aitocv.css?v=6">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -310,6 +310,10 @@
                     <span>Analysing your CV...</span>
                 </div>
                 <div id="roles-results" class="roles-results hidden"></div>
+                <div id="roles-saved" class="saved-bar hidden" role="status">
+                    <span id="roles-saved-text">Saved in this browser</span>
+                    <button type="button" id="roles-clear-btn" class="saved-clear-btn" aria-label="Clear saved roles">Clear</button>
+                </div>
             </div>
         </div>
 
@@ -336,6 +340,7 @@
                             <input type="text" id="job-search-input" placeholder="Search for roles e.g. Head of AI" />
                         </div>
                         <button id="job-search-btn">Search All Boards</button>
+                        <button type="button" id="job-clear-btn" class="saved-clear-btn hidden" aria-label="Clear job search">Clear</button>
                     </div>
                     <div id="job-boards-grid">
                         <p class="board-group-label" id="board-country-label">United Kingdom</p>
@@ -601,7 +606,7 @@
       });
     </script>
     <script src="/scripts.js?v=10" defer></script>
-    <script src="aitocv.js?v=9" defer></script>
+    <script src="aitocv.js?v=10" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {

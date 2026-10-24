@@ -1019,6 +1019,29 @@ textarea:focus {
 }
 #job-boards-grid .link-grid { padding-bottom: 16px; }
 
+/* Saved results bar (roles) and Clear buttons (roles + job search) */
+.saved-bar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-top: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem; color: var(--text-dim);
+}
+.saved-bar.hidden { display: none; }
+.saved-clear-btn {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  padding: 5px 14px;
+  border-radius: 99px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem; font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.saved-clear-btn:hover, .saved-clear-btn:focus-visible { border-color: var(--accent); color: var(--accent); }
+#job-clear-btn { padding: 9px 18px; font-size: 0.82rem; }
+#job-clear-btn.hidden { display: none; }
+
 /* Highlight searched board links */
 .link-grid a.searched {
   background: var(--accent-glow);
