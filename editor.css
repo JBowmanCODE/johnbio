@@ -61,7 +61,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0 0 2rem;
 }
 
@@ -90,7 +90,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.5);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0;
   display: flex;
   align-items: center;
@@ -124,7 +124,7 @@ body {
   position: relative;
   display: inline-block;
   font-size: 0.78rem;
-  color: rgba(248,245,253,0.3);
+  color: rgba(248, 245, 253, 0.68);
   cursor: help;
 }
 .tooltip:hover::after {
@@ -156,7 +156,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
   margin-bottom: 5px;
 }
 
@@ -175,7 +175,7 @@ body {
   box-sizing: border-box;
 }
 .option-group select:focus,
-.option-group textarea:focus { border-color: rgba(255,0,127,0.4); }
+.option-group textarea:focus { border-color: #ff5ca8; }
 
 .option-group select {
   height: 36px;
@@ -205,14 +205,14 @@ body {
   outline: none;
   transition: border-color 0.2s;
 }
-#article-input:focus { border-color: rgba(255,0,127,0.4); }
-#article-input::placeholder { color: rgba(248,245,253,0.2); }
+#article-input:focus { border-color: #ff5ca8; }
+#article-input::placeholder { color: rgba(248, 245, 253, 0.68); }
 
 /* ── WORD COUNT ── */
 .count-display {
   font-size: 0.7rem;
   font-weight: 600;
-  color: rgba(248,245,253,0.25);
+  color: rgba(248, 245, 253, 0.68);
   text-align: right;
   margin-top: 4px;
   margin-bottom: 0.75rem;
@@ -247,14 +247,14 @@ body {
   box-sizing: border-box;
 }
 .file-upload-btn:hover {
-  border-color: rgba(255,0,127,0.3);
+  border-color: #ff5ca8;
   color: var(--on-surface, #f8f5fd);
   background: rgba(255,0,127,0.06);
 }
 
 #file-chosen {
   font-size: 0.68rem;
-  color: rgba(248,245,253,0.25);
+  color: rgba(248, 245, 253, 0.68);
   display: block;
   margin-top: 5px;
   word-break: break-all;
@@ -285,7 +285,7 @@ body {
 .analyze-btn:active { transform: scale(0.98); }
 .analyze-btn:disabled {
   background: rgba(255,255,255,0.06);
-  color: rgba(248,245,253,0.25);
+  color: rgba(248, 245, 253, 0.68);
   cursor: not-allowed;
   box-shadow: none;
   transform: none;
@@ -306,7 +306,7 @@ body {
 #loading-text {
   font-size: 0.85rem;
   font-weight: 600;
-  color: rgba(248,245,253,0.6);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0.75rem 0 1rem;
   font-style: italic;
 }
@@ -354,7 +354,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0 0 1rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid rgba(255,0,127,0.2);
@@ -374,7 +374,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0 0 0.75rem;
 }
 
@@ -411,7 +411,7 @@ body {
 }
 #readability-metrics p:nth-child(even) {
   background: rgba(0,238,252,0.04);
-  border-color: rgba(0,238,252,0.1);
+  border-color: rgba(0, 238, 252, 0.85);
 }
 
 /* ── BUTTONS ── */
@@ -422,7 +422,7 @@ body {
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 0.5rem;
-  color: rgba(248,245,253,0.6);
+  color: rgba(248, 245, 253, 0.68);
   padding: 6px 14px;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.72rem;
@@ -431,7 +431,7 @@ body {
   margin-top: 10px;
   transition: border-color 0.2s, color 0.2s;
 }
-.copy-btn:hover { border-color: rgba(0,238,252,0.4); color: #00eefc; }
+.copy-btn:hover { border-color: rgba(0, 238, 252, 0.85); color: #00eefc; }
 
 .download-options {
   display: flex;
@@ -449,7 +449,7 @@ body {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 0.5rem;
-  color: rgba(248,245,253,0.6);
+  color: rgba(248, 245, 253, 0.68);
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
@@ -459,7 +459,7 @@ body {
   transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 .download-btn:hover:not(:disabled) {
-  border-color: rgba(255,0,127,0.4);
+  border-color: #ff5ca8;
   color: var(--on-surface, #f8f5fd);
   background: rgba(255,0,127,0.06);
 }
@@ -475,7 +475,7 @@ body {
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 9999px;
-  color: rgba(248,245,253,0.6);
+  color: rgba(248, 245, 253, 0.68);
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
@@ -485,7 +485,7 @@ body {
   margin-top: 1.25rem;
   transition: border-color 0.2s, color 0.2s;
 }
-.new-analysis-btn:hover { border-color: rgba(255,0,127,0.4); color: #FF007F; }
+.new-analysis-btn:hover { border-color: #ff5ca8; color: #FF007F; }
 
 .reset-btn {
   display: inline-flex;
@@ -494,7 +494,7 @@ body {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 0.5rem;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.68rem;
   font-weight: 700;
@@ -504,7 +504,7 @@ body {
   margin-top: 0.5rem;
   transition: border-color 0.2s, color 0.2s;
 }
-.reset-btn:hover { border-color: rgba(255,0,127,0.3); color: rgba(248,245,253,0.7); }
+.reset-btn:hover { border-color: #ff5ca8; color: rgba(248,245,253,0.7); }
 
 /* ── EDITOR TIPS ── */
 .editor-tips {
@@ -531,7 +531,7 @@ body {
 .editor-tips li {
   font-size: 0.82rem;
   line-height: 1.6;
-  color: rgba(248,245,253,0.5);
+  color: rgba(248, 245, 253, 0.68);
   margin-bottom: 0.4rem;
 }
 
@@ -549,7 +549,7 @@ body {
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.1);
   background: rgba(255,255,255,0.04);
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   cursor: pointer;
   font-size: 0.9rem;
   display: flex;

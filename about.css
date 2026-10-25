@@ -145,7 +145,7 @@ main {
   cursor: pointer;
 }
 .profile-image:hover {
-  border-color: rgba(0,238,252,0.6);
+  border-color: rgba(0, 238, 252, 0.85);
   box-shadow: 0 0 40px rgba(0,238,252,0.3);
 }
 
@@ -186,7 +186,7 @@ main {
   border: 1px solid rgba(0,238,252,0.35);
   box-shadow: none;
 }
-.gh-btn:hover { box-shadow: 0 0 24px rgba(0,238,252,0.25); border-color: rgba(0,238,252,0.6); }
+.gh-btn:hover { box-shadow: 0 0 24px rgba(0,238,252,0.25); border-color: rgba(0, 238, 252, 0.85); }
 
 /* ── BIO CARD ── */
 .bio-card {
@@ -230,7 +230,7 @@ main {
   cursor: pointer;
   transition: all 0.2s;
 }
-.skill-button:hover { background: var(--surface-container-highest); color: var(--secondary); border-color: rgba(0,238,252,0.3); }
+.skill-button:hover { background: var(--surface-container-highest); color: var(--secondary); border-color: rgba(0, 238, 252, 0.85); }
 .skill-button.active { background: var(--primary); color: var(--on-primary); border-color: transparent; box-shadow: 0 0 16px rgba(255,0,127,0.3); }
 
 /* ── SKILL DETAILS ──
@@ -279,7 +279,7 @@ main {
   text-align: center;
   transition: border-color 0.2s, color 0.2s;
 }
-.skill-list li:hover { border-color: rgba(0,238,252,0.4); color: var(--on-surface); }
+.skill-list li:hover { border-color: rgba(0, 238, 252, 0.85); color: var(--on-surface); }
 
 /* ── LONG-FORM BIO ──
    Uses the shared .tool-info / .tool-accordion styles from styles.css. */

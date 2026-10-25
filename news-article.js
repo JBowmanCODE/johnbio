@@ -267,13 +267,10 @@
       }
     }
 
-    // Set src immediately so preload="metadata" fetches the header on page load
-    if (podSrc) {
-      podAudio.src = podSrc;
-    }
-
+    // Lazy-load podcast src only when user clicks play
     function loadPodAudio() {
-      if (podAudio.readyState === 0 && podSrc) {
+      if (podSrc && !podAudio.getAttribute('src')) {
+        podAudio.src = podSrc;
         podAudio.load();
       }
     }

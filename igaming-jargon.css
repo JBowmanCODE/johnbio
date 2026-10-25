@@ -61,7 +61,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0 0 1.75rem;
 }
 
@@ -89,7 +89,7 @@ body {
   cursor: pointer;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   background: transparent;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
 }
 
 .igaming-mode-btn.active {
@@ -133,8 +133,8 @@ body {
   outline: none;
   transition: border-color 0.2s;
 }
-#igaming-input:focus { border-color: rgba(255,0,127,0.4); }
-#igaming-input::placeholder { color: rgba(248,245,253,0.2); }
+#igaming-input:focus { border-color: #ff5ca8; }
+#igaming-input::placeholder { color: rgba(248, 245, 253, 0.68); }
 
 /* ── TRANSLATE BUTTON ── */
 #igaming-translate-btn {
@@ -170,7 +170,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
   margin-bottom: 0.5rem;
 }
 

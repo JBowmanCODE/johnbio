@@ -367,11 +367,11 @@ const projects = [
     slide.className = 'hn-slide' + (i === 0 ? ' active' : '');
     slide.setAttribute('aria-label', post.title);
     slide.innerHTML = `
-      <img class="hn-slide-img" src="${post.image}" alt="${post.title}" loading="${i === 0 ? 'eager' : 'lazy'}" width="800" height="600">
+      <img class="hn-slide-img" src="${post.image}" alt="" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} width="690" height="385">
       <div class="hn-slide-overlay"></div>
       <div class="hn-slide-content">
         <span class="hn-cat hn-cat-${color}">${post.category}</span>
-        <h3 class="hn-title">${post.title}</h3>
+        <h2 class="hn-title">${post.title}</h2>
         <div class="hn-meta">${post.dateDisplay} &middot; ${post.readTime}</div>
         <span class="hn-read">Read article <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
       </div>
@@ -446,7 +446,7 @@ function buildCard(project, delay) {
 
   card.innerHTML = `
     <a href="${project.href}" target="_self" class="card-thumb">
-      <img src="${project.img}" alt="${project.title}" loading="lazy" width="400" height="240"
+      <img src="${project.img}" alt="${project.title}" loading="lazy" width="640" height="360"
         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
       />
       <div class="card-thumb-fallback" style="display:none; color: var(--${colorClass === 'cyan' ? 'secondary' : colorClass === 'green' ? 'secondary' : 'primary'})">

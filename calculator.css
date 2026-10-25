@@ -61,7 +61,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0 0 1.75rem;
 }
 
@@ -93,7 +93,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
   margin-bottom: 6px;
 }
 
@@ -112,8 +112,8 @@ body {
   transition: border-color 0.2s;
   margin: 0;
 }
-#calculator input:focus { border-color: rgba(255,0,127,0.45); }
-#calculator input::placeholder { color: rgba(248,245,253,0.2); font-weight: 400; }
+#calculator input:focus { border-color: #ff5ca8; }
+#calculator input::placeholder { color: rgba(248, 245, 253, 0.68); font-weight: 400; }
 
 /* Remove number input spinners */
 #calculator input[type=number]::-webkit-inner-spin-button,

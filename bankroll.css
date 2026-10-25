@@ -66,7 +66,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   margin: 1.75rem 0 0.75rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -106,7 +106,7 @@ body {
 }
 
 .radio-container:hover .checkmark {
-  border-color: rgba(255,0,127,0.6);
+  border-color: #ff5ca8;
 }
 
 .radio-container input:checked ~ .checkmark {
@@ -149,8 +149,8 @@ input[type="text"] {
   outline: none;
   transition: border-color 0.2s;
 }
-input[type="text"]:focus { border-color: rgba(255,0,127,0.4); }
-input[type="text"]::placeholder { color: rgba(248,245,253,0.25); }
+input[type="text"]:focus { border-color: #ff5ca8; }
+input[type="text"]::placeholder { color: rgba(248, 245, 253, 0.68); }
 
 /* ── SUBMIT BUTTON ── */
 .button-container {
@@ -203,19 +203,19 @@ input[type="text"]::placeholder { color: rgba(248,245,253,0.25); }
 .disclaimer {
   margin-top: 1rem;
   font-size: 0.75rem;
-  color: rgba(248,245,253,0.3);
+  color: rgba(248, 245, 253, 0.68);
   line-height: 1.5;
 }
 
 .disclaimer2 {
   margin-top: 1.25rem;
   font-size: 0.75rem;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   font-weight: 600;
 }
 
 .disclaimer2 a {
-  color: rgba(248,245,253,0.5);
+  color: rgba(248, 245, 253, 0.68);
 }
 
 /* ── FOCUS ACCESSIBILITY ── */

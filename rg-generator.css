@@ -286,7 +286,7 @@ body {
 
 .rg-copy-btn:hover {
   background: rgba(255,0,127,0.2);
-  border-color: rgba(255,0,127,0.5);
+  border-color: #ff5ca8;
 }
 
 .rg-copy-btn:active {

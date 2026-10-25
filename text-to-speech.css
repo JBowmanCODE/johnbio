@@ -61,7 +61,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0 0 1.75rem;
 }
 
@@ -98,7 +98,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
 }
 
 .tts-select {
@@ -120,7 +120,7 @@ body {
   background-position: right 0.75rem center;
   padding-right: 2rem;
 }
-.tts-select:focus { border-color: rgba(0,238,252,0.4); }
+.tts-select:focus { border-color: rgba(0, 238, 252, 0.85); }
 .tts-select option { background: #1a1a22; color: #f8f5fd; }
 
 /* ── TEXTAREA ── */
@@ -145,8 +145,8 @@ body {
   outline: none;
   transition: border-color 0.2s;
 }
-#tts-input:focus { border-color: rgba(0,238,252,0.4); }
-#tts-input::placeholder { color: rgba(248,245,253,0.2); }
+#tts-input:focus { border-color: rgba(0, 238, 252, 0.85); }
+#tts-input::placeholder { color: rgba(248, 245, 253, 0.68); }
 
 .tts-char-count {
   position: absolute;
@@ -154,7 +154,7 @@ body {
   right: 0.75rem;
   font-size: 0.68rem;
   font-weight: 600;
-  color: rgba(248,245,253,0.3);
+  color: rgba(248, 245, 253, 0.68);
   pointer-events: none;
 }
 
@@ -203,7 +203,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: rgba(0,238,252,0.5);
+  color: rgba(0, 238, 252, 0.85);
 }
 
 /* Custom player */
@@ -280,7 +280,7 @@ body {
 .tts-time {
   font-size: 0.65rem;
   font-weight: 600;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
 }
 
 /* Action buttons row */

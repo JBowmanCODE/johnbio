@@ -102,7 +102,7 @@ main {
   transition: border-color 0.5s ease, box-shadow 0.5s ease;
 }
 .hero-news:hover {
-  border-color: rgba(255,0,127,0.7);
+  border-color: #ff5ca8;
   box-shadow: 0 0 40px rgba(255,0,127,0.35), 0 0 80px rgba(255,0,127,0.15), 0 0 120px rgba(255,0,127,0.07);
 }
 
@@ -135,7 +135,7 @@ main {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.58rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.5); text-decoration: none;
+  color: rgba(255, 255, 255, 0.68); text-decoration: none;
   transition: color 0.2s;
 }
 .hn-view-all:hover { color: var(--secondary); }
@@ -201,7 +201,7 @@ main {
 .hn-meta {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.6rem; font-weight: 600;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255, 255, 255, 0.68);
   letter-spacing: 0.06em; text-transform: uppercase;
   margin-bottom: 0.55rem;
 }
@@ -240,10 +240,10 @@ main {
 }
 
 .code-var { color: #79c0ff; }
-.code-op  { color: rgba(248,245,253,0.4); }
-.code-bracket { color: rgba(248,245,253,0.6); }
+.code-op  { color: rgba(248, 245, 253, 0.68); }
+.code-bracket { color: rgba(248, 245, 253, 0.68); }
 .code-str { color: #a5d6ff; }
-.code-punct { color: rgba(248,245,253,0.4); margin-right: 0.3em; }
+.code-punct { color: rgba(248, 245, 253, 0.68); margin-right: 0.3em; }
 
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(30px); }
@@ -268,7 +268,7 @@ main {
   cursor: pointer; white-space: nowrap;
   transition: all 0.2s;
 }
-.filter-btn:hover { background: var(--surface-container-highest); color: var(--secondary); border-color: rgba(0,238,252,0.3); }
+.filter-btn:hover { background: var(--surface-container-highest); color: var(--secondary); border-color: rgba(0, 238, 252, 0.85); }
 .filter-btn.active { background: var(--primary); color: var(--on-primary); border-color: transparent; box-shadow: 0 0 16px rgba(255,0,127,0.3); }
 
 .search-wrap { position: relative; flex: 1; min-width: 220px; max-width: 320px; }
@@ -294,7 +294,7 @@ main {
   transition: border-color 0.2s, box-shadow 0.2s;
   box-shadow: 0 0 10px rgba(0,238,252,0.08);
 }
-.search-input::placeholder { color: rgba(172,170,177,0.5); }
+.search-input::placeholder { color: rgba(248, 245, 253, 0.68); }
 .search-input:focus { border-color: rgba(0,238,252,0.8); box-shadow: 0 0 20px rgba(0,238,252,0.15); }
 
 /* ── RESULTS COUNT ── */
@@ -331,12 +331,12 @@ main {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.card.cyan-card { border-color: rgba(0,238,252,0.15); box-shadow: inset 0 0 20px rgba(0,238,252,0.03); }
-.card.pink-card { border-color: rgba(255,0,127,0.15); box-shadow: inset 0 0 20px rgba(255,0,127,0.03); }
+.card.cyan-card { border-color: rgba(0, 238, 252, 0.85); box-shadow: inset 0 0 20px rgba(0,238,252,0.03); }
+.card.pink-card { border-color: #ff5ca8; box-shadow: inset 0 0 20px rgba(255,0,127,0.03); }
 .card.green-card { border-color: rgba(34,197,94,0.15); box-shadow: inset 0 0 20px rgba(34,197,94,0.03); }
 
-.card.cyan-card:hover { transform: translateY(-6px) scale(1.015); border-color: rgba(0,238,252,0.5); box-shadow: 0 0 30px rgba(0,238,252,0.12), 0 20px 40px rgba(0,0,0,0.4); }
-.card.pink-card:hover { transform: translateY(-6px) scale(1.015); border-color: rgba(255,0,127,0.5); box-shadow: 0 0 30px rgba(255,0,127,0.12), 0 20px 40px rgba(0,0,0,0.4); }
+.card.cyan-card:hover { transform: translateY(-6px) scale(1.015); border-color: rgba(0, 238, 252, 0.85); box-shadow: 0 0 30px rgba(0,238,252,0.12), 0 20px 40px rgba(0,0,0,0.4); }
+.card.pink-card:hover { transform: translateY(-6px) scale(1.015); border-color: #ff5ca8; box-shadow: 0 0 30px rgba(255,0,127,0.12), 0 20px 40px rgba(0,0,0,0.4); }
 .card.green-card:hover { transform: translateY(-6px) scale(1.015); border-color: rgba(34,197,94,0.5); box-shadow: 0 0 30px rgba(34,197,94,0.12), 0 20px 40px rgba(0,0,0,0.4); }
 
 .card-hidden { display: none !important; }
@@ -445,7 +445,7 @@ main {
 }
 .show-more-btn .material-symbols-outlined { font-size: 1rem; }
 .show-more-btn:hover {
-  border-color: rgba(255,0,127,0.4);
+  border-color: #ff5ca8;
   color: var(--on-surface);
   background: rgba(35,35,42,0.8);
 }

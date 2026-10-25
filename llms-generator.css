@@ -109,7 +109,7 @@
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
-.lg-url-input::placeholder { color: rgba(172,170,177,0.45); }
+.lg-url-input::placeholder { color: rgba(248, 245, 253, 0.68); }
 .lg-url-input:focus {
   border-color: rgba(34,197,94,0.7);
   box-shadow: 0 0 16px rgba(34,197,94,0.12);
@@ -131,7 +131,7 @@
   line-height: 1.6;
   box-sizing: border-box;
 }
-.lg-textarea::placeholder { color: rgba(172,170,177,0.45); }
+.lg-textarea::placeholder { color: rgba(248, 245, 253, 0.68); }
 .lg-textarea:focus {
   border-color: rgba(34,197,94,0.7);
   box-shadow: 0 0 16px rgba(34,197,94,0.12);

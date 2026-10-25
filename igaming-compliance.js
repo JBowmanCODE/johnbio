@@ -1602,7 +1602,7 @@ function refreshTable() {
       <td>${escHtml(jurisdiction)}</td>
       <td><span class="igc-badge igc-badge-${reg.category}">${catLabel(reg.category)}</span></td>
       <td>
-        <a class="igc-table-link" href="${reg.url}" target="_blank" rel="noopener noreferrer">
+        <a class="igc-table-link" href="${reg.url}" target="_blank" rel="noopener noreferrer" aria-label="Official source for ${escHtml(reg.name)}">
           <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>Official
         </a>
       </td>
@@ -1689,7 +1689,7 @@ function showCountryPanel(isoId, countryName) {
     flagEl.textContent = meta.flag || '';
     nameEl.textContent = meta.name || countryName || isoId;
     countEl.textContent = 'No regulations tracked';
-    bodyEl.innerHTML = `<p style="color:rgba(248,245,253,0.4);font-size:0.82rem;padding:0.5rem 0">
+    bodyEl.innerHTML = `<p style="color:rgba(248,245,253,0.68);font-size:0.82rem;padding:0.5rem 0">
       No regulations are currently tracked for this jurisdiction in this database.
     </p>`;
     panel.hidden = false;

@@ -78,9 +78,9 @@
   line-height: 1.6;
   box-sizing: border-box;
 }
-.tcs-textarea::placeholder { color: rgba(172,170,177,0.45); }
+.tcs-textarea::placeholder { color: rgba(248, 245, 253, 0.68); }
 .tcs-textarea:focus {
-  border-color: rgba(0,238,252,0.7);
+  border-color: rgba(0, 238, 252, 0.85);
   box-shadow: 0 0 16px rgba(0,238,252,0.12);
 }
 
@@ -166,7 +166,7 @@
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 }
-.tcs-action-btn:hover { background: rgba(0,238,252,0.18); border-color: rgba(0,238,252,0.5); }
+.tcs-action-btn:hover { background: rgba(0,238,252,0.18); border-color: rgba(0, 238, 252, 0.85); }
 .tcs-action-btn .material-symbols-outlined { font-size: 0.9rem; }
 .tcs-action-btn.copied { color: #86efac; border-color: rgba(134,239,172,0.4); }
 

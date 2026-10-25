@@ -102,7 +102,7 @@ function renderRow(reg) {
       <td>${escHtml(jurisdiction)}</td>
       <td><span class="igc-badge igc-badge-${reg.category}">${catLabel(reg.category)}</span></td>
       <td>
-        <a class="igc-table-link" href="${reg.url}" target="_blank" rel="noopener noreferrer">
+        <a class="igc-table-link" href="${reg.url}" target="_blank" rel="noopener noreferrer" aria-label="Official source for ${escHtml(reg.name)}">
           <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>Official
         </a>
       </td>
@@ -168,8 +168,7 @@ function plural(n, word) {
   return n + ' ' + word + (n === 1 ? '' : 's');
 }
 
-const indexLinks = groups.map(g => `<a class="igc-jur-index-link" href="#jurisdiction-${g.slug}" ` +
-  `aria-label="${escHtml(g.name)} - ${plural(groupTotal(g), 'regulation')}">` +
+const indexLinks = groups.map(g => `<a class="igc-jur-index-link" href="#jurisdiction-${g.slug}">` +
   `<span aria-hidden="true">${g.flag}</span>${escHtml(g.name)}` +
   `<span class="igc-jur-index-count">${groupTotal(g)}</span></a>`).join('\n        ');
 

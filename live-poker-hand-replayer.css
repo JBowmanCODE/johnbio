@@ -124,7 +124,7 @@
   font-weight: 700; font-size: 0.85rem;
   line-height: 1;
 }
-.lpr-mini-card.red { color: #d21f3c; }
+.lpr-mini-card.red { color: #ff5c77; }
 .lpr-mini-card.back {
   background: repeating-linear-gradient(135deg, #2b2b36, #2b2b36 4px, #34344a 4px, #34344a 8px);
   border: 1px solid #48474d;
@@ -363,7 +363,7 @@
   font-size: clamp(0.7rem, 1.6vw, 1.05rem);
   letter-spacing: 0.55em;
   padding-left: 0.55em;
-  color: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.68);
   pointer-events: none;
 }
 .lpr-board { display: flex; gap: 9px; min-height: 66px; align-items: center; z-index: 1; }

@@ -57,6 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const CV_WORKER_URL = 'https://aitocv.ukjbowman.workers.dev/';
 
+    const _loadedScripts = {};
+    function loadExternalScript(src) {
+        if (_loadedScripts[src]) return _loadedScripts[src];
+        _loadedScripts[src] = new Promise((resolve, reject) => {
+            const el = document.createElement('script');
+            el.src = src;
+            el.onload = resolve;
+            el.onerror = () => { delete _loadedScripts[src]; reject(new Error('Failed to load ' + src)); };
+            document.head.appendChild(el);
+        });
+        return _loadedScripts[src];
+    }
+
     // --- Error Display ---
     function showError(message, isRateLimit = false) {
         if (!errorMessage) return;
@@ -125,10 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (fileExtension === 'txt') {
                 text = await file.text();
             } else if (fileExtension === 'docx') {
-                if (typeof mammoth === 'undefined') throw new Error('mammoth not loaded');
+                if (typeof mammoth === 'undefined') await loadExternalScript('https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js');
                 text = (await mammoth.extractRawText({ arrayBuffer: await file.arrayBuffer() })).value;
             } else if (fileExtension === 'pdf') {
-                if (typeof pdfjsLib === 'undefined') throw new Error('pdfjsLib not loaded');
+                if (typeof pdfjsLib === 'undefined') await loadExternalScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
                 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
                 const pdf = await pdfjsLib.getDocument({
                     data: await file.arrayBuffer(),
@@ -635,8 +648,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Download Handlers ---
     if (downloadDocxBtn) {
-        downloadDocxBtn.addEventListener('click', () => {
+        downloadDocxBtn.addEventListener('click', async () => {
             if (!enhancedCvText) return showError('No CV text available to download.');
+            if (typeof window.docx === 'undefined') await loadExternalScript('https://unpkg.com/docx@7.8.2/build/index.js');
             const cvData = parseCvForGeneration(enhancedCvText);
             const personName = cvData.name ? cvData.name.trim().replace(/\s+/g, '_') : 'Enhanced';
             const doc = createDocxDocument(cvData);
@@ -647,6 +661,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (downloadPdfBtn) {
         downloadPdfBtn.addEventListener('click', async () => {
             if (!enhancedCvText) return showError('No CV text available to download.');
+            if (typeof window.jspdf === 'undefined') await loadExternalScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.0.0/jspdf.umd.min.js');
             const cvData = parseCvForGeneration(enhancedCvText);
             const personName = cvData.name ? cvData.name.trim().replace(/\s+/g, '_') : 'Enhanced';
             const fileName = `${personName}_CV.pdf`;
@@ -831,8 +846,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     if (downloadCoverLetterDocxBtn) {
-        downloadCoverLetterDocxBtn.addEventListener('click', () => {
+        downloadCoverLetterDocxBtn.addEventListener('click', async () => {
             if (!coverLetterText) return showError('No cover letter text available.');
+            if (typeof window.docx === 'undefined') await loadExternalScript('https://unpkg.com/docx@7.8.2/build/index.js');
             const cvData = parseCvForGeneration(enhancedCvText);
             const personName = cvData.name ? cvData.name.trim().replace(/\s+/g, '_') : 'Cover_Letter';
             const doc = createCoverLetterDocx(coverLetterText);

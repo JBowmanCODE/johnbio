@@ -61,7 +61,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0 0 1.75rem;
 }
 
@@ -88,7 +88,7 @@ body {
 }
 
 .genz-panel-output {
-  border-color: rgba(0,238,252,0.12);
+  border-color: rgba(0, 238, 252, 0.85);
 }
 
 .genz-panel-label {
@@ -96,7 +96,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
 }
 
 /* ── TEXTAREA ── */
@@ -116,8 +116,8 @@ body {
   outline: none;
   transition: border-color 0.2s;
 }
-#input-text:focus { border-color: rgba(255,0,127,0.4); }
-#input-text::placeholder { color: rgba(248,245,253,0.2); }
+#input-text:focus { border-color: #ff5ca8; }
+#input-text::placeholder { color: rgba(248, 245, 253, 0.68); }
 
 /* ── OUTPUT ── */
 #output-text {
@@ -152,7 +152,7 @@ body {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 0.5rem;
-  color: rgba(248,245,253,0.55);
+  color: rgba(248, 245, 253, 0.68);
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
@@ -161,7 +161,7 @@ body {
   white-space: nowrap;
 }
 .file-label .material-symbols-outlined { font-size: 1rem; }
-.file-label:hover { border-color: rgba(255,0,127,0.3); color: rgba(248,245,253,0.85); }
+.file-label:hover { border-color: #ff5ca8; color: rgba(248,245,253,0.85); }
 
 #translate-btn {
   flex: 1;
@@ -205,10 +205,10 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   transition: color 0.2s, border-color 0.2s, transform 0.3s;
 }
-#swap-btn:hover { color: rgba(248,245,253,0.9); border-color: rgba(248,245,253,0.4); }
+#swap-btn:hover { color: rgba(248,245,253,0.9); border-color: rgba(248, 245, 253, 0.68); }
 #swap-btn.swapped { transform: rotate(180deg); color: #ff007f; border-color: #ff007f; }
 #swap-btn .material-symbols-outlined { font-size: 1.4rem; }
 
@@ -222,7 +222,7 @@ body {
   background: rgba(248,245,253,0.04);
   border: 1px solid rgba(248,245,253,0.1);
   border-radius: 10px;
-  color: rgba(248,245,253,0.45);
+  color: rgba(248, 245, 253, 0.68);
   font-size: 0.85rem;
   line-height: 1.5;
 }

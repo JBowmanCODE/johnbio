@@ -245,7 +245,7 @@ function renderHeroCard(progress) {
   const allDone = doneLessons === currentUnit.lessons.length;
 
   card.innerHTML = `
-    ${currentUnit.img ? `<img class="cd-hero-img" src="/images/course/${currentUnit.img}" alt="" aria-hidden="true">` : ''}
+    ${currentUnit.img ? `<img class="cd-hero-img" src="/images/course/${currentUnit.img}" alt="" aria-hidden="true" width="690" height="385">` : ''}
     <div class="cd-hero-inner">
       <div class="cd-hero-body">
         <span class="cd-hero-badge">${allDone ? 'Complete' : 'Current module'}</span>

@@ -75,17 +75,17 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0;
 }
 
 .igc-last-updated {
   display: flex; align-items: center; gap: 0.3rem;
-  font-size: 0.78rem; color: rgba(255,255,255,0.35);
+  font-size: 0.78rem; color: rgba(255, 255, 255, 0.68);
   margin: 0.5rem 0 0;
 }
 .igc-last-updated .material-symbols-outlined { font-size: 0.95rem; }
-.igc-last-updated time { color: rgba(255,255,255,0.5); }
+.igc-last-updated time { color: rgba(255, 255, 255, 0.68); }
 
 /* ── STATS BAR ── */
 .igc-stats {
@@ -116,7 +116,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
 }
 
 /* ── FILTERS ── */
@@ -143,7 +143,7 @@ body {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 9999px;
-  color: rgba(248,245,253,0.55);
+  color: rgba(248, 245, 253, 0.68);
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
@@ -153,12 +153,12 @@ body {
 }
 
 .igc-chip:hover {
-  border-color: rgba(255,0,127,0.3);
+  border-color: #ff5ca8;
   color: rgba(248,245,253,0.85);
 }
 
 .igc-chip.active {
-  border-color: rgba(255,0,127,0.6);
+  border-color: #ff5ca8;
   color: #FF007F;
   background: rgba(255,0,127,0.08);
 }
@@ -182,7 +182,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
   font-size: 1rem;
-  color: rgba(248,245,253,0.3);
+  color: rgba(248, 245, 253, 0.68);
   pointer-events: none;
 }
 
@@ -199,8 +199,8 @@ body {
   width: 220px;
 }
 
-.igc-search:focus { border-color: rgba(255,0,127,0.4); }
-.igc-search::placeholder { color: rgba(248,245,253,0.2); }
+.igc-search:focus { border-color: #ff5ca8; }
+.igc-search::placeholder { color: rgba(248, 245, 253, 0.68); }
 
 /* ── MAP LAYOUT ── */
 .igc-map-layout {
@@ -240,7 +240,7 @@ body {
   gap: 0.35rem;
   font-size: 0.65rem;
   font-weight: 600;
-  color: rgba(248,245,253,0.45);
+  color: rgba(248, 245, 253, 0.68);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -303,13 +303,13 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255,0,127,0.8);
+  color: #ff5ca8;
 }
 
 .igc-panel-close {
   background: none;
   border: none;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   cursor: pointer;
   padding: 0.25rem;
   border-radius: 0.375rem;
@@ -349,7 +349,7 @@ body {
   transition: border-color 0.2s;
 }
 
-.igc-reg-card:hover { border-color: rgba(255,0,127,0.25); }
+.igc-reg-card:hover { border-color: #ff5ca8; }
 
 .igc-reg-card-top {
   display: flex;
@@ -366,7 +366,7 @@ body {
 }
 
 .igc-reg-card-link {
-  color: rgba(248,245,253,0.3);
+  color: rgba(248, 245, 253, 0.68);
   flex-shrink: 0;
   transition: color 0.2s;
   display: flex;
@@ -378,7 +378,7 @@ body {
 
 .igc-reg-card-notes {
   font-size: 0.72rem;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   line-height: 1.4;
 }
 
@@ -428,7 +428,7 @@ body {
 .igc-db-subtitle {
   font-size: 0.72rem;
   font-weight: 600;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
   text-transform: uppercase;
   letter-spacing: 0.07em;
 }
@@ -477,7 +477,7 @@ body {
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.07);
   border-radius: 0.5rem;
-  color: rgba(248,245,253,0.45);
+  color: rgba(248, 245, 253, 0.68);
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
@@ -487,13 +487,13 @@ body {
 }
 
 .igc-tab:hover {
-  border-color: rgba(255,0,127,0.25);
+  border-color: #ff5ca8;
   color: rgba(248,245,253,0.75);
 }
 
 .igc-tab.active {
   background: rgba(255,0,127,0.1);
-  border-color: rgba(255,0,127,0.45);
+  border-color: #ff5ca8;
   color: #FF007F;
 }
 
@@ -524,7 +524,7 @@ body {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   white-space: nowrap;
 }
 
@@ -558,7 +558,7 @@ body {
   margin-top: 0.3rem;
   font-size: 0.72rem;
   font-weight: 400;
-  color: rgba(248,245,253,0.45);
+  color: rgba(248, 245, 253, 0.68);
   line-height: 1.45;
 }
 
@@ -569,12 +569,12 @@ body {
 
 .igc-table td:nth-child(2) {
   font-size: 0.75rem;
-  color: rgba(248,245,253,0.5);
+  color: rgba(248, 245, 253, 0.68);
   white-space: nowrap;
 }
 
 .igc-table-link {
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -594,7 +594,7 @@ body {
   gap: 0.5rem;
   padding: 3rem 1rem;
   text-align: center;
-  color: rgba(248,245,253,0.3);
+  color: rgba(248, 245, 253, 0.68);
 }
 
 .igc-table-empty .material-symbols-outlined { font-size: 2rem; }
@@ -608,7 +608,7 @@ body {
 
 .igc-jur-intro {
   font-size: 0.8rem;
-  color: rgba(248,245,253,0.5);
+  color: rgba(248, 245, 253, 0.68);
   line-height: 1.55;
   margin: 0 0 1rem;
   max-width: 70ch;
@@ -617,7 +617,7 @@ body {
 .igc-jur-intro code {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.74rem;
-  color: rgba(255,0,127,0.9);
+  color: #ff5ca8;
   background: rgba(255,0,127,0.07);
   border-radius: 0.3rem;
   padding: 0.1rem 0.35rem;
@@ -638,7 +638,7 @@ body {
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.07);
   border-radius: 9999px;
-  color: rgba(248,245,253,0.6);
+  color: rgba(248, 245, 253, 0.68);
   font-size: 0.72rem;
   font-weight: 600;
   text-decoration: none;
@@ -647,7 +647,7 @@ body {
 
 .igc-jur-index-link:hover,
 .igc-jur-index-link:focus-visible {
-  border-color: rgba(255,0,127,0.35);
+  border-color: #ff5ca8;
   background: rgba(255,0,127,0.06);
   color: var(--on-surface, #f8f5fd);
 }
@@ -655,7 +655,7 @@ body {
 .igc-jur-index-count {
   font-size: 0.62rem;
   font-weight: 800;
-  color: rgba(255,0,127,0.8);
+  color: #ff5ca8;
 }
 
 .igc-jur-grid {
@@ -675,7 +675,7 @@ body {
 }
 
 .igc-jur:target {
-  border-color: rgba(255,0,127,0.45);
+  border-color: #ff5ca8;
   background: rgba(255,0,127,0.04);
 }
 
@@ -700,12 +700,12 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0 0 0.75rem;
 }
 
 .igc-jur-filter {
-  color: rgba(255,0,127,0.85);
+  color: #ff5ca8;
   text-decoration: none;
   border-bottom: 1px dotted rgba(255,0,127,0.4);
 }
@@ -722,7 +722,7 @@ body {
   max-height: 400px;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255,0,127,0.35) transparent;
+  scrollbar-color: #ff5ca8 transparent;
 }
 
 .igc-jur-list::-webkit-scrollbar { width: 4px; }
@@ -749,23 +749,23 @@ body {
 .igc-jur-note {
   flex-basis: 100%;
   font-size: 0.72rem;
-  color: rgba(248,245,253,0.45);
+  color: rgba(248, 245, 253, 0.68);
   line-height: 1.45;
 }
 
 .igc-jur-also {
   font-size: 0.72rem;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   line-height: 1.5;
   margin: 0.75rem 0 0;
 }
 
-.igc-jur-also a { color: rgba(255,0,127,0.85); text-decoration: none; }
+.igc-jur-also a { color: #ff5ca8; text-decoration: none; }
 .igc-jur-also a:hover { text-decoration: underline; }
 
 .igc-jur-empty {
   font-size: 0.75rem;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   line-height: 1.5;
   margin: 0;
 }
@@ -800,7 +800,7 @@ body {
 .igc-emerging-card:hover {
   background: rgba(255,0,127,0.04);
   border-left-color: #FF007F;
-  border-color: rgba(255,0,127,0.2);
+  border-color: #ff5ca8;
 }
 
 .igc-emerging-card-title {
@@ -821,7 +821,7 @@ body {
 
 .igc-emerging-card-body {
   font-size: 0.78rem;
-  color: rgba(248,245,253,0.55);
+  color: rgba(248, 245, 253, 0.68);
   line-height: 1.5;
 }
 

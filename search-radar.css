@@ -87,7 +87,7 @@
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
-.sr-input::placeholder { color: rgba(172,170,177,0.55); }
+.sr-input::placeholder { color: rgba(248, 245, 253, 0.68); }
 .sr-input:focus, .sr-input:focus-visible {
   border-color: #00EEFC;
   box-shadow: 0 0 0 2px rgba(0,238,252,0.25);
@@ -108,7 +108,7 @@
   background: rgba(0,238,252,0.07); border: 1px solid rgba(0,238,252,0.25); color: #00EEFC;
   transition: background 0.2s, border-color 0.2s;
 }
-.sr-example:hover { background: rgba(0,238,252,0.15); border-color: rgba(0,238,252,0.5); }
+.sr-example:hover { background: rgba(0,238,252,0.15); border-color: rgba(0, 238, 252, 0.85); }
 
 .sr-scan-btn {
   display: flex; align-items: center; justify-content: center; gap: 0.5rem;
@@ -159,7 +159,7 @@
 .sr-platform.is-partial .sr-dot { background: #eab308; }
 .sr-platform.is-down { border-color: rgba(248,113,113,0.4); }
 .sr-platform.is-down .sr-dot { background: #f87171; }
-.sr-platform.is-empty { border-color: rgba(172,170,177,0.35); }
+.sr-platform.is-empty { border-color: rgba(248, 245, 253, 0.68); }
 .sr-platform.is-empty .sr-dot { background: #acaab1; }
 @keyframes srPulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
 .sr-platform-notes {
@@ -191,7 +191,7 @@
   background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.35); color: #86efac;
 }
 .sr-badge.is-rules { background: rgba(234,179,8,0.1); border-color: rgba(234,179,8,0.35); color: #fde68a; }
-.sr-badge.is-cached { background: rgba(0,238,252,0.08); border-color: rgba(0,238,252,0.3); color: #67e8f9; }
+.sr-badge.is-cached { background: rgba(0,238,252,0.08); border-color: rgba(0, 238, 252, 0.85); color: #67e8f9; }
 .sr-summary-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .sr-filters { display: flex; flex-wrap: wrap; gap: 0.4rem; flex-basis: 100%; }
 
@@ -209,9 +209,9 @@
 }
 .sr-action-btn:hover, .sr-card-copy:hover { background: rgba(34,197,94,0.18); border-color: rgba(34,197,94,0.55); }
 .sr-action-btn .material-symbols-outlined, .sr-card-copy .material-symbols-outlined { font-size: 0.95rem; }
-.sr-filter { border-radius: 999px; background: transparent; border-color: rgba(248,245,253,0.15); color: var(--on-surface-variant); }
-.sr-filter:hover { color: #00EEFC; border-color: rgba(0,238,252,0.4); }
-.sr-filter[aria-pressed="true"] { background: rgba(0,238,252,0.12); border-color: rgba(0,238,252,0.55); color: #00EEFC; }
+.sr-filter { border-radius: 999px; background: transparent; border-color: rgba(248, 245, 253, 0.68); color: var(--on-surface-variant); }
+.sr-filter:hover { color: #00EEFC; border-color: rgba(0, 238, 252, 0.85); }
+.sr-filter[aria-pressed="true"] { background: rgba(0,238,252,0.12); border-color: rgba(0, 238, 252, 0.85); color: #00EEFC; }
 .sr-filter-count { opacity: 0.75; font-weight: 600; }
 
 /* ── BENTO GRID ── */
@@ -224,7 +224,7 @@
   min-width: 0;
   animation: srFadeIn 0.35s ease;
 }
-.sr-bento-wide { grid-column: 1 / -1; border-color: rgba(0,238,252,0.25); box-shadow: 0 0 40px rgba(0,238,252,0.05); }
+.sr-bento-wide { grid-column: 1 / -1; border-color: rgba(0, 238, 252, 0.85); box-shadow: 0 0 40px rgba(0,238,252,0.05); }
 @keyframes srFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
 .sr-bento-head { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.9rem; }
@@ -263,7 +263,7 @@
   color: var(--on-surface); max-width: 100%; overflow-wrap: anywhere;
   transition: border-color 0.15s, background 0.15s, color 0.15s;
 }
-.sr-chip:hover { border-color: rgba(0,238,252,0.5); color: #00EEFC; background: rgba(0,238,252,0.06); }
+.sr-chip:hover { border-color: rgba(0, 238, 252, 0.85); color: #00EEFC; background: rgba(0,238,252,0.06); }
 
 .sr-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
 .sr-line {
@@ -274,7 +274,7 @@
   color: var(--on-surface); overflow-wrap: anywhere;
   transition: border-color 0.15s, background 0.15s;
 }
-.sr-line:hover { border-color: rgba(0,238,252,0.45); background: rgba(0,238,252,0.05); }
+.sr-line:hover { border-color: rgba(0, 238, 252, 0.85); background: rgba(0,238,252,0.05); }
 .sr-line-text { flex: 1; min-width: 0; }
 .sr-intent {
   flex-shrink: 0; margin-top: 0.12rem;

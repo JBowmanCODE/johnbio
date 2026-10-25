@@ -10,11 +10,11 @@ form.addEventListener('submit', (event) => {
   if (experience === 'never_played_online') {
     experienceText = '🎓Lets start with the <a href="https://pokerstarslearn.com/poker/learn/lesson/texas-holdem-rules/">Rules</a> & <a href="https://pokerstarslearn.com/poker/learn/course/the-basics/">Basics</a> of Poker.';
   } else if (experience === 'only_played_play_money') {
-    experienceText = '🎓Lets take a look at the differences between <a href="#/">Play Money and Real Money</a> Poker.';
+    experienceText = '🎓Lets take a look at the differences between <a href="https://www.pokerstarslearn.com/poker/learn/course/the-basics/" target="_blank" rel="noopener noreferrer">Play Money and Real Money</a> Poker.';
   } else if (experience === 'played_online_1_year') {
     experienceText = '🎓Pick a <a href="https://pokerstarslearn.com/poker/learn/courses/">Free Poker Course</a> to refresh your skills.';
   } else if (experience === 'played_live_1_year') {
-    experienceText = '🎓Here are the differences between <a href="#/">Online and Live</a> Poker.';
+    experienceText = '🎓Here are the differences between <a href="https://www.pokerstarslearn.com/poker/learn/course/the-basics/" target="_blank" rel="noopener noreferrer">Online and Live</a> Poker.';
   }
 
   // Question 2

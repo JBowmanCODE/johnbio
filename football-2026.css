@@ -150,13 +150,13 @@
 .f26-odds-rank {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1.1rem; font-weight: 900;
-  color: rgba(248,245,253,0.15);
+  color: rgba(248, 245, 253, 0.68);
   width: 2.5rem; flex-shrink: 0;
   line-height: 1;
 }
 .f26-odds-row:first-child .f26-odds-rank { color: #00EEFC; }
-.f26-odds-row:nth-child(2) .f26-odds-rank { color: rgba(0,238,252,0.5); }
-.f26-odds-row:nth-child(3) .f26-odds-rank { color: rgba(0,238,252,0.3); }
+.f26-odds-row:nth-child(2) .f26-odds-rank { color: rgba(0, 238, 252, 0.85); }
+.f26-odds-row:nth-child(3) .f26-odds-rank { color: rgba(0, 238, 252, 0.85); }
 .f26-odds-info {
   flex: 1; min-width: 0;
 }
@@ -209,7 +209,7 @@
   overflow: hidden;
   transition: border-color 0.2s;
 }
-.f26-group-card:hover { border-color: rgba(0,238,252,0.25); }
+.f26-group-card:hover { border-color: rgba(0, 238, 252, 0.85); }
 .f26-group-header {
   background: rgba(0,238,252,0.08);
   border-bottom: 1px solid rgba(0,238,252,0.12);
@@ -250,7 +250,7 @@
 .f26-pos-num {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.7rem; font-weight: 800;
-  color: rgba(248,245,253,0.2);
+  color: rgba(248, 245, 253, 0.68);
   width: 1.8rem;
 }
 .f26-advance .f26-pos-num { color: #00EEFC; }
@@ -283,7 +283,7 @@
   padding: 0.15rem 0.4rem;
   border-radius: 0.2rem;
   background: rgba(0,238,252,0.06);
-  color: rgba(0,238,252,0.45);
+  color: rgba(0, 238, 252, 0.85);
   border: 1px solid rgba(0,238,252,0.15);
   cursor: pointer; white-space: nowrap;
   transition: all 0.18s;
@@ -291,7 +291,7 @@
 .f26-promote-btn:hover {
   background: rgba(0,238,252,0.14);
   color: #00EEFC;
-  border-color: rgba(0,238,252,0.35);
+  border-color: rgba(0, 238, 252, 0.85);
 }
 .f26-adv-cell {
   display: flex; align-items: center; justify-content: flex-end; gap: 0.3rem;
@@ -378,7 +378,7 @@
 .f26-fixtures-toggle {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.75rem; font-weight: 700;
-  color: rgba(0,238,252,0.5);
+  color: rgba(0, 238, 252, 0.85);
   width: 1rem; text-align: center;
 }
 .f26-fixtures {
@@ -417,7 +417,7 @@
   overflow-x: auto;
   padding-bottom: 1rem;
   scrollbar-width: thin;
-  scrollbar-color: rgba(0,238,252,0.25) transparent;
+  scrollbar-color: rgba(0, 238, 252, 0.85) transparent;
 }
 .f26-bracket-scroll::-webkit-scrollbar { height: 4px; }
 .f26-bracket-scroll::-webkit-scrollbar-track { background: transparent; }
@@ -494,7 +494,7 @@
   display: flex; flex-direction: column;
   transition: border-color 0.2s;
 }
-.f26-match:hover { border-color: rgba(0,238,252,0.2); }
+.f26-match:hover { border-color: rgba(0, 238, 252, 0.85); }
 
 .f26-team-pick {
   height: 24px;
@@ -502,7 +502,7 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.68rem; font-weight: 600;
   background: none; border: none;
-  color: rgba(248,245,253,0.45);
+  color: rgba(248, 245, 253, 0.68);
   cursor: pointer; text-align: left;
   transition: background 0.15s, color 0.15s;
   line-height: 1; white-space: nowrap;
@@ -536,7 +536,7 @@
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 }
-.f26-reset-btn:hover { background: rgba(0,238,252,0.15); border-color: rgba(0,238,252,0.4); }
+.f26-reset-btn:hover { background: rgba(0,238,252,0.15); border-color: rgba(0, 238, 252, 0.85); }
 .f26-reset-btn .material-symbols-outlined { font-size: 0.9rem; }
 
 /* ── FINAL CARD ── */
@@ -564,7 +564,7 @@
 }
 .f26-share-btn:hover {
   background: rgba(0,238,252,0.18);
-  border-color: rgba(0,238,252,0.6);
+  border-color: rgba(0, 238, 252, 0.85);
   box-shadow: 0 0 16px rgba(0,238,252,0.15);
 }
 .f26-share-btn .material-symbols-outlined { font-size: 1.1rem; }
@@ -606,7 +606,7 @@
 }
 .f26-share-dl:hover, .f26-share-native:hover {
   background: rgba(0,238,252,0.18);
-  border-color: rgba(0,238,252,0.55);
+  border-color: rgba(0, 238, 252, 0.85);
 }
 .f26-share-dl .material-symbols-outlined,
 .f26-share-native .material-symbols-outlined { font-size: 1rem; }
@@ -621,7 +621,7 @@
   transition: opacity 0.15s, border-color 0.15s;
   opacity: 0.82;
 }
-.f26-soc-btn:hover { opacity: 1; border-color: rgba(255,255,255,0.3); }
+.f26-soc-btn:hover { opacity: 1; border-color: rgba(255, 255, 255, 0.68); }
 .f26-soc-x        { background: #000; color: #fff; }
 .f26-soc-li       { background: #0a66c2; color: #fff; }
 .f26-soc-fb       { background: #1877f2; color: #fff; }
@@ -634,7 +634,7 @@
 .f26-sharing-credit {
   text-align: center;
   font-size: 0.78rem;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0.75rem 0 2rem;
 }
 .f26-sharing-credit a {
@@ -691,10 +691,10 @@
   cursor: pointer; transition: all 0.2s;
   position: relative;
 }
-.f26-final-team:hover { background: rgba(0,238,252,0.06); border-color: rgba(0,238,252,0.2); }
+.f26-final-team:hover { background: rgba(0,238,252,0.06); border-color: rgba(0, 238, 252, 0.85); }
 .f26-final-team.f26-winner {
   background: rgba(0,238,252,0.08);
-  border-color: rgba(0,238,252,0.3);
+  border-color: rgba(0, 238, 252, 0.85);
   box-shadow: 0 0 30px rgba(0,238,252,0.08);
 }
 .f26-final-crest {
@@ -708,7 +708,7 @@
   color: #00EEFC; letter-spacing: 0.05em;
 }
 .f26-final-team.f26-winner .f26-final-crest {
-  border-color: rgba(0,238,252,0.5);
+  border-color: rgba(0, 238, 252, 0.85);
   box-shadow: 0 0 20px rgba(0,238,252,0.15);
 }
 .f26-final-teamname {
@@ -734,7 +734,7 @@
 .f26-final-vs {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1rem; font-weight: 900;
-  color: rgba(248,245,253,0.15); letter-spacing: 0.1em;
+  color: rgba(248, 245, 253, 0.68); letter-spacing: 0.1em;
 }
 .f26-final-instruction {
   font-size: 0.6rem; color: var(--on-surface-variant);
@@ -793,7 +793,7 @@
   box-shadow: 0 0 80px rgba(0,238,252,0.08);
   animation: f26ModalIn 0.22s ease;
   scrollbar-width: thin;
-  scrollbar-color: rgba(0,238,252,0.2) transparent;
+  scrollbar-color: rgba(0, 238, 252, 0.85) transparent;
 }
 @keyframes f26ModalIn { from { opacity: 0; transform: translateY(12px) scale(0.97); } to { opacity: 1; transform: none; } }
 .f26-modal-inner::-webkit-scrollbar { width: 4px; }

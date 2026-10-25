@@ -181,7 +181,7 @@
 
 .video-url-input:focus,
 .manual-transcript-input:focus {
-  border-color: rgba(255,0,127,0.4);
+  border-color: #ff5ca8;
   box-shadow: 0 0 0 3px rgba(255,0,127,0.08);
 }
 
@@ -328,11 +328,11 @@
   outline: none;
   transition: background 0.2s, border-color 0.2s;
 }
-.copy-button:hover { background: rgba(255,0,127,0.12); border-color: rgba(255,0,127,0.3); }
+.copy-button:hover { background: rgba(255,0,127,0.12); border-color: #ff5ca8; }
 .copy-button svg {
   width: 16px; height: 16px;
   display: block;
-  color: rgba(248,245,253,0.6) !important;
+  color: rgba(248, 245, 253, 0.68) !important;
   stroke: rgba(248,245,253,0.6) !important;
 }
 

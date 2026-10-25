@@ -31,7 +31,7 @@
       <span class="material-symbols-outlined nc-trigger-chevron" aria-hidden="true">expand_more</span>
     </button>
 
-    <div class="nc-panel" id="nc-panel" aria-hidden="true">
+    <div class="nc-panel" id="nc-panel" aria-hidden="true" inert>
       <div class="nc-panel-inner">
 
         <div class="nc-messages" id="nc-messages" role="log" aria-live="polite" aria-label="Chat messages">
@@ -106,6 +106,7 @@
     card.classList.add('open');
     triggerBtn.setAttribute('aria-expanded', 'true');
     panel.setAttribute('aria-hidden', 'false');
+    panel.removeAttribute('inert');
     if (!articleText) {
       const body = document.querySelector('.na-body');
       articleText = body ? body.innerText.trim() : '';
@@ -125,6 +126,7 @@
     card.classList.remove('open');
     triggerBtn.setAttribute('aria-expanded', 'false');
     panel.setAttribute('aria-hidden', 'true');
+    panel.setAttribute('inert', '');
     overlay.classList.remove('visible');
   }
 

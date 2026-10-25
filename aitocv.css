@@ -1054,10 +1054,10 @@ textarea:focus {
   text-align: center;
   padding: 1.25rem 1rem;
   font-size: 0.8rem;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
 }
 .domain-note a {
-  color: rgba(248,245,253,0.6);
+  color: rgba(248, 245, 253, 0.68);
   text-decoration: underline;
   text-underline-offset: 3px;
 }

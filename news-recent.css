@@ -105,7 +105,7 @@
 .nr-date,
 .nr-read {
   font-size: 0.72rem;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
 }
 
 .nr-date::after {
@@ -129,7 +129,7 @@
 
 .nr-excerpt {
   font-size: 0.78rem;
-  color: rgba(248,245,253,0.45);
+  color: rgba(248, 245, 253, 0.68);
   line-height: 1.55;
   margin: 0;
   display: -webkit-box;
@@ -151,7 +151,7 @@
   padding: 0.15rem 0.45rem;
   border-radius: 4px;
   background: rgba(248,245,253,0.06);
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   border: 1px solid rgba(248,245,253,0.07);
 }
 

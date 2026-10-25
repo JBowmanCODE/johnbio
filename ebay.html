@@ -30,12 +30,12 @@
   <meta name="twitter:description" content="Calculate your profit from eBay and Vinted sales including fees, postage and purchase costs.">
   <meta name="twitter:image" content="https://johnb.io/og_images/ebay_og.webp">
   <meta name="twitter:image:alt" content="Profit Calculator - JohnB.io">
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <link rel="stylesheet" href="/styles.css?v=5">
-  <link rel="stylesheet" href="/header.css?v=7">
-  <link rel="stylesheet" href="/footer.css?v=3">
+  <link rel="stylesheet" href="/styles.css?v=6">
+  <link rel="stylesheet" href="/header.css?v=8">
+  <link rel="stylesheet" href="/footer.css?v=4">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: "Segoe UI", -apple-system, sans-serif; padding-top: 72px; }
@@ -163,6 +163,7 @@
     ]
   }
   </script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="header-placeholder"></div>
@@ -279,7 +280,7 @@
     <!-- Static site navigation: real crawlable links for search/AI crawlers and no-JS visitors.
          scripts.js:loadHeaderAndFooter() replaces this block with footer.html for everyone else. -->
     <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
-      <style>.crawl-nav{max-width:1280px;margin:0 auto;padding:3rem 2rem;border-top:1px solid rgba(248,245,253,0.07);font-family:'Space Grotesk',sans-serif;color:var(--on-surface-variant,#acaab1)}.crawl-nav-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,245,253,0.4);margin:0 0 1rem}.crawl-nav-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.5rem;font-size:0.85rem;line-height:1.6}.crawl-nav-list a{color:#00EEFC;text-decoration:none}.crawl-nav-list a:hover,.crawl-nav-list a:focus-visible{text-decoration:underline}</style>
+      <style>.crawl-nav{max-width:1280px;margin:0 auto;padding:3rem 2rem;border-top:1px solid rgba(248,245,253,0.07);font-family:'Space Grotesk',sans-serif;color:var(--on-surface-variant,#acaab1)}.crawl-nav-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,245,253,0.68);margin:0 0 1rem}.crawl-nav-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.5rem;font-size:0.85rem;line-height:1.6}.crawl-nav-list a{color:#00EEFC;text-decoration:none}.crawl-nav-list a:hover,.crawl-nav-list a:focus-visible{text-decoration:underline}</style>
       <p class="crawl-nav-title">Explore JohnB.io</p>
       <ul class="crawl-nav-list">
         <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
@@ -305,7 +306,7 @@
       </ul>
     </nav>
   </div>
-  <script src="/scripts.js?v=10"></script>
+  <script src="/scripts.js?v=11" defer></script>
   <script type="text/babel">
     const { useState, useEffect } = React;
     
@@ -1226,7 +1227,7 @@ function ProfitCalculator() {
             }}
           >
             <span style={{ color: '#09b1ba' }}>Vinted</span>
-            <span style={{ color: '#444' }}>→</span>
+            <span style={{ color: '#9ca3af' }}>→</span>
             <span style={{ color: '#f5af02' }}>eBay</span>
             {vintedItems.length > 0 && (
               <span style={{
@@ -1257,7 +1258,7 @@ function ProfitCalculator() {
             }}
           >
             <span style={{ color: '#e63946' }}>Sale Room</span>
-            <span style={{ color: '#444' }}>→</span>
+            <span style={{ color: '#9ca3af' }}>→</span>
             <span style={{ color: '#f5af02' }}>eBay</span>
             {saleroomItems.length > 0 && (
               <span style={{
@@ -1288,7 +1289,7 @@ function ProfitCalculator() {
             }}
           >
             <span style={{ color: '#f5af02' }}>eBay</span>
-            <span style={{ color: '#444' }}>→</span>
+            <span style={{ color: '#9ca3af' }}>→</span>
             <span style={{ color: '#f5af02' }}>eBay</span>
             {ebayItems.length > 0 && (
               <span style={{
@@ -1317,10 +1318,10 @@ function ProfitCalculator() {
             {activeTab === 'vinted' && (
               <>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <label style={{ fontSize: '12px', color: '#666' }}>eBay Fee:</label>
+                  <label style={{ fontSize: '12px', color: '#9ca3af' }}>eBay Fee:</label>
                   <input
                     type="number"
-                    value={ebayFeePercent}
+                    aria-label="eBay fee percentage" value={ebayFeePercent}
                     onChange={e => {
                       const newFee = parseFloat(e.target.value) || 0;
                       setEbayFeePercent(newFee);
@@ -1344,17 +1345,17 @@ function ProfitCalculator() {
                       textAlign: 'center'
                     }}
                   />
-                  <span style={{ fontSize: '12px', color: '#666' }}>%</span>
+                  <span style={{ fontSize: '12px', color: '#9ca3af' }}>%</span>
                 </div>
                 
                 {/* Feature 2: Default postage */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <label style={{ fontSize: '12px', color: '#666' }}>Default Postage:</label>
-                  <span style={{ fontSize: '12px', color: '#666' }}>£</span>
+                  <label style={{ fontSize: '12px', color: '#9ca3af' }}>Default Postage:</label>
+                  <span style={{ fontSize: '12px', color: '#9ca3af' }}>£</span>
                   <input
                     type="number"
                     step="0.50"
-                    value={defaultPostage}
+                    aria-label="Default postage cost" value={defaultPostage}
                     onChange={e => setDefaultPostage(parseFloat(e.target.value) || 0)}
                     style={{
                       width: '55px',
@@ -1393,10 +1394,10 @@ function ProfitCalculator() {
             {activeTab === 'ebay' && (
               <>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <label style={{ fontSize: '12px', color: '#666' }}>eBay Fee:</label>
+                  <label style={{ fontSize: '12px', color: '#9ca3af' }}>eBay Fee:</label>
                   <input
                     type="number"
-                    value={ebayFeePercent}
+                    aria-label="eBay fee percentage" value={ebayFeePercent}
                     onChange={e => {
                       const newFee = parseFloat(e.target.value) || 0;
                       setEbayFeePercent(newFee);
@@ -1419,17 +1420,17 @@ function ProfitCalculator() {
                       textAlign: 'center'
                     }}
                   />
-                  <span style={{ fontSize: '12px', color: '#666' }}>%</span>
+                  <span style={{ fontSize: '12px', color: '#9ca3af' }}>%</span>
                 </div>
               
                 {/* Feature 2: Default postage for eBay tab */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <label style={{ fontSize: '12px', color: '#666' }}>Default Postage:</label>
-                  <span style={{ fontSize: '12px', color: '#666' }}>£</span>
+                  <label style={{ fontSize: '12px', color: '#9ca3af' }}>Default Postage:</label>
+                  <span style={{ fontSize: '12px', color: '#9ca3af' }}>£</span>
                 <input
                   type="number"
                   step="0.50"
-                  value={defaultPostage}
+                  aria-label="Default postage cost" value={defaultPostage}
                   onChange={e => setDefaultPostage(parseFloat(e.target.value) || 0)}
                   style={{
                     width: '55px',
@@ -1468,11 +1469,11 @@ function ProfitCalculator() {
             {activeTab === 'saleroom' && (
               <>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <label style={{ fontSize: '12px', color: '#666' }}>Buyer's Premium:</label>
+                  <label style={{ fontSize: '12px', color: '#9ca3af' }}>Buyer's Premium:</label>
                   <input
                     type="number"
                     step="0.01"
-                    value={buyersPremium}
+                    aria-label="Buyer premium percentage" value={buyersPremium}
                     onChange={e => setBuyersPremium(parseFloat(e.target.value) || 0)}
                     style={{
                       width: '55px',
@@ -1485,14 +1486,14 @@ function ProfitCalculator() {
                       textAlign: 'center'
                     }}
                   />
-                  <span style={{ fontSize: '12px', color: '#666' }}>%</span>
+                  <span style={{ fontSize: '12px', color: '#9ca3af' }}>%</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <label style={{ fontSize: '12px', color: '#666' }}>Online Commission:</label>
+                  <label style={{ fontSize: '12px', color: '#9ca3af' }}>Online Commission:</label>
                   <input
                     type="number"
                     step="0.01"
-                    value={onlineCommission}
+                    aria-label="Online commission percentage" value={onlineCommission}
                     onChange={e => setOnlineCommission(parseFloat(e.target.value) || 0)}
                     style={{
                       width: '55px',
@@ -1505,14 +1506,14 @@ function ProfitCalculator() {
                       textAlign: 'center'
                     }}
                   />
-                  <span style={{ fontSize: '12px', color: '#666' }}>%</span>
+                  <span style={{ fontSize: '12px', color: '#9ca3af' }}>%</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <label style={{ fontSize: '12px', color: '#666' }}>eBay Fee:</label>
+                  <label style={{ fontSize: '12px', color: '#9ca3af' }}>eBay Fee:</label>
                   <input
                     type="number"
                     step="0.01"
-                    value={ebayFeePercent}
+                    aria-label="eBay fee percentage" value={ebayFeePercent}
                     onChange={e => setEbayFeePercent(parseFloat(e.target.value) || 0)}
                     style={{
                       width: '50px',
@@ -1525,14 +1526,14 @@ function ProfitCalculator() {
                       textAlign: 'center'
                     }}
                   />
-                  <span style={{ fontSize: '12px', color: '#666' }}>%</span>
+                  <span style={{ fontSize: '12px', color: '#9ca3af' }}>%</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <label style={{ fontSize: '12px', color: '#666' }}>Desired Profit:</label>
+                  <label style={{ fontSize: '12px', color: '#9ca3af' }}>Desired Profit:</label>
                   <input
                     type="number"
                     step="1"
-                    value={desiredProfitPercent}
+                    aria-label="Desired profit percentage" value={desiredProfitPercent}
                     onChange={e => setDesiredProfitPercent(parseFloat(e.target.value) || 0)}
                     style={{
                       width: '50px',
@@ -1545,7 +1546,7 @@ function ProfitCalculator() {
                       textAlign: 'center'
                     }}
                   />
-                  <span style={{ fontSize: '12px', color: '#666' }}>%</span>
+                  <span style={{ fontSize: '12px', color: '#9ca3af' }}>%</span>
                 </div>
                 
                 {/* Quick Calculator */}
@@ -1559,11 +1560,11 @@ function ProfitCalculator() {
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                     <label style={{ fontSize: '12px', color: '#e63946' }}>Quick Calc:</label>
-                    <span style={{ fontSize: '12px', color: '#666' }}>£</span>
+                    <span style={{ fontSize: '12px', color: '#9ca3af' }}>£</span>
                     <input
                       type="number"
                       step="0.01"
-                      value={quickAvgSale}
+                      aria-label="Estimated eBay sale price" value={quickAvgSale}
                       onChange={e => setQuickAvgSale(e.target.value)}
                       placeholder="Avg Sale"
                       style={{
@@ -1578,9 +1579,9 @@ function ProfitCalculator() {
                       }}
                     />
                   </div>
-                  <span style={{ fontSize: '12px', color: '#444' }}>→</span>
+                  <span style={{ fontSize: '12px', color: '#9ca3af' }}>→</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <span style={{ fontSize: '12px', color: '#666' }}>Max Bid:</span>
+                    <span style={{ fontSize: '12px', color: '#9ca3af' }}>Max Bid:</span>
                     <span style={{ 
                       fontSize: '12px', 
                       fontWeight: '600', 
@@ -1590,7 +1591,7 @@ function ProfitCalculator() {
                     </span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <span style={{ fontSize: '12px', color: '#666' }}>Total Cost:</span>
+                    <span style={{ fontSize: '12px', color: '#9ca3af' }}>Total Cost:</span>
                     <span style={{ 
                       fontSize: '12px', 
                       fontWeight: '600', 
@@ -1600,7 +1601,7 @@ function ProfitCalculator() {
                     </span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <span style={{ fontSize: '12px', color: '#666' }}>Profit:</span>
+                    <span style={{ fontSize: '12px', color: '#9ca3af' }}>Profit:</span>
                     <span style={{ 
                       fontSize: '12px', 
                       fontWeight: '600', 
@@ -1649,7 +1650,7 @@ function ProfitCalculator() {
                 
                 {/* Feature 4: Filter dropdown */}
                 <select
-                  value={profitFilter}
+                  aria-label="Filter items by profit" value={profitFilter}
                   onChange={e => setProfitFilter(e.target.value)}
                   style={{
                     background: '#1a1a1a',
@@ -1773,7 +1774,7 @@ function ProfitCalculator() {
             maxWidth: '1600px',
             margin: '0 auto'
           }}>
-            <span style={{ fontSize: '11px', color: '#555' }}>Quick Links:</span>
+            <span style={{ fontSize: '11px', color: '#9ca3af' }}>Quick Links:</span>
             <a
               href="https://www.the-saleroom.com/en-gb/auction-catalogues/gary-don"
               target="_blank"
@@ -1866,7 +1867,7 @@ function ProfitCalculator() {
             maxWidth: '1600px',
             margin: '0 auto'
           }}>
-            <span style={{ fontSize: '11px', color: '#555' }}>Quick Links:</span>
+            <span style={{ fontSize: '11px', color: '#9ca3af' }}>Quick Links:</span>
             <a
               href="https://www.vinted.co.uk/"
               target="_blank"
@@ -1914,7 +1915,7 @@ function ProfitCalculator() {
             maxWidth: '1600px',
             margin: '0 auto'
           }}>
-            <span style={{ fontSize: '11px', color: '#555' }}>Quick Links:</span>
+            <span style={{ fontSize: '11px', color: '#9ca3af' }}>Quick Links:</span>
             <a
               href="https://www.ebay.co.uk/"
               target="_blank"
@@ -2000,11 +2001,11 @@ function ProfitCalculator() {
         }}>
           <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-end' }}>
             <div style={{ flex: 1 }}>
-              <label style={{ fontSize: '12px', color: '#666', display: 'block', marginBottom: '6px' }}>
+              <label style={{ fontSize: '12px', color: '#9ca3af', display: 'block', marginBottom: '6px' }}>
                 Paste {activeTab === 'vinted' ? 'Vinted' : (activeTab === 'saleroom' ? 'Saleroom' : 'eBay')} data (JSON from console script) - Press Enter to extract
               </label>
               <textarea
-                value={htmlInput}
+                aria-label="Paste auction HTML" value={htmlInput}
                 onChange={e => setHtmlInput(e.target.value)}
                 onKeyDown={e => {
                   // Feature 8: Keyboard shortcut - Ctrl+Enter or Cmd+Enter to extract
@@ -2066,7 +2067,7 @@ function ProfitCalculator() {
               padding: '10px 16px',
               border: '1px solid #222'
             }}>
-              <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Items</div>
+              <div style={{ fontSize: '10px', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Items</div>
               <div style={{ fontSize: '18px', fontWeight: '600', color: '#fff' }}>{rawItems.length}</div>
             </div>
             
@@ -2076,7 +2077,7 @@ function ProfitCalculator() {
               padding: '10px 16px',
               border: '1px solid #222'
             }}>
-              <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Total Cost</div>
+              <div style={{ fontSize: '10px', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Total Cost</div>
               <div style={{ fontSize: '18px', fontWeight: '600', color: '#f5af02' }}>£{totalCost.toFixed(2)}</div>
             </div>
             
@@ -2086,7 +2087,7 @@ function ProfitCalculator() {
               padding: '10px 16px',
               border: '1px solid #222'
             }}>
-              <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Analyzed</div>
+              <div style={{ fontSize: '10px', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Analyzed</div>
               <div style={{ fontSize: '18px', fontWeight: '600', color: activeTab === 'vinted' ? '#09b1ba' : '#e63946' }}>{stats.analyzed}</div>
             </div>
             
@@ -2097,7 +2098,7 @@ function ProfitCalculator() {
               padding: '10px 16px',
               border: '1px solid #222'
             }}>
-              <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Profitable</div>
+              <div style={{ fontSize: '10px', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Profitable</div>
               <div style={{ fontSize: '18px', fontWeight: '600', color: '#a78bfa' }}>{stats.profitable}</div>
             </div>
             
@@ -2107,7 +2108,7 @@ function ProfitCalculator() {
               padding: '10px 16px',
               border: `1px solid ${totalProfit >= 0 ? '#1a2a1a' : '#2a1a1a'}`
             }}>
-              <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Total Profit</div>
+              <div style={{ fontSize: '10px', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Total Profit</div>
               <div style={{ 
                 fontSize: '18px', 
                 fontWeight: '600', 
@@ -2124,7 +2125,7 @@ function ProfitCalculator() {
               padding: '10px 16px',
               border: '1px solid #222'
             }}>
-              <div style={{ fontSize: '10px', color: '#555', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Avg ROI</div>
+              <div style={{ fontSize: '10px', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Avg ROI</div>
               <div style={{ 
                 fontSize: '18px', 
                 fontWeight: '600', 
@@ -2166,67 +2167,67 @@ function ProfitCalculator() {
               }}>
                 <thead style={{ position: 'sticky', top: 0, zIndex: 10 }}>
                   <tr style={{ background: '#1a1a1a' }}>
-                    <th style={{ padding: '10px 12px', textAlign: 'center', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '100px' }}>Image</th>
+                    <th style={{ padding: '10px 12px', textAlign: 'center', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', width: '100px' }}>Image</th>
                     {activeTab === 'saleroom' && (
-                      <th style={{ padding: '10px 12px', textAlign: 'center', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '50px' }}>Lot #</th>
+                      <th style={{ padding: '10px 12px', textAlign: 'center', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', width: '50px' }}>Lot #</th>
                     )}
                     <th 
                       onClick={() => toggleSort('title')}
-                      style={{ padding: '10px 12px', textAlign: 'left', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', cursor: 'pointer', userSelect: 'none' }}
+                      style={{ padding: '10px 12px', textAlign: 'left', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', cursor: 'pointer', userSelect: 'none' }}
                     >
                       {activeTab === 'vinted' ? 'Product Name' : (activeTab === 'ebay' ? 'Item Title' : 'Title')}
                       {sortColumn === 'title' && <span style={{ marginLeft: '4px' }}>{sortDirection === 'asc' ? '↑' : '↓'}</span>}
                     </th>
                     {activeTab === 'saleroom' && (
-                      <th style={{ padding: '10px 12px', textAlign: 'left', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '150px' }}>Identified As</th>
+                      <th style={{ padding: '10px 12px', textAlign: 'left', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', width: '150px' }}>Identified As</th>
                     )}
                     <th 
                       onClick={() => toggleSort('cost')}
-                      style={{ padding: '10px 12px', textAlign: 'right', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px', cursor: 'pointer', userSelect: 'none' }}
+                      style={{ padding: '10px 12px', textAlign: 'right', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px', cursor: 'pointer', userSelect: 'none' }}
                     >
                       {activeTab === 'saleroom' ? 'Estimate' : 'Cost'}
                       {sortColumn === 'cost' && <span style={{ marginLeft: '4px' }}>{sortDirection === 'asc' ? '↑' : '↓'}</span>}
                     </th>
-                    <th style={{ padding: '10px 12px', textAlign: 'center', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '90px' }}>
+                    <th style={{ padding: '10px 12px', textAlign: 'center', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', width: '90px' }}>
                       {activeTab === 'vinted' ? 'Vinted' : (activeTab === 'ebay' ? 'Listing' : 'Lot Page')}
                     </th>
                     {activeTab === 'saleroom' && (
-                      <th style={{ padding: '10px 12px', textAlign: 'center', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px' }}>🔍 Lens</th>
+                      <th style={{ padding: '10px 12px', textAlign: 'center', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px' }}>🔍 Lens</th>
                     )}
-                    <th style={{ padding: '10px 12px', textAlign: 'center', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '110px' }}>eBay Sold</th>
+                    <th style={{ padding: '10px 12px', textAlign: 'center', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', width: '110px' }}>eBay Sold</th>
                     <th 
                       onClick={() => toggleSort('ebayAvg')}
-                      style={{ padding: '10px 12px', textAlign: 'center', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px', cursor: 'pointer', userSelect: 'none' }}
+                      style={{ padding: '10px 12px', textAlign: 'center', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px', cursor: 'pointer', userSelect: 'none' }}
                     >
                       eBay Avg
                       {sortColumn === 'ebayAvg' && <span style={{ marginLeft: '4px' }}>{sortDirection === 'asc' ? '↑' : '↓'}</span>}
                     </th>
                     <th 
                       onClick={() => toggleSort('avgSale')}
-                      style={{ padding: '10px 12px', textAlign: 'right', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '90px', cursor: 'pointer', userSelect: 'none' }}
+                      style={{ padding: '10px 12px', textAlign: 'right', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', width: '90px', cursor: 'pointer', userSelect: 'none' }}
                     >
                       Avg Sale
                       {sortColumn === 'avgSale' && <span style={{ marginLeft: '4px' }}>{sortDirection === 'asc' ? '↑' : '↓'}</span>}
                     </th>
                     {(activeTab === 'vinted' || activeTab === 'ebay') && (
-                      <th style={{ padding: '10px 12px', textAlign: 'right', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px' }}>Postage</th>
+                      <th style={{ padding: '10px 12px', textAlign: 'right', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px' }}>Postage</th>
                     )}
                     {(activeTab === 'vinted' || activeTab === 'ebay') && (
                       <th 
                         onClick={() => toggleSort('profit')}
-                        style={{ padding: '10px 12px', textAlign: 'right', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px', cursor: 'pointer', userSelect: 'none' }}
+                        style={{ padding: '10px 12px', textAlign: 'right', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px', cursor: 'pointer', userSelect: 'none' }}
                       >
                         Profit
                         {sortColumn === 'profit' && <span style={{ marginLeft: '4px' }}>{sortDirection === 'asc' ? '↑' : '↓'}</span>}
                       </th>
                     )}
                     {activeTab === 'saleroom' && (
-                      <th style={{ padding: '10px 12px', textAlign: 'right', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px' }}>Max Bid</th>
+                      <th style={{ padding: '10px 12px', textAlign: 'right', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px' }}>Max Bid</th>
                     )}
                     {activeTab === 'saleroom' && (
-                      <th style={{ padding: '10px 12px', textAlign: 'right', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px' }}>Profit</th>
+                      <th style={{ padding: '10px 12px', textAlign: 'right', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', width: '80px' }}>Profit</th>
                     )}
-                    <th style={{ padding: '10px 12px', textAlign: 'center', color: '#666', fontWeight: '600', borderBottom: '1px solid #282828', width: '40px' }}></th>
+                    <th style={{ padding: '10px 12px', textAlign: 'center', color: '#9ca3af', fontWeight: '600', borderBottom: '1px solid #282828', width: '40px' }}></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -2257,7 +2258,7 @@ function ProfitCalculator() {
                               }} 
                             />
                             <a
-                              href={item.imageUrl}
+                              href={item.imageUrl} aria-label="View item image"
                               target="_blank"
                               rel="noopener noreferrer"
                               style={{ 
@@ -2268,7 +2269,7 @@ function ProfitCalculator() {
                                 display: 'none',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                color: '#666',
+                                color: '#9ca3af',
                                 textDecoration: 'none',
                                 fontSize: '10px',
                                 flexDirection: 'column',
@@ -2289,7 +2290,7 @@ function ProfitCalculator() {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            color: '#444',
+                            color: '#9ca3af',
                             margin: '0 auto'
                           }}>
                             📷
@@ -2313,7 +2314,7 @@ function ProfitCalculator() {
                       <td style={{ padding: '8px 12px' }}>
                         <input
                           type="text"
-                          value={item.title}
+                          aria-label="Item title" value={item.title}
                           onChange={e => updateField(item.id, 'title', e.target.value)}
                           style={{
                             width: '100%',
@@ -2325,7 +2326,7 @@ function ProfitCalculator() {
                           }}
                         />
                         {activeTab === 'vinted' && item.brand && (
-                          <div style={{ fontSize: '10px', color: '#555', marginTop: '2px' }}>
+                          <div style={{ fontSize: '10px', color: '#9ca3af', marginTop: '2px' }}>
                             {item.brand} • {item.condition}
                           </div>
                         )}
@@ -2334,7 +2335,7 @@ function ProfitCalculator() {
                         <td style={{ padding: '8px 12px' }}>
                           <input
                             type="text"
-                            value={item.identifiedAs || ''}
+                            aria-label="Identified as" value={item.identifiedAs || ''}
                             onChange={e => updateField(item.id, 'identifiedAs', e.target.value)}
                             placeholder="Use Lens to identify..."
                             style={{
@@ -2354,7 +2355,7 @@ function ProfitCalculator() {
                           <input
                             type="number"
                             step="0.01"
-                            value={item.price}
+                            aria-label="Item price" value={item.price}
                             onChange={e => updateField(item.id, 'price', e.target.value)}
                             style={{
                               width: '70px',
@@ -2376,7 +2377,7 @@ function ProfitCalculator() {
                       <td style={{ padding: '8px 12px', textAlign: 'center' }}>
                         {item.link ? (
                           <a
-                            href={item.link}
+                            href={item.link} aria-label="View listing"
                             target="_blank"
                             rel="noopener noreferrer"
                             style={{
@@ -2398,7 +2399,7 @@ function ProfitCalculator() {
                         <td style={{ padding: '8px 12px', textAlign: 'center' }}>
                           {item.imageUrl ? (
                             <a
-                              href={generateGoogleLensLink(item.imageUrl)}
+                              href={generateGoogleLensLink(item.imageUrl)} aria-label="Search with Google Lens"
                               target="_blank"
                               rel="noopener noreferrer"
                               style={{
@@ -2437,7 +2438,7 @@ function ProfitCalculator() {
                       </td>
                       <td style={{ padding: '8px 12px', textAlign: 'center' }}>
                         {item.aiEstimate === 'loading' ? (
-                          <span style={{ color: '#666', fontSize: '11px' }}>...</span>
+                          <span style={{ color: '#9ca3af', fontSize: '11px' }}>...</span>
                         ) : item.aiEstimate && item.aiEstimate !== 'N/A' && item.aiEstimate !== 'Error' ? (
                           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
                             <span style={{ 
@@ -2449,7 +2450,7 @@ function ProfitCalculator() {
                             }}>
                               £{item.aiEstimate}
                             </span>
-                            <span style={{ color: '#555', fontSize: '9px' }}>
+                            <span style={{ color: '#9ca3af', fontSize: '9px' }}>
                               ({item.soldCount || 0} sold){item.fromCache ? ' 💾' : ''}
                             </span>
                           </div>
@@ -2474,11 +2475,11 @@ function ProfitCalculator() {
                       </td>
                       <td style={{ padding: '8px 12px', textAlign: 'right' }}>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '2px' }}>
-                          <span style={{ color: '#555', fontSize: '11px' }}>£</span>
+                          <span style={{ color: '#9ca3af', fontSize: '11px' }}>£</span>
                           <input
                             type="number"
                             step="0.01"
-                            value={item.avgSale}
+                            aria-label="Average sale price" value={item.avgSale}
                             onChange={e => updateField(item.id, 'avgSale', e.target.value)}
                             placeholder="0.00"
                             style={{
@@ -2497,11 +2498,11 @@ function ProfitCalculator() {
                       {(activeTab === 'vinted' || activeTab === 'ebay') && (
                         <td style={{ padding: '8px 12px', textAlign: 'right' }}>
                           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '2px' }}>
-                            <span style={{ color: '#555', fontSize: '11px' }}>£</span>
+                            <span style={{ color: '#9ca3af', fontSize: '11px' }}>£</span>
                             <input
                               type="number"
                               step="0.01"
-                              value={item.postage}
+                              aria-label="Postage cost" value={item.postage}
                               onChange={e => updateField(item.id, 'postage', e.target.value)}
                               placeholder="0.00"
                               style={{
@@ -2554,7 +2555,7 @@ function ProfitCalculator() {
                           style={{
                             background: 'none',
                             border: 'none',
-                            color: '#444',
+                            color: '#9ca3af',
                             cursor: 'pointer',
                             padding: '4px',
                             fontSize: '14px'
@@ -2576,12 +2577,12 @@ function ProfitCalculator() {
           <div style={{
             textAlign: 'center',
             padding: '40px',
-            color: '#444'
+            color: '#9ca3af'
           }}>
             <div style={{ fontSize: '40px', marginBottom: '12px', opacity: 0.5 }}>
               {activeTab === 'vinted' ? '👗' : (activeTab === 'ebay' ? '🛒' : '🔨')}
             </div>
-            <h3 style={{ fontSize: '14px', fontWeight: '500', margin: '0 0 6px 0', color: '#666' }}>
+            <h3 style={{ fontSize: '14px', fontWeight: '500', margin: '0 0 6px 0', color: '#9ca3af' }}>
               No items yet
             </h3>
             <p style={{ fontSize: '12px', margin: '0 0 24px 0' }}>
@@ -2659,16 +2660,16 @@ function ProfitCalculator() {
               {activeTab === 'saleroom' && (
                 <div style={{ marginTop: '16px', padding: '12px', background: '#0a0a0a', borderRadius: '4px', border: '1px solid #222' }}>
                   <h5 style={{ fontSize: '12px', color: '#f5af02', margin: '0 0 8px 0' }}>💡 Tips for Saleroom</h5>
-                  <p style={{ fontSize: '11px', color: '#666', margin: 0, lineHeight: 1.6 }}>
+                  <p style={{ fontSize: '11px', color: '#9ca3af', margin: 0, lineHeight: 1.6 }}>
                     <strong style={{ color: '#fff' }}>Images not loading?</strong> Most auction sites block external image loading. Click "View" on the lot page to see images there.
                   </p>
-                  <p style={{ fontSize: '11px', color: '#666', margin: '8px 0 0 0', lineHeight: 1.6 }}>
+                  <p style={{ fontSize: '11px', color: '#9ca3af', margin: '8px 0 0 0', lineHeight: 1.6 }}>
                     <strong style={{ color: '#fff' }}>Google Lens:</strong> Click "Lens" to identify unknown items and find similar products across the web.
                   </p>
-                  <p style={{ fontSize: '11px', color: '#666', margin: '8px 0 0 0', lineHeight: 1.6 }}>
+                  <p style={{ fontSize: '11px', color: '#9ca3af', margin: '8px 0 0 0', lineHeight: 1.6 }}>
                     <strong style={{ color: '#fff' }}>Identified As:</strong> After identifying an item, type it in "Identified As" - this updates the eBay text search automatically.
                   </p>
-                  <p style={{ fontSize: '11px', color: '#666', margin: '8px 0 0 0', lineHeight: 1.6 }}>
+                  <p style={{ fontSize: '11px', color: '#9ca3af', margin: '8px 0 0 0', lineHeight: 1.6 }}>
                     <strong style={{ color: '#4ade80' }}>Max Bid Calculation:</strong> Avg Sale - {ebayFeePercent}% eBay fee - {desiredProfitPercent}% profit margin, then divided by auction fees ({buyersPremium}% + {onlineCommission}%).
                   </p>
                 </div>

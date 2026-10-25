@@ -73,9 +73,9 @@
   line-height: 1.6;
   box-sizing: border-box;
 }
-.rsl-textarea::placeholder { color: rgba(172,170,177,0.45); }
+.rsl-textarea::placeholder { color: rgba(248, 245, 253, 0.68); }
 .rsl-textarea:focus {
-  border-color: rgba(0,238,252,0.7);
+  border-color: rgba(0, 238, 252, 0.85);
   box-shadow: 0 0 16px rgba(0,238,252,0.12);
 }
 
@@ -179,7 +179,7 @@
   display: block;
   font-size: 0.68rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.45);
+  color: rgba(248, 245, 253, 0.68);
   margin-bottom: 0.5rem;
 }
 .rsl-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
@@ -195,13 +195,13 @@
   cursor: pointer; transition: border-color 0.15s, color 0.15s, background 0.15s;
   line-height: 1.25;
 }
-.rsl-pill:hover:not(.active) { border-color: rgba(0,238,252,0.5); color: var(--on-surface); }
+.rsl-pill:hover:not(.active) { border-color: rgba(0, 238, 252, 0.85); color: var(--on-surface); }
 .rsl-pill.active { font-weight: 800; }
 .rsl-pill-sub { font-size: 0.6rem; font-weight: 500; opacity: 0.85; }
 
 .rsl-mode-note {
   margin: 0.5rem 0 0;
-  font-size: 0.7rem; color: rgba(172,170,177,0.75);
+  font-size: 0.7rem; color: rgba(248, 245, 253, 0.68);
 }
 
 .rsl-toggle {
@@ -221,12 +221,12 @@
   font-size: 0.8rem; font-weight: 600;
   outline: none;
 }
-.rsl-servings input:focus { border-color: rgba(0,238,252,0.7); }
-.rsl-servings-base { font-size: 0.68rem; color: rgba(172,170,177,0.7); }
+.rsl-servings input:focus { border-color: rgba(0, 238, 252, 0.85); }
+.rsl-servings-base { font-size: 0.68rem; color: rgba(248, 245, 253, 0.68); }
 
 .rsl-action-btn:disabled {
   opacity: 0.4; cursor: not-allowed;
-  background: transparent; border-color: rgba(248,245,253,0.15); color: var(--on-surface-variant);
+  background: transparent; border-color: rgba(248, 245, 253, 0.68); color: var(--on-surface-variant);
 }
 
 .rsl-open-note {
@@ -295,7 +295,7 @@
 .rsl-item-qty:empty { display: none; }
 .rsl-item-meta { font-size: 0.7rem; color: var(--on-surface-variant); line-height: 1.4; }
 .rsl-item-meta:empty { display: none; }
-.rsl-item-term { font-size: 0.66rem; color: rgba(172,170,177,0.55); font-style: italic; }
+.rsl-item-term { font-size: 0.66rem; color: rgba(248, 245, 253, 0.68); font-style: italic; }
 
 .rsl-item.ticked .rsl-item-name { text-decoration: line-through; }
 .rsl-item.ticked { opacity: 0.4; }
@@ -318,7 +318,7 @@
 .rsl-unmatched {
   margin: 1.25rem 0 0;
   font-size: 0.72rem; line-height: 1.5;
-  color: rgba(172,170,177,0.65);
+  color: rgba(248, 245, 253, 0.68);
 }
 
 /* ── PRICE COMPARISON TABLE ── */
@@ -353,7 +353,7 @@
 .rsl-price-table thead th {
   position: sticky; top: 0;
   background: #16161c;
-  color: rgba(248,245,253,0.55);
+  color: rgba(248, 245, 253, 0.68);
   font-size: 0.66rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.06em;
 }
@@ -393,7 +393,7 @@
 
 .rsl-price-foot {
   font-size: 0.72rem; line-height: 1.55;
-  color: rgba(172,170,177,0.75);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0 0 1rem;
 }
 .rsl-price-foot abbr { color: #f59e0b; text-decoration: none; }

@@ -102,7 +102,7 @@
   line-height: 1.6;
   box-sizing: border-box;
 }
-.pi-textarea::placeholder { color: rgba(172,170,177,0.45); }
+.pi-textarea::placeholder { color: rgba(248, 245, 253, 0.68); }
 .pi-textarea:focus {
   border-color: rgba(255,0,140,0.7);
   box-shadow: 0 0 16px rgba(255,0,140,0.12);

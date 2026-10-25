@@ -33,7 +33,7 @@ function loadConsentBanner() {
             <div class="consent-inner">
                 <div class="consent-text">
                     <p><strong>Analytics</strong></p>
-                    <p>We use Google Analytics to understand how the site is used. This collects usage data such as pages visited, device type and approximate location. See the <a href="/privacy">Privacy Policy</a> for details.</p>
+                    <p>We use Google Analytics to understand how the site is used. This collects usage data such as pages visited, device type and approximate location. See the <a href="/privacy" style="color:#00eefc;text-decoration:underline">Privacy Policy</a> for details.</p>
                 </div>
                 <div class="consent-buttons">
                     <button id="consent-reject" class="consent-btn consent-reject">Reject</button>
@@ -73,7 +73,7 @@ function loadHeaderAndFooter() {
         headerPlaceholder.innerHTML = cachedHeader;
         initializeHeader();
     } else {
-        fetch('/header.html', { cache: 'no-store' })
+        fetch('/header.html?v=8')
             .then(response => {
                 if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
                 return response.text();
@@ -93,7 +93,7 @@ function loadHeaderAndFooter() {
     if (cachedFooter && footerPlaceholder) {
         footerPlaceholder.innerHTML = cachedFooter;
     } else {
-        fetch('/footer.html', { cache: 'no-store' })
+        fetch('/footer.html?v=2')
             .then(response => {
                 if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
                 return response.text();

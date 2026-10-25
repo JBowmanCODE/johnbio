@@ -75,7 +75,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0 0 1.75rem;
 }
 
@@ -123,8 +123,8 @@ body {
   outline: none;
   transition: border-color 0.2s;
 }
-.pc-textarea:focus { border-color: rgba(255,0,127,0.4); }
-.pc-textarea::placeholder { color: rgba(248,245,253,0.25); }
+.pc-textarea:focus { border-color: #ff5ca8; }
+.pc-textarea::placeholder { color: rgba(248, 245, 253, 0.68); }
 
 /* ── SELECT GRID ── */
 .pc-selects {
@@ -292,7 +292,7 @@ body {
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
 }
-.pc-copy-btn:hover { background: rgba(255,0,127,0.18); border-color: rgba(255,0,127,0.45); }
+.pc-copy-btn:hover { background: rgba(255,0,127,0.18); border-color: #ff5ca8; }
 .pc-copy-btn:active { transform: scale(0.96); }
 .pc-copy-btn.copied { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.28); color: #4ade80; }
 
@@ -368,7 +368,7 @@ body {
 /* ── TOOL LIMITATION NOTICE ── */
 .pc-limitation-notice {
   font-size: 0.74rem;
-  color: rgba(248,245,253,0.3);
+  color: rgba(248, 245, 253, 0.68);
   line-height: 1.6;
   margin: 0.25rem 0 0;
   text-align: center;

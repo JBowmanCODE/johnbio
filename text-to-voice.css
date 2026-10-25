@@ -61,7 +61,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0 0 1.75rem;
 }
 
@@ -83,7 +83,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
 }
 
 /* ── TEXTAREA ── */
@@ -103,8 +103,8 @@ body {
   outline: none;
   transition: border-color 0.2s;
 }
-#textInput:focus { border-color: rgba(255,0,127,0.4); }
-#textInput::placeholder { color: rgba(248,245,253,0.2); }
+#textInput:focus { border-color: #ff5ca8; }
+#textInput::placeholder { color: rgba(248, 245, 253, 0.68); }
 
 /* ── META ROW ── */
 .ttv-meta {
@@ -112,7 +112,7 @@ body {
   gap: 1.5rem;
   font-size: 0.72rem;
   font-weight: 600;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
   letter-spacing: 0.04em;
 }
 
@@ -136,7 +136,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
 }
 
 .ttv-select-group select {
@@ -159,7 +159,7 @@ body {
   padding-right: 2rem;
   box-sizing: border-box;
 }
-.ttv-select-group select:focus { border-color: rgba(255,0,127,0.4); }
+.ttv-select-group select:focus { border-color: #ff5ca8; }
 .ttv-select-group select option { background: #1a1a22; color: #f8f5fd; }
 
 /* ── BUTTONS ── */
@@ -201,20 +201,20 @@ body {
   border: 1px solid rgba(255,255,255,0.1);
   color: rgba(248,245,253,0.7);
 }
-#pauseSpeech:hover { border-color: rgba(255,255,255,0.2); color: #f8f5fd; }
+#pauseSpeech:hover { border-color: rgba(255, 255, 255, 0.68); color: #f8f5fd; }
 
 #stopSpeech {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.08);
-  color: rgba(248,245,253,0.5);
+  color: rgba(248, 245, 253, 0.68);
 }
-#stopSpeech:hover { border-color: rgba(255,0,127,0.3); color: rgba(248,245,253,0.8); }
+#stopSpeech:hover { border-color: #ff5ca8; color: rgba(248,245,253,0.8); }
 
 /* ── TIME REMAINING ── */
 .ttv-time-remaining {
   font-size: 0.72rem;
   font-weight: 600;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
   letter-spacing: 0.04em;
   min-height: 1em;
   margin: 0;

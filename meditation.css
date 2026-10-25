@@ -87,9 +87,9 @@
   transition: border-color 0.2s, box-shadow 0.2s;
   box-sizing: border-box;
 }
-.med-input::placeholder { color: rgba(172,170,177,0.45); }
+.med-input::placeholder { color: rgba(248, 245, 253, 0.68); }
 .med-input:focus {
-  border-color: rgba(0,238,252,0.7);
+  border-color: rgba(0, 238, 252, 0.85);
   box-shadow: 0 0 16px rgba(0,238,252,0.12);
 }
 
@@ -109,10 +109,10 @@
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
-.med-chip:hover { border-color: rgba(0,238,252,0.55); color: var(--on-surface); }
+.med-chip:hover { border-color: rgba(0, 238, 252, 0.85); color: var(--on-surface); }
 .med-chip.active {
   background: rgba(0,238,252,0.14);
-  border-color: rgba(0,238,252,0.7);
+  border-color: rgba(0, 238, 252, 0.85);
   color: #00EEFC;
 }
 #med-custom-wrap { margin-top: 0.6rem; }
@@ -140,7 +140,7 @@
   opacity: 0.65; margin-top: 0.15rem;
   text-transform: none; letter-spacing: 0;
 }
-.med-seg-btn:hover { border-color: rgba(0,238,252,0.55); color: var(--on-surface); }
+.med-seg-btn:hover { border-color: rgba(0, 238, 252, 0.85); color: var(--on-surface); }
 /* soundscape grid: 12 options — cap the flex growth so rows stay tidy */
 .med-seg--scape .med-seg-btn { flex: 1 1 30%; max-width: 33%; min-width: 104px; }
 @media (max-width: 600px) {
@@ -148,7 +148,7 @@
 }
 .med-seg-btn.active {
   background: rgba(0,238,252,0.14);
-  border-color: rgba(0,238,252,0.7);
+  border-color: rgba(0, 238, 252, 0.85);
   color: #00EEFC;
 }
 
@@ -167,8 +167,8 @@
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 }
-.med-preview-btn:hover { background: rgba(0,238,252,0.18); border-color: rgba(0,238,252,0.5); }
-.med-preview-btn.active { background: rgba(0,238,252,0.22); border-color: rgba(0,238,252,0.7); }
+.med-preview-btn:hover { background: rgba(0,238,252,0.18); border-color: rgba(0, 238, 252, 0.85); }
+.med-preview-btn.active { background: rgba(0,238,252,0.22); border-color: rgba(0, 238, 252, 0.85); }
 .med-preview-btn .material-symbols-outlined { font-size: 0.9rem; }
 
 /* Generate button */
@@ -269,7 +269,7 @@
   display: inline-flex; align-items: center; justify-content: center;
   transition: background 0.2s, border-color 0.2s;
 }
-.med-skip-btn:hover { background: rgba(0,238,252,0.18); border-color: rgba(0,238,252,0.5); }
+.med-skip-btn:hover { background: rgba(0,238,252,0.18); border-color: rgba(0, 238, 252, 0.85); }
 .med-skip-btn .material-symbols-outlined { font-size: 1.5rem; }
 
 .med-progress {
@@ -379,7 +379,7 @@
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 }
-.med-stop-btn:hover { background: rgba(0,238,252,0.18); border-color: rgba(0,238,252,0.5); }
+.med-stop-btn:hover { background: rgba(0,238,252,0.18); border-color: rgba(0, 238, 252, 0.85); }
 
 .med-actions {
   display: flex; align-items: center; justify-content: center; gap: 0.5rem;
@@ -400,10 +400,10 @@
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 }
-.med-action-btn:hover { background: rgba(0,238,252,0.18); border-color: rgba(0,238,252,0.5); }
+.med-action-btn:hover { background: rgba(0,238,252,0.18); border-color: rgba(0, 238, 252, 0.85); }
 .med-action-btn .material-symbols-outlined { font-size: 0.95rem; }
 .med-action-btn:disabled { opacity: 0.45; cursor: not-allowed; }
-.med-action-btn:disabled:hover { background: rgba(0,238,252,0.1); border-color: rgba(0,238,252,0.3); }
+.med-action-btn:disabled:hover { background: rgba(0,238,252,0.1); border-color: rgba(0, 238, 252, 0.85); }
 
 /* ── SAVED MEDITATIONS ── */
 .med-saved { margin: 1.5rem 0; }
@@ -505,7 +505,7 @@
   text-decoration: none;
   transition: background 0.2s, border-color 0.2s;
 }
-.med-sample-dl:hover { background: rgba(0,238,252,0.18); border-color: rgba(0,238,252,0.5); }
+.med-sample-dl:hover { background: rgba(0,238,252,0.18); border-color: rgba(0, 238, 252, 0.85); }
 .med-sample-dl .material-symbols-outlined { font-size: 0.9rem; }
 @media (max-width: 600px) {
   .med-samples-grid { grid-template-columns: 1fr; }

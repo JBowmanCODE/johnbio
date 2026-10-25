@@ -67,7 +67,7 @@
 
 .nc-trigger-sub {
   font-size: 0.68rem;
-  color: rgba(248,245,253,0.38);
+  color: rgba(248, 245, 253, 0.68);
   margin-top: 0.1rem;
   white-space: nowrap;
   overflow: hidden;
@@ -76,7 +76,7 @@
 
 .nc-trigger-chevron {
   font-size: 1.1rem;
-  color: rgba(248,245,253,0.25);
+  color: rgba(248, 245, 253, 0.68);
   transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), background 0.2s, color 0.2s;
   position: absolute;
   top: 10px;
@@ -94,7 +94,7 @@
 .nc-card.open .nc-trigger-chevron {
   transform: rotate(180deg);
   background: rgba(255,0,127,0.12);
-  color: rgba(248,245,253,0.6);
+  color: rgba(248, 245, 253, 0.68);
 }
 
 
@@ -108,7 +108,7 @@
 
 .nc-card.open .nc-panel {
   grid-template-rows: 1fr;
-  border-top-color: rgba(255,255,255,0.06);
+  border-top-color: rgba(255, 255, 255, 0.68);
 }
 
 .nc-panel-inner {
@@ -172,7 +172,7 @@
 
 .nc-welcome-sub {
   font-size: 0.72rem;
-  color: rgba(248,245,253,0.38);
+  color: rgba(248, 245, 253, 0.68);
   line-height: 1.5;
   margin: 0;
 }
@@ -192,7 +192,7 @@
   border-radius: 8px;
   padding: 0.4rem 0.65rem;
   font-size: 0.71rem;
-  color: rgba(248,245,253,0.55);
+  color: rgba(248, 245, 253, 0.68);
   text-align: left;
   cursor: pointer;
   font-family: inherit;
@@ -202,7 +202,7 @@
 
 .nc-starter-chip:hover {
   background: rgba(255,0,127,0.08);
-  border-color: rgba(255,0,127,0.25);
+  border-color: #ff5ca8;
   color: rgba(248,245,253,0.85);
 }
 
@@ -286,10 +286,10 @@
   transition: border-color 0.2s;
 }
 
-.nc-input::placeholder { color: rgba(248,245,253,0.25); }
+.nc-input::placeholder { color: rgba(248, 245, 253, 0.68); }
 
 .nc-input:focus {
-  border-color: rgba(255,0,127,0.45);
+  border-color: #ff5ca8;
 }
 
 .nc-send {
@@ -314,7 +314,7 @@
 
 .nc-send:disabled {
   background: rgba(255,255,255,0.07);
-  color: rgba(248,245,253,0.2);
+  color: rgba(248, 245, 253, 0.68);
   cursor: not-allowed;
   transform: none;
 }
@@ -373,7 +373,7 @@
 .nc-footer {
   text-align: center;
   font-size: 0.6rem;
-  color: rgba(248,245,253,0.18);
+  color: rgba(248, 245, 253, 0.68);
   padding: 0.3rem 0.75rem 0.45rem;
   background: rgba(0,0,0,0.15);
   letter-spacing: 0.03em;

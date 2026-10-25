@@ -19,11 +19,13 @@
 
   if (!recent.length) return;
 
-  // ── Inject stylesheet ──────────────────────────────────
-  const link = document.createElement('link');
-  link.rel  = 'stylesheet';
-  link.href = '/news-recent.css';
-  document.head.appendChild(link);
+  // ── Inject stylesheet if not already present ───────────
+  if (!document.querySelector('link[href^="/news-recent.css"]')) {
+    const link = document.createElement('link');
+    link.rel  = 'stylesheet';
+    link.href = '/news-recent.css?v=2';
+    document.head.appendChild(link);
+  }
 
   // ── Build section ──────────────────────────────────────
   const section = document.createElement('section');
@@ -42,14 +44,13 @@
     const a = document.createElement('a');
     a.className = 'nr-card';
     a.href = post.slug;
-    a.setAttribute('aria-label', post.title);
 
     const tagsHtml = post.tags && post.tags.length
       ? `<div class="nr-tags">${post.tags.slice(0, 3).map(t => `<span class="nr-tag">${t}</span>`).join('')}</div>`
       : '';
 
     a.innerHTML = `
-      ${post.image ? `<div class="nr-card-img"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>` : ''}
+      ${post.image ? `<div class="nr-card-img"><img src="${post.image}" alt="" width="690" height="385" loading="lazy"></div>` : ''}
       <div class="nr-card-body">
         <div class="nr-card-meta">
           <span class="nr-category">${post.category}</span>

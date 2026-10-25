@@ -231,7 +231,7 @@
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
-  color: rgba(248,245,253,0.6);
+  color: rgba(248, 245, 253, 0.68);
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.09);
   border-radius: 8px;
@@ -252,7 +252,7 @@
 
 .ns-page-info {
   font-size: 0.78rem;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
   font-weight: 500;
 }
 
@@ -461,7 +461,7 @@ main.na-wrap {
 
 .na-figure-btn:hover {
   background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.2);
+  border-color: rgba(255, 255, 255, 0.68);
   color: #fff;
   transform: scale(1.03);
 }
@@ -485,7 +485,7 @@ main.na-wrap {
 .na-inline-figure figcaption {
   margin-top: 0.6rem;
   font-size: 0.78rem;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   font-style: italic;
 }
 
@@ -660,7 +660,7 @@ main.na-wrap {
   background: none;
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 50%;
-  color: rgba(248,245,253,0.5);
+  color: rgba(248, 245, 253, 0.68);
   cursor: pointer;
   flex-shrink: 0;
   font-family: inherit;
@@ -688,7 +688,7 @@ main.na-wrap {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 9999px;
-  color: rgba(248,245,253,0.5);
+  color: rgba(248, 245, 253, 0.68);
   font-size: 0.68rem;
   font-weight: 700;
   padding: 0.2rem 0.55rem;
@@ -710,7 +710,7 @@ main.na-wrap {
 .na-audio-time {
   font-size: 0.65rem;
   font-weight: 600;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
   white-space: nowrap;
   min-width: 2.8rem;
 }
@@ -810,7 +810,7 @@ main.na-wrap {
   text-align: left;
   padding: 0.6rem 0.85rem;
   background: rgba(255,0,127,0.08);
-  color: rgba(248,245,253,0.55);
+  color: rgba(248, 245, 253, 0.68);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -909,7 +909,7 @@ main.na-wrap {
 
 .na-podcast-sub {
   font-size: 0.72rem;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   margin: 0;
 }
 
@@ -949,7 +949,7 @@ main.na-wrap {
 
 .na-podcast-time {
   font-size: 0.68rem;
-  color: rgba(248,245,253,0.35);
+  color: rgba(248, 245, 253, 0.68);
   font-variant-numeric: tabular-nums;
   flex-shrink: 0;
   min-width: 32px;
@@ -991,7 +991,7 @@ main.na-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(248,245,253,0.6);
+  color: rgba(248, 245, 253, 0.68);
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
   flex-shrink: 0;
@@ -999,7 +999,7 @@ main.na-wrap {
 
 .na-pod-btn:hover {
   background: rgba(255,0,127,0.12);
-  border-color: rgba(255,0,127,0.35);
+  border-color: #ff5ca8;
   color: #fff;
 }
 
@@ -1192,7 +1192,7 @@ main.na-wrap {
   gap: 0.6rem;
   font-size: 0.79rem;
   line-height: 1.45;
-  color: rgba(248,245,253,0.38);
+  color: rgba(248, 245, 253, 0.68);
   text-decoration: none;
   /* fixed padding — never changes */
   padding: 0.48rem 0.5rem 0.48rem 0.9rem;
@@ -1216,20 +1216,20 @@ main.na-wrap {
   font-size: 0.6rem;
   font-weight: 700;
   background: rgba(255,255,255,0.05);
-  color: rgba(248,245,253,0.3);
+  color: rgba(248, 245, 253, 0.68);
   transition: background 0.22s, color 0.22s;
   flex-shrink: 0;
 }
 
 .na-toc-list a:hover {
   color: rgba(248,245,253,0.85);
-  border-left-color: rgba(255,0,127,0.4);
+  border-left-color: #ff5ca8;
   background: rgba(255,0,127,0.05);
 }
 
 .na-toc-list a:hover::before {
   background: rgba(255,0,127,0.15);
-  color: rgba(255,0,127,0.8);
+  color: #ff5ca8;
 }
 
 .na-toc-list a.active {
@@ -1246,7 +1246,7 @@ main.na-wrap {
 
 /* Newsy AI TOC entry */
 .nc-toc-link {
-  color: rgba(255,0,127,0.7) !important;
+  color: #ff5ca8 !important;
   margin-top: 0.5rem;
   border-top: 1px solid rgba(255,255,255,0.06);
   padding-top: 0.75rem !important;
@@ -1308,7 +1308,7 @@ main.na-wrap {
 
 .na-author-role {
   font-size: 0.72rem;
-  color: rgba(248,245,253,0.4);
+  color: rgba(248, 245, 253, 0.68);
   font-weight: 400;
   letter-spacing: 0.01em;
 }
@@ -1348,7 +1348,7 @@ main.na-wrap {
 
   .na-mobile-newsy-btn:hover {
     background: rgba(255,0,127,0.15);
-    border-color: rgba(255,0,127,0.5);
+    border-color: #ff5ca8;
   }
 
   .na-mobile-newsy-btn .material-symbols-outlined {
@@ -1389,7 +1389,7 @@ main.na-wrap {
   .na-mobile-toc-chevron {
     margin-left: auto;
     font-size: 1.1rem;
-    color: rgba(248,245,253,0.4);
+    color: rgba(248, 245, 253, 0.68);
     transition: transform 0.2s;
   }
 
@@ -1450,13 +1450,13 @@ main.na-wrap {
 .na-about-author-text span {
   display: block;
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255, 255, 255, 0.68);
   margin-bottom: 0.6rem;
 }
 
 .na-about-author-text p {
   font-size: 0.875rem;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.68);
   margin: 0 0 0.6rem;
   line-height: 1.55;
 }
@@ -1488,3 +1488,5 @@ main.na-wrap {
     max-width: 180px;
   }
 }
+
+.na-body p a, .na-body li a { text-decoration: underline !important; text-underline-offset: 2px; }
