@@ -1,38 +1,48 @@
-document.addEventListener('DOMContentLoaded', () => {
+function calculate() {
+    const output = document.getElementById("output");
+    const totalBillInput = document.getElementById("total_bill");
+    const tipPercentageInput = document.getElementById("tip_percentage");
+    const numPeopleInput = document.getElementById("num_people");
+
+    if (!output || !totalBillInput || !tipPercentageInput || !numPeopleInput) {
+        console.error('One or more required elements are missing');
+        return;
+    }
+
+    const totalBill = parseFloat(totalBillInput.value);
+    const tipPercentage = parseFloat(tipPercentageInput.value || '0');
+    const numPeople = parseInt(numPeopleInput.value, 10);
+
+    if (isNaN(totalBill) || totalBill < 0 || isNaN(tipPercentage) || tipPercentage < 0 || isNaN(numPeople) || numPeople < 1) {
+        output.innerText = 'Please enter valid numbers (at least 1 person).';
+        return;
+    }
+
+    const totalTip = (tipPercentage / 100) * totalBill;
+    const totalAmount = totalBill + totalTip;
+    const amountPerPerson = totalAmount / numPeople;
+
+    output.innerText =
+        `Total bill amount: £${totalBill.toFixed(2)}\n` +
+        `Tip amount: £${totalTip.toFixed(2)}\n` +
+        `Total amount to be paid: £${totalAmount.toFixed(2)}\n` +
+        `Each person should pay: £${amountPerPerson.toFixed(2)}`;
+}
+
+function setupCalculator() {
     const calculateButton = document.getElementById('calculate-button');
-    const resultsDiv = document.getElementById('results');
-
-    function calculateBill() {
-        const totalBill = parseFloat(document.getElementById('total-bill').value);
-        const tipPercentage = parseFloat(document.getElementById('tip-percentage').value || '0');
-        const numPeople = parseInt(document.getElementById('num-people').value, 10);
-
-        if (isNaN(totalBill) || isNaN(tipPercentage) || isNaN(numPeople) || totalBill <= 0 || tipPercentage < 0 || numPeople <= 0) {
-            resultsDiv.innerHTML = '<p style="color: #ff6b6b;">Please enter valid positive numbers for the bill and people.</p>';
-            return;
-        }
-
-        const totalTip = totalBill * (tipPercentage / 100);
-        const totalAmount = totalBill + totalTip;
-        const amountPerPerson = totalAmount / numPeople;
-
-        resultsDiv.innerHTML = `
-            <p>Total Tip: £${totalTip.toFixed(2)}</p>
-            <p>Total Amount (including tip): £${totalAmount.toFixed(2)}</p>
-            <p>Each person should pay: <strong>£${amountPerPerson.toFixed(2)}</strong></p>
-        `;
-    }
-
+    const inputFields = document.querySelectorAll('#calculator input');
     if (calculateButton) {
-        calculateButton.addEventListener('click', calculateBill);
+        calculateButton.addEventListener('click', calculate);
     }
-
-    document.querySelectorAll('#calculator input').forEach(input => {
-        input.addEventListener('keypress', (e) => {
+    inputFields.forEach(input => {
+        input.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 e.preventDefault();
-                calculateBill();
+                calculate();
             }
         });
     });
-});
+}
+
+document.addEventListener('DOMContentLoaded', setupCalculator);

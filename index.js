@@ -365,7 +365,6 @@ const projects = [
     const slide = document.createElement('a');
     slide.href = post.slug;
     slide.className = 'hn-slide' + (i === 0 ? ' active' : '');
-    slide.setAttribute('aria-label', post.title);
     slide.innerHTML = `
       <img class="hn-slide-img" src="${post.image}" alt="" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} width="690" height="385">
       <div class="hn-slide-overlay"></div>

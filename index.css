@@ -221,11 +221,18 @@ main {
   display: flex; justify-content: center; gap: 0.45rem; z-index: 4;
 }
 .hn-dot {
-  width: 22px; height: 3px; border-radius: 9999px;
-  background: rgba(255,255,255,0.2); border: none; cursor: pointer;
-  padding: 0; transition: background 0.3s, width 0.3s, box-shadow 0.3s;
+  min-width: 24px; height: 24px; border-radius: 9999px;
+  background: transparent; border: none; cursor: pointer;
+  padding: 0; position: relative;
+  display: inline-flex; align-items: center; justify-content: center;
 }
-.hn-dot.active {
+.hn-dot::after {
+  content: ''; width: 22px; height: 3px; border-radius: 9999px;
+  background: rgba(255,255,255,0.2);
+  transition: background 0.3s, width 0.3s, box-shadow 0.3s;
+}
+.hn-dot.active { width: 36px; }
+.hn-dot.active::after {
   background: var(--primary); width: 36px;
   box-shadow: 0 0 8px rgba(255,0,127,0.6);
 }

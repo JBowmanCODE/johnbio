@@ -760,7 +760,7 @@ body {
   margin: 0.75rem 0 0;
 }
 
-.igc-jur-also a { color: #ff5ca8; text-decoration: none; }
+.igc-jur-also a { color: #ff5ca8; text-decoration: underline; text-underline-offset: 2px; }
 .igc-jur-also a:hover { text-decoration: underline; }
 
 .igc-jur-empty {

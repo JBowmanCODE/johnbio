@@ -159,7 +159,7 @@
 .nr-arrow {
   font-size: 0.72rem;
   font-weight: 600;
-  color: rgba(251,191,36,0.5);
+  color: #fbbf24;
   margin-top: auto;
   transition: color 0.2s;
 }

@@ -469,7 +469,7 @@
 .cd-guest-btn-primary {
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.8rem 1.5rem;
-  background: #ff007f; color: #fff;
+  background: #ff007f; color: #0e0e13;
   border-radius: 8px; border: none; cursor: pointer;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.9375rem; font-weight: 700;
@@ -478,7 +478,7 @@
   white-space: nowrap;
 }
 .cd-guest-btn-primary:hover {
-  background: #e6006f; transform: translateY(-1px);
+  background: #ff4da6; color: #0e0e13; transform: translateY(-1px);
   box-shadow: 0 6px 24px rgba(255,0,127,0.35);
 }
 .cd-guest-btn-primary .material-symbols-outlined { font-size: 1.05rem; }
@@ -616,9 +616,9 @@
 .cd-guest-sticky-link {
   display: flex; align-items: center; justify-content: center; gap: 0.5rem;
   width: 100%; padding: 1rem;
-  color: #fff; text-decoration: none;
+  color: #0e0e13; text-decoration: none;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.9375rem; font-weight: 600;
+  font-size: 0.9375rem; font-weight: 700;
 }
 .cd-guest-sticky-link .material-symbols-outlined { font-size: 1.1rem; }
 

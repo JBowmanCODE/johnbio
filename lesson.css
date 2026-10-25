@@ -268,7 +268,7 @@
 }
 .lp-complete-nudge a {
   text-decoration: underline;
-  text-underline-offset: 2px; color: #ff5ca8; text-decoration: none; }
+  text-underline-offset: 2px; color: #ff5ca8; }
 .lp-complete-nudge a:hover { color: #ff007f; }
 
 /* ── Lesson prev/next navigation ── */
