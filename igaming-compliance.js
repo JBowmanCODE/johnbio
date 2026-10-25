@@ -1469,10 +1469,48 @@ document.addEventListener('DOMContentLoaded', () => {
   initTable();
   initJurisdictionLinks();
   renderEmerging();
-  // Map initialises after amCharts loads — it's loaded synchronously via CDN scripts in <head>
-  initMap();
-  // The table re-renders over the static rows, so re-align any deep link.
   revealFromHash();
+
+  let mapLoadStarted = false;
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = src;
+      s.async = true;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+  async function loadAndInitMap() {
+    if (mapLoadStarted) return;
+    mapLoadStarted = true;
+    try {
+      if (typeof am5 === 'undefined') {
+        await loadScript('https://cdn.amcharts.com/lib/5/index.js');
+      }
+      await Promise.all([
+        typeof am5map === 'undefined' ? loadScript('https://cdn.amcharts.com/lib/5/map.js') : Promise.resolve(),
+        typeof am5geodata_worldLow === 'undefined' ? loadScript('https://cdn.amcharts.com/lib/5/geodata/worldLow.js') : Promise.resolve(),
+        typeof am5themes_Animated === 'undefined' ? loadScript('https://cdn.amcharts.com/lib/5/themes/Animated.js') : Promise.resolve()
+      ]);
+      initMap();
+    } catch (e) {
+      console.warn('amCharts failed to load', e);
+    }
+  }
+
+  const mapEl = document.getElementById('igc-map');
+  if (mapEl) {
+    ['pointerenter', 'touchstart', 'click'].forEach(evt =>
+      mapEl.addEventListener(evt, loadAndInitMap, { once: true, passive: true })
+    );
+  }
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(loadAndInitMap, { timeout: 2500 });
+  } else {
+    setTimeout(loadAndInitMap, 1200);
+  }
 });
 
 // ── STATS ─────────────────────────────────────────────────────────────────────
@@ -1564,6 +1602,10 @@ function getFilteredRegs() {
 // ── TABLE ─────────────────────────────────────────────────────────────────────
 
 function initTable() {
+  const tbody = document.getElementById('igc-table-body');
+  if (activeCategory === 'all' && activeRegion === 'all' && !searchQuery && tbody && tbody.children.length === REGULATIONS.length) {
+    return;
+  }
   refreshTable();
 }
 
