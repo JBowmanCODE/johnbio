@@ -1500,17 +1500,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const mapEl = document.getElementById('igc-map');
-  if (mapEl) {
-    ['pointerenter', 'touchstart', 'click'].forEach(evt =>
-      mapEl.addEventListener(evt, loadAndInitMap, { once: true, passive: true })
-    );
-  }
-  if ('requestIdleCallback' in window) {
-    window.requestIdleCallback(loadAndInitMap, { timeout: 2500 });
-  } else {
-    setTimeout(loadAndInitMap, 1200);
-  }
+  ['pointermove', 'pointerenter', 'touchstart', 'scroll', 'keydown', 'click'].forEach(evt =>
+    window.addEventListener(evt, loadAndInitMap, { once: true, passive: true })
+  );
+  window.addEventListener('load', () => {
+    setTimeout(loadAndInitMap, 4000);
+  });
 });
 
 // ── STATS ─────────────────────────────────────────────────────────────────────
