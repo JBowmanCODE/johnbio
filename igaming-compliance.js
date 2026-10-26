@@ -1511,11 +1511,12 @@ document.addEventListener('DOMContentLoaded', () => {
 // ── STATS ─────────────────────────────────────────────────────────────────────
 
 function renderStats() {
+  const el = document.getElementById('igc-stats');
+  if (el && el.children.length >= 3) return;
   const jurisdictions = new Set();
   REGULATIONS.forEach(r => r.countries.forEach(c => jurisdictions.add(c)));
   const desc = document.getElementById('igc-description');
   if (desc) desc.textContent = `${REGULATIONS.length} regulations across ${jurisdictions.size} jurisdictions - click any country to explore`;
-  const el = document.getElementById('igc-stats');
   if (!el) return;
   el.innerHTML = `
     <div class="igc-stat">

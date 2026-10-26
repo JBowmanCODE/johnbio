@@ -349,33 +349,49 @@ const projects = [
   let current = 0;
   let timer;
 
-  // Top bar
-  panel.innerHTML = `
-    <div class="hn-topbar">
-      <span class="hn-label">Latest News</span>
-      <a href="/news/" class="hn-view-all">View all <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
-    </div>
-    <div class="hn-nav" id="hnNav"></div>
-  `;
+  // Reuse pre-rendered first slide if present so LCP image is never recreated
+  const existingFirstSlide = panel.querySelector('.hn-slide.active');
+  const fallbackList = panel.querySelector('.static-news-fallback');
+  if (fallbackList) fallbackList.remove();
+
+  let nav = panel.querySelector('#hnNav');
+  if (!nav) {
+    if (!panel.querySelector('.hn-topbar')) {
+      const topbar = document.createElement('div');
+      topbar.className = 'hn-topbar';
+      topbar.innerHTML = `
+        <span class="hn-label">Latest News</span>
+        <a href="/news/" class="hn-view-all">View all <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      `;
+      panel.insertBefore(topbar, panel.firstChild);
+    }
+    nav = document.createElement('div');
+    nav.className = 'hn-nav';
+    nav.id = 'hnNav';
+    panel.appendChild(nav);
+  }
 
   // Slides
-  const nav = panel.querySelector('#hnNav');
   latest.forEach((post, i) => {
     const color = colors[i % colors.length];
-    const slide = document.createElement('a');
-    slide.href = post.slug;
-    slide.className = 'hn-slide' + (i === 0 ? ' active' : '');
-    slide.innerHTML = `
-      <img class="hn-slide-img" src="${post.image}" alt="" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} width="690" height="385">
-      <div class="hn-slide-overlay"></div>
-      <div class="hn-slide-content">
-        <span class="hn-cat hn-cat-${color}">${post.category}</span>
-        <h2 class="hn-title">${post.title}</h2>
-        <div class="hn-meta">${post.dateDisplay} &middot; ${post.readTime}</div>
-        <span class="hn-read">Read article <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
-      </div>
-    `;
-    panel.insertBefore(slide, nav);
+    if (i === 0 && existingFirstSlide) {
+      panel.insertBefore(existingFirstSlide, nav);
+    } else {
+      const slide = document.createElement('a');
+      slide.href = post.slug;
+      slide.className = 'hn-slide' + (i === 0 ? ' active' : '');
+      slide.innerHTML = `
+        <img class="hn-slide-img" src="${post.image}" alt="" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} width="690" height="385">
+        <div class="hn-slide-overlay"></div>
+        <div class="hn-slide-content">
+          <span class="hn-cat hn-cat-${color}">${post.category}</span>
+          <h2 class="hn-title">${post.title}</h2>
+          <div class="hn-meta">${post.dateDisplay} &middot; ${post.readTime}</div>
+          <span class="hn-read">Read article <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+        </div>
+      `;
+      panel.insertBefore(slide, nav);
+    }
 
     const dot = document.createElement('button');
     dot.className = 'hn-dot' + (i === 0 ? ' active' : '');
