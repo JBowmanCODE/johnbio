@@ -3,11 +3,7 @@
    ES module, loaded on all course/slug pages
    ================================================ */
 
-import { auth, db } from '/firebase-init.js';
-import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
-import {
-  doc, getDoc, updateDoc, setDoc, serverTimestamp
-} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+let auth = null, db = null, doc = null, getDoc = null, updateDoc = null, setDoc = null, serverTimestamp = null;
 
 // Only run on lesson pages
 const slug = document.body.getAttribute('data-slug');
@@ -99,13 +95,46 @@ async function markComplete() {
   }
 }
 
-onAuthStateChanged(auth, async (user) => {
-  currentUser = user;
-  if (user) {
-    const snap = await getDoc(doc(db, 'users', user.uid));
-    userProgress = snap.exists() ? (snap.data().courseProgress || {}) : {};
-  } else {
-    userProgress = {};
+let lpFbStarted = false;
+async function initLessonFirebase() {
+  if (lpFbStarted) return;
+  lpFbStarted = true;
+  try {
+    const [fbInit, fbAuthMod, fbFsMod] = await Promise.all([
+      import('/firebase-init.js'),
+      import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js'),
+      import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js')
+    ]);
+    auth = fbInit.auth;
+    db = fbInit.db;
+    doc = fbFsMod.doc;
+    getDoc = fbFsMod.getDoc;
+    updateDoc = fbFsMod.updateDoc;
+    setDoc = fbFsMod.setDoc;
+    serverTimestamp = fbFsMod.serverTimestamp;
+    fbAuthMod.onAuthStateChanged(auth, async (user) => {
+      currentUser = user;
+      if (user) {
+        try { localStorage.setItem('cd-signed-in', '1'); } catch (e) {}
+        const snap = await getDoc(doc(db, 'users', user.uid));
+        userProgress = snap.exists() ? (snap.data().courseProgress || {}) : {};
+      } else {
+        userProgress = {};
+      }
+      render();
+    });
+  } catch (e) {
+    render();
   }
-  render();
-});
+}
+
+render();
+let lpReturning = false;
+try { lpReturning = localStorage.getItem('cd-signed-in') === '1'; } catch (e) {}
+if (lpReturning) {
+  initLessonFirebase();
+} else {
+  window.addEventListener('load', () => {
+    setTimeout(initLessonFirebase, 4500);
+  });
+}

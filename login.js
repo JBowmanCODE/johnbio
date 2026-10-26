@@ -41,6 +41,7 @@ const githubProvider = new GithubAuthProvider();
 
 /* ----- Create/update user doc in Firestore ----- */
 async function ensureUserDoc(user, extraData = {}) {
+  try { localStorage.setItem('cd-signed-in', '1'); } catch (e) {}
   const ref = doc(db, 'users', user.uid);
   const snap = await getDoc(ref);
   if (!snap.exists()) {

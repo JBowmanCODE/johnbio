@@ -2,20 +2,48 @@
    course-dashboard.js — User dashboard logic
    ================================================ */
 
-import { auth, db } from '/firebase-init.js';
-import { onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
-import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
-
 const TOTAL_LESSONS = getTotalLessons(); // from course-data.js
 
-onAuthStateChanged(auth, async (user) => {
-  rememberSignedIn(!!user);
-  if (!user) {
+let auth = null, db = null, signOut = null, doc = null, getDoc = null;
+let fbInitStarted = false;
+
+async function initFirebaseDashboard() {
+  if (fbInitStarted) return;
+  fbInitStarted = true;
+  try {
+    const [fbInit, fbAuthMod, fbFsMod] = await Promise.all([
+      import('/firebase-init.js'),
+      import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js'),
+      import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js')
+    ]);
+    auth = fbInit.auth;
+    db = fbInit.db;
+    signOut = fbAuthMod.signOut;
+    doc = fbFsMod.doc;
+    getDoc = fbFsMod.getDoc;
+    fbAuthMod.onAuthStateChanged(auth, async (user) => {
+      rememberSignedIn(!!user);
+      if (!user) {
+        showGuestView();
+        return;
+      }
+      await loadDashboard(user);
+    });
+  } catch (e) {
     showGuestView();
-    return;
   }
-  await loadDashboard(user);
-});
+}
+
+let isReturningUser = false;
+try { isReturningUser = localStorage.getItem('cd-signed-in') === '1'; } catch (e) {}
+if (isReturningUser) {
+  initFirebaseDashboard();
+} else {
+  showGuestView();
+  window.addEventListener('load', () => {
+    setTimeout(initFirebaseDashboard, 4500);
+  });
+}
 
 /* Lets the next /course page load skip the guest view before Firebase resolves.
    The guest markup is server-rendered, so without this flag a returning user
