@@ -22,7 +22,7 @@ function buildFilesHeaderBlock(entries: Array<{ filename: string; canonicalUrl: 
   ];
   for (const e of entries) {
     lines.push(`    <Files "${e.filename}">`);
-    lines.push(`        Header set Link "<${e.canonicalUrl}>; rel=\\"canonical\\""`);
+    lines.push(`        Header set Link '<${e.canonicalUrl}>; rel="canonical"'`);
     lines.push('    </Files>');
   }
   lines.push('</IfModule>');

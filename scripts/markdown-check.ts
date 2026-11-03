@@ -349,7 +349,7 @@ check('.htaccess, news/.htaccess, and course/.htaccess contain RFC 7763 rules an
   assert.ok(rootHtaccess.includes('Header set X-Robots-Tag "noindex"'));
 
   for (const meta of Object.values(STATIC_ROUTE_REGISTRY)) {
-    const expectedLink = `Header set Link "<${meta.canonicalUrl}>; rel=\\"canonical\\""`;
+    const expectedLink = `Header set Link '<${meta.canonicalUrl}>; rel="canonical"'`;
     assert.ok(
       combined.includes(expectedLink),
       `Missing canonical Link header in .htaccess for ${meta.canonicalUrl}`
