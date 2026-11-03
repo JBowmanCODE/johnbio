@@ -1,132 +1,137 @@
 # JohnB.io
 
-> A personal AI and development project site by John Bowman. Built to test, explore and showcase 28 free AI-powered tools, a 35-lesson AI & machine learning course, responsible AI frameworks, and developer utilities.
+> A personal AI and development project site by John Bowman. Built to test, explore and showcase 28 free AI-powered tools, a 35-lesson AI & machine learning course across 9 units, responsible AI governance frameworks, and 212 iGaming compliance regulations across 50 jurisdictions.
 
-## Pages
+Every public URL on JohnB.io serves clean Markdown for LLMs, answer engines, and automated crawlers via HTTP content negotiation (`Accept: text/markdown`, RFC 7763) or by appending `.md` to the canonical path (for example `https://johnb.io/index.md`, `https://johnb.io/aitocv.md`, `https://johnb.io/news/ai-models-2026.md`, `https://johnb.io/course/what-is-ai.md`). For a single-file concatenated Markdown bundle of the entire site, fetch [llms-full.txt](https://johnb.io/llms-full.txt).
 
-- [Home](https://johnb.io/): Projects gallery — browse all 28 free AI tools, developer utilities and projects on the site.
-- [About](https://johnb.io/about): John Bowman, AI strategist and developer based in Leeds. 20+ years in iGaming and digital marketing, University of Oxford AI Programme graduate (2024), builds the free AI tools on JohnB.io.
-- [Contact](https://johnb.io/contact): Get in touch via email or LinkedIn. Also handles GDPR data privacy requests.
-- [Privacy Policy](https://johnb.io/privacy): How JohnB.io handles analytics, tool inputs and GDPR data rights.
-- [Terms of Use](https://johnb.io/terms): Terms and conditions governing use of the free tools and course on JohnB.io.
+- **Owner**: John Bowman (https://johnb.io/about) - AI strategist and developer based in Leeds, UK (20+ years in iGaming and digital marketing, University of Oxford AI Programme 2024).
+- **Coverage**: 28 free browser & AI tools, 4 in-depth AI research articles, 35 free AI course lessons, and 212 iGaming regulations across 50 jurisdictions.
+- **Stack & AI Models**: Vanilla HTML, CSS and JavaScript, Cloudflare Workers, Python (Pyodide), Anthropic Claude (Sonnet 5.5 and Haiku 5.5), OpenAI (TTS-1 and GPT), and Google Gemini APIs.
+- **Privacy & Disclosures**: All tools are free with no sign-up required. Tool inputs are processed ephemerally via Cloudflare Workers and never logged or stored. Contact and UK GDPR requests are handled via https://johnb.io/contact.
+
+## Core Pages
+
+- [Home](https://johnb.io/): A personal AI and development project site by John Bowman featuring 28 free AI-powered tools, a 35-lesson AI & machine learning course, responsible AI frameworks, and iGaming compliance utilities.
+- [About John Bowman](https://johnb.io/about): John Bowman, AI strategist and developer based in Leeds, UK with 20+ years in iGaming and digital marketing, University of Oxford AI Programme graduate (2024), and creator of the free AI tools on JohnB.io.
+- [AI & Machine Learning Course](https://johnb.io/course/): Free 9-unit, 35-lesson AI and machine learning course with certificate covering AI fundamentals, ethics, Python, machine learning, deep learning, generative AI, MLOps and business strategy.
+- [News and Insights](https://johnb.io/news/): Practical articles and analysis on AI models, generative engine optimisation (GEO), AI coding tools and digital strategy by John Bowman.
 
 ## AI Tools
 
-- [Search & Prompt Radar](https://johnb.io/search-radar): Free keyword and prompt research tool. Enter a seed topic and region (UK, US or global) and it pulls live autocomplete suggestions from Google Search and YouTube, Reddit search intent, recent Hacker News threads and LinkedIn B2B modifiers, then turns them into likely ChatGPT, Perplexity and Claude prompts (synthesised by Claude Haiku 5.5, not scraped) and LinkedIn post hooks. One-click copy, Markdown copy for LLM workflows and CSV export.
-- [AI Meditation Generator](https://johnb.io/meditation): Generates personalised guided meditations with Claude Sonnet 5.5 scripts, OpenAI TTS narration (Shimmer, Onyx or Nova voice) and 10 browser-synthesised soundscapes including ocean, fire crackle and binaural tones. Choose 5, 10 or 20 minutes in 25 languages including Spanish, French, German, Japanese and Arabic. Downloadable as MP3. Not medical advice.
-- [Live Poker Hand Replayer](https://johnb.io/live-poker-hand-replayer): Turn any live No Limit Hold'em poker hand into an animated table replay. Build the hand in a guided form or paste notes parsed by Claude Haiku 5.5, add optional OpenAI TTS commentary, then share a link or embed the replay anywhere.
-- [AI CV Enhancer](https://johnb.io/aitocv): Upload a CV (PDF, DOCX or text) and job description to get a tailored CV, cover letter, suitability match score and interview prep powered by Claude Sonnet 5.5 in 9 language variants (English, Italian, Spanish, French, Brazilian Portuguese, European Portuguese, Romanian, German and Bulgarian), plus integrated job board search across 9 countries and iGaming specialist boards. Also accessible via aitocv.com.
-- [AI Copyeditor](https://johnb.io/editor): Paste or upload text/Word documents to get AI-powered copyediting powered by Claude Sonnet 5.5 with UK/US English support, custom brand style guide rules and excluded words.
+- [Search & Prompt Radar](https://johnb.io/search-radar): Free keyword and prompt research tool that pulls live autocomplete suggestions from Google Search and YouTube, Reddit search intent, recent Hacker News threads and LinkedIn B2B modifiers, then synthesises likely ChatGPT, Perplexity and Claude prompts using Claude Haiku 5.5.
+- [AI Meditation Generator](https://johnb.io/meditation): Generates personalised guided meditations with Claude Sonnet 5.5 scripts, OpenAI TTS narration, and 10 browser-synthesised Web Audio soundscapes in 25 languages across 5, 10 or 20-minute sessions.
+- [Live Poker Hand Replayer](https://johnb.io/live-poker-hand-replayer): Turn any live No Limit Hold'em poker hand into an animated table replay using a guided form or AI note parser powered by Claude Haiku 5.5, with optional OpenAI TTS commentary, share links and iframe embeds.
+- [AI CV Enhancer](https://johnb.io/aitocv): Upload a CV (PDF, DOCX or TXT) and job description to get a tailored CV, cover letter, suitability match score and interview prep powered by Claude Sonnet 5.5 in 9 language variants, plus integrated job board search.
+- [AI Copyeditor](https://johnb.io/editor): Paste or upload text and Word documents for AI-powered copyediting powered by Claude Sonnet 5.5 with UK/US English support, custom brand style guide rules and excluded words.
 - [Gen Z Translator](https://johnb.io/genz): AI-powered translator using Claude Haiku 5.5 that rewrites plain English into Gen Z slang and translates Gen Z slang back into plain English.
 - [LLM Chat](https://johnb.io/lm-chat): Side-by-side chat interface comparing Anthropic Claude, OpenAI GPT and Google Gemini responses to the same prompt in real time.
 - [YouTube Blog Post Generator](https://johnb.io/transcripts): Paste a YouTube video URL or transcript and get a structured, SEO-optimised blog post generated by Claude Haiku 5.5.
-- [Text to Speech Converter](https://johnb.io/text-to-speech): Convert text to natural-sounding speech and download as MP3. Powered by OpenAI TTS (tts-1 model) with six voice options (Alloy, Echo, Fable, Onyx, Nova, Shimmer) and adjustable playback speed. Up to 4,000 characters per conversion.
-- [Football 2026](https://johnb.io/football-2026): AI predictions for the Summer 2026 football tournament. Group stage results, interactive knockout bracket, squad ratings and win probability for all 48 teams. Click to change bracket winners.
-- [Recipe to Shopping List](https://johnb.io/recipe-shopping-list): Paste a recipe or a week's meal plan and get one consolidated UK supermarket shopping list powered by Claude Haiku 5.5, deduped across recipes with quantities summed and grouped by aisle. American ingredient names are translated to UK retail terms. Each item links to a pre-filled product search at Tesco, Sainsbury's, Asda, Morrisons, Ocado, Waitrose, Iceland or Co-op.
+- [Text to Speech Converter](https://johnb.io/text-to-speech): Convert text up to 4,000 characters to natural-sounding speech and download as MP3 using OpenAI TTS (tts-1) with six voices and adjustable speed.
+- [Football 2026](https://johnb.io/football-2026): AI predictions for the Summer 2026 football tournament covering group stage results, interactive knockout bracket, squad ratings and win probabilities for all 48 teams.
+- [Recipe to Shopping List](https://johnb.io/recipe-shopping-list): Paste a recipe or weekly meal plan to get one consolidated UK supermarket shopping list powered by Claude Haiku 5.5, grouped by aisle with US-to-UK ingredient translation and search links for Tesco, Sainsbury's, Asda, Morrisons, Ocado, Waitrose, Iceland and Co-op.
 
-## Developer Tools
+## Developer Tools & iGaming Compliance
 
-- [iGaming Bonus Cost Calculator](https://johnb.io/bonus-calculator): Model the true cost of casino bonus offers. Enter bonus amount, wagering requirement, house edge and player completion rate to calculate net operator cost per bonus issued, breakeven house edge, and a scenario table across five completion rates.
-- [iGaming RG Message Generator](https://johnb.io/rg-generator): Generate compliant responsible gambling disclaimers for 10 jurisdictions including UK (UKGC), Malta (MGA), Ontario, Netherlands, Sweden, Denmark, Germany, Ireland, Spain and Gibraltar. Provides copy-paste disclaimer text, required logos and seals, helpline details, self-exclusion scheme information and channel-specific guidance for email, display, social media and SMS.
-- [iGaming Regulatory Compliance Map](https://johnb.io/igaming-compliance): Interactive world map of 212 iGaming regulations across 50 jurisdictions. Browse gambling laws, AML directives, data protection rules and advertising codes by country — filterable by region and category.
-- [iGaming Regulations Dataset (JSON)](https://johnb.io/igaming-regulations.json): Machine-readable export of all 212 iGaming regulations across 50 jurisdictions, licensed CC BY 4.0. Each record carries the regulation name, category, region, jurisdiction codes and names, a hand-written summary and a link to the official regulator source. Individual jurisdictions are citable on the map at https://johnb.io/igaming-compliance#jurisdiction-united-kingdom and individual regulations at #reg-<id>.
-- [PDF Merger](https://johnb.io/pdf-merger): Merge multiple PDF files into one instantly using pdf-lib in the browser. Upload, preview, reorder and download your combined PDF — no server upload and no file size limits.
-- [eBay & Vinted Profit Calculator](https://johnb.io/ebay): Calculate net profit from eBay, Vinted and auction sales, accounting for platform fees, postage and purchase costs.
-- [Bill Calculator](https://johnb.io/calculator): Split bills and calculate tips per person. Built with Python running in the browser via Pyodide.
-- [Poker Bankroll Planner](https://johnb.io/bankroll): Evaluate poker experience level and plan bankroll and stake strategy.
-- [Text to Voice](https://johnb.io/text-to-voice): Browser-based text-to-speech using the Web Speech API with voice selection, speed control and word-by-word subtitle highlighting.
-- [Zig-Zag Drop Mystery](https://johnb.io/zzmystery): Interactive browser pachinko and plinko slot drop game demo with configurable ball drops, multipliers and mystery prize mechanics.
+- [iGaming Bonus Cost Calculator](https://johnb.io/bonus-calculator): Model the true operator cost of casino bonus offers from bonus amount, wagering requirement, house edge and player completion rate, with breakeven analysis and scenario tables.
+- [iGaming RG Message Generator](https://johnb.io/rg-generator): Generate compliant responsible gambling disclaimers for 10 regulated jurisdictions including UK (UKGC), Malta (MGA), Ontario, Netherlands, Sweden, Denmark, Germany, Ireland, Spain and Gibraltar.
+- [iGaming Regulatory Compliance Map](https://johnb.io/igaming-compliance): Interactive world map and CC BY 4.0 dataset of 212 iGaming regulations across 50 jurisdictions covering gambling laws, AML directives, data protection rules and advertising codes.
+- [iGaming Regulations Dataset (JSON)](https://johnb.io/igaming-regulations.json): Machine-readable CC BY 4.0 export of all 212 iGaming regulations across 50 jurisdictions with official regulator source links.
+- [PDF Merger](https://johnb.io/pdf-merger): Merge multiple PDF files into one document directly in the browser using pdf-lib with drag-and-drop reordering and zero server uploads.
+- [eBay & Vinted Profit Calculator](https://johnb.io/ebay): Calculate net profit and ROI from eBay, Vinted and auction saleroom sales after platform fees, buyer premiums, postage and purchase costs.
+- [Bill Calculator](https://johnb.io/calculator): Split restaurant bills and calculate tips per person in the browser using Python running client-side via Pyodide.
+- [Poker Bankroll Planner](https://johnb.io/bankroll): Evaluate poker experience level, session time and budget to plan a recommended game format, stake level and bankroll strategy.
+- [Text to Voice](https://johnb.io/text-to-voice): Browser-based text-to-speech reader using the Web Speech API with voice selection, speed control and live word-by-word subtitle highlighting.
 
 ## Digital AI Tools
 
-- [T&Cs Simplifier](https://johnb.io/tcs-simplifier): Paste casino bonus terms and conditions and get a plain English summary, red flag list and key numbers block (wagering, expiry, max bet, max win) powered by Claude Haiku 5.5. Built for players, affiliates and compliance teams. Not legal advice.
-- [Prompt Improver](https://johnb.io/prompt-improver): Rewrites weak AI prompts into stronger versions with a short change log using Claude Haiku 5.5. Includes a library of starter prompts for common tasks (summarising, cold email, code review, SEO briefs, meeting notes). Works for ChatGPT, Claude, Gemini and any LLM.
-- [FAQ Schema Generator](https://johnb.io/faq-schema): Free tool that turns question and answer pairs into valid FAQPage JSON-LD structured data. Includes a manual builder and an AI draft mode powered by Claude Haiku 5.5 that generates 5–8 FAQs from a topic. Output is ready to paste into the page head.
-- [Content Repurposer](https://johnb.io/content-repurposer): AI-powered tool using Claude Haiku 5.5 that repurposes existing content into six formats simultaneously — LinkedIn posts, X threads, Facebook posts, email newsletters, and 10s/30s video scripts.
-- [iGaming Promo Copy Generator](https://johnb.io/promo-copy): Generate compliant iGaming promotional copy for 10 regulated markets including UK (UKGC), Malta (MGA), Ontario, Netherlands, Germany and more using Claude Haiku 5.5. Describe a promotion, select jurisdiction, channel and tone, and receive AI-generated headlines, body copy, call-to-action text, T&C summaries and market-specific required disclaimers.
-- [iGaming Jargon Translator](https://johnb.io/igaming-jargon): AI-powered tool using Claude Haiku 5.5 that translates iGaming industry terminology to plain English, or plain English descriptions to correct industry terminology. Covers GGR, NGR, RTP, wagering requirements, KYC/AML, CPA, RevShare, CLV, responsible gambling frameworks and more.
-- [LLMs.txt Generator](https://johnb.io/llms-generator): AI-powered tool using Claude Haiku 5.5 that generates a structured llms.txt file from a URL or pasted content. Helps websites become more discoverable and accurately cited by AI assistants including ChatGPT, Claude, Gemini and Perplexity. Follows the llmstxt.org specification.
-
-## News and Insights
-
-- [News](https://johnb.io/news/): News and insights on AI, iGaming, SEO and digital from John Bowman.
-- [AI Models in 2026: What Actually Changed in the Last 12 Months](https://johnb.io/news/ai-models-2026): A sourced review of AI progress from August 2025 to August 2026, covering Anthropic's Claude Opus 5 and Sonnet 5.5, OpenAI's GPT-5 to GPT-5.6 releases and the Sora shutdown, Google Gemini 3 and Antigravity, video and image models including Veo and Nano Banana, open-weight models from DeepSeek and Qwen, and the METR randomised trial finding developers 19% slower with AI tools.
-- [What Happens When Your AI Songs Get 88 Million Views](https://johnb.io/news/ai-music-88-million-views): How John Bowman generated 88 million streams with AI music in 2024-2026, what it actually paid (£600), and why reach on TikTok/YouTube Shorts does not equal streaming revenue. Covers Suno, SoundOn distribution, and AI music economics.
-- [GEO: A Practical Guide to Generative Engine Optimisation in 2026](https://johnb.io/news/geo-generative-engine-optimisation): Explains what GEO is, how it differs from SEO, what AI retrieval systems look for in content, whether llms.txt actually works, and practical steps to get cited by ChatGPT, Perplexity and Google AI Overviews.
-- [Claude Code VSC: AI Coding for Beginners](https://johnb.io/news/claude-code-vsc): Beginner's guide to the Claude Code VS Code extension by Anthropic. Covers what Claude Code VSC is, how it differs from Claude.ai, installation steps, what it can do, the CLAUDE.md briefing file, pricing (Claude Max subscription vs API credits), and what to try first.
-
-## AI Course
-
-- [AI & Machine Learning Course](https://johnb.io/course/): Free AI and machine learning course with certificate. 9 units and 35 lessons covering AI fundamentals, deep learning, NLP, MLOps and business strategy. No login required to browse lessons.
-- [Certificate Verification](https://johnb.io/verify): Public page to verify AI & Machine Learning Course certificates issued by JohnB.io. URL format: johnb.io/verify/JB-2026-XXXXXX
-
-### Unit 1 — Introduction to AI
-- [What Is AI? History, Definitions and the Turing Test](https://johnb.io/course/what-is-ai): Covers AI history from the 1950s, Alan Turing's 1950 test, AI winters, and why modern AI is pattern matching at scale.
-- [Categories of AI: Narrow, General and Super AI](https://johnb.io/course/categories-of-ai): Explains the three tiers of AI capability — narrow AI (what exists today), AGI (theoretical), and ASI (hypothetical).
-- [How AI Learns: Supervised, Unsupervised and Reinforcement Learning](https://johnb.io/course/how-ai-learns): The three core learning paradigms that power modern AI systems.
-- [AI vs Augmented Intelligence](https://johnb.io/course/ai-vs-augmented-intelligence): Explores the distinction between AI replacing humans and AI enhancing human decision-making.
-
-### Unit 2 — AI Landscape
-- [Traditional AI vs Generative AI](https://johnb.io/course/traditional-vs-generative-ai): How rules-based and statistical AI differs from modern generative models.
-- [ML, Deep Learning and Neural Networks](https://johnb.io/course/ml-deep-learning-neural-networks): The relationship between machine learning, deep learning and neural networks explained clearly.
-- [Key AI Subfields](https://johnb.io/course/key-ai-subfields): NLP, computer vision, robotics, and other major branches of AI.
-- [AI Tools and Platforms in 2026](https://johnb.io/course/ai-tools-platforms-2026): Overview of the leading AI tools, foundation models and platforms available to practitioners in 2026.
-
-### Unit 3 — AI Ethics and Governance
-- [AI Failures and Ethics](https://johnb.io/course/ai-failures-ethics): Real-world AI failures and the ethical lessons they teach.
-- [Hallucinations, Bias and IP](https://johnb.io/course/ai-hallucinations-bias-ip): Why AI systems hallucinate, how bias enters models, and intellectual property considerations.
-- [AI Governance Frameworks](https://johnb.io/course/ai-governance-frameworks): How organisations and regulators are approaching AI governance, including the EU AI Act, NIST AI RMF and ISO/IEC 42001.
-
-### Unit 4 — Python for AI
-- [Python Essentials for AI](https://johnb.io/course/python-essentials-for-ai): The Python concepts and syntax you need before working with AI libraries.
-- [NumPy and Pandas](https://johnb.io/course/numpy-pandas): Core data manipulation libraries for AI and machine learning workflows.
-
-### Unit 5 — Machine Learning Fundamentals
-- [Linear Regression and Gradient Descent](https://johnb.io/course/linear-regression-gradient-descent): How linear regression works and how gradient descent optimises model parameters.
-- [Logistic Regression and Classification](https://johnb.io/course/logistic-regression-classification): Binary and multi-class classification with logistic regression.
-- [Model Evaluation](https://johnb.io/course/model-evaluation): Accuracy, precision, recall, F1, confusion matrices and ROC curves explained.
-- [Key ML Algorithms](https://johnb.io/course/key-ml-algorithms): Decision trees, random forests, SVMs, k-nearest neighbours and when to use each.
-
-### Unit 6 — Deep Learning
-- [Biological vs Artificial Neurons](https://johnb.io/course/biological-vs-artificial-neurons): How biological neurons inspired the design of artificial neural networks.
-- [Neural Networks and Forward Propagation](https://johnb.io/course/neural-networks-forward-propagation): How data flows through a neural network layer by layer.
-- [Backpropagation](https://johnb.io/course/backpropagation): How neural networks learn by propagating error signals backwards through layers.
-- [Activation Functions and the Vanishing Gradient](https://johnb.io/course/activation-functions-vanishing-gradient): ReLU, sigmoid, tanh and why the vanishing gradient problem matters.
-- [TensorFlow, PyTorch and Keras](https://johnb.io/course/tensorflow-pytorch-keras): Comparison of the major deep learning frameworks and when to use each.
-- [CNNs with Keras](https://johnb.io/course/cnns-with-keras): Convolutional neural networks explained and built with Keras.
-- [RNNs, Transformers and Autoencoders](https://johnb.io/course/rnns-transformers-autoencoders): Sequence models, the transformer architecture, and autoencoder networks.
-
-### Unit 7 — Generative AI and LLMs
-- [Generative AI Models](https://johnb.io/course/generative-ai-models): VAEs, GANs and diffusion models — how generative AI creates new content.
-- [Prompt Engineering and AI Agents](https://johnb.io/course/prompt-engineering-ai-agents): How to write effective prompts and how AI agents differ from chatbots.
-- [RAG, Fine-tuning and Enterprise AI](https://johnb.io/course/rag-finetuning-enterprise-ai): Retrieval-augmented generation vs fine-tuning for enterprise use cases.
-
-### Unit 8 — MLOps
-- [Intro to MLOps](https://johnb.io/course/intro-to-mlops): What MLOps is and why the gap between notebook experiments and production systems matters.
-- [Model Deployment](https://johnb.io/course/model-deployment): Serving ML models via APIs, batch vs real-time prediction, and Docker containers.
-- [Monitoring and Drift](https://johnb.io/course/monitoring-drift): Data drift, concept drift and how to detect when models degrade in production.
-- [CI/CD for ML](https://johnb.io/course/cicd-for-ml): Continuous integration and deployment pipelines for machine learning systems.
-
-### Unit 9 — AI in Business
-- [AI Adoption Journey](https://johnb.io/course/ai-adoption-journey): The stages organisations go through when adopting AI, from experimentation to transformation.
-- [Build vs Buy](https://johnb.io/course/build-vs-buy): When to build custom AI systems and when to buy off-the-shelf products.
-- [AI Across Industries](https://johnb.io/course/ai-across-industries): How AI is actually being deployed in healthcare, finance, marketing and manufacturing.
-- [Making the Business Case for AI](https://johnb.io/course/business-case-for-ai): How to pitch AI projects to decision makers using financial metrics and specific problem framing.
+- [T&Cs Simplifier](https://johnb.io/tcs-simplifier): Paste casino bonus terms and conditions to get a plain English summary, red flag list and key numbers block (wagering, expiry, max bet, max win) powered by Claude Haiku 5.5.
+- [Prompt Improver](https://johnb.io/prompt-improver): Rewrites weak AI prompts into stronger versions with a short change log using Claude Haiku 5.5, plus a starter library for common tasks across ChatGPT, Claude and Gemini.
+- [FAQ Schema Generator](https://johnb.io/faq-schema): Turns question and answer pairs into valid FAQPage JSON-LD structured data with a manual builder and an AI draft mode powered by Claude Haiku 5.5.
+- [Content Repurposer](https://johnb.io/content-repurposer): AI-powered tool using Claude Haiku 5.5 that repurposes blog posts or articles into LinkedIn posts, X threads, Facebook posts, email newsletters and 10s/30s video scripts.
+- [iGaming Promo Copy Generator](https://johnb.io/promo-copy): Generate compliant iGaming promotional copy for 10 regulated markets using Claude Haiku 5.5 with headlines, body copy, CTAs, T&C summaries and market-specific disclaimers.
+- [iGaming Jargon Translator](https://johnb.io/igaming-jargon): AI-powered tool using Claude Haiku 5.5 that translates iGaming industry terminology (GGR, NGR, RTP, KYC/AML, CPA, RevShare) to plain English and vice versa.
+- [LLMs.txt Generator](https://johnb.io/llms-generator): AI-powered tool using Claude Haiku 5.5 that generates a structured llms.txt file from a URL or pasted content following the llmstxt.org specification.
 
 ## Responsible AI
 
-- [RAI Governance Framework](https://johnb.io/rai): Interactive responsible AI governance tool covering principles, risk tiering (EU AI Act aligned), RAI checklists, system cards and an AI registry.
+- [RAI Governance Framework](https://johnb.io/rai): Interactive browser-based responsible AI governance toolkit covering principles, EU AI Act risk tiering, RACI responsibility matrices, pre-deployment checklists, system cards and an AI system registry.
+
+## News and Insights
+
+- [News Index](https://johnb.io/news/): Practical articles and analysis on AI models, generative engine optimisation (GEO), AI coding tools and digital strategy by John Bowman.
+- [AI Models in 2026: What Actually Changed in the Last 12 Months](https://johnb.io/news/ai-models-2026): A sourced review of AI progress from August 2025 to August 2026 covering Anthropic's Claude Opus 5 and Sonnet 5.5, OpenAI's GPT-5.6 and the Sora shutdown, Google Gemini 3, open-weight models, and the METR developer productivity trial.
+- [What Happens When Your AI Songs Get 88 Million Views](https://johnb.io/news/ai-music-88-million-views): How John Bowman generated 88 million streams with AI music in 2024-2026, why it paid £600 in total, and how short-form video reach differs from streaming royalties.
+- [GEO: A Practical Guide to Generative Engine Optimisation in 2026](https://johnb.io/news/geo-generative-engine-optimisation): Explains what Generative Engine Optimisation (GEO) is, how it differs from traditional SEO, what AI retrieval systems extract, whether llms.txt works, and practical steps to earn citations in ChatGPT, Perplexity and Google AI Overviews.
+- [Claude Code VSC: AI Coding for Beginners](https://johnb.io/news/claude-code-vsc): Beginner's guide to Anthropic's Claude Code VS Code extension covering installation, CLAUDE.md project briefings, pricing (Claude Max vs API credits), and practical first workflows.
+
+## AI & Machine Learning Course
+
+- [AI & Machine Learning Course Hub](https://johnb.io/course/): Free 9-unit, 35-lesson AI and machine learning course with certificate covering AI fundamentals, ethics, Python, machine learning, deep learning, generative AI, MLOps and business strategy.
+
+### Unit 1 - Introduction to Artificial Intelligence
+- [What is AI? - History, definitions & the Turing Test](https://johnb.io/course/what-is-ai): Covers AI history from the 1950s Dartmouth Workshop, Alan Turing's 1950 test, AI winters, and why modern AI is pattern matching at scale.
+- [Categories of AI - Narrow, General & Super AI](https://johnb.io/course/categories-of-ai): Explains the three tiers of AI capability: Artificial Narrow Intelligence (ANI), Artificial General Intelligence (AGI), and Artificial Superintelligence (ASI).
+- [How AI Learns - Supervised, Unsupervised & Reinforcement Learning](https://johnb.io/course/how-ai-learns): The three core learning paradigms that power modern AI systems, with practical examples of labelled training, clustering and reward-driven agents.
+- [AI vs. Augmented Intelligence](https://johnb.io/course/ai-vs-augmented-intelligence): Explores the practical distinction between autonomous AI replacing human tasks and augmented intelligence enhancing human judgment.
+
+### Unit 2 - The Modern AI Landscape
+- [Traditional AI vs. Generative AI - Architecture differences](https://johnb.io/course/traditional-vs-generative-ai): How rules-based and predictive statistical AI differs from modern generative foundation models that synthesise text, code, audio and images.
+- [Machine Learning, Deep Learning & Neural Networks - How they relate](https://johnb.io/course/ml-deep-learning-neural-networks): How classical machine learning, multi-layer neural networks and deep learning fit together and when simpler models outperform deep networks.
+- [Key AI Subfields - NLP, Computer Vision & Edge AI](https://johnb.io/course/key-ai-subfields): Overview of natural language processing (NLP), computer vision, speech recognition, robotics and recommender systems.
+- [AI Tools & Platforms - LLMs, Agents, RAG & the 2026 market](https://johnb.io/course/ai-tools-platforms-2026): Survey of the leading foundation models, APIs, cloud ML platforms and developer tools used in production in 2026.
+
+### Unit 3 - Ethics, Governance & Responsible AI
+- [Real-World AI Failures & Why Ethics Matter](https://johnb.io/course/ai-failures-ethics): Real-world case studies of AI deployment failures and the ethical governance principles needed to prevent harm.
+- [Hallucinations, Bias & Intellectual Property](https://johnb.io/course/ai-hallucinations-bias-ip): Why large language models hallucinate, how training data bias propagates into decisions, and copyright and intellectual property considerations.
+- [AI Governance Frameworks & Enterprise Guidelines](https://johnb.io/course/ai-governance-frameworks): How organisations and regulators govern AI systems under the EU AI Act, NIST AI RMF, ISO/IEC 42001 and UK AI principles.
+
+### Unit 4 - Python for AI
+- [Python Essentials for AI - Variables, data structures & control flow](https://johnb.io/course/python-essentials-for-ai): Core Python data structures, functions, comprehensions and environment management required for machine learning workflows.
+- [Data Analysis with NumPy & Pandas](https://johnb.io/course/numpy-pandas): Vectorised array operations in NumPy and tabular data cleaning, filtering and aggregation with Pandas.
+
+### Unit 5 - Machine Learning
+- [Linear Regression & Gradient Descent](https://johnb.io/course/linear-regression-gradient-descent): How linear regression models continuous outcomes and how gradient descent iteratively minimises a loss function.
+- [Logistic Regression & Classification](https://johnb.io/course/logistic-regression-classification): Binary and multi-class classification using the sigmoid function, log-loss optimisation and decision thresholds.
+- [Model Evaluation - Validation, Overfitting & Metrics](https://johnb.io/course/model-evaluation): Measuring model performance with accuracy, precision, recall, F1-score, confusion matrices, ROC-AUC and cross-validation.
+- [Key ML Algorithms - Decision Trees, SVMs & More](https://johnb.io/course/key-ml-algorithms): Decision trees, random forests, gradient boosting, support vector machines (SVMs) and k-nearest neighbours compared.
+
+### Unit 6 - Deep Learning & Neural Networks
+- [Biological vs. Artificial Neurons](https://johnb.io/course/biological-vs-artificial-neurons): How biological neurons inspired the mathematical perceptron, weights, biases and activation thresholds.
+- [Artificial Neural Networks & Forward Propagation](https://johnb.io/course/neural-networks-forward-propagation): How input features flow through input, hidden and output layers via matrix multiplication and non-linear activations.
+- [Backpropagation & How Neural Networks Learn](https://johnb.io/course/backpropagation): How neural networks learn by applying the chain rule of calculus to propagate error gradients backward through layers.
+- [Activation Functions & the Vanishing Gradient Problem](https://johnb.io/course/activation-functions-vanishing-gradient): ReLU, sigmoid, tanh and softmax compared, and how vanishing or exploding gradients affect deep network training.
+- [Deep Learning Libraries - TensorFlow, PyTorch & Keras](https://johnb.io/course/tensorflow-pytorch-keras): Practical comparison of PyTorch, TensorFlow and Keras for research prototyping and production deep learning.
+- [Convolutional Neural Networks (CNNs) with Keras](https://johnb.io/course/cnns-with-keras): Convolutional layers, pooling, feature maps and building image classification models with Keras.
+- [RNNs, Transformers & Autoencoders](https://johnb.io/course/rnns-transformers-autoencoders): Sequence modelling from recurrent neural networks and LSTMs to self-attention transformers and autoencoders.
+
+### Unit 7 - Generative AI & Practical Applications
+- [Generative AI Models - VAEs, GANs & Diffusion](https://johnb.io/course/generative-ai-models): How Variational Autoencoders (VAEs), Generative Adversarial Networks (GANs), diffusion models and autoregressive LLMs generate content.
+- [Prompt Engineering & AI Agents](https://johnb.io/course/prompt-engineering-ai-agents): System prompts, few-shot examples, structured outputs, tool calling and autonomous multi-step AI agent loops.
+- [RAG, Fine-Tuning & Enterprise AI Strategy](https://johnb.io/course/rag-finetuning-enterprise-ai): When to use Retrieval-Augmented Generation (RAG) with vector search versus fine-tuning weights for enterprise AI systems.
+
+### Unit 8 - AI in Production
+- [Introduction to MLOps - From notebook to production](https://johnb.io/course/intro-to-mlops): Bridging the gap between Jupyter notebook experiments and reproducible, monitored production machine learning systems.
+- [Model Deployment - APIs, containers & cloud services](https://johnb.io/course/model-deployment): Serving machine learning models via REST APIs, batch inference vs real-time endpoints, containerisation and latency trade-offs.
+- [Monitoring & Drift - Keeping models healthy in the real world](https://johnb.io/course/monitoring-drift): Detecting data drift, concept drift and silent performance degradation in production ML and LLM pipelines.
+- [CI/CD for ML - Automating the machine learning pipeline](https://johnb.io/course/cicd-for-ml): Automated testing, data validation, model registry versioning and continuous delivery pipelines for machine learning.
+
+### Unit 9 - AI Strategy & Business Applications
+- [How Organisations Adopt AI - The adoption journey & ROI frameworks](https://johnb.io/course/ai-adoption-journey): How organisations progress from ad-hoc AI pilots to governed, measurable production capabilities.
+- [Build vs. Buy - Evaluating AI tools as a business](https://johnb.io/course/build-vs-buy): Framework for deciding when to buy commercial AI SaaS, integrate foundation model APIs, or train custom models.
+- [AI Across Industries - Healthcare, marketing, finance & beyond](https://johnb.io/course/ai-across-industries): Where AI delivers measurable value across healthcare, finance, iGaming, retail, marketing and software engineering.
+- [Making the Business Case for AI](https://johnb.io/course/business-case-for-ai): How to scope AI projects around specific bottlenecks, estimate token and infrastructure costs, and measure real ROI.
 
 ## Machine-Readable Resources
 
-- [LLMs Index](https://johnb.io/llms.txt): Structured index of all public pages, tools, course lessons and articles.
-- [LLMs Full Reference](https://johnb.io/llms-full.txt): Expanded reference of JohnB.io tools, datasets, articles and course curriculum for AI retrieval systems.
+- [LLMs Index](https://johnb.io/llms.txt): Concise structured directory of all public pages, tools, course lessons and articles on JohnB.io.
+- [LLMs Full Reference](https://johnb.io/llms-full.txt): Single-file concatenated Markdown bundle of all standing pages, tool guides, FAQs, articles and course lessons.
 - [iGaming Regulations JSON Dataset](https://johnb.io/igaming-regulations.json): CC BY 4.0 dataset of 212 gambling, AML, advertising and data protection regulations across 50 jurisdictions.
 - [XML Sitemap](https://johnb.io/sitemap.xml): Canonical URL list for search and answer engine crawlers.
 
-## Site Info
+## Optional
 
-- Owner: John Bowman (https://johnb.io/about)
-- Contact: https://johnb.io/contact
-- Built with: Vanilla HTML, CSS and JavaScript, Cloudflare Workers, and Python (Pyodide). AI features powered by Anthropic Claude (Sonnet 5.5 and Haiku 5.5), OpenAI (TTS-1 and GPT), and Google Gemini APIs.
-- Purpose: Free AI tools, iGaming compliance utilities, and practical AI education.
+- [Contact John Bowman](https://johnb.io/contact): Get in touch with John Bowman via the contact form or LinkedIn, and submit UK GDPR data and privacy requests.
+- [Privacy Policy](https://johnb.io/privacy): How JohnB.io handles analytics, AI tool inputs, registered course accounts, cookies, and UK GDPR data protection rights.
+- [Terms of Service](https://johnb.io/terms): Terms and conditions governing use of the free AI tools, developer utilities, and AI & Machine Learning Course on JohnB.io.
+- [Verify a Course Certificate](https://johnb.io/verify): Public verification page for AI & Machine Learning Course certificates issued by JohnB.io (format: johnb.io/verify/JB-2026-XXXXXX).
+- [Zig-Zag Drop Mystery](https://johnb.io/zzmystery): Interactive browser pachinko and plinko slot drop game demo with configurable ball drops, risk tiers, multipliers and mystery prize mechanics.

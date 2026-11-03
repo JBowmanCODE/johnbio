@@ -1,0 +1,12 @@
+{
+  "name": "johnb-io",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "JohnB.io static site, AI tools, course, and RFC 7763 Markdown serving pipeline",
+  "scripts": {
+    "build:markdown": "node scripts/build-markdown.ts",
+    "test:markdown": "node scripts/markdown-check.ts",
+    "check": "node scripts/markdown-check.ts"
+  }
+}

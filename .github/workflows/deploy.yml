@@ -12,6 +12,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Verify Markdown serving & sitemap parity
+        run: npm run check
+
       - name: Deploy to Namecheap via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -30,6 +38,11 @@ jobs:
             .claude/**
             workers/**
             tests/**
+            lib/**
+            scripts/**
+            node_modules/**
+            package.json
+            package-lock.json
             data/**
             cgi-bin/**
             README.md
