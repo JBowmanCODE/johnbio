@@ -9,7 +9,7 @@ const projects = [
     color: 'pink',
     icons: ['monitoring', 'insights'],
     href: 'https://johnb.io/linkedin-analyser',
-    img: '/images/linkedin_analyser_og.webp',
+    img: '/images/linkedin_analyser_og.webp?v=2',
     thumbIcon: 'monitoring',
   },
   {
@@ -75,7 +75,7 @@ const projects = [
   {
     id: 'igaming-compliance',
     title: 'iGaming Compliance Map',
-    desc: 'Interactive world map of 212 iGaming regulations across 50 jurisdictions. Browse gambling laws, AML directives, data protection rules and advertising codes by country.',
+    desc: 'Interactive world map of 216 iGaming regulations across 50 jurisdictions. Browse gambling laws, AML directives, data protection rules and advertising codes by country.',
     category: 'dev',
     badge: 'DEV TOOL',
     color: 'pink',
