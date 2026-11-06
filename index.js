@@ -1,6 +1,18 @@
 const projects = [
   // ── TOP 6 (visible by default) ──────────────────────────────────────────
   {
+    id: 'linkedin-analyser',
+    title: 'LinkedIn Analytics Analyser',
+    desc: 'Upload your LinkedIn Creator Analytics .xlsx export to get a health score, creator type, follower growth projections, post theme breakdown, audience vs reach comparison and practical advice on what to post next. 100% private in your browser.',
+    category: 'dev',
+    badge: 'DEV TOOL',
+    color: 'pink',
+    icons: ['monitoring', 'insights'],
+    href: 'https://johnb.io/linkedin-analyser',
+    img: '/images/linkedin_analyser_og.webp',
+    thumbIcon: 'monitoring',
+  },
+  {
     id: 'search-radar',
     title: 'Search & Prompt Radar',
     desc: 'Type a topic and see what people search for on Google, YouTube and Reddit, plus live Hacker News threads, LinkedIn angles and the prompts they are likely asking ChatGPT and Claude. Copy any term or export to CSV.',

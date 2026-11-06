@@ -1,3 +1,6 @@
+# Test data (never commit real analytics exports)
+test-data/
+
 # Cloudflare Workers (kept local only, deployed via Wrangler)
 workers/
 

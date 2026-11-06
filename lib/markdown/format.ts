@@ -299,7 +299,15 @@ export const STATIC_ROUTE_REGISTRY: Readonly<Record<string, RouteMeta>> = (() =>
       category: 'ai-tool',
     },
 
-    // Developer & iGaming Tools (9)
+    // Developer & iGaming Tools (10)
+    {
+      path: '/linkedin-analyser',
+      title: 'LinkedIn Analytics Analyser',
+      summary:
+        'Free browser-based LinkedIn Creator Analytics .xlsx analyser with a 0-100 health score, creator type diagnosis, compound monthly growth rate (CMGR) projections, URL-slug post theme detection, audience vs content reach comparison, shareable summary cards, PDF report and AI-ready Markdown export.',
+      category: 'dev-tool',
+      requiredDisclosures: ['never leaves your browser', 'Not affiliated with or endorsed by LinkedIn'],
+    },
     {
       path: '/bonus-calculator',
       title: 'iGaming Bonus Cost Calculator',

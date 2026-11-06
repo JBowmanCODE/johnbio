@@ -313,6 +313,9 @@ AddType audio/x-m4a .m4a
     <Files "recipe-shopping-list.md">
         Header set Link '<https://johnb.io/recipe-shopping-list>; rel="canonical"'
     </Files>
+    <Files "linkedin-analyser.md">
+        Header set Link '<https://johnb.io/linkedin-analyser>; rel="canonical"'
+    </Files>
     <Files "bonus-calculator.md">
         Header set Link '<https://johnb.io/bonus-calculator>; rel="canonical"'
     </Files>

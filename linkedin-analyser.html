@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Analytics Analyser - Free Export Tool - JohnB.io</title>
+
+  <!-- Google Analytics -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+    (function(){
+      var loaded = false;
+      function loadGA(){
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY';
+        document.head.appendChild(s);
+      }
+      ['pointermove','touchstart','scroll','keydown','click'].forEach(function(e){
+        window.addEventListener(e, loadGA, { once: true, passive: true });
+      });
+      window.addEventListener('load', function(){ setTimeout(loadGA, 4000); });
+    })();
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800;900&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css?v=6">
+  <link rel="stylesheet" href="/header.css?v=8">
+  <link rel="stylesheet" href="/footer.css?v=4">
+  <link rel="stylesheet" href="/linkedin-analyser.css?v=1">
+
+  <!-- SEO -->
+  <meta name="description" content="Upload your LinkedIn Creator Analytics .xlsx export for a free browser-based breakdown of your health score, creator type, audience and best posts.">
+  <meta name="keywords" content="linkedin analytics analyser, linkedin creator analytics export, linkedin xlsx analyser, linkedin health score, linkedin engagement rate calculator, linkedin post analytics">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://johnb.io/linkedin-analyser">
+  <link rel="alternate" type="text/markdown" href="https://johnb.io/linkedin-analyser.md">
+  <meta name="author" content="John Bowman">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="LinkedIn Analytics Analyser - Free Export Tool - JohnB.io">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/linkedin-analyser">
+  <meta property="og:description" content="Upload your LinkedIn Creator Analytics .xlsx export for a free browser-based breakdown of your health score, creator type, audience and best posts.">
+  <meta property="og:image" content="https://johnb.io/images/linkedin_analyser_og.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="LinkedIn Analytics Analyser dashboard on JohnB.io">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LinkedIn Analytics Analyser - JohnB.io">
+  <meta name="twitter:description" content="Upload your LinkedIn Creator Analytics .xlsx export for a clear visual breakdown of your growth, audience and what to post next. Your file never leaves your browser.">
+  <meta name="twitter:image" content="https://johnb.io/images/linkedin_analyser_og.webp">
+  <meta name="twitter:image:alt" content="LinkedIn Analytics Analyser dashboard on JohnB.io">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "LinkedIn Analytics Analyser",
+    "url": "https://johnb.io/linkedin-analyser",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Free client-side tool that parses your LinkedIn Creator Analytics .xlsx export in the browser to calculate your health score, creator type, compound follower growth, audience fit and rule-based post recommendations.",
+    "image": "https://johnb.io/images/linkedin_analyser_og.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://johnb.io/about",
+      "sameAs": ["https://www.linkedin.com/in/john-bowman/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does my LinkedIn analytics file ever leave my browser?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Your .xlsx file is parsed entirely inside your browser using JavaScript. Nothing from your file is uploaded to a server, stored in localStorage, or sent to analytics."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I export my LinkedIn Creator Analytics .xlsx file?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open linkedin.com/analytics/creator/audience/ on desktop or mobile web, select Past 365 days for the most complete analysis, and click the Export button in the top right corner to download your .xlsx workbook."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are starting follower totals and monthly follower totals marked as estimates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LinkedIn exports your total followers on the export date and the number of new followers gained each day, but it does not export unfollows. Working backwards from today's total gives a close estimate rather than an exact historical count."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I change the content theme assigned to my posts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Initial themes are guessed from keywords in each post's URL slug, and you can use the dropdown next to any post to change its theme. Your theme stats, Creator Type, recommendations and downloads update immediately."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I compare two LinkedIn exports over time?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. After loading your first export, use the 'Add an older export to compare' box at the bottom of the results. The tool automatically detects which file is older and shows changes in followers, engagement rate, health score, audience shifts and new top posts."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://johnb.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "LinkedIn Analytics Analyser",
+        "item": "https://johnb.io/linkedin-analyser"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How LinkedIn Analytics Analyser Works",
+    "description": "Export your LinkedIn Creator Analytics .xlsx file and analyse your growth, audience and best-performing posts in your browser.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Export your LinkedIn analytics",
+        "text": "Export your LinkedIn analytics. Visit linkedin.com/analytics/creator/audience/, choose Past 365 days, and click Export to download your .xlsx file."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Drop the .xlsx file into the analyser",
+        "text": "Drop the .xlsx file into the analyser. Drag and drop your file or tap to select it, or click 'Try it with example data' to explore a synthetic demo first."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Review your score, takeaways and post themes",
+        "text": "Review your score, takeaways and post themes. Inspect your 0-100 health score, Creator Type, follower projections, audience gaps and adjust any post themes with the inline dropdowns."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Download your share card, PDF report or AI Markdown file",
+        "text": "Download your share card, PDF report or AI Markdown file. Save a PNG summary card for LinkedIn, a multi-page A4 PDF report, or a structured .md file ready for ChatGPT and Claude."
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="la-ambient" aria-hidden="true"></div>
+
+  <main class="la-wrap" id="main-content" data-theme="dark">
+
+    <!-- 1. HERO + INSTRUCTIONS -->
+    <section class="la-hero" aria-label="Introduction">
+      <div class="la-hero-topbar">
+        <span class="la-privacy-pill">
+          <span class="material-symbols-outlined" aria-hidden="true">lock</span>
+          Your file never leaves your browser
+        </span>
+        <button type="button" class="la-theme-btn" id="la-theme-toggle" aria-label="Toggle light and dark mode">
+          <span class="material-symbols-outlined" aria-hidden="true" id="la-theme-icon">light_mode</span>
+          <span id="la-theme-label">Light mode</span>
+        </button>
+      </div>
+      <h1 class="la-title">LinkedIn Analytics <span class="gradient-text">Analyser</span></h1>
+      <p class="la-pitch">Upload your LinkedIn Creator Analytics .xlsx export to get a clear visual breakdown of how your account is doing, plus practical advice on what to post next.</p>
+    </section>
+
+    <!-- ONBOARDING: STEPS + UPLOAD + DEMO -->
+    <section class="la-onboarding-grid" id="la-onboarding" aria-label="Export instructions and file upload">
+      <!-- Easy-to-edit instructions card -->
+      <div class="la-card" id="la-instructions-steps">
+        <h2 class="la-steps-title">
+          <span class="material-symbols-outlined" aria-hidden="true">download_for_offline</span>
+          How to get your LinkedIn export in 30 seconds
+        </h2>
+        <ol class="la-steps-list">
+          <li>
+            <span class="la-step-num" aria-hidden="true">1</span>
+            <span>Go to <a href="https://www.linkedin.com/analytics/creator/audience/" target="_blank" rel="noopener noreferrer">linkedin.com/analytics/creator/audience/</a> (logged into LinkedIn).</span>
+          </li>
+          <li>
+            <span class="la-step-num" aria-hidden="true">2</span>
+            <span>Click <strong>Export</strong> in the top-right corner, choose <strong>Past 365 days</strong> for the best results, and download the <code>.xlsx</code> file.</span>
+          </li>
+          <li>
+            <span class="la-step-num" aria-hidden="true">3</span>
+            <span>Drag and drop your <code>.xlsx</code> file into the upload box here, or tap to choose it on your phone.</span>
+          </li>
+        </ol>
+
+        <!-- Dedicated slot for screenshot or short GIF -->
+        <div class="la-media-slot" id="la-media-slot">
+          <span class="material-symbols-outlined" aria-hidden="true">gif_box</span>
+          <div>
+            <strong>Tip:</strong> Works with any date range (7, 28, 90 or 365 days). All 7 sheets in LinkedIn's standard Creator Analytics workbook are analysed automatically.
+            <!-- Replace or insert <img src="/images/linkedin-export-steps.gif" alt="Where to click Export in LinkedIn Creator Analytics"> here when ready -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload & Demo card -->
+      <div class="la-card la-upload-card">
+        <div
+          class="la-dropzone"
+          id="la-dropzone"
+          role="button"
+          tabindex="0"
+          aria-label="Upload LinkedIn Creator Analytics .xlsx file (maximum 10 MB)"
+        >
+          <span class="material-symbols-outlined la-dropzone-icon" aria-hidden="true">upload_file</span>
+          <span class="la-dropzone-title">Drag and drop your LinkedIn .xlsx file here</span>
+          <span class="la-dropzone-sub">or tap to browse your device (max 10 MB, .xlsx only)</span>
+          <input type="file" id="la-file-input" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" class="sr-only" aria-label="Choose LinkedIn .xlsx file">
+        </div>
+
+        <div class="la-demo-row">
+          <button type="button" class="la-btn la-btn-demo" id="la-demo-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">play_circle</span>
+            Try it with example data (no file needed)
+          </button>
+          <span style="font-size:0.75rem;color:var(--la-text-muted);">Loads a synthetic 365-day demo export so you can see every chart and feature first.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATUS / LOADING / WARNINGS -->
+    <div id="la-status" class="la-status" role="status" aria-live="polite"></div>
+
+    <!-- RESULTS CONTAINER (hidden until file or demo loaded) -->
+    <div id="la-results" style="display: none;">
+
+      <!-- STICKY ACTION & DOWNLOAD BAR -->
+      <div class="la-sticky-bar" id="la-sticky-bar" role="region" aria-label="Report actions and downloads">
+        <div class="la-sticky-meta">
+          <span class="material-symbols-outlined" style="color:var(--la-cyan);" aria-hidden="true">analytics</span>
+          <span id="la-active-range-label">Analysed range</span>
+          <span id="la-demo-indicator" class="la-demo-badge" style="display:none;">Synthetic Demo Data</span>
+        </div>
+        <div class="la-sticky-actions">
+          <button type="button" class="la-btn la-btn-primary" id="la-download-pdf-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">picture_as_pdf</span>
+            Download PDF report
+          </button>
+          <button type="button" class="la-btn la-btn-secondary" id="la-download-md-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">description</span>
+            Download for AI (.md)
+          </button>
+          <button type="button" class="la-btn la-btn-secondary" id="la-copy-md-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span id="la-copy-md-label">Copy for ChatGPT / Claude</span>
+          </button>
+          <a href="#sec-share-card" class="la-btn la-btn-ghost">
+            <span class="material-symbols-outlined" aria-hidden="true">share</span>
+            Share card
+          </a>
+          <button type="button" class="la-btn la-btn-ghost" id="la-reset-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span>
+            Analyse another file
+          </button>
+        </div>
+      </div>
+
+      <!-- CONTENTS JUMP BAR -->
+      <nav class="la-toc-bar" id="la-toc-bar" aria-label="Jump to report section">
+        <a href="#sec-health-creator" class="la-toc-link">1. Score &amp; Type</a>
+        <a href="#sec-takeaways" class="la-toc-link">2. Top 5 Takeaways</a>
+        <a href="#sec-comparison" class="la-toc-link" id="la-toc-comparison" style="display:none;">3. Before &amp; After</a>
+        <a href="#sec-headline" class="la-toc-link">4. Headline Numbers</a>
+        <a href="#sec-recommendations" class="la-toc-link">5. What to Post</a>
+        <a href="#sec-follower-growth" class="la-toc-link">6. Follower Growth</a>
+        <a href="#sec-projections" class="la-toc-link">7. Projections &amp; Goals</a>
+        <a href="#sec-posts" class="la-toc-link">8. Best Posts</a>
+        <a href="#sec-best-days" class="la-toc-link">9. Best Days</a>
+        <a href="#sec-reach-trend" class="la-toc-link">10. Reach Trend</a>
+        <a href="#sec-audience" class="la-toc-link">11. Followers</a>
+        <a href="#sec-content-vs-audience" class="la-toc-link">12. Reach vs Followers</a>
+        <a href="#sec-data-notes" class="la-toc-link">13. Data Notes</a>
+        <a href="#sec-share-card" class="la-toc-link">Summary Card</a>
+      </nav>
+
+      <!-- 4.1 YOUR LINKEDIN HEALTH SCORE AND CREATOR TYPE -->
+      <section class="la-section" id="sec-health-creator" aria-labelledby="h-health-creator">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-health-creator">
+            <span class="material-symbols-outlined" aria-hidden="true">vital_signs</span>
+            1. Your LinkedIn Health Score &amp; Creator Type
+          </h2>
+        </div>
+        <p class="la-section-takeaway" id="la-takeaway-health"></p>
+        <div class="la-hero-cards-grid">
+          <div class="la-subcard" id="la-health-card"></div>
+          <div class="la-subcard" id="la-creator-card"></div>
+        </div>
+      </section>
+
+      <!-- 4.2 YOUR TOP 5 TAKEAWAYS -->
+      <section class="la-section" id="sec-takeaways" aria-labelledby="h-takeaways">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-takeaways">
+            <span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
+            2. Your Top 5 Takeaways
+          </h2>
+        </div>
+        <p class="la-section-takeaway" id="la-takeaway-top5"></p>
+        <ol class="la-takeaways-list" id="la-takeaways-list"></ol>
+      </section>
+
+      <!-- 4.3 BEFORE AND AFTER COMPARISON (hidden unless second file loaded) -->
+      <section class="la-section" id="sec-comparison" style="display: none;" aria-labelledby="h-comparison">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-comparison">
+            <span class="material-symbols-outlined" aria-hidden="true">compare_arrows</span>
+            3. Before and After Comparison
+          </h2>
+          <button type="button" class="la-btn la-btn-ghost" id="la-remove-comparison-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">delete</span>
+            Remove comparison
+          </button>
+        </div>
+        <p class="la-section-takeaway" id="la-takeaway-comparison"></p>
+        <div id="la-comparison-body"></div>
+      </section>
+
+      <!-- 4.4 HEADLINE NUMBERS -->
+      <section class="la-section" id="sec-headline" aria-labelledby="h-headline">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-headline">
+            <span class="material-symbols-outlined" aria-hidden="true">monitoring</span>
+            4. Headline Numbers
+          </h2>
+        </div>
+        <p class="la-section-takeaway" id="la-takeaway-headline"></p>
+        <div class="la-stats-grid" id="la-headline-grid"></div>
+      </section>
+
+      <!-- 4.5 WHAT YOU SHOULD POST (RECOMMENDATIONS) -->
+      <section class="la-section" id="sec-recommendations" aria-labelledby="h-recommendations">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-recommendations">
+            <span class="material-symbols-outlined" aria-hidden="true">campaign</span>
+            5. What You Should Post Next
+          </h2>
+        </div>
+        <p class="la-section-takeaway" id="la-takeaway-recommendations"></p>
+        <div class="la-recs-grid" id="la-recs-grid"></div>
+        <h3 class="la-steps-title" style="margin-top: 1.25rem;">
+          <span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
+          Suggested Weekly Posting Rhythm
+        </h3>
+        <div class="la-rhythm-grid" id="la-rhythm-grid"></div>
+      </section>
+
+      <!-- 4.6 FOLLOWER GROWTH -->
+      <section class="la-section" id="sec-follower-growth" aria-labelledby="h-follower-growth">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-follower-growth">
+            <span class="material-symbols-outlined" aria-hidden="true">trending_up</span>
+            6. Follower Growth
+          </h2>
+        </div>
+        <p class="la-section-takeaway" id="la-takeaway-followers"></p>
+        <div id="la-follower-summary-cards" class="la-stats-grid" style="margin-bottom: 1.25rem;"></div>
+
+        <div class="la-chart-block">
+          <div class="la-chart-header">
+            <span class="la-chart-title" id="la-chart-new-fol-title">New followers per period</span>
+            <button type="button" class="la-toggle-table-btn" data-target="la-table-new-fol">Show as table</button>
+          </div>
+          <div class="la-canvas-holder"><canvas id="chart-new-followers"></canvas></div>
+          <div id="la-table-new-fol" class="la-table-wrap" style="display:none;margin-top:0.85rem;"></div>
+        </div>
+
+        <div class="la-chart-block">
+          <div class="la-chart-header">
+            <span class="la-chart-title">Estimated total followers &amp; month-on-month % growth</span>
+            <button type="button" class="la-toggle-table-btn" data-target="la-table-tot-fol">Show as table</button>
+          </div>
+          <div class="la-canvas-holder"><canvas id="chart-total-followers"></canvas></div>
+          <div id="la-table-tot-fol" class="la-table-wrap" style="margin-top:0.85rem;"></div>
+        </div>
+
+        <h3 class="la-steps-title" style="margin-top: 1.25rem;">Top 10 Days for New Followers</h3>
+        <div id="la-top10-days-table" class="la-table-wrap"></div>
+      </section>
+
+      <!-- 4.7 GROWTH PROJECTIONS AND GOAL PLANNER -->
+      <section class="la-section" id="sec-projections" aria-labelledby="h-projections">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-projections">
+            <span class="material-symbols-outlined" aria-hidden="true">flag</span>
+            7. Growth Projections &amp; Goal Planner
+          </h2>
+        </div>
+        <p class="la-section-takeaway" id="la-takeaway-projections"></p>
+        <div id="la-projection-caveat" class="la-status info" style="display:none;"></div>
+
+        <div class="la-slider-row">
+          <label for="la-proj-slider" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:0.86rem;">
+            Compounding monthly growth rate: <strong id="la-proj-rate-val" style="color:var(--la-cyan);">5.0%</strong>
+          </label>
+          <input type="range" id="la-proj-slider" min="1" max="20" step="0.5" value="5" aria-label="Compounding monthly growth rate percentage">
+          <button type="button" class="la-btn la-btn-ghost" id="la-proj-reset-btn" style="padding:0.35rem 0.75rem;font-size:0.75rem;">Reset to recent CMGR</button>
+        </div>
+
+        <div class="la-chart-block">
+          <div class="la-chart-header">
+            <span class="la-chart-title">12-Month Follower Projection (Compounding vs Steady Pace)</span>
+            <button type="button" class="la-toggle-table-btn" data-target="la-table-proj-curve">Show as table</button>
+          </div>
+          <div class="la-canvas-holder"><canvas id="chart-projections"></canvas></div>
+          <div id="la-table-proj-curve" class="la-table-wrap" style="display:none;margin-top:0.85rem;"></div>
+        </div>
+
+        <h3 class="la-steps-title">Upcoming Follower Milestones &amp; Reality Check</h3>
+        <div id="la-milestones-table" class="la-table-wrap"></div>
+
+        <!-- Goal Planner -->
+        <div class="la-goal-box" id="la-goal-planner">
+          <h3 class="la-steps-title">
+            <span class="material-symbols-outlined" aria-hidden="true">track_changes</span>
+            Interactive Goal Planner
+          </h3>
+          <p style="font-size:0.84rem;color:var(--la-text-muted);margin-bottom:0.85rem;">
+            Set a follower target and target date. Only these two numbers are remembered in your browser so your goal is waiting next time.
+          </p>
+          <div class="la-goal-inputs">
+            <div class="la-field">
+              <label for="la-goal-target">Target Followers</label>
+              <input type="number" id="la-goal-target" min="100" max="10000000" step="50">
+            </div>
+            <div class="la-field">
+              <label for="la-goal-date">Target Date</label>
+              <input type="date" id="la-goal-date">
+            </div>
+            <button type="button" class="la-btn la-btn-primary" id="la-goal-calc-btn">Update Goal</button>
+          </div>
+          <div id="la-goal-output"></div>
+        </div>
+      </section>
+
+      <!-- 4.8 WHICH POSTS PERFORM BEST -->
+      <section class="la-section" id="sec-posts" aria-labelledby="h-posts">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-posts">
+            <span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span>
+            8. Which Posts Perform Best
+          </h2>
+        </div>
+        <p class="la-section-takeaway" id="la-takeaway-posts"></p>
+        <div id="la-breakout-banner"></div>
+
+        <div class="la-chart-block">
+          <div class="la-chart-header">
+            <span class="la-chart-title">Median &amp; Average Engagements by Content Theme</span>
+            <button type="button" class="la-toggle-table-btn" data-target="la-theme-table-wrap">Jump to table</button>
+          </div>
+          <div class="la-canvas-holder"><canvas id="chart-themes"></canvas></div>
+        </div>
+
+        <h3 class="la-steps-title">Performance by Theme (3+ posts required to rank)</h3>
+        <div id="la-theme-table-wrap" class="la-table-wrap" style="margin-bottom: 1.25rem;"></div>
+
+        <div id="la-hashtags-section" style="margin-bottom: 1.25rem;">
+          <h3 class="la-steps-title">Hashtags Extracted from Post Slugs (used in 3+ posts)</h3>
+          <div class="la-chart-block">
+            <div class="la-chart-header">
+              <span class="la-chart-title">Median Engagements by Hashtag</span>
+              <button type="button" class="la-toggle-table-btn" data-target="la-hashtags-table-wrap">Show as table</button>
+            </div>
+            <div class="la-canvas-holder"><canvas id="chart-hashtags"></canvas></div>
+            <div id="la-hashtags-table-wrap" class="la-table-wrap" style="margin-top:0.85rem;"></div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+          <h3 class="la-steps-title" style="margin-bottom:0;">Top 10 Posts (change any theme to recalculate instantly)</h3>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;" role="tablist" aria-label="Sort top posts">
+            <button type="button" class="la-btn la-btn-secondary la-post-tab active" data-sort="engagements">Top 10 by Engagements</button>
+            <button type="button" class="la-btn la-btn-ghost la-post-tab" data-sort="impressions">Top 10 by Impressions</button>
+            <button type="button" class="la-btn la-btn-ghost la-post-tab" data-sort="rate">Top 10 by Engagement Rate</button>
+            <button type="button" class="la-btn la-btn-ghost la-post-tab" data-sort="all">All Top Posts</button>
+          </div>
+        </div>
+        <div id="la-top-posts-table-wrap" class="la-table-wrap" style="margin-bottom: 1.25rem;"></div>
+
+        <div id="la-recent-posts-section">
+          <h3 class="la-steps-title">Most Recent Posts vs Top 50 Threshold</h3>
+          <div id="la-recent-posts-table-wrap" class="la-table-wrap"></div>
+        </div>
+        <p style="font-size:0.78rem;color:var(--la-text-muted);margin-top:0.65rem;" id="la-top50-note"></p>
+      </section>
+
+      <!-- 4.9 BEST DAYS -->
+      <section class="la-section" id="sec-best-days" aria-labelledby="h-best-days">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-best-days">
+            <span class="material-symbols-outlined" aria-hidden="true">today</span>
+            9. Best Days of the Week
+          </h2>
+        </div>
+        <p class="la-section-takeaway" id="la-takeaway-days"></p>
+        <div id="la-days-notes" class="la-pills-row"></div>
+
+        <div class="la-demo-grid">
+          <div class="la-chart-block">
+            <div class="la-chart-header">
+              <span class="la-chart-title">Average Daily Impressions &amp; Engagements by Weekday</span>
+              <button type="button" class="la-toggle-table-btn" data-target="la-days-table-wrap">Show table</button>
+            </div>
+            <div class="la-canvas-holder"><canvas id="chart-days-imp"></canvas></div>
+          </div>
+          <div class="la-chart-block">
+            <div class="la-chart-header">
+              <span class="la-chart-title">Average Daily New Followers by Weekday</span>
+              <button type="button" class="la-toggle-table-btn" data-target="la-days-table-wrap">Show table</button>
+            </div>
+            <div class="la-canvas-holder"><canvas id="chart-days-fol"></canvas></div>
+          </div>
+        </div>
+
+        <h3 class="la-steps-title">Weekday Breakdown &amp; Top Post Medians</h3>
+        <div id="la-days-table-wrap" class="la-table-wrap"></div>
+      </section>
+
+      <!-- 4.10 REACH AND ENGAGEMENT TREND -->
+      <section class="la-section" id="sec-reach-trend" aria-labelledby="h-reach-trend">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-reach-trend">
+            <span class="material-symbols-outlined" aria-hidden="true">insights</span>
+            10. Reach &amp; Engagement Trend
+          </h2>
+        </div>
+        <p class="la-section-takeaway" id="la-takeaway-reach"></p>
+        <div id="la-reach-flags"></div>
+
+        <div class="la-chart-block">
+          <div class="la-chart-header">
+            <span class="la-chart-title">Daily Impressions &amp; 7-Day Rolling Average</span>
+            <button type="button" class="la-toggle-table-btn" data-target="la-reach-monthly-table">Show monthly table</button>
+          </div>
+          <div class="la-canvas-holder"><canvas id="chart-daily-impressions"></canvas></div>
+        </div>
+
+        <div class="la-demo-grid">
+          <div class="la-chart-block">
+            <div class="la-chart-header">
+              <span class="la-chart-title" id="la-chart-monthly-imp-title">Impressions &amp; Engagements per Month</span>
+              <button type="button" class="la-toggle-table-btn" data-target="la-reach-monthly-table">Show as table</button>
+            </div>
+            <div class="la-canvas-holder"><canvas id="chart-monthly-reach"></canvas></div>
+          </div>
+          <div class="la-chart-block">
+            <div class="la-chart-header">
+              <span class="la-chart-title">Engagement Rate Trend (%)</span>
+              <button type="button" class="la-toggle-table-btn" data-target="la-reach-monthly-table">Show as table</button>
+            </div>
+            <div class="la-canvas-holder"><canvas id="chart-monthly-er"></canvas></div>
+          </div>
+        </div>
+
+        <div id="la-reach-monthly-table" class="la-table-wrap" style="margin-bottom: 1.15rem;"></div>
+        <div id="la-correlation-box" class="la-subcard"></div>
+      </section>
+
+      <!-- 4.11 WHO FOLLOWS YOU -->
+      <section class="la-section" id="sec-audience" aria-labelledby="h-audience">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-audience">
+            <span class="material-symbols-outlined" aria-hidden="true">groups</span>
+            11. Who Follows You (Audience Demographics)
+          </h2>
+        </div>
+        <p class="la-section-takeaway" id="la-takeaway-audience"></p>
+        <div id="la-audience-pills" class="la-pills-row"></div>
+        <div id="la-audience-charts-grid" class="la-demo-grid"></div>
+      </section>
+
+      <!-- 4.12 WHO SEES YOUR CONTENT VS WHO FOLLOWS YOU -->
+      <section class="la-section" id="sec-content-vs-audience" aria-labelledby="h-cva">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-cva">
+            <span class="material-symbols-outlined" aria-hidden="true">balance</span>
+            12. Who Sees Your Content vs Who Follows You
+          </h2>
+        </div>
+        <p class="la-section-takeaway" id="la-takeaway-cva"></p>
+        <div id="la-cva-gaps" class="la-pills-row"></div>
+        <div id="la-cva-charts-grid" class="la-demo-grid"></div>
+      </section>
+
+      <!-- 4.13 DATA NOTES -->
+      <section class="la-section" id="sec-data-notes" aria-labelledby="h-data-notes">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-data-notes">
+            <span class="material-symbols-outlined" aria-hidden="true">info</span>
+            13. Data Notes &amp; Export Coverage
+          </h2>
+        </div>
+        <p class="la-section-takeaway">What LinkedIn includes in this export and how your numbers are calculated.</p>
+        <ul class="la-takeaways-list" id="la-data-notes-list"></ul>
+      </section>
+
+      <!-- ADD AN OLDER EXPORT TO COMPARE -->
+      <section class="la-section" id="sec-compare-upload" aria-labelledby="h-compare-upload">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-compare-upload">
+            <span class="material-symbols-outlined" aria-hidden="true">history</span>
+            Add an Older Export to Compare (Before &amp; After)
+          </h2>
+        </div>
+        <p style="font-size:0.9rem;color:var(--la-text-muted);margin-bottom:1rem;">
+          Upload a second LinkedIn Creator Analytics <code>.xlsx</code> file from an earlier or later date. Either file can be the older one: the tool detects the dates automatically and shows your progress.
+        </p>
+        <div style="display:grid;grid-template-columns:1fr;gap:0.85rem;">
+          <div
+            class="la-dropzone"
+            id="la-compare-dropzone"
+            role="button"
+            tabindex="0"
+            style="min-height:120px;padding:1.25rem;"
+            aria-label="Upload second LinkedIn .xlsx export to compare"
+          >
+            <span class="material-symbols-outlined la-dropzone-icon" aria-hidden="true">compare_arrows</span>
+            <span class="la-dropzone-title">Drop a second .xlsx export here to compare</span>
+            <span class="la-dropzone-sub">Stays 100% in your browser</span>
+            <input type="file" id="la-compare-input" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" class="sr-only" aria-label="Choose second LinkedIn .xlsx export">
+          </div>
+          <button type="button" class="la-btn la-btn-secondary" id="la-compare-demo-btn" style="justify-self:start;">
+            <span class="material-symbols-outlined" aria-hidden="true">science</span>
+            Test comparison with synthetic older export (3 months earlier)
+          </button>
+        </div>
+      </section>
+
+      <!-- 5. SHAREABLE SUMMARY CARD -->
+      <section class="la-section" id="sec-share-card" aria-labelledby="h-share-card">
+        <div class="la-section-header">
+          <h2 class="la-section-title" id="h-share-card">
+            <span class="material-symbols-outlined" aria-hidden="true">share</span>
+            Shareable Summary Card
+          </h2>
+        </div>
+        <p class="la-section-takeaway">Download a clean graphic or copy a short summary for your next LinkedIn post. No name or private URLs are included.</p>
+
+        <div class="la-share-grid">
+          <div class="la-subcard">
+            <h3 class="la-steps-title">Customise Your Card</h3>
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.85rem;">
+              <label class="la-check-item">
+                <input type="radio" name="la-card-size" value="feed" checked>
+                <span>1200 x 627 (Feed landscape)</span>
+              </label>
+              <label class="la-check-item">
+                <input type="radio" name="la-card-size" value="portrait">
+                <span>1080 x 1350 (Portrait)</span>
+              </label>
+            </div>
+
+            <div id="la-card-mode-wrap" style="display:none;margin-bottom:0.85rem;">
+              <label class="la-check-item">
+                <input type="checkbox" id="la-card-progress-mode">
+                <strong>Show Before &amp; After progress mode</strong>
+              </label>
+            </div>
+
+            <p style="font-size:0.8rem;color:var(--la-text-muted);">Tick which stats to display on your card:</p>
+            <div class="la-check-list" id="la-card-checks">
+              <label class="la-check-item"><input type="checkbox" data-stat="healthScore" checked> Health score</label>
+              <label class="la-check-item"><input type="checkbox" data-stat="creatorType" checked> Creator type</label>
+              <label class="la-check-item"><input type="checkbox" data-stat="growthPct" checked> % follower growth</label>
+              <label class="la-check-item"><input type="checkbox" data-stat="followersGained" checked> Followers gained</label>
+              <label class="la-check-item"><input type="checkbox" data-stat="bestTheme" checked> Best theme</label>
+              <label class="la-check-item"><input type="checkbox" data-stat="bestDay" checked> Best day</label>
+              <label class="la-check-item"><input type="checkbox" data-stat="topIndustry" checked> Top audience industry</label>
+            </div>
+
+            <div style="display:flex;flex-wrap:wrap;gap:0.6rem;">
+              <button type="button" class="la-btn la-btn-primary" id="la-download-card-btn">
+                <span class="material-symbols-outlined" aria-hidden="true">download</span>
+                Download my summary (.png)
+              </button>
+              <button type="button" class="la-btn la-btn-secondary" id="la-copy-summary-btn">
+                <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+                <span id="la-copy-summary-label">Copy summary text</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="la-share-preview-wrap">
+            <canvas id="la-share-canvas" width="1200" height="627" aria-label="Shareable LinkedIn analytics summary card preview"></canvas>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <p class="la-disclaimer-footer">
+      Not affiliated with or endorsed by LinkedIn. Your file never leaves your browser.
+    </p>
+
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <!-- Tool Info / SEO Section -->
+  <section class="tool-info" aria-label="About this tool">
+    <div class="tool-info-inner">
+
+      <div class="tool-info-meta">
+        <span>Last updated: November 2026</span>
+        <span class="tool-info-sep">·</span>
+        <span>By <a href="/about">John Bowman</a> - questions? Connect on <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</span>
+      </div>
+
+      <div class="tool-info-body">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Why Analyse Your LinkedIn Export in the Browser?</h2>
+        <p>LinkedIn's native analytics screen shows one chart at a time and buries your best data inside a seven-sheet Excel workbook. By parsing your <code>.xlsx</code> file directly in your browser, this tool calculates your compound monthly follower growth, matches post slugs to content themes, compares your follower base against who actually views your posts, and builds a structured Markdown summary you can drop into ChatGPT or Claude.</p>
+      </div>
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>Does my LinkedIn analytics file ever leave my browser?</dt>
+                <dd>No. Your .xlsx file is parsed entirely inside your browser using JavaScript. Nothing from your file is uploaded to a server, stored in localStorage, or sent to analytics.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>How do I export my LinkedIn Creator Analytics .xlsx file?</dt>
+                <dd>Open linkedin.com/analytics/creator/audience/ on desktop or mobile web, select Past 365 days for the most complete analysis, and click the Export button in the top right corner to download your .xlsx workbook.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Why are starting follower totals and monthly follower totals marked as estimates?</dt>
+                <dd>LinkedIn exports your total followers on the export date and the number of new followers gained each day, but it does not export unfollows. Working backwards from today's total gives a close estimate rather than an exact historical count.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Can I change the content theme assigned to my posts?</dt>
+                <dd>Yes. Initial themes are guessed from keywords in each post's URL slug, and you can use the dropdown next to any post to change its theme. Your theme stats, Creator Type, recommendations and downloads update immediately.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Can I compare two LinkedIn exports over time?</dt>
+                <dd>Yes. After loading your first export, use the 'Add an older export to compare' box at the bottom of the results. The tool automatically detects which file is older and shows changes in followers, engagement rate, health score, audience shifts and new top posts.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Export your LinkedIn analytics.</strong> Visit linkedin.com/analytics/creator/audience/, choose Past 365 days, and click Export to download your .xlsx file.</li>
+              <li><strong>Drop the .xlsx file into the analyser.</strong> Drag and drop your file or tap to select it, or click 'Try it with example data' to explore a synthetic demo first.</li>
+              <li><strong>Review your score, takeaways and post themes.</strong> Inspect your 0-100 health score, Creator Type, follower projections, audience gaps and adjust any post themes with the inline dropdowns.</li>
+              <li><strong>Download your share card, PDF report or AI Markdown file.</strong> Save a PNG summary card for LinkedIn, a multi-page A4 PDF report, or a structured .md file ready for ChatGPT and Claude.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>100% client-side privacy.</strong> Your file never leaves your browser and no account or API key is required.</li>
+              <li><strong>Honest sample-size rules.</strong> Themes and weekdays require at least 3 posts before being ranked, and partial calendar months are excluded from best/worst month averages.</li>
+              <li><strong>Interactive theme overrides.</strong> Fix any post's keyword-detected theme with one click and watch your Creator Type and recommendations recalculate live.</li>
+              <li><strong>Before and after comparison.</strong> Upload an older export alongside your latest file to track follower momentum, health score changes and demographic shifts.</li>
+              <li><strong>AI-ready Markdown export.</strong> Download a clean <code>.md</code> report designed to be uploaded straight into ChatGPT, Claude or Gemini for post drafting.</li>
+              <li><strong>Independent tool.</strong> Not affiliated with or endorsed by LinkedIn.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://www.linkedin.com/help/linkedin/answer/a547077" target="_blank" rel="noopener noreferrer">LinkedIn Help - Creator Analytics Overview and Export</a>.</li>
+              <li><a href="/search-radar">Search &amp; Prompt Radar</a> - discover what people search on Google, Reddit and LinkedIn.</li>
+              <li><a href="/content-repurposer">Content Repurposer</a> - turn articles into LinkedIn posts and video scripts.</li>
+              <li><a href="/aitocv">AI CV Enhancer</a> - tailor your CV and cover letter for roles in 10 countries.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder">
+    <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
+      <style>.crawl-nav{max-width:1280px;margin:0 auto;padding:3rem 2rem;border-top:1px solid rgba(248,245,253,0.07);font-family:'Space Grotesk',sans-serif;color:var(--on-surface-variant,#acaab1)}.crawl-nav-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,245,253,0.68);margin:0 0 1rem}.crawl-nav-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.5rem;font-size:0.85rem;line-height:1.6}.crawl-nav-list a{color:#00EEFC;text-decoration:none}.crawl-nav-list a:hover,.crawl-nav-list a:focus-visible{text-decoration:underline}</style>
+      <p class="crawl-nav-title">Explore JohnB.io</p>
+      <ul class="crawl-nav-list">
+        <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
+        <li><a href="/search-radar">Search &amp; Prompt Radar</a> - search autocomplete and LinkedIn angles</li>
+        <li><a href="/content-repurposer">Content Repurposer</a> - rewrite content for LinkedIn, X and newsletters</li>
+        <li><a href="/aitocv">AI CV Enhancer</a> - tailored CVs and cover letters</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 50 jurisdictions</li>
+        <li><a href="/pdf-merger">PDF Merger</a> - combine multiple PDFs in the browser</li>
+        <li><a href="/prompt-improver">Prompt Improver</a> - stronger prompts for ChatGPT, Claude and Gemini</li>
+        <li><a href="/faq-schema">FAQ Schema Generator</a> - valid FAQPage JSON-LD markup</li>
+        <li><a href="/llms-generator">LLMs.txt Generator</a> - llms.txt files for AI crawlers</li>
+        <li><a href="/editor">AI Copyeditor</a> - copyediting with UK and US English</li>
+        <li><a href="/about">About John Bowman</a> - 20+ years in iGaming and digital marketing</li>
+        <li><a href="/news/">AI Blog</a> - practical AI strategy and how it works</li>
+        <li><a href="/course/">AI &amp; Machine Learning Course</a> - free structured course</li>
+        <li><a href="/contact">Contact</a> - get in touch</li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Pinned client-side libraries: SheetJS (self-hosted), Chart.js 4.4.1, jsPDF 2.5.1 -->
+  <script src="/lib/vendor/xlsx.full.min.js?v=1" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+
+  <script src="/scripts.js?v=12" defer></script>
+  <script src="/linkedin-analyser-core.js?v=1" defer></script>
+  <script src="/linkedin-analyser.js?v=1" defer></script>
+
+  <script>
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>

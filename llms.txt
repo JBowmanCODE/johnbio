@@ -1,11 +1,11 @@
 # JohnB.io
 
-> A personal AI and development project site by John Bowman. Built to test, explore and showcase 28 free AI-powered tools, a 35-lesson AI & machine learning course across 9 units, responsible AI governance frameworks, and 212 iGaming compliance regulations across 50 jurisdictions.
+> A personal AI and development project site by John Bowman. Built to test, explore and showcase 29 free AI-powered tools, a 35-lesson AI & machine learning course across 9 units, responsible AI governance frameworks, and 212 iGaming compliance regulations across 50 jurisdictions.
 
 Every public URL on JohnB.io serves clean Markdown for LLMs, answer engines, and automated crawlers via HTTP content negotiation (`Accept: text/markdown`, RFC 7763) or by appending `.md` to the canonical path (for example `https://johnb.io/index.md`, `https://johnb.io/aitocv.md`, `https://johnb.io/news/ai-models-2026.md`, `https://johnb.io/course/what-is-ai.md`). For a single-file concatenated Markdown bundle of the entire site, fetch [llms-full.txt](https://johnb.io/llms-full.txt).
 
 - **Owner**: John Bowman (https://johnb.io/about) - AI strategist and developer based in Leeds, UK (20+ years in iGaming and digital marketing, University of Oxford AI Programme 2024).
-- **Coverage**: 28 free browser & AI tools, 4 in-depth AI research articles, 35 free AI course lessons, and 212 iGaming regulations across 50 jurisdictions.
+- **Coverage**: 29 free browser & AI tools, 4 in-depth AI research articles, 35 free AI course lessons, and 212 iGaming regulations across 50 jurisdictions.
 - **Stack & AI Models**: Vanilla HTML, CSS and JavaScript, Cloudflare Workers, Python (Pyodide), Anthropic Claude (Sonnet 5.5 and Haiku 5.5), OpenAI (TTS-1 and GPT), and Google Gemini APIs.
 - **Privacy & Disclosures**: All tools are free with no sign-up required. Tool inputs are processed ephemerally via Cloudflare Workers and never logged or stored. Contact and UK GDPR requests are handled via https://johnb.io/contact.
 
@@ -32,6 +32,7 @@ Every public URL on JohnB.io serves clean Markdown for LLMs, answer engines, and
 
 ## Developer Tools & iGaming Compliance
 
+- [LinkedIn Analytics Analyser](https://johnb.io/linkedin-analyser): Free browser-based LinkedIn Creator Analytics .xlsx analyser with a 0-100 health score, creator type diagnosis, compound monthly growth rate (CMGR) projections, URL-slug post theme detection, audience vs content reach comparison, shareable summary cards, PDF report and AI-ready Markdown export.
 - [iGaming Bonus Cost Calculator](https://johnb.io/bonus-calculator): Model the true operator cost of casino bonus offers from bonus amount, wagering requirement, house edge and player completion rate, with breakeven analysis and scenario tables.
 - [iGaming RG Message Generator](https://johnb.io/rg-generator): Generate compliant responsible gambling disclaimers for 10 regulated jurisdictions including UK (UKGC), Malta (MGA), Ontario, Netherlands, Sweden, Denmark, Germany, Ireland, Spain and Gibraltar.
 - [iGaming Regulatory Compliance Map](https://johnb.io/igaming-compliance): Interactive world map and CC BY 4.0 dataset of 212 iGaming regulations across 50 jurisdictions covering gambling laws, AML directives, data protection rules and advertising codes.

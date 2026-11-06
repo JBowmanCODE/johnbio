@@ -6,10 +6,11 @@
 - **Markdown URL**: https://johnb.io/index.md
 - **Author**: [John Bowman](https://johnb.io/about)
 
-## All 28 Free Tools & Utilities
+## All 29 Free Tools & Utilities
 
 | Tool | Category | URL | Markdown URL | Summary |
 | --- | --- | --- | --- | --- |
+| [LinkedIn Analytics Analyser](https://johnb.io/linkedin-analyser) | DEV TOOL | https://johnb.io/linkedin-analyser | https://johnb.io/linkedin-analyser.md | Upload your LinkedIn Creator Analytics .xlsx export to get a health score, creator type, follower growth projections, post theme breakdown, audience vs reach comparison and practical advice on what to post next. 100% private in your browser. |
 | [Search & Prompt Radar](https://johnb.io/search-radar) | AI TOOL | https://johnb.io/search-radar | https://johnb.io/search-radar.md | Type a topic and see what people search for on Google, YouTube and Reddit, plus live Hacker News threads, LinkedIn angles and the prompts they are likely asking ChatGPT and Claude. Copy any term or export to CSV. |
 | [AI Meditation Generator](https://johnb.io/meditation) | AI TOOL | https://johnb.io/meditation | https://johnb.io/meditation.md | Personalised guided meditations, generated on demand. Pick a goal, length and voice - Claude writes the script, an AI voice reads it, and your browser synthesises the soundscape. |
 | [Live Poker Hand Replayer](https://johnb.io/live-poker-hand-replayer) | AI TOOL | https://johnb.io/live-poker-hand-replayer | https://johnb.io/live-poker-hand-replayer.md | Turn any live poker hand into an animated replay. Build it in a guided form or paste your notes and AI does the typing - then watch it play out, share a short link, or embed it anywhere. |
