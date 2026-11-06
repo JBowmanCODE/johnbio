@@ -326,7 +326,7 @@ export const STATIC_ROUTE_REGISTRY: Readonly<Record<string, RouteMeta>> = (() =>
       path: '/igaming-compliance',
       title: 'iGaming Regulatory Compliance Map',
       summary:
-        'Interactive world map and CC BY 4.0 dataset of 212 iGaming regulations across 50 jurisdictions covering gambling laws, AML directives, data protection rules and advertising codes.',
+        'Interactive world map and CC BY 4.0 dataset of 216 iGaming regulations across 50 jurisdictions covering gambling laws, AML directives, data protection rules and advertising codes.',
       category: 'dev-tool',
     },
     {
