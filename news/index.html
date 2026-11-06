@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>News and Insights - AI, iGaming and Digital - JohnB.io</title>
-  <link rel="preload" as="image" href="${post.image}" fetchpriority="high">
+  <link rel="preload" as="image" href="/news/images/ai-models-2026.webp" fetchpriority="high">
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -135,7 +135,7 @@
 </div>
 
   <script src="/scripts.js?v=12" defer></script>
-  <script src="/news-data.js?v=3" defer></script>
+  <script src="/news-data.js?v=3"></script>
   <script>
     (function () {
       const PAGE_SIZE = 12;
@@ -210,7 +210,7 @@
           return;
         }
 
-        slice.forEach(post => {
+        slice.forEach((post, i) => {
           const a = document.createElement('a');
           a.className = 'ns-card';
           a.href = post.slug;
