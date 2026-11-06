@@ -84,6 +84,7 @@ body {
   padding: 1rem 1.25rem;
 }
 
+.advanced-options h2,
 .advanced-options h3 {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.78rem;

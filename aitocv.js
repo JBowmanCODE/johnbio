@@ -650,7 +650,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (downloadDocxBtn) {
         downloadDocxBtn.addEventListener('click', async () => {
             if (!enhancedCvText) return showError('No CV text available to download.');
-            if (typeof window.docx === 'undefined') await loadExternalScript('https://unpkg.com/docx@7.8.2/build/index.js');
+            try {
+                if (typeof window.docx === 'undefined') await loadExternalScript('https://unpkg.com/docx@7.8.2/build/index.js');
+            } catch (e) {
+                return showError('Failed to load document export library. Please try again.');
+            }
             const cvData = parseCvForGeneration(enhancedCvText);
             const personName = cvData.name ? cvData.name.trim().replace(/\s+/g, '_') : 'Enhanced';
             const doc = createDocxDocument(cvData);
@@ -661,7 +665,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (downloadPdfBtn) {
         downloadPdfBtn.addEventListener('click', async () => {
             if (!enhancedCvText) return showError('No CV text available to download.');
-            if (typeof window.jspdf === 'undefined') await loadExternalScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.0.0/jspdf.umd.min.js');
+            try {
+                if (typeof window.jspdf === 'undefined') await loadExternalScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.0.0/jspdf.umd.min.js');
+            } catch (e) {
+                return showError('Failed to load PDF export library. Please try again.');
+            }
             const cvData = parseCvForGeneration(enhancedCvText);
             const personName = cvData.name ? cvData.name.trim().replace(/\s+/g, '_') : 'Enhanced';
             const fileName = `${personName}_CV.pdf`;
@@ -848,7 +856,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (downloadCoverLetterDocxBtn) {
         downloadCoverLetterDocxBtn.addEventListener('click', async () => {
             if (!coverLetterText) return showError('No cover letter text available.');
-            if (typeof window.docx === 'undefined') await loadExternalScript('https://unpkg.com/docx@7.8.2/build/index.js');
+            try {
+                if (typeof window.docx === 'undefined') await loadExternalScript('https://unpkg.com/docx@7.8.2/build/index.js');
+            } catch (e) {
+                return showError('Failed to load document export library. Please try again.');
+            }
             const cvData = parseCvForGeneration(enhancedCvText);
             const personName = cvData.name ? cvData.name.trim().replace(/\s+/g, '_') : 'Cover_Letter';
             const doc = createCoverLetterDocx(coverLetterText);
