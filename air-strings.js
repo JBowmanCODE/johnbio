@@ -236,8 +236,11 @@
       this._maskImgData = null;
       this._personCanvas = document.createElement('canvas');
       this._personCtx = this._personCanvas.getContext('2d');
+      this._cvCanvas = document.createElement('canvas');
+      this._cvCtx = this._cvCanvas.getContext('2d', { willReadFrequently: true });
       this._lastCvTs = 0;
       this._lastDetectWallMs = 0;
+      this._lastReportedHands = -1;
       this.lastVideoTime = -1;
       this.activeTouches = new Map();
       this.latestHands = [];
@@ -888,14 +891,15 @@
       const modelUrl =
         'https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task';
 
+      const conf = this.isMobile ? 0.35 : 0.45;
       const tryCreate = async (delegate) => {
         const instance = await HandLandmarker.createFromOptions(vision, {
           baseOptions: { modelAssetPath: modelUrl, delegate },
           runningMode: 'VIDEO',
           numHands: 2,
-          minHandDetectionConfidence: 0.45,
-          minHandPresenceConfidence: 0.45,
-          minTrackingConfidence: 0.45,
+          minHandDetectionConfidence: conf,
+          minHandPresenceConfidence: conf,
+          minTrackingConfidence: conf,
         });
         this._handDelegate = delegate;
         this._handErrorCount = 0;
@@ -909,6 +913,13 @@
 
       if (forceDelegate) {
         this.handLandmarker = await tryCreate(forceDelegate);
+        return;
+      }
+
+      // Android/mobile WebGL GPU delegates frequently return empty landmarks silently;
+      // use CPU on mobile with a downscaled 2D canvas frame for reliable detection.
+      if (this.isMobile) {
+        this.handLandmarker = await tryCreate('CPU');
         return;
       }
 
@@ -929,20 +940,22 @@
         const segUrl =
           'https://storage.googleapis.com/mediapipe-models/image_segmenter/selfie_segmenter_landscape/float16/latest/selfie_segmenter_landscape.tflite';
 
-        try {
-          this.imageSegmenter = await ImageSegmenter.createFromOptions(vision, {
-            baseOptions: { modelAssetPath: segUrl, delegate: 'GPU' },
+        const createSeg = (delegate) =>
+          ImageSegmenter.createFromOptions(vision, {
+            baseOptions: { modelAssetPath: segUrl, delegate },
             runningMode: 'VIDEO',
             outputCategoryMask: false,
             outputConfidenceMasks: true,
           });
-        } catch (_) {
-          this.imageSegmenter = await ImageSegmenter.createFromOptions(vision, {
-            baseOptions: { modelAssetPath: segUrl, delegate: 'CPU' },
-            runningMode: 'VIDEO',
-            outputCategoryMask: false,
-            outputConfidenceMasks: true,
-          });
+
+        if (this.isMobile) {
+          this.imageSegmenter = await createSeg('CPU');
+        } else {
+          try {
+            this.imageSegmenter = await createSeg('GPU');
+          } catch (_) {
+            this.imageSegmenter = await createSeg('CPU');
+          }
         }
         if (this.cameraActive) {
           this.setStatus('Tracking live — background effect active!', 'live');
@@ -1842,6 +1855,27 @@
       requestAnimationFrame(step);
     }
 
+    _getCvSourceFrame() {
+      // On mobile (or CPU delegate), copy the live video onto a compact 2D canvas.
+      // This bakes in Android portrait orientation, avoids raw SurfaceTexture glitches,
+      // and makes CPU inference 4-5x faster.
+      if (!this.isMobile && this._handDelegate === 'GPU') {
+        return this.video;
+      }
+      const vw = this.video.videoWidth || 640;
+      const vh = this.video.videoHeight || 480;
+      const maxDim = 320;
+      const scale = Math.min(1, maxDim / Math.max(vw, vh));
+      const cw = Math.max(64, Math.round(vw * scale));
+      const ch = Math.max(64, Math.round(vh * scale));
+      if (this._cvCanvas.width !== cw || this._cvCanvas.height !== ch) {
+        this._cvCanvas.width = cw;
+        this._cvCanvas.height = ch;
+      }
+      this._cvCtx.drawImage(this.video, 0, 0, cw, ch);
+      return this._cvCanvas;
+    }
+
     _detectHandsFrame() {
       if (
         !this.cameraActive ||
@@ -1857,25 +1891,42 @@
 
       const vt = this.video.currentTime;
       const nowWall = performance.now();
+      const minInterval = this.isMobile ? 45 : 34;
       // Some Android browsers don't advance video.currentTime reliably on live streams,
-      // so also run at ~30 FPS fallback based on wall clock.
-      if (vt !== this.lastVideoTime || nowWall - this._lastDetectWallMs >= 34) {
+      // so also trigger on wall-clock interval (and throttle CPU mobile to ~22 FPS).
+      const shouldRun = this.isMobile
+        ? nowWall - this._lastDetectWallMs >= minInterval
+        : vt !== this.lastVideoTime || nowWall - this._lastDetectWallMs >= minInterval;
+
+      if (shouldRun) {
         this.lastVideoTime = vt;
         this._lastDetectWallMs = nowWall;
         const nowMs = Math.max(this._lastCvTs + 1, nowWall);
         this._lastCvTs = nowMs;
+        const cvSource = this._getCvSourceFrame();
 
         try {
-          const res = this.handLandmarker.detectForVideo(this.video, nowMs);
+          const res = this.handLandmarker.detectForVideo(cvSource, nowMs);
           this._handErrorCount = 0;
           this.latestHands = res && res.landmarks ? res.landmarks : [];
           this._processHandLandmarks(this.latestHands);
+
+          if (this.latestHands.length !== this._lastReportedHands) {
+            this._lastReportedHands = this.latestHands.length;
+            const n = this.latestHands.length;
+            this.setStatus(
+              n > 0
+                ? `Tracking live · ${n} ${n === 1 ? 'hand' : 'hands'} detected`
+                : 'Tracking live — hold your hands in view to play!',
+              'live'
+            );
+          }
         } catch (err) {
           this._handErrorCount += 1;
           console.warn('HandLandmarker frame error:', err);
           if (this._handDelegate === 'GPU' && this._handErrorCount >= 2) {
             this._switchingToCpu = true;
-            this.setStatus('Switching hand tracking to mobile CPU mode…', 'loading');
+            this.setStatus('Switching hand tracking to CPU mode…', 'loading');
             this._initHandLandmarker('CPU')
               .then(() => {
                 if (this.cameraActive) {
@@ -1893,15 +1944,15 @@
         }
 
         if (this.bgMode !== 'none' && this.imageSegmenter) {
-          this._segmentPersonFrame(nowMs);
+          this._segmentPersonFrame(cvSource, nowMs);
         }
       }
     }
 
-    _segmentPersonFrame(nowMs) {
+    _segmentPersonFrame(cvSource, nowMs) {
       let segRes = null;
       try {
-        segRes = this.imageSegmenter.segmentForVideo(this.video, nowMs);
+        segRes = this.imageSegmenter.segmentForVideo(cvSource, nowMs);
         const masks = segRes && segRes.confidenceMasks;
         if (!masks || !masks.length) return;
 
