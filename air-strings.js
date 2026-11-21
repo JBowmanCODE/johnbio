@@ -191,6 +191,7 @@
       this.statusText = document.getElementById('as-status-text');
       this.statusDot = document.getElementById('as-status-dot');
       this.camBtn = document.getElementById('as-cam-btn');
+      this.flipCamBtn = document.getElementById('as-flip-cam-btn');
       this.camOverlay = document.getElementById('as-cam-overlay');
       this.overlayStartBtn = document.getElementById('as-overlay-start');
       this.overlayDemoBtn = document.getElementById('as-overlay-demo');
@@ -216,11 +217,16 @@
       this.videoDimmer = 0.28;
 
       // Webcam & MediaPipe CV state
+      this.isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || '') || window.innerWidth < 820;
+      this.facingMode = 'user';
       this.cameraActive = false;
       this.stream = null;
       this.visionMod = null;
       this.visionFileset = null;
       this.handLandmarker = null;
+      this._handDelegate = 'GPU';
+      this._handErrorCount = 0;
+      this._switchingToCpu = false;
       this.imageSegmenter = null;
       this.loadingModel = false;
       this.loadingSegmenter = false;
@@ -231,7 +237,9 @@
       this._personCanvas = document.createElement('canvas');
       this._personCtx = this._personCanvas.getContext('2d');
       this._lastCvTs = 0;
+      this._lastDetectWallMs = 0;
       this.lastVideoTime = -1;
+      this.activeTouches = new Map();
       this.latestHands = [];
       this.prevPointerMap = new Map(); // pointerId -> {x, y, time}
       this.cooldownMap = new Map(); // pointerId:itemId -> timestampMs
@@ -306,10 +314,19 @@
 
     // ── UI Bindings ─────────────────────────────────────────────────────────
     bindUI() {
-      // Camera toggle
+      // Camera toggle & flip camera
       const handleStartCam = () => this.toggleCamera();
       if (this.camBtn) this.camBtn.addEventListener('click', handleStartCam);
       if (this.overlayStartBtn) this.overlayStartBtn.addEventListener('click', handleStartCam);
+      if (this.flipCamBtn) {
+        this.flipCamBtn.addEventListener('click', () => this.flipCamera());
+      }
+      // Global first-gesture mobile audio unlock
+      const unlockAudio = () => {
+        try { this.audio.ensureContext(); } catch (_) {}
+      };
+      window.addEventListener('touchstart', unlockAudio, { once: true, passive: true });
+      window.addEventListener('pointerdown', unlockAudio, { once: true, passive: true });
       if (this.overlayDemoBtn) {
         this.overlayDemoBtn.addEventListener('click', () => {
           this.audio.ensureContext();
@@ -744,17 +761,7 @@
       if (this.camBtn) this.camBtn.disabled = true;
 
       try {
-        this.stream = await navigator.mediaDevices.getUserMedia({
-          video: {
-            facingMode: 'user',
-            width: { ideal: 1280 },
-            height: { ideal: 720 },
-            frameRate: { ideal: 30 },
-          },
-          audio: false,
-        });
-        this.video.srcObject = this.stream;
-        await this.video.play();
+        await this._openCameraStream();
 
         if (this.camOverlay) this.camOverlay.classList.add('hidden');
         this.cameraActive = true;
@@ -774,21 +781,91 @@
           this.camBtn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">videocam_off</span>Stop Camera';
           this.camBtn.classList.add('active');
         }
+        if (this.flipCamBtn) this.flipCamBtn.hidden = false;
         this.showToast('Hand tracking active! Strum across any neon string or strike a pad.');
       } catch (err) {
         console.error('Air Strings camera/model error:', err);
         this.stopCamera();
         const msg =
           err && err.name === 'NotAllowedError'
-            ? 'Camera access denied. Allow webcam permission or play with your mouse!'
+            ? 'Camera access denied. Allow webcam permission or play with touch/mouse!'
             : err && err.name === 'NotFoundError'
-            ? 'No webcam detected. You can still strum & make beats with your mouse!'
+            ? 'No camera detected. You can still strum & make beats with touch/mouse!'
             : 'Could not start hand tracking (' + (err && err.message ? err.message : 'error') + ').';
         this.setStatus(msg, 'error');
         this.showToast(msg);
       } finally {
         this.loadingModel = false;
         if (this.camBtn) this.camBtn.disabled = false;
+      }
+    }
+
+    async _openCameraStream() {
+      const mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || '') || window.innerWidth < 820;
+      const attempts = [
+        {
+          video: {
+            facingMode: { ideal: this.facingMode },
+            width: { ideal: mobile ? 640 : 1280 },
+            height: { ideal: mobile ? 480 : 720 },
+            frameRate: { ideal: 30 },
+          },
+          audio: false,
+        },
+        { video: { facingMode: this.facingMode }, audio: false },
+        { video: true, audio: false },
+      ];
+
+      let lastErr = null;
+      for (const constraints of attempts) {
+        try {
+          this.stream = await navigator.mediaDevices.getUserMedia(constraints);
+          break;
+        } catch (err) {
+          lastErr = err;
+          if (err && err.name === 'NotAllowedError') throw err;
+        }
+      }
+      if (!this.stream) throw lastErr || new Error('Camera unavailable');
+
+      this.video.srcObject = this.stream;
+      this.video.muted = true;
+      this.video.playsInline = true;
+      this.video.setAttribute('playsinline', '');
+      this.video.setAttribute('muted', '');
+
+      await new Promise((resolve) => {
+        if (this.video.readyState >= 1 && this.video.videoWidth > 0) return resolve();
+        const done = () => {
+          this.video.removeEventListener('loadedmetadata', done);
+          this.video.removeEventListener('canplay', done);
+          resolve();
+        };
+        this.video.addEventListener('loadedmetadata', done, { once: true });
+        this.video.addEventListener('canplay', done, { once: true });
+        setTimeout(done, 1500);
+      });
+
+      await this.video.play();
+      this.lastVideoTime = -1;
+      this._lastDetectWallMs = 0;
+    }
+
+    async flipCamera() {
+      if (!this.cameraActive || this.loadingModel) return;
+      this.facingMode = this.facingMode === 'user' ? 'environment' : 'user';
+      if (this.stream) {
+        this.stream.getTracks().forEach((t) => t.stop());
+        this.stream = null;
+      }
+      this.hasMask = false;
+      this.prevPointerMap.clear();
+      this.insidePadSet.clear();
+      try {
+        await this._openCameraStream();
+        this.showToast(this.facingMode === 'user' ? 'Switched to Front Camera' : 'Switched to Rear Camera');
+      } catch (err) {
+        this.showToast('Could not switch camera on this device');
       }
     }
 
@@ -804,32 +881,41 @@
       return { visionMod: this.visionMod, vision: this.visionFileset };
     }
 
-    async _initHandLandmarker() {
+    async _initHandLandmarker(forceDelegate = null) {
       const { visionMod, vision } = await this._ensureVisionFileset();
       const { HandLandmarker } = visionMod;
 
       const modelUrl =
         'https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task';
 
+      const tryCreate = async (delegate) => {
+        const instance = await HandLandmarker.createFromOptions(vision, {
+          baseOptions: { modelAssetPath: modelUrl, delegate },
+          runningMode: 'VIDEO',
+          numHands: 2,
+          minHandDetectionConfidence: 0.45,
+          minHandPresenceConfidence: 0.45,
+          minTrackingConfidence: 0.45,
+        });
+        this._handDelegate = delegate;
+        this._handErrorCount = 0;
+        return instance;
+      };
+
+      if (this.handLandmarker && typeof this.handLandmarker.close === 'function') {
+        try { this.handLandmarker.close(); } catch (_) {}
+        this.handLandmarker = null;
+      }
+
+      if (forceDelegate) {
+        this.handLandmarker = await tryCreate(forceDelegate);
+        return;
+      }
+
       try {
-        this.handLandmarker = await HandLandmarker.createFromOptions(vision, {
-          baseOptions: { modelAssetPath: modelUrl, delegate: 'GPU' },
-          runningMode: 'VIDEO',
-          numHands: 2,
-          minHandDetectionConfidence: 0.55,
-          minHandPresenceConfidence: 0.55,
-          minTrackingConfidence: 0.55,
-        });
+        this.handLandmarker = await tryCreate('GPU');
       } catch (_) {
-        // Fallback to CPU delegate if WebGL is unavailable
-        this.handLandmarker = await HandLandmarker.createFromOptions(vision, {
-          baseOptions: { modelAssetPath: modelUrl, delegate: 'CPU' },
-          runningMode: 'VIDEO',
-          numHands: 2,
-          minHandDetectionConfidence: 0.55,
-          minHandPresenceConfidence: 0.55,
-          minTrackingConfidence: 0.55,
-        });
+        this.handLandmarker = await tryCreate('CPU');
       }
     }
 
@@ -889,6 +975,7 @@
         this.camBtn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">videocam</span>Start Webcam';
         this.camBtn.classList.remove('active');
       }
+      if (this.flipCamBtn) this.flipCamBtn.hidden = true;
       this.setStatus('Camera off — Mouse / Touch Play Mode active', 'idle');
     }
 
@@ -958,8 +1045,10 @@
           return;
         }
 
-        // Play mode click: strike any pad directly under pointer, or pluck nearby string
+        // Play mode click/tap: strike any pad directly under pointer, or tap-pluck nearby string
         const now = performance.now();
+        const px = pos.x * this.viewW;
+        const py = pos.y * this.viewH;
         for (const it of this.items) {
           if (it.shape === 'pad') {
             const dx = (pos.x - it.cx) * this.viewW;
@@ -967,6 +1056,22 @@
             const rPx = it.r * Math.min(this.viewW, this.viewH);
             if (Math.hypot(dx, dy) <= rPx) {
               this.triggerItem(it, 0.85, 0.5, pos.x, pos.y, true);
+              return;
+            }
+          }
+        }
+        for (const it of this.items) {
+          if (it.shape === 'string') {
+            const x1 = it.x1 * this.viewW;
+            const y1 = it.y1 * this.viewH;
+            const x2 = it.x2 * this.viewW;
+            const y2 = it.y2 * this.viewH;
+            if (distToSegment(px, py, x1, y1, x2, y2) <= 22) {
+              const dx = x2 - x1;
+              const dy = y2 - y1;
+              const lenSq = dx * dx + dy * dy || 1;
+              const t = Math.max(0.05, Math.min(0.95, ((px - x1) * dx + (py - y1) * dy) / lenSq));
+              this.triggerItem(it, 0.82, t, pos.x, pos.y, true);
               return;
             }
           }
@@ -1047,30 +1152,62 @@
         e.preventDefault();
       });
 
-      // Touch support
+      // Multi-touch support (non-passive so Android/iOS doesn't scroll while strumming)
       this.canvas.addEventListener(
         'touchstart',
         (e) => {
-          if (!e.touches.length) return;
-          const t = e.touches[0];
-          onDown(t.clientX, t.clientY, 0);
+          if (!e.changedTouches.length) return;
+          e.preventDefault();
+          this.audio.ensureContext();
+          if (this.mode === 'play') {
+            const now = performance.now();
+            for (let i = 0; i < e.changedTouches.length; i++) {
+              const t = e.changedTouches[i];
+              const pos = this._getCanvasNormPos(t.clientX, t.clientY);
+              this.activeTouches.set(t.identifier, { x: pos.x, y: pos.y, time: now });
+              onDown(t.clientX, t.clientY, 0);
+            }
+          } else {
+            const t = e.changedTouches[0];
+            onDown(t.clientX, t.clientY, 0);
+          }
         },
-        { passive: true }
+        { passive: false }
       );
       this.canvas.addEventListener(
         'touchmove',
         (e) => {
-          if (!e.touches.length) return;
+          if (!e.changedTouches.length) return;
           e.preventDefault();
-          const t = e.touches[0];
-          onMove(t.clientX, t.clientY);
+          if (this.mode === 'play') {
+            const now = performance.now();
+            for (let i = 0; i < e.changedTouches.length; i++) {
+              const t = e.changedTouches[i];
+              const pos = this._getCanvasNormPos(t.clientX, t.clientY);
+              const prev = this.activeTouches.get(t.identifier);
+              if (prev && now - prev.time < 220) {
+                this._processPointerMotion('t_' + t.identifier, prev, pos, now - prev.time);
+              }
+              this.activeTouches.set(t.identifier, { x: pos.x, y: pos.y, time: now });
+            }
+          } else {
+            const t = e.changedTouches[0];
+            onMove(t.clientX, t.clientY);
+          }
         },
         { passive: false }
       );
-      this.canvas.addEventListener('touchend', () => {
-        onUp();
-        this.prevMouse = null;
-      });
+      const onTouchEnd = (e) => {
+        for (let i = 0; i < e.changedTouches.length; i++) {
+          this.activeTouches.delete(e.changedTouches[i].identifier);
+        }
+        if (!e.touches.length) {
+          onUp();
+          this.prevMouse = null;
+        }
+      };
+      this.canvas.addEventListener('touchend', onTouchEnd);
+      this.canvas.addEventListener('touchcancel', onTouchEnd);
     }
 
     _commitDrawnItem(draft) {
@@ -1238,11 +1375,37 @@
       });
     }
 
+    // ── Video Cover-Fit & Landmark Coordinate Mapping (Desktop + Portrait Mobile) ──
+    _getVideoRect(W, H) {
+      const vw = (this.video && this.video.videoWidth) || 1280;
+      const vh = (this.video && this.video.videoHeight) || 720;
+      const scale = Math.max(W / vw, H / vh);
+      const dw = vw * scale;
+      const dh = vh * scale;
+      return {
+        dx: (W - dw) * 0.5,
+        dy: (H - dh) * 0.5,
+        dw,
+        dh,
+        mirrored: this.facingMode === 'user',
+      };
+    }
+
+    _mapLandmarkNorm(lmPt, rect, W, H) {
+      const rawX = rect.dx + lmPt.x * rect.dw;
+      const px = rect.mirrored ? W - rawX : rawX;
+      const py = rect.dy + lmPt.y * rect.dh;
+      return { x: px / W, y: py / H };
+    }
+
     // ── Hand Tracking Processing (CV Play + Pinch-to-Draw) ──────────────────
     _processHandLandmarks(hands) {
       const now = performance.now();
       const activeTips = this.fingerMode === 'index' ? INDEX_ONLY : ALL_FINGERTIPS;
-      const aspect = this.viewW / Math.max(1, this.viewH);
+      const W = this.viewW || 640;
+      const H = this.viewH || 360;
+      const aspect = W / Math.max(1, H);
+      const rect = this._getVideoRect(W, H);
 
       // Reset pinch states for hands not currently visible
       for (let h = hands.length; h < 2; h++) {
@@ -1262,8 +1425,8 @@
         if (handIdx > 1) return;
 
         // Pinch detection (Thumb Tip 4 <-> Index Tip 8)
-        const thumb = { x: 1 - lm[4].x, y: lm[4].y };
-        const index = { x: 1 - lm[8].x, y: lm[8].y };
+        const thumb = this._mapLandmarkNorm(lm[4], rect, W, H);
+        const index = this._mapLandmarkNorm(lm[8], rect, W, H);
         const pinchDist = Math.hypot((thumb.x - index.x) * aspect, thumb.y - index.y);
         const midX = (thumb.x + index.x) * 0.5;
         const midY = (thumb.y + index.y) * 0.5;
@@ -1295,10 +1458,10 @@
         // Play mode: track every active fingertip across strings & pads
         if (this.mode === 'play') {
           for (const tipIdx of activeTips) {
-            const pt = { x: 1 - lm[tipIdx].x, y: lm[tipIdx].y };
+            const pt = this._mapLandmarkNorm(lm[tipIdx], rect, W, H);
             const pid = `h${handIdx}_f${tipIdx}`;
             const prev = this.prevPointerMap.get(pid);
-            if (prev && now - prev.time < 180) {
+            if (prev && now - prev.time < 220) {
               this._processPointerMotion(pid, prev, pt, now - prev.time);
             }
             this.prevPointerMap.set(pid, { x: pt.x, y: pt.y, time: now });
@@ -1680,17 +1843,54 @@
     }
 
     _detectHandsFrame() {
-      if (!this.cameraActive || !this.handLandmarker || !this.video || this.video.readyState < 2) return;
+      if (
+        !this.cameraActive ||
+        !this.handLandmarker ||
+        this._switchingToCpu ||
+        !this.video ||
+        this.video.readyState < 2 ||
+        !this.video.videoWidth ||
+        !this.video.videoHeight
+      ) {
+        return;
+      }
+
       const vt = this.video.currentTime;
-      if (vt !== this.lastVideoTime) {
+      const nowWall = performance.now();
+      // Some Android browsers don't advance video.currentTime reliably on live streams,
+      // so also run at ~30 FPS fallback based on wall clock.
+      if (vt !== this.lastVideoTime || nowWall - this._lastDetectWallMs >= 34) {
         this.lastVideoTime = vt;
-        const nowMs = Math.max(this._lastCvTs + 1, performance.now());
+        this._lastDetectWallMs = nowWall;
+        const nowMs = Math.max(this._lastCvTs + 1, nowWall);
         this._lastCvTs = nowMs;
+
         try {
           const res = this.handLandmarker.detectForVideo(this.video, nowMs);
+          this._handErrorCount = 0;
           this.latestHands = res && res.landmarks ? res.landmarks : [];
           this._processHandLandmarks(this.latestHands);
-        } catch (_) {}
+        } catch (err) {
+          this._handErrorCount += 1;
+          console.warn('HandLandmarker frame error:', err);
+          if (this._handDelegate === 'GPU' && this._handErrorCount >= 2) {
+            this._switchingToCpu = true;
+            this.setStatus('Switching hand tracking to mobile CPU mode…', 'loading');
+            this._initHandLandmarker('CPU')
+              .then(() => {
+                if (this.cameraActive) {
+                  this.setStatus('Tracking live (CPU mode) — wave your hands to play!', 'live');
+                }
+              })
+              .catch((e) => {
+                console.error('CPU fallback failed:', e);
+                this.setStatus('Hand tracking unsupported on this browser — use Touch Play!', 'error');
+              })
+              .finally(() => {
+                this._switchingToCpu = false;
+              });
+          }
+        }
 
         if (this.bgMode !== 'none' && this.imageSegmenter) {
           this._segmentPersonFrame(nowMs);
@@ -1773,19 +1973,16 @@
     }
 
     _drawWebcamLayer(ctx, W, H) {
-      const vw = this.video.videoWidth || 1280;
-      const vh = this.video.videoHeight || 720;
-      const scale = Math.max(W / vw, H / vh);
-      const dw = vw * scale;
-      const dh = vh * scale;
-      const dx = (W - dw) * 0.5;
-      const dy = (H - dh) * 0.5;
+      const rect = this._getVideoRect(W, H);
+      const { dx, dy, dw, dh, mirrored } = rect;
 
       // Normal clear webcam OR while segmenter is still warming up
       if (this.bgMode === 'none' || !this.hasMask) {
         ctx.save();
-        ctx.translate(W, 0);
-        ctx.scale(-1, 1);
+        if (mirrored) {
+          ctx.translate(W, 0);
+          ctx.scale(-1, 1);
+        }
         ctx.drawImage(this.video, dx, dy, dw, dh);
         ctx.restore();
         return;
@@ -1798,8 +1995,10 @@
         const blurPx = this.bgMode === 'blur-heavy' ? 22 : 10;
         const pad = blurPx * 1.4;
         ctx.save();
-        ctx.translate(W, 0);
-        ctx.scale(-1, 1);
+        if (mirrored) {
+          ctx.translate(W, 0);
+          ctx.scale(-1, 1);
+        }
         ctx.filter = `blur(${blurPx}px)`;
         ctx.drawImage(this.video, dx - pad, dy - pad, dw + pad * 2, dh + pad * 2);
         ctx.filter = 'none';
@@ -1817,8 +2016,10 @@
       pctx.save();
       pctx.clearRect(0, 0, pw, ph);
       pctx.globalCompositeOperation = 'source-over';
-      pctx.translate(pw, 0);
-      pctx.scale(-1, 1);
+      if (mirrored) {
+        pctx.translate(pw, 0);
+        pctx.scale(-1, 1);
+      }
       pctx.drawImage(this.video, dx, dy, dw, dh);
 
       // Mask foreground with softly feathered confidence alpha
@@ -2271,9 +2472,13 @@
 
     _drawHands(ctx, hands, W, H) {
       const activeTips = this.fingerMode === 'index' ? INDEX_ONLY : ALL_FINGERTIPS;
+      const rect = this._getVideoRect(W, H);
 
       hands.forEach((lm, hIdx) => {
-        const pts = lm.map((p) => ({ x: (1 - p.x) * W, y: p.y * H }));
+        const pts = lm.map((p) => {
+          const n = this._mapLandmarkNorm(p, rect, W, H);
+          return { x: n.x * W, y: n.y * H };
+        });
 
         const isMono = this.handStyle === 'mono';
         const boneColor = isMono

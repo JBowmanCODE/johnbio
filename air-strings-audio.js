@@ -282,6 +282,16 @@
       if (this.ctx.state === 'suspended') {
         this.ctx.resume().catch(() => {});
       }
+      if (!this._mobileUnlocked) {
+        try {
+          const silent = this.ctx.createBuffer(1, 1, this.ctx.sampleRate);
+          const src = this.ctx.createBufferSource();
+          src.buffer = silent;
+          src.connect(this.ctx.destination);
+          src.start(0);
+          this._mobileUnlocked = true;
+        } catch (_) {}
+      }
       return this.ctx;
     }
 

@@ -43,7 +43,7 @@
   <link rel="stylesheet" href="/styles.css?v=6">
   <link rel="stylesheet" href="/header.css?v=8">
   <link rel="stylesheet" href="/footer.css?v=4">
-  <link rel="stylesheet" href="/air-strings.css?v=1">
+  <link rel="stylesheet" href="/air-strings.css?v=2">
 
   <!-- SEO -->
   <meta name="description" content="Play glowing neon guitar strings, drums, bongos and piano in mid-air with your webcam. Free browser hand-tracking instrument studio and beat looper.">
@@ -169,6 +169,9 @@
           <button type="button" class="as-btn as-btn--primary" id="as-cam-btn">
             <span class="material-symbols-outlined" aria-hidden="true">videocam</span>Start Webcam
           </button>
+          <button type="button" class="as-btn" id="as-flip-cam-btn" title="Switch front / rear camera" aria-label="Switch front or rear camera" hidden>
+            <span class="material-symbols-outlined" aria-hidden="true">cameraswitch</span>
+          </button>
           <button type="button" class="as-btn" id="as-wav-btn" title="Record live master audio to WAV">
             <span class="material-symbols-outlined" aria-hidden="true">download</span>Record WAV
           </button>
@@ -180,7 +183,7 @@
 
       <!-- 16:9 Webcam + Neon Canvas Stage -->
       <div class="as-stage" id="as-stage">
-        <video id="as-video" class="as-video" playsinline muted></video>
+        <video id="as-video" class="as-video" autoplay playsinline muted></video>
         <canvas id="as-canvas" class="as-canvas" aria-label="Interactive neon laser strings and hand tracking stage"></canvas>
 
         <div class="as-cam-overlay" id="as-cam-overlay">
@@ -615,8 +618,8 @@
   </div>
 
   <script src="/scripts.js?v=12" defer></script>
-  <script src="/air-strings-audio.js?v=1" defer></script>
-  <script src="/air-strings.js?v=1" defer></script>
+  <script src="/air-strings-audio.js?v=2" defer></script>
+  <script src="/air-strings.js?v=2" defer></script>
   <script>
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
