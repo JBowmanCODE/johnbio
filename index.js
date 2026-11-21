@@ -1,6 +1,18 @@
 const projects = [
   // ── TOP 6 (visible by default) ──────────────────────────────────────────
   {
+    id: 'air-strings',
+    title: 'Air Strings — Hand-Tracking Beat Maker',
+    desc: 'Turn your webcam into a neon musical studio. Track both hands in real time to strum glowing guitar strings, piano beams, laser harps, drum kits and bongos, layer quantised loops and download your beat as WAV. 100% private in your browser.',
+    category: 'ai',
+    badge: 'AI TOOL',
+    color: 'cyan',
+    icons: ['front_hand', 'music_note'],
+    href: 'https://johnb.io/air-strings',
+    img: '/images/air_strings_og.webp',
+    thumbIcon: 'music_note',
+  },
+  {
     id: 'linkedin-analyser',
     title: 'LinkedIn Analytics Analyser',
     desc: 'Upload your LinkedIn Creator Analytics .xlsx export to get a health score, creator type, follower growth projections, post theme breakdown, audience vs reach comparison and practical advice on what to post next. 100% private in your browser.',

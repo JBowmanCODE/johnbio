@@ -36,6 +36,12 @@
 
   <!-- AI Tools -->
   <url>
+    <loc>https://johnb.io/air-strings</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://johnb.io/meditation</loc>
     <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>

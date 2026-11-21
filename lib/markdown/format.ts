@@ -217,7 +217,15 @@ export const STATIC_ROUTE_REGISTRY: Readonly<Record<string, RouteMeta>> = (() =>
       category: 'optional',
     },
 
-    // AI Tools (11)
+    // AI Tools (12)
+    {
+      path: '/air-strings',
+      title: 'Air Strings — Hand-Tracking Beat Maker',
+      summary:
+        'Free browser-based computer vision instrument studio and beat looper powered by MediaPipe Hand Landmarker and the Web Audio API. Track both hands locally on your webcam to strum glowing guitar strings, piano beams, laser harps, drum kits and bongos, layer quantised loops and download WAV audio.',
+      category: 'ai-tool',
+      requiredDisclosures: ['100% locally'],
+    },
     {
       path: '/search-radar',
       title: 'Search & Prompt Radar',

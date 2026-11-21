@@ -1,11 +1,11 @@
 # JohnB.io
 
-> A personal AI and development project site by John Bowman. Built to test, explore and showcase 29 free AI-powered tools, a 35-lesson AI & machine learning course across 9 units, responsible AI governance frameworks, and 216 iGaming compliance regulations across 50 jurisdictions.
+> A personal AI and development project site by John Bowman. Built to test, explore and showcase 30 free AI-powered tools, a 35-lesson AI & machine learning course across 9 units, responsible AI governance frameworks, and 216 iGaming compliance regulations across 50 jurisdictions.
 
 Every public URL on JohnB.io serves clean Markdown for LLMs, answer engines, and automated crawlers via HTTP content negotiation (`Accept: text/markdown`, RFC 7763) or by appending `.md` to the canonical path (for example `https://johnb.io/index.md`, `https://johnb.io/aitocv.md`, `https://johnb.io/news/ai-models-2026.md`, `https://johnb.io/course/what-is-ai.md`). For a single-file concatenated Markdown bundle of the entire site, fetch [llms-full.txt](https://johnb.io/llms-full.txt).
 
 - **Owner**: John Bowman (https://johnb.io/about) - AI strategist and developer based in Leeds, UK (20+ years in iGaming and digital marketing, University of Oxford AI Programme 2024).
-- **Coverage**: 29 free browser & AI tools, 4 in-depth AI research articles, 35 free AI course lessons, and 216 iGaming regulations across 50 jurisdictions.
+- **Coverage**: 30 free browser & AI tools, 4 in-depth AI research articles, 35 free AI course lessons, and 216 iGaming regulations across 50 jurisdictions.
 - **Stack & AI Models**: Vanilla HTML, CSS and JavaScript, Cloudflare Workers, Python (Pyodide), Anthropic Claude (Sonnet 5.5 and Haiku 5.5), OpenAI (TTS-1 and GPT), and Google Gemini APIs.
 - **Privacy & Disclosures**: All tools are free with no sign-up required. Tool inputs are processed ephemerally via Cloudflare Workers and never logged or stored. Contact and UK GDPR requests are handled via https://johnb.io/contact.
 
@@ -18,6 +18,7 @@ Every public URL on JohnB.io serves clean Markdown for LLMs, answer engines, and
 
 ## AI Tools
 
+- [Air Strings — Hand-Tracking Beat Maker](https://johnb.io/air-strings): Free browser-based computer vision instrument studio and beat looper powered by MediaPipe Hand Landmarker and the Web Audio API. Track both hands locally on your webcam to strum glowing guitar strings, piano beams, laser harps, drum kits and bongos, layer quantised loops and download WAV audio.
 - [Search & Prompt Radar](https://johnb.io/search-radar): Free keyword and prompt research tool that pulls live autocomplete suggestions from Google Search and YouTube, Reddit search intent, recent Hacker News threads and LinkedIn B2B modifiers, then synthesises likely ChatGPT, Perplexity and Claude prompts using Claude Haiku 5.5.
 - [AI Meditation Generator](https://johnb.io/meditation): Generates personalised guided meditations with Claude Sonnet 5.5 scripts, OpenAI TTS narration, and 10 browser-synthesised Web Audio soundscapes in 25 languages across 5, 10 or 20-minute sessions.
 - [Live Poker Hand Replayer](https://johnb.io/live-poker-hand-replayer): Turn any live No Limit Hold'em poker hand into an animated table replay using a guided form or AI note parser powered by Claude Haiku 5.5, with optional OpenAI TTS commentary, share links and iframe embeds.

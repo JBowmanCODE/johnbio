@@ -1,11 +1,11 @@
 # JohnB.io
 
-> A personal AI and development project site by John Bowman. Built to test, explore and showcase 29 free AI-powered tools, a 35-lesson AI & machine learning course across 9 units, responsible AI governance frameworks, and 216 iGaming compliance regulations across 50 jurisdictions.
+> A personal AI and development project site by John Bowman. Built to test, explore and showcase 30 free AI-powered tools, a 35-lesson AI & machine learning course across 9 units, responsible AI governance frameworks, and 216 iGaming compliance regulations across 50 jurisdictions.
 
 Every public URL on JohnB.io serves clean Markdown for LLMs, answer engines, and automated crawlers via HTTP content negotiation (`Accept: text/markdown`, RFC 7763) or by appending `.md` to the canonical path (for example `https://johnb.io/index.md`, `https://johnb.io/aitocv.md`, `https://johnb.io/news/ai-models-2026.md`, `https://johnb.io/course/what-is-ai.md`). For a single-file concatenated Markdown bundle of the entire site, fetch [llms-full.txt](https://johnb.io/llms-full.txt).
 
 - **Owner**: John Bowman (https://johnb.io/about) - AI strategist and developer based in Leeds, UK (20+ years in iGaming and digital marketing, University of Oxford AI Programme 2024).
-- **Coverage**: 29 free browser & AI tools, 4 in-depth AI research articles, 35 free AI course lessons, and 216 iGaming regulations across 50 jurisdictions.
+- **Coverage**: 30 free browser & AI tools, 4 in-depth AI research articles, 35 free AI course lessons, and 216 iGaming regulations across 50 jurisdictions.
 - **Stack & AI Models**: Vanilla HTML, CSS and JavaScript, Cloudflare Workers, Python (Pyodide), Anthropic Claude (Sonnet 5.5 and Haiku 5.5), OpenAI (TTS-1 and GPT), and Google Gemini APIs.
 - **Privacy & Disclosures**: All tools are free with no sign-up required. Tool inputs are processed ephemerally via Cloudflare Workers and never logged or stored. Contact and UK GDPR requests are handled via https://johnb.io/contact.
 
@@ -18,6 +18,7 @@ Every public URL on JohnB.io serves clean Markdown for LLMs, answer engines, and
 
 ## AI Tools
 
+- [Air Strings — Hand-Tracking Beat Maker](https://johnb.io/air-strings): Free browser-based computer vision instrument studio and beat looper powered by MediaPipe Hand Landmarker and the Web Audio API. Track both hands locally on your webcam to strum glowing guitar strings, piano beams, laser harps, drum kits and bongos, layer quantised loops and download WAV audio.
 - [Search & Prompt Radar](https://johnb.io/search-radar): Free keyword and prompt research tool that pulls live autocomplete suggestions from Google Search and YouTube, Reddit search intent, recent Hacker News threads and LinkedIn B2B modifiers, then synthesises likely ChatGPT, Perplexity and Claude prompts using Claude Haiku 5.5.
 - [AI Meditation Generator](https://johnb.io/meditation): Generates personalised guided meditations with Claude Sonnet 5.5 scripts, OpenAI TTS narration, and 10 browser-synthesised Web Audio soundscapes in 25 languages across 5, 10 or 20-minute sessions.
 - [Live Poker Hand Replayer](https://johnb.io/live-poker-hand-replayer): Turn any live No Limit Hold'em poker hand into an animated table replay using a guided form or AI note parser powered by Claude Haiku 5.5, with optional OpenAI TTS commentary, share links and iframe embeds.
@@ -147,10 +148,11 @@ Every public URL on JohnB.io serves clean Markdown for LLMs, answer engines, and
 - **Markdown URL**: https://johnb.io/index.md
 - **Author**: [John Bowman](https://johnb.io/about)
 
-## All 29 Free Tools & Utilities
+## All 30 Free Tools & Utilities
 
 | Tool | Category | URL | Markdown URL | Summary |
 | --- | --- | --- | --- | --- |
+| [Air Strings — Hand-Tracking Beat Maker](https://johnb.io/air-strings) | AI TOOL | https://johnb.io/air-strings | https://johnb.io/air-strings.md | Turn your webcam into a neon musical studio. Track both hands in real time to strum glowing guitar strings, piano beams, laser harps, drum kits and bongos, layer quantised loops and download your beat as WAV. 100% private in your browser. |
 | [LinkedIn Analytics Analyser](https://johnb.io/linkedin-analyser) | DEV TOOL | https://johnb.io/linkedin-analyser | https://johnb.io/linkedin-analyser.md | Upload your LinkedIn Creator Analytics .xlsx export to get a health score, creator type, follower growth projections, post theme breakdown, audience vs reach comparison and practical advice on what to post next. 100% private in your browser. |
 | [Search & Prompt Radar](https://johnb.io/search-radar) | AI TOOL | https://johnb.io/search-radar | https://johnb.io/search-radar.md | Type a topic and see what people search for on Google, YouTube and Reddit, plus live Hacker News threads, LinkedIn angles and the prompts they are likely asking ChatGPT and Claude. Copy any term or export to CSV. |
 | [AI Meditation Generator](https://johnb.io/meditation) | AI TOOL | https://johnb.io/meditation | https://johnb.io/meditation.md | Personalised guided meditations, generated on demand. Pick a goal, length and voice - Claude writes the script, an AI voice reads it, and your browser synthesises the soundscape. |
@@ -712,6 +714,72 @@ Every graduate who completes all 35 lessons and passes the final exam of the [AI
 1. Visit `https://johnb.io/verify/JB-2026-XXXXXX` (replacing `JB-2026-XXXXXX` with the holder's certificate ID).
 2. The page queries the JohnB.io verification record and displays the graduate's verified name, completion date, exam score, and course curriculum details.
 3. If a certificate ID does not exist or has been withdrawn, the page reports "Certificate not found".
+
+---
+
+# Air Strings — Hand-Tracking Beat Maker
+
+> Free browser-based computer vision instrument studio and beat looper powered by MediaPipe Hand Landmarker and the Web Audio API. Track both hands locally on your webcam to strum glowing guitar strings, piano beams, laser harps, drum kits and bongos, layer quantised loops and download WAV audio.
+
+- **Canonical URL**: https://johnb.io/air-strings
+- **Markdown URL**: https://johnb.io/air-strings.md
+- **Author**: [John Bowman](https://johnb.io/about)
+- **Last Updated**: November 2026
+
+## Turn Your Webcam Into a Spatial Beat Studio
+
+Air Strings pairs real-time computer vision hand tracking with a zero-latency Web Audio synthesiser. Your camera tracks 21 landmarks on each hand locally in your browser, turning any empty space in front of your screen into glowing laser strings and holographic drum pads.
+
+Every instrument is synthesised live in code — including Karplus-Strong physical-modelled guitar strings, multi-harmonic piano voices, 808 sub-bass, TR-808 style drums and woody Latin bongos. Because melodic strings snap to your chosen musical key and scale, you can jam, draw custom rigs in mid-air and overdub full multi-instrument loops without ever hitting a clashing note.
+
+## How It Works
+
+1. **Enable your webcam (or jump into Mouse Mode).** MediaPipe Hand Landmarker loads once into browser memory and tracks both hands at up to 30+ FPS completely on-device.
+2. **Pick a preset or draw your own rig.** Start with Beat Studio, 6-String Air Guitar, Laser Harp, Bongos & Drum Rig or Lo-Fi Chord Jam — or switch to Draw mode and pinch in mid-air to place custom strings and pads.
+3. **Strum with velocity.** Exact 2D line-segment intersection detects the moment each fingertip crosses a string, translating swipe speed into volume, filter brightness, standing-wave string vibration and spark particles.
+4. **Layer a beat with the live looper.** Pick a tempo, enable a backing drum groove or click track, hit Rec Loop and stack drums, bongos, basslines, chords and leads over 2 or 4 bars.
+5. **Save your rig or download WAV.** Store your custom layout locally in your browser with Save Rig, and use Record WAV to capture your live jam as a stereo 16-bit WAV file.
+
+## Key Points
+
+- **Headphones make a huge difference.** Built-in stereo hall reverb, ping-pong echo and 808 sub-bass sound dramatically fuller on headphones than on laptop speakers.
+- **Good front lighting improves hand tracking.** Face a window or desk lamp and sit roughly an arm's length from the webcam so both hands stay clearly inside the frame.
+- **Use Index Only for fast melodies.** All 5 Fingers is great for raking guitar chords and two-hand drumming; switching to Index Only gives pinpoint control on crowded layouts.
+- **Try Fretboard Mode on long strings.** Turning on Frets divides each melodic string into five consecutive scale notes along its tick marks, letting you play full riffs on a single beam.
+- **Zero audio files or server calls.** Everything — computer vision, guitar string physics, drum synthesis and WAV encoding — executes privately inside your browser tab.
+
+## Frequently Asked Questions
+
+### Does my webcam video ever leave my device?
+
+No. Hand tracking runs 100% locally inside your browser using MediaPipe WebAssembly and WebGL. No video frames, images or audio recordings are uploaded to any server.
+
+### What instruments can I create and play?
+
+You can place glowing laser strings or circular air pads for eight synthesised instruments: Guitar, Piano, Laser Harp, Neon Synth, 808 Bass, Lo-Fi Chords, a full Drum Kit (kick, snare, hi-hats, clap, toms, crash) and Bongos & Percussion (high/low bongos, congas, cowbell and wood clave).
+
+### How do I draw new strings in mid-air?
+
+Switch to Draw mode (or press 2), pick an instrument, then pinch your thumb and index finger together to anchor the start of a string, pull your hand across the frame and open your fingers to lock it in place. You can also pinch with both hands at once to stretch a beam between them, or click and drag with your mouse.
+
+### Can I use Air Strings without a webcam?
+
+Yes. Click Play With Mouse / Touch to use the studio stage without enabling a camera. Swiping your mouse cursor or finger across strings plucks them with the same velocity response, spark physics and live looper.
+
+### How does the beat looper and WAV export work?
+
+Click Rec Loop for a 4-beat count-in, play your rhythm or melody over 2 or 4 bars, and the looper automatically wraps into overdub so you can layer guitars, chords and bongos on top. Quantisation snaps hand hits to the beat grid, and Record WAV captures your live mix straight to a downloadable .wav file.
+
+### Why does string length change the pitch?
+
+When you draw a melodic string, its length automatically maps to a note in your chosen musical key and scale, just like real acoustics: longer strings produce deeper bass and low guitar notes, while shorter strings play higher melodies. You can also fine-tune any string manually in the Active Strings & Pads rack.
+
+## Sources & Primary References
+
+1. [Google AI Edge - MediaPipe Hand Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker) - documentation for the 21-point real-time on-device hand tracking model.
+2. [MDN Web Docs - Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) - browser audio synthesis, dynamics processing and convolution reverb specification.
+3. [Stanford CCRMA - Karplus-Strong Plucked String Synthesis](https://ccrma.stanford.edu/~jos/pasp/Karplus_Strong_Algorithm.html) - the physical modelling technique used for the Air Strings guitar engine.
+4. [AI Meditation Generator](https://johnb.io/meditation) - another live Web Audio synthesis tool on JohnB.io.
 
 ---
 

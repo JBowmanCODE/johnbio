@@ -6,10 +6,11 @@
 - **Markdown URL**: https://johnb.io/index.md
 - **Author**: [John Bowman](https://johnb.io/about)
 
-## All 29 Free Tools & Utilities
+## All 30 Free Tools & Utilities
 
 | Tool | Category | URL | Markdown URL | Summary |
 | --- | --- | --- | --- | --- |
+| [Air Strings — Hand-Tracking Beat Maker](https://johnb.io/air-strings) | AI TOOL | https://johnb.io/air-strings | https://johnb.io/air-strings.md | Turn your webcam into a neon musical studio. Track both hands in real time to strum glowing guitar strings, piano beams, laser harps, drum kits and bongos, layer quantised loops and download your beat as WAV. 100% private in your browser. |
 | [LinkedIn Analytics Analyser](https://johnb.io/linkedin-analyser) | DEV TOOL | https://johnb.io/linkedin-analyser | https://johnb.io/linkedin-analyser.md | Upload your LinkedIn Creator Analytics .xlsx export to get a health score, creator type, follower growth projections, post theme breakdown, audience vs reach comparison and practical advice on what to post next. 100% private in your browser. |
 | [Search & Prompt Radar](https://johnb.io/search-radar) | AI TOOL | https://johnb.io/search-radar | https://johnb.io/search-radar.md | Type a topic and see what people search for on Google, YouTube and Reddit, plus live Hacker News threads, LinkedIn angles and the prompts they are likely asking ChatGPT and Claude. Copy any term or export to CSV. |
 | [AI Meditation Generator](https://johnb.io/meditation) | AI TOOL | https://johnb.io/meditation | https://johnb.io/meditation.md | Personalised guided meditations, generated on demand. Pick a goal, length and voice - Claude writes the script, an AI voice reads it, and your browser synthesises the soundscape. |
