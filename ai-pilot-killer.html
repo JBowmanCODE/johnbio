@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Pilot Killer Matrix - Use-Case Prioritiser - JohnB.io</title>
+
+  <!-- Google Analytics -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+    (function(){
+      var loaded = false;
+      function loadGA(){
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY';
+        document.head.appendChild(s);
+      }
+      ['pointermove','touchstart','scroll','keydown','click'].forEach(function(e){
+        window.addEventListener(e, loadGA, { once: true, passive: true });
+      });
+      window.addEventListener('load', function(){ setTimeout(loadGA, 4000); });
+    })();
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800;900&display=optional" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css?v=6">
+  <link rel="stylesheet" href="/header.css?v=8">
+  <link rel="stylesheet" href="/footer.css?v=4">
+  <link rel="stylesheet" href="/ai-pilot-killer.css?v=1">
+
+  <!-- SEO (Preview Mode: noindex, nofollow) -->
+  <meta name="description" content="Score enterprise AI requests on data readiness, blast radius, governance and honest ROI. Spot plain-code traps and kill weak pilots early.">
+  <meta name="keywords" content="ai use case prioritiser, ai pilot killer matrix, enterprise ai roi calculator, ai portfolio prioritisation, build vs buy ai, ai governance scoring, head of ai tool">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://johnb.io/ai-pilot-killer">
+  <meta name="author" content="John Bowman">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Pilot Killer Matrix - Use-Case Prioritiser - JohnB.io">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/ai-pilot-killer">
+  <meta property="og:description" content="Score enterprise AI requests on data readiness, blast radius, governance and honest ROI. Spot plain-code traps and kill weak pilots early.">
+  <meta property="og:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+  <meta property="og:image:alt" content="AI Use-Case Prioritiser and Pilot Killer Matrix on JohnB.io">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Pilot Killer Matrix - JohnB.io">
+  <meta name="twitter:description" content="Stress-test department AI requests against real operational risk, plain-code alternatives and CFO-proof ROI in your browser.">
+  <meta name="twitter:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+  <meta name="twitter:image:alt" content="AI Use-Case Prioritiser and Pilot Killer Matrix on JohnB.io">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI Use-Case Prioritiser & Pilot Killer Matrix",
+    "url": "https://johnb.io/ai-pilot-killer",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Client-side portfolio prioritisation matrix and ROI stress-tester for Heads of AI and AI Enablement Managers. Evaluates enterprise AI requests on data readiness, error blast radius, regulatory exposure, adoption friction, plain-code alternatives and discounted net payback.",
+    "image": "https://johnb.io/og_images/johnb_homepage_og.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://johnb.io/about",
+      "sameAs": ["https://www.linkedin.com/in/john-bowman/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why not use a standard Impact vs Effort matrix for AI requests?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Generic impact-effort grids hide the four things that actually kill enterprise AI pilots: messy source data, high error blast radius, regulatory sign-off delays and people ignoring the tool after launch. Two requests with identical effort estimates behave completely differently if one writes internal draft notes and the other triggers customer refunds under GDPR or EU AI Act scrutiny."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the Deterministic Alternative score flag?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It asks whether a plain script, SQL query, BI template or rule engine can solve 80% of the job without a language model. Scoring 4 or 5 triggers a Don't Use an LLM warning because paying ongoing inference, prompt maintenance and evaluation costs for a deterministic workflow wastes budget and introduces hallucination risk where none existed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is the realistic annual net value calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The model starts with gross time saved across 46 working weeks per year, then applies two haircuts most vendor decks skip: your per-initiative human review and QA overhead percentage, and the global Year-1 adoption rate slider. It subtracts annual licence, API and evaluation maintenance costs to show steady-state net value, and divides initial build cost by monthly net benefit to find payback months."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the Build vs Buy vs Configure recommendation work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Initiatives solvable with deterministic logic get routed to plain code or SQL first. Low-value or high-risk traps get marked Defer or Kill. High-readiness, low-risk requests with modest integration costs recommend buying off-the-shelf SaaS; moderate-complexity requests recommend configuring an existing enterprise AI platform; high-governance or messy-data bets recommend a phased custom build with audit trails and human approval gates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does my AI portfolio data leave my browser?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Everything runs locally in vanilla JavaScript inside your browser and auto-saves to your device's localStorage. Nothing is posted to a backend server. If you click Copy Share URL, your portfolio is encoded inside the URL hash fragment so you can share it directly with a colleague."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is included in the Steering Committee Pack export?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Markdown export generates an executive-ready brief with your portfolio assumptions, headline ROI metrics, total budget saved from killed pilots, a ranked decision table, Ship Now priorities with Build vs Buy verdicts, and an explicit Kill List rationale you can paste straight into Notion, Confluence or a board paper."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://johnb.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "AI Pilot Killer Matrix",
+        "item": "https://johnb.io/ai-pilot-killer"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="pk-ambient" aria-hidden="true"></div>
+
+  <main class="pk-wrap" id="main-content">
+
+    <!-- HERO -->
+    <section class="pk-hero" aria-label="Introduction">
+      <div class="pk-hero-pills">
+        <span class="pk-pill pk-pill--green">
+          <span class="material-symbols-outlined" aria-hidden="true">lock</span>
+          100% client-side · Auto-saved locally
+        </span>
+        <span class="pk-pill pk-pill--cyan">
+          <span class="material-symbols-outlined" aria-hidden="true">science</span>
+          Preview tool for AI leaders
+        </span>
+      </div>
+      <h1 class="pk-title">AI Pilot Killer <span class="gradient-text">Matrix</span></h1>
+      <p class="pk-subtitle">Stress-test department AI requests against real data readiness, blast radius, governance exposure, plain-code alternatives and CFO-proof ROI before you fund another dead-end pilot.</p>
+    </section>
+
+    <!-- GLOBAL CONTROLS & TOOLBAR -->
+    <section class="pk-toolbar" aria-label="Portfolio controls and exports">
+      <div class="pk-toolbar-levers">
+        <div class="pk-lever-group">
+          <div class="pk-lever-head">
+            <label for="pk-adoption-slider" class="pk-lever-label">Global Year-1 Adoption Rate</label>
+            <span class="pk-lever-value" id="pk-adoption-value">60%</span>
+          </div>
+          <input type="range" id="pk-adoption-slider" class="pk-slider pk-slider--cyan" min="15" max="100" step="5" value="60" aria-describedby="pk-adoption-hint">
+          <span class="pk-lever-hint" id="pk-adoption-hint">Discounts naive savings across all initiatives (most rollouts hit 45%-65% active adoption in Year 1).</span>
+        </div>
+
+        <div class="pk-currency-group" role="group" aria-label="Portfolio currency">
+          <span class="pk-lever-label">Currency</span>
+          <div class="pk-seg">
+            <button type="button" class="pk-seg-btn active" data-currency="GBP" aria-pressed="true">£ GBP</button>
+            <button type="button" class="pk-seg-btn" data-currency="USD" aria-pressed="false">$ USD</button>
+            <button type="button" class="pk-seg-btn" data-currency="EUR" aria-pressed="false">€ EUR</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pk-toolbar-actions">
+        <button type="button" class="pk-btn pk-btn--primary" id="pk-add-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">add_circle</span>
+          Add Use Case
+        </button>
+        <button type="button" class="pk-btn pk-btn--ghost" id="pk-sample-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">dataset</span>
+          Load Sample (6)
+        </button>
+        <button type="button" class="pk-btn pk-btn--ghost pk-btn--danger-hover" id="pk-clear-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">delete_sweep</span>
+          Clear
+        </button>
+        <span class="pk-toolbar-divider" aria-hidden="true"></span>
+        <button type="button" class="pk-btn pk-btn--cyan" id="pk-share-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">link</span>
+          Share URL
+        </button>
+        <button type="button" class="pk-btn pk-btn--ghost" id="pk-pack-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">description</span>
+          Steering Pack (.md)
+        </button>
+        <button type="button" class="pk-btn pk-btn--ghost" id="pk-csv-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">table_view</span>
+          Export CSV
+        </button>
+        <button type="button" class="pk-btn pk-btn--ghost" id="pk-print-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">print</span>
+          Print / PDF
+        </button>
+      </div>
+    </section>
+
+    <!-- STATUS TOAST -->
+    <div id="pk-toast" class="pk-toast" role="status" aria-live="polite"></div>
+
+    <!-- PORTFOLIO SUMMARY STRIP -->
+    <section class="pk-kpi-strip" aria-label="Portfolio summary metrics">
+      <article class="pk-kpi-card pk-kpi-card--green">
+        <span class="pk-kpi-label">Realistic Net Annual Value</span>
+        <strong class="pk-kpi-value" id="pk-kpi-net-value">£0</strong>
+        <span class="pk-kpi-sub" id="pk-kpi-net-sub">Funded pilots (steady state)</span>
+      </article>
+      <article class="pk-kpi-card">
+        <span class="pk-kpi-label">Portfolio Payback</span>
+        <strong class="pk-kpi-value" id="pk-kpi-payback">-</strong>
+        <span class="pk-kpi-sub" id="pk-kpi-payback-sub">Months on funded builds</span>
+      </article>
+      <article class="pk-kpi-card pk-kpi-card--green">
+        <span class="pk-kpi-label">Ship Now</span>
+        <strong class="pk-kpi-value" id="pk-kpi-ship-count">0</strong>
+        <span class="pk-kpi-sub" id="pk-kpi-ship-sub">High value, ready to ship</span>
+      </article>
+      <article class="pk-kpi-card pk-kpi-card--pink">
+        <span class="pk-kpi-label">Kill / Governance Trap</span>
+        <strong class="pk-kpi-value" id="pk-kpi-kill-count">0</strong>
+        <span class="pk-kpi-sub" id="pk-kpi-kill-sub">Blocked or plain-code jobs</span>
+      </article>
+      <article class="pk-kpi-card pk-kpi-card--cyan">
+        <span class="pk-kpi-label">Saved From Wasted Spend</span>
+        <strong class="pk-kpi-value" id="pk-kpi-saved-spend">£0</strong>
+        <span class="pk-kpi-sub" id="pk-kpi-saved-sub">Year-1 cost avoided on kills</span>
+      </article>
+    </section>
+
+    <!-- MAIN WORKSPACE: 2x2 MATRIX + SELECTED VERDICT & EDITOR -->
+    <section class="pk-workspace" aria-label="Interactive matrix and initiative editor">
+
+      <!-- LEFT: 2x2 SVG MATRIX -->
+      <div class="pk-card pk-matrix-card">
+        <div class="pk-card-head">
+          <div>
+            <h2 class="pk-section-title">
+              <span class="material-symbols-outlined" aria-hidden="true">bubble_chart</span>
+              Portfolio Decision Matrix
+            </h2>
+            <p class="pk-section-sub">Click or focus any bubble to inspect its verdict and stress-test its assumptions. Bubble size reflects steady-state net value magnitude.</p>
+          </div>
+          <div class="pk-matrix-badges" aria-label="Matrix key">
+            <span class="pk-key-item"><span class="pk-dot pk-dot--ship"></span>Ship Now</span>
+            <span class="pk-key-item"><span class="pk-dot pk-dot--bet"></span>Strategic Bet</span>
+            <span class="pk-key-item"><span class="pk-dot pk-dot--trap"></span>Governance Trap</span>
+            <span class="pk-key-item"><span class="pk-dot pk-dot--kill"></span>Kill / Plain Code</span>
+          </div>
+        </div>
+
+        <div class="pk-matrix-stage" id="pk-matrix-stage">
+          <svg
+            id="pk-matrix-svg"
+            class="pk-matrix-svg"
+            viewBox="0 0 720 480"
+            role="img"
+            aria-labelledby="pk-matrix-title pk-matrix-desc"
+          >
+            <title id="pk-matrix-title">AI Use-Case Prioritisation 2 by 2 Matrix</title>
+            <desc id="pk-matrix-desc">Interactive scatter plot placing AI initiatives by Operational Feasibility and Safety on the horizontal axis against Realistic Net Value on the vertical axis across four quadrants: Strategic Bet, Ship Now, Governance Trap, and Kill It or Use Plain Code.</desc>
+            <defs>
+              <radialGradient id="pkGlowShip" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#22c55e" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="pkGlowBet" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#00eefc" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#00eefc" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="pkGlowTrap" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="pkGlowKill" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ff007f" stop-opacity="0.38"/>
+                <stop offset="100%" stop-color="#ff007f" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <!-- Static grid + live bubbles rendered by ai-pilot-killer.js -->
+            <g id="pk-svg-grid"></g>
+            <g id="pk-svg-bubbles"></g>
+          </svg>
+
+          <!-- Floating hover tooltip -->
+          <div id="pk-tooltip" class="pk-tooltip" role="tooltip" hidden></div>
+
+          <!-- Empty state overlay -->
+          <div id="pk-empty-matrix" class="pk-empty-matrix" hidden>
+            <span class="material-symbols-outlined" aria-hidden="true">filter_none</span>
+            <p>Your portfolio is empty.</p>
+            <div class="pk-empty-actions">
+              <button type="button" class="pk-btn pk-btn--primary" id="pk-empty-add-btn">Add First Use Case</button>
+              <button type="button" class="pk-btn pk-btn--ghost" id="pk-empty-sample-btn">Load Sample (6)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pk-matrix-footnote">
+          <span class="pk-ring-sample" aria-hidden="true"></span>
+          <span>Dashed outer ring flags a <strong>Don't Use an LLM</strong> trap (Deterministic Alternative score 4 or 5 - solve with plain code, SQL or rules first).</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: SELECTED INITIATIVE VERDICT & LIVE EDITOR -->
+      <div class="pk-card pk-detail-card" id="pk-detail-panel" aria-live="polite">
+        <div id="pk-detail-empty" class="pk-detail-empty" hidden>
+          <span class="material-symbols-outlined" aria-hidden="true">touch_app</span>
+          <h3>No initiative selected</h3>
+          <p>Add a use case or load the sample portfolio to inspect scoring, ROI haircuts and build-vs-buy verdicts.</p>
+        </div>
+
+        <div id="pk-detail-content">
+          <div class="pk-detail-top">
+            <div class="pk-detail-heading">
+              <div class="pk-detail-badges">
+                <span class="pk-quad-badge" id="pk-det-quad-badge">Ship Now</span>
+                <span class="pk-bvb-badge" id="pk-det-bvb-badge">Buy SaaS</span>
+              </div>
+              <h2 class="pk-detail-name" id="pk-det-name">Initiative Name</h2>
+              <span class="pk-detail-dept" id="pk-det-dept">Department</span>
+            </div>
+            <div class="pk-detail-tools">
+              <button type="button" class="pk-icon-btn" id="pk-dup-btn" title="Duplicate this use case" aria-label="Duplicate selected use case">
+                <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+              </button>
+              <button type="button" class="pk-icon-btn pk-icon-btn--danger" id="pk-del-btn" title="Delete this use case" aria-label="Delete selected use case">
+                <span class="material-symbols-outlined" aria-hidden="true">delete</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Plain-Code Warning Banner -->
+          <div class="pk-llm-trap-alert" id="pk-det-llm-alert" hidden>
+            <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+            <div>
+              <strong>Don't Use an LLM Here</strong>
+              <p id="pk-det-llm-alert-text">A plain script, SQL query or rule engine handles 80%+ of this job without hallucination risk or inference bills.</p>
+            </div>
+          </div>
+
+          <!-- CFO Reality Check Strip -->
+          <div class="pk-cfo-box">
+            <div class="pk-cfo-row">
+              <div class="pk-cfo-metric">
+                <span class="pk-cfo-label">Vendor Hype (Naive)</span>
+                <span class="pk-cfo-val pk-cfo-val--muted" id="pk-det-naive">£0/yr</span>
+              </div>
+              <span class="pk-cfo-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+              <div class="pk-cfo-metric">
+                <span class="pk-cfo-label">Realistic Gross</span>
+                <span class="pk-cfo-val pk-cfo-val--cyan" id="pk-det-realistic">£0/yr</span>
+              </div>
+              <div class="pk-cfo-metric">
+                <span class="pk-cfo-label">Haircut</span>
+                <span class="pk-cfo-val pk-cfo-val--pink" id="pk-det-haircut">-0%</span>
+              </div>
+            </div>
+            <div class="pk-cfo-row pk-cfo-row--bottom">
+              <div class="pk-cfo-metric">
+                <span class="pk-cfo-label">Steady Net / Yr</span>
+                <strong class="pk-cfo-val" id="pk-det-steady">£0</strong>
+              </div>
+              <div class="pk-cfo-metric">
+                <span class="pk-cfo-label">Year-1 Net</span>
+                <strong class="pk-cfo-val" id="pk-det-y1">£0</strong>
+              </div>
+              <div class="pk-cfo-metric">
+                <span class="pk-cfo-label">Payback</span>
+                <strong class="pk-cfo-val" id="pk-det-payback">-</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Blunt Verdict Rationale -->
+          <div class="pk-verdict-box">
+            <span class="pk-verdict-label">Pilot Killer Verdict</span>
+            <p class="pk-verdict-text" id="pk-det-rationale"></p>
+            <p class="pk-bvb-rationale" id="pk-det-bvb-rationale"></p>
+          </div>
+
+          <!-- Editor Tabs -->
+          <div class="pk-tabs" role="tablist" aria-label="Edit initiative parameters">
+            <button type="button" class="pk-tab active" role="tab" id="pk-tab-scores" aria-selected="true" aria-controls="pk-panel-scores" data-tab="scores">
+              <span class="material-symbols-outlined" aria-hidden="true">tune</span>
+              Operational Scores
+            </button>
+            <button type="button" class="pk-tab" role="tab" id="pk-tab-econ" aria-selected="false" aria-controls="pk-panel-econ" data-tab="econ">
+              <span class="material-symbols-outlined" aria-hidden="true">payments</span>
+              Economics &amp; Details
+            </button>
+          </div>
+
+          <!-- Tab 1: Operational Scoring Axes -->
+          <div class="pk-tab-panel" id="pk-panel-scores" role="tabpanel" aria-labelledby="pk-tab-scores">
+            <div class="pk-axis-list">
+              <div class="pk-axis-item">
+                <div class="pk-axis-head">
+                  <label for="pk-in-data">Data Readiness</label>
+                  <span class="pk-axis-score" id="pk-val-data">4 / 5</span>
+                </div>
+                <input type="range" id="pk-in-data" class="pk-slider" min="1" max="5" step="1" value="4">
+                <div class="pk-axis-anchors"><span>1 Siloed &amp; messy</span><span>5 Clean &amp; API-ready</span></div>
+              </div>
+
+              <div class="pk-axis-item">
+                <div class="pk-axis-head">
+                  <label for="pk-in-blast">Error Blast Radius</label>
+                  <span class="pk-axis-score" id="pk-val-blast">2 / 5</span>
+                </div>
+                <input type="range" id="pk-in-blast" class="pk-slider pk-slider--risk" min="1" max="5" step="1" value="2">
+                <div class="pk-axis-anchors"><span>1 Harmless typo</span><span>5 Fine / customer harm</span></div>
+              </div>
+
+              <div class="pk-axis-item">
+                <div class="pk-axis-head">
+                  <label for="pk-in-gov">Regulatory &amp; Governance Exposure</label>
+                  <span class="pk-axis-score" id="pk-val-gov">2 / 5</span>
+                </div>
+                <input type="range" id="pk-in-gov" class="pk-slider pk-slider--risk" min="1" max="5" step="1" value="2">
+                <div class="pk-axis-anchors"><span>1 Low internal</span><span>5 EU AI Act / GDPR high-risk</span></div>
+              </div>
+
+              <div class="pk-axis-item">
+                <div class="pk-axis-head">
+                  <label for="pk-in-friction">Adoption Friction</label>
+                  <span class="pk-axis-score" id="pk-val-friction">2 / 5</span>
+                </div>
+                <input type="range" id="pk-in-friction" class="pk-slider pk-slider--risk" min="1" max="5" step="1" value="2">
+                <div class="pk-axis-anchors"><span>1 Fits current workflow</span><span>5 Heavy behaviour change</span></div>
+              </div>
+
+              <div class="pk-axis-item pk-axis-item--trap">
+                <div class="pk-axis-head">
+                  <label for="pk-in-det">Deterministic Alternative ("Plain Code Test")</label>
+                  <span class="pk-axis-score" id="pk-val-det">2 / 5</span>
+                </div>
+                <input type="range" id="pk-in-det" class="pk-slider pk-slider--pink" min="1" max="5" step="1" value="2">
+                <div class="pk-axis-anchors"><span>1 Needs LLM reasoning</span><span>5 SQL / script solves 80%+</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Economics & Details -->
+          <div class="pk-tab-panel" id="pk-panel-econ" role="tabpanel" aria-labelledby="pk-tab-econ" hidden>
+            <div class="pk-form-grid">
+              <div class="pk-field pk-field--full">
+                <label for="pk-in-name">Initiative Name</label>
+                <input type="text" id="pk-in-name" maxlength="80" placeholder="e.g. Customer Support Ticket Triage">
+              </div>
+              <div class="pk-field">
+                <label for="pk-in-dept">Department / Sponsor</label>
+                <input type="text" id="pk-in-dept" maxlength="40" placeholder="e.g. Customer Ops">
+              </div>
+              <div class="pk-field">
+                <label for="pk-in-staff">Affected Staff</label>
+                <input type="number" id="pk-in-staff" min="1" max="50000" step="1">
+              </div>
+              <div class="pk-field pk-field--full">
+                <label for="pk-in-summary">One-Line Scope</label>
+                <input type="text" id="pk-in-summary" maxlength="180" placeholder="What it actually does in production">
+              </div>
+              <div class="pk-field">
+                <label for="pk-in-runs">Runs / Week (per staff)</label>
+                <input type="number" id="pk-in-runs" min="0.5" max="1000" step="0.5">
+              </div>
+              <div class="pk-field">
+                <label for="pk-in-mins">Gross Mins Saved / Run</label>
+                <input type="number" id="pk-in-mins" min="0.5" max="480" step="0.5">
+              </div>
+              <div class="pk-field">
+                <label for="pk-in-rate">Blended Hourly Rate (<span class="pk-curr-sym">£</span>)</label>
+                <input type="number" id="pk-in-rate" min="5" max="1000" step="1">
+              </div>
+              <div class="pk-field">
+                <label for="pk-in-qa">Human QA / Review Overhead (%)</label>
+                <input type="number" id="pk-in-qa" min="0" max="95" step="5">
+              </div>
+              <div class="pk-field">
+                <label for="pk-in-build">Build &amp; Integration Cost (<span class="pk-curr-sym">£</span>)</label>
+                <input type="number" id="pk-in-build" min="0" max="10000000" step="1000">
+              </div>
+              <div class="pk-field">
+                <label for="pk-in-run-cost">Year-1 Licence, API &amp; Evals (<span class="pk-curr-sym">£</span>)</label>
+                <input type="number" id="pk-in-run-cost" min="0" max="10000000" step="1000">
+              </div>
+            </div>
+            <p class="pk-econ-math" id="pk-det-math-preview"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RANKED PORTFOLIO TABLE -->
+    <section class="pk-card pk-table-card" aria-label="Ranked portfolio table">
+      <div class="pk-table-head">
+        <div>
+          <h2 class="pk-section-title">
+            <span class="material-symbols-outlined" aria-hidden="true">leaderboard</span>
+            Steering Committee Decision Table
+          </h2>
+          <p class="pk-section-sub">Click any row to edit its scores and economics on the matrix above.</p>
+        </div>
+        <div class="pk-table-controls">
+          <div class="pk-filter-pills" role="group" aria-label="Filter by quadrant">
+            <button type="button" class="pk-filter-btn active" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="pk-filter-btn" data-filter="ship" aria-pressed="false">Ship Now</button>
+            <button type="button" class="pk-filter-btn" data-filter="bet" aria-pressed="false">Strategic Bet</button>
+            <button type="button" class="pk-filter-btn" data-filter="trap" aria-pressed="false">Governance Trap</button>
+            <button type="button" class="pk-filter-btn" data-filter="kill" aria-pressed="false">Kill / Plain Code</button>
+          </div>
+          <label class="pk-sort-wrap">
+            <span class="sr-only">Sort initiatives by</span>
+            <select id="pk-sort-select" class="pk-select" aria-label="Sort initiatives by">
+              <option value="priority">Sort: Priority Rank</option>
+              <option value="steadyNet">Sort: Steady Net Value</option>
+              <option value="payback">Sort: Fastest Payback</option>
+              <option value="feasibility">Sort: Feasibility Score</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="pk-table-scroll">
+        <table class="pk-table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Initiative</th>
+              <th scope="col">Quadrant</th>
+              <th scope="col">Build / Buy</th>
+              <th scope="col">Feasibility</th>
+              <th scope="col">Naive vs Realistic / Yr</th>
+              <th scope="col">Steady Net / Yr</th>
+              <th scope="col">Year-1 Cost</th>
+              <th scope="col">Payback</th>
+              <th scope="col"><span class="sr-only">Actions</span></th>
+            </tr>
+          </thead>
+          <tbody id="pk-table-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- STEERING COMMITTEE PACK MODAL -->
+    <div id="pk-pack-modal" class="pk-modal" role="dialog" aria-modal="true" aria-labelledby="pk-pack-title" hidden>
+      <div class="pk-modal-backdrop" id="pk-pack-backdrop"></div>
+      <div class="pk-modal-card">
+        <div class="pk-modal-head">
+          <div>
+            <h2 id="pk-pack-title">Steering Committee Pack (Markdown)</h2>
+            <p class="pk-modal-sub">Ready to paste into Notion, Confluence, Slack or a board memo.</p>
+          </div>
+          <button type="button" class="pk-icon-btn" id="pk-pack-close" aria-label="Close steering pack modal">
+            <span class="material-symbols-outlined" aria-hidden="true">close</span>
+          </button>
+        </div>
+        <div class="pk-modal-actions">
+          <button type="button" class="pk-btn pk-btn--primary" id="pk-pack-copy">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            Copy Markdown
+          </button>
+          <button type="button" class="pk-btn pk-btn--cyan" id="pk-pack-download">
+            <span class="material-symbols-outlined" aria-hidden="true">download</span>
+            Download .md
+          </button>
+        </div>
+        <textarea id="pk-pack-output" class="pk-pack-textarea" readonly aria-label="Generated Steering Committee Pack Markdown"></textarea>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <!-- Tool Info / SEO Section -->
+  <section class="tool-info" aria-label="About this tool">
+    <div class="tool-info-inner">
+
+      <div class="tool-info-meta">
+        <span>Last updated: November 2026</span>
+        <span class="tool-info-sep">·</span>
+        <span>By <a href="/about">John Bowman</a> - questions? Connect on <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</span>
+      </div>
+
+      <div class="tool-info-body">
+        <h2 class="pk-info-h2">Why Most Enterprise AI Pilots Stall After Demo Day</h2>
+        <p>Every Head of AI has the same inbox problem: twenty department heads asking for chatbots, autonomous agents and "AI-powered" dashboards, backed by vendor ROI slides that assume 100% staff adoption and zero human review time. Half of those requests fall apart the moment Legal asks about GDPR, Data Engineering opens the source tables, or Finance checks the real run cost.</p>
+        <p>The AI Pilot Killer Matrix replaces fluffy Impact vs Effort sticky notes with five operational axes that decide whether a pilot survives production, plus a plain-code detector that catches jobs a SQL query or Python script should handle instead. Drag the global Year-1 adoption slider down to 60%, add honest QA overhead, and export a ranked Steering Committee Pack your CFO can actually defend.</p>
+      </div>
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>Why not use a standard Impact vs Effort matrix for AI requests?</dt>
+                <dd>Generic impact-effort grids hide the four things that actually kill enterprise AI pilots: messy source data, high error blast radius, regulatory sign-off delays and people ignoring the tool after launch. Two requests with identical effort estimates behave completely differently if one writes internal draft notes and the other triggers customer refunds under GDPR or EU AI Act scrutiny.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What does the Deterministic Alternative score flag?</dt>
+                <dd>It asks whether a plain script, SQL query, BI template or rule engine can solve 80% of the job without a language model. Scoring 4 or 5 triggers a Don't Use an LLM warning because paying ongoing inference, prompt maintenance and evaluation costs for a deterministic workflow wastes budget and introduces hallucination risk where none existed.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>How is the realistic annual net value calculated?</dt>
+                <dd>The model starts with gross time saved across 46 working weeks per year, then applies two haircuts most vendor decks skip: your per-initiative human review and QA overhead percentage, and the global Year-1 adoption rate slider. It subtracts annual licence, API and evaluation maintenance costs to show steady-state net value, and divides initial build cost by monthly net benefit to find payback months.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>How does the Build vs Buy vs Configure recommendation work?</dt>
+                <dd>Initiatives solvable with deterministic logic get routed to plain code or SQL first. Low-value or high-risk traps get marked Defer or Kill. High-readiness, low-risk requests with modest integration costs recommend buying off-the-shelf SaaS; moderate-complexity requests recommend configuring an existing enterprise AI platform; high-governance or messy-data bets recommend a phased custom build with audit trails and human approval gates.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Does my AI portfolio data leave my browser?</dt>
+                <dd>No. Everything runs locally in vanilla JavaScript inside your browser and auto-saves to your device's localStorage. Nothing is posted to a backend server. If you click Copy Share URL, your portfolio is encoded inside the URL hash fragment so you can share it directly with a colleague.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What is included in the Steering Committee Pack export?</dt>
+                <dd>The Markdown export generates an executive-ready brief with your portfolio assumptions, headline ROI metrics, total budget saved from killed pilots, a ranked decision table, Ship Now priorities with Build vs Buy verdicts, and an explicit Kill List rationale you can paste straight into Notion, Confluence or a board paper.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Start with the 6 pre-loaded enterprise requests or add your own.</strong> Click any bubble on the 2×2 matrix or any row in the decision table to inspect its operational scores, cost assumptions and verdict.</li>
+              <li><strong>Score the five operational axes (1-5).</strong> Rate Data Readiness, Error Blast Radius, Regulatory Exposure, Adoption Friction and Deterministic Alternative to calculate a transparent 0-100 Feasibility &amp; Safety score.</li>
+              <li><strong>Stress-test the economics.</strong> Enter affected staff, weekly runs, minutes saved, hourly rate, human QA overhead and Year-1 build plus run costs. Drag the global Year-1 adoption slider to see which pilots survive realistic rollout rates.</li>
+              <li><strong>Spot plain-code traps and governance dead ends.</strong> Any initiative scoring 4 or 5 on Deterministic Alternative gets a dashed ring and a Don't Use an LLM warning so you stop paying token bills for SQL jobs.</li>
+              <li><strong>Export your Steering Committee Pack.</strong> Copy or download the Markdown executive brief, export CSV for Finance, print a clean PDF, or share a live URL with your team.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>Five operational axes replace guesswork.</strong> Data Readiness (28%), Error Blast Radius (28%), Regulatory Exposure (24%) and Adoption Friction (20%) drive feasibility, while Deterministic Alternative catches non-AI problems.</li>
+              <li><strong>CFO-ready haircuts by default.</strong> Calculations use 46 working weeks per year, subtract human review and exception-handling overhead, and apply your global Year-1 adoption rate before subtracting API and evaluation costs.</li>
+              <li><strong>Saved From Wasted Pilot Spend metric.</strong> Quantifies the exact Year-1 build and run budget protected by killing Governance Traps and plain-code LLM requests before kick-off.</li>
+              <li><strong>Built-in Build vs Buy vs Configure guidance.</strong> Prevents engineering teams from building bespoke wrappers for commodity workflows that an existing SaaS tool already covers.</li>
+              <li><strong>Shareable URL state with zero backend.</strong> Portfolio changes auto-save in localStorage and can be encoded into a self-contained hash URL without sending confidential roadmap data over the wire.</li>
+              <li><strong>Advisory modelling tool.</strong> Use this matrix to structure steering committee trade-offs; final regulatory classification under the EU AI Act or UK GDPR still requires qualified legal review.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener noreferrer">Regulation (EU) 2024/1689 (EU AI Act)</a> - Official Journal of the European Union risk classification framework.</li>
+              <li><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener noreferrer">NIST AI Risk Management Framework (AI RMF 1.0)</a> - National Institute of Standards and Technology.</li>
+              <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/guidance-on-ai-and-data-protection/" target="_blank" rel="noopener noreferrer">UK ICO - Guidance on AI and Data Protection</a> - Information Commissioner's Office.</li>
+              <li><a href="https://www.rand.org/pubs/research_reports/RRA2680-1.html" target="_blank" rel="noopener noreferrer">RAND Corporation - The Root Causes of Failure for Artificial Intelligence Projects and How They Can Succeed (2024)</a>.</li>
+              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks (JohnB.io Course)</a> - practical overview of EU AI Act, NIST RMF and enterprise AI risk controls.</li>
+              <li><a href="/prompt-improver">Prompt Improver</a> - tighten production prompts once a use case passes the matrix.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder">
+    <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
+      <p class="crawl-nav-title">Explore JohnB.io</p>
+      <ul class="crawl-nav-list">
+        <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
+        <li><a href="/prompt-improver">Prompt Improver</a> - stronger prompts for ChatGPT, Claude and Gemini</li>
+        <li><a href="/lm-chat">LLM Chat</a> - chat with language models</li>
+        <li><a href="/search-radar">Search &amp; Prompt Radar</a> - search autocomplete and content angles</li>
+        <li><a href="/linkedin-analyser">LinkedIn Analytics Analyser</a> - client-side creator export breakdown</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 50 jurisdictions</li>
+        <li><a href="/bonus-calculator">iGaming Bonus Cost Calculator</a> - true operator cost modelling</li>
+        <li><a href="/llms-generator">LLMs.txt Generator</a> - llms.txt files for AI crawlers</li>
+        <li><a href="/faq-schema">FAQ Schema Generator</a> - valid FAQPage JSON-LD markup</li>
+        <li><a href="/editor">AI Copyeditor</a> - copyediting with UK and US English</li>
+        <li><a href="/about">About John Bowman</a> - 20+ years in iGaming and digital marketing</li>
+        <li><a href="/news/">AI Blog</a> - practical AI strategy and how it works</li>
+        <li><a href="/course/">AI &amp; Machine Learning Course</a> - free structured course</li>
+        <li><a href="/contact">Contact</a> - get in touch</li>
+      </ul>
+    </nav>
+  </div>
+
+  <script src="/scripts.js?v=12" defer></script>
+  <script src="/ai-pilot-killer.js?v=1" defer></script>
+</body>
+</html>
