@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Vendor Due-Diligence Stress-Tester - JohnB.io</title>
+
+  <!-- Google Analytics -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+    (function(){
+      var loaded = false;
+      function loadGA(){
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY';
+        document.head.appendChild(s);
+      }
+      ['pointermove','touchstart','scroll','keydown','click'].forEach(function(e){
+        window.addEventListener(e, loadGA, { once: true, passive: true });
+      });
+      window.addEventListener('load', function(){ setTimeout(loadGA, 4000); });
+    })();
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800;900&display=optional" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css?v=6">
+  <link rel="stylesheet" href="/header.css?v=8">
+  <link rel="stylesheet" href="/footer.css?v=4">
+  <link rel="stylesheet" href="/ai-vendor-diligence.css?v=1">
+
+  <!-- SEO (Unpublished Preview) -->
+  <meta name="description" content="Score up to 3 AI vendors, audit your own AI product for enterprise readiness, and scan vendor AI terms for red flags in your browser.">
+  <meta name="keywords" content="AI vendor due diligence, AI procurement scorecard, enterprise AI readiness audit, AI terms red flag scanner, EU AI Act procurement, UK GDPR AI vendor checklist, zero data retention AI">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://johnb.io/ai-vendor-diligence">
+  <meta name="author" content="John Bowman">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Vendor Due-Diligence Stress-Tester - JohnB.io">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/ai-vendor-diligence">
+  <meta property="og:description" content="Score up to 3 AI vendors, audit your own AI product for enterprise readiness, and scan vendor AI terms for red flags in your browser.">
+  <meta property="og:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+  <meta property="og:image:alt" content="AI Vendor and Procurement Due-Diligence Stress-Tester on JohnB.io">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Vendor Due-Diligence Stress-Tester - JohnB.io">
+  <meta name="twitter:description" content="Score up to 3 AI vendors, run a founder enterprise self-audit, and scan AI contract clauses locally in your browser.">
+  <meta name="twitter:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+  <meta name="twitter:image:alt" content="AI Vendor and Procurement Due-Diligence Stress-Tester on JohnB.io">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI Vendor & Procurement Due-Diligence Stress-Tester",
+    "url": "https://johnb.io/ai-vendor-diligence",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Client-side AI procurement scorecard, founder enterprise-readiness self-audit, and local AI contract red-flag scanner across 25 weighted checks in 5 risk pillars.",
+    "image": "https://johnb.io/og_images/johnb_homepage_og.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://johnb.io/about",
+      "sameAs": ["https://www.linkedin.com/in/john-bowman/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does any vendor data or pasted contract text leave my browser?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Every scorecard calculation, SVG chart, Markdown export, and policy clause scan runs locally in your browser using vanilla JavaScript. Nothing is uploaded to a server or sent to a third-party AI model."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why can a vendor score over 75 and still get a Do Not Sign verdict?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Seven of the 25 checks are marked as hard deal-blockers, including contractual training opt-out, zero data retention, audit logs, and exit export rights. Failing a hard deal-blocker caps the verdict at Do Not Sign because strong UX or SSO does not offset losing control of regulated customer data."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How should an AI founder use Founder Mode before enterprise sales calls?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Switch to Founder Mode, score your own AI product honestly across all 25 checks, and work through the deal-blocker remediation queue first. Once your controls are verified, copy or print the Enterprise AI Trust & Readiness One-Pager to attach to security questionnaires and proposals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does this tool differ from the RAI Governance Framework on JohnB.io?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The RAI Governance Framework covers internal AI governance for systems your organisation builds or operates, including risk tiering, system cards, and an AI registry. This stress-tester sits upstream during third-party procurement and vendor selection, testing contracts, commercial exit rights, and technical architecture before you sign."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the AI Terms & Policy Red-Flag Scanner legal advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The scanner uses deterministic keyword and phrase rules to spot common procurement traps such as silent model training clauses, weak liability caps, and unilateral model swaps. Treat the flagged clauses as a starting brief for your legal counsel, DPO, or infosec team."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://johnb.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "AI Vendor Due-Diligence Stress-Tester",
+        "item": "https://johnb.io/ai-vendor-diligence"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="vd-ambient" aria-hidden="true"></div>
+
+  <main class="vd-wrap" id="main-content">
+
+    <!-- HERO -->
+    <section class="vd-hero" aria-label="Introduction">
+      <div class="vd-hero-badges">
+        <span class="vd-pill vd-pill--green">
+          <span class="material-symbols-outlined" aria-hidden="true">lock</span>
+          100% Client-Side - Zero Uploads
+        </span>
+        <span class="vd-pill vd-pill--cyan">
+          <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
+          25 Weighted Checks · 5 Risk Pillars
+        </span>
+      </div>
+
+      <h1 class="vd-title">AI Vendor &amp; Procurement <span class="gradient-text">Stress-Tester</span></h1>
+      <p class="vd-pitch">
+        Score up to three AI vendors side-by-side before procurement signs anything, or audit your own AI product against what enterprise legal and infosec actually block on.
+        Running internal AI governance too? Pair this with the <a href="/rai">RAI Governance Framework</a>.
+      </p>
+    </section>
+
+    <!-- DUAL MODE SWITCHER + WORKSPACE VIEW TABS -->
+    <section class="vd-control-deck" aria-label="Mode and workspace controls">
+      <div class="vd-deck-row">
+        <div class="vd-mode-switch" role="tablist" aria-label="Select buyer or founder mode">
+          <button type="button" role="tab" id="vd-mode-buyer" class="vd-mode-btn active" aria-selected="true">
+            <span class="material-symbols-outlined" aria-hidden="true">compare</span>
+            <span>
+              <strong>Buyer Mode</strong>
+              <small>Score &amp; compare up to 3 vendors</small>
+            </span>
+          </button>
+          <button type="button" role="tab" id="vd-mode-founder" class="vd-mode-btn" aria-selected="false">
+            <span class="material-symbols-outlined" aria-hidden="true">rocket_launch</span>
+            <span>
+              <strong>Founder Mode</strong>
+              <small>Enterprise self-audit &amp; trust one-pager</small>
+            </span>
+          </button>
+        </div>
+
+        <div class="vd-view-tabs" role="tablist" aria-label="Workspace view">
+          <button type="button" role="tab" id="vd-view-scorecard" class="vd-view-btn active" aria-selected="true" aria-controls="vd-panel-scorecard">
+            <span class="material-symbols-outlined" aria-hidden="true">fact_check</span>
+            Scorecard &amp; 25 Checks
+          </button>
+          <button type="button" role="tab" id="vd-view-scanner" class="vd-view-btn" aria-selected="false" aria-controls="vd-panel-scanner">
+            <span class="material-symbols-outlined" aria-hidden="true">policy</span>
+            AI Terms Red-Flag Scanner
+            <span class="vd-badge-count" id="vd-scanner-badge" hidden>0</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- BUYER MODE CONTEXT BAR -->
+      <div class="vd-context-bar" id="vd-buyer-bar" role="region" aria-label="Buyer vendor setup">
+        <div class="vd-vendor-strip">
+          <div class="vd-vendor-tabs" id="vd-vendor-tabs" role="tablist" aria-label="Active vendor selector"></div>
+          <button type="button" class="vd-btn vd-btn-ghost vd-btn-sm" id="vd-add-vendor-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">add</span>
+            Add Vendor
+          </button>
+        </div>
+
+        <div class="vd-preset-tools">
+          <button type="button" class="vd-btn vd-btn-cyan vd-btn-sm" id="vd-load-demo-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">play_circle</span>
+            Load 3-Vendor Demo
+          </button>
+          <div class="vd-preset-group">
+            <label for="vd-preset-select" class="sr-only">Apply sample profile to active vendor</label>
+            <select id="vd-preset-select" class="vd-select vd-select-sm">
+              <option value="wrapper">Preset: Thin-Wrapper SaaS Startup</option>
+              <option value="incumbent">Preset: Enterprise Incumbent Copilot</option>
+              <option value="openweight">Preset: Self-Hosted Open-Weight Vendor</option>
+            </select>
+            <button type="button" class="vd-btn vd-btn-ghost vd-btn-sm" id="vd-apply-preset-btn">Fill Active</button>
+          </div>
+          <button type="button" class="vd-btn vd-btn-ghost vd-btn-sm" id="vd-reset-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span>
+            Blank Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- FOUNDER MODE CONTEXT BAR -->
+      <div class="vd-context-bar vd-founder-bar" id="vd-founder-bar" role="region" aria-label="Founder product profile" hidden>
+        <div class="vd-founder-fields">
+          <div class="vd-field">
+            <label for="vd-founder-name">Your AI Product Name</label>
+            <input type="text" id="vd-founder-name" class="vd-input" maxlength="60" placeholder="e.g. VerityFlow AI">
+          </div>
+          <div class="vd-field">
+            <label for="vd-founder-sector">Target Buyer Sector</label>
+            <select id="vd-founder-sector" class="vd-select">
+              <option value="Regulated Enterprise (Finance / iGaming / Legal)">Regulated Enterprise (Finance / iGaming / Legal)</option>
+              <option value="Healthcare &amp; Life Sciences">Healthcare &amp; Life Sciences</option>
+              <option value="Mid-Market &amp; Enterprise B2B SaaS">Mid-Market &amp; Enterprise B2B SaaS</option>
+              <option value="Public Sector &amp; Critical Infrastructure">Public Sector &amp; Critical Infrastructure</option>
+            </select>
+          </div>
+          <div class="vd-field">
+            <label for="vd-founder-hosting">Model &amp; Hosting Architecture</label>
+            <input type="text" id="vd-founder-hosting" class="vd-input" maxlength="90" placeholder="e.g. AWS Bedrock eu-west-2 (Zero Retention)">
+          </div>
+          <div class="vd-field">
+            <label for="vd-founder-contact">Security / Privacy Contact</label>
+            <input type="text" id="vd-founder-contact" class="vd-input" maxlength="80" placeholder="e.g. security@yourcompany.co.uk">
+          </div>
+        </div>
+        <div class="vd-preset-tools">
+          <button type="button" class="vd-btn vd-btn-ghost vd-btn-sm" id="vd-founder-seed-btn">Load Seed-Stage Baseline</button>
+          <button type="button" class="vd-btn vd-btn-cyan vd-btn-sm" id="vd-founder-ent-btn">Load Enterprise-Ready Baseline</button>
+          <button type="button" class="vd-btn vd-btn-ghost vd-btn-sm" id="vd-founder-reset-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span>
+            Blank Reset
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOAST / LIVE STATUS -->
+    <div id="vd-toast" class="vd-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- PANEL 1: SCORECARD & 25 CHECKS -->
+    <div id="vd-panel-scorecard" role="tabpanel" aria-labelledby="vd-view-scorecard">
+
+      <!-- LIVE VISUAL SCORECARD -->
+      <section class="vd-section" aria-labelledby="h-scorecard">
+        <div class="vd-section-head">
+          <h2 class="vd-section-title" id="h-scorecard">
+            <span class="material-symbols-outlined" aria-hidden="true">analytics</span>
+            Live Procurement Scorecard &amp; Verdict
+          </h2>
+          <div class="vd-export-bar" role="group" aria-label="Export and sharing actions">
+            <button type="button" class="vd-btn vd-btn-primary vd-btn-sm" id="vd-copy-md-btn">
+              <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+              <span id="vd-copy-md-label">Copy Scorecard &amp; RFP (.md)</span>
+            </button>
+            <button type="button" class="vd-btn vd-btn-secondary vd-btn-sm" id="vd-download-md-btn">
+              <span class="material-symbols-outlined" aria-hidden="true">download</span>
+              Download .md
+            </button>
+            <button type="button" class="vd-btn vd-btn-ghost vd-btn-sm" id="vd-export-csv-btn">
+              <span class="material-symbols-outlined" aria-hidden="true">table_view</span>
+              CSV
+            </button>
+            <button type="button" class="vd-btn vd-btn-ghost vd-btn-sm" id="vd-copy-url-btn">
+              <span class="material-symbols-outlined" aria-hidden="true">link</span>
+              Share URL
+            </button>
+            <button type="button" class="vd-btn vd-btn-ghost vd-btn-sm" id="vd-print-btn">
+              <span class="material-symbols-outlined" aria-hidden="true">print</span>
+              Print / PDF
+            </button>
+          </div>
+        </div>
+
+        <!-- VENDOR SUMMARY CARDS -->
+        <div class="vd-summary-grid" id="vd-summary-cards"></div>
+
+        <!-- VISUAL CHARTS: 5-PILLAR RADAR + COMPARISON BARS -->
+        <div class="vd-charts-grid">
+          <div class="vd-card vd-radar-card">
+            <div class="vd-card-head">
+              <h3>5-Pillar Risk &amp; Trust Radar</h3>
+              <span class="vd-card-sub">Weighted pillar scores (0-20 pts each)</span>
+            </div>
+            <div class="vd-radar-wrap" id="vd-radar-svg"></div>
+            <div class="vd-radar-legend" id="vd-radar-legend"></div>
+          </div>
+
+          <div class="vd-card vd-bars-card">
+            <div class="vd-card-head">
+              <h3>Pillar-by-Pillar Breakdown</h3>
+              <span class="vd-card-sub">Spot weak pillars hidden by a high average</span>
+            </div>
+            <div class="vd-pillar-bars" id="vd-pillar-bars"></div>
+          </div>
+        </div>
+
+        <!-- HARD DEAL-BLOCKER ALERTS -->
+        <div class="vd-blocker-panel" id="vd-blocker-panel" aria-live="polite">
+          <div class="vd-blocker-head">
+            <span class="material-symbols-outlined" aria-hidden="true">gpp_maybe</span>
+            <h3>Deal-Blocker &amp; Governance Alerts</h3>
+          </div>
+          <div id="vd-blocker-list"></div>
+        </div>
+      </section>
+
+      <!-- 25 WEIGHTED DUE-DILIGENCE CHECKS -->
+      <section class="vd-section" aria-labelledby="h-checks">
+        <div class="vd-section-head">
+          <h2 class="vd-section-title" id="h-checks">
+            <span class="material-symbols-outlined" aria-hidden="true">checklist</span>
+            25 Weighted Due-Diligence Checks
+          </h2>
+          <div class="vd-layout-toggle" id="vd-layout-toggle" role="group" aria-label="Checklist display layout">
+            <button type="button" class="vd-btn vd-btn-secondary vd-btn-sm active" id="vd-layout-single" aria-pressed="true">
+              <span class="material-symbols-outlined" aria-hidden="true">view_agenda</span>
+              Focused Edit
+            </button>
+            <button type="button" class="vd-btn vd-btn-ghost vd-btn-sm" id="vd-layout-matrix" aria-pressed="false">
+              <span class="material-symbols-outlined" aria-hidden="true">grid_view</span>
+              3-Vendor Matrix
+            </button>
+          </div>
+        </div>
+
+        <div class="vd-active-banner" id="vd-active-vendor-banner"></div>
+
+        <div class="vd-filter-bar" id="vd-pillar-filter" role="group" aria-label="Filter checks by pillar or risk status"></div>
+
+        <div id="vd-checks-container"></div>
+      </section>
+
+      <!-- BUYER MODE OUTPUT: AUTO-GENERATED RFP FOLLOW-UP QUESTIONS -->
+      <section class="vd-section" id="vd-buyer-outputs" aria-labelledby="h-rfp">
+        <div class="vd-section-head">
+          <h2 class="vd-section-title" id="h-rfp">
+            <span class="material-symbols-outlined" aria-hidden="true">live_help</span>
+            Pointed RFP Follow-Up Questions
+            <span class="vd-count-pill" id="vd-rfp-count">0</span>
+          </h2>
+          <div class="vd-rfp-controls">
+            <label for="vd-rfp-scope" class="sr-only">Question vendor scope</label>
+            <select id="vd-rfp-scope" class="vd-select vd-select-sm">
+              <option value="active">Active Vendor Only</option>
+              <option value="all">All Compared Vendors</option>
+            </select>
+            <label for="vd-rfp-severity" class="sr-only">Question severity filter</label>
+            <select id="vd-rfp-severity" class="vd-select vd-select-sm">
+              <option value="all">All Fails, Partials &amp; Unknowns</option>
+              <option value="critical">Hard Blockers &amp; Fails Only</option>
+            </select>
+            <button type="button" class="vd-btn vd-btn-cyan vd-btn-sm" id="vd-copy-rfp-btn">
+              <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+              Copy RFP Questions
+            </button>
+          </div>
+        </div>
+        <p class="vd-section-intro">
+          Every check marked <strong>Fail</strong>, <strong>Partial</strong>, or <strong>Unknown</strong> generates a specific written question designed to cut through vague sales answers. Never treat an unanswered question as a pass.
+        </p>
+        <div id="vd-rfp-list" class="vd-rfp-list"></div>
+      </section>
+
+      <!-- FOUNDER MODE OUTPUT: DEAL-BLOCKER FIX QUEUE & TRUST ONE-PAGER -->
+      <section class="vd-section" id="vd-founder-outputs" aria-labelledby="h-founder-out" hidden>
+        <div class="vd-founder-grid">
+          <div class="vd-card">
+            <div class="vd-card-head">
+              <h2 class="vd-section-title vd-section-title--sm" id="h-founder-out">
+                <span class="material-symbols-outlined" aria-hidden="true">build_circle</span>
+                Deal-Blocker Remediation Queue
+              </h2>
+              <span class="vd-card-sub">Fix hard blockers before pitching regulated buyers</span>
+            </div>
+            <div id="vd-remediation-list"></div>
+          </div>
+
+          <div class="vd-card">
+            <div class="vd-card-head vd-card-head--split">
+              <div>
+                <h2 class="vd-section-title vd-section-title--sm">
+                  <span class="material-symbols-outlined" aria-hidden="true">description</span>
+                  Enterprise AI Trust &amp; Readiness One-Pager
+                </h2>
+                <span class="vd-card-sub">Attach straight to enterprise proposals &amp; security packs</span>
+              </div>
+              <button type="button" class="vd-btn vd-btn-primary vd-btn-sm" id="vd-copy-onepager-btn">
+                <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+                Copy One-Pager (.md)
+              </button>
+            </div>
+            <div id="vd-onepager-preview" class="vd-onepager"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- PANEL 2: LOCAL AI TERMS & POLICY RED-FLAG SCANNER -->
+    <div id="vd-panel-scanner" role="tabpanel" aria-labelledby="vd-view-scanner" hidden>
+      <section class="vd-section" aria-labelledby="h-scanner">
+        <div class="vd-section-head">
+          <h2 class="vd-section-title" id="h-scanner">
+            <span class="material-symbols-outlined" aria-hidden="true">policy</span>
+            Vendor AI Terms &amp; Policy Red-Flag Scanner
+          </h2>
+          <span class="vd-pill vd-pill--green">
+            <span class="material-symbols-outlined" aria-hidden="true">offline_bolt</span>
+            Deterministic Local Rules - £0 Cost
+          </span>
+        </div>
+
+        <p class="vd-section-intro">
+          Paste a vendor's AI addendum, privacy policy, DPA excerpt, or security page below. The scanner highlights common procurement traps inline, maps them directly to the 25-point scorecard for <strong id="vd-scan-target-label">your active vendor</strong>, and drafts an email challenge for their legal team.
+        </p>
+
+        <div class="vd-card vd-scanner-input-card">
+          <div class="vd-scanner-label-row">
+            <label for="vd-terms-input" class="vd-label">Vendor AI Terms, Privacy Policy, or Security Page Text</label>
+            <span class="vd-terms-stats" id="vd-terms-stats">0 words</span>
+          </div>
+          <textarea
+            id="vd-terms-input"
+            class="vd-textarea"
+            rows="9"
+            placeholder="Paste vendor AI Terms of Service, Privacy Notice, Data Processing Addendum, or Security FAQ here..."
+          ></textarea>
+          <div class="vd-scanner-actions">
+            <button type="button" class="vd-btn vd-btn-primary" id="vd-scan-btn">
+              <span class="material-symbols-outlined" aria-hidden="true">search_check</span>
+              Scan for Red Flags
+            </button>
+            <button type="button" class="vd-btn vd-btn-cyan" id="vd-load-risky-btn">
+              <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+              Load Sample Risky AI Terms
+            </button>
+            <button type="button" class="vd-btn vd-btn-ghost" id="vd-clear-terms-btn">
+              <span class="material-symbols-outlined" aria-hidden="true">delete_sweep</span>
+              Clear
+            </button>
+          </div>
+        </div>
+
+        <!-- SCAN RESULTS -->
+        <div id="vd-scan-results" hidden>
+          <div class="vd-scan-summary-bar" id="vd-scan-summary"></div>
+
+          <div class="vd-scan-sync-bar">
+            <div>
+              <strong>Sync findings into scorecard:</strong>
+              <span>Flag matched checks automatically without overwriting stronger verified evidence unless you choose to.</span>
+            </div>
+            <div class="vd-scan-sync-btns">
+              <button type="button" class="vd-btn vd-btn-primary vd-btn-sm" id="vd-apply-all-flags-btn">
+                <span class="material-symbols-outlined" aria-hidden="true">playlist_add_check</span>
+                Apply All Suggested Flags
+              </button>
+              <button type="button" class="vd-btn vd-btn-secondary vd-btn-sm" id="vd-copy-email-btn">
+                <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+                Copy Vendor Email Challenge
+              </button>
+            </div>
+          </div>
+
+          <div class="vd-scan-grid">
+            <div class="vd-card">
+              <div class="vd-card-head">
+                <h3>Inline Clause Highlighter</h3>
+                <div class="vd-hl-legend">
+                  <span class="vd-hl-chip vd-hl-chip--high">High Risk</span>
+                  <span class="vd-hl-chip vd-hl-chip--med">Caveat / Watch</span>
+                  <span class="vd-hl-chip vd-hl-chip--good">Positive Signal</span>
+                </div>
+              </div>
+              <div id="vd-highlighted-terms" class="vd-highlighted-box"></div>
+            </div>
+
+            <div class="vd-card">
+              <div class="vd-card-head">
+                <h3>Detected Traps &amp; Scorecard Mapping</h3>
+                <span class="vd-card-sub">Click any item to flag it on the active scorecard</span>
+              </div>
+              <div id="vd-findings-list" class="vd-findings-list"></div>
+            </div>
+          </div>
+
+          <div class="vd-card vd-email-card">
+            <div class="vd-card-head">
+              <h3>Ready-to-Send Vendor Clarification Email</h3>
+              <span class="vd-card-sub">Built automatically from the flagged clauses above</span>
+            </div>
+            <pre id="vd-email-preview" class="vd-email-preview"></pre>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <p class="vd-disclaimer">
+      This tool provides structured technical and commercial due-diligence guidance, not formal legal advice. Always have your legal counsel and DPO review final AI agreements.
+    </p>
+
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <!-- Tool Info / SEO Section -->
+  <section class="tool-info" aria-label="About this tool">
+    <div class="tool-info-inner">
+
+      <div class="tool-info-meta">
+        <span>Last updated: November 2026</span>
+        <span class="tool-info-sep">·</span>
+        <span>By <a href="/about">John Bowman</a> - questions? Connect on <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</span>
+      </div>
+
+      <div class="tool-info-body">
+        <h2 class="vd-info-heading">Why Stress-Test AI Vendors Before Signing?</h2>
+        <p>Most AI vendor sales decks look impressive in a 30-minute demo and fall apart the moment infosec or legal asks three basic questions: where do our prompts go, who owns our fine-tuned workflows on exit, and what happens when your upstream model provider deprecates a snapshot on two weeks' notice. In regulated sectors like iGaming, financial services, and healthcare, one sloppy training clause or missing audit log turns a cheap pilot into a board-level compliance problem.</p>
+        <p>This stress-tester scores up to three competing AI vendors across 25 weighted checks, refuses to let high surface scores hide hard deal-blockers, and includes a local contract red-flag scanner that catches sneaky terms without pasting confidential vendor paperwork into an external LLM. Once you have selected a supplier, document the deployed system inside the <a href="/rai">RAI Governance Framework</a>.</p>
+      </div>
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>Does any vendor data or pasted contract text leave my browser?</dt>
+                <dd>No. Every scorecard calculation, SVG chart, Markdown export, and policy clause scan runs locally in your browser using vanilla JavaScript. Nothing is uploaded to a server or sent to a third-party AI model.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Why can a vendor score over 75 and still get a Do Not Sign verdict?</dt>
+                <dd>Seven of the 25 checks are marked as hard deal-blockers, including contractual training opt-out, zero data retention, audit logs, and exit export rights. Failing a hard deal-blocker caps the verdict at Do Not Sign because strong UX or SSO does not offset losing control of regulated customer data.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>How should an AI founder use Founder Mode before enterprise sales calls?</dt>
+                <dd>Switch to Founder Mode, score your own AI product honestly across all 25 checks, and work through the deal-blocker remediation queue first. Once your controls are verified, copy or print the Enterprise AI Trust &amp; Readiness One-Pager to attach to security questionnaires and proposals.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>How does this tool differ from the RAI Governance Framework on JohnB.io?</dt>
+                <dd>The RAI Governance Framework covers internal AI governance for systems your organisation builds or operates, including risk tiering, system cards, and an AI registry. This stress-tester sits upstream during third-party procurement and vendor selection, testing contracts, commercial exit rights, and technical architecture before you sign.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Is the AI Terms &amp; Policy Red-Flag Scanner legal advice?</dt>
+                <dd>No. The scanner uses deterministic keyword and phrase rules to spot common procurement traps such as silent model training clauses, weak liability caps, and unilateral model swaps. Treat the flagged clauses as a starting brief for your legal counsel, DPO, or infosec team.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Pick Buyer Mode or Founder Mode.</strong> Compare up to three AI vendors side-by-side in Buyer Mode, or switch to Founder Mode to run an enterprise self-audit on your own product.</li>
+              <li><strong>Rate the 25 weighted checks across 5 pillars.</strong> Mark each control as Pass, Partial, Fail, or Unknown across Data &amp; Privacy, Model &amp; Architecture, Governance &amp; Compliance, Commercial &amp; Exit, and Operational Fit.</li>
+              <li><strong>Scan vendor AI terms locally.</strong> Open the AI Terms Red-Flag Scanner tab, paste a vendor's AI addendum or privacy notice, and apply detected traps straight onto your active vendor scorecard.</li>
+              <li><strong>Export your decision pack.</strong> Copy or download the Markdown Procurement Scorecard and RFP questions (or Founder Trust One-Pager), export CSV for committee tracking, copy a shareable state URL, or print directly to PDF.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>Hard deal-blocker caps.</strong> Seven non-negotiable controls cap the maximum verdict at Do Not Sign if failed, stopping flashy demos from masking legal or data-leakage exposure.</li>
+              <li><strong>Unknowns trigger RFP questions.</strong> Any unanswered check scores zero and generates a pointed follow-up question automatically, so silence never masquerades as compliance.</li>
+              <li><strong>Dual buyer and founder utility.</strong> Heads of AI and architects get an objective vendor comparison pack; AI founders get a concrete remediation queue and a clean Enterprise AI Trust One-Pager.</li>
+              <li><strong>Zero-cost local contract scanner.</strong> Deterministic pattern matching highlights model-training loopholes, retention traps, liability carve-outs, and positive safeguards inside your browser.</li>
+              <li><strong>Built for regulated buyers.</strong> Covers UK GDPR DPA/IDTA/SCCs, EU AI Act risk classification and Article 50 transparency, ISO/IEC 42001, audit traceability, and exit portability.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener noreferrer">Regulation (EU) 2024/1689 (EU AI Act)</a> - official text including risk tiers and Article 50 transparency obligations.</li>
+              <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/" target="_blank" rel="noopener noreferrer">UK ICO - Guidance on AI and Data Protection</a> - UK GDPR accountability, DPIAs, and processor obligations.</li>
+              <li><a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener noreferrer">ISO/IEC 42001:2023</a> - Artificial Intelligence Management System (AIMS) international standard.</li>
+              <li><a href="https://www.ncsc.gov.uk/collection/guidelines-secure-ai-system-development" target="_blank" rel="noopener noreferrer">UK NCSC - Guidelines for Secure AI System Development</a> - security, supply-chain, and operational resilience guidance.</li>
+              <li><a href="/rai">RAI Governance Framework on JohnB.io</a> - companion tool for internal AI risk tiering, system cards, and registries.</li>
+              <li><a href="/tcs-simplifier">T&amp;Cs Simplifier on JohnB.io</a> - plain-English breakdown of long consumer and business terms.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder">
+    <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
+      <p class="crawl-nav-title">Explore JohnB.io</p>
+      <ul class="crawl-nav-list">
+        <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
+        <li><a href="/rai">RAI Governance Framework</a> - internal AI risk tiering, system cards and registry</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 50+ jurisdictions</li>
+        <li><a href="/tcs-simplifier">T&amp;Cs Simplifier</a> - plain-English terms and conditions breakdown</li>
+        <li><a href="/linkedin-analyser">LinkedIn Analytics Analyser</a> - browser-based LinkedIn export breakdown</li>
+        <li><a href="/prompt-improver">Prompt Improver</a> - stronger prompts for ChatGPT, Claude and Gemini</li>
+        <li><a href="/llms-generator">LLMs.txt Generator</a> - llms.txt files for AI crawlers</li>
+        <li><a href="/about">About John Bowman</a> - 20+ years in iGaming and digital marketing</li>
+        <li><a href="/news/">AI Blog</a> - practical AI strategy and how it works</li>
+        <li><a href="/course/">AI &amp; Machine Learning Course</a> - free structured course</li>
+        <li><a href="/contact">Contact</a> - get in touch</li>
+      </ul>
+    </nav>
+  </div>
+
+  <script src="/scripts.js?v=12" defer></script>
+  <script src="/ai-vendor-diligence.js?v=1" defer></script>
+</body>
+</html>
