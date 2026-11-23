@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Architecture Advisor &amp; ADR Generator - JohnB.io</title>
+
+  <!-- Google Analytics -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+    (function(){
+      var loaded = false;
+      function loadGA(){
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY';
+        document.head.appendChild(s);
+      }
+      ['pointermove','touchstart','scroll','keydown','click'].forEach(function(e){
+        window.addEventListener(e, loadGA, { once: true, passive: true });
+      });
+      window.addEventListener('load', function(){ setTimeout(loadGA, 4000); });
+    })();
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800;900&display=optional" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css?v=6">
+  <link rel="stylesheet" href="/header.css?v=8">
+  <link rel="stylesheet" href="/footer.css?v=4">
+  <link rel="stylesheet" href="/ai-architecture-advisor.css?v=1">
+
+  <!-- SEO (Preview Mode) -->
+  <meta name="description" content="Choose the right AI system pattern - Prompt, RAG, Fine-Tune, Workflow or Agent - with an interactive SVG diagram, anti-pattern audit and MADR export.">
+  <meta name="keywords" content="ai architecture advisor, prompt vs rag vs fine-tune, ai agent architecture, adr generator, madr template, rag vs fine tuning, ai system design">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://johnb.io/ai-architecture-advisor">
+  <meta name="author" content="John Bowman">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Architecture Advisor &amp; ADR Generator - JohnB.io">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/ai-architecture-advisor">
+  <meta property="og:description" content="Choose the minimum viable AI pattern across Prompting, Hybrid RAG, Workflows, Bounded Agents and Fine-Tuning, with an interactive SVG blueprint and MADR generator.">
+  <meta property="og:image" content="https://johnb.io/images/JohnB.webp">
+  <meta property="og:image:alt" content="AI Architecture Advisor and ADR Generator on JohnB.io">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Architecture Advisor &amp; ADR Generator - JohnB.io">
+  <meta name="twitter:description" content="Opinionated AI architecture selector and MADR generator. Prompt vs RAG vs Fine-Tune vs Agents with interactive SVG topology and failure-mode checklist.">
+  <meta name="twitter:image" content="https://johnb.io/images/JohnB.webp">
+  <meta name="twitter:image:alt" content="AI Architecture Advisor and ADR Generator on JohnB.io">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI Architecture Advisor & ADR Generator",
+    "url": "https://johnb.io/ai-architecture-advisor",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web",
+    "description": "Free browser-based AI architecture decision tool that recommends the minimum viable system pattern across deterministic code, structured prompting, Hybrid RAG, deterministic workflows, human-in-the-loop bounded agents and fine-tuned small models, with an interactive SVG topology and Markdown ADR export.",
+    "image": "https://johnb.io/images/JohnB.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://johnb.io/about",
+      "sameAs": ["https://www.linkedin.com/in/john-bowman/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why does this tool often advise against building an autonomous AI agent?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open-ended agent loops add latency, token burn and unpredictable failure modes. If your task follows a known sequence of lookups and checks, a deterministic state graph with scoped model calls is cheaper, faster to debug and safer in production than an unconstrained tool-calling loop."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should I pick Hybrid RAG instead of long-context prompting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Keep documents in a cached prompt while your active corpus fits comfortably under 100k tokens and changes slowly. Move to Hybrid RAG (BM25 lexical search plus dense embeddings and a reranker) once your corpus grows past 100k tokens, needs per-user access control or updates daily."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will fine-tuning stop an LLM from hallucinating or fix outdated company facts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Fine-tuning teaches format, tone, domain style and fast classification at high volume, not live facts. Storing changing policies or pricing inside model weights creates stale answers that you cannot easily patch without retraining. Use retrieval or live tool calls for mutable facts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does my project name or architecture specification leave my browser?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Every scoring rule, SVG diagram, failure-mode checklist and Markdown ADR runs locally in your browser with vanilla JavaScript. Nothing is uploaded to a server or sent to an external model API."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I commit the generated ADR straight into my Git repository?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The output follows the Markdown Architecture Decision Record (MADR) format with Context, Decision, Alternatives Considered, Guardrails, Consequences and Eval Metrics. Click Download .md or Copy ADR to drop it directly into docs/adr/ in your repository."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the shareable URL work without a backend database?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Clicking Copy Shareable URL encodes your 10 constraint settings and project title into standard URL query parameters. Anyone opening that link loads the exact same pattern score, interactive diagram and ADR locally in their own browser."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://johnb.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "AI Architecture Advisor",
+        "item": "https://johnb.io/ai-architecture-advisor"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How AI Architecture Advisor Works",
+    "description": "Select your engineering constraints to identify the minimum viable AI pattern, inspect component failure modes and export a ready-to-commit MADR.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Start from a scenario preset or enter your project details",
+        "text": "Start from a scenario preset or enter your project details. Pick one of six realistic engineering presets or type your own project name and goal to pre-fill the ADR header."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Set your engineering constraints",
+        "text": "Set your engineering constraints. Configure task type, latency SLA, knowledge freshness, corpus size, hallucination tolerance, action risk, data residency, monthly volume and team maturity."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Audit the verdict and anti-pattern warnings",
+        "text": "Audit the verdict and anti-pattern warnings. Review the recommended minimum viable architecture, complexity score, blunt 'What NOT to Build' callouts and the 6-pattern comparison matrix."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Inspect the interactive SVG topology",
+        "text": "Inspect the interactive SVG topology. Click or tab through any node in the system diagram to check implementation details, latency budgets, failure modes and observability metrics."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Verify the pre-production checklist and export the ADR",
+        "text": "Verify the pre-production checklist and export the ADR. Tick off risk-specific production gates, then export the MADR as Markdown, download the SVG, copy Mermaid code, share the URL or save a PDF."
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="aaa-ambient" aria-hidden="true"></div>
+
+  <main class="aaa-wrap" id="main-content">
+
+    <!-- HERO -->
+    <section class="aaa-hero" aria-label="Introduction">
+      <div class="aaa-hero-pills">
+        <span class="aaa-pill aaa-pill--preview">
+          <span class="material-symbols-outlined" aria-hidden="true">architecture</span>
+          Preview Edition
+        </span>
+        <span class="aaa-pill aaa-pill--privacy">
+          <span class="material-symbols-outlined" aria-hidden="true">lock</span>
+          100% browser-based - nothing sent to servers
+        </span>
+      </div>
+      <h1 class="aaa-title">AI Architecture <span class="gradient-text">Advisor</span></h1>
+      <p class="aaa-pitch">Prompt vs RAG vs Fine-Tune vs Agents. Set your real engineering constraints to get the minimum viable pattern, a clickable system topology, blunt anti-pattern warnings and a ready-to-commit MADR.</p>
+    </section>
+
+    <!-- QUICK SCENARIO PRESETS -->
+    <section class="aaa-presets-section" aria-label="Quick scenario presets">
+      <div class="aaa-section-head">
+        <span class="aaa-eyebrow">
+          <span class="material-symbols-outlined" aria-hidden="true">bolt</span>
+          Quick Scenario Presets
+        </span>
+        <div class="aaa-preset-actions">
+          <button type="button" class="aaa-btn-ghost" id="aaa-copy-url-top-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">link</span>
+            <span>Copy Shareable URL</span>
+          </button>
+          <button type="button" class="aaa-btn-ghost" id="aaa-reset-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span>
+            <span>Reset</span>
+          </button>
+        </div>
+      </div>
+      <div class="aaa-presets-grid" id="aaa-presets" role="group" aria-label="Architecture scenario presets">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- SCREEN READER LIVE STATUS -->
+    <div id="aaa-live-status" class="sr-only" role="status" aria-live="polite"></div>
+
+    <!-- 10 ENGINEERING CONSTRAINTS -->
+    <section class="aaa-card aaa-constraints-card" aria-labelledby="aaa-constraints-heading">
+      <div class="aaa-card-head">
+        <div>
+          <h2 id="aaa-constraints-heading" class="aaa-card-title">
+            <span class="material-symbols-outlined" aria-hidden="true">tune</span>
+            10 Engineering Constraints
+          </h2>
+          <p class="aaa-card-sub">Every selector updates the decision engine, topology diagram, failure-mode gates and ADR immediately.</p>
+        </div>
+      </div>
+
+      <form id="aaa-form" novalidate>
+        <!-- Constraint 1: Project Name & Short Goal -->
+        <div class="aaa-project-row">
+          <div class="aaa-field">
+            <label for="aaa-project-name">1. Project Name <span class="aaa-field-tag">For ADR</span></label>
+            <input type="text" id="aaa-project-name" maxlength="90" placeholder="e.g. Internal Policy Q&amp;A Assistant" autocomplete="off">
+          </div>
+          <div class="aaa-field">
+            <label for="aaa-project-goal">Short Engineering Goal <span class="aaa-field-tag">For ADR</span></label>
+            <input type="text" id="aaa-project-goal" maxlength="180" placeholder="e.g. Answer staff policy questions with exact clause citations and zero ungrounded claims" autocomplete="off">
+          </div>
+        </div>
+
+        <!-- Constraints 2-10 -->
+        <div class="aaa-constraints-grid">
+          <div class="aaa-field">
+            <label for="aaa-task-type">2. Task Type</label>
+            <select id="aaa-task-type">
+              <option value="classification">Classification / Extraction</option>
+              <option value="qa">Knowledge Q&amp;A</option>
+              <option value="drafting">Drafting / Synthesis</option>
+              <option value="tools">Multi-step Tool Execution</option>
+              <option value="code">Code / Data Generation</option>
+            </select>
+            <span class="aaa-hint">What the system actually produces on each call.</span>
+          </div>
+
+          <div class="aaa-field">
+            <label for="aaa-latency">3. Latency SLA</label>
+            <select id="aaa-latency">
+              <option value="realtime">&lt;500ms real-time</option>
+              <option value="interactive">1-5s interactive</option>
+              <option value="async">Async / Batch</option>
+            </select>
+            <span class="aaa-hint">End-to-end p95 budget before users or callers time out.</span>
+          </div>
+
+          <div class="aaa-field">
+            <label for="aaa-freshness">4. Knowledge Freshness</label>
+            <select id="aaa-freshness">
+              <option value="static">Static / Rarely changes</option>
+              <option value="periodic">Weekly / Daily docs</option>
+              <option value="live">Real-time live APIs / DB</option>
+            </select>
+            <span class="aaa-hint">How quickly underlying facts go stale.</span>
+          </div>
+
+          <div class="aaa-field">
+            <label for="aaa-corpus">5. Corpus Size</label>
+            <select id="aaa-corpus">
+              <option value="small">Fits in prompt (&lt;100k tokens)</option>
+              <option value="medium">Medium (100k-10M tokens)</option>
+              <option value="enterprise">Enterprise (10M+ tokens)</option>
+            </select>
+            <span class="aaa-hint">Total reference text the system must reason over.</span>
+          </div>
+
+          <div class="aaa-field">
+            <label for="aaa-hallucination">6. Hallucination Tolerance</label>
+            <select id="aaa-hallucination">
+              <option value="zero">Zero / Regulated - citations mandatory</option>
+              <option value="moderate">Moderate - human reviews</option>
+              <option value="high">High - creative draft</option>
+            </select>
+            <span class="aaa-hint">What happens when the model fabricates a plausible wrong detail.</span>
+          </div>
+
+          <div class="aaa-field">
+            <label for="aaa-action-risk">7. Action Risk</label>
+            <select id="aaa-action-risk">
+              <option value="readonly">Read-only text</option>
+              <option value="drafts">Drafts / Suggestions</option>
+              <option value="autonomous">Autonomous Write / Money / External Actions</option>
+            </select>
+            <span class="aaa-hint">Blast radius if an output triggers a downstream API.</span>
+          </div>
+
+          <div class="aaa-field">
+            <label for="aaa-privacy">8. Data Privacy / Residency</label>
+            <select id="aaa-privacy">
+              <option value="commercial">Standard Commercial API</option>
+              <option value="zdr">Zero Data Retention / UK-EU Residency</option>
+              <option value="airgapped">Air-Gapped / Self-Hosted</option>
+            </select>
+            <span class="aaa-hint">Legal, contractual or security boundary on payloads.</span>
+          </div>
+
+          <div class="aaa-field">
+            <label for="aaa-volume">9. Monthly Request Volume</label>
+            <select id="aaa-volume">
+              <option value="low">&lt;10k requests / month</option>
+              <option value="medium">10k-500k requests / month</option>
+              <option value="high">500k-5M requests / month</option>
+              <option value="veryhigh">5M+ requests / month</option>
+            </select>
+            <span class="aaa-hint">Where token unit economics overtake build cost.</span>
+          </div>
+
+          <div class="aaa-field">
+            <label for="aaa-team">10. Team Maturity</label>
+            <select id="aaa-team">
+              <option value="solo">Solo Founder / Small Eng Team</option>
+              <option value="mid">Mid-size Product Team</option>
+              <option value="ml">Dedicated ML / Platform Team</option>
+            </select>
+            <span class="aaa-hint">Who actually maintains this system at 2 a.m.</span>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- VERDICT + WHAT NOT TO BUILD -->
+    <section class="aaa-verdict-layout" id="aaa-verdict-section" aria-label="Recommended architecture and anti-patterns">
+      <!-- Primary Verdict Card -->
+      <article class="aaa-card aaa-verdict-card">
+        <div class="aaa-verdict-top">
+          <span class="aaa-verdict-badge" id="aaa-winner-badge">Minimum Viable Pattern</span>
+          <div class="aaa-verdict-meta-pills">
+            <span class="aaa-meta-chip">
+              <span class="material-symbols-outlined" aria-hidden="true">schedule</span>
+              Build: <strong id="aaa-build-time">2-4 weeks</strong>
+            </span>
+            <span class="aaa-meta-chip">
+              <span class="material-symbols-outlined" aria-hidden="true">engineering</span>
+              Ops: <strong id="aaa-ops-burden">Moderate</strong>
+            </span>
+          </div>
+        </div>
+
+        <h2 class="aaa-winner-title" id="aaa-winner-title">Hybrid RAG (BM25 + Dense Retrieval + Citations)</h2>
+        <p class="aaa-winner-tagline" id="aaa-winner-tagline"></p>
+        <p class="aaa-winner-rationale" id="aaa-winner-rationale"></p>
+
+        <div class="aaa-meters-grid">
+          <div class="aaa-meter-box">
+            <div class="aaa-meter-head">
+              <span class="aaa-meter-label">Decision Confidence</span>
+              <span class="aaa-meter-val aaa-meter-val--cyan" id="aaa-confidence-value">88%</span>
+            </div>
+            <div class="aaa-bar-track" aria-hidden="true">
+              <div class="aaa-bar-fill aaa-bar-fill--cyan" id="aaa-confidence-bar"></div>
+            </div>
+            <p class="aaa-meter-note" id="aaa-confidence-note"></p>
+          </div>
+
+          <div class="aaa-meter-box">
+            <div class="aaa-meter-head">
+              <span class="aaa-meter-label">Engineering Complexity</span>
+              <span class="aaa-meter-val aaa-meter-val--pink" id="aaa-complexity-value">5 / 10</span>
+            </div>
+            <div class="aaa-bar-track" aria-hidden="true">
+              <div class="aaa-bar-fill aaa-bar-fill--pink" id="aaa-complexity-bar"></div>
+            </div>
+            <p class="aaa-meter-note" id="aaa-complexity-note"></p>
+          </div>
+        </div>
+
+        <div class="aaa-stack-wrap">
+          <span class="aaa-sublabel">Reference Building Blocks</span>
+          <div class="aaa-stack-chips" id="aaa-stack-chips"></div>
+        </div>
+      </article>
+
+      <!-- Blunt "What NOT to Build" Card -->
+      <aside class="aaa-card aaa-antipattern-card" aria-labelledby="aaa-antipattern-heading">
+        <div class="aaa-antipattern-head">
+          <span class="material-symbols-outlined" aria-hidden="true">block</span>
+          <div>
+            <h2 id="aaa-antipattern-heading" class="aaa-antipattern-title">What NOT to Build (and Why)</h2>
+            <p class="aaa-antipattern-sub">Specific traps triggered by your current constraints.</p>
+          </div>
+        </div>
+        <ul class="aaa-antipattern-list" id="aaa-antipattern-list">
+          <!-- Populated by JS -->
+        </ul>
+      </aside>
+    </section>
+
+    <!-- INTERACTIVE NEON ARCHITECTURE DIAGRAM -->
+    <section class="aaa-card aaa-diagram-card" aria-labelledby="aaa-diagram-heading">
+      <div class="aaa-card-head aaa-card-head--split">
+        <div>
+          <h2 id="aaa-diagram-heading" class="aaa-card-title">
+            <span class="material-symbols-outlined" aria-hidden="true">hub</span>
+            Interactive System Topology
+          </h2>
+          <p class="aaa-card-sub" id="aaa-diagram-subtitle">Click or tab to any glowing node to inspect implementation notes, failure modes, latency budget and telemetry.</p>
+        </div>
+        <div class="aaa-toolbar">
+          <button type="button" class="aaa-btn-secondary" id="aaa-download-svg-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">download</span>
+            <span>Export .svg</span>
+          </button>
+          <button type="button" class="aaa-btn-secondary" id="aaa-copy-mermaid-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span>Copy Mermaid</span>
+          </button>
+          <button type="button" class="aaa-btn-ghost" id="aaa-toggle-mermaid-btn" aria-expanded="false" aria-controls="aaa-mermaid-drawer">
+            <span class="material-symbols-outlined" aria-hidden="true">code</span>
+            <span>View Mermaid</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="aaa-diagram-stage">
+        <div class="aaa-svg-wrap" id="aaa-svg-container" aria-label="Interactive architecture topology diagram">
+          <!-- Inline SVG rendered dynamically by JS -->
+        </div>
+
+        <div class="aaa-mermaid-drawer" id="aaa-mermaid-drawer" hidden>
+          <div class="aaa-mermaid-header">
+            <span>Mermaid Flowchart Source</span>
+          </div>
+          <pre class="aaa-mermaid-pre"><code id="aaa-mermaid-code"></code></pre>
+        </div>
+      </div>
+
+      <!-- Node Inspector Panel -->
+      <div class="aaa-inspector" id="aaa-inspector" role="region" aria-label="Selected component inspector" aria-live="polite">
+        <div class="aaa-inspector-top">
+          <div class="aaa-inspector-title-group">
+            <span class="aaa-inspector-badge" id="aaa-inspector-badge">Layer</span>
+            <h3 class="aaa-inspector-title" id="aaa-inspector-title">Select a node above</h3>
+          </div>
+          <div class="aaa-inspector-latency-pill">
+            <span class="material-symbols-outlined" aria-hidden="true">speed</span>
+            Budget: <strong id="aaa-inspector-latency">-</strong>
+          </div>
+        </div>
+
+        <div class="aaa-inspector-grid">
+          <div class="aaa-inspector-col">
+            <h4 class="aaa-inspector-subhead">
+              <span class="material-symbols-outlined" aria-hidden="true">build</span>
+              Implementation Notes
+            </h4>
+            <p class="aaa-inspector-text" id="aaa-inspector-impl"></p>
+          </div>
+          <div class="aaa-inspector-col">
+            <h4 class="aaa-inspector-subhead aaa-inspector-subhead--warn">
+              <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+              Common Failure Modes
+            </h4>
+            <ul class="aaa-inspector-list" id="aaa-inspector-failures"></ul>
+          </div>
+          <div class="aaa-inspector-col">
+            <h4 class="aaa-inspector-subhead aaa-inspector-subhead--cyan">
+              <span class="material-symbols-outlined" aria-hidden="true">monitoring</span>
+              Observability Metrics to Log
+            </h4>
+            <ul class="aaa-inspector-metrics" id="aaa-inspector-metrics"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PATTERN COMPARISON MATRIX -->
+    <section class="aaa-card aaa-matrix-card" aria-labelledby="aaa-matrix-heading">
+      <div class="aaa-card-head">
+        <div>
+          <h2 id="aaa-matrix-heading" class="aaa-card-title">
+            <span class="material-symbols-outlined" aria-hidden="true">compare_arrows</span>
+            Pattern Comparison Matrix
+          </h2>
+          <p class="aaa-card-sub">All 6 patterns scored deterministically against your 10 constraints, showing exactly why the winner beat the alternatives.</p>
+        </div>
+      </div>
+
+      <div class="aaa-table-scroll">
+        <table class="aaa-matrix-table">
+          <thead>
+            <tr>
+              <th scope="col">Architecture Pattern</th>
+              <th scope="col">Fit Score</th>
+              <th scope="col">Verdict</th>
+              <th scope="col">Complexity</th>
+              <th scope="col">Why It Won or Lost</th>
+            </tr>
+          </thead>
+          <tbody id="aaa-matrix-body">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PRE-PRODUCTION FAILURE-MODE CHECKLIST + LIVE MADR -->
+    <section class="aaa-bottom-grid" aria-label="Pre-production checklist and Architecture Decision Record">
+
+      <!-- Failure-Mode Checklist -->
+      <div class="aaa-card aaa-checklist-card">
+        <div class="aaa-card-head aaa-card-head--split">
+          <div>
+            <h2 class="aaa-card-title">
+              <span class="material-symbols-outlined" aria-hidden="true">fact_check</span>
+              Pre-Production Failure-Mode Checklist
+            </h2>
+            <p class="aaa-card-sub">Risk-weighted gates matched to your pattern, privacy boundary and action risk.</p>
+          </div>
+          <button type="button" class="aaa-btn-ghost" id="aaa-checklist-reset-btn">Clear ticks</button>
+        </div>
+
+        <div class="aaa-checklist-progress">
+          <div class="aaa-meter-head">
+            <span class="aaa-meter-label">Release Readiness</span>
+            <span class="aaa-meter-val aaa-meter-val--green" id="aaa-checklist-count">0 / 0 verified</span>
+          </div>
+          <div class="aaa-bar-track" aria-hidden="true">
+            <div class="aaa-bar-fill aaa-bar-fill--green" id="aaa-checklist-bar"></div>
+          </div>
+        </div>
+
+        <ul class="aaa-checklist" id="aaa-checklist-list">
+          <!-- Populated by JS -->
+        </ul>
+      </div>
+
+      <!-- MADR Generator -->
+      <div class="aaa-card aaa-adr-card">
+        <div class="aaa-card-head aaa-card-head--split">
+          <div>
+            <h2 class="aaa-card-title">
+              <span class="material-symbols-outlined" aria-hidden="true">description</span>
+              Architecture Decision Record (MADR)
+            </h2>
+            <p class="aaa-card-sub">Live Markdown spec ready for pull requests, design reviews and compliance sign-off.</p>
+          </div>
+
+          <div class="aaa-tabs" role="tablist" aria-label="ADR view mode">
+            <button type="button" class="aaa-tab active" id="aaa-adr-tab-rendered" role="tab" aria-selected="true" aria-controls="aaa-adr-rendered">Preview</button>
+            <button type="button" class="aaa-tab" id="aaa-adr-tab-markdown" role="tab" aria-selected="false" aria-controls="aaa-adr-markdown">Raw Markdown</button>
+          </div>
+        </div>
+
+        <div class="aaa-adr-actions">
+          <button type="button" class="aaa-btn-primary" id="aaa-copy-adr-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span>Copy ADR (Markdown)</span>
+          </button>
+          <button type="button" class="aaa-btn-secondary" id="aaa-download-md-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">download</span>
+            <span>Download .md</span>
+          </button>
+          <button type="button" class="aaa-btn-secondary" id="aaa-copy-url-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">link</span>
+            <span>Copy Shareable URL</span>
+          </button>
+          <button type="button" class="aaa-btn-secondary" id="aaa-print-btn">
+            <span class="material-symbols-outlined" aria-hidden="true">print</span>
+            <span>Print / Save PDF</span>
+          </button>
+        </div>
+
+        <div class="aaa-adr-body" id="aaa-adr-rendered" role="tabpanel" aria-labelledby="aaa-adr-tab-rendered">
+          <!-- Rendered HTML preview of ADR -->
+        </div>
+
+        <pre class="aaa-adr-raw" id="aaa-adr-markdown" role="tabpanel" aria-labelledby="aaa-adr-tab-markdown" hidden></pre>
+      </div>
+
+    </section>
+
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <!-- Tool Info / SEO Section -->
+  <section class="tool-info" aria-label="About this tool">
+    <div class="tool-info-inner">
+
+      <div class="tool-info-meta">
+        <span>Last updated: November 2026</span>
+        <span class="tool-info-sep">·</span>
+        <span>By <a href="/about">John Bowman</a> - questions? Connect on <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</span>
+      </div>
+
+      <div class="tool-info-body">
+        <h2 class="aaa-info-heading">Why Most AI Architectures Overbuild on Day One</h2>
+        <p>Teams routinely jump straight to multi-agent frameworks or custom fine-tuning when a cached system prompt with strict JSON outputs or a deterministic workflow graph would ship in a week and cost a tenth as much to run. Every extra layer you add - vector databases, rerankers, open-ended tool loops, self-hosted GPU clusters - brings its own failure modes and on-call burden.</p>
+        <p>This advisor applies a deterministic principal-architect rubric across 10 engineering constraints to recommend the simplest pattern that satisfies your SLA, privacy boundary and risk tolerance, then hands you a clickable architecture diagram and a commit-ready MADR you can take straight into a design review.</p>
+      </div>
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>Why does this tool often advise against building an autonomous AI agent?</dt>
+                <dd>Open-ended agent loops add latency, token burn and unpredictable failure modes. If your task follows a known sequence of lookups and checks, a deterministic state graph with scoped model calls is cheaper, faster to debug and safer in production than an unconstrained tool-calling loop.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>When should I pick Hybrid RAG instead of long-context prompting?</dt>
+                <dd>Keep documents in a cached prompt while your active corpus fits comfortably under 100k tokens and changes slowly. Move to Hybrid RAG (BM25 lexical search plus dense embeddings and a reranker) once your corpus grows past 100k tokens, needs per-user access control or updates daily.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Will fine-tuning stop an LLM from hallucinating or fix outdated company facts?</dt>
+                <dd>No. Fine-tuning teaches format, tone, domain style and fast classification at high volume, not live facts. Storing changing policies or pricing inside model weights creates stale answers that you cannot easily patch without retraining. Use retrieval or live tool calls for mutable facts.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Does my project name or architecture specification leave my browser?</dt>
+                <dd>No. Every scoring rule, SVG diagram, failure-mode checklist and Markdown ADR runs locally in your browser with vanilla JavaScript. Nothing is uploaded to a server or sent to an external model API.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Can I commit the generated ADR straight into my Git repository?</dt>
+                <dd>Yes. The output follows the Markdown Architecture Decision Record (MADR) format with Context, Decision, Alternatives Considered, Guardrails, Consequences and Eval Metrics. Click Download .md or Copy ADR to drop it directly into docs/adr/ in your repository.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>How does the shareable URL work without a backend database?</dt>
+                <dd>Clicking Copy Shareable URL encodes your 10 constraint settings and project title into standard URL query parameters. Anyone opening that link loads the exact same pattern score, interactive diagram and ADR locally in their own browser.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Start from a scenario preset or enter your project details.</strong> Pick one of six realistic engineering presets or type your own project name and goal to pre-fill the ADR header.</li>
+              <li><strong>Set your engineering constraints.</strong> Configure task type, latency SLA, knowledge freshness, corpus size, hallucination tolerance, action risk, data residency, monthly volume and team maturity.</li>
+              <li><strong>Audit the verdict and anti-pattern warnings.</strong> Review the recommended minimum viable architecture, complexity score, blunt 'What NOT to Build' callouts and the 6-pattern comparison matrix.</li>
+              <li><strong>Inspect the interactive SVG topology.</strong> Click or tab through any node in the system diagram to check implementation details, latency budgets, failure modes and observability metrics.</li>
+              <li><strong>Verify the pre-production checklist and export the ADR.</strong> Tick off risk-specific production gates, then export the MADR as Markdown, download the SVG, copy Mermaid code, share the URL or save a PDF.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>Minimum viable complexity wins in production.</strong> The scoring engine starts from the lowest-maintenance pattern that meets your hard constraints and only steps up to RAG, workflows, bounded agents or fine-tuning when the numbers justify it.</li>
+              <li><strong>Deterministic rules, zero API calls.</strong> There is no black-box LLM guessing your stack; every recommendation is reproducible, transparent and visible in the 6-pattern comparison matrix.</li>
+              <li><strong>Explicit anti-pattern callouts.</strong> Knowing what not to build saves months of wasted sprint capacity - especially avoiding vector DBs for small static corpora, fine-tuning for volatile facts and unbounded agents on write actions.</li>
+              <li><strong>Component-level failure analysis.</strong> Every node in the inline SVG diagram maps to concrete implementation notes, latency budgets, failure modes and observability metrics.</li>
+              <li><strong>Ready-to-commit MADR output.</strong> Export clean Markdown with revisit triggers, governance notes and eval thresholds straight into version control.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener noreferrer">Anthropic Engineering - Building Effective Agents</a> (workflows vs autonomous agents and composable patterns).</li>
+              <li><a href="https://adr.github.io/madr/" target="_blank" rel="noopener noreferrer">MADR - Markdown Any Decision Records</a> (standard ADR format used for Markdown export).</li>
+              <li><a href="https://genai.owasp.org/llm-top-10/" target="_blank" rel="noopener noreferrer">OWASP Top 10 for Large Language Model Applications</a> (prompt injection, excessive agency and sensitive data disclosure controls).</li>
+              <li><a href="https://developers.google.com/machine-learning/guides/rules-of-ml" target="_blank" rel="noopener noreferrer">Google Developers - Rules of Machine Learning</a> (Rule #1: don't be afraid to launch a product without machine learning).</li>
+              <li><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener noreferrer">NIST AI Risk Management Framework (AI RMF 1.0)</a> (governance, measurement and risk mitigation practices).</li>
+              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks Lesson</a> - practical governance guidance in the JohnB.io AI course.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button type="button" id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder">
+    <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
+      <style>.crawl-nav{max-width:1280px;margin:0 auto;padding:3rem 2rem;border-top:1px solid rgba(248,245,253,0.07);font-family:'Space Grotesk',sans-serif;color:var(--on-surface-variant,#acaab1)}.crawl-nav-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,245,253,0.68);margin:0 0 1rem}.crawl-nav-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.5rem;font-size:0.85rem;line-height:1.6}.crawl-nav-list a{color:#00EEFC;text-decoration:none}.crawl-nav-list a:hover,.crawl-nav-list a:focus-visible{text-decoration:underline}</style>
+      <p class="crawl-nav-title">Explore JohnB.io</p>
+      <ul class="crawl-nav-list">
+        <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
+        <li><a href="/prompt-improver">Prompt Improver</a> - stronger prompts for ChatGPT, Claude and Gemini</li>
+        <li><a href="/llms-generator">LLMs.txt Generator</a> - llms.txt files for AI crawlers</li>
+        <li><a href="/faq-schema">FAQ Schema Generator</a> - valid FAQPage JSON-LD markup</li>
+        <li><a href="/search-radar">Search &amp; Prompt Radar</a> - search autocomplete and content angles</li>
+        <li><a href="/lm-chat">LLM Chat</a> - compare and test language model prompts</li>
+        <li><a href="/editor">AI Copyeditor</a> - copyediting with UK and US English</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 50 jurisdictions</li>
+        <li><a href="/about">About John Bowman</a> - AI strategist and developer</li>
+        <li><a href="/news/">AI Blog</a> - practical AI strategy and engineering notes</li>
+        <li><a href="/course/">AI &amp; Machine Learning Course</a> - free structured course</li>
+        <li><a href="/contact">Contact</a> - get in touch</li>
+      </ul>
+    </nav>
+  </div>
+
+  <script src="/scripts.js?v=12" defer></script>
+  <script src="/ai-architecture-advisor.js?v=1" defer></script>
+</body>
+</html>
