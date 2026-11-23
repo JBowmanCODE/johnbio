@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>90-Day AI Enablement &amp; Seat-Waste Kit - JohnB.io</title>
+
+  <!-- Google Analytics -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-0J6PBWMRNY');
+    (function(){
+      var loaded = false;
+      function loadGA(){
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0J6PBWMRNY';
+        document.head.appendChild(s);
+      }
+      ['pointermove','touchstart','scroll','keydown','click'].forEach(function(e){
+        window.addEventListener(e, loadGA, { once: true, passive: true });
+      });
+      window.addEventListener('load', function(){ setTimeout(loadGA, 4000); });
+    })();
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css?v=6">
+  <link rel="stylesheet" href="/header.css?v=8">
+  <link rel="stylesheet" href="/footer.css?v=4">
+  <link rel="stylesheet" href="/ai-enablement-kit.css?v=1">
+
+  <!-- SEO (Preview Mode: noindex, nofollow) -->
+  <meta name="description" content="Calculate AI licence shelfware waste, break-even minutes per employee and build a 90-day rollout playbook, prompt packs and acceptable use policy.">
+  <meta name="keywords" content="AI enablement kit, AI seat waste calculator, AI shelfware calculator, enterprise AI rollout plan, AI acceptable use policy generator, AI adoption KPIs, Copilot ROI calculator">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://johnb.io/ai-enablement-kit">
+  <meta name="author" content="John Bowman">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="90-Day AI Enablement &amp; Seat-Waste Kit - JohnB.io">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://johnb.io/ai-enablement-kit">
+  <meta property="og:description" content="Calculate AI licence shelfware waste, break-even minutes per employee and build a 90-day rollout playbook, prompt packs and acceptable use policy.">
+  <meta property="og:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+  <meta property="og:image:alt" content="90-Day AI Enablement and Seat-Waste Kit on JohnB.io">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="90-Day AI Enablement &amp; Seat-Waste Kit - JohnB.io">
+  <meta name="twitter:description" content="Model AI licence shelfware waste, break-even minutes per employee, champion ratios, department prompt packs and a plain-English acceptable use policy.">
+  <meta name="twitter:image" content="https://johnb.io/og_images/johnb_homepage_og.webp">
+  <meta name="twitter:image:alt" content="90-Day AI Enablement and Seat-Waste Kit on JohnB.io">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "90-Day AI Enablement & Seat-Waste Kit",
+    "url": "https://johnb.io/ai-enablement-kit",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Free browser-based rollout and adoption planner for AI Enablement Managers and Heads of AI. Calculates AI licence shelfware waste, break-even minutes per employee, champion ratios, department prompt starter packs, acceptable use guardrails and anti-vanity adoption KPIs.",
+    "image": "https://johnb.io/og_images/johnb_homepage_og.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "John Bowman",
+      "url": "https://johnb.io/about",
+      "sameAs": ["https://www.linkedin.com/in/john-bowman/"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "JohnB.io",
+      "url": "https://johnb.io"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is AI licence shelfware and why does the calculator default to 28% active usage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI licence shelfware is the share of paid enterprise AI seats that sit idle or get opened once a month for a quick curiosity prompt. Across unassisted blanket rollouts, weekly active usage commonly stalls between 20% and 35%, meaning two-thirds of the annual bill buys unused capacity. Starting the slider at 28% gives finance and enablement teams a realistic baseline instead of vendor sales-deck optimism."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How are break-even minutes per week per employee calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The calculator converts your monthly seat cost into a weekly figure across 46 working weeks per year (accounting for UK annual leave and bank holidays), then divides that weekly cost by your average fully-loaded hourly rate and multiplies by 60. It also shows the effective break-even minutes required from each active user to carry the dormant seats you are still paying for."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why should we start with a Champion cohort instead of buying seats for every employee on day one?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Blanket seat rollouts burn cash during the first 60 days while departments still lack approved workflows, prompt templates and data rules. Provisioning a 12% to 15% Champion cohort first lets curious staff prove real workflows, catch compliance snags early and show colleagues working examples before you commit full-company licence spend."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the tool send my organisation name, headcount or policy edits to a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Every calculation, SVG chart, policy edit and Markdown export runs locally in your browser using vanilla JavaScript. Nothing is uploaded to a backend or third-party AI API, and shareable links store your settings strictly inside the URL hash fragment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use the Acceptable Use One-Pager as formal legal advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The one-pager is a practical plain-English starting draft written so employees actually read and follow it, rather than ignoring a 40-page PDF. Always run the final version past your legal, data protection and information security leads, especially in FCA, UKGC, SRA or HIPAA-regulated environments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What makes an adoption KPI anti-vanity?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Vanity metrics like total logins or total prompts count activity without proving value. Anti-vanity KPIs measure Weekly Repeat Workflow Rate, review-adjusted time saved after checking and rework, error or escalation rates, and how fast inactive licences get reclaimed after 30 days of silence."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://johnb.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "90-Day AI Enablement & Seat-Waste Kit",
+        "item": "https://johnb.io/ai-enablement-kit"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How the 90-Day AI Enablement & Seat-Waste Kit Works",
+    "description": "Model AI licence shelfware waste and generate a 90-day enterprise AI enablement pack in four steps.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Configure your organisation, stack and risk tier",
+        "text": "Configure your organisation, stack and risk tier. Pick a preset licence cost or enter your own seat price, set headcount and fully-loaded hourly rate, choose your regulatory risk tier, and select the departments in scope."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Audit shelfware waste and break-even minutes",
+        "text": "Audit shelfware waste and break-even minutes. Compare your current weekly active usage against your 90-day target to see annual wasted spend, effective break-even minutes per active user, and a staged seat-tiering recommendation."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Work through the four-tab 90-day playbook",
+        "text": "Work through the four-tab 90-day playbook. Tick off 12-week rollout milestones, copy department prompt templates and red-line guardrails, edit the plain-English Acceptable Use One-Pager, and score your rollout against anti-vanity KPIs."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Export, print or share your pack",
+        "text": "Export, print or share your pack. Download the complete 90-day enablement pack as a single Markdown file, copy the Acceptable Use Policy, print a clean PDF handout, or copy a hash-encoded link for leadership."
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="aek-ambient" aria-hidden="true"></div>
+
+  <main class="aek-wrap" id="main-content">
+
+    <!-- HERO -->
+    <section class="aek-hero" aria-label="Introduction">
+      <div class="aek-hero-pills">
+        <span class="aek-pill aek-pill--green">
+          <span class="material-symbols-outlined" aria-hidden="true">lock</span>
+          100% browser-side - zero data sent to servers
+        </span>
+        <span class="aek-pill aek-pill--cyan">
+          <span class="material-symbols-outlined" aria-hidden="true">science</span>
+          Preview tool for Heads of AI &amp; Enablement Leads
+        </span>
+      </div>
+      <h1 class="aek-title">90-Day AI Enablement &amp; <span class="gradient-text">Seat-Waste Kit</span></h1>
+      <p class="aek-subtitle">
+        Most company AI rollouts stall at 25 to 35% weekly usage while finance keeps paying for every dormant seat. Model your shelfware bill, calculate break-even minutes per employee, and generate a practical 90-day rollout pack you can hand straight to leadership.
+      </p>
+
+      <!-- QUICK EXPORT BAR -->
+      <div class="aek-action-bar" role="region" aria-label="Export and sharing actions">
+        <button type="button" class="aek-btn aek-btn--primary" id="aek-download-md-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">download</span>
+          Download 90-Day Pack (.md)
+        </button>
+        <button type="button" class="aek-btn aek-btn--cyan" id="aek-copy-aup-top-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">policy</span>
+          Copy Acceptable Use Policy
+        </button>
+        <button type="button" class="aek-btn aek-btn--ghost" id="aek-copy-url-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">link</span>
+          Copy Shareable URL
+        </button>
+        <button type="button" class="aek-btn aek-btn--ghost" id="aek-print-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">print</span>
+          Print / Save PDF
+        </button>
+      </div>
+    </section>
+
+    <!-- TOAST / LIVE STATUS -->
+    <div id="aek-toast" class="aek-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- SECTION 1: ORGANISATION & STACK CONFIGURATOR -->
+    <section class="aek-section" id="sec-configurator" aria-labelledby="h-configurator">
+      <div class="aek-section-head">
+        <div>
+          <span class="aek-step-badge">Step 01</span>
+          <h2 class="aek-section-title" id="h-configurator">Organisation &amp; Stack Configurator</h2>
+        </div>
+        <div class="aek-currency-toggle" role="group" aria-label="Select currency">
+          <button type="button" class="aek-curr-btn active" id="aek-curr-gbp" data-currency="GBP" aria-pressed="true">&pound; GBP</button>
+          <button type="button" class="aek-curr-btn" id="aek-curr-usd" data-currency="USD" aria-pressed="false">$ USD</button>
+        </div>
+      </div>
+
+      <div class="aek-card aek-config-card">
+        <!-- Row 1: Org name & Tool stack presets -->
+        <div class="aek-config-top">
+          <div class="aek-field">
+            <label for="aek-org-name">Organisation name <span class="aek-optional">(optional)</span></label>
+            <input type="text" id="aek-org-name" maxlength="80" placeholder="e.g. Northstar Payments Ltd" autocomplete="organization">
+            <span class="aek-hint">Used inside your Acceptable Use One-Pager, roadmap and Markdown export.</span>
+          </div>
+
+          <div class="aek-field">
+            <span class="aek-label" id="aek-presets-label">1-click enterprise stack presets</span>
+            <div class="aek-presets" role="group" aria-labelledby="aek-presets-label" id="aek-presets">
+              <button type="button" class="aek-preset-btn active" data-preset="m365" aria-pressed="true">M365 Copilot</button>
+              <button type="button" class="aek-preset-btn" data-preset="chatgpt" aria-pressed="false">ChatGPT Enterprise</button>
+              <button type="button" class="aek-preset-btn" data-preset="claude" aria-pressed="false">Claude Enterprise</button>
+              <button type="button" class="aek-preset-btn" data-preset="gemini" aria-pressed="false">Gemini Workspace</button>
+              <button type="button" class="aek-preset-btn" data-preset="coding" aria-pressed="false">Coding Agents / Cursor</button>
+            </div>
+            <span class="aek-hint" id="aek-preset-note">Sets typical list seat price and names the approved tool in your Acceptable Use Policy.</span>
+          </div>
+        </div>
+
+        <!-- Row 2: Seats, Monthly Cost, Hourly Rate -->
+        <div class="aek-config-grid-3">
+          <div class="aek-field">
+            <div class="aek-field-row">
+              <label for="aek-seats-input">Total licensed seats</label>
+              <span class="aek-value-pill" id="aek-seats-badge">250 seats</span>
+            </div>
+            <div class="aek-range-combo">
+              <input type="range" id="aek-seats-range" min="10" max="5000" step="10" value="250" aria-label="Total licensed seats slider">
+              <input type="number" id="aek-seats-input" min="10" max="5000" step="1" value="250" aria-label="Total licensed seats number">
+            </div>
+            <span class="aek-hint">Range: 10 to 5,000 paid licences under review.</span>
+          </div>
+
+          <div class="aek-field">
+            <label for="aek-seat-cost">Average monthly seat cost (<span class="aek-curr-symbol">&pound;</span>)</label>
+            <div class="aek-input-prefix-wrap">
+              <span class="aek-input-prefix aek-curr-symbol" aria-hidden="true">&pound;</span>
+              <input type="number" id="aek-seat-cost" min="1" max="500" step="1" value="24">
+              <span class="aek-input-suffix">/ seat / mo</span>
+            </div>
+            <span class="aek-hint">Blended per-user cost across paid AI licences.</span>
+          </div>
+
+          <div class="aek-field">
+            <label for="aek-hourly-rate">Avg. fully-loaded hourly rate (<span class="aek-curr-symbol">&pound;</span>)</label>
+            <div class="aek-input-prefix-wrap">
+              <span class="aek-input-prefix aek-curr-symbol" aria-hidden="true">&pound;</span>
+              <input type="number" id="aek-hourly-rate" min="15" max="300" step="1" value="45">
+              <span class="aek-input-suffix">/ hour</span>
+            </div>
+            <span class="aek-hint">Salary + tax + benefits + overhead divided by ~1,800 hrs/yr.</span>
+          </div>
+        </div>
+
+        <!-- Row 3: Adoption Sliders -->
+        <div class="aek-adoption-sliders">
+          <div class="aek-slider-card aek-slider-card--pink">
+            <div class="aek-field-row">
+              <label for="aek-current-usage">Current active weekly usage</label>
+              <strong class="aek-slider-readout aek-text-pink" id="aek-current-usage-val">28%</strong>
+            </div>
+            <input type="range" id="aek-current-usage" min="5" max="95" step="1" value="28" aria-describedby="aek-current-usage-hint">
+            <div class="aek-slider-scale" aria-hidden="true">
+              <span>5%</span>
+              <span>28% shelfware norm</span>
+              <span>60%</span>
+              <span>95%</span>
+            </div>
+            <span class="aek-hint" id="aek-current-usage-hint">Staff using the tool meaningfully at least once every week (not just logged in once at launch).</span>
+          </div>
+
+          <div class="aek-slider-card aek-slider-card--cyan">
+            <div class="aek-field-row">
+              <label for="aek-target-usage">Target 90-day adoption</label>
+              <strong class="aek-slider-readout aek-text-cyan" id="aek-target-usage-val">68%</strong>
+            </div>
+            <input type="range" id="aek-target-usage" min="15" max="95" step="1" value="68" aria-describedby="aek-target-usage-hint">
+            <div class="aek-slider-scale" aria-hidden="true">
+              <span>15%</span>
+              <span>50%</span>
+              <span>68% strong Q1</span>
+              <span>95%</span>
+            </div>
+            <span class="aek-hint" id="aek-target-usage-hint">Realistic Day-90 weekly active target after Champion workflows and Day-60 seat reclaim.</span>
+          </div>
+        </div>
+
+        <!-- Row 4: Industry Risk Tier -->
+        <fieldset class="aek-fieldset">
+          <legend class="aek-label">Industry risk tier</legend>
+          <div class="aek-risk-grid" id="aek-risk-grid">
+            <label class="aek-risk-card">
+              <input type="radio" name="aek-risk-tier" value="low">
+              <span class="aek-risk-body">
+                <span class="aek-risk-top">
+                  <span class="aek-risk-title">Unregulated SaaS / Agency</span>
+                  <span class="aek-risk-tag aek-risk-tag--green">Low friction</span>
+                </span>
+                <span class="aek-risk-desc">Commercial confidentiality, client NDA boundaries and IP hygiene. Faster tool approval.</span>
+              </span>
+            </label>
+
+            <label class="aek-risk-card">
+              <input type="radio" name="aek-risk-tier" value="mid" checked>
+              <span class="aek-risk-body">
+                <span class="aek-risk-top">
+                  <span class="aek-risk-title">Mid-Risk B2B / Healthcare-Adjacent</span>
+                  <span class="aek-risk-tag aek-risk-tag--amber">Standard controls</span>
+                </span>
+                <span class="aek-risk-desc">UK GDPR / GDPR PII masking, enterprise DPA verification and mandatory source checking.</span>
+              </span>
+            </label>
+
+            <label class="aek-risk-card">
+              <input type="radio" name="aek-risk-tier" value="high">
+              <span class="aek-risk-body">
+                <span class="aek-risk-top">
+                  <span class="aek-risk-title">Heavily Regulated (Finance / iGaming / Legal)</span>
+                  <span class="aek-risk-tag aek-risk-tag--pink">Strict audit</span>
+                </span>
+                <span class="aek-risk-desc">FCA, UKGC, SRA and AML audit trails. Zero raw customer/KYC data, dual sign-off on external outputs.</span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Row 5: Target Departments -->
+        <fieldset class="aek-fieldset">
+          <div class="aek-field-row aek-dept-header">
+            <legend class="aek-label">Target departments in scope (<span id="aek-dept-count">4</span> selected)</legend>
+            <div class="aek-dept-quick">
+              <button type="button" class="aek-link-btn" id="aek-dept-all-btn">Select all 8</button>
+              <span aria-hidden="true">&middot;</span>
+              <button type="button" class="aek-link-btn" id="aek-dept-core-btn">Reset to core 4</button>
+            </div>
+          </div>
+          <div class="aek-dept-grid" id="aek-dept-grid">
+            <label class="aek-dept-chip"><input type="checkbox" name="aek-dept" value="engineering" checked><span>Engineering</span></label>
+            <label class="aek-dept-chip"><input type="checkbox" name="aek-dept" value="sales" checked><span>Sales</span></label>
+            <label class="aek-dept-chip"><input type="checkbox" name="aek-dept" value="marketing" checked><span>Marketing</span></label>
+            <label class="aek-dept-chip"><input type="checkbox" name="aek-dept" value="operations" checked><span>Operations</span></label>
+            <label class="aek-dept-chip"><input type="checkbox" name="aek-dept" value="support"><span>Customer Support</span></label>
+            <label class="aek-dept-chip"><input type="checkbox" name="aek-dept" value="legal"><span>Legal &amp; Compliance</span></label>
+            <label class="aek-dept-chip"><input type="checkbox" name="aek-dept" value="finance"><span>Finance</span></label>
+            <label class="aek-dept-chip"><input type="checkbox" name="aek-dept" value="hr"><span>HR / People</span></label>
+          </div>
+        </fieldset>
+      </div>
+    </section>
+
+    <!-- SECTION 2: LICENCE SHELFWARE & BREAK-EVEN DASHBOARD -->
+    <section class="aek-section" id="sec-dashboard" aria-labelledby="h-dashboard">
+      <div class="aek-section-head">
+        <div>
+          <span class="aek-step-badge">Step 02</span>
+          <h2 class="aek-section-title" id="h-dashboard">Licence Shelfware &amp; Break-Even Dashboard</h2>
+        </div>
+        <span class="aek-live-badge" id="aek-stack-summary-badge">M365 Copilot &middot; 250 seats</span>
+      </div>
+
+      <!-- 4 KPI CARDS -->
+      <div class="aek-kpi-grid" aria-live="polite">
+        <article class="aek-kpi-card">
+          <div class="aek-kpi-label">Annual Licence Spend</div>
+          <div class="aek-kpi-value" id="aek-kpi-annual-spend">&pound;72,000</div>
+          <div class="aek-kpi-sub" id="aek-kpi-annual-sub">&pound;6,000 / mo across 250 seats</div>
+        </article>
+
+        <article class="aek-kpi-card aek-kpi-card--pink">
+          <div class="aek-kpi-label">Annual Shelfware Waste</div>
+          <div class="aek-kpi-value aek-text-pink" id="aek-kpi-waste">&pound;51,840</div>
+          <div class="aek-kpi-sub" id="aek-kpi-waste-sub">180 dormant seats (72%) burning &pound;4,320/mo</div>
+        </article>
+
+        <article class="aek-kpi-card aek-kpi-card--cyan">
+          <div class="aek-kpi-label">Break-Even Time / Employee</div>
+          <div class="aek-kpi-value aek-text-cyan" id="aek-kpi-breakeven">8.3 min/wk</div>
+          <div class="aek-kpi-sub" id="aek-kpi-breakeven-sub">29.8 min/wk per active seat carrying dormant waste</div>
+        </article>
+
+        <article class="aek-kpi-card aek-kpi-card--green">
+          <div class="aek-kpi-label">Projected 90-Day Reclaimed Value</div>
+          <div class="aek-kpi-value aek-text-green" id="aek-kpi-reclaimed">&pound;28,800</div>
+          <div class="aek-kpi-sub" id="aek-kpi-reclaimed-sub">Annualised licence shift + net productivity upside</div>
+        </article>
+      </div>
+
+      <!-- VISUALS ROW: UTILISATION GAUGE + 90-DAY ADOPTION CURVE -->
+      <div class="aek-visuals-grid">
+        <!-- SVG 1: Seat Utilisation Gauge -->
+        <div class="aek-card aek-viz-card">
+          <div class="aek-viz-head">
+            <h3 class="aek-viz-title">Seat Utilisation Gauge</h3>
+            <div class="aek-viz-toggle" role="group" aria-label="Switch gauge view">
+              <button type="button" class="aek-mini-btn active" id="aek-gauge-now-btn" data-mode="now" aria-pressed="true">Today</button>
+              <button type="button" class="aek-mini-btn" id="aek-gauge-target-btn" data-mode="target" aria-pressed="false">Day-90 Target</button>
+            </div>
+          </div>
+
+          <div class="aek-gauge-wrap">
+            <svg id="aek-gauge-svg" class="aek-gauge-svg" viewBox="0 0 260 155" role="img" aria-label="Seat utilisation gauge showing dormant, casual and power users"></svg>
+          </div>
+
+          <div class="aek-legend-grid" id="aek-gauge-legend"></div>
+
+          <div class="aek-compare-bars" id="aek-compare-bars" aria-label="Current versus Day-90 user distribution"></div>
+        </div>
+
+        <!-- SVG 2: 90-Day Adoption Curve -->
+        <div class="aek-card aek-viz-card">
+          <div class="aek-viz-head">
+            <h3 class="aek-viz-title">90-Day Adoption Curve vs Status Quo</h3>
+            <span class="aek-viz-tag">Weeks 0 to 12</span>
+          </div>
+
+          <div class="aek-curve-wrap">
+            <svg id="aek-curve-svg" class="aek-curve-svg" viewBox="0 0 520 230" role="img" aria-label="90-day adoption curve comparing structured enablement to an unassisted rollout"></svg>
+          </div>
+
+          <div class="aek-curve-foot" id="aek-curve-foot"></div>
+        </div>
+      </div>
+
+      <!-- SMART LICENCE TIERING RECOMMENDATION -->
+      <div class="aek-tiering-box" id="aek-tiering-box" aria-live="polite">
+        <div class="aek-tiering-head">
+          <span class="material-symbols-outlined" aria-hidden="true">tips_and_updates</span>
+          <h3>Smart Licence Tiering Recommendation</h3>
+          <span class="aek-tiering-badge" id="aek-tiering-savings-badge">Save Q1 cash</span>
+        </div>
+        <p class="aek-tiering-lead" id="aek-tiering-lead"></p>
+        <div class="aek-tiering-pillars" id="aek-tiering-pillars"></div>
+        <p class="aek-formula-note" id="aek-formula-note"></p>
+      </div>
+    </section>
+
+    <!-- SECTION 3: INTERACTIVE 90-DAY ROLLOUT PLAYBOOK (TABBED WORKSPACE) -->
+    <section class="aek-section" id="sec-playbook" aria-labelledby="h-playbook">
+      <div class="aek-section-head">
+        <div>
+          <span class="aek-step-badge">Step 03</span>
+          <h2 class="aek-section-title" id="h-playbook">Interactive 90-Day Rollout Playbook</h2>
+        </div>
+        <span class="aek-live-badge" id="aek-playbook-progress-badge">0 / 15 milestones checked</span>
+      </div>
+
+      <!-- TAB BAR -->
+      <div class="aek-tabs" role="tablist" aria-label="90-day enablement playbook sections" id="aek-tablist">
+        <button type="button" class="aek-tab active" role="tab" id="tab-roadmap" aria-selected="true" aria-controls="panel-roadmap" tabindex="0" data-tab="roadmap">
+          <span class="material-symbols-outlined" aria-hidden="true">event_note</span>
+          <span>1. 12-Week Roadmap &amp; Champions</span>
+        </button>
+        <button type="button" class="aek-tab" role="tab" id="tab-workflows" aria-selected="false" aria-controls="panel-workflows" tabindex="-1" data-tab="workflows">
+          <span class="material-symbols-outlined" aria-hidden="true">auto_awesome</span>
+          <span>2. Department Prompt Packs</span>
+        </button>
+        <button type="button" class="aek-tab" role="tab" id="tab-policy" aria-selected="false" aria-controls="panel-policy" tabindex="-1" data-tab="policy">
+          <span class="material-symbols-outlined" aria-hidden="true">gavel</span>
+          <span>3. Acceptable Use One-Pager</span>
+        </button>
+        <button type="button" class="aek-tab" role="tab" id="tab-kpis" aria-selected="false" aria-controls="panel-kpis" tabindex="-1" data-tab="kpis">
+          <span class="material-symbols-outlined" aria-hidden="true">query_stats</span>
+          <span>4. Anti-Vanity KPIs</span>
+        </button>
+      </div>
+
+      <!-- TAB PANEL 1: 12-WEEK ROADMAP & CHAMPION NETWORK -->
+      <div class="aek-tabpanel" role="tabpanel" id="panel-roadmap" aria-labelledby="tab-roadmap">
+        <div class="aek-champion-strip" id="aek-champion-strip">
+          <div class="aek-champ-metric">
+            <span class="aek-champ-label">Recommended Champions</span>
+            <strong class="aek-champ-val aek-text-cyan" id="aek-champ-count">17 to 21</strong>
+            <span class="aek-champ-sub">Target ratio: 1 per 12 to 15 staff</span>
+          </div>
+          <div class="aek-champ-metric">
+            <span class="aek-champ-label">Ring-Fenced Time</span>
+            <strong class="aek-champ-val" id="aek-champ-hours">2 hrs / wk</strong>
+            <span class="aek-champ-sub" id="aek-champ-hours-sub">Protected for clinic hours &amp; prompt testing</span>
+          </div>
+          <div class="aek-champ-metric">
+            <span class="aek-champ-label">Readiness Tracker</span>
+            <div class="aek-progress-row">
+              <strong class="aek-champ-val aek-text-green" id="aek-readiness-pct">0%</strong>
+              <button type="button" class="aek-link-btn" id="aek-reset-checks-btn">Clear ticks</button>
+            </div>
+            <div class="aek-progress-bar" aria-hidden="true"><div class="aek-progress-fill" id="aek-readiness-fill"></div></div>
+          </div>
+        </div>
+
+        <div class="aek-callout aek-callout--cyan">
+          <span class="material-symbols-outlined" aria-hidden="true">groups</span>
+          <p id="aek-champ-advice">Pick curious mid-level operators who already solve messy problems for colleagues, not senior managers who have no time to test prompts. Split your cohort evenly across your selected departments.</p>
+        </div>
+
+        <div class="aek-phases-grid" id="aek-phases-grid"></div>
+      </div>
+
+      <!-- TAB PANEL 2: DEPARTMENT WORKFLOW & PROMPT STARTER PACKS -->
+      <div class="aek-tabpanel" role="tabpanel" id="panel-workflows" aria-labelledby="tab-workflows" hidden>
+        <div class="aek-panel-intro">
+          <div>
+            <h3 class="aek-panel-heading">Department Workflow &amp; Prompt Starter Packs</h3>
+            <p class="aek-panel-sub">Filtered to the departments selected in Step 01. Each pack gives 3 repeatable workflows with copyable prompt templates, human checks and explicit "Never paste this" red lines.</p>
+          </div>
+          <div class="aek-dept-filter-pills" id="aek-workflow-filter-pills" aria-label="Filter displayed department packs"></div>
+        </div>
+        <div class="aek-workflows-list" id="aek-workflows-list"></div>
+      </div>
+
+      <!-- TAB PANEL 3: PLAIN-ENGLISH ACCEPTABLE USE ONE-PAGER -->
+      <div class="aek-tabpanel" role="tabpanel" id="panel-policy" aria-labelledby="tab-policy" hidden>
+        <div class="aek-panel-intro">
+          <div>
+            <h3 class="aek-panel-heading">Plain-English Acceptable Use One-Pager</h3>
+            <p class="aek-panel-sub" id="aek-policy-meta-sub">Adapted to your selected stack and industry risk tier. Short enough that staff read all of it before their first prompt.</p>
+          </div>
+          <div class="aek-policy-actions">
+            <button type="button" class="aek-btn aek-btn--cyan aek-btn--sm" id="aek-copy-policy-btn">
+              <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+              Copy Policy
+            </button>
+            <button type="button" class="aek-btn aek-btn--ghost aek-btn--sm" id="aek-toggle-edit-policy-btn" aria-pressed="false">
+              <span class="material-symbols-outlined" aria-hidden="true">edit_note</span>
+              Edit Text
+            </button>
+            <button type="button" class="aek-btn aek-btn--ghost aek-btn--sm" id="aek-reset-policy-btn">
+              <span class="material-symbols-outlined" aria-hidden="true">restart_alt</span>
+              Reset Draft
+            </button>
+          </div>
+        </div>
+
+        <!-- Traffic-Light Visual Summary Cards -->
+        <div class="aek-traffic-grid" id="aek-traffic-grid"></div>
+
+        <!-- Rendered Policy Preview vs Editable Textarea -->
+        <div class="aek-policy-doc" id="aek-policy-preview"></div>
+        <div class="aek-policy-editor-wrap" id="aek-policy-editor-wrap" hidden>
+          <label for="aek-policy-textarea" class="aek-label">Edit your Acceptable Use One-Pager (Markdown / plain text)</label>
+          <textarea id="aek-policy-textarea" class="aek-policy-textarea" rows="20" spellcheck="true"></textarea>
+          <span class="aek-hint">Your custom edits are preserved in the downloaded 90-Day Markdown Pack and Copy Policy button until you click Reset Draft.</span>
+        </div>
+      </div>
+
+      <!-- TAB PANEL 4: ANTI-VANITY ADOPTION KPI TRACKER -->
+      <div class="aek-tabpanel" role="tabpanel" id="panel-kpis" aria-labelledby="tab-kpis" hidden>
+        <div class="aek-panel-intro">
+          <div>
+            <h3 class="aek-panel-heading">Anti-Vanity Adoption KPI Tracker</h3>
+            <p class="aek-panel-sub">Total logins and "prompts sent" tell you who opened a browser tab, not whether anyone did better work. Replace activity vanity numbers with four metrics finance and operations trust.</p>
+          </div>
+        </div>
+
+        <div class="aek-table-wrap">
+          <table class="aek-table" id="aek-kpi-table">
+            <thead>
+              <tr>
+                <th scope="col">Vanity Metric (Ignore)</th>
+                <th scope="col">Real Enablement KPI</th>
+                <th scope="col">How to Measure It</th>
+                <th scope="col">Day-90 Target Benchmark</th>
+              </tr>
+            </thead>
+            <tbody id="aek-kpi-tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- Interactive Rollout Health Self-Audit -->
+        <div class="aek-audit-box">
+          <div class="aek-audit-head">
+            <div>
+              <h4 class="aek-audit-title">Live Rollout Health Self-Audit (Day 30 / 60 / 90 Check-In)</h4>
+              <p class="aek-audit-sub">Enter your actual measured numbers to score your programme and get a straight next-step verdict.</p>
+            </div>
+            <div class="aek-audit-verdict" id="aek-audit-verdict" aria-live="polite"></div>
+          </div>
+
+          <div class="aek-audit-grid">
+            <div class="aek-field">
+              <label for="aek-kpi-wrwr">Weekly Repeat Workflow Rate (%)</label>
+              <input type="number" id="aek-kpi-wrwr" min="0" max="100" step="1" value="28">
+              <span class="aek-hint">% of licensed staff running the same work task 2+ times/wk</span>
+            </div>
+            <div class="aek-field">
+              <label for="aek-kpi-netmins">Review-Adjusted Time Saved (min/wk)</label>
+              <input type="number" id="aek-kpi-netmins" min="0" max="600" step="5" value="25">
+              <span class="aek-hint">Minutes saved after subtracting checking &amp; rework time</span>
+            </div>
+            <div class="aek-field">
+              <label for="aek-kpi-err">QA / Escalation Error Rate (%)</label>
+              <input type="number" id="aek-kpi-err" min="0" max="50" step="0.5" value="2.5">
+              <span class="aek-hint">% of AI-assisted outputs rejected at review or escalated</span>
+            </div>
+            <div class="aek-field">
+              <label for="aek-kpi-reclaim">Inactive Seats Reclaimed (%)</label>
+              <input type="number" id="aek-kpi-reclaim" min="0" max="100" step="5" value="40">
+              <span class="aek-hint">% of 30-day idle seats recovered within 14 days of audit</span>
+            </div>
+          </div>
+
+          <div class="aek-audit-notes" id="aek-audit-notes"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOTTOM EXPORT STRIP -->
+    <section class="aek-export-strip" aria-label="Export your complete 90-day enablement pack">
+      <div class="aek-export-copy">
+        <h2>Ready to share with Finance, InfoSec &amp; Department Leads?</h2>
+        <p>Export all four playbook sections plus your shelfware financials into one clean Markdown pack, print a tidy PDF, or copy a link with your exact numbers baked into the URL.</p>
+      </div>
+      <div class="aek-export-btns">
+        <button type="button" class="aek-btn aek-btn--primary" id="aek-download-md-bottom-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">description</span>
+          Download Complete Pack (.md)
+        </button>
+        <button type="button" class="aek-btn aek-btn--ghost" id="aek-copy-url-bottom-btn">
+          <span class="material-symbols-outlined" aria-hidden="true">share</span>
+          Copy Shareable Link
+        </button>
+      </div>
+    </section>
+
+    <p class="aek-disclaimer">
+      Benchmarks and policy templates are practical starting points, not legal or financial advice. Everything calculates locally in your browser.
+    </p>
+  </main>
+
+  <div id="share-bar-placeholder"></div>
+
+  <!-- Tool Info / SEO Section (Standard 4 Accordions in Exact Order) -->
+  <section class="tool-info" aria-label="About this tool">
+    <div class="tool-info-inner">
+
+      <div class="tool-info-meta">
+        <span>Last updated: November 2026</span>
+        <span class="tool-info-sep">&middot;</span>
+        <span>By <a href="/about">John Bowman</a> - questions? Connect on <a href="https://www.linkedin.com/in/john-bowman/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</span>
+      </div>
+
+      <div class="tool-info-body">
+        <h2 class="aek-info-heading">Why Most Enterprise AI Seat Rollouts Turn Into Shelfware</h2>
+        <p>Buying 250 enterprise AI licences and sending an announcement email produces a predictable curve: a two-week curiosity spike, followed by a steep drop to roughly 25 to 35% weekly active usage. Staff do not avoid AI because they dislike saving time. They stop using it because nobody gave them approved workflows for their actual job, nobody clarified which customer data is off-limits, and nobody cleared time for peer clinics.</p>
+        <p>This kit puts the commercial maths and the operational rollout in one place. Model the real cost of dormant seats, work out how many minutes per week each employee must save after review overhead to pay for their licence, and turn those figures into a staged 90-day rollout plan with a day-60 reclaim loop.</p>
+      </div>
+
+      <div class="tool-accordions">
+
+        <details class="tool-accordion" open>
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Frequently Asked Questions</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <dl class="info-faq">
+              <div class="faq-item">
+                <dt>What is AI licence shelfware and why does the calculator default to 28% active usage?</dt>
+                <dd>AI licence shelfware is the share of paid enterprise AI seats that sit idle or get opened once a month for a quick curiosity prompt. Across unassisted blanket rollouts, weekly active usage commonly stalls between 20% and 35%, meaning two-thirds of the annual bill buys unused capacity. Starting the slider at 28% gives finance and enablement teams a realistic baseline instead of vendor sales-deck optimism.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>How are break-even minutes per week per employee calculated?</dt>
+                <dd>The calculator converts your monthly seat cost into a weekly figure across 46 working weeks per year (accounting for UK annual leave and bank holidays), then divides that weekly cost by your average fully-loaded hourly rate and multiplies by 60. It also shows the effective break-even minutes required from each active user to carry the dormant seats you are still paying for.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Why should we start with a Champion cohort instead of buying seats for every employee on day one?</dt>
+                <dd>Blanket seat rollouts burn cash during the first 60 days while departments still lack approved workflows, prompt templates and data rules. Provisioning a 12% to 15% Champion cohort first lets curious staff prove real workflows, catch compliance snags early and show colleagues working examples before you commit full-company licence spend.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Does the tool send my organisation name, headcount or policy edits to a server?</dt>
+                <dd>No. Every calculation, SVG chart, policy edit and Markdown export runs locally in your browser using vanilla JavaScript. Nothing is uploaded to a backend or third-party AI API, and shareable links store your settings strictly inside the URL hash fragment.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>Can I use the Acceptable Use One-Pager as formal legal advice?</dt>
+                <dd>No. The one-pager is a practical plain-English starting draft written so employees actually read and follow it, rather than ignoring a 40-page PDF. Always run the final version past your legal, data protection and information security leads, especially in FCA, UKGC, SRA or HIPAA-regulated environments.</dd>
+              </div>
+              <div class="faq-item">
+                <dt>What makes an adoption KPI anti-vanity?</dt>
+                <dd>Vanity metrics like total logins or total prompts count activity without proving value. Anti-vanity KPIs measure Weekly Repeat Workflow Rate, review-adjusted time saved after checking and rework, error or escalation rates, and how fast inactive licences get reclaimed after 30 days of silence.</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">How It Works</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-steps">
+              <li><strong>Configure your organisation, stack and risk tier.</strong> Pick a preset licence cost or enter your own seat price, set headcount and fully-loaded hourly rate, choose your regulatory risk tier, and select the departments in scope.</li>
+              <li><strong>Audit shelfware waste and break-even minutes.</strong> Compare your current weekly active usage against your 90-day target to see annual wasted spend, effective break-even minutes per active user, and a staged seat-tiering recommendation.</li>
+              <li><strong>Work through the four-tab 90-day playbook.</strong> Tick off 12-week rollout milestones, copy department prompt templates and red-line guardrails, edit the plain-English Acceptable Use One-Pager, and score your rollout against anti-vanity KPIs.</li>
+              <li><strong>Export, print or share your pack.</strong> Download the complete 90-day enablement pack as a single Markdown file, copy the Acceptable Use Policy, print a clean PDF handout, or copy a hash-encoded link for leadership.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Key Points</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ul class="info-points">
+              <li><strong>Shelfware is a rollout failure, not a software defect.</strong> Paying for 250 licences at 28% active usage makes every active user carry 3.6x their own seat cost just to break even.</li>
+              <li><strong>Review-adjusted time matters more than raw generation speed.</strong> Saving 30 minutes drafting a document that takes 25 minutes to fact-check only nets 5 minutes. Measure net time after verification.</li>
+              <li><strong>A 30-day inactivity reclaim loop pays for the whole enablement programme.</strong> Send a polite 7-day check-in before reclaiming dormant licences and move them straight to waitlisted power users.</li>
+              <li><strong>One Champion per 12 to 15 staff beats top-down training slides.</strong> Peers copy a colleague who fixed a real Tuesday afternoon task far faster than they follow a 45-minute webinar.</li>
+              <li><strong>Plain-English traffic-light data rules reduce shadow AI.</strong> Pair clear Red/Amber/Green boundaries with a 5-day fast-track route to approve new tools so staff stop pasting work into personal accounts.</li>
+              <li><strong>Zero external dependencies or tracking of inputs.</strong> Works offline after load, persists your state in the URL hash when shared, and never sends company figures to any server.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="tool-accordion">
+          <summary class="tool-accordion-summary">
+            <span class="tool-accordion-title">Sources</span>
+            <span class="tool-accordion-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="tool-accordion-body">
+            <ol class="info-sources">
+              <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/" target="_blank" rel="noopener noreferrer">UK Information Commissioner's Office (ICO) - Guidance on AI and Data Protection</a>.</li>
+              <li><a href="https://www.ncsc.gov.uk/collection/guidelines-secure-ai-system-development" target="_blank" rel="noopener noreferrer">UK National Cyber Security Centre (NCSC) - Guidelines for Secure AI System Development</a>.</li>
+              <li><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener noreferrer">NIST - Artificial Intelligence Risk Management Framework (AI RMF 1.0)</a>.</li>
+              <li><a href="/course/ai-governance-frameworks">AI Governance Frameworks (JohnB.io Course)</a> - practical EU AI Act, GDPR and internal risk controls.</li>
+              <li><a href="/prompt-improver">Prompt Improver</a> - turn rough department prompts into structured templates.</li>
+              <li><a href="/igaming-compliance">iGaming Compliance Map</a> - regulatory requirements across 50+ jurisdictions.</li>
+            </ol>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <button type="button" id="back-to-top" aria-label="Back to top">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="footer-placeholder">
+    <nav class="crawl-nav" aria-label="JohnB.io tools and site navigation">
+      <p class="crawl-nav-title">Explore JohnB.io</p>
+      <ul class="crawl-nav-list">
+        <li><a href="/">AI Tools by John Bowman</a> - home page and full tool gallery</li>
+        <li><a href="/prompt-improver">Prompt Improver</a> - stronger prompts for ChatGPT, Claude and Gemini</li>
+        <li><a href="/course/">AI &amp; Machine Learning Course</a> - free structured course</li>
+        <li><a href="/igaming-compliance">iGaming Compliance Map</a> - gambling regulations across 50 jurisdictions</li>
+        <li><a href="/linkedin-analyser">LinkedIn Analytics Analyser</a> - browser-based Creator Analytics breakdown</li>
+        <li><a href="/bonus-calculator">iGaming Bonus Cost Calculator</a> - net operator bonus cost modelling</li>
+        <li><a href="/search-radar">Search &amp; Prompt Radar</a> - search autocomplete and content angles</li>
+        <li><a href="/llms-generator">LLMs.txt Generator</a> - llms.txt files for AI crawlers</li>
+        <li><a href="/editor">AI Copyeditor</a> - copyediting with UK and US English</li>
+        <li><a href="/about">About John Bowman</a> - 20+ years in iGaming and digital marketing</li>
+        <li><a href="/news/">AI Blog</a> - practical AI strategy and how it works</li>
+        <li><a href="/contact">Contact</a> - get in touch</li>
+      </ul>
+    </nav>
+  </div>
+
+  <script src="/scripts.js?v=12" defer></script>
+  <script src="/ai-enablement-kit.js?v=1" defer></script>
+</body>
+</html>
