@@ -508,7 +508,7 @@
       explanation: 'Standard boilerplate in consumer AI, but enterprise contracts should still commit to defined evaluation baselines and grounding controls.',
       checkId: 'ma_hallucination',
       suggestedRating: 'partial',
-      emailQuestion: 'Alongside standard warranty disclaimers, share your documented grounding/citation controls and agree pilot accuracy benchmarks prior to annual commitment.'
+      emailQuestion: 'Alongside standard warranty disclaimers, share your documented grounding/citation controls and agree pilot accuracy benchmarks before annual commitment.'
     },
     {
       id: 'rule_indemnity',
